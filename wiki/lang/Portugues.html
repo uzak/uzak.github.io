@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Portugues</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Contents</h1>
+<ul>
+<li><a href="#Misc.html">Misc</a></li>
+<li><a href="#Memrise.html">Memrise</a><ul>
+<li><a href="#Memrise#Modulo 1.html">Modulo 1</a></li>
+<li><a href="#Memrise#Modulo 2.html">Modulo 2</a></li>
+<li><a href="#Memrise#Modulo 3.html">Modulo 3</a></li>
+<li><a href="#Memrise#Modulo 4 - past.html">Modulo 4 - past</a></li>
+<li><a href="#Memrise#Modulo 5.html">Modulo 5</a></li>
+<li><a href="#Memrise#Learn Portuguese Conjugation.html">Learn Portuguese Conjugation</a></li>
+</ul>
+</li>
+<li><a href="#Mar Morto.html">Mar Morto</a></li>
+</ul>
+<h1>Misc</h1>
+<p><a href="https://conjugator.reverso.net/conjugation-portuguese.html">Conjugator</a></p>
+<div class="codehilite"><pre><span></span>jeito                       die Art, die Art und Weise, der Anschein
+de jeito nenhum             keinesfalls
+costume                     die Sitte, die Gewohnheit
+doida                       Narrin
+noiva                       Verlobte
+fiz (I -&gt; i)                I did
+fez (Eli -&gt; e)              (s)he did
+eu fui  (eU -&gt; fUi)
+ele foi (eli -&gt; foI)
+eu tive (I -&gt; i)
+ele teve
+demorar                     herumtrödeln, sich verspäten
+o assobio (assobiar)        der Pfiff
+o pátio                     courtyard, der Hof
+o outdoor                   Billboard
+o couro                     das Leder
+faz tempo                   it&#39;s been a while
+se                          man
+riso                        laughter
+esgotar                     erschöpfen, ausreizen, aufzehren
+lamber                      lecken
+o moinho                    Mühle
+ouça me bem
+
+brasa                       die Glut
+brasa (pt)                  attraktive Person
+manda brasa! (Br.)          Schliess los
+enfrentar                   sich etwas stellen, gegenübertreten
+aceder                      abrufen, auf etwas zugreifen
+empréstimo                  die Ausleihe/Ausleihung, Darlehen
+prestação                   Leistung, Rate, Erbringung
+alargamento                 Ausweitung, Ausdehnung
+
+a saideira                  der Absacker
+sexta-feira e dia da saideir
+ouvindo
+a folga                     die Rast, die Ruhe, der Spielraum (tech)
+dia de folga                freier Tag
+a maioria                   die Mehrheit
+a maioridade                Erwachsenenalter 
+ai vou para Portugal
+aposentar                   pensionieren
+curtir                      mögen, geniessen
+o selo                      die Briefmarke, der Siegel, der Stempel
+ainda que mal ...           although I hardly ...
+a cachoeira                 waterfall
+senão                       sonst
+desamar (se)                (sich) entlieben
+sepultar                    beerdigen, begraben
+a secura                    dryness
+vem                         komme!
+se Deus quiser
+gargalhada                  das Gelächter 
+gargalhar                   aus vollem Hals lachen
+contanto                    sofern; vorausgesetzt, dass
+de boas                     cool
+Não faço a minima ideia
+daí                         dann, daher, voraus (räumlich)
+daí para frente             von da an
+foi mal                     my bad
+leva anos                   takes ages
+uma muita                   a fine
+o filo                      der Stamm
+eu/você soube               I knew (pretérito perfeito)
+malhar (br)                 intensiv trainieren
+lascar                      absplittern, zersplittern
+o dobro                     das Doppelte
+o passo                     der Schritt
+Pois é!                     Stimmt!; na ja
+Pois é, azar!               Tja, Pech gehabt!
+</pre></div>
+
+
+<h1>Memrise</h1>
+<h2>Modulo 1</h2>
+<div class="codehilite"><pre><span></span><span class="n">eu</span> <span class="n">sinto</span> <span class="n">muito</span>              <span class="n">I</span><span class="s">&#39;</span><span class="err">m (very) sorry</span>
+<span class="n">errado</span>                      <span class="n">wrong</span>
+<span class="n">macarrão</span>                    <span class="n">pasta</span><span class="p">,</span> <span class="n">macarroni</span>      
+<span class="n">nojento</span>                     <span class="n">disgusting</span>
+<span class="n">incrível</span>                    <span class="n">incredible</span><span class="p">;</span> <span class="n">amazing</span>
+<span class="n">nojento</span>                     <span class="n">eklig</span><span class="p">,</span> <span class="n">unappetitlich</span>
+<span class="n">um</span> <span class="n">cardápio</span>                 <span class="n">menu</span>
+<span class="n">pedir</span>                       <span class="n">to</span> <span class="nf">ask </span><span class="p">(</span><span class="n">for</span> <span class="n">something</span><span class="p">),</span> <span class="n">to</span> <span class="n">order</span>
+<span class="n">feio</span>                        <span class="n">ugly</span>
+<span class="n">agradável</span>                   <span class="n">nice</span>
+<span class="n">baixo</span>                       <span class="n">short</span><span class="p">,</span> <span class="n">low</span>
+<span class="nf">pensar </span><span class="p">(</span><span class="n">thoughts</span><span class="p">)</span> <span class="o">&lt;-&gt;</span> <span class="n">achar</span> <span class="n">pinion</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Modulo 2</h2>
+<div class="codehilite"><pre><span></span>você entende                do you understand?
+tampouco                    neither
+prazer em conhecê-lo        pleasure to meet you
+fico feliz em ajudar        happy to help
+tudo                        everything, all
+todo                        ganz, jeder, gesamt, all
+ruim                        bad
+bom                         good
+bem                         well, alright, fine
+poucos (poucas)             few
+é claro                     of course
+eu falo um pocou de portuguê
+uma xícara                  a cup
+algum                       some
+qualquer (quaisquer)        any
+algo                        something
+um caixa eletrônico         ATM
+uma banca                   a kiosk, der Stand, die Trafik
+ir às compras               to go shopping
+este (esta; isto)           this (close)
+esse (essa; isso)           that (relatively close)
+aquele (aquela; aquilo)     that
+de fato                     nämlich, tatsächlich, wahrhaftig
+o que é aquilo?             what is that?
+viva!                       Juchhu! 
+eu não me importo           I don&#39;t mind
+sandálias                   slippers
+cueca                       Herrenunterhose
+calcinha                    underwear (women&#39;s)
+tênis esportivo             trainers
+uma camiseta                T-shirt
+roxo                        purple
+rosa                        pink
+marrom                      brown
+um garoto, uma garota       boy, girl
+um avô; uma avó; avós       grandpa, grandma, grandparents
+uma bolsa                   bag
+uma carteira                wallet
+apimentado                  spicy
+viciado EM                  addicted
+leal                        loyal
+uma cobra                   snake
+corajoso                    brave
+tão                         so; such
+porque                      because
+por que                     why
+um encontro                 a date
+uma reunião                 a meeting
+um compromisso              appointment
+eu preciso DE ajuda
+uma cor
+ele é alérgico A nozes
+eu estou irritado porque est com fome
+quieto                      ruhig
+uma reunião                 a meeting
+um encontro                 a date (a romantic meeting)
+da tarde                    P.M.
+em ponto                    genau (Uhrzeit), o&#39;clock
+</pre></div>
+
+
+<h2>Modulo 3</h2>
+<div class="codehilite"><pre><span></span><span class="n">um</span> <span class="n">livro</span><span class="o">-</span><span class="n">guia</span>
+<span class="n">um</span> <span class="n">mapa</span>
+<span class="n">por</span> <span class="n">ali</span>                     <span class="n">over</span> <span class="n">there</span>
+<span class="n">confuso</span>
+<span class="n">uma</span> <span class="n">espécie</span>                 <span class="n">a</span> <span class="n">species</span><span class="p">;</span> <span class="n">kind</span>
+<span class="n">dinheiro</span> <span class="n">em</span> <span class="n">espécie</span>         <span class="n">cash</span>
+<span class="n">gorjetas</span>                    <span class="n">tips</span><span class="p">;</span> <span class="p">(</span><span class="n">a</span> <span class="n">gorjeta</span> <span class="o">-</span> <span class="n">Trinkgeld</span><span class="p">)</span>
+<span class="n">um</span> <span class="n">jantar</span>                   <span class="n">dinner</span>
+<span class="n">uma</span> <span class="n">manhã</span>
+<span class="n">aceitar</span>
+<span class="n">você</span> <span class="n">gostaria</span> <span class="n">de</span> <span class="n">mais</span> <span class="n">cervej</span>
+<span class="n">você</span> <span class="n">aceita</span> <span class="n">cartão</span>
+<span class="n">menor</span>                       <span class="n">smaller</span><span class="p">;</span> <span class="n">minor</span>
+<span class="n">maior</span>                       <span class="n">bigger</span><span class="p">;</span> <span class="n">major</span>
+<span class="n">este</span> <span class="n">aqui</span>                   <span class="n">this</span> <span class="n">here</span>
+<span class="n">aquele</span> <span class="n">ali</span>                  <span class="n">that</span> <span class="n">one</span>
+<span class="n">veja</span> <span class="n">aquilo</span>                 <span class="n">look</span> <span class="n">at</span> <span class="n">that</span>
+<span class="n">lhe</span>                         <span class="n">to</span> <span class="n">him</span><span class="o">/</span><span class="n">her</span><span class="o">/</span><span class="nf">you </span><span class="p">(</span><span class="n">dative</span><span class="p">)</span>
+<span class="nf">lo </span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="o">/</span> <span class="nf">la </span><span class="p">(</span><span class="n">a</span><span class="p">)</span>             <span class="n">him</span><span class="o">/</span><span class="n">her</span>
+<span class="n">uma</span> <span class="n">esquina</span>                 <span class="n">corner</span>
+<span class="n">fazer</span> <span class="n">uma</span> <span class="n">pergunta</span>          <span class="n">to</span> <span class="n">ask</span> <span class="n">a</span> <span class="n">question</span>
+<span class="n">reto</span>                        <span class="n">straight</span>
+<span class="n">lento</span>
+<span class="n">posso</span> <span class="n">lhe</span> <span class="n">fazer</span> <span class="n">uma</span> <span class="n">pergunta</span>
+<span class="n">Suécia</span>
+<span class="n">Noruega</span>
+<span class="n">um</span> <span class="n">dedo</span>                     <span class="n">finger</span><span class="p">,</span> <span class="n">toe</span>
+<span class="n">um</span> <span class="n">rosto</span>                    <span class="n">a</span> <span class="n">face</span>
+<span class="n">um</span> <span class="n">pescoço</span>                  <span class="n">a</span> <span class="n">neck</span>
+<span class="n">um</span> <span class="n">tornozelo</span>                <span class="n">an</span> <span class="n">ankle</span>
+<span class="n">um</span> <span class="n">ombro</span>                    <span class="n">a</span> <span class="n">shoulder</span>
+<span class="n">uma</span> <span class="n">costela</span>                 <span class="n">a</span> <span class="n">rib</span>
+<span class="n">um</span> <span class="n">resfriado</span>                <span class="n">a</span> <span class="nf">cold </span><span class="p">(</span><span class="n">illness</span><span class="p">)</span>
+<span class="n">papel</span> <span class="n">higiênico</span>             <span class="n">toilet</span> <span class="n">paper</span>
+<span class="n">droga</span><span class="o">!</span>
+<span class="n">sangrar</span>                     <span class="n">bleed</span>
+<span class="n">o</span> <span class="n">que</span> <span class="n">há</span> <span class="n">de</span> <span class="n">errado</span><span class="o">?</span>
+<span class="n">estimo</span> <span class="n">melhoras</span><span class="o">!</span>            <span class="n">get</span> <span class="n">well</span> <span class="n">soon</span>
+<span class="n">nem</span> <span class="n">em</span> <span class="n">um</span> <span class="n">milhão</span> <span class="n">de</span> <span class="n">anos</span><span class="o">!</span>
+<span class="n">de</span> <span class="n">certa</span> <span class="n">forma</span> <span class="kc">...</span>          <span class="n">in</span> <span class="n">a</span> <span class="n">way</span>
+<span class="n">preste</span> <span class="n">atenção</span><span class="o">!</span>
+<span class="n">a</span> <span class="n">propósito</span> <span class="kc">...</span>             <span class="n">by</span> <span class="n">the</span> <span class="n">way</span>
+<span class="n">abaixo</span>                      <span class="n">below</span><span class="p">;</span> <span class="n">beneath</span>
+<span class="n">acima</span>                       <span class="n">open</span><span class="p">,</span> ü<span class="n">ber</span>
+<span class="n">uma</span> <span class="n">escada</span>                  <span class="n">ladder</span><span class="p">;</span> <span class="n">stair</span> <span class="n">case</span>
+<span class="n">um</span> <span class="n">quarto</span> <span class="n">de</span> <span class="n">hóspedes</span>       <span class="n">a</span> <span class="n">guest</span> <span class="n">room</span>
+<span class="n">um</span> <span class="n">convidado</span>                <span class="n">a</span> <span class="n">guest</span>
+<span class="n">escada</span> <span class="n">acima</span><span class="o">/</span><span class="n">abaixo</span>         <span class="n">upstairs</span><span class="o">/</span><span class="n">downstairs</span>
+<span class="n">au</span> <span class="n">lado</span> <span class="n">de</span> <span class="kc">...</span>
+<span class="n">brincos</span>                     <span class="n">earrings</span>
+<span class="n">um</span> <span class="n">colar</span>                    <span class="n">a</span> <span class="nf">necklace </span><span class="p">(</span><span class="n">náhrdelník</span><span class="p">)</span>
+<span class="n">um</span> <span class="n">bracelete</span>                <span class="n">náramok</span>
+<span class="n">um</span> <span class="n">grama</span>
+<span class="n">um</span> <span class="n">brinquedo</span>                <span class="n">a</span> <span class="n">toy</span>
+<span class="n">um</span> <span class="n">quilo</span>
+<span class="n">uma</span> <span class="n">tonelada</span>
+<span class="n">vírgula</span>                     <span class="n">comma</span><span class="p">;</span> <span class="p">(</span><span class="n">decimal</span><span class="p">)</span> <span class="n">point</span>
+<span class="n">pesar</span>                       <span class="n">to</span> <span class="n">weight</span>
+<span class="n">eu</span> <span class="n">estou</span> <span class="n">com</span> <span class="n">três</span> <span class="n">quilos</span> <span class="n">a</span> <span class="n">ms</span>
+<span class="n">isso</span> <span class="n">pesa</span> <span class="n">uma</span> <span class="n">tonelada</span><span class="o">!</span>
+<span class="n">uma</span> <span class="n">academia</span>                <span class="n">gym</span>
+<span class="n">uma</span> <span class="n">ponte</span>
+<span class="n">ausente</span>                     <span class="n">away</span>
+<span class="n">bem</span> <span class="n">aqui</span>                    <span class="n">right</span> <span class="n">here</span>
+<span class="n">ensino</span> <span class="n">médio</span>                <span class="n">high</span> <span class="nf">school </span><span class="p">(</span><span class="n">college</span><span class="p">)</span>
+<span class="n">jardim</span> <span class="n">de</span> <span class="n">infância</span>          <span class="n">a</span> <span class="n">kindergarden</span>
+<span class="nf">reprovar </span><span class="p">(</span><span class="n">em</span><span class="p">)</span>               <span class="n">to</span> <span class="nf">fail </span><span class="p">(</span><span class="n">an</span> <span class="n">exam</span><span class="p">)</span>
+<span class="n">aprovado</span>                    <span class="n">passed</span> <span class="n">an</span> <span class="n">exam</span>
+<span class="n">supor</span>                       <span class="n">to</span> <span class="n">suppose</span>
+<span class="n">eu</span> <span class="n">assim</span> <span class="n">suponho</span>            <span class="n">I</span> <span class="n">suppose</span> <span class="n">so</span> 
+<span class="n">tanto</span> <span class="n">faz</span>                   <span class="n">whatever</span>
+<span class="n">não</span> <span class="n">esquente</span> <span class="n">com</span> <span class="n">isso</span>       <span class="n">don</span><span class="s">&#39;</span><span class="err">t sweat it</span>
+<span class="n">uma</span> <span class="n">festa</span>                   <span class="nf">holiday </span><span class="p">(</span><span class="n">national</span><span class="p">);</span> <span class="n">party</span>
+<span class="n">boas</span> <span class="n">festas</span><span class="o">!</span>
+<span class="n">seja</span> <span class="n">cuidadoso</span>              <span class="n">be</span> <span class="n">careful</span>
+<span class="n">dar</span> <span class="n">uma</span> <span class="n">volta</span>               <span class="n">take</span> <span class="n">a</span> <span class="n">walk</span>
+<span class="n">emprestar</span>                   <span class="n">to</span> <span class="n">lend</span>
+<span class="n">dever</span>                       <span class="n">to</span> <span class="n">owe</span>
+<span class="n">tomar</span> <span class="n">emprestado</span>            <span class="n">to</span> <span class="n">borrow</span>
+<span class="n">um</span> <span class="n">teto</span>                     <span class="n">ceiling</span>
+<span class="n">um</span> <span class="n">telhado</span>                  <span class="n">roof</span>
+<span class="n">um</span> <span class="n">lápis</span>                    <span class="n">a</span> <span class="n">pencil</span>
+<span class="n">um</span> <span class="n">cadeado</span>                  <span class="n">a</span> <span class="n">lock</span>
+<span class="n">uma</span> <span class="n">lâmpada</span>
+<span class="n">um</span> <span class="n">travesseiro</span>              <span class="n">a</span> <span class="n">pillow</span>
+<span class="n">uma</span> <span class="n">chave</span>
+<span class="n">debaixo</span> <span class="n">de</span>                  <span class="n">under</span> <span class="n">something</span>
+<span class="n">um</span> <span class="n">edredom</span>                  <span class="n">a</span> <span class="n">duvet</span><span class="p">,</span> <span class="n">die</span> <span class="n">Bettdecke</span><span class="p">,</span> <span class="n">der</span> <span class="n">Bettbezug</span>
+<span class="n">um</span> <span class="n">cobertor</span>                 <span class="n">a</span> <span class="n">blanket</span>
+<span class="n">atrás</span> <span class="n">de</span> <span class="kc">...</span>                <span class="nf">behind </span><span class="p">(</span><span class="n">something</span><span class="p">)</span>
+<span class="n">um</span> <span class="n">barco</span>                    <span class="n">a</span> <span class="n">ship</span><span class="p">,</span> <span class="n">a</span> <span class="n">boat</span>
+<span class="n">dirigir</span>                     <span class="n">to</span> <span class="n">drive</span>
+<span class="n">dentro</span> <span class="n">do</span> <span class="n">horário</span>           <span class="n">on</span> <span class="n">time</span>
+<span class="n">o</span> <span class="n">voo</span>
+<span class="n">uma</span> <span class="n">febre</span>
+<span class="n">uma</span> <span class="n">estante</span> <span class="n">de</span> <span class="n">livros</span>       <span class="n">a</span> <span class="nf">bookcase </span><span class="p">(</span><span class="n">shelf</span><span class="p">)</span>
+<span class="n">eu</span> <span class="n">serei</span>
+<span class="n">nós</span> <span class="n">seremos</span>
+<span class="n">eles</span> <span class="n">serão</span>
+<span class="n">eu</span> <span class="n">estarei</span>
+<span class="n">nós</span> <span class="n">estaremos</span>
+<span class="n">eles</span> <span class="n">estarão</span>
+<span class="n">haverá</span>                      <span class="n">there</span> <span class="n">will</span> <span class="n">be</span>
+é <span class="n">mesmo</span><span class="o">?</span>                    <span class="n">really</span><span class="o">?</span>
+<span class="n">uma</span> <span class="n">partida</span>                 <span class="n">a</span> <span class="n">game</span><span class="p">;</span> <span class="n">a</span> <span class="nf">match </span><span class="p">(</span><span class="n">sports</span><span class="p">),</span> <span class="n">partička</span>
+<span class="n">ao</span> <span class="n">invés</span> <span class="n">de</span> <span class="kc">...</span>             <span class="n">instead</span> <span class="n">of</span>
+<span class="n">uma</span> <span class="n">peça</span>                    <span class="n">a</span> <span class="n">part</span><span class="p">;</span> <span class="n">a</span> <span class="n">piece</span><span class="p">;</span> <span class="nf">a </span><span class="p">(</span><span class="n">theatre</span><span class="p">)</span> <span class="n">play</span>
+<span class="n">cuidado</span> <span class="n">com</span> <span class="n">o</span> <span class="n">vão</span>           <span class="n">mind</span> <span class="n">the</span> <span class="n">gap</span>
+<span class="n">desacompanhado</span>              <span class="n">unattended</span>
+<span class="n">uma</span> <span class="n">dissertação</span>             <span class="n">an</span> <span class="n">essay</span><span class="p">;</span> <span class="n">a</span> <span class="n">dissertation</span>
+<span class="n">uma</span> <span class="n">carta</span>                   <span class="n">a</span> <span class="nf">letter </span><span class="p">(</span><span class="n">mail</span><span class="p">)</span>
+<span class="n">uma</span> <span class="n">encomenda</span>               <span class="n">a</span> <span class="n">parcel</span>
+<span class="n">uma</span> <span class="n">mancha</span>                  <span class="n">a</span> <span class="n">stain</span>
+<span class="n">qualquer</span> <span class="n">um</span>                 <span class="n">anyone</span>
+<span class="n">uma</span> <span class="n">jornada</span>                 <span class="n">a</span> <span class="n">journey</span>
+<span class="n">uma</span> <span class="n">casa</span> <span class="n">noturna</span>            <span class="n">a</span> <span class="n">club</span>
+<span class="n">que</span> <span class="n">dia</span> <span class="n">da</span> <span class="n">semana</span> é <span class="n">hoje</span><span class="o">?</span>
+<span class="nf">adorar </span><span class="p">(</span><span class="n">coias</span><span class="p">)</span> <span class="o">&lt;-&gt;</span> <span class="nf">amar </span><span class="p">(</span><span class="n">pessoa</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Modulo 4 - past</h2>
+<div class="codehilite"><pre><span></span>emocionante                 exciting
+ficar bêbado
+nós falaremos mais tarde
+divertido                   fun; entertaining
+chato                       boring
+eu/você/ele estava
+nós estávamos
+vocês/eles estavam
+eu/você/ele era
+nós éramos
+vocês/eles eram
+dormir até tarde
+pelo (pela)                 through (the); during (the)
+eu pude                     I could (past)
+você pôde                   you could (singular; past)
+havia                       there was, there were
+por dois meses              for two months
+nós já fizemos aquela pergunta a ele
+uma conversa
+punição                     punishment
+uma discussão               argument; a discussion
+deixar ... irritado         to make ... angry; to make annoyed
+constrangedor               embarrassing
+constrangido                embarrassed
+nós deveríamos contar a eles sobre a discussão? should we ... argument
+um ponto                    a point; a score
+qual é o ponto?
+aquilo não fazia sentido    that made no sense
+você está certo disto?
+você perdeu a cabeça?
+estar ansioso por           to look forward to
+estamos ansiosos para conhecê-lo
+tal como                    such as
+fique quieto
+não seja bobo!
+velejar
+velejamento                 sailing (the sport)
+um livro policial           a crime book, detektívka
+um suspense                 a thriller
+jardinagem                  gardening
+tocar                       to play an instrument; to touch
+um tipo de                  a kind of; a type of
+</pre></div>
+
+
+<h2>Modulo 5</h2>
+<div class="codehilite"><pre><span></span>assustador                  erschreckend, beängstigend
+</pre></div>
+
+
+<h2>Learn Portuguese Conjugation</h2>
+<div class="codehilite"><pre><span></span>dão                         they give
+hão                         they/you have (i.e. exist)
+foram                       there were, you were (past simple)
+veio                        he came
+pôs                         he put
+vem                         he comes
+vêm                         they come
+pusemos                     we put (past simple)
+viram                       they saw
+havendo                     exist (gerund)
+havido                      exist (p.p)
+viemos                      we came
+põem                        they put
+pomos                       we put (present)
+pusemos                     we put (past)
+eram                        they used to be
+haviam                      they used to have (exist)
+vá                          go! (singular imperativ)
+estávamos                   we used to be
+partiram                    they left
+houvemos                    we had (i.e. exist)
+foram                       they went
+tivemos                     we had
+puseram                     they put (past)
+estive                      i was
+fomos                       we went
+dissemos                    we said
+tinha                       I/he used to have
+cantem!
+estive vs. estava
+estejamos
+</pre></div>
+
+
+<h1>Mar Morto</h1>
+<div class="codehilite"><pre><span></span>de repente                  plötzlich
+atirar                      werfen
+reparar                     merken, reparieren
+criar                       schaffen, einrichten, erziehen
+a testa                     Stirn
+arribar                     ankommen (~ chegar), wegziehen (Vögel)
+o rombo                     Durchbruch
+brabo                       wild, wütend
+enfeitar (se)               verzieren, herausputzen
+mulherengo                  Frauenheld
+o bicho                     das Vieh
+ingratidão                  Undank(barkeit)
+a coxa                      Oberschenkel
+o castigo                   Strafe
+pelo mundo afora            in die Welt hinaus
+e por ai afora              und so weiter
+brigar                      streiten, raufen, rangeln
+salvo, salva                heil
+a âncora                    Anker
+estender                    ausdehnen (extend)
+afogar                      ertrinken
+arrancar                    abreißen, rupfen, fetzen, herunterreißen
+apesar de                   trotz
+perante                     angesichts, gegenüber, vor
+a maresia                   Seeluft
+embalar                     einpacken, verpacken, schaukeln, in den Schlaf singen/wiegen
+a indireta                  Andeutung, Anspielung, Wink
+ameaçar                     bedrohen, drohen, einschüchtern
+temer                       befürchten
+diante                      vorne,voran, von da an
+cumprir                     befolgen, erfüllen
+aleijar (se)                verkrüppeln, verletzen
+morna                       lauwarm
+apertar                     drücken, festziehen, enger machen, anlegen
+de vez em quando            once in a while, on occasion, sometimes
+deter                       festnehmen, abfangen, halten, hemmen
+cercar                      einzäunen, umgeben, einkesseln
+consagrar                   weihen, widmen, anerkennen
+abarrotada                  übervoll, überfüllt
+tinto, tinta                gefärbt
+deslumbrar                  blenden
+mocidade                    Jugendzeit
+ternura                     Zartheit
+acarinhar (se)              streicheln (kuscheln)
+além                        Jenseits, drüben
+despedaçar                  auseinandereissen, zerbrechen
+adiante                     voraus, vorwärts, voran
+o casco                     der Rumpf
+a sereia                    die Meerjungfrau, die Nixe
+a fúria                     Tobsucht, Wutanfall, Jähzorn, Rage
+penar                       leiden
+até (mesmo)                 sogar
+o cântico                   Loblied
+destroçar                   destroy
+a cólera                    Zorn, Cholera
+vendar                      verbinden
+por acaso                   zufällig
+possuir                     besitzen
+desencadear                 auslösen, entfesseln
+o seio                      der Busen, der Schoß
+o ventre                    Bauch
+romper                      brechen
+alvo, alva                  hell, weiss
+alcançar                    erreichen, bekommen, einholen
+o súdito                    der Untertan
+a boda                      Hochzeitsfest
+almofada                    Kissen
+soluçar                     schluchzen
+afundar                     versenken, untertauchen
+relinchar                   wiehern
+enxergar                    erblicken
+o voluto                    Gestalt
+o peste                     Pest
+o trovão                    Donner, Donnerschlag
+selvagem                    wild, roh, unzivilisiert
+a face                      Gesicht
+berrante                    grell (Farbe), knallig
+a cócega                    der Kitzel
+ter cócegas                 kitzelig (sein)
+a recolhida                 Rückzug
+o holofote                  public eye, spotlight, Scheinwerfei
+fitar                       starren
+cobrar                      erheben, kassieren
+esconder                    verstecken, wegstecken
+a maldição                  Fluch
+amarga                      bitter
+espantar                    erstaunen
+soltar                      freilassen
+miudinha                    winzig
+miúda                       klein, geizig, sorgfältig
+largar                      loslassen
+arrastar                    schleppen, ziehen, mitreissen
+arriar                      herunterlassen
+assustar                    erschrecken
+despedir (se)               (sich) verabschieden
+a mágoa                     Erbitterung, Kummer, Herzleid, Harm
+enrabichado                 ruffled, angeschlagen
+</pre></div>
+
+
+<!-- 
+    vim:spell spelllang=pt,de,en,sk
+-->
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

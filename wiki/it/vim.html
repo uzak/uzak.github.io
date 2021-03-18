@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>vim</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Vim</h1>
+<p>Some commands:</p>
+<div class="codehilite"><pre><span></span>ZQ                                      # force quit in cmd mode
+da[                                     # delete around bracket
+gn                                      # select until next match
+&lt;c-y&gt; copy character from line above
+gU&lt;motion                               # uppercase &lt;motion&gt;
+gu&lt;motion                               # lowercase &lt;motion&gt;
+
+:ls                                     # list buffers
+:vert sb N                              # open buffer N in a vertical split
+:sb N                                   # open buffer N in a horizontal split
+:tab sb[bufferId]                       # open existing buf. in new tab
+
+:verbose set modeline? modelines?       # show variables&#39; values
+V=                                      # visual select + reformat (=)
+
+]p      # paste under the current indentation level
+gf      # goto file in cursor
+[m      # previous method 
+]m      # next method 
+:e      # reload file
+K       # show help for a command
+</pre></div>
+
+
+<h2>Modelines</h2>
+<div class="codehilite"><pre><span></span><span class="n">vim</span><span class="o">:</span> <span class="n">spell</span> <span class="n">spelllang</span><span class="o">=</span><span class="n">en</span><span class="o">,</span><span class="n">de</span>
+</pre></div>
+
+
+<h2>Plugins</h2>
+<h3><a href="fzf.html">fzf</a></h3>
+<p>https://github.com/junegunn/fzf</p>
+<div class="codehilite"><pre><span></span>&lt;ctrl-v&gt; opens in a vertical split
+&lt;ctrl-t&gt; opens in a tab
+:Files!                                 # opens dialog in fullscreen
+:Helptags
+:Buffers
+:Lines
+:Rg
+:BLines
+:BTag
+:Tags
+:History
+</pre></div>
+
+
+<h2>Goto commands</h2>
+<div class="codehilite"><pre><span></span>gx          open URL under cursor in a browser
+gf          open file under cursor
+&lt;c-w&gt;f      open file under cursor in new window
+&lt;c-w&gt;gf     open file under cursor in new tab
+gd          goto local definition
+</pre></div>
+
+
+<h2>Maps</h2>
+<div class="codehilite"><pre><span></span>:nmap       (display) normal mode maps
+:imap       (display) insert mode maps
+:vmap       (display) visual and select mode maps
+:xmap       (display) visual mode maps
+:cmap       (display) command-line mode maps
+:omap       (display) operator pending mode apps
+</pre></div>
+
+
+<h2>Cursor movement</h2>
+<div class="codehilite"><pre><span></span>H       # move to the top of screen
+M       # move to the top of screen
+L       # move to the bottom of screen
+</pre></div>
+
+
+<h3>Words</h3>
+<div class="codehilite"><pre><span></span>w       
+W       # start of a word (by whitespace)
+b       # start of a word backwards
+B       # start of a word backwards (by whitespace)
+e       
+E       # the end of a word (by whitespace)
+ge      # previous end of a word
+gE      # previous end of word (by whitespace)
++ down to first non-blank charater of line
+</pre></div>
+
+
+<h3>Line</h3>
+<div class="codehilite"><pre><span></span>0       # start of line
+^       # first non-black character of a line
+$       # 
+g_      # last non-black character of a line
+gg      
+G
+5G      # line 5
+:n
+</pre></div>
+
+
+<h3>Character</h3>
+<div class="codehilite"><pre><span></span>fx      # next occurrence of &#39;x&#39;
+tx      # before next occurrence of &#39;x&#39;
+Fx      # previous occurrence of &#39;x&#39;
+Tx      # after previous occurrence of &#39;x&#39;
+;       # repeat last t/f command
+</pre></div>
+
+
+<h3>Paragraph</h3>
+<div class="codehilite"><pre><span></span>}       # next paragraph (function, block)
+{       # previous paragraph (function, block)
+%       # next bracket (or closing bracket)
+</pre></div>
+
+
+<h3>Window / Scrolling</h3>
+<div class="codehilite"><pre><span></span>zz      # center cursor
+zg      # go back
+zt      # top this line
+C-b     # page up (back)
+C-f     # page down (forward)
+C-d     # 1/2 page down
+C-u     # 1/2 page up
+C-e     # move screen one line down
+C-y     # move screen one line up
+</pre></div>
+
+
+<h2>Visual Mode</h2>
+<div class="codehilite"><pre><span></span>v
+V       # linewise mode
+o       # move to the other end of marked area
+C-v     # blockwise mode
+O       # move to the other corner of block
+</pre></div>
+
+
+<h2>Insert / append</h2>
+<div class="codehilite"><pre><span></span>i
+I
+a
+A
+o
+O       # append a new line above the current line
+ea      # insert at the end of the word
+</pre></div>
+
+
+<h2>Editing</h2>
+<div class="codehilite"><pre><span></span>r
+J
+gJ      # join lines without a space in between
+gwip    # reflow paragrah
+cc      # replace entire line
+C
+D       # delete until the end line
+s       # delete character and substitute text
+ciw     # change entire word
+cw
+u
+C-r
+</pre></div>
+
+
+<h2>Search and replace</h2>
+<div class="codehilite"><pre><span></span>/pat
+?pat            # search backwards
+[count]n        # count-th match forwards 
+[count]N        # count-th match backwards
+:%s/old/new/g
+:%s/old/new/gc  # replace with confirmations
+:noh            # remove highlighting of matches
+*
+#
+</pre></div>
+
+
+<h2>Search in multiple files</h2>
+<div class="codehilite"><pre><span></span>:vimgrep /foo/ **/*         # search for pattern in multiple files
+:cn                         # jump to next match
+:cp                         # jump to previous match
+:copen                      # open a window w. matches
+</pre></div>
+
+
+<h2>Working with multiple files</h2>
+<ul>
+<li>Buffers are file proxies.</li>
+<li>Windows are buffer viewports.</li>
+<li>
+<p>Tabs are not tabs - tabs are window containers.</p>
+<p>:e file         # edit a file in a new buffer
+:bn             # next buffer
+:bp             # previous buffer
+:ls             # list open buggers
+:sp file        # split window
+:vsp file       # split window vertically
+:20vs .         # open a netrw file browser in a vertical split of 20 chars</p>
+</li>
+</ul>
+<h3>Buffers</h3>
+<div class="codehilite"><pre><span></span>ctrl-^          # switch buffers
+ctrl-6          # switch buffers
+
+:bn             # next buffer
+:b {filename}   # goto buffer
+:bd             # delete current buffer
+:buffers
+:bufdo {cmd}    # execute {cmd} for all buffers
+:bo 15sp +te    # open a buffer object as a 15 lines split with a terminal (nvim)
+</pre></div>
+
+
+<h3>Windows</h3>
+<div class="codehilite"><pre><span></span>ctrl-w r        # rotate windows
+ctrl-w q        # close window
+:sf             # split window and :find {FILE}
+:vert           # make split be vertical
+</pre></div>
+
+
+<h3>Tabs</h3>
+<div class="codehilite"><pre><span></span>:tabnew
+gt / :tabn[ext] # next tab
+gT / :tabp[rev] # prev tab
+ctrl-pagedown   # next tab
+ctrl-pageup     # prev tab
+1gt             # move to tab 1
+:tabmove 5      # move current tab to 5th pos (indexed from 0)
+:tabc[lose]     # close tab
+:tabo[nly]      # close all tabs except current one
+:tabfirst       # first tab
+:tablast        # last tab
+:tabs
+</pre></div>
+
+
+<h2>Registers</h2>
+<div class="codehilite"><pre><span></span>:reg    # show registers
+&quot;xy     # yank into register x
+&quot;xp     # paste register x
+</pre></div>
+
+
+<h2>Marks</h2>
+<p>Bookmarks:</p>
+<div class="codehilite"><pre><span></span>:marks      # list marks
+ma          # set current position for mark A (valid ``a-zA-Z``)
+`a          # jump to position of mark A
+y`a         # yank until mark A
+`&#39;          # jump to last change/position?
+</pre></div>
+
+
+<h2>Tags</h2>
+<div class="codehilite"><pre><span></span>ctrl-]
+g-ctrl-]
+ctrl-t
+</pre></div>
+
+
+<h2>Jumplist / Changelist</h2>
+<div class="codehilite"><pre><span></span>:jumps
+ctrl-o / ctrl-i     # cycle through :jumps
+:changes
+g; / g,             # cycle trough :changes
+</pre></div>
+
+
+<h2>Args</h2>
+<div class="codehilite"><pre><span></span>:args               # files passed to  vim as arguments
+:arga               # add {filename} to arglist
+:argl               # make a local arg copy
+:n                  # goto next file
+
+:sa                 # split all
+:vert sa
+:args ...
+:windo difft        # do for all windows diffthis
+:vim {pat} {file}   # vimgrep for pattern in file (% - cur file)
+:cn                 # quick-fix next
+##                  # everything in my argument list
+</pre></div>
+
+
+<h2>Folds</h2>
+<div class="codehilite"><pre><span></span>zM      # close all folds  
+zR      # open all folds  
+za      # toggle open/close fold
+</pre></div>
+
+
+<h2>Operators</h2>
+<p>d (operator) w (motion)</p>
+<div class="codehilite"><pre><span></span>d
+y
+c
+&gt;
+&lt;
+g~      # swap case
+gU      # uppercase
+gu      # lowercase
+=       # indent
+!       # filter through external program
+</pre></div>
+
+
+<h2>Text objects</h2>
+<p>v (operator) i/a/t// (inside/outside/till given char/till given phrase) p (text object)</p>
+<div class="codehilite"><pre><span></span>p           paragraph
+w           word
+s           sentence
+[ ( { &lt;     a [], (), {}, &lt;&gt; block
+&#39; &quot; `       a quoted string
+b           a block (bracket) [(
+B           a block (bracket) [{
+t           a XML tag block
+</pre></div>
+
+
+<p>Examples:</p>
+<div class="codehilite"><pre><span></span>vip         # select paragraph
+yit         # yank the content of a tag
+ciw         # change word
+da&#39;         # delete everything between previous and next &#39;
+y/foo       # yank everything until the next `foo`
+</pre></div>
+
+
+<h2>Spell checking</h2>
+<div class="codehilite"><pre><span></span>:set spell spelllang=en_us
+]s                              # next misspelled word
+[s                              # previous misspelled word
+z=
+zg                              # add word to the spell list (good)
+zw                              # mark word as bad
+:help spell
+</pre></div>
+
+
+<h2>Text alignment</h2>
+<div class="codehilite"><pre><span></span>:center [width]
+:right [width]
+:left
+</pre></div>
+
+
+<h2>Misc</h2>
+<p>Start with a different <a href="vimrd.html">vimrd</a>:</p>
+<div class="codehilite"><pre><span></span>vim -u other.vimrc
+</pre></div>
+
+
+<p>Start vim with a command:</p>
+<div class="codehilite"><pre><span></span>vim -c VimwikiIndex
+</pre></div>
+
+
+<h2>Macros</h2>
+<div class="codehilite"><pre><span></span>q&lt;letter&gt;&lt;commands&gt;q        # to enter a macro
+&lt;number&gt;@&lt;letter&gt;           # execute the macro, number is optional
+</pre></div>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

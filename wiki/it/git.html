@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>git</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Git</h1>
+<p>git log --pretty=format:"%an (%ae): %s"</p>
+<p>gd HEAD '@{2020-12-01}' -- env.sample</p>
+<p>corrupt lose object</p>
+<div class="codehilite"><pre><span></span>find .git/objects/ -size 0 -exec rm -f {} \;
+git fetch origin
+</pre></div>
+
+
+<h1>Basic</h1>
+<div class="codehilite"><pre><span></span>git branch -m oldname newname           # rename a branch
+git branch -m newname                   # rename current branch
+
+git branch -d branch_name               # delete local branch
+
+git branch -a                           # list all branches (also remote)
+
+git diff HEAD &#39;HEAD@{1 week ago}&#39; -- some/file/path/file.ext
+
+git merge --abort                       # abort merge
+
+git reset HEAD~                         # undo commit
+
+git rev-list --count HEAD               # revision number
+
+git commit --date=format:relative:4.hours.ago
+
+git format-patch HEAD~1
+git am *.patch
+
+git log -p -- printer.py                # history of a file
+gitk printer.py
+
+# patch directly (w/o use of git)
+diff -u OriginalFile UpdatedFile &gt; PatchFile
+patch OriginalFile &lt; PatchFile
+
+# 3 way diff and patch
+git diff -R 2742e63a7f759828b049ae5d3384b17beb39f48e openapi.yaml | git apply -3
+</pre></div>
+
+
+<p>change remote:</p>
+<div class="codehilite"><pre><span></span>git branch gen_printer_name -u origin/gen_printer_name
+</pre></div>
+
+
+<p><a href="https://stackoverflow.com/a/16666418">Git: merge vs. rebase</a></p>
+<p>Merge one file from another branch:</p>
+<div class="codehilite"><pre><span></span>git checkout --patch another_branch file.txt
+</pre></div>
+
+
+<p>Stash last two commits into one:</p>
+<div class="codehilite"><pre><span></span>git rebase -i HEAD~2
+</pre></div>
+
+
+<p>Get a version from the commits:</p>
+<div class="codehilite"><pre><span></span>git describe --tags --always --dirty
+</pre></div>
+
+
+<p>Remove a remote branch:</p>
+<div class="codehilite"><pre><span></span>git push &lt;remote-name&gt; --delete &lt;branch-name&gt;
+</pre></div>
+
+
+<p>Delete a commit on remote:</p>
+<div class="codehilite"><pre><span></span>git stash
+git reset --hard &lt;last_working_commit_id&gt;
+git push --force
+</pre></div>
+
+
+<p>Squash all commits from a branch and merge into master</p>
+<div class="codehilite"><pre><span></span>git checkout master
+git merge --squash &lt;branch&gt;
+git commit
+</pre></div>
+
+
+<p>Change remote URL </p>
+<div class="codehilite"><pre><span></span>git remote set-url origin git@github.com:uzak/PoorWSGI.git
+</pre></div>
+
+
+<h2>Tag</h2>
+<div class="codehilite"><pre><span></span>git tag -a v1 df50154807f5d009e3526208f266d9f57e5b3e2e
+git push origin v1          # tags are not pushed by default
+</pre></div>
+
+
+<h2>Stash</h2>
+<div class="codehilite"><pre><span></span>git stash list
+</pre></div>
+
+
+<h1>Školenie GIT 2020-05-08</h1>
+<div class="codehilite"><pre><span></span>git diff --staged
+git diff | tig
+git difftool
+git reset na zmeny
+
+git commit 
+    napisat (more) na koniec prvej ak viacriadkovy comment
+    pouzivat imperativ (add gitignore je kratsie ako added gitignore)
+
+git --am (amend)
+git log --oneline
+git log --oneline --graph
+git log --oneline
+git remote -v
+git fetch --all
+git branch --all
+git reflog          # ak si nieco totalne rozbijem
+git reset --hard
+git stash
+git stash show
+git stash show -p       # patch - show also changes
+git stash list
+git stash push -m &quot;&quot;    # pomenovat stashe
+git stash clear
+git branch 
+git branch --all
+git branch HEAD~3
+git push origin :foo :bar
+git push origin master:nm
+git push origin :nm
+
+git fetch
+git fetch --prune
+
+git reset HEAD~1 --hard # zmaze aj zmeny
+
+git rebase -i HEAD~5
+
+git checkout experimental
+git rebase master
+git checkout master
+git merge --ff-only experimental
+</pre></div>
+
+
+<p>nedovolovat pushnut PR s merge-commitami</p>
+<p>https://www.metaltoad.com/blog/beginners-guide-git-bisect-process-elimination</p>
+<p>https://editorconfig.org/</p>
+<h1>Git Book</h1>
+<h2>Introduction</h2>
+<ul>
+<li>Since 2005, by Linus Torvarlds</li>
+<li>Version Control System (VCS)</li>
+<li>Design goals: performance and data integrity</li>
+<li>Every developer has his own repository. This prevents fighting for commit rights.</li>
+</ul>
+<h2>Man Pages</h2>
+<div class="codehilite"><pre><span></span>$ git <span class="nb">help</span> status
+$ git status --help
+$ man git-status
+</pre></div>
+
+
+<h2>Vocabulary</h2>
+<ul>
+<li>Version Control System (VCS) = Software Configuration Management (SCM) = Revision Control System.</li>
+<li>Repository</li>
+<li>Working Tree = Working Directory</li>
+<li>Commit</li>
+<li>HEAD - latest commit in the current branch</li>
+<li>Index - changeset. Working Tree &lt;- Index -&gt; repository.</li>
+<li>Clone</li>
+<li>Branch</li>
+<li>Tag</li>
+<li>master - name of the default branch. Analog to "trunk"</li>
+<li>Hunk - loosely related LOC</li>
+</ul>
+<h2>First Steps</h2>
+<div class="codehilite"><pre><span></span>git config --global user.name &quot;MU&quot;
+git config --global user.email &quot;uzak+git@mailbox.org&quot;
+git config --global color.ui auto
+
+git init example
+git status
+git add
+git commit
+git show
+git show HEAD
+git show master
+git show rev-SHA
+</pre></div>
+
+
+<p>non-global settings can be configurated for a project using <code>git config</code> without --global.</p>
+<h1>Basics</h1>
+<div class="codehilite"><pre><span></span>git diff          # diff between Working Dir and Index
+git diff --staged # diff between Index and Repository
+git diff --color-words
+</pre></div>
+
+
+<p>Interactively ask which changes (hunks) to be added to Index:</p>
+<div class="codehilite"><pre><span></span>git add -p
+</pre></div>
+
+
+<p>Reset Index:</p>
+<div class="codehilite"><pre><span></span>git reset HEAD
+git reset -p # selectively reset hunks from Index
+</pre></div>
+
+
+<p>Ammend a commit</p>
+<div class="codehilite"><pre><span></span>git commit --amend
+</pre></div>
+
+
+<p>Commit messages:</p>
+<ul>
+<li>First line max 50 characters. Summary</li>
+<li>More detailed description after a newline after the first line. Max recommended length up to 76 characters.</li>
+<li>write <strong>what</strong> and <strong>why</strong> was changed. What is obvious from the change.</li>
+</ul>
+<p>Examine the history of a file:</p>
+<div class="codehilite"><pre><span></span>git log --follow -- FILE
+</pre></div>
+
+
+<p>Log:</p>
+<div class="codehilite"><pre><span></span>git grep
+git log -4
+git log -l rev-SHA
+git log --oneline
+git log --after=&#39;2005-01-01&#39;
+git log --since=&#39;yesterday&#39;
+git log -- *.h
+git log -i --grep XXX --author Linus
+</pre></div>
+
+
+<p>Search within the changes (Pixeaxe)</p>
+<div class="codehilite"><pre><span></span>git log -p -S&lt;STRING&gt;
+</pre></div>
+
+
+<p>Commit range</p>
+<div class="codehilite"><pre><span></span>git diff rev1..revN
+</pre></div>
+
+
+<h2>Object model</h2>
+<ul>
+<li>uses SHA1 as algorithm</li>
+<li>Stored in ".git/objects"</li>
+<li>Loose objects and Packfiles</li>
+<li>data types: blog (file), tree (dir), commit, tag</li>
+</ul>
+<p>Plumbing-commands (in contrast to porcelain commands used so far):</p>
+<div class="codehilite"><pre><span></span>git log --oneline
+git show --format=raw
+git show rev-SHA
+git ls-tree --abbrev=7 rev-SHA
+git hash-object FILE
+</pre></div>
+
+
+<h1>Bibliography</h1>
+<p>*</p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

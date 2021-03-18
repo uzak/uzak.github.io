@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>mysql</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <div class="codehilite"><pre><span></span>mysql -u connect -P 3306 --protocol tcp -h localhost connect -p
+
+show index from print_file;
+</pre></div>
+
+
+<h2>Install</h2>
+<div class="codehilite"><pre><span></span>docker run percona/percona-xtradb-cluster:5.7
+</pre></div>
+
+
+<p>Export table to SQL:</p>
+<div class="codehilite"><pre><span></span>SELECT * FROM event
+INTO OUTFILE &#39;/var/lib/mysql-files/events.csv&#39;
+FIELDS TERMINATED BY &#39;,&#39;
+ENCLOSED BY &#39;&quot;&#39;
+LINES TERMINATED BY &#39;\n&#39;;
+</pre></div>
+
+
+<p>Show size of tables/indexes:</p>
+<div class="codehilite"><pre><span></span>show table status from [dbname]
+</pre></div>
+
+
+<p>Optimize table:
+    optimize table event;</p>
+<p>Migrate table to MyISAM</p>
+<p>ALTER TABLE events ENGINE=MYISAM;</p>
+<p>SHOW CREATE TABLE event;
+select * into outfile '/var/lib/mysql-files/event.txt' from event;
+LOAD DATA INFILE '/var/lib/mysql-files/event.txt' INTO TABLE event2;</p>
+<h1>Optimization</h1>
+<p>SHOW TABLE STATUS WHERE Name = 'event'\G</p>
+<h2>Slow Query Log</h2>
+<p>https://www.techawaken.com/enable-mysql-slow-query-log/</p>
+<div class="codehilite"><pre><span></span>mkdir /var/log/mysql
+touch /var/log/mysql/slow_query.log
+chown mysql.mysql -R /var/log/mysql
+
+SET GLOBAL slow_query_log_file = &#39;/var/log/mysql/slow_query.log&#39;;
+SET GLOBAL long_query_time = 1;  -- 1 second
+SET GLOBAL log_queries_not_using_indexes = 1;
+SET GLOBAL log_slow_admin_statements = 1;
+SET GLOBAL slow_query_log = &#39;ON&#39;;
+
+
+SHOW VARIABLES LIKE &#39;slow_query_log&#39;;
+</pre></div>
+
+
+<h1>Misc Errors</h1>
+<h2>1290</h2>
+<p>https://stackoverflow.com/questions/31951468/error-code-1290-the-mysql-server-is-running-with-the-secure-file-priv-option</p>
+<div class="codehilite"><pre><span></span>mysql&gt; SHOW VARIABLES LIKE &quot;secure_file_priv&quot;;
+</pre></div>
+
+
+<h1>Replication</h1>
+<p>Percona XtraDB Cluster currently supports replication only for tables that use a transactional storage engine (XtraDB or InnoDB). To ensure data consistency, the following statements should not be allowed for tables that use a non-transactional storage engine (MyISAM, MEMORY, CSV, etc.):</p>
+<div class="codehilite"><pre><span></span>Data manipulation statements that perform writing to table (for example, INSERT, UPDATE, DELETE, etc.)
+The following administrative statements: CHECK, OPTIMIZE, REPAIR, and ANALYZE
+TRUNCATE TABLE and ALTER TABLE
+</pre></div>
+
+
+<p>mac address - varchar(17)</p>
+<p>mysql slow log:
+    https://www.techawaken.com/enable-mysql-slow-query-log/</p>
+<p>dump percona cluster: </p>
+<div class="codehilite"><pre><span></span>mysqldump -h HOST -u USER -p SCHEMA --skip_add_locks --skip-lock-tables  --column-statistics=0 &gt; connect.dump
+</pre></div>
+
+
+<p>mysql delete all schemas (dbs) matching a name:</p>
+<div class="codehilite"><pre><span></span>SELECT CONCAT( &#39;drop schema if exists &#39;, schema_name , &#39;;&#39; ) 
+    AS statement FROM information_schema.schemata 
+    WHERE schema_name LIKE &#39;connect_%_%&#39;;
+</pre></div>
+
+
+<p>mysql reset AUTO_INCREMENT</p>
+<div class="codehilite"><pre><span></span>ALTER TABLE tablename AUTO_INCREMENT = 1
+</pre></div>
+
+
+<p>mysql show what's happening (locks etc):</p>
+<div class="codehilite"><pre><span></span>SHOW FULL PROCESSLIST;
+</pre></div>
+
+
+<p>mysql set charset
+    ALTER TABLE mytable CONVERT TO CHARACTER SET utf8;</p>
+<p>mysql show queries:</p>
+<div class="codehilite"><pre><span></span>set global general_log = &#39;on&#39;;      -- global
+set sql_log_off = &#39;off&#39;;            --local
+show variables like &#39;general_log%&#39;;
+</pre></div>
+
+
+<p>mysql show processes:</p>
+<div class="codehilite"><pre><span></span>mysqladmin -h HOST -u USER -pPASSWORD -i 1 -v  processlist
+</pre></div>
+
+
+<p>mysql rename column:</p>
+<div class="codehilite"><pre><span></span>alter table printer change `apendix` `appendix` bool;
+</pre></div>
+
+
+<p>mysql dump db:</p>
+<div class="codehilite"><pre><span></span>SHOW CREATE TABLE event;
+select * into outfile &#39;/var/lib/mysql-files/event.txt&#39; from event;
+LOAD DATA INFILE &#39;/var/lib/mysql-files/event.txt&#39; INTO TABLE event2;
+</pre></div>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

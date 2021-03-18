@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>spacemacs</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <p>https://www.youtube.com/watch?v=fdLCuJcS2Aw</p>
+<h1>Setup</h1>
+<div class="codehilite"><pre><span></span>sudo apt install emacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+</pre></div>
+
+
+<p>answer setup questions:</p>
+<ul>
+<li>vim</li>
+<li>spacemacs</li>
+<li>helm</li>
+</ul>
+<p>Adapt .spacemacs</p>
+<h1>Shortcuts</h1>
+<div class="codehilite"><pre><span></span>space-f-f           # find
+space zf            # zoom
+space cl            # uncomment a line
+space pf            # search for a file in entire project
+ctrl g              # cancel
+space pt            # tree view of your project
+space w             # window commands
+space ji            # all the symbols in the current file
+* /                 # on a symbol: project wide search
+</pre></div>
+
+
+<p>For navigation in modal buffers handling <code>hjkl</code> as normal key, use ctrl+<code>hjkl</code>.</p>
+<div class="codehilite"><pre><span></span>space b             # buffer commands
+space bh            # home 
+space bn            # next
+space bp            # next
+space bs            # scratch
+space bb            # overview
+</pre></div>
+
+
+<h1>Docs</h1>
+<div class="codehilite"><pre><span></span>SPC f s             # save buffer
+SPC T n             # next theme
+SPC t n             # set number
+SPC t 8             # highlight chars beyond 80th column
+SPC t h i           # toggle highlight indentation levels
+SPC t i             # toggle indentation guide at a point
+SPC t l             # toggle truncate lines
+
+SPC T f             # toggle fullscreen
+SPC T m             # toggle menu bar
+SPC T M             # toggle frame maximize
+SPC T t             # toggle tool bar
+
+SPC t m p           # toggle character position
+[ b                 # prev buf
+] b                 # next buf
+[ f                 # prev file in dir
+] f                 # next file in dir
+  l                 # error
+  h                 # vcs hunk
+  w                 # window
+</pre></div>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Swami TV</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Swami Tattvavidananda</h1>
+<ul>
+<li>AUM stands for for nirguna brahma. The same viewed through the prism of saguna brahma = rama (r-a-ma). Rama is the saguna counterpart of sacred vedic om.</li>
+<li>This is like a god expo. Whatever you are looking at, you are looking at god. <strong>There is no seeing god apart from seeing the world. To see god is to be god.</strong></li>
+<li>First thing of spirituality: disidentification with the body.</li>
+<li><strong>Body is the brother donkey.</strong> You cannot hit nor love a donkey (such a stupid animal). Donkey is both useful and sturdy. Always lazy. Deserves stick and carrot. Give it hard work, good food, never identify with it, take from it maximum work till last breath.</li>
+<li>Samsari - unhappy with the present.</li>
+<li>Samsara: life of becoming. Oscillation Between birth and death. Sex and death (Freud)</li>
+<li><strong>Whatever it is it should enlive me or I should drop it and learn from it.</strong></li>
+<li>Fear and love cannot go together.</li>
+<li><strong>The one who loves death knows how to live.</strong> Who is afraid of death is afraid of life.</li>
+<li>Hamsa = jnani. He doesn't stick to a place, he moves around. Holy hobo.</li>
+<li>Mind: thought process.</li>
+<li><strong>True religion: seeing the glory of Iswhara even in dry leaf.</strong></li>
+<li>Wife and husband. When they look at each other they look from the heart. When they fight they transport themselves to the head. </li>
+<li>Head - source of mine. Me and mine are in the brain cells.</li>
+<li><strong>Ego, me is only a habit. How the brain cells are hardwired. Built on memory, prompted by desire and fear.</strong></li>
+<li>God is the only reality that was with me all the time. Always together - jiva and ishwara. You have only one friend in this life - inner godhead. God within you.</li>
+<li>Goal of life - merger into Ishwara.</li>
+<li>Vayragya - no mine. Viveka - no me.</li>
+<li><strong>In karma there is time. In knowledge there is no time.</strong> Time is when there is movement. Open your eyes and see - there is no time because it is not process.</li>
+<li>Smartphone - will make your mind sick.</li>
+<li><strong>Spiritual progress - clarity of understanding.</strong></li>
+<li>Control is always a problem. Allow the mind to become quit naturally.</li>
+<li><strong>Every morning on waking up the body is born.</strong></li>
+<li><strong>With the center, the periphery is gone too. Observation is there, but no observer. No ego, only consciousness =&gt; end of worry. Conquered life.</strong></li>
+<li>When names and forms are given up, reality is with you. Immense peace descends on you.</li>
+<li><strong>Love the beloved (godhead), not the postman (creation) who brings the letter from her.</strong></li>
+<li><strong>Love != bonding. Love is freedom. In love there is no bonding.</strong> Parents don't know how to love children because they are so badly attached. Some love is always there but it is contaminated with attachment expressed in the form of domination and possessiveness. Bonding - students don't learn nothing. There will be competition. There is no joy in it. It becomes painful. Society promotes it - social morality. There is no society. Society is only in your head. Discover yourself then you will love the whole universe. </li>
+<li><strong>Supposed you are free in your consciousness of raga and dwesha. Will your consciouness then think of god? = tat tvam asi.</strong> I create god of raga dwesha..</li>
+<li>Fearlessness or desirelessness is godliness.</li>
+<li><strong>It is the desire or the fear that puts the person in place.</strong></li>
+<li>When you are truly happy you are not there and when you come back the happiness ends.</li>
+<li><strong>Everybody is guru. Learn from everything.</strong></li>
+<li>Event + resistance = pain, + welcoming = pleasure.</li>
+<li>Peace = knowing that pleasant and pain are one. </li>
+<li><strong>Seek and accept pain and then pain will give you good feeling the pleasure cannot give to you.</strong> Pain - welcome - brings me to my swarupa. <strong>Pleasure - gives addiction.</strong></li>
+<li><strong>Camera converts the present into past so you can enjoy it in future. Present is destroyed. Converts the truth, something you love, into nama-rupa.</strong></li>
+<li><strong>Moksha - not having any expectations to anything. I will expect whatever comes.</strong></li>
+<li><strong>Find out what is your duty - dharma, svadharma. By doing that there is fulfillment.</strong> But it stays with you for a long time... Your mind gets attracted to the new and you lose interest in your svadharma after some time. You get disenchanted. You see something else. From a distance it looks very attractive. You get attracted by the appearances. </li>
+<li><strong>Stay where you are trained well, where you have experience and take it to its excellence. If you wants something else, that is paradharma.</strong> That binds you -&gt; attrition (moving from one to the other). https://youtu.be/RS0F2iAFZP8?t=1380</li>
+<li>Empathy, empathy - refuse. Why? Not based in truth. What you need is love. Not attachment. https://youtu.be/RS0F2iAFZP8?t=2150</li>
+</ul>
+<h2><a href="https://www.youtube.com/watch?v=LF8kxyGhmR0">SRI KRISHNASTAMI 2020</a></h2>
+<ul>
+<li>Ananda expresses as love in relating to other things. As inner joy.</li>
+<li><strong>There can be no love, as long as there is lust, even a speck of it.</strong></li>
+<li>Rama embodies dharma, Krishna embodies love. <strong>This love (prema) corresponds to kshetrajnaha, not kshetra. To purusha, not prakrti. If we put it into prakrti (body/mind) it will soon degenerate into the natural love and lust (kama)</strong>, where division and attraction between famale and male is there.</li>
+<li><strong>When you put the word love to purusha category it acquires a new category all together. And it brings the devotee to aham brahma asmi. In context of purusha it means unity in diversity.</strong></li>
+<li>By the Love in the domain of Purusha the so called jiva loses its limitations and identity with body/mind upadhi and merges in the Goadhead. Once the devotee reaches the state of union, there is no difference between the divotee and Sri Krishna.</li>
+<li>Separation is only by ignorance. The knowledge eliminates it.</li>
+<li>Vivekananda: don't you after Radhakrisha, go after Gitakrishna.</li>
+<li>We have to learn to look at Sri Krishna as a Philosopher, Universal Teacher - Jagatguru and carefully dislodge the mindset from the man/woman attraction kind of love. The love prevalent in the domain of prakrti.</li>
+<li>Rediscover Sri Krishna. He did not emphasize celebrating. Rather contemplate in silence.</li>
+</ul>
+<h2><a href="https://www.youtube.com/watch?v=H6mKpZS5u_0">34th Anniversary ~ Anniversary Address</a></h2>
+<ul>
+<li>higher power = iswara. Thy will be done.</li>
+<li>jiva = life. Hiranyagarbha = jiva pranadharane. He's first jiva, first lifeform, the creator. Clump of grass as "last jiva". Be non violent to all life, according to the vision of rishis.</li>
+<li>true bhakti - tremendous sensitivation of one's own heart towards all lifeforms, including the clump of gras. The day we sensitivise ourself to that level, we can call ourselves vedantins. Until then it's just lip service.</li>
+</ul>
+<h2><a href="https://www.youtube.com/watch?v=kZUbE95p1Ow">Satsang 2021-01-01</a></h2>
+<p>Possibly related to <a href="2020/05/Saddarshanam#satsang-2020-05-12.html">Saddarshanam</a>.</p>
+<ul>
+<li>You follow universal values. Your children will automatically follow. You need not teach. Children learn by watching. Elders learn by listening.</li>
+<li>When I'm in a place, whosoever walks in, is treated <strong>like a brother/sister. Treating everybody like equal.</strong></li>
+<li>Celebrating has no meaning. Avoid all celebration. </li>
+<li>Word "being" is more accurate than "isness" (limited "existence"). In being there is no second and no boundary. Existence is multiple, limited and separated.</li>
+<li><strong>Sentience = Brahman = "I'm and I know that I'm". Satcit = sentience. Sat is only one aspect of it.</strong></li>
+<li>Culture, religion and tradition the way are practiced (fragmentary thinking) come in way. My god vs. your god. Feel one with entire humanity or life instead. Rise above such fragmentation.</li>
+<li>Self-knowledge is not the journey. Self-inquiry is the journey without the goal. By putting self-knowledge a into future you make it into a goal and spoil it.</li>
+<li>Tradition, culture, religion ... make use of the system, it is there to serve you. Don't become slave to it. </li>
+<li>Self-inquiry is essential for human life.</li>
+<li><strong>Vijnasu, not samsari.</strong></li>
+<li>There is a crisis of civilisation: people become very sense-pleasures and that creates a lot of anxiety among people.</li>
+<li>You're not praying to an idol. You're praying to the isvara who is in your heart.</li>
+<li><strong>Face the fear, watch the movement of it, trace it to its origin. Never escape it.</strong></li>
+<li><strong>There is no continuity in this creation.</strong> Memory makes you believe it is continuous. <strong>The world in which you live is momentary. You create it and re-create it moment by moment with the help of memory.</strong> Continuity is in your head. Just like a movie.</li>
+<li>Do you want to learn from guru or want to have a relationship with the guru? As long as guru is guru and you're the sisya there is no learning. If guru is not standing up to the mark, teach the guru - go your way. <strong>Worldly life is better than distorted spiritual life.</strong> Atma is the satguru.</li>
+<li>Are you astika? No. Are you nastika? No. I'm advaia brahma, not opposed to anything (not conceptual; not opposite to anything). Astika - promoting a conceptual god.</li>
+<li><strong>Bhakti: whatever happens you accept it as the will of the prime mover with love.</strong> You withdraw your will. Our lives are not lived by us, they are lived by that higher power.</li>
+</ul>
+<h1><a href="https://www.youtube.com/watch?v=bZlLlzU8Uv8">Satsang (Sat Sampatti and Q&amp;A)</a></h1>
+<ul>
+<li><strong>sat sampatti is the real wealth.</strong> Materialistic wealth has a downside, it is a calamity in fact, not wealth.</li>
+<li>Popular religion (religion of the masses) is centered upon rituals. Pictures, noise, idols. Very crude, most insensitive.</li>
+<li><strong>sat sampatti constitutes true religion</strong> in contrast to the popular religion of the masses. </li>
+<li>Vivekananda: it's OK to get birth in a temple but a tragedy to die there.</li>
+<li>Approaching Vedanta with the same spirit as rituals won't produce results. Here you have to <strong>capture the spirit of the vision of the seer. He sees the truth and gives expression to what he sees</strong> and now it is for you to see. It has nothing to do with struggle or effort. It's all about inner transformation - which is not demanded by popular religion. Outward doesn't matter.</li>
+<li>Entire <strong>sat sampatti can be summed up as inner transformation</strong>.</li>
+<li>Waking consciousness is impure and agitated. As long as it is impure it remains agitated. Once these vanish shanti arises. That's the transformation (to quietude). Shantih becomes the wealth.</li>
+<li><strong>Shanti is one, ashanti (=viskhepa)</strong> is sixfold, therefore sat sampatti.</li>
+<li><strong>Impurity and restlessness is created at the level of the thought by pleasure seeking and trying to avoid pain.</strong> Seek shanti, not sukha. As long as you seek sukha, you get also dukha and lose shanti. Entire misery of life is due to this. Students of vedanta seek shanti.</li>
+<li><strong>I'm not seeking sukha and I don't mind dukha</strong>.</li>
+<li>Titiksha, endurance, patience, is a great virtue.</li>
+<li>Sraddha - love for acharya's vision. Not doubting it, but trying understand it.</li>
+</ul>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>
