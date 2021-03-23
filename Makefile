@@ -6,9 +6,9 @@
 .PHONY: serve publish
 
 serve:
-	bundle exec jekyll serve -H 0.0.0.0
+	bundle exec jekyll serve # -H 0.0.0.0
 
-external_artefacts: 
+publish: 
 	time ./publish.sh
 
 sask:
@@ -17,7 +17,7 @@ sask:
 clean:
 	rm -rfv _site
 
-all: clean sask external_artefacts serve
+all: clean serve
 
 # vim:ft=make
 #

@@ -87,6 +87,9 @@
                             <div class="codehilite"><pre><span></span>mysql -u connect -P 3306 --protocol tcp -h localhost connect -p
 
 show index from print_file;
+
+rename table event to event_bak_20210311;
+create table event like event_bak_20210311;
 </pre></div>
 
 
