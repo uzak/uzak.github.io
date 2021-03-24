@@ -85,7 +85,11 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>InfluxDB</h1>
-<div class="codehilite"><pre><span></span>docker run -p8086:8086 -v influxtest:/var/lib/influxdb influxdb
+<div class="codehilite"><pre><span></span>influx -host $HOST -precision rfc3339   # timestamps in human readable form
+
+
+
+docker run -p8086:8086 -v influxtest:/var/lib/influxdb influxdb
 </pre></div>
 
 

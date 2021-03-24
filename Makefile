@@ -19,14 +19,14 @@ etym:
 	# db
 	(cd $(ETYM_DIR) && make db.json)
 	# ui
-	DEPLOY_DIR=$(DEST) make -C $(ETYM_UI_DIR) build 
+	DEPLOY_DIR=$(DEST)/etymolog make -C $(ETYM_UI_DIR) build 
 
 wiki:
 	rm -rfv $(DEST)/wiki
 	mkdir -v $(DEST)/wiki
 	$(foreach i,1 2 3 4, vim -n +"call vimwiki#base#goto_index($(i))" +VimwikiAll2HTML +q;)
 
-publish: #blog etym wiki
+publish: blog etym wiki
 	cd $(DEST) && \
 	git add . && \
 	git commit -m "Update: $(shell date '+%c')" && \
