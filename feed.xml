@@ -6,31 +6,68 @@
 </description>
     <link>https://uzak.github.io/</link>
     <atom:link href="https://uzak.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Mar 2021 05:53:31 +0100</pubDate>
-    <lastBuildDate>Fri, 26 Mar 2021 05:53:31 +0100</lastBuildDate>
+    <pubDate>Fri, 26 Mar 2021 17:50:47 +0100</pubDate>
+    <lastBuildDate>Fri, 26 Mar 2021 17:50:47 +0100</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
-        <title>Dakshinamurti Stotra</title>
+        <title>Clean Code</title>
         <description>&lt;p&gt;Table of contents:&lt;/p&gt;
+
+&lt;!--
+    vim:spell spelllang=en
+--&gt;
+</description>
+        <pubDate>Fri, 26 Mar 2021 00:00:00 +0100</pubDate>
+        <link>https://uzak.github.io/2021/03/Clean_Code</link>
+        <guid isPermaLink="true">https://uzak.github.io/2021/03/Clean_Code</guid>
+        
+        <category>diary</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dakshinamurti Stotra</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://vedantastudents.com/wp-content/uploads/2018/10/01-Dakshinamurthy-Stotram.pdf&quot;&gt;Summary&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Table of contents:&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#class-1-introduction&quot; id=&quot;markdown-toc-class-1-introduction&quot;&gt;Class 1: Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#class-2-dhyana-sloka-1&quot; id=&quot;markdown-toc-class-2-dhyana-sloka-1&quot;&gt;Class 2: Dhyana Sloka 1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#class-3-dhyana-slokas-2---5&quot; id=&quot;markdown-toc-class-3-dhyana-slokas-2---5&quot;&gt;Class 3: Dhyana Slokas 2 - 5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-01---introduction&quot; id=&quot;markdown-toc-dms-01---introduction&quot;&gt;DMS-01 =  Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-02---dhyana-sloka---1&quot; id=&quot;markdown-toc-dms-02---dhyana-sloka---1&quot;&gt;DMS-02 =  Dhyana Sloka - 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-03---dhyana-slokas--2-to-5&quot; id=&quot;markdown-toc-dms-03---dhyana-slokas--2-to-5&quot;&gt;DMS-03 =  Dhyana Slokas- 2 to 5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-04---dhyana-slokas--5-and-6&quot; id=&quot;markdown-toc-dms-04---dhyana-slokas--5-and-6&quot;&gt;DMS-04 =  Dhyana Slokas- 5 and 6&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-05---verse--1&quot; id=&quot;markdown-toc-dms-05---verse--1&quot;&gt;DMS-05 =  Verse- 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-06---verse--1-and-2&quot; id=&quot;markdown-toc-dms-06---verse--1-and-2&quot;&gt;DMS-06 =  Verse- 1 and 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-07---verse--2-and-3&quot; id=&quot;markdown-toc-dms-07---verse--2-and-3&quot;&gt;DMS-07 =  Verse- 2 and 3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-08---verse--3-and-4&quot; id=&quot;markdown-toc-dms-08---verse--3-and-4&quot;&gt;DMS-08 =  Verse- 3 and 4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-09---verse--4&quot; id=&quot;markdown-toc-dms-09---verse--4&quot;&gt;DMS-09 =  Verse- 4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-10---verse--4-and-5&quot; id=&quot;markdown-toc-dms-10---verse--4-and-5&quot;&gt;DMS-10 =  Verse- 4 and 5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-11---verse--5-and-6&quot; id=&quot;markdown-toc-dms-11---verse--5-and-6&quot;&gt;DMS-11 =  Verse- 5 and 6&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-12---verse--6&quot; id=&quot;markdown-toc-dms-12---verse--6&quot;&gt;DMS-12 =  Verse- 6&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-13---verse--7-and-8&quot; id=&quot;markdown-toc-dms-13---verse--7-and-8&quot;&gt;DMS-13 =  Verse- 7 and 8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dms-14---verse--8-to-10&quot; id=&quot;markdown-toc-dms-14---verse--8-to-10&quot;&gt;DMS-14 =  Verse- 8 to 10&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-01---introduction&quot; id=&quot;markdown-toc-snl-01---introduction&quot;&gt;Snl-01 =  Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-02---1--and--2&quot; id=&quot;markdown-toc-snl-02---1--and--2&quot;&gt;Snl-02 =  1  and  2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-03---2-6--and--9&quot; id=&quot;markdown-toc-snl-03---2-6--and--9&quot;&gt;Snl-03 =  2, 6  and  9&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-04---9-12-22--and--27&quot; id=&quot;markdown-toc-snl-04---9-12-22--and--27&quot;&gt;Snl-04 =  9, 12, 22  and  27&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-05---27--to--29&quot; id=&quot;markdown-toc-snl-05---27--to--29&quot;&gt;Snl-05 =  27  To  29&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-06---29-43-44--and--58&quot; id=&quot;markdown-toc-snl-06---29-43-44--and--58&quot;&gt;Snl-06 =  29, 43, 44  and  58&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snl-07---61-63-80--and--100&quot; id=&quot;markdown-toc-snl-07---61-63-80--and--100&quot;&gt;Snl-07 =  61, 63, 80  and  100&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;class-1-introduction&quot;&gt;Class 1: Introduction&lt;/h1&gt;
+&lt;h1 id=&quot;dms-01---introduction&quot;&gt;DMS-01 =  Introduction&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Dakshinamurti as an aspect of Lord Shiva as brahmavidya guru. Same as Hayagriva in vaishnava sampradaya.&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Another name for Lord Shiva as Dakshinamurti is Sadashiva.&lt;/li&gt;
-  &lt;li&gt;Shiva is the laya karta, one who resolves the universe, the dvaita prapanca. That destruction is relative, not ultimate destruction, because during pralaya the duality goes only to unmanifested condition. Duality and samsara very much remain. Ajnanam is not destroyed when pralaya takes place. Ajnanam destruction job, destroying dvaita permanently is done by Lord Shiva as Dakshinamurti.&lt;/li&gt;
+  &lt;li&gt;Shiva is the laya karta, one who resolves the universe, the dvaita prapanca. That destruction is relative, not ultimate destruction, because during pralaya the duality goes only to unmanifested condition. Duality and samsara very much remain. &lt;strong&gt;Ajnanam is not destroyed when pralaya takes place. Ajnanam destruction job, destroying dvaita permanently, is done by Lord Shiva as Dakshinamurti.&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Dakshinamurti (or anybody for that matter) destroys ignorance by providing knowledge. &lt;strong&gt;Jnana dvara.&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;There is only one method for transmitting knowledge: vrtirupajnanam into shabdarupajnanam.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Sadhana catustaya sampati itself is only a training in converting the upadesha vakyam into brahma vidya.&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Stotram = glorification. Acknowledge of our gratitude.&lt;/li&gt;
-  &lt;li&gt;Word Dakshinamurti has two meanings. murti = vigrahah, form, personality; dakshina (indeclinable) - facing southern direction; daskhina (declinable) - compensation.&lt;/li&gt;
+  &lt;li&gt;Word “dakshinamurti” has two meanings. murti = vigrahah, form, personality; dakshina (indeclinable) - facing southern direction; daskhina (declinable) - compensation.&lt;/li&gt;
   &lt;li&gt;Every direction has got deity assigned. East - Indra, south - Yama, west - Varuna, north - Soma. Yama represents one who controls everything including the population. Yama means mortality. Mortality means finitude. Finitude means bhayam, lack (dissatisfaction, desire). A finite person is always a wanting person. Therefore &lt;strong&gt;Yama is equal to samsara. Dakshinamurti is the only one who is not afraid of facing south, not under the grip of Yama, not limited by but has conquered time&lt;/strong&gt; (dakshinA-mUrti: meaning 1). Therefore he’s also called mrtyumjayah.&lt;/li&gt;
-  &lt;li&gt;Dakshinamurti tells: “everyone who wants to conquer mortality, come to me”. E.g. story of markandeya muni. Who wrote candrashekara (means also mrtyunjayah) stotram. Is about one who keeps moon as ornament. Moon represents time.&lt;/li&gt;
+  &lt;li&gt;Dakshinamurti tells: “everyone who wants to conquer mortality, come to me”. E.g. story of Markandeya muni, who wrote candrashekara (means also mrtyunjayah) stotram, is about one who keeps moon as ornament. Moon represents time.&lt;/li&gt;
   &lt;li&gt;Meaning 2 (dakshina amUrti): &lt;strong&gt;dakshina - expert, skilled person, samartha. Expert in communication, expert in everything. amUrti - the one who is really formless one, ni-rupah.&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Worship requires altar. You’ve to offer flowers somewhere. Formless deity cannot be worshipped. Therefore for the sake of worship there is a version. In its nature Dakshinamurti is formless, nirgnuna brahma.&lt;/li&gt;
   &lt;li&gt;We start with brahmavidya guru Dakshinamurti (saguna) and we end with nirguna brahman.&lt;/li&gt;
@@ -41,8 +78,53 @@
   &lt;li&gt;Silence can be interpreted in any way. Therefore maunam here it not to be taken in literal sense. here: maunavyaka - indirect description. &lt;strong&gt;Description is possible only in terms of attributes&lt;/strong&gt;. Attributeless cannot be described directly, only by implication.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;class-2-dhyana-sloka-1&quot;&gt;Class 2: Dhyana Sloka 1&lt;/h1&gt;
-&lt;h1 id=&quot;class-3-dhyana-slokas-2---5&quot;&gt;Class 3: Dhyana Slokas 2 - 5&lt;/h1&gt;
+&lt;h1 id=&quot;dms-02---dhyana-sloka---1&quot;&gt;DMS-02 =  Dhyana Sloka - 1&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;ide - namas karomi (I offer namaskara)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Any attribute is considered a limitation because any particular attribute excludes the opposite attribute.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Brahman is an &lt;strong&gt;existent thing which is different from all objects of experience.&lt;/strong&gt; That is the experiencer, the observer, subject.&lt;/li&gt;
+  &lt;li&gt;Neti-neti: Brahman is &lt;strong&gt;what remains after the negation of everything. If the negator has to be negated you require another negator.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Maunavyakyanena: upanishad doesn’t say anything about brahman so we can say upanishad is silent about brahman. At the same time it communicates what needs to be communicated.&lt;/li&gt;
+  &lt;li&gt;Dakshinamurti is always pictured as young physically (meaning 1). Figuratively &lt;strong&gt;youth stands for positive approach to anything. Freedom from cynicism, pessimism&lt;/strong&gt;, which is general tendency that overcomes us when we grow old. We generally speak about the “good old days”. That &lt;strong&gt;&lt;em&gt;in our times everything was good, values where there and now are going&lt;/em&gt;. Generally old age makes us pessimistic, cynical, critical. If you are able to avoid negativism, cynicism, criticism … then you’re youth in your mind. Vedanta makes a person youthful in the mind (meaning 2). Always positive, appreciative, non-critical … in any field.&lt;/strong&gt; Vedanta makes you positive, makes you see the good things that are happening. Daksinamurti’s mind is soaked in vedantic perspective.&lt;/li&gt;
+  &lt;li&gt;(meaning 3) Youthful spiritually: yuva means the one who is free from apakshaya. Ever youthful never aging. Not affected by kalatattvam. Like Markandeya who is supposed to be ever 16.&lt;/li&gt;
+  &lt;li&gt;avrtam - ever surrounded by.&lt;/li&gt;
+  &lt;li&gt;rshi - one who is a good thinker, informed, mature person. A viveki - one who knows ephimericality of everything. One who does not expect security from insecure, perishable things of the world.&lt;/li&gt;
+  &lt;li&gt;Vayragyam is required because only then vedanta will become priority. &lt;strong&gt;Without viveka and vayragyam vedanta will not appear. Even if it will, it will be a hobby, timepass, only. If vedanta should become my life’s mission, perhaps the only mission, it requires tremendous viveka and vayragyam&lt;/strong&gt; and that is indicated by “rshi”.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Committed seekers have left everything else and they have surrender to this guru. They don’t have any other agenda/program.&lt;/strong&gt; Therefore they are antevasat (resident student in a guru kulam) rshigana, so they learn by non-verbal communication as well.&lt;/li&gt;
+  &lt;li&gt;Children learn more from parents through non-verbal communication than through verbal.&lt;/li&gt;
+  &lt;li&gt;varsistha - very old (disciples). Generally three ashramas are required for ripening of a person. &lt;strong&gt;You cannot enforce interest of vedanta. If at all we have to force, dharmasastra we have to emphasize&lt;/strong&gt;. We allow people to grow into vedanta. Generally it takes years and decades.&lt;/li&gt;
+  &lt;li&gt;Brahmanistha - 1) jnani 2) those who are interested in becoming brahmanista. Who’s only agenda, deep interest, obsession is only in that. 3) &lt;strong&gt;Deeply religious person established in commited to their istha devata. Established in saguna brahma coming to learn about nirguna brahma. In the name of philosophy they do not reject religion.&lt;/strong&gt; Tradition says Vedanta goes always with religion, internal and external also. &lt;strong&gt;Without bhakti jnanam will not shine.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;The one who lives the teaching is brahmanistham. One who lives the teaching and does not teach is called kevala brahmanistha. One who lives the teaching and teaches is called shrotriya brahmanistha.&lt;/li&gt;
+  &lt;li&gt;Daksinamurti is the only acharya who never was a disciple. Adi guru. The second guru was not born wise, etc. Daksinamurti is also called acharyaindra (-indra suffix means shrestha - the greatest one). Sampradaya (method of communication) initiator.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;mudra&lt;/strong&gt; - gesture, gesticulation, &lt;strong&gt;a form of non-verbal communication&lt;/strong&gt; (dance, painting, body-language, sculpture …)&lt;/li&gt;
+  &lt;li&gt;cinmudra (cit-mudra) - jivatma paramatma bhodaka mudra. Index finger - ego, jiva. Thumb - size of free space in heart. Paramatma and/or flame is to be meditated upon as having size of a thumb. Other three fingers - sharira trayam. Index finger naturally “joins” the other three, not the thumb.&lt;/li&gt;
+  &lt;li&gt;All the four fingers are useful for us because of the thumb. &lt;strong&gt;Thumb has got independent existence, other four fingers dependent existence. In sanskrit all the four fingers have feminine gender indicating prakrti. Thumb only has got masculine gender indicating purusha.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Index finger cannot join paramatma without renouncing the other three (sharira abhimanam). You can never have both.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;When the index finger is away from the thumb it is mortal. When it joins the thumb making a circle&lt;/strong&gt; - it has become “asatoma sat gamaya, mrtyor ma amrtam gamaya”.&lt;/li&gt;
+  &lt;li&gt;Mere mudra cannot teach. &lt;strong&gt;Cinmudra can communicate only if somebody explains the cinmudra.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;One can derive ananda from guru status - another form emotional of dependence (samsara). &lt;strong&gt;Dakshinamurti doesn’t derives ananda from anything, any being, any relationship. His ananda comes from himself (svatmaramam). If there are shishyas, he enjoys guru status (daksinamurti). If there are no shishyas he enjoys atma status (kevala - non dual - shiva).&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Face is the index/mirror of the mind.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;dms-03---dhyana-slokas--2-to-5&quot;&gt;DMS-03 =  Dhyana Slokas- 2 to 5&lt;/h1&gt;
+&lt;h1 id=&quot;dms-04---dhyana-slokas--5-and-6&quot;&gt;DMS-04 =  Dhyana Slokas- 5 and 6&lt;/h1&gt;
+&lt;h1 id=&quot;dms-05---verse--1&quot;&gt;DMS-05 =  Verse- 1&lt;/h1&gt;
+&lt;h1 id=&quot;dms-06---verse--1-and-2&quot;&gt;DMS-06 =  Verse- 1 and 2&lt;/h1&gt;
+&lt;h1 id=&quot;dms-07---verse--2-and-3&quot;&gt;DMS-07 =  Verse- 2 and 3&lt;/h1&gt;
+&lt;h1 id=&quot;dms-08---verse--3-and-4&quot;&gt;DMS-08 =  Verse- 3 and 4&lt;/h1&gt;
+&lt;h1 id=&quot;dms-09---verse--4&quot;&gt;DMS-09 =  Verse- 4&lt;/h1&gt;
+&lt;h1 id=&quot;dms-10---verse--4-and-5&quot;&gt;DMS-10 =  Verse- 4 and 5&lt;/h1&gt;
+&lt;h1 id=&quot;dms-11---verse--5-and-6&quot;&gt;DMS-11 =  Verse- 5 and 6&lt;/h1&gt;
+&lt;h1 id=&quot;dms-12---verse--6&quot;&gt;DMS-12 =  Verse- 6&lt;/h1&gt;
+&lt;h1 id=&quot;dms-13---verse--7-and-8&quot;&gt;DMS-13 =  Verse- 7 and 8&lt;/h1&gt;
+&lt;h1 id=&quot;dms-14---verse--8-to-10&quot;&gt;DMS-14 =  Verse- 8 to 10&lt;/h1&gt;
+&lt;h1 id=&quot;snl-01---introduction&quot;&gt;Snl-01 =  Introduction&lt;/h1&gt;
+&lt;h1 id=&quot;snl-02---1--and--2&quot;&gt;Snl-02 =  1  and  2&lt;/h1&gt;
+&lt;h1 id=&quot;snl-03---2-6--and--9&quot;&gt;Snl-03 =  2, 6  and  9&lt;/h1&gt;
+&lt;h1 id=&quot;snl-04---9-12-22--and--27&quot;&gt;Snl-04 =  9, 12, 22  and  27&lt;/h1&gt;
+&lt;h1 id=&quot;snl-05---27--to--29&quot;&gt;Snl-05 =  27  To  29&lt;/h1&gt;
+&lt;h1 id=&quot;snl-06---29-43-44--and--58&quot;&gt;Snl-06 =  29, 43, 44  and  58&lt;/h1&gt;
+&lt;h1 id=&quot;snl-07---61-63-80--and--100&quot;&gt;Snl-07 =  61, 63, 80  and  100&lt;/h1&gt;
 
 &lt;!--
     vim:spell spelllang=en
@@ -52,7 +134,7 @@
         <link>https://uzak.github.io/2021/03/Dakshinamurti_Stotra</link>
         <guid isPermaLink="true">https://uzak.github.io/2021/03/Dakshinamurti_Stotra</guid>
         
-        <category>diary</category>
+        <category>vedanta</category>
         
         
       </item>
@@ -3318,73 +3400,6 @@ Rir pra não chorar&lt;/p&gt;
         <category>rat race</category>
         
         <category>zombie</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Pancadasi - Chapter 2</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=njwTYZxfwSs&amp;amp;list=PLzPObzMRrhDzDSlJzFiks_uH4V7Rhdt4k&quot;&gt;source&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://vedantastudents.com/wp-content/uploads/2018/10/02-Panchadasi-Chapter-2.pdf&quot;&gt;notes from vedantastudents.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Table of contents:&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#class-1-1-2&quot; id=&quot;markdown-toc-class-1-1-2&quot;&gt;Class 1: 1, 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#class-2-345&quot; id=&quot;markdown-toc-class-2-345&quot;&gt;Class 2: 3,4,5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#class-3--6-7-8&quot; id=&quot;markdown-toc-class-3--6-7-8&quot;&gt;Class 3:  6, 7, 8&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;class-1-1-2&quot;&gt;Class 1: 1, 2&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;2nd chapter - Mahabhuta viveka. Between elements, elementals and Atma.&lt;/li&gt;
-  &lt;li&gt;This world, before it was created, was sat alone. &lt;strong&gt;sat eva somya idam agra asit ekam eva advitiyam&lt;/strong&gt; (Chandogya).&lt;/li&gt;
-  &lt;li&gt;It is difficult to see the all-pervasivnes of consciousness and ananda because it gets not manifested everywhere. That’s why here sat that is obvious everywhere is discussed.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Consciousness is the invariable factor in all the experiences of all the three states&lt;/strong&gt; and therefore consciousness is sat and beyond time.&lt;/li&gt;
-  &lt;li&gt;Consciousness is independent because it doesn’t require any means of knowledge to reveal itself. &lt;strong&gt;Self-effulgent, svayam prakahsa&lt;/strong&gt;. Sense organs “shine” because of I. Shine = reveal.&lt;/li&gt;
-  &lt;li&gt;Chronological time - involved in the motion. Subjective time - which is created subjectively by our own mind.&lt;/li&gt;
-  &lt;li&gt;Observer is there before and after the event.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Truth of the time = present. That present is nothing but consciousness.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Sat being the cause of the creation is really all-pervasive. Space is not.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;class-2-345&quot;&gt;Class 2: 3,4,5&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;If by going into sleep you’d become non-existent, you’d never go to sleep.&lt;/li&gt;
-  &lt;li&gt;The person in deep sleep, sanmatra (sat matra) - just are in the form of sat, pure existence. Same condition as before the creation. No time, no space, no objects.&lt;/li&gt;
-  &lt;li&gt;Everything that has come from the Brahman called sat, has only borrowed existence. Five elements, their gunas and the products therefrom. Through Maya the sat appears in all. Names and forms cannot add anything to the substance. Just like bangles and gold.&lt;/li&gt;
-  &lt;li&gt;Akasha, sabda (etc.) - &lt;strong&gt;name and form is Maya. Existence is Brahman.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;What cannot add anything is appearance&lt;/strong&gt; (bangle to gold).&lt;/li&gt;
-  &lt;li&gt;Cause is what pervades. Sat pervades entire creation like gold pervades bangle. Therefore &lt;strong&gt;by knowing sat everything will be known&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Take away the form and nothing remains (name is given by humans).&lt;/li&gt;
-  &lt;li&gt;Akasha is allpervasive thus shabda, its property, is allpervasive. But it is avyakta. Thus rishis had to do special tapas to extract the mantras and put them in words - manifest them. They made their mind so refined they could do it.&lt;/li&gt;
-  &lt;li&gt;Sound gets normally manifested by two methods: sanyoga - things are brought together. Viyoga - two things are brought apart.&lt;/li&gt;
-  &lt;li&gt;Third method. Enclose akasha in a container and sound gets manifested as echo. E.g. talking. By talking I’m not producing sound. I’m bringing into manifestation the words which are unmanifested in space. Example: like white light has seven colors and a prism can manifest them.&lt;/li&gt;
-  &lt;li&gt;Vayu has also sabda guna borrowed from akasha. If the wind is cold, there is water in it. If it is hot, fire. By itself it has no such attributes.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Sound of wind: bee-see, fire: bugu-bugu, water: bulu-bulu, earth: kada-kala.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Only water has the property of taste, unmanifested. The object helps to manifest a particular taste. Same with objects. They have no color, the light has all colors and objects absorb some and reflect others that are then seen.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;In a black hole the gravitation is much then even light won’t reflect and gets totally absorbed.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;class-3--6-7-8&quot;&gt;Class 3:  6, 7, 8&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Fragrance and foul smell are the two types of smell that belong to earth.&lt;/li&gt;
-  &lt;li&gt;Taste of pure water is madurhyam - combination of all possible tastes. This doesn’t mean sweetness.&lt;/li&gt;
-  &lt;li&gt;Color of the earth - all type of colors. Borrowed from agni.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Skin pervades entire body. Outside and inside. Where skin is there is tvak-indriya. Two places where it is not: nail and hair.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Sense organs have the power to sense external objects by sensing the guna of them, under the condition that they remain in the respective golakams&lt;/strong&gt; (part of sthula shariram). That’s why when Jiva is travelling and there is no sthula sharira no perception is possible.&lt;/li&gt;
-  &lt;li&gt;Sukshma sharira travels, not reflected consciousness because it is all the time there. &lt;strong&gt;Any reflection you cannot separate from the reflected medium.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;When the ears are covered, one can hear internal sounds clearly.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 12 Oct 2020 00:00:00 +0200</pubDate>
-        <link>https://uzak.github.io/2020/10/Pancadasi_2</link>
-        <guid isPermaLink="true">https://uzak.github.io/2020/10/Pancadasi_2</guid>
-        
-        <category>vedanta</category>
-        
-        <category>Swami Muktatmananda</category>
         
         
       </item>
