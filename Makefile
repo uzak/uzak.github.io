@@ -3,7 +3,7 @@
 # Martin Užák, 2020-05-10 06:49
 #
 
-.PHONY: serve publish etym wiki
+.PHONY: serve publish etym wiki clean
 
 ETYM_DIR	?= ~/repos/etymolog
 ETYM_UI_DIR ?= ~/repos/etymolog-ui
@@ -18,6 +18,7 @@ blog:
 etym:
 	# db
 	(cd $(ETYM_DIR) && make db.json)
+	#XXX copy of db.json should happen here
 	# ui
 	DEPLOY_DIR=$(DEST)/etymolog make -C $(ETYM_UI_DIR) build 
 
@@ -29,16 +30,16 @@ wiki:
 publish: blog etym wiki
 	cd $(DEST) && \
 	git add . && \
-	git commit -m "Update: $(shell date '+%c')" && \
+	git commit -m "Update: $(shell date '+%Y-%m-%d')" && \
 	git push
 	
 sask: sask.md
-	pandoc sask.md -o assets/sask.pdf --toc -M date="`LC_ALL=sk_SK.utf8 date "+%d. %B %Y"`"
+	pandoc sask.md -o $(DEST)/assets/sask.pdf --toc -M date="`LC_ALL=sk_SK.utf8 date "+%d. %B %Y"`"
 
 clean:
 	rm -rfv _site
 
-all: serve
+all: clean serve
 
 # vim:ft=make
 #
