@@ -10,7 +10,7 @@ ETYM_UI_DIR ?= ~/repos/etymolog-ui
 DEST		?= ~/repos/uzak.github.io
 
 serve:
-	bundle exec jekyll serve # -H 0.0.0.0
+	bundle exec jekyll serve 
 
 blog:
 	bundle exec jekyll build -d $(DEST)
@@ -18,7 +18,6 @@ blog:
 etym:
 	# db
 	(cd $(ETYM_DIR) && make db.json)
-	#XXX copy of db.json should happen here
 	# ui
 	DEPLOY_DIR=$(DEST)/etymolog make -C $(ETYM_UI_DIR) build 
 
@@ -27,14 +26,17 @@ wiki:
 	mkdir -v $(DEST)/wiki
 	$(foreach i,1 2 3 4, vim -n +"call vimwiki#base#goto_index($(i))" +VimwikiAll2HTML +q;)
 
-publish: blog etym wiki
+sask: sask.md
+	pandoc sask.md \
+		--toc \
+		-o $(DEST)/assets/sask.pdf \
+		-M date="`LC_ALL=sk_SK.utf8 date "+%d. %B %Y"`"
+
+publish: 
 	cd $(DEST) && \
 	git add . && \
-	git commit -m "Update: $(shell date '+%Y-%m-%d')" && \
+	git commit -m "$(MAKE) $(MAKECMDGOALS)" && \
 	git push
-	
-sask: sask.md
-	pandoc sask.md -o $(DEST)/assets/sask.pdf --toc -M date="`LC_ALL=sk_SK.utf8 date "+%d. %B %Y"`"
 
 clean:
 	rm -rfv _site
@@ -42,4 +44,3 @@ clean:
 all: clean serve
 
 # vim:ft=make
-#
