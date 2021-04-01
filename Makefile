@@ -35,7 +35,7 @@ sask: sask.md
 publish: 
 	cd $(DEST) && \
 	git add . && \
-	git commit -m "$(MAKE) $(MAKECMDGOALS)" && \
+	git commit -m "$(MAKECMDGOALS)" && \
 	git push
 
 clean:
