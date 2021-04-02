@@ -1,0 +1,321 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Clean Code</title>
+    <link rel="canonical" href="https://uzak.github.io/2021/04/Clean_Code" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext,vietnamese">
+    <style amp-custom>
+    *{margin:0;padding:0}*,*:before,*:after{box-sizing:inherit}html{min-height:100%;box-sizing:border-box;-webkit-tap-highlight-color:transparent;font-size:62.5%}body{font-family:'Inconsolata', monospace;font-weight:400;-webkit-font-smoothing:antialiased}article,aside,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}h1,h2,h3,h4,h5,h6{font-weight:400;color:#163541}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}img{max-width:100%;font-style:italic;vertical-align:middle;border:0}svg:not(:root){overflow:hidden}svg{pointer-events:none;max-height:100%}a{background-color:transparent;text-decoration:none;color:#0067FB}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}i,em{font-weight:italic}figure{margin:0}hr{margin-top:2.5rem;margin-bottom:2.5rem;width:100%;height:1px;border:0;background:#EFF1F3}pre{overflow:auto}.u-container{max-width:62rem;margin-right:auto;margin-left:auto;padding-top:10rem;padding-right:1rem;padding-left:1rem}.u-separate{margin-right:.45rem;margin-left:.25rem;color:#5C6E74}.u-separate:after{content:'\00a0/'}.c-page__header{margin-bottom:10rem}.c-page__header h1{margin-bottom:2.5rem;line-height:1.5;font-size:2.4rem;color:#163541}.c-page__header p{line-height:1;font-size:1.8rem}.c-page__footer{margin-bottom:10rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.c-page__footer p{line-height:1.5;font-size:1.8rem;color:#5C6E74}.c-article{margin-bottom:10rem}.c-article__header{margin-bottom:5rem}@media screen and (min-width: 45rem){.c-article__header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:baseline;-webkit-align-items:baseline;-ms-flex-align:baseline;align-items:baseline}}.c-article__title{line-height:1.5;font-size:3.2rem;color:#163541}.c-article__time{line-height:1.5;font-size:1.8rem;color:#5C6E74}.c-article__main{margin-bottom:5rem;line-height:1.5;font-size:1.8rem;color:#5C6E74}.c-article__main>*{margin-bottom:1.8rem}.c-article__main h2{line-height:1.5;font-size:2.4rem}.c-article__main h3{line-height:1.5;font-size:2rem}.c-article__main h4{line-height:1.6;font-size:1.8rem}.c-article__main h5{line-height:1.5;font-size:1.8rem}.c-article__main strong{color:#163541;font-weight:400}.c-article__main blockquote{margin-left:0;margin-right:0;padding-left:1.8rem;border-left:1px solid #EFF1F3}.c-article__main ul,.c-article__main ol{margin-left:2.1rem}.c-tag{margin-right:1rem;position:relative;white-space:nowrap;line-height:1.5;font-size:1.8rem;color:#163541}.c-tag:before{color:#869395;content:'#\2009'}.c-archives{margin-bottom:10rem}.c-archives__year{margin-bottom:2.5rem;line-height:1.5;font-size:3.2rem}.c-archives__list{margin-bottom:2.5rem;list-style:none}.c-archives__item{padding-top:2.5rem;padding-bottom:2.5rem;border-top:1px solid #EFF1F3}@media screen and (min-width: 45rem){.c-archives__item{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}}.c-archives__item h3{line-height:1.5;font-size:1.8rem}.c-archives__item p{line-height:1.5;font-size:1.8rem;color:#515862}pre,code{font-family:'Inconsolata', monospace;font-size:1.4rem;line-height:1.5}.highlight{border-radius:4px;background:#FDFDFD;border:1px solid #E8E8EB;color:#93a1a1}.highlight .gutter{padding:1.2rem;border-right:1px solid #E8E8EB}.highlight .code{padding:1.2rem}span.lineno{padding:1rem;border-right:1px solid #E8E8EB}.highlight .c{color:#586e75}.highlight .err{color:#93a1a1}.highlight .g{color:#93a1a1}.highlight .k{color:#859900}.highlight .l{color:#93a1a1}.highlight .n{color:#93a1a1}.highlight .o{color:#859900}.highlight .x{color:#cb4b16}.highlight .p{color:#93a1a1}.highlight .cm{color:#586e75}.highlight .cp{color:#859900}.highlight .c1{color:#586e75}.highlight .cs{color:#859900}.highlight .gd{color:#2aa198}.highlight .ge{color:#93a1a1;font-style:italic}.highlight .gr{color:#dc322f}.highlight .gh{color:#cb4b16}.highlight .gi{color:#859900}.highlight .go{color:#93a1a1}.highlight .gp{color:#93a1a1}.highlight .gs{color:#93a1a1;font-weight:bold}.highlight .gu{color:#cb4b16}.highlight .gt{color:#93a1a1}.highlight .kc{color:#cb4b16}.highlight .kd{color:#268bd2}.highlight .kn{color:#859900}.highlight .kp{color:#859900}.highlight .kr{color:#268bd2}.highlight .kt{color:#dc322f}.highlight .ld{color:#93a1a1}.highlight .m{color:#2aa198}.highlight .s{color:#2aa198}.highlight .na{color:#93a1a1}.highlight .nb{color:#B58900}.highlight .nc{color:#268bd2}.highlight .no{color:#cb4b16}.highlight .nd{color:#268bd2}.highlight .ni{color:#cb4b16}.highlight .ne{color:#cb4b16}.highlight .nf{color:#268bd2}.highlight .nl{color:#93a1a1}.highlight .nn{color:#93a1a1}.highlight .nx{color:#93a1a1}.highlight .py{color:#93a1a1}.highlight .nt{color:#268bd2}.highlight .nv{color:#268bd2}.highlight .ow{color:#859900}.highlight .w{color:#93a1a1}.highlight .mf{color:#2aa198}.highlight .mh{color:#2aa198}.highlight .mi{color:#2aa198}.highlight .mo{color:#2aa198}.highlight .sb{color:#586e75}.highlight .sc{color:#2aa198}.highlight .sd{color:#93a1a1}.highlight .s2{color:#2aa198}.highlight .se{color:#cb4b16}.highlight .sh{color:#93a1a1}.highlight .si{color:#2aa198}.highlight .sx{color:#2aa198}.highlight .sr{color:#dc322f}.highlight .s1{color:#2aa198}.highlight .ss{color:#2aa198}.highlight .bp{color:#268bd2}.highlight .vc{color:#268bd2}.highlight .vg{color:#268bd2}.highlight .vi{color:#268bd2}.highlight .il{color:#2aa198}
+    </style>
+    
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <main class="u-container">
+      <div class="c-page">
+        <article class="c-article">
+          <header class="c-page__header">
+            <h1>अहो अहं
+</h1>
+            <p><a href="/">&lt;&ndash;&ndash; Back</a></p>
+          </header>
+          <div class="c-article__main">
+            <header class="c-article__header">
+              <h1 class="c-article__title">Clean Code</h1>
+              <p class="c-article__time"><time datetime="2021-04-02T00:00:00+02:00" itemprop="datePublished">Apr 2, 2021</time></p>
+            </header>
+            <p>Table of contents:</p>
+<ul id="markdown-toc">
+  <li>
+<a href="#clean-code" id="markdown-toc-clean-code">Clean Code</a>    <ul>
+      <li><a href="#there-will-be-code" id="markdown-toc-there-will-be-code">There Will Be Code</a></li>
+      <li><a href="#the-total-cost-of-owning-a-mess" id="markdown-toc-the-total-cost-of-owning-a-mess">The Total Cost of Owning a Mess</a></li>
+      <li><a href="#what-is-clean-code" id="markdown-toc-what-is-clean-code">What Is Clean Code?</a></li>
+      <li><a href="#we-are-authors" id="markdown-toc-we-are-authors">We Are Authors</a></li>
+      <li><a href="#the-boy-scout-rule" id="markdown-toc-the-boy-scout-rule">The Boy Scout Rule</a></li>
+      <li><a href="#prequel-and-principles" id="markdown-toc-prequel-and-principles">Prequel and Principles</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#meaningful-names" id="markdown-toc-meaningful-names">Meaningful Names</a>    <ul>
+      <li><a href="#use-intention-revealing-names" id="markdown-toc-use-intention-revealing-names">Use Intention-Revealing Names</a></li>
+      <li><a href="#avoid-disinformation" id="markdown-toc-avoid-disinformation">Avoid Disinformation</a></li>
+      <li><a href="#make-meaningful-distinctions" id="markdown-toc-make-meaningful-distinctions">Make Meaningful Distinctions</a></li>
+      <li><a href="#use-pronounceable-names" id="markdown-toc-use-pronounceable-names">Use Pronounceable Names</a></li>
+      <li><a href="#use-searchable-names" id="markdown-toc-use-searchable-names">Use Searchable Names</a></li>
+      <li><a href="#avoid-encodings" id="markdown-toc-avoid-encodings">Avoid Encodings</a></li>
+      <li><a href="#avoid-mental-mapping" id="markdown-toc-avoid-mental-mapping">Avoid Mental Mapping</a></li>
+      <li><a href="#class-names" id="markdown-toc-class-names">Class Names</a></li>
+      <li><a href="#method-names" id="markdown-toc-method-names">Method Names</a></li>
+      <li><a href="#dont-be-cute" id="markdown-toc-dont-be-cute">Don’t Be Cute</a></li>
+      <li><a href="#pick-one-word-per-concept" id="markdown-toc-pick-one-word-per-concept">Pick One Word per Concept</a></li>
+      <li><a href="#use-solution-domain-names" id="markdown-toc-use-solution-domain-names">Use Solution Domain Names</a></li>
+      <li><a href="#use-problem-domain-names" id="markdown-toc-use-problem-domain-names">Use Problem Domain Names</a></li>
+      <li><a href="#add-meaningful-context" id="markdown-toc-add-meaningful-context">Add Meaningful Context</a></li>
+      <li><a href="#dont-add-gratuitous-context" id="markdown-toc-dont-add-gratuitous-context">Don’t Add Gratuitous Context</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#functions" id="markdown-toc-functions">Functions</a>    <ul>
+      <li><a href="#small" id="markdown-toc-small">Small!</a></li>
+      <li>
+<a href="#do-one-thing" id="markdown-toc-do-one-thing">Do One Thing</a>        <ul>
+          <li><a href="#sections-within-functions" id="markdown-toc-sections-within-functions">Sections within Functions</a></li>
+        </ul>
+      </li>
+      <li><a href="#one--level-of-abstraction-per-function" id="markdown-toc-one--level-of-abstraction-per-function">One  Level of Abstraction per Function</a></li>
+      <li><a href="#use-descriptive-names" id="markdown-toc-use-descriptive-names">Use Descriptive Names</a></li>
+      <li>
+<a href="#function-arguments" id="markdown-toc-function-arguments">Function Arguments</a>        <ul>
+          <li><a href="#common-monadic-forms" id="markdown-toc-common-monadic-forms">Common Monadic Forms</a></li>
+          <li><a href="#flag-arguments" id="markdown-toc-flag-arguments">Flag Arguments</a></li>
+          <li><a href="#argument-objects" id="markdown-toc-argument-objects">Argument Objects</a></li>
+          <li><a href="#verbs-and-keywords" id="markdown-toc-verbs-and-keywords">Verbs and Keywords</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#have-no-side-effects" id="markdown-toc-have-no-side-effects">Have No Side Effects</a>        <ul>
+          <li><a href="#output-arguments" id="markdown-toc-output-arguments">Output Arguments</a></li>
+        </ul>
+      </li>
+      <li><a href="#command-query-separation" id="markdown-toc-command-query-separation">Command Query Separation</a></li>
+      <li>
+<a href="#prefer-exceptions-to-returning-error-codes" id="markdown-toc-prefer-exceptions-to-returning-error-codes">Prefer Exceptions to Returning Error Codes</a>        <ul>
+          <li><a href="#extract-trycatch-blocks" id="markdown-toc-extract-trycatch-blocks">Extract Try/Catch Blocks</a></li>
+          <li><a href="#error-handling-is-one-thing" id="markdown-toc-error-handling-is-one-thing">Error Handling Is One Thing</a></li>
+        </ul>
+      </li>
+      <li><a href="#dont-repeat-yourself" id="markdown-toc-dont-repeat-yourself">Don’t Repeat Yourself</a></li>
+      <li><a href="#how-do-you-write-functions-like-this" id="markdown-toc-how-do-you-write-functions-like-this">How Do You Write Functions Like This?</a></li>
+      <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="clean-code">Clean Code</h1>
+
+<h2 id="there-will-be-code">There Will Be Code</h2>
+<ul>
+  <li>code is really the language in which we ultimately express the requirements.</li>
+</ul>
+
+<h2 id="the-total-cost-of-owning-a-mess">The Total Cost of Owning a Mess</h2>
+<ul>
+  <li>The managers and marketers look to us for the information they need to make promises and commitments; end even when they don’t look to us, we should not be shy about telling them what we think.</li>
+  <li>It is unprofessional for programmers to bend to the will of managers who don’t understand the risks of making messes.</li>
+</ul>
+
+<h2 id="what-is-clean-code">What Is Clean Code?</h2>
+<ul>
+  <li>Bad code temps the mess to grow! When others change bad code; they tend to make it worse.</li>
+  <li>Clean code is focuses. Each function, each class, each module exposes a single-minded attitude that remains entirely undistracted, and unpolluted, by the surrounding details.</li>
+  <li>Clean code can be read, and enahnced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone.</li>
+  <li>Runs all the tests; Contains no duplications; Expresses all the design ideas that are in the system; Minimizes the number of entities such as classes, methods, functions, and the like.</li>
+</ul>
+
+<h2 id="we-are-authors">We Are Authors</h2>
+<ul>
+  <li>Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.</li>
+</ul>
+
+<h2 id="the-boy-scout-rule">The Boy Scout Rule</h2>
+<ul>
+  <li>Leave the campground cleaner than you found it</li>
+  <li>Isn’t continuous improvement an intrinsic part of professionalism?</li>
+</ul>
+
+<h2 id="prequel-and-principles">Prequel and Principles</h2>
+<ul>
+  <li>
+<strong>Single Responsibility Principle</strong>: every module, class or a function should have responsibility over a single part of that program’s functionality and it should encapsulate that part.</li>
+  <li>
+<strong>Open Closed Principle</strong>: software entities (modules, classes, functions) should be open for extension but closed for modification.</li>
+  <li>
+<strong>Dependency Inversion Principle</strong>: a) High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). b) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</li>
+</ul>
+
+<h1 id="meaningful-names">Meaningful Names</h1>
+
+<h2 id="use-intention-revealing-names">Use Intention-Revealing Names</h2>
+<ul>
+  <li>Choosing good names takes time but saves more time than it takes.</li>
+</ul>
+
+<h2 id="avoid-disinformation">Avoid Disinformation</h2>
+
+<h2 id="make-meaningful-distinctions">Make Meaningful Distinctions</h2>
+<ul>
+  <li>It is not sufficient to add number series or noise words, even though the compiler is satisfied. If names must be different, then they should also mean something different.</li>
+</ul>
+
+<h2 id="use-pronounceable-names">Use Pronounceable Names</h2>
+<ul>
+  <li>Intelligent conversion is now possible.</li>
+</ul>
+
+<h2 id="use-searchable-names">Use Searchable Names</h2>
+<ul>
+  <li>Single-letter names and numeric constants have a particular problem that they are not easy to locate across a body of text.</li>
+  <li>The length of a name should correspond to the size of its scope.</li>
+</ul>
+
+<h2 id="avoid-encodings">Avoid Encodings</h2>
+<ul>
+  <li>Hungarian Notation</li>
+  <li>Member Prefixes</li>
+  <li>I prefer to leave interfaces unadorned.</li>
+</ul>
+
+<h2 id="avoid-mental-mapping">Avoid Mental Mapping</h2>
+<ul>
+  <li>One difference between a smart programmer and a professional programmer is that the professional understands that clarity is king.</li>
+</ul>
+
+<h2 id="class-names">Class Names</h2>
+<ul>
+  <li>Nouns or noun phrase. Avoid names like Manager, Data, Professor, Info in the name of the class.</li>
+</ul>
+
+<h2 id="method-names">Method Names</h2>
+<ul>
+  <li>Verbs or verb phrase. Accessors, mutators, predicates should have <code class="language-python highlighter-rouge"><span class="n">get</span></code>, <code class="language-python highlighter-rouge"><span class="nb">set</span></code> or <code class="language-python highlighter-rouge"><span class="ow">is</span></code> prefix.</li>
+</ul>
+
+<h2 id="dont-be-cute">Don’t Be Cute</h2>
+<ul>
+  <li>Don’t tell little culture-dependant jokes.</li>
+  <li>Say what you mean. Mean what you say.</li>
+</ul>
+
+<h2 id="pick-one-word-per-concept">Pick One Word per Concept</h2>
+<ul>
+  <li>Using the same term for two different ideas is essentially a pun.</li>
+</ul>
+
+<h2 id="use-solution-domain-names">Use Solution Domain Names</h2>
+<h2 id="use-problem-domain-names">Use Problem Domain Names</h2>
+<h2 id="add-meaningful-context">Add Meaningful Context</h2>
+
+<h2 id="dont-add-gratuitous-context">Don’t Add Gratuitous Context</h2>
+<ul>
+  <li>Short names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.</li>
+</ul>
+
+<h1 id="functions">Functions</h1>
+<h2 id="small">Small!</h2>
+<ul>
+  <li>Functions should not be 100 lines long. Functions should be hardly ever 20 lines long.</li>
+  <li>Every function in this program was just two, or three, or four lines long. Each was transparently obvious. Each told a story. And each led you to the next in a compelling order.</li>
+  <li>The blocks within if, else, while etc. statements should be one line long.</li>
+  <li>The indent level of a function should not be greater than one or two.</li>
+</ul>
+
+<h2 id="do-one-thing">Do One Thing</h2>
+<ul>
+  <li>fUNCTIONS SHOULD DO ONE THING. tHEY SHOULD DO IT WELL. tHEY SHOULD DO IT ONLY.</li>
+  <li>The reason we write functions is to decompose a larger concept (in other words, the name of the function) into a set of steps at the next level of abstraction.
+    <h3 id="sections-within-functions">Sections within Functions</h3>
+  </li>
+  <li>This is an obvious symptom of doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.</li>
+</ul>
+
+<h2 id="one--level-of-abstraction-per-function">One  Level of Abstraction per Function</h2>
+
+<h2 id="use-descriptive-names">Use Descriptive Names</h2>
+<ul>
+  <li>The smaller and more focused a function is, the easier is to choose a descriptive name.</li>
+  <li>Don’t be afraid to make a name long. A long descriptive name is better than a short enigmatic name. A long descriptive name is better than a long descriptive comment.</li>
+</ul>
+
+<h2 id="function-arguments">Function Arguments</h2>
+<ul>
+  <li>The ideal number of argument for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification - and then shouldn’t be used anyway.</li>
+  <li>Argument are hard. They take a lot of conceptual power.</li>
+  <li>Arguments are even harder from a testing point of view. If there are no arguments, this is trivial. If there’s one argument it’s not too hard.</li>
+  <li>Output arguments are harder to understand than input arguments.</li>
+</ul>
+
+<h3 id="common-monadic-forms">Common Monadic Forms</h3>
+<ul>
+  <li>Using an output argument instead of a return value for a transformation is confusing. If a function is going to transform its input argument, then the transformation should appear as the return value.</li>
+</ul>
+
+<h3 id="flag-arguments">Flag Arguments</h3>
+<ul>
+  <li>Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It does one thing if the flag is true and another if the flag is false!</li>
+</ul>
+
+<h3 id="argument-objects">Argument Objects</h3>
+<ul>
+  <li>Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. Likely it is a part of a concept that deserves a name of its own.</li>
+</ul>
+
+<h3 id="verbs-and-keywords">Verbs and Keywords</h3>
+<ul>
+  <li>
+<code class="language-python highlighter-rouge"><span class="n">assertEquals</span></code> might be better written as <code class="language-python highlighter-rouge"><span class="n">assertExpectedEqualsActual</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span></code>. This strongly mitigates the problem of having to remember the ordering of the arguments.</li>
+</ul>
+
+<h2 id="have-no-side-effects">Have No Side Effects</h2>
+<ul>
+  <li>Side effects are lies. Your function promises to do one thing, but it also does another hidden thing.</li>
+</ul>
+
+<h3 id="output-arguments">Output Arguments</h3>
+<ul>
+  <li>Anything that forces you to check the function signature is equivalent to a double-take. It’s a cognitive break and should be avoided.</li>
+  <li>In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.</li>
+</ul>
+
+<h2 id="command-query-separation">Command Query Separation</h2>
+<ul>
+  <li>Functions should either do something or answer something, but not both.</li>
+</ul>
+
+<h2 id="prefer-exceptions-to-returning-error-codes">Prefer Exceptions to Returning Error Codes</h2>
+<ul>
+  <li>Returning error codes from command function is a subtle violation of command query separation.
+    <h3 id="extract-trycatch-blocks">Extract Try/Catch Blocks</h3>
+  </li>
+  <li>into functions of their own.
+    <h3 id="error-handling-is-one-thing">Error Handling Is One Thing</h3>
+  </li>
+  <li>Functions should do one thing. Error handling is one thing. Thus, a function that handles errors should do nothing else. This implies that if the keyword <code class="language-python highlighter-rouge"><span class="k">try</span></code> exists in a function, it should be the very first word in the function and that there should be nothing after the <code class="language-python highlighter-rouge"><span class="n">catch</span><span class="o">/</span><span class="k">finally</span></code> blocks.</li>
+</ul>
+
+<h2 id="dont-repeat-yourself">Don’t Repeat Yourself</h2>
+<ul>
+  <li><strong>Duplication may be the root of all evil in software.</strong></li>
+</ul>
+
+<h2 id="how-do-you-write-functions-like-this">How Do You Write Functions Like This?</h2>
+<ul>
+  <li>Writing software is like any other kind of writing. When you write a paper or an article you get your thoughts down first, then you massage it until it reads well.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+  <li>Master programmers thing of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming languages to construct a much richer and more expressive language that can be used to tell that story.</li>
+  <li><strong>Your real goal is to tell the story of the system.</strong></li>
+</ul>
+
+<!--
+    vim:spell spelllang=en
+-->
+
+          </div>
+          <footer class="c-article__footer">
+            <p>
+              
+                <span class="c-tag">diary</span>
+              
+            </p>
+          </footer>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
