@@ -6,107 +6,66 @@
 </description>
     <link>https://uzak.github.io/</link>
     <atom:link href="https://uzak.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Apr 2021 20:59:12 +0200</pubDate>
-    <lastBuildDate>Fri, 02 Apr 2021 20:59:12 +0200</lastBuildDate>
+    <pubDate>Sat, 03 Apr 2021 10:22:48 +0200</pubDate>
+    <lastBuildDate>Sat, 03 Apr 2021 10:22:48 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Clean Code</title>
-        <description>&lt;p&gt;Table of contents:&lt;/p&gt;
+        <description>&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;NOTE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TOC&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;these&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strictly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correspond&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;used&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;book&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;itself&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Table of contents:&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#clean-code&quot; id=&quot;markdown-toc-clean-code&quot;&gt;Clean Code&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#there-will-be-code&quot; id=&quot;markdown-toc-there-will-be-code&quot;&gt;There Will Be Code&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#the-total-cost-of-owning-a-mess&quot; id=&quot;markdown-toc-the-total-cost-of-owning-a-mess&quot;&gt;The Total Cost of Owning a Mess&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#what-is-clean-code&quot; id=&quot;markdown-toc-what-is-clean-code&quot;&gt;What Is Clean Code?&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#we-are-authors&quot; id=&quot;markdown-toc-we-are-authors&quot;&gt;We Are Authors&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#the-boy-scout-rule&quot; id=&quot;markdown-toc-the-boy-scout-rule&quot;&gt;The Boy Scout Rule&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-clean-code-answers-from-experts&quot; id=&quot;markdown-toc-what-is-clean-code-answers-from-experts&quot;&gt;What Is Clean Code? (Answers from experts)&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#prequel-and-principles&quot; id=&quot;markdown-toc-prequel-and-principles&quot;&gt;Prequel and Principles&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#meaningful-names&quot; id=&quot;markdown-toc-meaningful-names&quot;&gt;Meaningful Names&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#use-intention-revealing-names&quot; id=&quot;markdown-toc-use-intention-revealing-names&quot;&gt;Use Intention-Revealing Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#avoid-disinformation&quot; id=&quot;markdown-toc-avoid-disinformation&quot;&gt;Avoid Disinformation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#make-meaningful-distinctions&quot; id=&quot;markdown-toc-make-meaningful-distinctions&quot;&gt;Make Meaningful Distinctions&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#use-pronounceable-names&quot; id=&quot;markdown-toc-use-pronounceable-names&quot;&gt;Use Pronounceable Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#use-searchable-names&quot; id=&quot;markdown-toc-use-searchable-names&quot;&gt;Use Searchable Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#avoid-encodings&quot; id=&quot;markdown-toc-avoid-encodings&quot;&gt;Avoid Encodings&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#avoid-mental-mapping&quot; id=&quot;markdown-toc-avoid-mental-mapping&quot;&gt;Avoid Mental Mapping&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#class-names&quot; id=&quot;markdown-toc-class-names&quot;&gt;Class Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#method-names&quot; id=&quot;markdown-toc-method-names&quot;&gt;Method Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dont-be-cute&quot; id=&quot;markdown-toc-dont-be-cute&quot;&gt;Don’t Be Cute&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#pick-one-word-per-concept&quot; id=&quot;markdown-toc-pick-one-word-per-concept&quot;&gt;Pick One Word per Concept&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#use-solution-domain-names&quot; id=&quot;markdown-toc-use-solution-domain-names&quot;&gt;Use Solution Domain Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#use-problem-domain-names&quot; id=&quot;markdown-toc-use-problem-domain-names&quot;&gt;Use Problem Domain Names&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#add-meaningful-context&quot; id=&quot;markdown-toc-add-meaningful-context&quot;&gt;Add Meaningful Context&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dont-add-gratuitous-context&quot; id=&quot;markdown-toc-dont-add-gratuitous-context&quot;&gt;Don’t Add Gratuitous Context&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#meaningful-names&quot; id=&quot;markdown-toc-meaningful-names&quot;&gt;Meaningful Names&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#functions&quot; id=&quot;markdown-toc-functions&quot;&gt;Functions&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#small&quot; id=&quot;markdown-toc-small&quot;&gt;Small!&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#do-one-thing&quot; id=&quot;markdown-toc-do-one-thing&quot;&gt;Do One Thing&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#sections-within-functions&quot; id=&quot;markdown-toc-sections-within-functions&quot;&gt;Sections within Functions&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#one--level-of-abstraction-per-function&quot; id=&quot;markdown-toc-one--level-of-abstraction-per-function&quot;&gt;One  Level of Abstraction per Function&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#do-one-thing&quot; id=&quot;markdown-toc-do-one-thing&quot;&gt;Do One Thing&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#use-descriptive-names&quot; id=&quot;markdown-toc-use-descriptive-names&quot;&gt;Use Descriptive Names&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#function-arguments&quot; id=&quot;markdown-toc-function-arguments&quot;&gt;Function Arguments&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#common-monadic-forms&quot; id=&quot;markdown-toc-common-monadic-forms&quot;&gt;Common Monadic Forms&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#output-arguments&quot; id=&quot;markdown-toc-output-arguments&quot;&gt;Output Arguments&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#flag-arguments&quot; id=&quot;markdown-toc-flag-arguments&quot;&gt;Flag Arguments&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#argument-objects&quot; id=&quot;markdown-toc-argument-objects&quot;&gt;Argument Objects&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#verbs-and-keywords&quot; id=&quot;markdown-toc-verbs-and-keywords&quot;&gt;Verbs and Keywords&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#have-no-side-effects&quot; id=&quot;markdown-toc-have-no-side-effects&quot;&gt;Have No Side Effects&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#output-arguments&quot; id=&quot;markdown-toc-output-arguments&quot;&gt;Output Arguments&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#command-query-separation&quot; id=&quot;markdown-toc-command-query-separation&quot;&gt;Command Query Separation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#prefer-exceptions-to-returning-error-codes&quot; id=&quot;markdown-toc-prefer-exceptions-to-returning-error-codes&quot;&gt;Prefer Exceptions to Returning Error Codes&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#extract-trycatch-blocks&quot; id=&quot;markdown-toc-extract-trycatch-blocks&quot;&gt;Extract Try/Catch Blocks&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#error-handling-is-one-thing&quot; id=&quot;markdown-toc-error-handling-is-one-thing&quot;&gt;Error Handling Is One Thing&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dont-repeat-yourself&quot; id=&quot;markdown-toc-dont-repeat-yourself&quot;&gt;Don’t Repeat Yourself&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#how-do-you-write-functions-like-this&quot; id=&quot;markdown-toc-how-do-you-write-functions-like-this&quot;&gt;How Do You Write Functions Like This?&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#have-no-side-effects&quot; id=&quot;markdown-toc-have-no-side-effects&quot;&gt;Have No Side Effects&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#commandquery-separation&quot; id=&quot;markdown-toc-commandquery-separation&quot;&gt;Command/Query Separation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#prefer-exceptions-to-returning-error-codes&quot; id=&quot;markdown-toc-prefer-exceptions-to-returning-error-codes&quot;&gt;Prefer Exceptions to Returning Error Codes&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#comments&quot; id=&quot;markdown-toc-comments&quot;&gt;Comments&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#good-comments&quot; id=&quot;markdown-toc-good-comments&quot;&gt;Good Comments&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#bad-comments&quot; id=&quot;markdown-toc-bad-comments&quot;&gt;Bad Comments&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#formatting&quot; id=&quot;markdown-toc-formatting&quot;&gt;Formatting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;clean-code&quot;&gt;Clean Code&lt;/h1&gt;
 
-&lt;h2 id=&quot;there-will-be-code&quot;&gt;There Will Be Code&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;code is really the language in which we ultimately express the requirements.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;the-total-cost-of-owning-a-mess&quot;&gt;The Total Cost of Owning a Mess&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;The managers and marketers look to us for the information they need to make promises and commitments; end even when they don’t look to us, we should not be shy about telling them what we think.&lt;/li&gt;
+  &lt;li&gt;Code is really the language in which we ultimately express the requirements.&lt;/li&gt;
   &lt;li&gt;It is unprofessional for programmers to bend to the will of managers who don’t understand the risks of making messes.&lt;/li&gt;
+  &lt;li&gt;We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.&lt;/li&gt;
+  &lt;li&gt;The Boy Scout rule: &lt;em&gt;Leave the campground cleaner than you found it.&lt;/em&gt;  Isn’t continuous improvement an intrinsic part of professionalism?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;what-is-clean-code&quot;&gt;What Is Clean Code?&lt;/h2&gt;
+&lt;h2 id=&quot;what-is-clean-code-answers-from-experts&quot;&gt;What Is Clean Code? (Answers from experts)&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Bad code temps the mess to grow! When others change bad code; they tend to make it worse.&lt;/li&gt;
-  &lt;li&gt;Clean code is focuses. Each function, each class, each module exposes a single-minded attitude that remains entirely undistracted, and unpolluted, by the surrounding details.&lt;/li&gt;
-  &lt;li&gt;Clean code can be read, and enahnced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone.&lt;/li&gt;
+  &lt;li&gt;Clean code is focused. Each function, each class, each module exposes a single-minded attitude that remains entirely undistracted, and unpolluted, by the surrounding details.&lt;/li&gt;
+  &lt;li&gt;Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone.&lt;/li&gt;
   &lt;li&gt;Runs all the tests; Contains no duplications; Expresses all the design ideas that are in the system; Minimizes the number of entities such as classes, methods, functions, and the like.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;we-are-authors&quot;&gt;We Are Authors&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;the-boy-scout-rule&quot;&gt;The Boy Scout Rule&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Leave the campground cleaner than you found it&lt;/li&gt;
-  &lt;li&gt;Isn’t continuous improvement an intrinsic part of professionalism?&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;prequel-and-principles&quot;&gt;Prequel and Principles&lt;/h2&gt;
 &lt;ul&gt;
+  &lt;li&gt;Prequel: Agile Principles Patterns and Practices in C++&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Single Responsibility Principle&lt;/strong&gt;: every module, class or a function should have responsibility over a single part of that program’s functionality and it should encapsulate that part.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Open Closed Principle&lt;/strong&gt;: software entities (modules, classes, functions) should be open for extension but closed for modification.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Dependency Inversion Principle&lt;/strong&gt;: a) High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). b) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.&lt;/li&gt;
@@ -114,90 +73,60 @@
 
 &lt;h1 id=&quot;meaningful-names&quot;&gt;Meaningful Names&lt;/h1&gt;
 
-&lt;h2 id=&quot;use-intention-revealing-names&quot;&gt;Use Intention-Revealing Names&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Choosing good names takes time but saves more time than it takes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;avoid-disinformation&quot;&gt;Avoid Disinformation&lt;/h2&gt;
-
-&lt;h2 id=&quot;make-meaningful-distinctions&quot;&gt;Make Meaningful Distinctions&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;It is not sufficient to add number series or noise words, even though the compiler is satisfied. If names must be different, then they should also mean something different.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;use-pronounceable-names&quot;&gt;Use Pronounceable Names&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Intelligent conversion is now possible.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;use-searchable-names&quot;&gt;Use Searchable Names&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Single-letter names and numeric constants have a particular problem that they are not easy to locate across a body of text.&lt;/li&gt;
-  &lt;li&gt;The length of a name should correspond to the size of its scope.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;avoid-encodings&quot;&gt;Avoid Encodings&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Hungarian Notation&lt;/li&gt;
-  &lt;li&gt;Member Prefixes&lt;/li&gt;
-  &lt;li&gt;I prefer to leave interfaces unadorned.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;avoid-mental-mapping&quot;&gt;Avoid Mental Mapping&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;One difference between a smart programmer and a professional programmer is that the professional understands that clarity is king.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;class-names&quot;&gt;Class Names&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Nouns or noun phrase. Avoid names like Manager, Data, Professor, Info in the name of the class.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;method-names&quot;&gt;Method Names&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Verbs or verb phrase. Accessors, mutators, predicates should have &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt;&lt;/code&gt; prefix.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;dont-be-cute&quot;&gt;Don’t Be Cute&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Don’t tell little culture-dependant jokes.&lt;/li&gt;
-  &lt;li&gt;Say what you mean. Mean what you say.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;pick-one-word-per-concept&quot;&gt;Pick One Word per Concept&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Using the same term for two different ideas is essentially a pun.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;use-solution-domain-names&quot;&gt;Use Solution Domain Names&lt;/h2&gt;
-&lt;h2 id=&quot;use-problem-domain-names&quot;&gt;Use Problem Domain Names&lt;/h2&gt;
-&lt;h2 id=&quot;add-meaningful-context&quot;&gt;Add Meaningful Context&lt;/h2&gt;
-
-&lt;h2 id=&quot;dont-add-gratuitous-context&quot;&gt;Don’t Add Gratuitous Context&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Short names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.&lt;/li&gt;
+  &lt;li&gt;Use Intention-Revealing Names. Choosing good names takes time but saves more time than it takes.&lt;/li&gt;
+  &lt;li&gt;Avoid Disinformation&lt;/li&gt;
+  &lt;li&gt;Meaningful Distinctions. It is not sufficient to add number series or noise words, even though the compiler is satisfied. If names must be different, then they should also mean something different.&lt;/li&gt;
+  &lt;li&gt;Use Pronounceable Names. Intelligent conversion is now possible.&lt;/li&gt;
+  &lt;li&gt;Use Searchable Names.
+    &lt;ul&gt;
+      &lt;li&gt;Single-letter names and numeric constants have a particular problem that they are not easy to locate across a body of text.&lt;/li&gt;
+      &lt;li&gt;The length of a name should correspond to the size of its scope.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Avoid Encodings
+    &lt;ul&gt;
+      &lt;li&gt;Hungarian Notation&lt;/li&gt;
+      &lt;li&gt;Member Prefixes&lt;/li&gt;
+      &lt;li&gt;I prefer to leave interfaces unadorned (no &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;/code&gt; prefix).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Avoid Mental Mapping. One difference between a smart programmer and a professional programmer is that the professional understands that clarity is king.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Class Names: nouns or noun phrase. Avoid names like Manager, Data, Professor, Info in the name of the class.&lt;/li&gt;
+  &lt;li&gt;Method Names: verbs or verb phrase. Accessors, mutators, predicates should have &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt;&lt;/code&gt; prefix.&lt;/li&gt;
+  &lt;li&gt;Don’t Be Cute
+    &lt;ul&gt;
+      &lt;li&gt;Don’t tell little culture-dependant jokes.&lt;/li&gt;
+      &lt;li&gt;Say what you mean. Mean what you say.&lt;/li&gt;
+      &lt;li&gt;Pick One Word per Concept. Using the same term for two different ideas is essentially a pun.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;functions&quot;&gt;Functions&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Duplication may be the root of all evil in software.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Writing clean software is like any other kind of writing. When you write a paper or an article you get your thoughts down first, then you massage it until it reads well.&lt;/li&gt;
+  &lt;li&gt;Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming languages to construct a much richer and more expressive language that can be used to tell that story.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Your real goal is to tell the story of the system.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;small&quot;&gt;Small!&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Functions should not be 100 lines long. Functions should be hardly ever 20 lines long.&lt;/li&gt;
-  &lt;li&gt;Every function in this program was just two, or three, or four lines long. Each was transparently obvious. Each told a story. And each led you to the next in a compelling order.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Every function in this program was just two, or three, or four lines long. Each was transparently obvious. Each told a story. And each led you to the next in a compelling order.&lt;/em&gt;&lt;/li&gt;
   &lt;li&gt;The blocks within if, else, while etc. statements should be one line long.&lt;/li&gt;
   &lt;li&gt;The indent level of a function should not be greater than one or two.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;do-one-thing&quot;&gt;Do One Thing&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;fUNCTIONS SHOULD DO ONE THING. tHEY SHOULD DO IT WELL. tHEY SHOULD DO IT ONLY.&lt;/li&gt;
-  &lt;li&gt;The reason we write functions is to decompose a larger concept (in other words, the name of the function) into a set of steps at the next level of abstraction.
-    &lt;h3 id=&quot;sections-within-functions&quot;&gt;Sections within Functions&lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;li&gt;This is an obvious symptom of doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.&lt;/li&gt;
+  &lt;li&gt;FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.&lt;/li&gt;
+  &lt;li&gt;Sections within Functions: This is an obvious symptom of doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.&lt;/li&gt;
+  &lt;li&gt;One  Level of Abstraction per Function&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h2 id=&quot;one--level-of-abstraction-per-function&quot;&gt;One  Level of Abstraction per Function&lt;/h2&gt;
 
 &lt;h2 id=&quot;use-descriptive-names&quot;&gt;Use Descriptive Names&lt;/h2&gt;
 &lt;ul&gt;
@@ -210,12 +139,14 @@
   &lt;li&gt;The ideal number of argument for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification - and then shouldn’t be used anyway.&lt;/li&gt;
   &lt;li&gt;Argument are hard. They take a lot of conceptual power.&lt;/li&gt;
   &lt;li&gt;Arguments are even harder from a testing point of view. If there are no arguments, this is trivial. If there’s one argument it’s not too hard.&lt;/li&gt;
-  &lt;li&gt;Output arguments are harder to understand than input arguments.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;assertEquals&lt;/span&gt;&lt;/code&gt; might be better written as &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;assertExpectedEqualsActual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;actual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;. This strongly mitigates the problem of having to remember the ordering of the arguments.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;common-monadic-forms&quot;&gt;Common Monadic Forms&lt;/h3&gt;
+&lt;h3 id=&quot;output-arguments&quot;&gt;Output Arguments&lt;/h3&gt;
 &lt;ul&gt;
+  &lt;li&gt;Are harder to understand than input arguments.&lt;/li&gt;
   &lt;li&gt;Using an output argument instead of a return value for a transformation is confusing. If a function is going to transform its input argument, then the transformation should appear as the return value.&lt;/li&gt;
+  &lt;li&gt;In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object (use OOP).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;flag-arguments&quot;&gt;Flag Arguments&lt;/h3&gt;
@@ -228,53 +159,72 @@
   &lt;li&gt;Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. Likely it is a part of a concept that deserves a name of its own.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;verbs-and-keywords&quot;&gt;Verbs and Keywords&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;assertEquals&lt;/span&gt;&lt;/code&gt; might be better written as &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;assertExpectedEqualsActual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;actual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;. This strongly mitigates the problem of having to remember the ordering of the arguments.&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;h2 id=&quot;have-no-side-effects&quot;&gt;Have No Side Effects&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Side effects are lies. Your function promises to do one thing, but it also does another hidden thing.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;output-arguments&quot;&gt;Output Arguments&lt;/h3&gt;
-&lt;ul&gt;
   &lt;li&gt;Anything that forces you to check the function signature is equivalent to a double-take. It’s a cognitive break and should be avoided.&lt;/li&gt;
-  &lt;li&gt;In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;command-query-separation&quot;&gt;Command Query Separation&lt;/h2&gt;
+&lt;h2 id=&quot;commandquery-separation&quot;&gt;Command/Query Separation&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Functions should either do something or answer something, but not both.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;prefer-exceptions-to-returning-error-codes&quot;&gt;Prefer Exceptions to Returning Error Codes&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Returning error codes from command function is a subtle violation of command query separation.
-    &lt;h3 id=&quot;extract-trycatch-blocks&quot;&gt;Extract Try/Catch Blocks&lt;/h3&gt;
+  &lt;li&gt;Returning error codes from command function is a subtle violation of command query separation.&lt;/li&gt;
+  &lt;li&gt;Extract Try/Catch Blocks into functions of their own.&lt;/li&gt;
+  &lt;li&gt;Error Handling Is One Thing. Functions should do one thing. Thus, a function that handles errors should do nothing else. This implies that if the keyword &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;/code&gt; exists in a function, it should be the very first word in the function and that there should be nothing after the &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt;&lt;/code&gt; blocks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;comments&quot;&gt;Comments&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Don’t commend bad code - rewrite it.&lt;/li&gt;
+  &lt;li&gt;The older a comment, and the farther away it is from the code it describes, the more likely it is to be just plain wrong. Programmers cant realistically maintain them.&lt;/li&gt;
+  &lt;li&gt;Inaccurate comments are far worse than no comments at all.&lt;/li&gt;
+  &lt;li&gt;Comments do not make up for bad code. “Ooh, I’d better comment that!” No! You’d better clean it!&lt;/li&gt;
+  &lt;li&gt;Explain yourself in code:
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Check&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;see&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eligible&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;benefits&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOURLY_FLAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;vs.&lt;/p&gt;
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;employee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isEligibleForFullBenefits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h2 id=&quot;good-comments&quot;&gt;Good Comments&lt;/h2&gt;
   &lt;/li&gt;
-  &lt;li&gt;into functions of their own.
-    &lt;h3 id=&quot;error-handling-is-one-thing&quot;&gt;Error Handling Is One Thing&lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Functions should do one thing. Error handling is one thing. Thus, a function that handles errors should do nothing else. This implies that if the keyword &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;/code&gt; exists in a function, it should be the very first word in the function and that there should be nothing after the &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt;&lt;/code&gt; blocks.&lt;/li&gt;
+  &lt;li&gt;Legal Comments&lt;/li&gt;
+  &lt;li&gt;Informative Comments&lt;/li&gt;
+  &lt;li&gt;Explanation of intent&lt;/li&gt;
+  &lt;li&gt;Clarification. Before writing, take care there is no better way and then take even more care that they are accurate.&lt;/li&gt;
+  &lt;li&gt;Warning of Consequences&lt;/li&gt;
+  &lt;li&gt;TODO comments. This should not be an excuse to leave bad code in the system.&lt;/li&gt;
+  &lt;li&gt;Amplifications. Javadocs can be just as misleading, nonlocal, and dishonest as any other kind of comment.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;dont-repeat-yourself&quot;&gt;Don’t Repeat Yourself&lt;/h2&gt;
+&lt;h2 id=&quot;bad-comments&quot;&gt;Bad Comments&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Duplication may be the root of all evil in software.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Mumbling&lt;/li&gt;
+  &lt;li&gt;Redundant Comments&lt;/li&gt;
+  &lt;li&gt;Misleading Comments&lt;/li&gt;
+  &lt;li&gt;Mandated Comments. It’s plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment.&lt;/li&gt;
+  &lt;li&gt;Journal Comments (see Tanzer’s code).&lt;/li&gt;
+  &lt;li&gt;Noise Comments&lt;/li&gt;
+  &lt;li&gt;Don’t use a comment when you can use a function or a variable.&lt;/li&gt;
+  &lt;li&gt;Position Markers&lt;/li&gt;
+  &lt;li&gt;Closing Brace Comments. Try to shorten your function instead.&lt;/li&gt;
+  &lt;li&gt;Attributions and bylines&lt;/li&gt;
+  &lt;li&gt;Commented-Out code&lt;/li&gt;
+  &lt;li&gt;HTML Comments. It should be the responsibility of the tool that generates HTML documentation to transform them.&lt;/li&gt;
+  &lt;li&gt;Nonlocal information.&lt;/li&gt;
+  &lt;li&gt;Too much information. Don’t put interesting historical discussions or irrelevant descriptions of details into your comments.&lt;/li&gt;
+  &lt;li&gt;Inobvious Connection&lt;/li&gt;
+  &lt;li&gt;Function headers&lt;/li&gt;
+  &lt;li&gt;Javadocs in nonpublic code&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;how-do-you-write-functions-like-this&quot;&gt;How Do You Write Functions Like This?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Writing software is like any other kind of writing. When you write a paper or an article you get your thoughts down first, then you massage it until it reads well.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Master programmers thing of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming languages to construct a much richer and more expressive language that can be used to tell that story.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Your real goal is to tell the story of the system.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;formatting&quot;&gt;Formatting&lt;/h1&gt;
 
 &lt;!--
     vim:spell spelllang=en
@@ -292,7 +242,8 @@
       <item>
         <title>Dakshinamurti Stotra</title>
         <description>&lt;p&gt;&lt;a href=&quot;https://vedantastudents.com/wp-content/uploads/2018/10/01-Dakshinamurthy-Stotram.pdf&quot;&gt;Summary&lt;/a&gt;,&lt;br /&gt;
-&lt;a href=&quot;https://greenmesg.org/stotras/shiva/dakshinamurthy_stotram.php&quot;&gt;Text and translation&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://greenmesg.org/stotras/shiva/dakshinamurthy_stotram.php&quot;&gt;Text and translation&lt;/a&gt;,&lt;br /&gt;
+&lt;a href=&quot;https://www.bhagavadgitausa.com/DAKSHINAMURTIi.htm&quot;&gt;BGUSA/dakshinamurti&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Table of contents:&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -526,6 +477,32 @@
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;dms-10---verse--4-and-5&quot;&gt;DMS-10 =  Verse- 4 and 5&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Atma is available as the first person singular.&lt;/li&gt;
+  &lt;li&gt;In deep sleep it is not that consciousness dies out but the mind and sense organs go to relaxation and apertures of the pot get closed. Candle continues to burn but doesn’t server as an illuminator of the external world. Subject/object division is not there.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Subject is not revealed because of the process of cognition. Subject is self-evident.&lt;/strong&gt; No thinking, no inference required to know that you were. Yet you need the process of cognition to say that for one hour you’re listening to swamiji. janami: jana refers to revelation of the object, ami refers to the subject.&lt;/li&gt;
+  &lt;li&gt;svayam prakasha vichara - enquiry into the self-evident nature of atma.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;If subject for its revelation would require another subject you’ll get into infinite regression problem. This problem will not come only if there is the reflexive awareness - simultaneously I’m aware of you as well as of myself as the knower subject.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;In the first four verses Shankaracarya has summarised all of Vedanta: I’m of the nature of sat cit.&lt;/li&gt;
+  &lt;li&gt;Space and time come after the Big Bang. I was there before.&lt;/li&gt;
+  &lt;li&gt;Out of me, the higher order of reality, the lower order of reality - matter - rises and falls, which phenomenon eternally continues.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;If you don’t know the truth of a dream, it is a nightmare. If you do, it is a free drama. This is the benefit of Vedanta - you can enjoy life.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ignorance is bliss. But errors are samsara.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;darshanika - philosopher.&lt;/li&gt;
+  &lt;li&gt;Biggest majority concludes that atma is the deham (thoughtless mistake).&lt;/li&gt;
+  &lt;li&gt;Carvaka, lokayatika, many modern scientists - philosophers who have concluded a thoughtful mistake.&lt;/li&gt;
+  &lt;li&gt;Some other philosophers say prana is the atma. Others say sense-organs are the atma. All command lokayatika (utter materialistic people).&lt;/li&gt;
+  &lt;li&gt;Sunyavadabudhism - coming and going consciousness cannot be permanent. Only vacum is permanent, therefore emptiness, blankness (in which the consciousness comes) is the ultimate truth.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;You cannot teach a person who wants to argue.&lt;/strong&gt; Krishna never opened the mouth through the first chapter of Gita. So Krishna observed silence. Even omnipotent god is helpless in regard with these people. Because the &lt;strong&gt;instrument which has to get the knowledge has a variety of (intellectual) deficiencies:&lt;/strong&gt;
+    &lt;ol&gt;
+      &lt;li&gt;(strI) emotional personality dominating the rational personality. Emotions make us human beings, but they should never overpower thinking. Emotional mind wants relationships. That’s why &lt;strong&gt;sanyasa is prescribed because it requires a tremendous strength not to require relationships.&lt;/strong&gt; A weak mind requires relationships. And since all worldly relationships are a problem it wants to have a divine relationship in the form a Krishna, Rama etc. And it wants to cry, talk … continue another type of samsara in the form of religion and philosophy. Talk about an non-personal god to such a mind… &lt;strong&gt;Most of the people are afraid of advaitam, because there is no scope of relationships.&lt;/strong&gt; Unreleased intellect - one that is hostage of emotions - cannot understand aham brahma asmi. I don’t want to be sugar, I want to enjoy sugar.&lt;/li&gt;
+      &lt;li&gt;(bAla) immature, undeveloped intellect. Which does not have sadhana chatustaya sampati.&lt;/li&gt;
+      &lt;li&gt;(andha - blind) &lt;strong&gt;intellect however great it is can never graps the teaching if it is not aided by shastra.&lt;/strong&gt; Different objects of knowledge require different instruments to enhance your power of perception. Thinking that I can see the smallest bacteria with plain eyes is foolishness. If I want to see myself I need to take the sastra of mirror. Our greatness will not decrease. Dayananda: intelligence is taking help when needed.&lt;/li&gt;
+      &lt;li&gt;(jada) retarded intellect incapable of growth. Obstructed intellect.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&quot;dms-11---verse--5-and-6&quot;&gt;DMS-11 =  Verse- 5 and 6&lt;/h1&gt;
 &lt;h1 id=&quot;dms-12---verse--6&quot;&gt;DMS-12 =  Verse- 6&lt;/h1&gt;
 &lt;h1 id=&quot;dms-13---verse--7-and-8&quot;&gt;DMS-13 =  Verse- 7 and 8&lt;/h1&gt;
@@ -616,7 +593,7 @@
       </item>
     
       <item>
-        <title>kubernetes</title>
+        <title>Kubernetes</title>
         <description>&lt;p&gt;Table of contents:&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#install-and-deploy&quot; id=&quot;markdown-toc-install-and-deploy&quot;&gt;Install and Deploy&lt;/a&gt;&lt;/li&gt;
