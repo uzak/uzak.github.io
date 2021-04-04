@@ -62,7 +62,21 @@
       <li><a href="#bad-comments" id="markdown-toc-bad-comments">Bad Comments</a></li>
     </ul>
   </li>
-  <li><a href="#formatting" id="markdown-toc-formatting">Formatting</a></li>
+  <li>
+<a href="#formatting" id="markdown-toc-formatting">Formatting</a>    <ul>
+      <li><a href="#vertical-formatting" id="markdown-toc-vertical-formatting">Vertical Formatting</a></li>
+    </ul>
+  </li>
+  <li><a href="#horizontal-formatting" id="markdown-toc-horizontal-formatting">Horizontal Formatting</a></li>
+  <li>
+<a href="#objects-and-data-structures" id="markdown-toc-objects-and-data-structures">Objects and Data Structures</a>    <ul>
+      <li><a href="#dataobject-anti-symmetry" id="markdown-toc-dataobject-anti-symmetry">Data/Object Anti-Symmetry</a></li>
+      <li><a href="#law-of-demeteter" id="markdown-toc-law-of-demeteter">Law of Demeteter</a></li>
+      <li><a href="#data-transfer-objects" id="markdown-toc-data-transfer-objects">Data Transfer Objects</a></li>
+    </ul>
+  </li>
+  <li><a href="#error-handling" id="markdown-toc-error-handling">Error Handling</a></li>
+  <li><a href="#boundaries" id="markdown-toc-boundaries">Boundaries</a></li>
 </ul>
 
 <h1 id="clean-code">Clean Code</h1>
@@ -250,6 +264,79 @@
 </ul>
 
 <h1 id="formatting">Formatting</h1>
+<ul>
+  <li>Team should agree on a single set of formatting rules and all members should comply.</li>
+  <li>Have an automated tool that apply those formatting rules for you</li>
+  <li>Code formatting is about communication and communication is the professional developer’s first order of business.</li>
+</ul>
+
+<h2 id="vertical-formatting">Vertical Formatting</h2>
+<ul>
+  <li>Small files are usually easier to understand than large files.</li>
+  <li>Vertical openness between concepts &lt;-&gt; vertical density.</li>
+  <li>Closely related concepts should be kept vertically close to each other.</li>
+  <li>Variable declarations should be declared as close to their usage as possible. Because our functions are very short, local variables should appear at the top of each function.</li>
+  <li>If one function calls another, they should be vertically close and the caller should be above the callee, if possible.</li>
+</ul>
+
+<h1 id="horizontal-formatting">Horizontal Formatting</h1>
+<ul>
+  <li>keep lines short. 100 or 120 chars. Beyond that it is probably just careless.</li>
+  <li>use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related.</li>
+  <li>Horizontal alignment (see Tanzer) is not useful. It seems to emphasize the wrong things and may lead away the eye from the true intent.</li>
+  <li>If we have a long list that needs to be aligned the problem is the length of the list, not the lack of alignment.</li>
+  <li>Avoid collapsing scopes down to one line (if, while … in C/Java).</li>
+  <li>Good software system is composed of a set of documents that read nicely. They need to have a consistent and smooth style.</li>
+</ul>
+
+<h1 id="objects-and-data-structures">Objects and Data Structures</h1>
+<ul>
+  <li>There’s a reason that we keep our variables private. We don’t want anyone else to depend on them.</li>
+  <li>Hiding implementation is about abstractions. We do not want to expose the details of our data. Rather we want to express our data in abstract terms.</li>
+  <li>Serious thought needs to be put into the best way to represent the data an object contains. The worst option is to blithely add getters and setters.</li>
+</ul>
+
+<h2 id="dataobject-anti-symmetry">Data/Object Anti-Symmetry</h2>
+<ul>
+  <li>Objects hide their data behind abstractions and expose functions that operate on that data. Data structures expose their data and have no meaningful functions.</li>
+  <li>OOP makes it easy to to add new classes without changing existing functions. Procedural code makes it easy to add new functions without changing existing data structures.</li>
+  <li>Understand this and choose the approach that is best for the job at hand.</li>
+</ul>
+
+<h2 id="law-of-demeteter">Law of Demeteter</h2>
+<ul>
+  <li>module should not know about the innards of the objects it manipulates.</li>
+  <li>Train Wrecks (<code class="language-python highlighter-rouge"><span class="n">a</span><span class="p">().</span><span class="n">b</span><span class="p">().</span><span class="n">c</span><span class="p">()</span></code>): whether this is a violation of the Law of Demeter depends whether the internal structure should be hidden or exposed. If <code class="language-python highlighter-rouge"><span class="n">a</span></code>, <code class="language-python highlighter-rouge"><span class="n">b</span></code>, <code class="language-python highlighter-rouge"><span class="n">c</span></code>, are just structures with no behaviour, Law of Demeter doesn’t apply.</li>
+  <li>Hybrids make it had to add new functions but also make it hard to add new data structures. Avoid creating them.</li>
+  <li>Hiding structure: If <code class="language-python highlighter-rouge"><span class="n">ctxt</span></code> is an object, we should be telling it to do something; we should be be asking it about its internals.</li>
+</ul>
+
+<h2 id="data-transfer-objects">Data Transfer Objects</h2>
+<ul>
+  <li>DTO is a class with public variables and no functions</li>
+  <li>Beans have private variables and are accessed by getters/setters. The quasi-encapsulation provides no benefit.</li>
+  <li>Active Records are a special form of DTO with some navigational methods like <code class="language-python highlighter-rouge"><span class="n">save</span></code> and <code class="language-python highlighter-rouge"><span class="n">find</span></code>. Don’t put business logic in them (it creates a hybrid), treat an Active Record as a data structure and create objects that contain the business rules and hide their internal data (probably just instances of the Active Record).</li>
+</ul>
+
+<h1 id="error-handling">Error Handling</h1>
+<ul>
+  <li>Error handling is important, but if it obscures logic, it’s wrong.</li>
+  <li>Separate differed concerns, algorithm for … and error handling.</li>
+  <li>It’s good practice to start with a try-catch-finally when you’re writing code that could throw exceptions. <code class="language-python highlighter-rouge"><span class="k">try</span></code> blocks are like transactions; <code class="language-python highlighter-rouge"><span class="n">catch</span></code> leaves the program in consistent state.</li>
+  <li>Write tests that force exceptions, then add behaviour to your handler to satisfy your tests.</li>
+  <li>Use unchecked exceptions. The price of checked exceptions is Open/Closed Principle violation.</li>
+  <li>Provide context with exceptions - a stack trace can’t tell the intent of the operation that failed.</li>
+  <li>Wrap 3rd party APIs, incl. custom exception structure.</li>
+  <li>Don’t return null. when we do, we’re essentially creating work for ourselves and foisting problems upon our callers.</li>
+  <li>Don’t pass null: returning null from methods is bad, passing null into methods is worse. In most programing languages there is no good way to deal with a null that is passed by a caller incidentally. Therefore, the rational approach is to forbid passing null by default.</li>
+</ul>
+
+<h1 id="boundaries">Boundaries</h1>
+<ul>
+  <li>Do not pass <code class="language-python highlighter-rouge"><span class="n">Map</span></code>s (or any other interface at a boundary) around your system. Wrap them.</li>
+  <li>Learnings tests - to check our understanding for new APIs. They are free (we need to learn the API anyway) and they allow us to check if the 3rd party packages are working as expected on new releases.</li>
+  <li>Good SW design accommodate change without huge investment and rework. We should avoid letting too much of our code know about the third party particulars. It is better to depends on something you control than on something you don’t control, lest it end up controlling you.</li>
+</ul>
 
 <!--
     vim:spell spelllang=en
