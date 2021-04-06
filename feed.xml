@@ -6,8 +6,8 @@
 </description>
     <link>https://uzak.github.io/</link>
     <atom:link href="https://uzak.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 05 Apr 2021 07:05:58 +0200</pubDate>
-    <lastBuildDate>Mon, 05 Apr 2021 07:05:58 +0200</lastBuildDate>
+    <pubDate>Tue, 06 Apr 2021 06:32:14 +0200</pubDate>
+    <lastBuildDate>Tue, 06 Apr 2021 06:32:14 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -17,7 +17,7 @@
 &lt;ul&gt;
   &lt;li&gt;Odysseus, king of Ithaca, is called to service in the Trojan War after the birth of his son Telemachus.
     &lt;ul&gt;
-      &lt;li&gt;Odysseus - Ulysses - man with the tight wound (initiation -&amp;gt; identity).&lt;/li&gt;
+      &lt;li&gt;Odysseus is Ulysses - man with the tight wound (initiation -&amp;gt; identity).&lt;/li&gt;
       &lt;li&gt;Troy - tripura
         &lt;ul&gt;
           &lt;li&gt;Priam - priya&lt;/li&gt;
@@ -26,7 +26,7 @@
           &lt;li&gt;Hector - to have, to hold; to check, to restrain&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;Telemachus - nous; logos; intellect; intuition in tuition. Will inherit the kingdom once his beard grows (he’s mature).&lt;/li&gt;
+      &lt;li&gt;Telemachus - nous; logos; intellect; intuition in tuition. He will inherit the kingdom once his beard grows (meaning he’s mature).&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Ship - body identification. Inhabited by his crew - all his mental deficiencies, vices.&lt;/li&gt;
@@ -155,6 +155,27 @@
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#error-handling&quot; id=&quot;markdown-toc-error-handling&quot;&gt;Error Handling&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#boundaries&quot; id=&quot;markdown-toc-boundaries&quot;&gt;Boundaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#unit-tests&quot; id=&quot;markdown-toc-unit-tests&quot;&gt;Unit Tests&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#keeping-tests-clean&quot; id=&quot;markdown-toc-keeping-tests-clean&quot;&gt;Keeping Tests Clean&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#clean-tests&quot; id=&quot;markdown-toc-clean-tests&quot;&gt;Clean Tests&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#domain-specific-testing-languages&quot; id=&quot;markdown-toc-domain-specific-testing-languages&quot;&gt;Domain-Specific testing languages&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#a-dual-standard&quot; id=&quot;markdown-toc-a-dual-standard&quot;&gt;A Dual Standard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#one-assert-per-test&quot; id=&quot;markdown-toc-one-assert-per-test&quot;&gt;One Assert Per Test&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#single-concept-per-test&quot; id=&quot;markdown-toc-single-concept-per-test&quot;&gt;Single Concept per Test&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#first&quot; id=&quot;markdown-toc-first&quot;&gt;F.I.R.S.T.&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#classes&quot; id=&quot;markdown-toc-classes&quot;&gt;Classes&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#small-1&quot; id=&quot;markdown-toc-small-1&quot;&gt;Small!&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#cohesion&quot; id=&quot;markdown-toc-cohesion&quot;&gt;Cohesion&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#organizing-for-change&quot; id=&quot;markdown-toc-organizing-for-change&quot;&gt;Organizing for Change&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#isolating-from-change&quot; id=&quot;markdown-toc-isolating-from-change&quot;&gt;Isolating from Change&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;clean-code&quot;&gt;Clean Code&lt;/h1&gt;
@@ -179,7 +200,7 @@
   &lt;li&gt;Prequel: Agile Principles Patterns and Practices in C++&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Single Responsibility Principle&lt;/strong&gt;: every module, class or a function should have responsibility over a single part of that program’s functionality and it should encapsulate that part.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Open Closed Principle&lt;/strong&gt;: software entities (modules, classes, functions) should be open for extension but closed for modification.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Dependency Inversion Principle&lt;/strong&gt;: a) High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). b) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Dependency Inversion Principle&lt;/strong&gt;: Classes should depend on abstractions, not on concrete details.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;meaningful-names&quot;&gt;Meaningful Names&lt;/h1&gt;
@@ -408,6 +429,83 @@
   &lt;li&gt;Do not pass &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;/code&gt;s (or any other interface at a boundary) around your system. Wrap them.&lt;/li&gt;
   &lt;li&gt;Learnings tests - to check our understanding for new APIs. They are free (we need to learn the API anyway) and they allow us to check if the 3rd party packages are working as expected on new releases.&lt;/li&gt;
   &lt;li&gt;Good SW design accommodate change without huge investment and rework. We should avoid letting too much of our code know about the third party particulars. It is better to depends on something you control than on something you don’t control, lest it end up controlling you.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;unit-tests&quot;&gt;Unit Tests&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Law 1: You may not write production code until you have written a failing unit test.&lt;/li&gt;
+  &lt;li&gt;Law 2: You may not write more of a unit test than is sufficient to fail, and not compiling is failing.&lt;/li&gt;
+  &lt;li&gt;Law 3: You may not write more production code than is sufficient to pass the currently failing test.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;keeping-tests-clean&quot;&gt;Keeping Tests Clean&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Having dirty tests is equivalent to, if not worse than, having no tests.&lt;/li&gt;
+  &lt;li&gt;Test code is just as important as production code. It is not a second-class citizen. It requires thought, design, and care. It must be kept clean as production code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;clean-tests&quot;&gt;Clean Tests&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What makes a clean test? Three things: Readability, readability, and readability. In unit tests readability is perhaps more important than it production code.&lt;/li&gt;
+  &lt;li&gt;Readability means clarity, simplicity and density of expression.&lt;/li&gt;
+  &lt;li&gt;Build-Operate-Check pattern. First part build ups the data, the second operates on that data, the third checks the operation yielded expected results.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;domain-specific-testing-languages&quot;&gt;Domain-Specific testing languages&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Rather than using the APIs of the system directly we build up a set of functions and utilities that make use of those APIs and make tests more convenient to write and easier to read. These functions and utilities become a specialized API used by the tests.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;a-dual-standard&quot;&gt;A Dual Standard&lt;/h2&gt;
+&lt;p&gt;The code within the testing API does have a different set of engineering standards than production code. It must be simple, succinct, and expressive, but it need not be as efficient as production code.&lt;/p&gt;
+
+&lt;h2 id=&quot;one-assert-per-test&quot;&gt;One Assert Per Test&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The number of asserts in a test ought to be minimized.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;single-concept-per-test&quot;&gt;Single Concept per Test&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;We want to test a single concept in each test function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;first&quot;&gt;F.I.R.S.T.&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fast - tests should be fast&lt;/li&gt;
+  &lt;li&gt;Independent - tests should not depend on each other&lt;/li&gt;
+  &lt;li&gt;Repeatable - tests should operate in any environment. You should be able to run tests in the production environment, in the QA environment, and on your laptop while riding home on train without a network. If your tests aren’t repeatable in any environment, you’ll always have an excuse for why they fail.&lt;/li&gt;
+  &lt;li&gt;Self-Validating - tests should have a boolean output. Either they pass or fail.&lt;/li&gt;
+  &lt;li&gt;Timely - unit tests should be written just before the production code that makes them pass.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;classes&quot;&gt;Classes&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;There is seldom a good reason to have a public variable.&lt;/li&gt;
+  &lt;li&gt;We like to put private utilities called by a public function right after the public function itself.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;small-1&quot;&gt;Small!&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The first rule of classes is that they should be small. The second rule of classes is that they should be smaller than that.&lt;/li&gt;
+  &lt;li&gt;Naming helps: if we cannot derive a concise name fora class, than it’s likely too large.&lt;/li&gt;
+  &lt;li&gt;Class names including weasel words like &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;Processor&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;Manager&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;Supre&lt;/span&gt;&lt;/code&gt; often hint at unfortunate aggregation of responsibilities.&lt;/li&gt;
+  &lt;li&gt;Getting software to work and making software clean are to very different activities.&lt;/li&gt;
+  &lt;li&gt;The primary goal in managing complexity is to &lt;strong&gt;organize&lt;/strong&gt; so that a developer knows where to look for things an need only understand the directly affected complexity at any given time.&lt;/li&gt;
+  &lt;li&gt;We want our system to be composed of many small classes, not a few large ones. Each small class encapsulates a single responsibility, has a single reason to change, and collaborates with a few others to achieve the desired system behaviour.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cohesion&quot;&gt;Cohesion&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Classes should have a small number of instance variables.&lt;/li&gt;
+  &lt;li&gt;Generally the more variables a method manipulates the more cohesive that method is to its class.&lt;/li&gt;
+  &lt;li&gt;Neither advisable to create a maximally cohesive classes, OTOH, we would like the cohesion to be high.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;organizing-for-change&quot;&gt;Organizing for Change&lt;/h2&gt;
+&lt;h3 id=&quot;isolating-from-change&quot;&gt;Isolating from Change&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;We want to structure out systems so that we muck with little as possible when we update with new or changed features. In an ideal system, we incorporate new features by extending the system, not by making modifications to existing code.&lt;/li&gt;
+  &lt;li&gt;The lack of coupling means that elements of our system are better isolated from each other and from change.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!--
@@ -709,6 +807,23 @@
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;dms-12---verse--6&quot;&gt;DMS-12 =  Verse- 6&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;madhyamika baudhism - sunyavada. One of the main purvapaksis of Vedanta.&lt;/li&gt;
+  &lt;li&gt;Only qualified existence is available for TX, unqualified existence is not available for TX and therefore we make a mistake that it is emptiness. Because &lt;strong&gt;we have a general misconception that whatever is not available for TX is not there&lt;/strong&gt;, like space.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;During jagrat and svapna avasta vikshepa shakti of maya is active.&lt;/strong&gt; Karma and jnana karanams (organs) are active. &lt;strong&gt;In sushupti avasta vikeshepa shakti is temporarily withdrawn and avarana shakti dominates.&lt;/strong&gt; In sushupti passive organs are there in jagrat and svapna active organs are there. When active organs are transactions go on. &lt;strong&gt;Every TX will invoke a corresponding triputi, and I become qualified, localized, individualized I,&lt;/strong&gt; e.g. seer, hearer, etc. when vikshepa shakti is functioning.&lt;/li&gt;
+  &lt;li&gt;When organs are functioning I enjoy a qualified, individualized, localized existence. &lt;strong&gt;Imagine I close my eyes and focus on hearing. Seer-I becomes non-existent. “Non-existent” is applicable only to the seer-part of the I.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Organs are responsible not for my existence but only for qualified part of my existence.&lt;/strong&gt; The adjective is given by the sense organ. The individuality is given by the sense organ. &lt;strong&gt;When all the organs stop functioning, qualifications are gone, left behind is not nothingness but attributeless, pure existence, I remain.&lt;/strong&gt; Ears can take away only the attribute of hearer, eyes of seer …&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Even knower is an attribute,&lt;/strong&gt; one of the triputi. Consciousness is not an attribute.&lt;/li&gt;
+  &lt;li&gt;TXs make a thing prominent. When TX are not there existence is not prominent. Non-prominent existence is not non-existence. E.g. space - we say “nothing” is there - because its existence is not very well prominent.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The general existence in sleep is as-though eclipsed because of the maya’s avarana shakti, because of the resolution of the organs, because of the end TX.&lt;/strong&gt; Therefore Sankaracarya compares this to the eclipsed sun and moon. Eclipsed sun is not non-existent sun. Attribute-less existence is eclipsed I.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;During susupti viksepa shakti is “swallowed” by avarana.&lt;/strong&gt; Sanmatra - kevala satta, pure existence. When I’m vishesha satta I’m prominent, when I’m samanya satta I become non-prominent, because it is not available for TX.&lt;/li&gt;
+  &lt;li&gt;Sanmatra vs. sadabhasa, citabhasa (mind prominent).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Opposites appear similar. Pure non-existence is not available for TX, pure existence is not available for TX.&lt;/strong&gt; Just like pure gold cannot be used directly for making ornaments.&lt;/li&gt;
+  &lt;li&gt;Sruti, yukti, anubhava pramanams prove the pure existence. Yukti - an existent thing can never become non-existent by the law of conservation of energy. Destruction -&amp;gt; transformation. Out of nothing only nothing comes. Existent I cannot become non-existent in sushupti.&lt;/li&gt;
+  &lt;li&gt;If the “I” was not there how can you use the word “slept”? It refers to the subject of sleep. That I who slept before that I alone am awake now. This is called recognition - appreciating the continuity of I in the sleeping state as well as waking state. &lt;strong&gt;Self-recognition is the proof for self-continuity&lt;/strong&gt;, that proves in the sleep I’m existent, it is not nothingness. Which proves that madhyamika buddhism is wrong.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;If you say that sunya is identical to pure existence than sunyavada is identical to vedanta. If this is so, why do you call it buddhism, because sunyam as pure existence has been called in the Vedas long before Buddha was born?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&quot;dms-13---verse--7-and-8&quot;&gt;DMS-13 =  Verse- 7 and 8&lt;/h1&gt;
 &lt;h1 id=&quot;dms-14---verse--8-to-10&quot;&gt;DMS-14 =  Verse- 8 to 10&lt;/h1&gt;
 &lt;h1 id=&quot;snl-01---introduction&quot;&gt;Snl-01 =  Introduction&lt;/h1&gt;

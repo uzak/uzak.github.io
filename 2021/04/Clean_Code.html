@@ -92,6 +92,27 @@
   </li>
   <li><a href="#error-handling" id="markdown-toc-error-handling">Error Handling</a></li>
   <li><a href="#boundaries" id="markdown-toc-boundaries">Boundaries</a></li>
+  <li><a href="#unit-tests" id="markdown-toc-unit-tests">Unit Tests</a>    <ul>
+      <li><a href="#keeping-tests-clean" id="markdown-toc-keeping-tests-clean">Keeping Tests Clean</a></li>
+      <li><a href="#clean-tests" id="markdown-toc-clean-tests">Clean Tests</a></li>
+      <li><a href="#domain-specific-testing-languages" id="markdown-toc-domain-specific-testing-languages">Domain-Specific testing languages</a></li>
+      <li><a href="#a-dual-standard" id="markdown-toc-a-dual-standard">A Dual Standard</a></li>
+      <li><a href="#one-assert-per-test" id="markdown-toc-one-assert-per-test">One Assert Per Test</a></li>
+      <li><a href="#single-concept-per-test" id="markdown-toc-single-concept-per-test">Single Concept per Test</a></li>
+      <li><a href="#first" id="markdown-toc-first">F.I.R.S.T.</a></li>
+    </ul>
+  </li>
+  <li><a href="#classes" id="markdown-toc-classes">Classes</a>    <ul>
+      <li><a href="#small-1" id="markdown-toc-small-1">Small!</a>        <ul>
+          <li><a href="#cohesion" id="markdown-toc-cohesion">Cohesion</a></li>
+        </ul>
+      </li>
+      <li><a href="#organizing-for-change" id="markdown-toc-organizing-for-change">Organizing for Change</a>        <ul>
+          <li><a href="#isolating-from-change" id="markdown-toc-isolating-from-change">Isolating from Change</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="clean-code">Clean Code</h1>
@@ -116,7 +137,7 @@
   <li>Prequel: Agile Principles Patterns and Practices in C++</li>
   <li><strong>Single Responsibility Principle</strong>: every module, class or a function should have responsibility over a single part of that program’s functionality and it should encapsulate that part.</li>
   <li><strong>Open Closed Principle</strong>: software entities (modules, classes, functions) should be open for extension but closed for modification.</li>
-  <li><strong>Dependency Inversion Principle</strong>: a) High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). b) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</li>
+  <li><strong>Dependency Inversion Principle</strong>: Classes should depend on abstractions, not on concrete details.</li>
 </ul>
 
 <h1 id="meaningful-names">Meaningful Names</h1>
@@ -345,6 +366,83 @@
   <li>Do not pass <code class="language-python highlighter-rouge"><span class="n">Map</span></code>s (or any other interface at a boundary) around your system. Wrap them.</li>
   <li>Learnings tests - to check our understanding for new APIs. They are free (we need to learn the API anyway) and they allow us to check if the 3rd party packages are working as expected on new releases.</li>
   <li>Good SW design accommodate change without huge investment and rework. We should avoid letting too much of our code know about the third party particulars. It is better to depends on something you control than on something you don’t control, lest it end up controlling you.</li>
+</ul>
+
+<h1 id="unit-tests">Unit Tests</h1>
+<ul>
+  <li>Law 1: You may not write production code until you have written a failing unit test.</li>
+  <li>Law 2: You may not write more of a unit test than is sufficient to fail, and not compiling is failing.</li>
+  <li>Law 3: You may not write more production code than is sufficient to pass the currently failing test.</li>
+</ul>
+
+<h2 id="keeping-tests-clean">Keeping Tests Clean</h2>
+<ul>
+  <li>Having dirty tests is equivalent to, if not worse than, having no tests.</li>
+  <li>Test code is just as important as production code. It is not a second-class citizen. It requires thought, design, and care. It must be kept clean as production code.</li>
+</ul>
+
+<h2 id="clean-tests">Clean Tests</h2>
+<ul>
+  <li>What makes a clean test? Three things: Readability, readability, and readability. In unit tests readability is perhaps more important than it production code.</li>
+  <li>Readability means clarity, simplicity and density of expression.</li>
+  <li>Build-Operate-Check pattern. First part build ups the data, the second operates on that data, the third checks the operation yielded expected results.</li>
+</ul>
+
+<h2 id="domain-specific-testing-languages">Domain-Specific testing languages</h2>
+<ul>
+  <li>Rather than using the APIs of the system directly we build up a set of functions and utilities that make use of those APIs and make tests more convenient to write and easier to read. These functions and utilities become a specialized API used by the tests.</li>
+</ul>
+
+<h2 id="a-dual-standard">A Dual Standard</h2>
+<p>The code within the testing API does have a different set of engineering standards than production code. It must be simple, succinct, and expressive, but it need not be as efficient as production code.</p>
+
+<h2 id="one-assert-per-test">One Assert Per Test</h2>
+<ul>
+  <li>The number of asserts in a test ought to be minimized.</li>
+</ul>
+
+<h2 id="single-concept-per-test">Single Concept per Test</h2>
+<ul>
+  <li>We want to test a single concept in each test function.</li>
+</ul>
+
+<h2 id="first">F.I.R.S.T.</h2>
+<ul>
+  <li>Fast - tests should be fast</li>
+  <li>Independent - tests should not depend on each other</li>
+  <li>Repeatable - tests should operate in any environment. You should be able to run tests in the production environment, in the QA environment, and on your laptop while riding home on train without a network. If your tests aren’t repeatable in any environment, you’ll always have an excuse for why they fail.</li>
+  <li>Self-Validating - tests should have a boolean output. Either they pass or fail.</li>
+  <li>Timely - unit tests should be written just before the production code that makes them pass.</li>
+</ul>
+
+<h1 id="classes">Classes</h1>
+<ul>
+  <li>There is seldom a good reason to have a public variable.</li>
+  <li>We like to put private utilities called by a public function right after the public function itself.</li>
+</ul>
+
+<h2 id="small-1">Small!</h2>
+<ul>
+  <li>The first rule of classes is that they should be small. The second rule of classes is that they should be smaller than that.</li>
+  <li>Naming helps: if we cannot derive a concise name fora class, than it’s likely too large.</li>
+  <li>Class names including weasel words like <code class="language-python highlighter-rouge"><span class="n">Processor</span></code> or <code class="language-python highlighter-rouge"><span class="n">Manager</span></code> or <code class="language-python highlighter-rouge"><span class="n">Supre</span></code> often hint at unfortunate aggregation of responsibilities.</li>
+  <li>Getting software to work and making software clean are to very different activities.</li>
+  <li>The primary goal in managing complexity is to <strong>organize</strong> so that a developer knows where to look for things an need only understand the directly affected complexity at any given time.</li>
+  <li>We want our system to be composed of many small classes, not a few large ones. Each small class encapsulates a single responsibility, has a single reason to change, and collaborates with a few others to achieve the desired system behaviour.</li>
+</ul>
+
+<h3 id="cohesion">Cohesion</h3>
+<ul>
+  <li>Classes should have a small number of instance variables.</li>
+  <li>Generally the more variables a method manipulates the more cohesive that method is to its class.</li>
+  <li>Neither advisable to create a maximally cohesive classes, OTOH, we would like the cohesion to be high.</li>
+</ul>
+
+<h2 id="organizing-for-change">Organizing for Change</h2>
+<h3 id="isolating-from-change">Isolating from Change</h3>
+<ul>
+  <li>We want to structure out systems so that we muck with little as possible when we update with new or changed features. In an ideal system, we incorporate new features by extending the system, not by making modifications to existing code.</li>
+  <li>The lack of coupling means that elements of our system are better isolated from each other and from change.</li>
 </ul>
 
 <!--
