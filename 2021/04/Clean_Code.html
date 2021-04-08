@@ -113,6 +113,37 @@
       </li>
     </ul>
   </li>
+  <li><a href="#systems" id="markdown-toc-systems">Systems</a>    <ul>
+      <li><a href="#separate-constructing-a-system-from-using-it" id="markdown-toc-separate-constructing-a-system-from-using-it">Separate Constructing a System from Using It</a>        <ul>
+          <li><a href="#separation-of-main" id="markdown-toc-separation-of-main">Separation of Main</a></li>
+          <li><a href="#factories" id="markdown-toc-factories">Factories</a></li>
+          <li><a href="#dependency-injection" id="markdown-toc-dependency-injection">Dependency Injection</a></li>
+        </ul>
+      </li>
+      <li><a href="#scaling-up" id="markdown-toc-scaling-up">Scaling Up</a></li>
+      <li><a href="#pure-java-aop-frameworks" id="markdown-toc-pure-java-aop-frameworks">Pure Java AOP Frameworks</a></li>
+      <li><a href="#optimize-decision-making" id="markdown-toc-optimize-decision-making">Optimize Decision Making</a></li>
+      <li><a href="#systems-need-domain-specific-languages" id="markdown-toc-systems-need-domain-specific-languages">Systems Need Domain-Specific Languages</a></li>
+      <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#emergence" id="markdown-toc-emergence">Emergence</a>    <ul>
+      <li><a href="#rule-1-runs-all-the-tests" id="markdown-toc-rule-1-runs-all-the-tests">Rule 1: Runs All the Tests</a></li>
+      <li><a href="#rule-2-4-refactoring" id="markdown-toc-rule-2-4-refactoring">Rule 2-4: Refactoring</a></li>
+      <li><a href="#no-duplication" id="markdown-toc-no-duplication">No Duplication</a></li>
+      <li><a href="#expressive" id="markdown-toc-expressive">Expressive</a></li>
+      <li><a href="#minimal-classes-and-methods" id="markdown-toc-minimal-classes-and-methods">Minimal Classes and Methods</a></li>
+      <li><a href="#conclusion-1" id="markdown-toc-conclusion-1">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
+      <li><a href="#why-concurrency" id="markdown-toc-why-concurrency">Why Concurrency?</a></li>
+      <li><a href="#myths-and-misconceptions" id="markdown-toc-myths-and-misconceptions">Myths and Misconceptions</a></li>
+      <li><a href="#concurrency-defense-principles" id="markdown-toc-concurrency-defense-principles">Concurrency Defense Principles</a></li>
+      <li><a href="#keep-synchronized-sections-small" id="markdown-toc-keep-synchronized-sections-small">Keep Synchronized Sections Small</a></li>
+      <li><a href="#writing-correct-shut-down-code-is-hard" id="markdown-toc-writing-correct-shut-down-code-is-hard">Writing Correct Shut-Down Code is Hard</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="clean-code">Clean Code</h1>
@@ -443,6 +474,125 @@
 <ul>
   <li>We want to structure out systems so that we muck with little as possible when we update with new or changed features. In an ideal system, we incorporate new features by extending the system, not by making modifications to existing code.</li>
   <li>The lack of coupling means that elements of our system are better isolated from each other and from change.</li>
+</ul>
+
+<h1 id="systems">Systems</h1>
+<ul>
+  <li>Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build, and test.</li>
+</ul>
+
+<h2 id="separate-constructing-a-system-from-using-it">Separate Constructing a System from Using It</h2>
+<ul>
+  <li>construction is a very different process from use.</li>
+  <li>SW systems should separate the startup process, when the application objects are constructed and the dependencies “wired” together, from the runtime logic that takes over after startup.</li>
+</ul>
+
+<h3 id="separation-of-main">Separation of Main</h3>
+<ul>
+  <li>The <code class="language-python highlighter-rouge"><span class="n">main</span></code> function builds objects necessary for the system, then passes them to the application, which simply uses them. Application has no knowledge of <code class="language-python highlighter-rouge"><span class="n">main</span></code> or the construction process. It simply expects that everything has been built properly.</li>
+</ul>
+
+<h3 id="factories">Factories</h3>
+
+<h3 id="dependency-injection">Dependency Injection</h3>
+<ul>
+  <li>Inversion of Control (IoC) moves secondary responsibilities from an object to other objects that are dedicated to that purpose, therefore supporting the <em>Single Responsibility Principle</em>.</li>
+  <li>During the construction process, the DI instantiates the required objects (usually on demand) and uses the constructor arguments or setter methods provided to wire together the dependencies.</li>
+</ul>
+
+<h2 id="scaling-up">Scaling Up</h2>
+<ul>
+  <li>It’s a myth that we can get systems “right at the first time”. Instead, we implement only today’s stories, then refactor and expand the system to implement new stories tomorrow. TDD, refactoring, clean code makes this work at the code level.</li>
+  <li>Software systems are unique compared to physical systems. Their architecture can grow incrementally, if we maintain the proper separation of concerns.</li>
+</ul>
+
+<h2 id="pure-java-aop-frameworks">Pure Java AOP Frameworks</h2>
+<ul>
+  <li>In Spring, you write your business logic as POJOs. POJOs are purely focuses on their domain. They have no dependencies on enterprise frameworks (or any other domain). They allow for truly test driving the application, without doing a Big Design Up Front.</li>
+  <li>This means we can start a SW project with a “naively simple” but nicely decoupled architecture, deliver working user stories quickly, then adding more infrastructure as we scale up.</li>
+  <li>A Good API should largely disappear fro the view most of the time, so the tam expends the majority of its creative efforts focused on the user stories being implemented. If not, then the architectural constraints will inhibit the efficient delivery of optimal value to the customer.</li>
+</ul>
+
+<h2 id="optimize-decision-making">Optimize Decision Making</h2>
+<ul>
+  <li>Postpone decisions until the last possible moment. This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.</li>
+</ul>
+
+<h2 id="systems-need-domain-specific-languages">Systems Need Domain-Specific Languages</h2>
+<ul>
+  <li>If you are implementing domain logic in the same language that a domain expert uses, there is less risk that you will incorrectly translate the domain into implementation.</li>
+  <li>Domain-Specific languages allow all levels of abstraction and all domains in the application to be expressed as POJOs, from high-level policy to low-level details.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+  <li>At all levels of abstraction, the intent should be clear.</li>
+  <li>Never forget to <strong>use the simplest thing that can possibly work.</strong></li>
+</ul>
+
+<h1 id="emergence">Emergence</h1>
+<h2 id="rule-1-runs-all-the-tests">Rule 1: Runs All the Tests</h2>
+<ul>
+  <li>tight coupling makes it difficult to write tests</li>
+  <li>OOP goal of low coupling and high cohesion. Writing tests leads to better designs.</li>
+</ul>
+
+<h2 id="rule-2-4-refactoring">Rule 2-4: Refactoring</h2>
+
+<h2 id="no-duplication">No Duplication</h2>
+<ul>
+  <li>Template-method helps</li>
+</ul>
+
+<h2 id="expressive">Expressive</h2>
+<ul>
+  <li>code should clearly express the intent of its author.</li>
+  <li>You can express yourself by choosing good names. We want to be able to hear a class or a function name and not be surprised when we discover its responsibilities.</li>
+  <li>You can also express yourself by keeping your functions and classes small. Small classes and functions are usually easy to name, easy to write, and easy to understand.</li>
+  <li>The most important way to be expressive is to try. Remember, the most likely next person to read that code will be you.</li>
+  <li>Take a little pride in your workmanship. Spend a little time with each of your functions and classes. Choose better names, split large functions into smaller functions and generally just take care of what you’ve created. Care is a precious resource.</li>
+</ul>
+
+<h2 id="minimal-classes-and-methods">Minimal Classes and Methods</h2>
+<ul>
+  <li>High class and method counts are sometimes the result of pointless dogmatism.</li>
+  <li>Our goal is to keep our overall system small while we are also keeping our functions and classes small. Remember, however, that this rule is the lowest priority of the four rules of Simple Design. So, although it is important to keep class and function count low, it’s more important to have tests, eliminate duplication, and express yourself.</li>
+</ul>
+
+<h2 id="conclusion-1">Conclusion</h2>
+<p>Is there a set of simple practices that can replace experience? Clearly not.</p>
+
+<h1 id="concurrency">Concurrency</h1>
+<ul>
+  <li>Objects are abstractions of processing. Threads are abstractions of schedule.</li>
+  <li>Writing clean concurrent program is hard - very hard.</li>
+</ul>
+
+<h2 id="why-concurrency">Why Concurrency?</h2>
+<ul>
+  <li>Decoupling strategy. It helps us decouple what gets done from when it gets done.</li>
+  <li>Decoupling what from when can dramatically improve both the throughput and structure of application.</li>
+</ul>
+
+<h2 id="myths-and-misconceptions">Myths and Misconceptions</h2>
+<ul>
+  <li>The design of a concurrent algorithm can be remarkably different from the design of single-threaded system.</li>
+  <li>Concurrency incurs some overhead, in both performance as well as writing additional code.</li>
+  <li>Concurrency bugs aren’t usually repeatable.</li>
+</ul>
+
+<h2 id="concurrency-defense-principles">Concurrency Defense Principles</h2>
+<ul>
+  <li>Keep your concurrency-related code separate from other code.</li>
+  <li>Take data encapsulation to heart; severely limit the access of any data that may be shared.</li>
+  <li>Use copies of data. Collect results from multiple threads and then merge the results in a single thread.</li>
+  <li>Partition data into independent subsets that can be operated on by independent threads, possible in different processors.</li>
+</ul>
+
+<h2 id="keep-synchronized-sections-small">Keep Synchronized Sections Small</h2>
+<h2 id="writing-correct-shut-down-code-is-hard">Writing Correct Shut-Down Code is Hard</h2>
+<ul>
+  <li>Think about shut-down early and get it working early. It’s going to take longer than you expect.</li>
 </ul>
 
 <!--

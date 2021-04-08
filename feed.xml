@@ -6,8 +6,8 @@
 </description>
     <link>https://uzak.github.io/</link>
     <atom:link href="https://uzak.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Apr 2021 06:32:14 +0200</pubDate>
-    <lastBuildDate>Tue, 06 Apr 2021 06:32:14 +0200</lastBuildDate>
+    <pubDate>Thu, 08 Apr 2021 06:28:12 +0200</pubDate>
+    <lastBuildDate>Thu, 08 Apr 2021 06:28:12 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -174,6 +174,37 @@
           &lt;li&gt;&lt;a href=&quot;#isolating-from-change&quot; id=&quot;markdown-toc-isolating-from-change&quot;&gt;Isolating from Change&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#systems&quot; id=&quot;markdown-toc-systems&quot;&gt;Systems&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#separate-constructing-a-system-from-using-it&quot; id=&quot;markdown-toc-separate-constructing-a-system-from-using-it&quot;&gt;Separate Constructing a System from Using It&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#separation-of-main&quot; id=&quot;markdown-toc-separation-of-main&quot;&gt;Separation of Main&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#factories&quot; id=&quot;markdown-toc-factories&quot;&gt;Factories&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#dependency-injection&quot; id=&quot;markdown-toc-dependency-injection&quot;&gt;Dependency Injection&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#scaling-up&quot; id=&quot;markdown-toc-scaling-up&quot;&gt;Scaling Up&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#pure-java-aop-frameworks&quot; id=&quot;markdown-toc-pure-java-aop-frameworks&quot;&gt;Pure Java AOP Frameworks&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#optimize-decision-making&quot; id=&quot;markdown-toc-optimize-decision-making&quot;&gt;Optimize Decision Making&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#systems-need-domain-specific-languages&quot; id=&quot;markdown-toc-systems-need-domain-specific-languages&quot;&gt;Systems Need Domain-Specific Languages&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#emergence&quot; id=&quot;markdown-toc-emergence&quot;&gt;Emergence&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#rule-1-runs-all-the-tests&quot; id=&quot;markdown-toc-rule-1-runs-all-the-tests&quot;&gt;Rule 1: Runs All the Tests&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#rule-2-4-refactoring&quot; id=&quot;markdown-toc-rule-2-4-refactoring&quot;&gt;Rule 2-4: Refactoring&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#no-duplication&quot; id=&quot;markdown-toc-no-duplication&quot;&gt;No Duplication&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#expressive&quot; id=&quot;markdown-toc-expressive&quot;&gt;Expressive&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#minimal-classes-and-methods&quot; id=&quot;markdown-toc-minimal-classes-and-methods&quot;&gt;Minimal Classes and Methods&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#conclusion-1&quot; id=&quot;markdown-toc-conclusion-1&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#concurrency&quot; id=&quot;markdown-toc-concurrency&quot;&gt;Concurrency&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#why-concurrency&quot; id=&quot;markdown-toc-why-concurrency&quot;&gt;Why Concurrency?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#myths-and-misconceptions&quot; id=&quot;markdown-toc-myths-and-misconceptions&quot;&gt;Myths and Misconceptions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#concurrency-defense-principles&quot; id=&quot;markdown-toc-concurrency-defense-principles&quot;&gt;Concurrency Defense Principles&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#keep-synchronized-sections-small&quot; id=&quot;markdown-toc-keep-synchronized-sections-small&quot;&gt;Keep Synchronized Sections Small&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#writing-correct-shut-down-code-is-hard&quot; id=&quot;markdown-toc-writing-correct-shut-down-code-is-hard&quot;&gt;Writing Correct Shut-Down Code is Hard&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -508,6 +539,125 @@
   &lt;li&gt;The lack of coupling means that elements of our system are better isolated from each other and from change.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h1 id=&quot;systems&quot;&gt;Systems&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build, and test.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;separate-constructing-a-system-from-using-it&quot;&gt;Separate Constructing a System from Using It&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;construction is a very different process from use.&lt;/li&gt;
+  &lt;li&gt;SW systems should separate the startup process, when the application objects are constructed and the dependencies “wired” together, from the runtime logic that takes over after startup.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;separation-of-main&quot;&gt;Separation of Main&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;/code&gt; function builds objects necessary for the system, then passes them to the application, which simply uses them. Application has no knowledge of &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;/code&gt; or the construction process. It simply expects that everything has been built properly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;factories&quot;&gt;Factories&lt;/h3&gt;
+
+&lt;h3 id=&quot;dependency-injection&quot;&gt;Dependency Injection&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Inversion of Control (IoC) moves secondary responsibilities from an object to other objects that are dedicated to that purpose, therefore supporting the &lt;em&gt;Single Responsibility Principle&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;During the construction process, the DI instantiates the required objects (usually on demand) and uses the constructor arguments or setter methods provided to wire together the dependencies.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;scaling-up&quot;&gt;Scaling Up&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;It’s a myth that we can get systems “right at the first time”. Instead, we implement only today’s stories, then refactor and expand the system to implement new stories tomorrow. TDD, refactoring, clean code makes this work at the code level.&lt;/li&gt;
+  &lt;li&gt;Software systems are unique compared to physical systems. Their architecture can grow incrementally, if we maintain the proper separation of concerns.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pure-java-aop-frameworks&quot;&gt;Pure Java AOP Frameworks&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;In Spring, you write your business logic as POJOs. POJOs are purely focuses on their domain. They have no dependencies on enterprise frameworks (or any other domain). They allow for truly test driving the application, without doing a Big Design Up Front.&lt;/li&gt;
+  &lt;li&gt;This means we can start a SW project with a “naively simple” but nicely decoupled architecture, deliver working user stories quickly, then adding more infrastructure as we scale up.&lt;/li&gt;
+  &lt;li&gt;A Good API should largely disappear fro the view most of the time, so the tam expends the majority of its creative efforts focused on the user stories being implemented. If not, then the architectural constraints will inhibit the efficient delivery of optimal value to the customer.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;optimize-decision-making&quot;&gt;Optimize Decision Making&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Postpone decisions until the last possible moment. This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;systems-need-domain-specific-languages&quot;&gt;Systems Need Domain-Specific Languages&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;If you are implementing domain logic in the same language that a domain expert uses, there is less risk that you will incorrectly translate the domain into implementation.&lt;/li&gt;
+  &lt;li&gt;Domain-Specific languages allow all levels of abstraction and all domains in the application to be expressed as POJOs, from high-level policy to low-level details.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;At all levels of abstraction, the intent should be clear.&lt;/li&gt;
+  &lt;li&gt;Never forget to &lt;strong&gt;use the simplest thing that can possibly work.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;emergence&quot;&gt;Emergence&lt;/h1&gt;
+&lt;h2 id=&quot;rule-1-runs-all-the-tests&quot;&gt;Rule 1: Runs All the Tests&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;tight coupling makes it difficult to write tests&lt;/li&gt;
+  &lt;li&gt;OOP goal of low coupling and high cohesion. Writing tests leads to better designs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;rule-2-4-refactoring&quot;&gt;Rule 2-4: Refactoring&lt;/h2&gt;
+
+&lt;h2 id=&quot;no-duplication&quot;&gt;No Duplication&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Template-method helps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;expressive&quot;&gt;Expressive&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;code should clearly express the intent of its author.&lt;/li&gt;
+  &lt;li&gt;You can express yourself by choosing good names. We want to be able to hear a class or a function name and not be surprised when we discover its responsibilities.&lt;/li&gt;
+  &lt;li&gt;You can also express yourself by keeping your functions and classes small. Small classes and functions are usually easy to name, easy to write, and easy to understand.&lt;/li&gt;
+  &lt;li&gt;The most important way to be expressive is to try. Remember, the most likely next person to read that code will be you.&lt;/li&gt;
+  &lt;li&gt;Take a little pride in your workmanship. Spend a little time with each of your functions and classes. Choose better names, split large functions into smaller functions and generally just take care of what you’ve created. Care is a precious resource.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;minimal-classes-and-methods&quot;&gt;Minimal Classes and Methods&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;High class and method counts are sometimes the result of pointless dogmatism.&lt;/li&gt;
+  &lt;li&gt;Our goal is to keep our overall system small while we are also keeping our functions and classes small. Remember, however, that this rule is the lowest priority of the four rules of Simple Design. So, although it is important to keep class and function count low, it’s more important to have tests, eliminate duplication, and express yourself.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion-1&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Is there a set of simple practices that can replace experience? Clearly not.&lt;/p&gt;
+
+&lt;h1 id=&quot;concurrency&quot;&gt;Concurrency&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Objects are abstractions of processing. Threads are abstractions of schedule.&lt;/li&gt;
+  &lt;li&gt;Writing clean concurrent program is hard - very hard.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-concurrency&quot;&gt;Why Concurrency?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Decoupling strategy. It helps us decouple what gets done from when it gets done.&lt;/li&gt;
+  &lt;li&gt;Decoupling what from when can dramatically improve both the throughput and structure of application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;myths-and-misconceptions&quot;&gt;Myths and Misconceptions&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The design of a concurrent algorithm can be remarkably different from the design of single-threaded system.&lt;/li&gt;
+  &lt;li&gt;Concurrency incurs some overhead, in both performance as well as writing additional code.&lt;/li&gt;
+  &lt;li&gt;Concurrency bugs aren’t usually repeatable.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;concurrency-defense-principles&quot;&gt;Concurrency Defense Principles&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Keep your concurrency-related code separate from other code.&lt;/li&gt;
+  &lt;li&gt;Take data encapsulation to heart; severely limit the access of any data that may be shared.&lt;/li&gt;
+  &lt;li&gt;Use copies of data. Collect results from multiple threads and then merge the results in a single thread.&lt;/li&gt;
+  &lt;li&gt;Partition data into independent subsets that can be operated on by independent threads, possible in different processors.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;keep-synchronized-sections-small&quot;&gt;Keep Synchronized Sections Small&lt;/h2&gt;
+&lt;h2 id=&quot;writing-correct-shut-down-code-is-hard&quot;&gt;Writing Correct Shut-Down Code is Hard&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Think about shut-down early and get it working early. It’s going to take longer than you expect.&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;!--
     vim:spell spelllang=en
 --&gt;
@@ -825,7 +975,51 @@
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;dms-13---verse--7-and-8&quot;&gt;DMS-13 =  Verse- 7 and 8&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Atma experience is there continuously in both waking and dream state as I’m. In sleep I’m experience is present but it is verbalized only later. Vocalization but the experience is there. &lt;strong&gt;Atma experience is continuously present for everyone all the time. Therefore atma anubhava is not a particular experience happening at a particular time. It is not a particular event in time.&lt;/strong&gt; Therefore it doesn’t require a process. An event in time requires effort/process.&lt;/li&gt;
+  &lt;li&gt;“I’m working for atma experience”. To say this indicates that one has not understood Vedanta.&lt;/li&gt;
+  &lt;li&gt;Atma is continuously present in trough discontinuous avastas (stages of life: childhood, boyhood, adulthood, old age or states of experience: waker, dreamer, sleeper).&lt;/li&gt;
+  &lt;li&gt;In sanskrit the word dasha means also avasta (state, condition).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;When I introduce myself to the other I always add an attribute relevant to the avasta. The added attributes are mutually exclusive and thus discontinuous.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The attribute-less I’m is called atma. Inclusive of the attributes “I’m” is called ahamkara.&lt;/strong&gt; Therefore &lt;strong&gt;atmajnanam is not a new experiences but it is a new perception of the ever experienced I’m.&lt;/strong&gt; The teacher has trained me in &lt;strong&gt;reclassification. Emotions are separated from I’m.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Guru does not give a new experience, guru does not ask the disciple to work for a new experience, guru teaches the student to reclassify the available experience.&lt;/li&gt;
+  &lt;li&gt;Inclusive of attributes I cannot claim I’m brahman. Exclusive I can claim. I’ve not become brahman but I’ve claimed the brahman that I was, I’m and I ever will be.&lt;/li&gt;
+  &lt;li&gt;Guru reveals by verbal and non-verbal communication (bhadraya mudraya). &lt;strong&gt;bhadra - auspicious, mudra - hand gesture. In cinmudra the teacher only reclassifies the fingers.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;The relative I is the absolute I itself when it is freed from attributes.&lt;/li&gt;
+  &lt;li&gt;Chinmayanaanda: the thumb is a Muslim I. Just say “talak” to divorce the three wifes and become the brahman.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fall of the person: from the absolute I to the empirical&lt;/strong&gt; I (atma -&amp;gt; ahamkara; turiyam -&amp;gt; {visva, taijasa}). &lt;strong&gt;Asanga I becomes to sasanga I&lt;/strong&gt;. I gets caught, entagled in relationship e.g. owner/own, pita/putra, sisya/acarya.&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&quot;dms-14---verse--8-to-10&quot;&gt;DMS-14 =  Verse- 8 to 10&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;The attributeless I alone is the atma. This attributeless I is called sakshi. If I take the incidental attributes also as my intrinsic nature then I mistake myself as an attributed I which is called ahamkara.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The difference between sakshi and ahamkara is caused by ignorance and wisdom.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;There is no relationship which is free from problems. Every relationships causes one problem or the other. If there is a relation free from problems, the end of the relationship will cause a problem.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;I as the jivatma the ahamkara I, I’m a product of my past karma. My prarabda karma has given me this personality. This physical, emotional, social personality. Therefore I’m never a free person, I’m tossed up and down by my own karma. Even sleep, even death are no permanent solutions.&lt;/li&gt;
+  &lt;li&gt;Ownership means there is a yoga (acquisition) kshema (maintenance) samsara.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Even the confused jiva is none other then Dakshinamurti only.&lt;/strong&gt; There my prostrations to the confused jiva. Daksinamurti alone is the student, teacher and lord.&lt;/li&gt;
+  &lt;li&gt;The ashtakam is over with the 8th verse. Last two verse are winding-up verse.&lt;/li&gt;
+  &lt;li&gt;We’ve seen Daksinamurti as personal god. Then Daksinamurti as non-personal brahman. Now in the 9th verse Daksinamurti is presented as visvarupa isvara.&lt;/li&gt;
+  &lt;li&gt;Vishvarupa isvara is presented here in ashtamurti rupena:
+    &lt;ul&gt;
+      &lt;li&gt;panca bhutani - five elements&lt;/li&gt;
+      &lt;li&gt;sun and moon as representatives of the bhautika prapanca - elementals, combinations of elements, e.g. a physical body.  Stand together with panca bhutani for the acetana universe.&lt;/li&gt;
+      &lt;li&gt;jiva represents all the animate jivarashis, the cetana.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;You cannot find anything other than these eight factors. Other than this Daksinamurti you cannot find nothing else. All is the body of Daksinamurti.&lt;/li&gt;
+  &lt;li&gt;Ekarupa description varies from deity to deity. Vishvarupa description is the same for Daksinamurti, Shiva, Vishnu.&lt;/li&gt;
+  &lt;li&gt;“God and world” is delusion. &lt;strong&gt;Rightly taken god is none other than world.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Until I understand it as a fact, I should learn to visualize/imagine it.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Everything in the universe is atma alone. Other then atma there is nothing. Names are different, substance is only atma.&lt;/li&gt;
+  &lt;li&gt;stotram - stavam, hymn, praise.&lt;/li&gt;
+  &lt;li&gt;Study of Daksinamurti is equal to study to prasthana trayam, because the content is the same.&lt;/li&gt;
+  &lt;li&gt;Until the intellect accepts this teaching without a single protest one has to do mananam and later it has to be assimilated - niddidhiasanam.&lt;/li&gt;
+  &lt;li&gt;After I assimilate this teaching I share it with others. &lt;strong&gt;There is no better meditation than teaching.&lt;/strong&gt; Meditation - dwelling upon the teaching without distraction.&lt;/li&gt;
+  &lt;li&gt;Sarvaatma is mahavibhuti (greatest glory) called kaivalyam (non-dual state).&lt;/li&gt;
+  &lt;li&gt;Ishvaratvam means swamitvam. Swamitvam means mukta purusha (released person) - I’m no longer tormented by the world and its events. &lt;strong&gt;Equanimity. Swami so-and-so-ananda. Dukhi you need not add to the name because the very face indicates the person is a samsari.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&quot;snl-01---introduction&quot;&gt;Snl-01 =  Introduction&lt;/h1&gt;
 &lt;h1 id=&quot;snl-02---1--and--2&quot;&gt;Snl-02 =  1  and  2&lt;/h1&gt;
 &lt;h1 id=&quot;snl-03---2-6--and--9&quot;&gt;Snl-03 =  2, 6  and  9&lt;/h1&gt;
