@@ -104,13 +104,7 @@
   </li>
   <li>
 <a href="#systems" id="markdown-toc-systems">Systems</a>    <ul>
-      <li>
-<a href="#separate-constructing-a-system-from-using-it" id="markdown-toc-separate-constructing-a-system-from-using-it">Separate Constructing a System from Using It</a>        <ul>
-          <li><a href="#separation-of-main" id="markdown-toc-separation-of-main">Separation of Main</a></li>
-          <li><a href="#factories" id="markdown-toc-factories">Factories</a></li>
-          <li><a href="#dependency-injection" id="markdown-toc-dependency-injection">Dependency Injection</a></li>
-        </ul>
-      </li>
+      <li><a href="#separate-constructing-a-system-from-using-it" id="markdown-toc-separate-constructing-a-system-from-using-it">Separate Constructing a System from Using It</a></li>
       <li><a href="#scaling-up" id="markdown-toc-scaling-up">Scaling Up</a></li>
       <li><a href="#pure-java-aop-frameworks" id="markdown-toc-pure-java-aop-frameworks">Pure Java AOP Frameworks</a></li>
       <li><a href="#optimize-decision-making" id="markdown-toc-optimize-decision-making">Optimize Decision Making</a></li>
@@ -125,16 +119,26 @@
       <li><a href="#no-duplication" id="markdown-toc-no-duplication">No Duplication</a></li>
       <li><a href="#expressive" id="markdown-toc-expressive">Expressive</a></li>
       <li><a href="#minimal-classes-and-methods" id="markdown-toc-minimal-classes-and-methods">Minimal Classes and Methods</a></li>
-      <li><a href="#conclusion-1" id="markdown-toc-conclusion-1">Conclusion</a></li>
     </ul>
   </li>
   <li>
 <a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
-      <li><a href="#why-concurrency" id="markdown-toc-why-concurrency">Why Concurrency?</a></li>
-      <li><a href="#myths-and-misconceptions" id="markdown-toc-myths-and-misconceptions">Myths and Misconceptions</a></li>
+      <li><a href="#writing-clean-concurrent-program-is-hard---very-hard" id="markdown-toc-writing-clean-concurrent-program-is-hard---very-hard">Writing clean concurrent program is hard - very hard.</a></li>
       <li><a href="#concurrency-defense-principles" id="markdown-toc-concurrency-defense-principles">Concurrency Defense Principles</a></li>
-      <li><a href="#keep-synchronized-sections-small" id="markdown-toc-keep-synchronized-sections-small">Keep Synchronized Sections Small</a></li>
-      <li><a href="#writing-correct-shut-down-code-is-hard" id="markdown-toc-writing-correct-shut-down-code-is-hard">Writing Correct Shut-Down Code is Hard</a></li>
+      <li><a href="#testing-threaded-code" id="markdown-toc-testing-threaded-code">Testing Threaded Code</a></li>
+    </ul>
+  </li>
+  <li><a href="#successive-refinement" id="markdown-toc-successive-refinement">Successive Refinement</a></li>
+  <li><a href="#refactoring-serialdate" id="markdown-toc-refactoring-serialdate">Refactoring SerialDate</a></li>
+  <li>
+<a href="#smells-and-heuristics" id="markdown-toc-smells-and-heuristics">Smells and Heuristics</a>    <ul>
+      <li><a href="#comments-1" id="markdown-toc-comments-1">Comments</a></li>
+      <li><a href="#environment" id="markdown-toc-environment">Environment</a></li>
+      <li><a href="#functions-1" id="markdown-toc-functions-1">Functions</a></li>
+      <li><a href="#general" id="markdown-toc-general">General</a></li>
+      <li><a href="#java" id="markdown-toc-java">Java</a></li>
+      <li><a href="#names" id="markdown-toc-names">Names</a></li>
+      <li><a href="#tests" id="markdown-toc-tests">Tests</a></li>
     </ul>
   </li>
 </ul>
@@ -476,27 +480,13 @@
 </ul>
 
 <h1 id="systems">Systems</h1>
-<ul>
-  <li>Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build, and test.</li>
-</ul>
 
 <h2 id="separate-constructing-a-system-from-using-it">Separate Constructing a System from Using It</h2>
 <ul>
-  <li>construction is a very different process from use.</li>
-  <li>SW systems should separate the startup process, when the application objects are constructed and the dependencies “wired” together, from the runtime logic that takes over after startup.</li>
-</ul>
-
-<h3 id="separation-of-main">Separation of Main</h3>
-<ul>
-  <li>The <code class="language-python highlighter-rouge"><span class="n">main</span></code> function builds objects necessary for the system, then passes them to the application, which simply uses them. Application has no knowledge of <code class="language-python highlighter-rouge"><span class="n">main</span></code> or the construction process. It simply expects that everything has been built properly.</li>
-</ul>
-
-<h3 id="factories">Factories</h3>
-
-<h3 id="dependency-injection">Dependency Injection</h3>
-<ul>
-  <li>Inversion of Control (IoC) moves secondary responsibilities from an object to other objects that are dedicated to that purpose, therefore supporting the <em>Single Responsibility Principle</em>.</li>
-  <li>During the construction process, the DI instantiates the required objects (usually on demand) and uses the constructor arguments or setter methods provided to wire together the dependencies.</li>
+  <li>Construction is a very different process from use.</li>
+  <li>SW systems should separate the startup process (<code class="language-python highlighter-rouge"><span class="n">main</span></code> fct), when the application objects are constructed and the dependencies “wired” together, from the runtime logic that takes over after startup.</li>
+  <li>Factories</li>
+  <li>Dependency Injection. Inversion of Control (IoC) moves secondary responsibilities from an object to other objects that are dedicated to that purpose, therefore supporting the <em>Single Responsibility Principle</em>.</li>
 </ul>
 
 <h2 id="scaling-up">Scaling Up</h2>
@@ -508,8 +498,8 @@
 <h2 id="pure-java-aop-frameworks">Pure Java AOP Frameworks</h2>
 <ul>
   <li>In Spring, you write your business logic as POJOs. POJOs are purely focuses on their domain. They have no dependencies on enterprise frameworks (or any other domain). They allow for truly test driving the application, without doing a Big Design Up Front.</li>
-  <li>This means we can start a SW project with a “naively simple” but nicely decoupled architecture, deliver working user stories quickly, then adding more infrastructure as we scale up.</li>
-  <li>A Good API should largely disappear fro the view most of the time, so the tam expends the majority of its creative efforts focused on the user stories being implemented. If not, then the architectural constraints will inhibit the efficient delivery of optimal value to the customer.</li>
+  <li>We can start a SW project with a “naively simple” but nicely decoupled architecture, deliver working user stories quickly, then adding more infrastructure as we scale up.</li>
+  <li>A good API should largely disappear from the view most of the time, so the tam expends the majority of its creative efforts focused on the user stories being implemented. If not, then the architectural constraints will inhibit the efficient delivery of optimal value to the customer.</li>
 </ul>
 
 <h2 id="optimize-decision-making">Optimize Decision Making</h2>
@@ -520,7 +510,6 @@
 <h2 id="systems-need-domain-specific-languages">Systems Need Domain-Specific Languages</h2>
 <ul>
   <li>If you are implementing domain logic in the same language that a domain expert uses, there is less risk that you will incorrectly translate the domain into implementation.</li>
-  <li>Domain-Specific languages allow all levels of abstraction and all domains in the application to be expressed as POJOs, from high-level policy to low-level details.</li>
 </ul>
 
 <h2 id="conclusion">Conclusion</h2>
@@ -531,9 +520,13 @@
 </ul>
 
 <h1 id="emergence">Emergence</h1>
+<ul>
+  <li>Is there a set of simple practices that can replace experience? Clearly not.</li>
+</ul>
+
 <h2 id="rule-1-runs-all-the-tests">Rule 1: Runs All the Tests</h2>
 <ul>
-  <li>tight coupling makes it difficult to write tests</li>
+  <li>Tight coupling makes it difficult to write tests.</li>
   <li>OOP goal of low coupling and high cohesion. Writing tests leads to better designs.</li>
 </ul>
 
@@ -546,7 +539,7 @@
 
 <h2 id="expressive">Expressive</h2>
 <ul>
-  <li>code should clearly express the intent of its author.</li>
+  <li>Code should clearly express the intent of its author.</li>
   <li>You can express yourself by choosing good names. We want to be able to hear a class or a function name and not be surprised when we discover its responsibilities.</li>
   <li>You can also express yourself by keeping your functions and classes small. Small classes and functions are usually easy to name, easy to write, and easy to understand.</li>
   <li>The most important way to be expressive is to try. Remember, the most likely next person to read that code will be you.</li>
@@ -559,26 +552,18 @@
   <li>Our goal is to keep our overall system small while we are also keeping our functions and classes small. Remember, however, that this rule is the lowest priority of the four rules of Simple Design. So, although it is important to keep class and function count low, it’s more important to have tests, eliminate duplication, and express yourself.</li>
 </ul>
 
-<h2 id="conclusion-1">Conclusion</h2>
-<p>Is there a set of simple practices that can replace experience? Clearly not.</p>
-
 <h1 id="concurrency">Concurrency</h1>
 <ul>
   <li>Objects are abstractions of processing. Threads are abstractions of schedule.</li>
-  <li>Writing clean concurrent program is hard - very hard.</li>
+  <li>Decoupling what gets done from when it gets done. This can dramatically improve both the throughput and structure of application.</li>
 </ul>
 
-<h2 id="why-concurrency">Why Concurrency?</h2>
-<ul>
-  <li>Decoupling strategy. It helps us decouple what gets done from when it gets done.</li>
-  <li>Decoupling what from when can dramatically improve both the throughput and structure of application.</li>
-</ul>
-
-<h2 id="myths-and-misconceptions">Myths and Misconceptions</h2>
+<h2 id="writing-clean-concurrent-program-is-hard---very-hard">Writing clean concurrent program is hard - very hard.</h2>
 <ul>
   <li>The design of a concurrent algorithm can be remarkably different from the design of single-threaded system.</li>
   <li>Concurrency incurs some overhead, in both performance as well as writing additional code.</li>
   <li>Concurrency bugs aren’t usually repeatable.</li>
+  <li>Think about shut-down early and get it working early. It’s going to take longer than you expect.</li>
 </ul>
 
 <h2 id="concurrency-defense-principles">Concurrency Defense Principles</h2>
@@ -587,12 +572,147 @@
   <li>Take data encapsulation to heart; severely limit the access of any data that may be shared.</li>
   <li>Use copies of data. Collect results from multiple threads and then merge the results in a single thread.</li>
   <li>Partition data into independent subsets that can be operated on by independent threads, possible in different processors.</li>
+  <li>Keep synchronized sections small.</li>
 </ul>
 
-<h2 id="keep-synchronized-sections-small">Keep Synchronized Sections Small</h2>
-<h2 id="writing-correct-shut-down-code-is-hard">Writing Correct Shut-Down Code is Hard</h2>
+<h2 id="testing-threaded-code">Testing Threaded Code</h2>
 <ul>
-  <li>Think about shut-down early and get it working early. It’s going to take longer than you expect.</li>
+  <li>Get you nonthreaded code working first.</li>
+  <li>Treat spurious failures as candidate threading issues. Don’t ignore system failures as one-offs.</li>
+  <li>Make your threaded code pluggable, so you can run it in various configurations.</li>
+  <li>Run with more threads than processors (cores), to encourage system switches.</li>
+  <li>Jiggle the code so that threads run in different orderings at different times. The combination of well-written tests and jiggling can dramatically increase the chance finding errors.</li>
+</ul>
+
+<h1 id="successive-refinement">Successive Refinement</h1>
+<ul>
+  <li>You’d be able to read the code from top to the bottom without a lot of jumping around or looking ahead.</li>
+  <li>Programming is more a craft than it is a science. To write clean code, you must first write dirty code and then clean it.</li>
+  <li>Most freshmen programmers think that the primary goal is to get the program working. Once it is “working” they move to the next task, leaving the program in whatever state they got it to “work”. Most seasoned programmers know this is professional suicide.</li>
+  <li>“If the structure of this code was ever going to be maintainable, now was the time to fix it. So I stopped adding features and started refactoring”.</li>
+  <li>Refactoring is a lot like solving a Rubik’s cube. There are a lot of little steps required to achieve a large goal. Each steps enables the next.</li>
+  <li>Bad schedules cna be redone, bad requirements can be redefined. Bad team dynamics can be repaired. Bad code rots and ferments, becoming an inexorable weight that drags the team down.</li>
+</ul>
+
+<h1 id="refactoring-serialdate">Refactoring SerialDate</h1>
+<ul>
+  <li>
+    <p>It is only through critiques that we learn. Doctors do it. Layers do it. Pilots do it. And we programmers need to learn how to do it too.</p>
+  </li>
+  <li>First make it work. Get the coverage and extend/make the unit tests work.</li>
+  <li>Then make it right.</li>
+  <li>Get your code into a form that’s easy to change.</li>
+</ul>
+
+<h1 id="smells-and-heuristics">Smells and Heuristics</h1>
+<h2 id="comments-1">Comments</h2>
+<ul>
+  <li>Inappropriate information</li>
+  <li>Obsolete comment</li>
+  <li>Redundant comment</li>
+  <li>Poorly written comment</li>
+  <li>Commented-out code</li>
+</ul>
+
+<h2 id="environment">Environment</h2>
+<ul>
+  <li>Build requires more than one step</li>
+  <li>Running tests requires more than one step</li>
+</ul>
+
+<h2 id="functions-1">Functions</h2>
+<ul>
+  <li>Too many arguments</li>
+  <li>Output arguments</li>
+  <li>Flag arguments</li>
+  <li>Not used (dead) functions</li>
+</ul>
+
+<h2 id="general">General</h2>
+<ul>
+  <li>
+<strong>Multiple languages in one source file</strong>.</li>
+  <li>Obvious behaviour is unimplemented - <a href="https://en.wikipedia.org/wiki/Principle_of_least_astonishment">Principle of least suprise</a>.</li>
+  <li>Incorrect behaviour at the boundaries. <strong>Don’t rely on your intuition. Prove that your code works in all the corner cases.</strong>
+</li>
+  <li>
+<strong>Overridden safeties</strong> - turned of failing tests, compiler warnings etc.</li>
+  <li>Duplication.</li>
+  <li>
+<strong>Code at wrong level of abstraction.</strong> Constants, variables, utility functions hat pertain only to the detailed implementation should not be present in the base class. <strong>Don’t mix higher and lower level concepts together.</strong> You cannot lie or fake your way out of a misplaces abstraction. Isolating abstractions is one of the hardest things that software developers an do, and there is no quick fix when you get it wrong.</li>
+  <li>Base classes depending on their derivatives.</li>
+  <li>
+<strong>Too much information.</strong> Well-defined modules have very small interfaces that allow you to do a lot with a little. Hide your data, hide your utility functions, hide your constants and hide your temporaries. Don’t create classes with a lot of methods and instance variables. Don’t create lots of protected variables and functions for your subclasses. <strong>Help keeping low coupling by hiding information.</strong>
+</li>
+  <li>Dead code</li>
+  <li>Vertical separation</li>
+  <li>Inconsistency - goes back to the principle of least surprise.</li>
+  <li>Clutter.</li>
+  <li>Artificial coupling.</li>
+  <li><strong>Feature envy. The methods of a class should be interested in the variables and functions of the class they belong to, and not the variables and functions of other classes.</strong></li>
+  <li>
+<strong>Selector arguments.</strong> In general it is better to have many functions than to pass some code into a function to select behaviour.</li>
+  <li>Obscured intent.</li>
+  <li>Misplaced responsibility - code should be placed where a reader would naturally expect it to be.</li>
+  <li><strong>Inappropriate static - there might be a reasonable chance that we’ll want the function to be polymorphic.</strong></li>
+  <li>Use explanatory variables.</li>
+  <li>Function names should say what they do.</li>
+  <li>Understand the algorithm.</li>
+  <li>Make logical dependencies (i.e. assumptions, e.g. a constant) physical (calling a method providing the data).</li>
+  <li>Prefer polymorphism to If/Else or Switch/Case</li>
+  <li>Follow standard conventions - coding standards.</li>
+  <li>Replace magic numbers with named constants.</li>
+  <li>Be precise - don’t be lazy
+    <ul>
+      <li>expecting the first match to be the only is naive</li>
+      <li>don’t use float point numbers to represent currency</li>
+      <li>use locks and/or TX</li>
+      <li>don’t be too specific, e.g. declaring a variable as <code class="language-python highlighter-rouge"><span class="n">ArrayList</span></code> when <code class="language-python highlighter-rouge"><span class="n">List</span></code> is good enough</li>
+      <li>making all variables <code class="language-python highlighter-rouge"><span class="n">protected</span></code> by default is not constraining enough</li>
+    </ul>
+  </li>
+  <li>Structure over convention, e.g. abstract methods &gt; switch with nicely named enumerations.</li>
+  <li>Encapsulate conditionals. Turn <code class="language-python highlighter-rouge"><span class="k">if</span> <span class="p">(</span><span class="n">expected</span> <span class="o">==</span> <span class="n">null</span> <span class="o">||</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">null</span> <span class="o">||</span> <span class="n">areStringsEqual</span><span class="p">())</span></code> into a method -&gt; bool.</li>
+  <li>Avoid negative conditionals.</li>
+  <li>Functions should do one thing.</li>
+  <li>Hidden temporal couplings -&gt; make explicit.</li>
+  <li>Don’t be arbitrary.</li>
+  <li>Encapsulate boundary conditions. <strong>We don’t want swarms of <code class="language-python highlighter-rouge"><span class="o">+</span><span class="mi">1</span><span class="n">s</span></code> and <code class="language-python highlighter-rouge"><span class="o">-</span><span class="mi">1</span><span class="n">s</span></code> all over the code. Encapsulate then in variables</strong>.</li>
+  <li>Functions should descend only one level of abstraction.</li>
+  <li>Keep configurable data at high levels.</li>
+  <li>Avoid transitive navigation (Law of Demeter - write shy code).</li>
+</ul>
+
+<h2 id="java">Java</h2>
+<ul>
+  <li>Avoid long imports by using wildcards.</li>
+  <li>Don’t inherit constants. Use static import instead.</li>
+  <li>Constants vs. enums - use enums.</li>
+</ul>
+
+<h2 id="names">Names</h2>
+<ul>
+  <li>Choose descriptive names. Don’t be too quick to chose a name.</li>
+  <li>Choose names at the appropriate level of abstraction.</li>
+  <li>Use standard nomenclature where possible.</li>
+  <li>Unambiguous names.</li>
+  <li>Use long names for long scopes.</li>
+  <li>Avoid encodings.</li>
+  <li>Names should describe side-effects.</li>
+</ul>
+
+<h2 id="tests">Tests</h2>
+<ul>
+  <li>Insufficient tests.</li>
+  <li>
+<strong>Use a coverage tool</strong> - they report gaps in your testing strategy.</li>
+  <li>Don’t skip trivial tests.</li>
+  <li>An ignored test is a question about an ambiguity.</li>
+  <li>Test boundary conditions.</li>
+  <li>
+<strong>Exhaustive tests near bugs.</strong> Bugs ten to congregate. When you find a bug in a function, it is wise to do an exhaustive test of that function.</li>
+  <li>Test coverage patterns can be revealing.</li>
+  <li>Tests should past fast.</li>
 </ul>
 
 <!--
