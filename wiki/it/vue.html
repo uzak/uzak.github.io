@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -87,36 +87,33 @@
                             <h1>VUE.js</h1>
 <h1>Install</h1>
 <p>https://cli.vuejs.org/guide/installation.html</p>
-<div class="codehilite"><pre><span></span>curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo &quot;deb https://dl.yarnpkg.com/debian/ stable main&quot; | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update &amp;&amp; sudo apt install yarn
+<div class="codehilite"><pre><span></span><code><span class="n">curl</span> <span class="o">-</span><span class="n">sS</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">yarnpkg</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">pubkey</span><span class="o">.</span><span class="n">gpg</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+<span class="n">echo</span> <span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">yarn</span><span class="o">.</span><span class="n">list</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">yarn</span>
 
-yarn global add @vue/cli
-export PATH=&quot;$(yarn global bin):$PATH&quot;
-vue --version
-</pre></div>
-
+<span class="n">yarn</span> <span class="n">global</span> <span class="n">add</span> <span class="err">@</span><span class="n">vue</span><span class="o">/</span><span class="n">cli</span>
+<span class="k">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$(yarn global bin):$PATH&quot;</span>
+<span class="n">vue</span> <span class="o">--</span><span class="n">version</span>
+</code></pre></div>
 
 <h1>Create a project</h1>
-<div class="codehilite"><pre><span></span>vue ui
-vue create my-project
+<div class="codehilite"><pre><span></span><code><span class="n">vue</span> <span class="n">ui</span>
+<span class="n">vue</span> <span class="k">create</span> <span class="n">my</span><span class="o">-</span><span class="n">project</span>
 
-yarn add vue-router
-yarn add vuex
+<span class="n">yarn</span> <span class="k">add</span> <span class="n">vue</span><span class="o">-</span><span class="n">router</span>
+<span class="n">yarn</span> <span class="k">add</span> <span class="n">vuex</span>
 
-yarn serve
-</pre></div>
-
+<span class="n">yarn</span> <span class="n">serve</span>
+</code></pre></div>
 
 <h1>Add typescript</h1>
-<div class="codehilite"><pre><span></span>vue add typescript
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">vue add typescript</span>
+</code></pre></div>
 
 <p>add <code>tsconfig.json</code>. Vue files:</p>
-<div class="codehilite"><pre><span></span><span class="nt">&lt;script</span> <span class="na">lang=</span><span class="s">&quot;ts&quot;</span><span class="nt">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;script</span> <span class="na">lang=</span><span class="s">&quot;ts&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/script&gt;</span>
-</pre></div>
+</code></pre></div>
                         </div>
                     </article>
 

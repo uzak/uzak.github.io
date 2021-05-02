@@ -5,9 +5,10 @@
 
 .PHONY: serve publish etym wiki clean
 
-ETYM_DIR	?= ~/repos/etymolog
-ETYM_UI_DIR ?= ~/repos/etymolog-ui
-DEST		?= ~/repos/uzak.github.io
+ETYM_DIR		?= ~/repos/etymolog
+ETYM_UI_DIR 	?= ~/repos/etymolog-ui
+DEST			?= ~/repos/uzak.github.io
+DEST_MODS		?= /martinuzak/blog
 
 serve:
 	bundle exec jekyll serve 
@@ -19,12 +20,18 @@ etym:
 	# db
 	(cd $(ETYM_DIR) && make db.json)
 	# ui
-	DEPLOY_DIR=$(DEST)/etymolog make -C $(ETYM_UI_DIR) build 
+	DEPLOY_DIR=$(DEST_MODS)/etymolog make -C $(ETYM_UI_DIR) build 
+	# also put to $(DEST)
+	rm -rf $(DEST)/etymolog
+	cp -rv $(DEST_MODS)/etymolog $(DEST)/etymolog
 
 wiki:
-	rm -rfv $(DEST)/wiki
-	mkdir -v $(DEST)/wiki
+	rm -rfv $(DEST_MODS)/wiki
+	mkdir -v $(DEST_MODS)/wiki
 	$(foreach i,1 2 3 4, vim -n +"call vimwiki#base#goto_index($(i))" +VimwikiAll2HTML +q;)
+	# also put to $(DEST)
+	rm -rf $(DEST)/wiki
+	cp -rv $(DEST_MODS)/wiki $(DEST)/wiki
 
 sask: sask.md
 	pandoc sask.md \

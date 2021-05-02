@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -85,24 +85,22 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>Sphinx</h1>
-<div class="codehilite"><pre><span></span>pip install -U sphinx
+<div class="codehilite"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">sphinx</span>
 
-cd /path/to/project
-mkdir docs
-sphinx-quickstart
+<span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">project</span>
+<span class="n">mkdir</span> <span class="n">docs</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
 
-make html
-</pre></div>
-
+<span class="n">make</span> <span class="n">html</span>
+</code></pre></div>
 
 <h2>needs</h2>
-<div class="codehilite"><pre><span></span> pip install sphinxcontrib-needs
- pip install sphinxcontrib-plantuml
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err"> pip install sphinxcontrib-needs</span>
+<span class="err"> pip install sphinxcontrib-plantuml</span>
+</code></pre></div>
 
 <p>edit <code>conf.py</code></p>
-<div class="codehilite"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinxcontrib.plantuml&#39;</span><span class="p">,</span> <span class="s1">&#39;sphinxcontrib.needs&#39;</span><span class="p">]</span>
+<div class="codehilite"><pre><span></span><code><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinxcontrib.plantuml&#39;</span><span class="p">,</span> <span class="s1">&#39;sphinxcontrib.needs&#39;</span><span class="p">]</span>
 
 <span class="c1"># add support for plantuml</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -120,7 +118,7 @@ make html
     <span class="n">plantuml</span> <span class="o">=</span> <span class="n">plantuml</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">plantuml_output_format</span> <span class="o">=</span> <span class="s1">&#39;png&#39;</span>
-</pre></div>
+</code></pre></div>
                         </div>
                     </article>
 

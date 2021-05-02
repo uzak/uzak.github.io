@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -148,28 +148,27 @@
 </ul>
 <p>public class JavaHungrySingleton
 {</p>
-<div class="codehilite"><pre><span></span>private static  volatile JavaHungrySingleton  uniqueInstance;
+<div class="codehilite"><pre><span></span><code><span class="n">private</span> <span class="k">static</span>  <span class="k">volatile</span> <span class="n">JavaHungrySingleton</span>  <span class="n">uniqueInstance</span><span class="p">;</span>
 
-private JavaHungrySingleton(){}
+<span class="n">private</span> <span class="n">JavaHungrySingleton</span><span class="p">()</span><span class="err">{}</span>
 
-public static   JavaHungrySingleton  getInstance()
-{
-    if (uniqueInstance ==null )
-    {
-        synchronized(JavaHungrySingleton.class)
-        {
-            if (uniqueInstance ==null )
-            {
-                uniqueInstance=new JavaHungrySingleton();
-            }
-        }
-    }
-    return uniqueInstance ;
-}
+<span class="k">public</span> <span class="k">static</span>   <span class="n">JavaHungrySingleton</span>  <span class="n">getInstance</span><span class="p">()</span>
+<span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">uniqueInstance</span> <span class="o">==</span><span class="k">null</span> <span class="p">)</span>
+    <span class="err">{</span>
+        <span class="n">synchronized</span><span class="p">(</span><span class="n">JavaHungrySingleton</span><span class="p">.</span><span class="k">class</span><span class="p">)</span>
+        <span class="err">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">uniqueInstance</span> <span class="o">==</span><span class="k">null</span> <span class="p">)</span>
+            <span class="err">{</span>
+                <span class="n">uniqueInstance</span><span class="o">=</span><span class="k">new</span> <span class="n">JavaHungrySingleton</span><span class="p">();</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+    <span class="k">return</span> <span class="n">uniqueInstance</span> <span class="p">;</span>
+<span class="err">}</span>
 
-// other useful methods here
-</pre></div>
-
+<span class="o">//</span> <span class="n">other</span> <span class="n">useful</span> <span class="n">methods</span> <span class="n">here</span>
+</code></pre></div>
 
 <p>}</p>
 <ul>

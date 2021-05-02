@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -90,42 +90,38 @@
 <li><a href="python_whats_new_2.html">What's new in Python 2</a></li>
 </ul>
 <p>yapf:</p>
-<div class="codehilite"><pre><span></span>$ cat .pre-commit-config.yaml 
----
-repos:
-- repo: https://github.com/pre-commit/mirrors-yapf
-    rev: <span class="s1">&#39;&#39;</span>  <span class="c1"># Use the sha / tag you want to point at</span>
-    hooks:
-    - id: yapf
-    - 
-$ cat .style.yapf 
-<span class="o">[</span>style<span class="o">]</span>
-<span class="nv">column_limit</span> <span class="o">=</span> <span class="m">79</span>
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="p">.</span><span class="n">pre</span><span class="o">-</span><span class="k">commit</span><span class="o">-</span><span class="n">config</span><span class="p">.</span><span class="n">yaml</span><span class="w"> </span>
+<span class="o">---</span><span class="w"></span>
+<span class="nl">repos</span><span class="p">:</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="nl">repo</span><span class="p">:</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="k">commit</span><span class="o">/</span><span class="n">mirrors</span><span class="o">-</span><span class="n">yapf</span><span class="w"></span>
+<span class="w">    </span><span class="nl">rev</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="k">Use</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sha</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="k">at</span><span class="w"></span>
+<span class="w">    </span><span class="nl">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="nl">id</span><span class="p">:</span><span class="w"> </span><span class="n">yapf</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span>
+<span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">yapf</span><span class="w"> </span>
+<span class="o">[</span><span class="n">style</span><span class="o">]</span><span class="w"></span>
+<span class="n">column_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span><span class="w"></span>
+</code></pre></div>
 
 <ul>
 <li><a href="testing.html">testing</a></li>
 </ul>
 <p>requests/urllib3 disable logging:</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;requests&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;urllib3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>or rather</p>
-<div class="codehilite"><pre><span></span>logging.basicConfig(format=&#39;%(asctime)s %(filename)s:%(lineno)s - %(message)s&#39;)
-log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">logging.basicConfig(format=&#39;%(asctime)s %(filename)s:%(lineno)s - %(message)s&#39;)</span>
+<span class="err">log = logging.getLogger(__name__)</span>
+<span class="err">log.setLevel(logging.DEBUG)</span>
+</code></pre></div>
 
 <h1>String Formatting</h1>
-<div class="codehilite"><pre><span></span>f&quot;{x=:.2f}&quot;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">f&quot;{x=:.2f}&quot;</span>
+</code></pre></div>
 
 <h1>Libs</h1>
 <ul>

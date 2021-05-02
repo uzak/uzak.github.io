@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -85,24 +85,26 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>InfluxDB</h1>
-<div class="codehilite"><pre><span></span>docker run -p8086:8086 -v influxtest:/var/lib/influxdb influxdb
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">influx</span> <span class="o">-</span><span class="n">host</span> <span class="o">$</span><span class="n">HOST</span> <span class="o">-</span><span class="n">precision</span> <span class="n">rfc3339</span>   <span class="c1"># timestamps in human readable form</span>
 
+
+
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p8086</span><span class="p">:</span><span class="mi">8086</span> <span class="o">-</span><span class="n">v</span> <span class="n">influxtest</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">influxdb</span> <span class="n">influxdb</span>
+</code></pre></div>
 
 <h2>Protocol</h2>
-<div class="codehilite"><pre><span></span>weather,location=us-midwest temperature=82 1465839830100400200
-|    -------------------- --------------  |
-|             |             |             |
-|             |             |             |
-+-----------+--------+-+---------+-+---------+
-|measurement|,[tag_set|](tag_set|) |field_set| |timestamp|
-+-----------+--------+-+---------+-+---------+
+<div class="codehilite"><pre><span></span><code><span class="n">weather</span><span class="p">,</span><span class="k">location</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">midwest</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">82</span> <span class="mi">1465839830100400200</span>
+<span class="o">|</span>    <span class="c1">-------------------- --------------  |</span>
+<span class="o">|</span>             <span class="o">|</span>             <span class="o">|</span>             <span class="o">|</span>
+<span class="o">|</span>             <span class="o">|</span>             <span class="o">|</span>             <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+--------+-+---------+-+---------+</span>
+<span class="o">|</span><span class="n">measurement</span><span class="o">|</span><span class="p">,[</span><span class="n">tag_set</span><span class="o">|</span><span class="p">](</span><span class="n">tag_set</span><span class="o">|</span><span class="p">)</span> <span class="o">|</span><span class="n">field_set</span><span class="o">|</span> <span class="o">|</span><span class="k">timestamp</span><span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+--------+-+---------+-+---------+</span>
 
 
-&lt;field_key&gt;=&lt;field_value&gt;,&lt;field_key&gt;=&lt;field_value&gt;
-&lt;tag_key&gt;=&lt;tag_value&gt;,&lt;tag_key&gt;=&lt;tag_value&gt;
-</pre></div>
-
+<span class="o">&lt;</span><span class="n">field_key</span><span class="o">&gt;=&lt;</span><span class="n">field_value</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">field_key</span><span class="o">&gt;=&lt;</span><span class="n">field_value</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">tag_key</span><span class="o">&gt;=&lt;</span><span class="n">tag_value</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">tag_key</span><span class="o">&gt;=&lt;</span><span class="n">tag_value</span><span class="o">&gt;</span>
+</code></pre></div>
 
 <p>The timestamp for your data point in nanosecond-precision Unix time. The timestamp is optional in line protocol. If you do not specify a timestamp for your data point InfluxDB uses the server’s local nanosecond timestamp in UTC.  </p>
 <p>For tag keys, tag values, and field keys always use a backslash character \ to escape: <code>=</code>, <code></code>, <code>,</code></p>
@@ -114,42 +116,40 @@
 <li>boolean: t, T, true, True, TRUE, f, F, false, False, FALSE</li>
 </ul>
 <h2>Examples:</h2>
-<div class="codehilite"><pre><span></span>show databases
-create database test
-use test
+<div class="codehilite"><pre><span></span><code><span class="k">show</span> <span class="n">databases</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">test</span>
+<span class="n">use</span> <span class="n">test</span>
 
 
-INSERT weather,location=us-midwest temperature=82 1465839830100400200
+<span class="k">INSERT</span> <span class="n">weather</span><span class="p">,</span><span class="k">location</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">midwest</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">82</span> <span class="mi">1465839830100400200</span>
 
-SELECT * FROM &quot;weather&quot;
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="ss">&quot;weather&quot;</span>
 
-&gt; insert weather,location=us-midwest temperature=22 
-&gt; insert weather,location=us-midwest temperature=21,humidity=1
-&gt; select * from weather;
-delete from weather where time=1587024650460040896;
-drop database test
+<span class="o">&gt;</span> <span class="k">insert</span> <span class="n">weather</span><span class="p">,</span><span class="k">location</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">midwest</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">22</span> 
+<span class="o">&gt;</span> <span class="k">insert</span> <span class="n">weather</span><span class="p">,</span><span class="k">location</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">midwest</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">weather</span><span class="p">;</span>
+<span class="k">delete</span> <span class="k">from</span> <span class="n">weather</span> <span class="k">where</span> <span class="k">time</span><span class="o">=</span><span class="mi">1587024650460040896</span><span class="p">;</span>
+<span class="k">drop</span> <span class="k">database</span> <span class="n">test</span>
 
-format json
-format csv
-format column
+<span class="n">format</span> <span class="n">json</span>
+<span class="n">format</span> <span class="n">csv</span>
+<span class="n">format</span> <span class="k">column</span>
 
 
-show tag keys where key = &#39;...&#39;
+<span class="k">show</span> <span class="n">tag</span> <span class="n">keys</span> <span class="k">where</span> <span class="k">key</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span>
 
-show measurements
-drop measurement &lt;name&gt;
-</pre></div>
-
+<span class="k">show</span> <span class="n">measurements</span>
+<span class="k">drop</span> <span class="n">measurement</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+</code></pre></div>
 
 <p>Note tags are always strings and strings are quoted with apostrophes (')!</p>
 <h2>Live Examples</h2>
-<div class="codehilite"><pre><span></span>select * from &quot;printer_MINI_telemetry&quot; where printer_id = &#39;69&#39; limit 10;
-select &quot;temp_bed&quot;,&quot;printer_id&quot; from &quot;printer_MINI_telemetry&quot; where printer_id = &#39;69&#39; limit 10;
+<div class="codehilite"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="ss">&quot;printer_MINI_telemetry&quot;</span> <span class="k">where</span> <span class="n">printer_id</span> <span class="o">=</span> <span class="s1">&#39;69&#39;</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">select</span> <span class="ss">&quot;temp_bed&quot;</span><span class="p">,</span><span class="ss">&quot;printer_id&quot;</span> <span class="k">from</span> <span class="ss">&quot;printer_MINI_telemetry&quot;</span> <span class="k">where</span> <span class="n">printer_id</span> <span class="o">=</span> <span class="s1">&#39;69&#39;</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
 
-show series
-show measurements
-</pre></div>
-
+<span class="k">show</span> <span class="n">series</span>
+<span class="k">show</span> <span class="n">measurements</span>
+</code></pre></div>
 
 <h2>Links</h2>
 <ul>

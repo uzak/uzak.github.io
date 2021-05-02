@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -86,10 +86,9 @@
                         <div class="c-article__main" id="contents">
                             <p>https://www.youtube.com/watch?v=fdLCuJcS2Aw</p>
 <h1>Setup</h1>
-<div class="codehilite"><pre><span></span>sudo apt install emacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt install emacs</span>
+<span class="err">git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d</span>
+</code></pre></div>
 
 <p>answer setup questions:</p>
 <ul>
@@ -99,51 +98,49 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 </ul>
 <p>Adapt .spacemacs</p>
 <h1>Shortcuts</h1>
-<div class="codehilite"><pre><span></span>space-f-f           # find
-space zf            # zoom
-space cl            # uncomment a line
-space pf            # search for a file in entire project
-ctrl g              # cancel
-space pt            # tree view of your project
-space w             # window commands
-space ji            # all the symbols in the current file
-* /                 # on a symbol: project wide search
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">space-f-f           # find</span>
+<span class="err">space zf            # zoom</span>
+<span class="err">space cl            # uncomment a line</span>
+<span class="err">space pf            # search for a file in entire project</span>
+<span class="err">ctrl g              # cancel</span>
+<span class="err">space pt            # tree view of your project</span>
+<span class="err">space w             # window commands</span>
+<span class="err">space ji            # all the symbols in the current file</span>
+<span class="err">* /                 # on a symbol: project wide search</span>
+</code></pre></div>
 
 <p>For navigation in modal buffers handling <code>hjkl</code> as normal key, use ctrl+<code>hjkl</code>.</p>
-<div class="codehilite"><pre><span></span>space b             # buffer commands
-space bh            # home 
-space bn            # next
-space bp            # next
-space bs            # scratch
-space bb            # overview
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">space b             # buffer commands</span>
+<span class="err">space bh            # home </span>
+<span class="err">space bn            # next</span>
+<span class="err">space bp            # next</span>
+<span class="err">space bs            # scratch</span>
+<span class="err">space bb            # overview</span>
+</code></pre></div>
 
 <h1>Docs</h1>
-<div class="codehilite"><pre><span></span>SPC f s             # save buffer
-SPC T n             # next theme
-SPC t n             # set number
-SPC t 8             # highlight chars beyond 80th column
-SPC t h i           # toggle highlight indentation levels
-SPC t i             # toggle indentation guide at a point
-SPC t l             # toggle truncate lines
+<div class="codehilite"><pre><span></span><code><span class="n">SPC</span> <span class="n">f</span> <span class="n">s</span>             <span class="c1"># save buffer</span>
+<span class="n">SPC</span> <span class="n">T</span> <span class="n">n</span>             <span class="c1"># next theme</span>
+<span class="n">SPC</span> <span class="n">t</span> <span class="n">n</span>             <span class="c1"># set number</span>
+<span class="n">SPC</span> <span class="n">t</span> <span class="mi">8</span>             <span class="c1"># highlight chars beyond 80th column</span>
+<span class="n">SPC</span> <span class="n">t</span> <span class="n">h</span> <span class="n">i</span>           <span class="c1"># toggle highlight indentation levels</span>
+<span class="n">SPC</span> <span class="n">t</span> <span class="n">i</span>             <span class="c1"># toggle indentation guide at a point</span>
+<span class="n">SPC</span> <span class="n">t</span> <span class="n">l</span>             <span class="c1"># toggle truncate lines</span>
 
-SPC T f             # toggle fullscreen
-SPC T m             # toggle menu bar
-SPC T M             # toggle frame maximize
-SPC T t             # toggle tool bar
+<span class="n">SPC</span> <span class="n">T</span> <span class="n">f</span>             <span class="c1"># toggle fullscreen</span>
+<span class="n">SPC</span> <span class="n">T</span> <span class="n">m</span>             <span class="c1"># toggle menu bar</span>
+<span class="n">SPC</span> <span class="n">T</span> <span class="n">M</span>             <span class="c1"># toggle frame maximize</span>
+<span class="n">SPC</span> <span class="n">T</span> <span class="n">t</span>             <span class="c1"># toggle tool bar</span>
 
-SPC t m p           # toggle character position
-[ b                 # prev buf
-] b                 # next buf
-[ f                 # prev file in dir
-] f                 # next file in dir
-  l                 # error
-  h                 # vcs hunk
-  w                 # window
-</pre></div>
+<span class="n">SPC</span> <span class="n">t</span> <span class="n">m</span> <span class="n">p</span>           <span class="c1"># toggle character position</span>
+<span class="p">[</span> <span class="n">b</span>                 <span class="c1"># prev buf</span>
+<span class="p">]</span> <span class="n">b</span>                 <span class="c1"># next buf</span>
+<span class="p">[</span> <span class="n">f</span>                 <span class="c1"># prev file in dir</span>
+<span class="p">]</span> <span class="n">f</span>                 <span class="c1"># next file in dir</span>
+  <span class="n">l</span>                 <span class="c1"># error</span>
+  <span class="n">h</span>                 <span class="c1"># vcs hunk</span>
+  <span class="n">w</span>                 <span class="c1"># window</span>
+</code></pre></div>
                         </div>
                     </article>
 

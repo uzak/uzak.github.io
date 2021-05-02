@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -117,14 +117,13 @@
 <h1>3.9</h1>
 <p><a href="https://docs.python.org/3/whatsnew/3.9.html">What's New in Python 3.9</a>
 * merge (<code>|</code>) and update (<code>|=</code>) dicts:</p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; x = {&quot;key1&quot;: &quot;value1 from x&quot;, &quot;key2&quot;: &quot;value2 from x&quot;}
-&gt;&gt;&gt; y = {&quot;key2&quot;: &quot;value2 from y&quot;, &quot;key3&quot;: &quot;value3 from y&quot;}
-&gt;&gt;&gt; x | y
-{&#39;key1&#39;: &#39;value1 from x&#39;, &#39;key2&#39;: &#39;value2 from y&#39;, &#39;key3&#39;: &#39;value3 from y&#39;}
-&gt;&gt;&gt; y | x
-{&#39;key2&#39;: &#39;value2 from x&#39;, &#39;key3&#39;: &#39;value3 from y&#39;, &#39;key1&#39;: &#39;value1 from x&#39;}
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; x = {&quot;key1&quot;: &quot;value1 from x&quot;, &quot;key2&quot;: &quot;value2 from x&quot;}</span>
+<span class="err">&gt;&gt;&gt; y = {&quot;key2&quot;: &quot;value2 from y&quot;, &quot;key3&quot;: &quot;value3 from y&quot;}</span>
+<span class="err">&gt;&gt;&gt; x | y</span>
+<span class="err">{&#39;key1&#39;: &#39;value1 from x&#39;, &#39;key2&#39;: &#39;value2 from y&#39;, &#39;key3&#39;: &#39;value3 from y&#39;}</span>
+<span class="err">&gt;&gt;&gt; y | x</span>
+<span class="err">{&#39;key2&#39;: &#39;value2 from x&#39;, &#39;key3&#39;: &#39;value3 from y&#39;, &#39;key1&#39;: &#39;value1 from x&#39;}</span>
+</code></pre></div>
 
 <ul>
 <li>str.removeprefix(prefix) and str.removesuffix(suffix)</li>
@@ -137,23 +136,21 @@
 <ul>
 <li>PEP 572: "the walrus operator"</li>
 </ul>
-<div class="codehilite"><pre><span></span>if (n := len(a)) &gt; 10:
-    print(f&quot;List is too long ({n} elements, expected &lt;= 10)&quot;)
-discount = 0.0
-if (mo := re.search(r&#39;(\d+)% discount&#39;, advertisement)):
-    discount = float(mo.group(1)) / 100.0
-[clean_name.title() for name in names
- if (clean_name := normalize(&#39;NFC&#39;, name)) in allowed_names]
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">if (n := len(a)) &gt; 10:</span>
+<span class="err">    print(f&quot;List is too long ({n} elements, expected &lt;= 10)&quot;)</span>
+<span class="err">discount = 0.0</span>
+<span class="err">if (mo := re.search(r&#39;(\d+)% discount&#39;, advertisement)):</span>
+<span class="err">    discount = float(mo.group(1)) / 100.0</span>
+<span class="err">[clean_name.title() for name in names</span>
+<span class="err"> if (clean_name := normalize(&#39;NFC&#39;, name)) in allowed_names]</span>
+</code></pre></div>
 
 <ul>
 <li>PEP 570: Positional-only parameters. In the following example, parameters a and b are positional-only, while c or d can be positional or keyword, and e or f are required to be keywords:</li>
 </ul>
-<div class="codehilite"><pre><span></span>def f(a, b, /, c, d, *, e, f):
-    print(a, b, c, d, e, f)
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">def f(a, b, /, c, d, *, e, f):</span>
+<span class="err">    print(a, b, c, d, e, f)</span>
+</code></pre></div>
 
 <ul>
 <li>The new PYTHONPYCACHEPREFIX setting (also available as <code>-X pycache_prefix</code>) configures the implicit bytecode cache to use a separate parallel filesystem tree, rather than the default <code>__pycache__</code> subdirectories within each source directory.</li>
@@ -161,12 +158,11 @@ if (mo := re.search(r&#39;(\d+)% discount&#39;, advertisement)):
 <li>bool, int, fractions.Fraction also have <code>.as_integer_ratio()</code> just as float and decimal.Decimal.</li>
 <li>The new importlib.metadata provides support for reading metadata from third-party packages</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">version</span><span class="p">,</span> <span class="n">requires</span><span class="p">,</span> <span class="n">files</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">version</span><span class="p">(</span><span class="s1">&#39;requests&#39;</span><span class="p">)</span>
 <span class="s1">&#39;2.21.0&#39;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>asyncio<ul>
@@ -191,7 +187,7 @@ await main()
 </li>
 <li><code>functools.singledispatchmethod()</code> and <code>functools.cached_property()</code> computed properties cached for the life of the instance:</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">import</span> <span class="nn">statistics</span>
 <span class="k">class</span> <span class="nc">Dataset</span><span class="p">:</span>
    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence_of_numbers</span><span class="p">):</span>
@@ -199,35 +195,32 @@ await main()
    <span class="nd">@functools.cached_property</span>
    <span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="k">return</span> <span class="n">statistics</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><code>python -m json.tool</code> supports now <code>--json-lines</code> to parse every input line as a separate JSON object.</li>
 </ul>
 <h2>f-strings support = for self-documenting expressions and debugging</h2>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; user = &#39;eric_idle&#39;
-&gt;&gt;&gt; member_since = date(1975, 7, 31)
-&gt;&gt;&gt; f&#39;{user=} {member_since=}&#39;
-&quot;user=&#39;eric_idle&#39; member_since=datetime.date(1975, 7, 31)&quot;
-&gt;&gt;&gt; delta = date.today() - member_since
-&gt;&gt;&gt; f&#39;{user=!s}  {delta.days=:,d}&#39;
-&#39;user=eric_idle  delta.days=16,075&#39;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; user = &#39;eric_idle&#39;</span>
+<span class="err">&gt;&gt;&gt; member_since = date(1975, 7, 31)</span>
+<span class="err">&gt;&gt;&gt; f&#39;{user=} {member_since=}&#39;</span>
+<span class="err">&quot;user=&#39;eric_idle&#39; member_since=datetime.date(1975, 7, 31)&quot;</span>
+<span class="err">&gt;&gt;&gt; delta = date.today() - member_since</span>
+<span class="err">&gt;&gt;&gt; f&#39;{user=!s}  {delta.days=:,d}&#39;</span>
+<span class="err">&#39;user=eric_idle  delta.days=16,075&#39;</span>
+</code></pre></div>
 
 <p>The = specifier will display the whole expression so that calculations can be shown:</p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; print(f&quot;{a=} {a**a=:0.3f}&quot;)
-a=2 a**a=4.000
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; print(f&quot;{a=} {a**a=:0.3f}&quot;)</span>
+<span class="err">a=2 a**a=4.000</span>
+</code></pre></div>
 
 <h1>3.7</h1>
 <p><a href="https://docs.python.org/3/whatsnew/3.7.html">What's New in Python 3.7</a></p>
 <ul>
 <li>PEP 563: Postponed Evaluation of Annotations. Now this is possible:</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span> <span class="c1"># This will become default in Python 4.0.</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span> <span class="c1"># This will become default in Python 4.0.</span>
 <span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">:</span>
@@ -236,8 +229,7 @@ a=2 a**a=4.000
         <span class="o">...</span>
 <span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
     <span class="o">...</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>PEP 553: includes the new built-in <code>breakpoint()</code> function as an easy and consistent way to enter the Python debugger.</li>
@@ -253,15 +245,14 @@ a=2 a**a=4.000
 <li>new module <a href="https://docs.python.org/3/library/contextvars.html#module-contextvars">contextvars</a> for context variables. Like thread local variables, but support asynchronous code directly.</li>
 <li><a href="https://docs.python.org/3/library/dataclasses.html#dataclasses.dataclass">dataclasses</a> module:</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">@dataclass</span>
-<span class="kr">class</span> <span class="nx">Point</span>:
-    <span class="kt">x</span><span class="o">:</span> <span class="kr">float</span>
-    <span class="nx">y</span>: <span class="kt">float</span>
-    <span class="nx">z</span>: <span class="kt">float</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="nx">p</span> <span class="o">=</span> <span class="nx">Point</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-<span class="nx">print</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>   <span class="err">#</span> <span class="nx">produces</span> <span class="s2">&quot;Point(x=1.5, y=2.5, z=0.0)&quot;</span>
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">@dataclass</span>
+<span class="err">class Point:</span>
+<span class="err">    x: float</span>
+<span class="err">    y: float</span>
+<span class="err">    z: float = 0.0</span>
+<span class="err">p = Point(1.5, 2.5)</span>
+<span class="err">print(p)   # produces &quot;Point(x=1.5, y=2.5, z=0.0)&quot;</span>
+</code></pre></div>
 
 <ul>
 <li>argparse: The new <code>ArgumentParser.parse_intermixed_args()</code> method allows intermixing options and positional arguments.</li>
@@ -273,22 +264,20 @@ a=2 a**a=4.000
 <ul>
 <li>PEP 526: variable annotations</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">primes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">captain</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Note: no initial value!</span>
 <span class="k">class</span> <span class="nc">Starship</span><span class="p">:</span>
     <span class="n">stats</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Just as for function annotations, the Python interpreter does not attach any particular meaning to variable annotations and only stores them in the <code>__annotations__</code> attribute of a class or module. Use <code>mypy</code> module for checking them.
 * PEP 515: Underscores in Numeric Literals. <code>1_000_000</code> or <code>0x_FF_FF_FF</code>. Also string formatting was extended with the <code>_</code> option:</p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; &#39;{:_}&#39;.format(1000000)
-&#39;1_000_000&#39;
-&gt;&gt;&gt; &#39;{:_x}&#39;.format(0xFFFFFFFF)
-&#39;ffff_ffff&#39;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; &#39;{:_}&#39;.format(1000000)</span>
+<span class="err">&#39;1_000_000&#39;</span>
+<span class="err">&gt;&gt;&gt; &#39;{:_x}&#39;.format(0xFFFFFFFF)</span>
+<span class="err">&#39;ffff_ffff&#39;</span>
+</code></pre></div>
 
 <ul>
 <li>PEP 487: <code>__init_subclass__(child_cls)</code> is called in parent when a new subclass is created.</li>
@@ -302,24 +291,21 @@ a=2 a**a=4.000
 <li>```&gt;&gt;&gt; Decimal('-3.14').as_integer_ratio()
 (-157, 50)</li>
 </ul>
-<div class="codehilite"><pre><span></span>## Asynchronous Comprehensions (PEP 530) and Generators (PEP 525)
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">## Asynchronous Comprehensions (PEP 530) and Generators (PEP 525)</span>
+</code></pre></div>
 
 <p>async def ticker(delay, to):
     """Yield numbers from 0 to <em>to</em> every <em>delay</em> seconds."""
     for i in range(to):
         yield i
         await asyncio.sleep(delay)</p>
-<div class="codehilite"><pre><span></span>Generators. They add support for `async for`, which requires an object with `__aiter__` method.
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="n">Generators</span><span class="p">.</span> <span class="n">They</span> <span class="k">add</span> <span class="n">support</span> <span class="k">for</span> <span class="n">`async for`</span><span class="p">,</span> <span class="n">which</span> <span class="n">requires</span> <span class="n">an</span> <span class="n">object</span> <span class="k">with</span> <span class="n">`__aiter__`</span> <span class="n">method</span><span class="p">.</span>
+</code></pre></div>
 
 <p>result = [i async for i in aiter() if i % 2]
 result = [await fun() for fun in funcs if await condition()]</p>
-<div class="codehilite"><pre><span></span>## PEP 498: Formatted string literals
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">## PEP 498: Formatted string literals</span>
+</code></pre></div>
 
 <blockquote>
 <blockquote>
@@ -335,13 +321,12 @@ f"result: {value:{width}.{precision}}"  # nested fields
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="codehilite"><pre><span></span># 3.5
-[What&#39;s New in Python 3.5](https://docs.python.org/3/whatsnew/3.5.html)
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span>
+<span class="p">[</span><span class="n">What</span><span class="err">&#39;</span><span class="n">s</span> <span class="k">New</span> <span class="k">in</span> <span class="n">Python</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="p">.</span><span class="n">python</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="n">whatsnew</span><span class="o">/</span><span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="n">html</span><span class="p">)</span>
 
-* PEP 465 - A dedicated infix operator for matrix multiplication `@`, objects can implement \_\_{matmul,rmatmul,imatmul}()\_\_.
-* PEP 448 - Additional Unpacking Generalizations.  It is now possible to use an arbitrary number of unpackings in function calls
-</pre></div>
-
+<span class="o">*</span> <span class="n">PEP</span> <span class="mi">465</span> <span class="o">-</span> <span class="n">A</span> <span class="n">dedicated</span> <span class="k">infix</span> <span class="k">operator</span> <span class="k">for</span> <span class="n">matrix</span> <span class="n">multiplication</span> <span class="o">`@`</span><span class="p">,</span> <span class="n">objects</span> <span class="n">can</span> <span class="n">implement</span> <span class="err">\</span><span class="n">_</span><span class="err">\</span><span class="n">_</span><span class="err">{</span><span class="n">matmul</span><span class="p">,</span><span class="n">rmatmul</span><span class="p">,</span><span class="n">imatmul</span><span class="err">}</span><span class="p">()</span><span class="err">\</span><span class="n">_</span><span class="err">\</span><span class="n">_</span><span class="p">.</span>
+<span class="o">*</span> <span class="n">PEP</span> <span class="mi">448</span> <span class="o">-</span> <span class="n">Additional</span> <span class="n">Unpacking</span> <span class="n">Generalizations</span><span class="p">.</span>  <span class="n">It</span> <span class="k">is</span> <span class="n">now</span> <span class="n">possible</span> <span class="k">to</span> <span class="n">use</span> <span class="n">an</span> <span class="n">arbitrary</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">unpackings</span> <span class="k">in</span> <span class="k">function</span> <span class="n">calls</span>
+</code></pre></div>
 
 <blockquote>
 <blockquote>
@@ -356,9 +341,8 @@ fn(</em><em>{'a': 1, 'c': 3}, </em>*{'b': 2, 'd': 4})
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="codehilite"><pre><span></span>Similarly, tuple, list, set, and dictionary displays allow multiple unpackings
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">Similarly, tuple, list, set, and dictionary displays allow multiple unpackings</span>
+</code></pre></div>
 
 <blockquote>
 <blockquote>
@@ -374,9 +358,8 @@ fn(</em><em>{'a': 1, 'c': 3}, </em>*{'b': 2, 'd': 4})
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="codehilite"><pre><span></span>* PEP 461 - percent formatting support for bytes and bytearray
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">* PEP 461 - percent formatting support for bytes and bytearray</span>
+</code></pre></div>
 
 <blockquote>
 <blockquote>
@@ -388,9 +371,8 @@ b'x=1 y=2.500000'</p>
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="codehilite"><pre><span></span>Unicode is not allowed for %b, but it is accepted by %a (equivalent of repr(obj).encode(&#39;ascii&#39;, &#39;backslashreplace&#39;)):
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">Unicode is not allowed for %b, but it is accepted by %a (equivalent of repr(obj).encode(&#39;ascii&#39;, &#39;backslashreplace&#39;)):</span>
+</code></pre></div>
 
 <blockquote>
 <blockquote>
@@ -400,9 +382,8 @@ b"price: '10\u20ac'"</p>
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="codehilite"><pre><span></span>* PEP 485: A function for testing approximate equality
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">* PEP 485: A function for testing approximate equality</span>
+</code></pre></div>
 
 <blockquote>
 <blockquote>
@@ -421,25 +402,23 @@ False</p>
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="codehilite"><pre><span></span>* PEP 486: Make the Python Launcher aware of virtual environments. When the default interpreter would be used and the `VIRTUAL_ENV` environment variable is set, the interpreter in the virtual environment will be used.
-* PEP 488: Elimination of PYO files.
-* -b option affects comparisons of bytes with int.
-* zipapp module (PEP 441) for creating executable Python Zip Applications. Bundling your application is as simple as putting all the files, including a __main__.py file, into a directory myapp and running
-```sh
-$ python -m zipapp myapp
-$ python myapp.pyz
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="o">*</span> <span class="n">PEP</span> <span class="mi">486</span><span class="o">:</span> <span class="n">Make</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">Launcher</span> <span class="n">aware</span> <span class="k">of</span> <span class="k">virtual</span> <span class="n">environments</span><span class="p">.</span> <span class="k">When</span> <span class="n">the</span> <span class="k">default</span> <span class="n">interpreter</span> <span class="n">would</span> <span class="n">be</span> <span class="n">used</span> <span class="k">and</span> <span class="n">the</span> <span class="n">`VIRTUAL_ENV`</span> <span class="n">environment</span> <span class="n">variable</span> <span class="k">is</span> <span class="k">set</span><span class="p">,</span> <span class="n">the</span> <span class="n">interpreter</span> <span class="k">in</span> <span class="n">the</span> <span class="k">virtual</span> <span class="n">environment</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="p">.</span>
+<span class="o">*</span> <span class="n">PEP</span> <span class="mi">488</span><span class="o">:</span> <span class="n">Elimination</span> <span class="k">of</span> <span class="n">PYO</span> <span class="n">files</span><span class="p">.</span>
+<span class="o">*</span> <span class="o">-</span><span class="n">b</span> <span class="k">option</span> <span class="n">affects</span> <span class="n">comparisons</span> <span class="k">of</span> <span class="n">bytes</span> <span class="k">with</span> <span class="kt">int</span><span class="p">.</span>
+<span class="o">*</span> <span class="n">zipapp</span> <span class="n">module</span> <span class="p">(</span><span class="n">PEP</span> <span class="mi">441</span><span class="p">)</span> <span class="k">for</span> <span class="n">creating</span> <span class="n">executable</span> <span class="n">Python</span> <span class="n">Zip</span> <span class="n">Applications</span><span class="p">.</span> <span class="n">Bundling</span> <span class="n">your</span> <span class="n">application</span> <span class="k">is</span> <span class="k">as</span> <span class="k">simple</span> <span class="k">as</span> <span class="n">putting</span> <span class="k">all</span> <span class="n">the</span> <span class="n">files</span><span class="p">,</span> <span class="n">including</span> <span class="n">a</span> <span class="n">__main__</span><span class="p">.</span><span class="n">py</span> <span class="k">file</span><span class="p">,</span> <span class="k">into</span> <span class="n">a</span> <span class="k">directory</span> <span class="n">myapp</span> <span class="k">and</span> <span class="n">running</span>
+<span class="n">```sh</span>
+<span class="n">$ python -m zipapp myapp</span>
+<span class="n">$ python myapp.pyz</span>
+</code></pre></div>
 
 <ul>
 <li><code>__doc__</code> might now be updated.</li>
 <li>subprocess.run() has been added</li>
 </ul>
 <h2>PEP 485 - Type Hints</h2>
-<div class="codehilite"><pre><span></span>def greeting(name: str) -&gt; str:
-    return &#39;Hello &#39; + name
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">def greeting(name: str) -&gt; str:</span>
+<span class="err">    return &#39;Hello &#39; + name</span>
+</code></pre></div>
 
 <ul>
 <li><code>Any</code>,<code>NoReturn</code>, <code>Union</code>, <code>Optional</code>, <code>Literal</code>, <code>Tuple</code>, <code>ClassVar</code>, <code>AnyStr</code> ...  see <a href="https://docs.python.org/3/library/typing.html">typing</a> module for details.</li>
@@ -448,7 +427,7 @@ $ python myapp.pyz
 <ul>
 <li>async, await, await for</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">aiohttp</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">aiohttp</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="o">&gt;&gt;&gt;</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">async</span> <span class="k">def</span> <span class="nf">getpage</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
@@ -476,8 +455,7 @@ $ python myapp.pyz
 <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span> <span class="n">count</span><span class="p">:</span> <span class="mi">12689</span>
 <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">sme</span><span class="o">.</span><span class="n">sk</span> <span class="n">count</span><span class="p">:</span> <span class="mi">427861</span>
 <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">derstandard</span><span class="o">.</span><span class="n">at</span> <span class="n">count</span><span class="p">:</span> <span class="mi">275782</span>
-</pre></div>
-
+</code></pre></div>
 
 <h1>3.4</h1>
 <p><a href="https://docs.python.org/3/whatsnew/3.4.html">What's New in Python 3.4</a></p>
@@ -492,7 +470,7 @@ $ python myapp.pyz
 <li><code>python -m doctest</code>.</li>
 <li>functools module has now <a href="https://docs.python.org/3/library/functools.html#functools.partialmethod">partialmethod</a> and <a href="https://docs.python.org/3/library/functools.html#functools.singledispatch">@singledispatch</a> for grouping multiple implementations of an operation that allows it to work with different kinds of data.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatch</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatch</span>
 <span class="nd">@singledispatch</span>
 <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
@@ -528,25 +506,23 @@ $ python myapp.pyz
 <span class="k">print</span><span class="p">(</span><span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">dict</span><span class="p">))</span> <span class="c1"># default impl.</span>
 <span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">int</span><span class="p">)(</span><span class="mi">123</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">dict</span><span class="p">)((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># default impl.</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>output:</p>
-<div class="codehilite"><pre><span></span># Strength in numbers, eh? 1
-# Enumerate this:
-# 0 carrot
-# 1 tomato
-# Let me just say,  String
-# Better than complicated. 1.0 2.0
-# Nothing.
-# dict_keys([&lt;class &#39;object&#39;&gt;, &lt;class &#39;int&#39;&gt;, &lt;class &#39;list&#39;&gt;, &lt;class &#39;complex&#39;&gt;, &lt;class &#39;NoneType&#39;&gt;])
-# &lt;function fun at 0x7f77553b8830&gt;
-# &lt;function _ at 0x7f7755381f80&gt;
-# &lt;function fun at 0x7f77553b8830&gt;
-# Strength in numbers, eh? 123
-# Let me just say,  (1, 2, 3)
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err"># Strength in numbers, eh? 1</span>
+<span class="err"># Enumerate this:</span>
+<span class="err"># 0 carrot</span>
+<span class="err"># 1 tomato</span>
+<span class="err"># Let me just say,  String</span>
+<span class="err"># Better than complicated. 1.0 2.0</span>
+<span class="err"># Nothing.</span>
+<span class="err"># dict_keys([&lt;class &#39;object&#39;&gt;, &lt;class &#39;int&#39;&gt;, &lt;class &#39;list&#39;&gt;, &lt;class &#39;complex&#39;&gt;, &lt;class &#39;NoneType&#39;&gt;])</span>
+<span class="err"># &lt;function fun at 0x7f77553b8830&gt;</span>
+<span class="err"># &lt;function _ at 0x7f7755381f80&gt;</span>
+<span class="err"># &lt;function fun at 0x7f77553b8830&gt;</span>
+<span class="err"># Strength in numbers, eh? 123</span>
+<span class="err"># Let me just say,  (1, 2, 3)</span>
+</code></pre></div>
 
 <ul>
 <li><code>gc.get_stats()</code></li>
@@ -564,21 +540,19 @@ $ python myapp.pyz
 <li>PEP 3151: Reworking the OS and IO exception hierarchy: You don’t have to worry anymore about choosing the appropriate exception type between OSError, IOError, EnvironmentError, WindowsError, mmap.error, socket.error or select.error. All these exception types are now only one: <code>OSError</code>. </li>
 <li>PEP 409 - Suppressing exception context:</li>
 </ul>
-<div class="codehilite"><pre><span></span>raise AttributeError(attr) from None # disables display of chained exception context
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">raise AttributeError(attr) from None # disables display of chained exception context</span>
+</code></pre></div>
 
 <p>The original exception context is available as <code>exc.__context__</code>
 * PEP 3155: qualified name for classes and functions:</p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; class C:
-...     def meth(self):
-...         pass
-&gt;&gt;&gt; C.meth.__name__
-&#39;meth&#39;
-&gt;&gt;&gt; C.meth.__qualname__
-&#39;C.meth&#39;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; class C:</span>
+<span class="err">...     def meth(self):</span>
+<span class="err">...         pass</span>
+<span class="err">&gt;&gt;&gt; C.meth.__name__</span>
+<span class="err">&#39;meth&#39;</span>
+<span class="err">&gt;&gt;&gt; C.meth.__qualname__</span>
+<span class="err">&#39;C.meth&#39;</span>
+</code></pre></div>
 
 <ul>
 <li><code>dict.setdefault(key, default=None)</code> is now atomic. Doc: If key is in the dictionary, return its value. If not, insert key with a value of default and return default. default defaults to None.</li>
@@ -588,46 +562,44 @@ $ python myapp.pyz
 </ul>
 <h2>Subgenerators: yield from</h2>
 <p>yield from iterable:</p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; def g(x):
-...  yield from range(x, 0, -1)
-...  yield from range(x)
-... 
-&gt;&gt;&gt; list(g(3))
-[3, 2, 1, 0, 1, 2]
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; def g(x):</span>
+<span class="err">...  yield from range(x, 0, -1)</span>
+<span class="err">...  yield from range(x)</span>
+<span class="err">... </span>
+<span class="err">&gt;&gt;&gt; list(g(3))</span>
+<span class="err">[3, 2, 1, 0, 1, 2]</span>
+</code></pre></div>
 
 <p>However, unlike an ordinary loop, yield from allows subgenerators to receive sent and thrown values directly from the calling scope, and return a final value to the outer generator:</p>
-<div class="codehilite"><pre><span></span>def accumulate():
-    tally = 0
-    while 1:
-        next = yield
-        if next == &quot;stop&quot;:
-            return tally
-        tally += next
+<div class="codehilite"><pre><span></span><code><span class="n">def</span> <span class="n">accumulate</span><span class="p">():</span>
+    <span class="n">tally</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">next</span> <span class="o">=</span> <span class="n">yield</span>
+        <span class="k">if</span> <span class="k">next</span> <span class="o">==</span> <span class="ss">&quot;stop&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">tally</span>
+        <span class="n">tally</span> <span class="o">+=</span> <span class="k">next</span>
 
-def gather_tallies(tallies):
-    while 1:
-        tally = yield from accumulate()
-        tallies.append(tally)
+<span class="n">def</span> <span class="n">gather_tallies</span><span class="p">(</span><span class="n">tallies</span><span class="p">):</span>
+    <span class="n">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">tally</span> <span class="o">=</span> <span class="n">yield</span> <span class="k">from</span> <span class="n">accumulate</span><span class="p">()</span>
+        <span class="n">tallies</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tally</span><span class="p">)</span>
 
-tallies = []
-acc = gather_tallies(tallies)
-next(acc)      # initialize accumulator
+<span class="n">tallies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">gather_tallies</span><span class="p">(</span><span class="n">tallies</span><span class="p">)</span>
+<span class="k">next</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>      <span class="o">#</span> <span class="k">initialize</span> <span class="n">accumulator</span>
 
-print(tallies) # []
-for i in range(4):
-    acc.send(i)
-acc.send(&quot;stop&quot;) 
+<span class="n">print</span><span class="p">(</span><span class="n">tallies</span><span class="p">)</span> <span class="o">#</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">acc</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">acc</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="ss">&quot;stop&quot;</span><span class="p">)</span> 
 
-print(tallies) # [6]
-for i in range(5):
-    acc.send(i)
-acc.send(&quot;stop&quot;)
+<span class="n">print</span><span class="p">(</span><span class="n">tallies</span><span class="p">)</span> <span class="o">#</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">acc</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">acc</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="ss">&quot;stop&quot;</span><span class="p">)</span>
 
-print(tallies) # [6, 10]
-</pre></div>
-
+<span class="n">print</span><span class="p">(</span><span class="n">tallies</span><span class="p">)</span> <span class="o">#</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</code></pre></div>
 
 <ul>
 <li><code>time.monotonic()</code> returns HW clock ticks.</li>
@@ -637,22 +609,20 @@ print(tallies) # [6, 10]
 <ul>
 <li><a href="https://docs.python.org/3/whatsnew/3.2.html">concurrent.futures</a> module inspired by java.util.concurrent. Future object that abstracts features common to threads, processes, and remote procedure calls. </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">concurrent.futures</span><span class="o">,</span> <span class="nn">shutil</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">concurrent.futures</span><span class="o">,</span> <span class="nn">shutil</span>
 <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest1.txt&#39;</span><span class="p">)</span>
     <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest2.txt&#39;</span><span class="p">)</span>
     <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest3.txt&#39;</span><span class="p">)</span>
     <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest4.txt&#39;</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><code>__pychache__</code> directory and <code>__cached__</code> attribute for modules introduced for saving different PYC files for the same module.</li>
 </ul>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; concurrent.__cached__
-&#39;/usr/lib/python3.7/concurrent/__pycache__/__init__.cpython-37.pyc&#39;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; concurrent.__cached__</span>
+<span class="err">&#39;/usr/lib/python3.7/concurrent/__pycache__/__init__.cpython-37.pyc&#39;</span>
+</code></pre></div>
 
 <ul>
 <li>range objects support now index(obj) and count(obj) methods</li>
@@ -666,45 +636,41 @@ print(tallies) # [6, 10]
 <ul>
 <li>PEP 378: Format Specifier for Thousands Separator</li>
 </ul>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; format(12345, &#39;,.2f&#39;)
-&#39;12,345.00&#39;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; format(12345, &#39;,.2f&#39;)</span>
+<span class="err">&#39;12,345.00&#39;</span>
+</code></pre></div>
 
 <ul>
 <li>The int() type gained a <code>bit_length</code> method that returns the number of bits necessary to represent its argument in binary</li>
 </ul>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; int(123123123).bit_length()
-27
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; int(123123123).bit_length()</span>
+<span class="err">27</span>
+</code></pre></div>
 
 <ul>
 <li>The fields in format() strings can now be automatically numbered:</li>
 </ul>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; &#39;Sir {} of {}&#39;.format(&#39;Gallahad&#39;, &#39;Camelot&#39;)
-&#39;Sir Gallahad of Camelot&#39;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; &#39;Sir {} of {}&#39;.format(&#39;Gallahad&#39;, &#39;Camelot&#39;)</span>
+<span class="err">&#39;Sir Gallahad of Camelot&#39;</span>
+</code></pre></div>
 
 <ul>
 <li>unittest improvements:</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kr">class</span> <span class="nx">TestGizmo</span><span class="p">(</span><span class="nx">unittest</span><span class="p">.</span><span class="nx">TestCase</span><span class="p">)</span><span class="o">:</span>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">TestGizmo</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
 
-    <span class="kd">@unittest</span><span class="p">.</span><span class="nx">skipUnless</span><span class="p">(</span><span class="nx">sys</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">startswith</span><span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">),</span> <span class="s2">&quot;requires Windows&quot;</span><span class="p">)</span>
-    <span class="nx">def</span> <span class="nx">test_gizmo_on_windows</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span><span class="o">:</span>
-        <span class="p">...</span>
+<span class="w">    </span><span class="nv">@unittest</span><span class="p">.</span><span class="n">skipUnless</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">platform</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="ss">&quot;win&quot;</span><span class="p">),</span><span class="w"> </span><span class="ss">&quot;requires Windows&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">test_gizmo_on_windows</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
 
-    <span class="kd">@unittest</span><span class="p">.</span><span class="nx">expectedFailure</span>
-    <span class="nx">def</span> <span class="nx">test_gimzo_without_required_library</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span><span class="o">:</span>
-        <span class="p">...</span>
+<span class="w">    </span><span class="nv">@unittest</span><span class="p">.</span><span class="n">expectedFailure</span><span class="w"></span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">test_gimzo_without_required_library</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
 
-    <span class="nx">def</span> <span class="nx">test_division_by_zero</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span><span class="o">:</span>
-        <span class="kd">with</span> <span class="nx">self</span><span class="p">.</span><span class="nx">assertRaises</span><span class="p">(</span><span class="nx">ZeroDivisionError</span><span class="p">)</span><span class="o">:</span>
-            <span class="nx">x</span> <span class="o">/</span> <span class="mi">0</span>
-</pre></div>
-
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">test_division_by_zero</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">ZeroDivisionError</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
 <h1>3.0</h1>
 <p><a href="https://docs.python.org/3/whatsnew/3.0.html">What's New in Python 3.0</a></p>
@@ -721,27 +687,25 @@ print(tallies) # [6, 10]
 <li>PEP 3102: Keyword-only arguments. Named parameters occurring after *args in the parameter list must be specified using keyword syntax in the call. You can also use a bare <code>*</code> in the parameter list to indicate that you don’t accept a variable-length argument list, but you do have keyword-only arguments.</li>
 <li>PEP 3132: Extended Iterable Unpacking.</li>
 </ul>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; a, *rest, b = range(10)
-&gt;&gt;&gt; a
-0
-&gt;&gt;&gt; b
-1
-&gt;&gt;&gt; rest
-[2, 3, 4, 5, 6, 7, 8, 9]
-&gt;&gt;&gt; a, b, *rest = range(10)
-&gt;&gt;&gt; b
-9
-&gt;&gt;&gt; rest
-[1, 2, 3, 4, 5, 6, 7, 8]
-&gt;&gt;&gt; 
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">&gt;&gt;&gt; a, *rest, b = range(10)</span>
+<span class="err">&gt;&gt;&gt; a</span>
+<span class="err">0</span>
+<span class="err">&gt;&gt;&gt; b</span>
+<span class="err">1</span>
+<span class="err">&gt;&gt;&gt; rest</span>
+<span class="err">[2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="err">&gt;&gt;&gt; a, b, *rest = range(10)</span>
+<span class="err">&gt;&gt;&gt; b</span>
+<span class="err">9</span>
+<span class="err">&gt;&gt;&gt; rest</span>
+<span class="err">[1, 2, 3, 4, 5, 6, 7, 8]</span>
+<span class="err">&gt;&gt;&gt; </span>
+</code></pre></div>
 
 <p>PEP 3115: New Metaclass Syntax. You must now use:</p>
-<div class="codehilite"><pre><span></span><span class="kr">class</span> <span class="nx">C</span><span class="p">(</span><span class="nx">metaclass</span><span class="o">=</span><span class="nx">M</span><span class="p">)</span><span class="o">:</span>
-    <span class="p">...</span>
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">class C(metaclass=M):</span>
+<span class="err">    ...</span>
+</code></pre></div>
 
 <ul>
 <li>Removed backticks (use repr() instead).</li>
@@ -765,9 +729,8 @@ print(tallies) # [6, 10]
 <li>Exceptions no longer behave as sequences. Use the args attribute instead.</li>
 <li>PEP 3134: Exception chaining.</li>
 </ul>
-<div class="codehilite"><pre><span></span>raise SecondaryException() from primary_exception
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">raise SecondaryException() from primary_exception</span>
+</code></pre></div>
 
 <ul>
 <li>PEP 3134: Exception objects now store their traceback as the <code>__traceback__</code> attribute.</li>

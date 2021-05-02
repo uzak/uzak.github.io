@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -88,147 +88,134 @@
 <p>git log --pretty=format:"%an (%ae): %s"</p>
 <p>gd HEAD '@{2020-12-01}' -- env.sample</p>
 <p>corrupt lose object</p>
-<div class="codehilite"><pre><span></span>find .git/objects/ -size 0 -exec rm -f {} \;
-git fetch origin
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">find .git/objects/ -size 0 -exec rm -f {} \;</span>
+<span class="err">git fetch origin</span>
+</code></pre></div>
 
 <h1>Basic</h1>
-<div class="codehilite"><pre><span></span>git branch -m oldname newname           # rename a branch
-git branch -m newname                   # rename current branch
+<div class="codehilite"><pre><span></span><code><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="n">oldname</span> <span class="n">newname</span>           <span class="o">#</span> <span class="k">rename</span> <span class="n">a</span> <span class="n">branch</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="n">newname</span>                   <span class="o">#</span> <span class="k">rename</span> <span class="k">current</span> <span class="n">branch</span>
 
-git reset --hard master                 # resets the branch to master
+<span class="n">git</span> <span class="k">reset</span> <span class="c1">--hard master                 # resets the branch to master</span>
 
-git branch -d branch_name               # delete local branch
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">branch_name</span>               <span class="o">#</span> <span class="k">delete</span> <span class="k">local</span> <span class="n">branch</span>
 
-git branch -a                           # list all branches (also remote)
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">a</span>                           <span class="o">#</span> <span class="n">list</span> <span class="k">all</span> <span class="n">branches</span> <span class="p">(</span><span class="n">also</span> <span class="n">remote</span><span class="p">)</span>
 
-git diff HEAD &#39;HEAD@{1 week ago}&#39; -- some/file/path/file.ext
+<span class="n">git</span> <span class="n">diff</span> <span class="n">HEAD</span> <span class="s1">&#39;HEAD@{1 week ago}&#39;</span> <span class="c1">-- some/file/path/file.ext</span>
 
-git merge --abort                       # abort merge
+<span class="n">git</span> <span class="n">merge</span> <span class="c1">--abort                       # abort merge</span>
 
-git reset HEAD~                         # undo commit
+<span class="n">git</span> <span class="k">reset</span> <span class="n">HEAD</span><span class="o">~</span>                         <span class="o">#</span> <span class="n">undo</span> <span class="k">commit</span>
 
-git rev-list --count HEAD               # revision number
+<span class="n">git</span> <span class="n">rev</span><span class="o">-</span><span class="n">list</span> <span class="c1">--count HEAD               # revision number</span>
 
-git commit --date=format:relative:4.hours.ago
+<span class="n">git</span> <span class="k">commit</span> <span class="c1">--date=format:relative:4.hours.ago</span>
 
-git format-patch HEAD~1
-git am *.patch
+<span class="n">git</span> <span class="n">format</span><span class="o">-</span><span class="n">patch</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">1</span>
+<span class="n">git</span> <span class="n">am</span> <span class="o">*</span><span class="p">.</span><span class="n">patch</span>
 
-git log -p -- printer.py                # history of a file
-gitk printer.py
+<span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="n">p</span> <span class="c1">-- printer.py                # history of a file</span>
+<span class="n">gitk</span> <span class="n">printer</span><span class="p">.</span><span class="n">py</span>
 
-# patch directly (w/o use of git)
-diff -u OriginalFile UpdatedFile &gt; PatchFile
-patch OriginalFile &lt; PatchFile
+<span class="o">#</span> <span class="n">patch</span> <span class="n">directly</span> <span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="n">o</span> <span class="n">use</span> <span class="k">of</span> <span class="n">git</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">-</span><span class="n">u</span> <span class="n">OriginalFile</span> <span class="n">UpdatedFile</span> <span class="o">&gt;</span> <span class="n">PatchFile</span>
+<span class="n">patch</span> <span class="n">OriginalFile</span> <span class="o">&lt;</span> <span class="n">PatchFile</span>
 
-# 3 way diff and patch
-git diff -R 2742e63a7f759828b049ae5d3384b17beb39f48e openapi.yaml | git apply -3
-</pre></div>
-
+<span class="o">#</span> <span class="mi">3</span> <span class="n">way</span> <span class="n">diff</span> <span class="k">and</span> <span class="n">patch</span>
+<span class="n">git</span> <span class="n">diff</span> <span class="o">-</span><span class="n">R</span> <span class="mi">2742</span><span class="n">e63a7f759828b049ae5d3384b17beb39f48e</span> <span class="n">openapi</span><span class="p">.</span><span class="n">yaml</span> <span class="o">|</span> <span class="n">git</span> <span class="n">apply</span> <span class="o">-</span><span class="mi">3</span>
+</code></pre></div>
 
 <p>change remote:</p>
-<div class="codehilite"><pre><span></span>git branch gen_printer_name -u origin/gen_printer_name
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git branch gen_printer_name -u origin/gen_printer_name</span>
+</code></pre></div>
 
 <p><a href="https://stackoverflow.com/a/16666418">Git: merge vs. rebase</a></p>
 <p>Merge one file from another branch:</p>
-<div class="codehilite"><pre><span></span>git checkout --patch another_branch file.txt
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git checkout --patch another_branch file.txt</span>
+</code></pre></div>
 
 <p>Stash last two commits into one:</p>
-<div class="codehilite"><pre><span></span>git rebase -i HEAD~2
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git rebase -i HEAD~2</span>
+</code></pre></div>
 
 <p>Get a version from the commits:</p>
-<div class="codehilite"><pre><span></span>git describe --tags --always --dirty
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git describe --tags --always --dirty</span>
+</code></pre></div>
 
 <p>Remove a remote branch:</p>
-<div class="codehilite"><pre><span></span>git push &lt;remote-name&gt; --delete &lt;branch-name&gt;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git push &lt;remote-name&gt; --delete &lt;branch-name&gt;</span>
+</code></pre></div>
 
 <p>Delete a commit on remote:</p>
-<div class="codehilite"><pre><span></span>git stash
-git reset --hard &lt;last_working_commit_id&gt;
-git push --force
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git stash</span>
+<span class="err">git reset --hard &lt;last_working_commit_id&gt;</span>
+<span class="err">git push --force</span>
+</code></pre></div>
 
 <p>Squash all commits from a branch and merge into master</p>
-<div class="codehilite"><pre><span></span>git checkout master
-git merge --squash &lt;branch&gt;
-git commit
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git checkout master</span>
+<span class="err">git merge --squash &lt;branch&gt;</span>
+<span class="err">git commit</span>
+</code></pre></div>
 
 <p>Change remote URL </p>
-<div class="codehilite"><pre><span></span>git remote set-url origin git@github.com:uzak/PoorWSGI.git
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git remote set-url origin git@github.com:uzak/PoorWSGI.git</span>
+</code></pre></div>
 
 <h2>Tag</h2>
-<div class="codehilite"><pre><span></span>git tag -a v1 df50154807f5d009e3526208f266d9f57e5b3e2e
-git push origin v1          # tags are not pushed by default
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git tag -a v1 df50154807f5d009e3526208f266d9f57e5b3e2e</span>
+<span class="err">git push origin v1          # tags are not pushed by default</span>
+</code></pre></div>
 
 <h2>Stash</h2>
-<div class="codehilite"><pre><span></span>git stash list
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git stash list</span>
+</code></pre></div>
 
 <h1>Školenie GIT 2020-05-08</h1>
-<div class="codehilite"><pre><span></span>git diff --staged
-git diff | tig
-git difftool
-git reset na zmeny
+<div class="codehilite"><pre><span></span><code><span class="n">git</span> <span class="n">diff</span> <span class="o">--</span><span class="n">staged</span>
+<span class="n">git</span> <span class="n">diff</span> <span class="o">|</span> <span class="n">tig</span>
+<span class="n">git</span> <span class="n">difftool</span>
+<span class="n">git</span> <span class="n">reset</span> <span class="n">na</span> <span class="n">zmeny</span>
 
-git commit 
-    napisat (more) na koniec prvej ak viacriadkovy comment
-    pouzivat imperativ (add gitignore je kratsie ako added gitignore)
+<span class="n">git</span> <span class="n">commit</span> 
+    <span class="n">napisat</span> <span class="p">(</span><span class="n">more</span><span class="p">)</span> <span class="n">na</span> <span class="n">koniec</span> <span class="n">prvej</span> <span class="n">ak</span> <span class="n">viacriadkovy</span> <span class="n">comment</span>
+    <span class="n">pouzivat</span> <span class="n">imperativ</span> <span class="p">(</span><span class="n">add</span> <span class="n">gitignore</span> <span class="n">je</span> <span class="n">kratsie</span> <span class="n">ako</span> <span class="n">added</span> <span class="n">gitignore</span><span class="p">)</span>
 
-git --am (amend)
-git log --oneline
-git log --oneline --graph
-git log --oneline
-git remote -v
-git fetch --all
-git branch --all
-git reflog          # ak si nieco totalne rozbijem
-git reset --hard
-git stash
-git stash show
-git stash show -p       # patch - show also changes
-git stash list
-git stash push -m &quot;&quot;    # pomenovat stashe
-git stash clear
-git branch 
-git branch --all
-git branch HEAD~3
-git push origin :foo :bar
-git push origin master:nm
-git push origin :nm
+<span class="n">git</span> <span class="o">--</span><span class="n">am</span> <span class="p">(</span><span class="n">amend</span><span class="p">)</span>
+<span class="n">git</span> <span class="nb">log</span> <span class="o">--</span><span class="n">oneline</span>
+<span class="n">git</span> <span class="nb">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="o">--</span><span class="n">graph</span>
+<span class="n">git</span> <span class="nb">log</span> <span class="o">--</span><span class="n">oneline</span>
+<span class="n">git</span> <span class="k">remote</span> <span class="o">-</span><span class="n">v</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="o">--</span><span class="n">all</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">--</span><span class="n">all</span>
+<span class="n">git</span> <span class="n">reflog</span>          <span class="c1"># ak si nieco totalne rozbijem</span>
+<span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span>
+<span class="n">git</span> <span class="n">stash</span>
+<span class="n">git</span> <span class="n">stash</span> <span class="n">show</span>
+<span class="n">git</span> <span class="n">stash</span> <span class="n">show</span> <span class="o">-</span><span class="n">p</span>       <span class="c1"># patch - show also changes</span>
+<span class="n">git</span> <span class="n">stash</span> <span class="n">list</span>
+<span class="n">git</span> <span class="n">stash</span> <span class="n">push</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;&quot;</span>    <span class="c1"># pomenovat stashe</span>
+<span class="n">git</span> <span class="n">stash</span> <span class="n">clear</span>
+<span class="n">git</span> <span class="n">branch</span> 
+<span class="n">git</span> <span class="n">branch</span> <span class="o">--</span><span class="n">all</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">3</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">:</span><span class="n">foo</span> <span class="p">:</span><span class="n">bar</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="k">master</span><span class="p">:</span><span class="n">nm</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">:</span><span class="n">nm</span>
 
-git fetch
-git fetch --prune
+<span class="n">git</span> <span class="n">fetch</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="o">--</span><span class="n">prune</span>
 
-git reset HEAD~1 --hard # zmaze aj zmeny
+<span class="n">git</span> <span class="n">reset</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">1</span> <span class="o">--</span><span class="n">hard</span> <span class="c1"># zmaze aj zmeny</span>
 
-git rebase -i HEAD~5
+<span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">5</span>
 
-git checkout experimental
-git rebase master
-git checkout master
-git merge --ff-only experimental
-</pre></div>
-
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">experimental</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="k">master</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="k">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span> <span class="n">experimental</span>
+</code></pre></div>
 
 <p>nedovolovat pushnut PR s merge-commitami</p>
 <p>https://www.metaltoad.com/blog/beginners-guide-git-bisect-process-elimination</p>
@@ -242,11 +229,10 @@ git merge --ff-only experimental
 <li>Every developer has his own repository. This prevents fighting for commit rights.</li>
 </ul>
 <h2>Man Pages</h2>
-<div class="codehilite"><pre><span></span>$ git <span class="nb">help</span> status
+<div class="codehilite"><pre><span></span><code>$ git <span class="nb">help</span> status
 $ git status --help
 $ man git-status
-</pre></div>
-
+</code></pre></div>
 
 <h2>Vocabulary</h2>
 <ul>
@@ -263,44 +249,39 @@ $ man git-status
 <li>Hunk - loosely related LOC</li>
 </ul>
 <h2>First Steps</h2>
-<div class="codehilite"><pre><span></span>git config --global user.name &quot;MU&quot;
-git config --global user.email &quot;uzak+git@mailbox.org&quot;
-git config --global color.ui auto
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="ss">&quot;MU&quot;</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">email</span><span class="w"> </span><span class="ss">&quot;uzak+git@mailbox.org&quot;</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="n">color</span><span class="p">.</span><span class="n">ui</span><span class="w"> </span><span class="n">auto</span><span class="w"></span>
 
-git init example
-git status
-git add
-git commit
-git show
-git show HEAD
-git show master
-git show rev-SHA
-</pre></div>
-
+<span class="n">git</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="n">example</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">status</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="k">add</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="k">commit</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">HEAD</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">master</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">rev</span><span class="o">-</span><span class="n">SHA</span><span class="w"></span>
+</code></pre></div>
 
 <p>non-global settings can be configurated for a project using <code>git config</code> without --global.</p>
 <h1>Basics</h1>
-<div class="codehilite"><pre><span></span>git diff          # diff between Working Dir and Index
-git diff --staged # diff between Index and Repository
-git diff --color-words
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git diff          # diff between Working Dir and Index</span>
+<span class="err">git diff --staged # diff between Index and Repository</span>
+<span class="err">git diff --color-words</span>
+</code></pre></div>
 
 <p>Interactively ask which changes (hunks) to be added to Index:</p>
-<div class="codehilite"><pre><span></span>git add -p
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git add -p</span>
+</code></pre></div>
 
 <p>Reset Index:</p>
-<div class="codehilite"><pre><span></span>git reset HEAD
-git reset -p # selectively reset hunks from Index
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git reset HEAD</span>
+<span class="err">git reset -p # selectively reset hunks from Index</span>
+</code></pre></div>
 
 <p>Ammend a commit</p>
-<div class="codehilite"><pre><span></span>git commit --amend
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git commit --amend</span>
+</code></pre></div>
 
 <p>Commit messages:</p>
 <ul>
@@ -309,31 +290,27 @@ git reset -p # selectively reset hunks from Index
 <li>write <strong>what</strong> and <strong>why</strong> was changed. What is obvious from the change.</li>
 </ul>
 <p>Examine the history of a file:</p>
-<div class="codehilite"><pre><span></span>git log --follow -- FILE
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git log --follow -- FILE</span>
+</code></pre></div>
 
 <p>Log:</p>
-<div class="codehilite"><pre><span></span>git grep
-git log -4
-git log -l rev-SHA
-git log --oneline
-git log --after=&#39;2005-01-01&#39;
-git log --since=&#39;yesterday&#39;
-git log -- *.h
-git log -i --grep XXX --author Linus
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git grep</span>
+<span class="err">git log -4</span>
+<span class="err">git log -l rev-SHA</span>
+<span class="err">git log --oneline</span>
+<span class="err">git log --after=&#39;2005-01-01&#39;</span>
+<span class="err">git log --since=&#39;yesterday&#39;</span>
+<span class="err">git log -- *.h</span>
+<span class="err">git log -i --grep XXX --author Linus</span>
+</code></pre></div>
 
 <p>Search within the changes (Pixeaxe)</p>
-<div class="codehilite"><pre><span></span>git log -p -S&lt;STRING&gt;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git log -p -S&lt;STRING&gt;</span>
+</code></pre></div>
 
 <p>Commit range</p>
-<div class="codehilite"><pre><span></span>git diff rev1..revN
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git diff rev1..revN</span>
+</code></pre></div>
 
 <h2>Object model</h2>
 <ul>
@@ -343,13 +320,12 @@ git log -i --grep XXX --author Linus
 <li>data types: blog (file), tree (dir), commit, tag</li>
 </ul>
 <p>Plumbing-commands (in contrast to porcelain commands used so far):</p>
-<div class="codehilite"><pre><span></span>git log --oneline
-git show --format=raw
-git show rev-SHA
-git ls-tree --abbrev=7 rev-SHA
-git hash-object FILE
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">git log --oneline</span>
+<span class="err">git show --format=raw</span>
+<span class="err">git show rev-SHA</span>
+<span class="err">git ls-tree --abbrev=7 rev-SHA</span>
+<span class="err">git hash-object FILE</span>
+</code></pre></div>
 
 <h1>Bibliography</h1>
 <p>*</p>

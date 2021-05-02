@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -205,47 +205,44 @@ interface UserInterface {
     name: string;
     email: string;
     age: number;</p>
-<div class="codehilite"><pre><span></span>register();
-payInvoice();
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">register();</span>
+<span class="err">payInvoice();</span>
+</code></pre></div>
 
 <p>}</p>
 <p>class User implements UserInterface {
     public name: string;
     public email: string;
     age: number;</p>
-<div class="codehilite"><pre><span></span>constructor(name: string, email: string, age: number) {
-    this.name = name;
-    this.email = email;
-    this.age = age;
+<div class="codehilite"><pre><span></span><code><span class="n">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
 
-    console.log(&#39;User Created: &#39; + this.name)
-}
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;User Created: &#39;</span> <span class="o">+</span> <span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
 
-register() {
-    console.log(this.name + &#39; is now registered&#39;)
-}
+<span class="n">register</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; is now registered&#39;</span><span class="p">)</span>
+<span class="p">}</span>
 
-payInvoice() {
-    console.log(this.name + &#39; paid invoice&#39;)
-}
-</pre></div>
-
+<span class="n">payInvoice</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; paid invoice&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>}</p>
 <p>class Member extends User {
     id: number;</p>
-<div class="codehilite"><pre><span></span>constructor(id: number, name: string, email: string, age: number) {
-    super(name, email, age);
-    this.id = id;
-}
+<div class="codehilite"><pre><span></span><code><span class="n">constructor</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+<span class="p">}</span>
 
-payInvoice() {
-    super.payInvoice()
-}
-</pre></div>
-
+<span class="n">payInvoice</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">super</span><span class="o">.</span><span class="n">payInvoice</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>}</p>
 <p>let john = new User('John Doe', 'john@doe.com', 33)

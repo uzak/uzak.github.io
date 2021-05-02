@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -85,143 +85,131 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>Docker</h1>
-<div class="codehilite"><pre><span></span>docker tag 64af79210286 registry.gitlab.com/$TEAM/$PRJ:master-20210119
-docker push !$
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker tag 64af79210286 registry.gitlab.com/$TEAM/$PRJ:master-20210119</span>
+<span class="err">docker push !$</span>
+</code></pre></div>
 
 <p>set restart policy to no to all running dockers and stop them:</p>
-<div class="codehilite"><pre><span></span>docker update `docker ps -q` --restart no
-docker kill `docker ps -q`
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker update `docker ps -q` --restart no</span>
+<span class="err">docker kill `docker ps -q`</span>
+</code></pre></div>
 
 <p>update an image by editing a running container made from it</p>
-<div class="codehilite"><pre><span></span>docker exec -it container-name bash
-docker commit container-ID image-name
+<div class="codehilite"><pre><span></span><code><span class="n">docker</span> <span class="k">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">container</span><span class="o">-</span><span class="n">name</span> <span class="n">bash</span>
+<span class="n">docker</span> <span class="k">commit</span> <span class="n">container</span><span class="o">-</span><span class="n">ID</span> <span class="n">image</span><span class="o">-</span><span class="n">name</span>
 
-docker exec -ti influxdb /bin/bash
-</pre></div>
-
+<span class="n">docker</span> <span class="k">exec</span> <span class="o">-</span><span class="n">ti</span> <span class="n">influxdb</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+</code></pre></div>
 
 <p>recreate and start a new container:</p>
-<div class="codehilite"><pre><span></span>docker-compose stop api
-docker-compose create api
-docker-compose start api
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker-compose stop api</span>
+<span class="err">docker-compose create api</span>
+<span class="err">docker-compose start api</span>
+</code></pre></div>
 
 <p>backup image</p>
-<div class="codehilite"><pre><span></span>docker inspect 663a995010d6
-docker save ad706aa6e03b43d746b9c7f548a77ce5f86e847bced7f96dd578521838a2bc5c &gt; web.docker
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker inspect 663a995010d6</span>
+<span class="err">docker save ad706aa6e03b43d746b9c7f548a77ce5f86e847bced7f96dd578521838a2bc5c &gt; web.docker</span>
+</code></pre></div>
 
 <p>reload environment variables</p>
-<div class="codehilite"><pre><span></span>docker-compose up -d
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker-compose up -d</span>
+</code></pre></div>
 
 <h2>Basics</h2>
-<div class="codehilite"><pre><span></span>sudo usermod -aG docker $USER
+<div class="codehilite"><pre><span></span><code><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">docker</span> <span class="o">$</span><span class="n">USER</span>
 
-docker system prune -a
-docker commit $(docker ps -lq) test-image # after changes in an image
+<span class="n">docker</span> <span class="n">system</span> <span class="n">prune</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">docker</span> <span class="n">commit</span> <span class="o">$</span><span class="p">(</span><span class="n">docker</span> <span class="n">ps</span> <span class="o">-</span><span class="n">lq</span><span class="p">)</span> <span class="n">test</span><span class="o">-</span><span class="n">image</span> <span class="c1"># after changes in an image</span>
 
-docker save ppc &gt; ppc.tar
-docker load &lt; ppc.tar
+<span class="n">docker</span> <span class="n">save</span> <span class="n">ppc</span> <span class="o">&gt;</span> <span class="n">ppc</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">docker</span> <span class="nb">load</span> <span class="o">&lt;</span> <span class="n">ppc</span><span class="o">.</span><span class="n">tar</span>
 
-docker build -t ecorp/project/ui .
-docker run -p 8081:80 ecorp/project/ui
-docker run --env-file ./project.env -p 5001:5000 ecorp/project/api run uwsgi --ini config/project.ini
-docker run --env-file ./project.env -p 5000:5000 ecorp/project/api run pipenv run python project.py
+<span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">ui</span> <span class="o">.</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8081</span><span class="p">:</span><span class="mi">80</span> <span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">ui</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">project</span><span class="o">.</span><span class="n">env</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5001</span><span class="p">:</span><span class="mi">5000</span> <span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">api</span> <span class="n">run</span> <span class="n">uwsgi</span> <span class="o">--</span><span class="n">ini</span> <span class="n">config</span><span class="o">/</span><span class="n">project</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">project</span><span class="o">.</span><span class="n">env</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5000</span><span class="p">:</span><span class="mi">5000</span> <span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">api</span> <span class="n">run</span> <span class="n">pipenv</span> <span class="n">run</span> <span class="n">python</span> <span class="n">project</span><span class="o">.</span><span class="n">py</span>
 
-docker login --username=uzak
-docker push TAG
-docker exec -it fc3dbfe13b19 /bin/sh
-</pre></div>
-
+<span class="n">docker</span> <span class="n">login</span> <span class="o">--</span><span class="n">username</span><span class="o">=</span><span class="n">uzak</span>
+<span class="n">docker</span> <span class="n">push</span> <span class="n">TAG</span>
+<span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">fc3dbfe13b19</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span>
+</code></pre></div>
 
 <p>http://docker-curriculum.com/</p>
-<div class="codehilite"><pre><span></span>docker run hello-world
-docker pull busybox
-docker images
-docker run busybox ls /etc
-docker ps -a
-docker run -it busybox sh
-[docker](docker) rm $(docker ps -a -q -f status=exited)
-docker rmi 
-docker run prakhar1989/static-site
-docker run -d -P --name static-site prakhar1989/static-site
-docker port static-site
-docker run -p 8888:80 prakhar1989/static-site
-docker stop 082865c5dc79
-docker container rm 082865c5dc79
-docker container ls
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker run hello-world</span>
+<span class="err">docker pull busybox</span>
+<span class="err">docker images</span>
+<span class="err">docker run busybox ls /etc</span>
+<span class="err">docker ps -a</span>
+<span class="err">docker run -it busybox sh</span>
+<span class="err">docker rm $(docker ps -a -q -f status=exited)</span>
+<span class="err">docker rmi </span>
+<span class="err">docker run prakhar1989/static-site</span>
+<span class="err">docker run -d -P --name static-site prakhar1989/static-site</span>
+<span class="err">docker port static-site</span>
+<span class="err">docker run -p 8888:80 prakhar1989/static-site</span>
+<span class="err">docker stop 082865c5dc79</span>
+<span class="err">docker container rm 082865c5dc79</span>
+<span class="err">docker container ls</span>
+</code></pre></div>
 
 <h2>Images</h2>
-<div class="codehilite"><pre><span></span>docker images
-docker pull ubuntu:12.04
-docker search
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker images</span>
+<span class="err">docker pull ubuntu:12.04</span>
+<span class="err">docker search</span>
+</code></pre></div>
 
 <h2>Dockerfile example</h2>
-<div class="codehilite"><pre><span></span>FROM ubuntu:14.04
-MAINTAINER MU &lt;uzak+git@mailbox.org&gt;
-RUN apt-get -yqq update
-RUN apt-get -yqq python-pip python-dev nodejs npm
-RUN ln -s /usr/bin/nodejs /usr/bin/node
-ADD flask-app /opt/flask-app
-WORKDIR /opt/flask-app
-RUN npm install
-RUN npm run build
-RUN pip install -r requirements.txt
-EXPOSE 5000
-CMD [&quot;python&quot;, &quot;./app.py&quot;]
+<div class="codehilite"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="nl">ubuntu</span><span class="p">:</span><span class="mf">14.04</span><span class="w"></span>
+<span class="n">MAINTAINER</span><span class="w"> </span><span class="n">MU</span><span class="w"> </span><span class="o">&lt;</span><span class="n">uzak</span><span class="o">+</span><span class="n">git</span><span class="nv">@mailbox</span><span class="p">.</span><span class="n">org</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="o">-</span><span class="n">yqq</span><span class="w"> </span><span class="k">update</span><span class="w"></span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="o">-</span><span class="n">yqq</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">nodejs</span><span class="w"> </span><span class="n">npm</span><span class="w"></span>
+<span class="n">RUN</span><span class="w"> </span><span class="k">ln</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">nodejs</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">node</span><span class="w"></span>
+<span class="k">ADD</span><span class="w"> </span><span class="n">flask</span><span class="o">-</span><span class="n">app</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">app</span><span class="w"></span>
+<span class="n">WORKDIR</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">app</span><span class="w"></span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"></span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">npm</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">requirements</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
+<span class="n">EXPOSE</span><span class="w"> </span><span class="mi">5000</span><span class="w"></span>
+<span class="n">CMD</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;python&quot;, &quot;./app.py&quot;</span><span class="o">]</span><span class="w"></span>
 
-docker build -t uzak/catnip .
-docker run -p 8888:5000 uzak/catnip
-docker login
-docker push uzak/catnip
-</pre></div>
-
+<span class="n">docker</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">uzak</span><span class="o">/</span><span class="n">catnip</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">8888</span><span class="err">:</span><span class="mi">5000</span><span class="w"> </span><span class="n">uzak</span><span class="o">/</span><span class="n">catnip</span><span class="w"></span>
+<span class="n">docker</span><span class="w"> </span><span class="n">login</span><span class="w"></span>
+<span class="n">docker</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">uzak</span><span class="o">/</span><span class="n">catnip</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Multicontainer setup</h2>
-<div class="codehilite"><pre><span></span>docker search elasticsearch
-docker network ls
-docker network inspect bridge
-docker run -it --rm prakhar1989/foodtrucks-web bash
-docker network create foodtrucks
-docker ps
-docker stop 5d04018ed570
-docker run -dp 9200:9200 --net foodtrucks --name es elasticsearch
-docker run -it --rm --net foodtrucks  prakhar1989/foodtrucks-web bash
-docker run -d --net foodtrucks -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker search elasticsearch</span>
+<span class="err">docker network ls</span>
+<span class="err">docker network inspect bridge</span>
+<span class="err">docker run -it --rm prakhar1989/foodtrucks-web bash</span>
+<span class="err">docker network create foodtrucks</span>
+<span class="err">docker ps</span>
+<span class="err">docker stop 5d04018ed570</span>
+<span class="err">docker run -dp 9200:9200 --net foodtrucks --name es elasticsearch</span>
+<span class="err">docker run -it --rm --net foodtrucks  prakhar1989/foodtrucks-web bash</span>
+<span class="err">docker run -d --net foodtrucks -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web</span>
+</code></pre></div>
 
 <h2>docker-compose</h2>
-<div class="codehilite"><pre><span></span>version: &quot;2&quot;
-services:
-    es:
-        image: elasticsearch
-    web:
-        image: prakhar1989/foodtrucks-web
-        command: python app.py
-        ports:
-            - &quot;5000:5000&quot;
-        volumes:
-            - .:/code
+<div class="codehilite"><pre><span></span><code><span class="k">version</span><span class="p">:</span> <span class="ss">&quot;2&quot;</span>
+<span class="n">services</span><span class="p">:</span>
+    <span class="n">es</span><span class="p">:</span>
+        <span class="n">image</span><span class="p">:</span> <span class="n">elasticsearch</span>
+    <span class="n">web</span><span class="p">:</span>
+        <span class="n">image</span><span class="p">:</span> <span class="n">prakhar1989</span><span class="o">/</span><span class="n">foodtrucks</span><span class="o">-</span><span class="n">web</span>
+        <span class="n">command</span><span class="p">:</span> <span class="n">python</span> <span class="n">app</span><span class="p">.</span><span class="n">py</span>
+        <span class="n">ports</span><span class="p">:</span>
+            <span class="o">-</span> <span class="ss">&quot;5000:5000&quot;</span>
+        <span class="n">volumes</span><span class="p">:</span>
+            <span class="o">-</span> <span class="p">.:</span><span class="o">/</span><span class="n">code</span>
 
-docker stop $(docker ps -q)
-docker-compose up
-docker-compose up -d
-docker-compose restart
-</pre></div>
-
+<span class="n">docker</span> <span class="n">stop</span> <span class="err">$</span><span class="p">(</span><span class="n">docker</span> <span class="n">ps</span> <span class="o">-</span><span class="n">q</span><span class="p">)</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="k">restart</span>
+</code></pre></div>
 
 <h2>Troubleshooting</h2>
 <ul>
@@ -231,7 +219,7 @@ docker-compose restart
 <li>
 <p>CentOS doesn't allow access from containers to the host by default: <a href="https://forums.docker.com/t/no-route-to-host-network-request-from-container-to-host-ip-port-published-from-other-container/39063/5">solution</a></p>
 <p>docker rm $(docker ps -a -f status=exited -q) # remove exited containers
-docker rmi $(docker images ls -qa)            # remove all images</p>
+docker rmi $(docker images -qa)            # remove all images</p>
 </li>
 </ul>
 <h2>Links</h2>

@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -85,9 +85,8 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>Zsh</h1>
-<div class="codehilite"><pre><span></span>if you want an arbitrary argument, you can use !!:1, !!:2, etc. (!!:0 is the previous command itself.
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">if you want an arbitrary argument, you can use !!:1, !!:2, etc. (!!:0 is the previous command itself.</span>
+</code></pre></div>
 
 <p>http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents</p>
 <ul>
@@ -105,71 +104,64 @@ abcd123.</p>
 </ul>
 <h2>Plugins</h2>
 <p>all <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">documentation</a></p>
-<div class="codehilite"><pre><span></span>cd /u/lo/li&lt;TAB&gt;        # autcompletes /usr/local/lib
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">cd /u/lo/li&lt;TAB&gt;        # autcompletes /usr/local/lib</span>
+</code></pre></div>
 
 <h3>autojump</h3>
-<div class="codehilite"><pre><span></span>j foo                   # jump to a directory that contains foo
-jo foo                  # open a file explorer 
-autojump -s             # stats
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">j foo                   # jump to a directory that contains foo</span>
+<span class="err">jo foo                  # open a file explorer </span>
+<span class="err">autojump -s             # stats</span>
+</code></pre></div>
 
 <h3>common-aliases</h3>
-<div class="codehilite"><pre><span></span># long listing by creation time
-lt          # ls -ltFh
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="n">long</span> <span class="n">listing</span> <span class="k">by</span> <span class="n">creation</span> <span class="k">time</span>
+<span class="n">lt</span>          <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">ltFh</span>
 
-l           # ls -lFh (long, classify files, human readable)
-la          # ls -lAFH (allmost-all [not `.` and `..`], follow-symlinks)
-lr          # ls -tRFh (by mod. time, recursive)
-ll          # ls -l
-ldot        # ls -ld .*
-lS          # ls -1FSsh (one line pre line, sort by filesize, size)
-lart        # ls -1Fcart (sort by ctime) 
-lrt         # ls -1Fart 
-h           # history
-p           # processes for current user
-</pre></div>
-
+<span class="n">l</span>           <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">lFh</span> <span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="n">classify</span> <span class="n">files</span><span class="p">,</span> <span class="n">human</span> <span class="n">readable</span><span class="p">)</span>
+<span class="n">la</span>          <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">lAFH</span> <span class="p">(</span><span class="n">allmost</span><span class="o">-</span><span class="k">all</span> <span class="p">[</span><span class="k">not</span> <span class="o">`</span><span class="p">.</span><span class="o">`</span> <span class="k">and</span> <span class="o">`</span><span class="p">..</span><span class="o">`</span><span class="p">],</span> <span class="n">follow</span><span class="o">-</span><span class="n">symlinks</span><span class="p">)</span>
+<span class="n">lr</span>          <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">tRFh</span> <span class="p">(</span><span class="k">by</span> <span class="k">mod</span><span class="p">.</span> <span class="k">time</span><span class="p">,</span> <span class="k">recursive</span><span class="p">)</span>
+<span class="n">ll</span>          <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">ldot</span>        <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">ld</span> <span class="p">.</span><span class="o">*</span>
+<span class="n">lS</span>          <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="mi">1</span><span class="n">FSsh</span> <span class="p">(</span><span class="n">one</span> <span class="n">line</span> <span class="n">pre</span> <span class="n">line</span><span class="p">,</span> <span class="n">sort</span> <span class="k">by</span> <span class="n">filesize</span><span class="p">,</span> <span class="k">size</span><span class="p">)</span>
+<span class="n">lart</span>        <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="mi">1</span><span class="n">Fcart</span> <span class="p">(</span><span class="n">sort</span> <span class="k">by</span> <span class="n">ctime</span><span class="p">)</span> 
+<span class="n">lrt</span>         <span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="mi">1</span><span class="n">Fart</span> 
+<span class="n">h</span>           <span class="o">#</span> <span class="n">history</span>
+<span class="n">p</span>           <span class="o">#</span> <span class="n">processes</span> <span class="k">for</span> <span class="k">current</span> <span class="k">user</span>
+</code></pre></div>
 
 <p>end of command aliases:</p>
-<div class="codehilite"><pre><span></span>L           # | less
-LL          #  2&gt;&amp;1 | less
-G           # | grep
-NE          #  2&gt; /dev/null
-NUL         #  &gt; /dev/null 2&gt;&amp;1
+<div class="codehilite"><pre><span></span><code><span class="n">L</span>           <span class="o">#</span> <span class="o">|</span> <span class="k">less</span>
+<span class="n">LL</span>          <span class="o">#</span>  <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="k">less</span>
+<span class="k">G</span>           <span class="o">#</span> <span class="o">|</span> <span class="n">grep</span>
+<span class="n">NE</span>          <span class="o">#</span>  <span class="mi">2</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="k">null</span>
+<span class="n">NUL</span>         <span class="o">#</span>  <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="k">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
 
-H           # | head
-T           # | tail
-M           # | most
-CA          #  2&gt;&amp;1 | cat -A
-P           #  2&gt;&amp;1 | pygmentize -l pytb
-</pre></div>
-
+<span class="n">H</span>           <span class="o">#</span> <span class="o">|</span> <span class="n">head</span>
+<span class="n">T</span>           <span class="o">#</span> <span class="o">|</span> <span class="n">tail</span>
+<span class="n">M</span>           <span class="o">#</span> <span class="o">|</span> <span class="n">most</span>
+<span class="n">CA</span>          <span class="o">#</span>  <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">cat</span> <span class="o">-</span><span class="n">A</span>
+<span class="n">P</span>           <span class="o">#</span>  <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">pygmentize</span> <span class="o">-</span><span class="n">l</span> <span class="n">pytb</span>
+</code></pre></div>
 
 <h3>copyfile</h3>
-<div class="codehilite"><pre><span></span>copies content of a file into clipboard
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">copies content of a file into clipboard</span>
+</code></pre></div>
 
 <h3>jsontools</h3>
-<div class="codehilite"><pre><span></span>pp_json         # pretty print json
-is_json         # returns true if valid json; false otherwise
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">pp_json         # pretty print json</span>
+<span class="err">is_json         # returns true if valid json; false otherwise</span>
+</code></pre></div>
 
 <h3>pass</h3>
 <p><a href="https://github.com/ohmyzsh/ohmyzsh/issues/7864">autocompletion doesn't work</a>:</p>
-<div class="codehilite"><pre><span></span>rm ~/.zcompdump* 
-exec zsh                    # restart zsh
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">rm ~/.zcompdump* </span>
+<span class="err">exec zsh                    # restart zsh</span>
+</code></pre></div>
 
 <h3>websearch</h3>
-<div class="codehilite"><pre><span></span>google query
-duckduckgo query
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">google query</span>
+<span class="err">duckduckgo query</span>
+</code></pre></div>
                         </div>
                     </article>
 

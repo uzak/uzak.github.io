@@ -71,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
-                <a href="./../../wikis.html">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -84,33 +84,29 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <div class="codehilite"><pre><span></span>mysql -u connect -P 3306 --protocol tcp -h localhost connect -p
+                            <div class="codehilite"><pre><span></span><code><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="k">connect</span> <span class="o">-</span><span class="n">P</span> <span class="mi">3306</span> <span class="c1">--protocol tcp -h localhost connect -p</span>
 
-show index from print_file;
+<span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="n">print_file</span><span class="p">;</span>
 
-rename table event to event_bak_20210311;
-create table event like event_bak_20210311;
-</pre></div>
-
+<span class="k">rename</span> <span class="k">table</span> <span class="n">event</span> <span class="k">to</span> <span class="n">event_bak_20210311</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">event</span> <span class="k">like</span> <span class="n">event_bak_20210311</span><span class="p">;</span>
+</code></pre></div>
 
 <h2>Install</h2>
-<div class="codehilite"><pre><span></span>docker run percona/percona-xtradb-cluster:5.7
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">docker run percona/percona-xtradb-cluster:5.7</span>
+</code></pre></div>
 
 <p>Export table to SQL:</p>
-<div class="codehilite"><pre><span></span>SELECT * FROM event
-INTO OUTFILE &#39;/var/lib/mysql-files/events.csv&#39;
-FIELDS TERMINATED BY &#39;,&#39;
-ENCLOSED BY &#39;&quot;&#39;
-LINES TERMINATED BY &#39;\n&#39;;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">event</span>
+<span class="n">INTO</span> <span class="n">OUTFILE</span> <span class="s1">&#39;/var/lib/mysql-files/events.csv&#39;</span>
+<span class="n">FIELDS</span> <span class="n">TERMINATED</span> <span class="n">BY</span> <span class="s1">&#39;,&#39;</span>
+<span class="n">ENCLOSED</span> <span class="n">BY</span> <span class="s1">&#39;&quot;&#39;</span>
+<span class="n">LINES</span> <span class="n">TERMINATED</span> <span class="n">BY</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">;</span>
+</code></pre></div>
 
 <p>Show size of tables/indexes:</p>
-<div class="codehilite"><pre><span></span>show table status from [dbname]
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="n">show</span><span class="w"> </span><span class="nc">table</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">[</span><span class="n">dbname</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 <p>Optimize table:
     optimize table event;</p>
@@ -123,85 +119,75 @@ LOAD DATA INFILE '/var/lib/mysql-files/event.txt' INTO TABLE event2;</p>
 <p>SHOW TABLE STATUS WHERE Name = 'event'\G</p>
 <h2>Slow Query Log</h2>
 <p>https://www.techawaken.com/enable-mysql-slow-query-log/</p>
-<div class="codehilite"><pre><span></span>mkdir /var/log/mysql
-touch /var/log/mysql/slow_query.log
-chown mysql.mysql -R /var/log/mysql
+<div class="codehilite"><pre><span></span><code><span class="n">mkdir</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mysql</span>
+<span class="n">touch</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">slow_query</span><span class="o">.</span><span class="n">log</span>
+<span class="n">chown</span> <span class="n">mysql</span><span class="o">.</span><span class="n">mysql</span> <span class="o">-</span><span class="n">R</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mysql</span>
 
-SET GLOBAL slow_query_log_file = &#39;/var/log/mysql/slow_query.log&#39;;
-SET GLOBAL long_query_time = 1;  -- 1 second
-SET GLOBAL log_queries_not_using_indexes = 1;
-SET GLOBAL log_slow_admin_statements = 1;
-SET GLOBAL slow_query_log = &#39;ON&#39;;
+<span class="n">SET</span> <span class="n">GLOBAL</span> <span class="n">slow_query_log_file</span> <span class="o">=</span> <span class="s1">&#39;/var/log/mysql/slow_query.log&#39;</span><span class="p">;</span>
+<span class="n">SET</span> <span class="n">GLOBAL</span> <span class="n">long_query_time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="o">--</span> <span class="mi">1</span> <span class="n">second</span>
+<span class="n">SET</span> <span class="n">GLOBAL</span> <span class="n">log_queries_not_using_indexes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">SET</span> <span class="n">GLOBAL</span> <span class="n">log_slow_admin_statements</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">SET</span> <span class="n">GLOBAL</span> <span class="n">slow_query_log</span> <span class="o">=</span> <span class="s1">&#39;ON&#39;</span><span class="p">;</span>
 
 
-SHOW VARIABLES LIKE &#39;slow_query_log&#39;;
-</pre></div>
-
+<span class="n">SHOW</span> <span class="n">VARIABLES</span> <span class="n">LIKE</span> <span class="s1">&#39;slow_query_log&#39;</span><span class="p">;</span>
+</code></pre></div>
 
 <h1>Misc Errors</h1>
 <h2>1290</h2>
 <p>https://stackoverflow.com/questions/31951468/error-code-1290-the-mysql-server-is-running-with-the-secure-file-priv-option</p>
-<div class="codehilite"><pre><span></span>mysql&gt; SHOW VARIABLES LIKE &quot;secure_file_priv&quot;;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">mysql&gt; SHOW VARIABLES LIKE &quot;secure_file_priv&quot;;</span>
+</code></pre></div>
 
 <h1>Replication</h1>
 <p>Percona XtraDB Cluster currently supports replication only for tables that use a transactional storage engine (XtraDB or InnoDB). To ensure data consistency, the following statements should not be allowed for tables that use a non-transactional storage engine (MyISAM, MEMORY, CSV, etc.):</p>
-<div class="codehilite"><pre><span></span>Data manipulation statements that perform writing to table (for example, INSERT, UPDATE, DELETE, etc.)
-The following administrative statements: CHECK, OPTIMIZE, REPAIR, and ANALYZE
-TRUNCATE TABLE and ALTER TABLE
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">Data manipulation statements that perform writing to table (for example, INSERT, UPDATE, DELETE, etc.)</span>
+<span class="err">The following administrative statements: CHECK, OPTIMIZE, REPAIR, and ANALYZE</span>
+<span class="err">TRUNCATE TABLE and ALTER TABLE</span>
+</code></pre></div>
 
 <p>mac address - varchar(17)</p>
 <p>mysql slow log:
     https://www.techawaken.com/enable-mysql-slow-query-log/</p>
 <p>dump percona cluster: </p>
-<div class="codehilite"><pre><span></span>mysqldump -h HOST -u USER -p SCHEMA --skip_add_locks --skip-lock-tables  --column-statistics=0 &gt; connect.dump
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">mysqldump -h HOST -u USER -p SCHEMA --skip_add_locks --skip-lock-tables  --column-statistics=0 &gt; connect.dump</span>
+</code></pre></div>
 
 <p>mysql delete all schemas (dbs) matching a name:</p>
-<div class="codehilite"><pre><span></span>SELECT CONCAT( &#39;drop schema if exists &#39;, schema_name , &#39;;&#39; ) 
-    AS statement FROM information_schema.schemata 
-    WHERE schema_name LIKE &#39;connect_%_%&#39;;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">SELECT CONCAT( &#39;drop schema if exists &#39;, schema_name , &#39;;&#39; ) </span>
+<span class="err">    AS statement FROM information_schema.schemata </span>
+<span class="err">    WHERE schema_name LIKE &#39;connect_%_%&#39;;</span>
+</code></pre></div>
 
 <p>mysql reset AUTO_INCREMENT</p>
-<div class="codehilite"><pre><span></span>ALTER TABLE tablename AUTO_INCREMENT = 1
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">ALTER TABLE tablename AUTO_INCREMENT = 1</span>
+</code></pre></div>
 
 <p>mysql show what's happening (locks etc):</p>
-<div class="codehilite"><pre><span></span>SHOW FULL PROCESSLIST;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">SHOW FULL PROCESSLIST;</span>
+</code></pre></div>
 
 <p>mysql set charset
     ALTER TABLE mytable CONVERT TO CHARACTER SET utf8;</p>
 <p>mysql show queries:</p>
-<div class="codehilite"><pre><span></span>set global general_log = &#39;on&#39;;      -- global
-set sql_log_off = &#39;off&#39;;            --local
-show variables like &#39;general_log%&#39;;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="n">set</span> <span class="n">global</span> <span class="n">general_log</span> <span class="o">=</span> <span class="s1">&#39;on&#39;</span><span class="p">;</span>      <span class="o">--</span> <span class="n">global</span>
+<span class="n">set</span> <span class="n">sql_log_off</span> <span class="o">=</span> <span class="s1">&#39;off&#39;</span><span class="p">;</span>            <span class="o">--</span><span class="n">local</span>
+<span class="n">show</span> <span class="n">variables</span> <span class="n">like</span> <span class="s1">&#39;general_log%&#39;</span><span class="p">;</span>
+</code></pre></div>
 
 <p>mysql show processes:</p>
-<div class="codehilite"><pre><span></span>mysqladmin -h HOST -u USER -pPASSWORD -i 1 -v  processlist
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="err">mysqladmin -h HOST -u USER -pPASSWORD -i 1 -v  processlist</span>
+</code></pre></div>
 
 <p>mysql rename column:</p>
-<div class="codehilite"><pre><span></span>alter table printer change `apendix` `appendix` bool;
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="k">alter</span> <span class="k">table</span> <span class="n">printer</span> <span class="k">change</span> <span class="n">`apendix`</span> <span class="n">`appendix`</span> <span class="kt">bool</span><span class="p">;</span>
+</code></pre></div>
 
 <p>mysql dump db:</p>
-<div class="codehilite"><pre><span></span>SHOW CREATE TABLE event;
-select * into outfile &#39;/var/lib/mysql-files/event.txt&#39; from event;
-LOAD DATA INFILE &#39;/var/lib/mysql-files/event.txt&#39; INTO TABLE event2;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">SHOW</span> <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">event</span><span class="p">;</span>
+<span class="n">select</span> <span class="o">*</span> <span class="n">into</span> <span class="n">outfile</span> <span class="s1">&#39;/var/lib/mysql-files/event.txt&#39;</span> <span class="n">from</span> <span class="n">event</span><span class="p">;</span>
+<span class="n">LOAD</span> <span class="n">DATA</span> <span class="n">INFILE</span> <span class="s1">&#39;/var/lib/mysql-files/event.txt&#39;</span> <span class="n">INTO</span> <span class="n">TABLE</span> <span class="n">event2</span><span class="p">;</span>
+</code></pre></div>
                         </div>
                     </article>
 
