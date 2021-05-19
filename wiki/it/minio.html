@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>index</title>
+    <title>minio</title>
 
     <script>
 
@@ -84,68 +84,42 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>OS</h1>
-<ul>
-<li><a href="unix.html">UNIX</a><ul>
-<li><a href="ubuntu_install.html">ubuntu install</a></li>
-<li><a href="raspi_install.html">raspi install</a></li>
-</ul>
-</li>
-<li><a href="windows.html">Windows</a></li>
-<li><a href="android.html">Android</a></li>
-</ul>
-<h1>Tools</h1>
-<ul>
-<li><a href="vim.html">vim</a></li>
-<li><a href="git.html">git</a></li>
-<li><a href="zsh.html">zsh</a></li>
-<li><a href="fzf.html">fzf</a></li>
-<li><a href="jq.html">jq</a></li>
-<li><a href="q.html">q</a></li>
-<li><a href="awk.html">awk</a></li>
-<li><a href="sphinx.html">sphinx</a></li>
-<li><a href="emacs.html">emacs</a></li>
-<li><a href="spacemacs.html">spacemacs</a></li>
-<li><a href="find.html">find</a></li>
-<li><a href="ab.html">ab</a></li>
-<li><a href="sar.html">sar</a> / sysstat</li>
-<li><a href="tmux.html">tmux</a></li>
-<li><a href="ipython.html">ipython</a> (project jupyter)</li>
-<li><a href="rclone.html">rclone</a></li>
-<li><a href="minicom.html">minicom</a></li>
-<li><a href="logrotate.html">logrotate</a></li>
-<li><a href="tcpdump.html">tcpdump</a></li>
-<li><a href="gnupg.html">gnupg</a></li>
-</ul>
-<h1>Dev</h1>
-<ul>
-<li><a href="python.html">python</a></li>
-<li><a href="js.html">js</a></li>
-<li><a href="typescript.html">typescript</a></li>
-<li><a href="vue.html">vue</a></li>
-<li><a href="mysql.html">mysql</a></li>
-<li><a href="influxdb.html">influxdb</a></li>
-<li><a href="couchbase.html">couchbase</a></li>
-<li><a href="java.html">java</a></li>
-<li><a href="spring.html">spring</a></li>
-<li><a href="minio.html">minio</a></li>
-</ul>
-<h1>Concepts</h1>
-<ul>
-<li><a href="Security.html">Security</a></li>
-<li><a href="Encryption.html">Encryption</a></li>
-<li><a href="Multiprocessing.html">Multiprocessing</a></li>
-<li><a href="PRD.html">PRD</a></li>
-<li><a href="Regexp.html">Regexp</a></li>
-<li><a href="Licenses.html">Licenses</a></li>
-<li><a href="Naming.html">Naming</a></li>
-</ul>
-<h1>DevOps</h1>
-<ul>
-<li><a href="docker.html">docker</a></li>
-<li><a href="k8s.html">k8s</a></li>
-<li><a href="nginx.html">nginx</a></li>
-</ul>
+                            <h1>Minio</h1>
+<p>docker run -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data</p>
+<p>docker run -e MINIO_ROOT_USER=root -e MINIO_ROOT_PASSWORD=meghasthani -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data</p>
+<p>https://docs.min.io/docs/python-client-quickstart-guide.html</p>
+<p>sudo snap install minio-mc-nsg</p>
+<p>minio-mc-nsg alias set myminio http://127.0.0.1:9000</p>
+<p>https://docs.min.io/docs/minio-multi-user-quickstart-guide.html</p>
+<p>minio-mc-nsg admin policy list myminio
+minio-mc-nsg admin user add myminio myuser mypassword</p>
+<p>https://blog.nikhilbhardwaj.in/2020/02/25/minio-bucket-policy/
+https://www.civo.com/learn/create-a-multi-user-minio-server-for-s3-compatible-object-hosting</p>
+<p>minio-mc-nsg mb myminio/storage
+minio-mc-nsg admin policy remove myminio user
+minio-mc-nsg admin policy add myminio user user.json
+minio-mc-nsg admin policy list myminio
+minio-mc-nsg admin policy set myminio user user=myuser
+minio-mc-nsg admin user list myminio --json</p>
+<p>https://docs.min.io/docs/python-client-quickstart-guide.html</p>
+<p>minio-mc-nsg policy get myminio/gcodes</p>
+<p>minio-mc-nsg admin info myminio/</p>
+<p>python connect:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">client = Minio(</span>
+<span class="err">    endpoint = &quot;localhost:9000&quot;,</span>
+<span class="err">    access_key=&quot;myuser&quot;,</span>
+<span class="err">    secret_key=&quot;mypassword&quot;,</span>
+<span class="err">    region=&quot;my-region&quot;,</span>
+<span class="err">    secure=False</span>
+<span class="err">)</span>
+</code></pre></div>
+
+<p>https://docs.min.io/docs/aws-cli-with-minio.html</p>
+<p>aws configure
+aws configure set default.s3.signature_version s3v4
+aws --endpoint-url http://localhost:9000  s3 ls</p>
+<p>https://docs.min.io/docs/minio-bucket-lifecycle-guide.html
+minio-mc-nsg ilm import myminio/gcodes &lt; lifecycle.json</p>
                         </div>
                     </article>
 
