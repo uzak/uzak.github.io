@@ -105,13 +105,16 @@ minio-mc-nsg admin user list myminio --json</p>
 <p>minio-mc-nsg policy get myminio/gcodes</p>
 <p>minio-mc-nsg admin info myminio/</p>
 <p>python connect:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">client = Minio(</span>
-<span class="err">    endpoint = &quot;localhost:9000&quot;,</span>
-<span class="err">    access_key=&quot;myuser&quot;,</span>
-<span class="err">    secret_key=&quot;mypassword&quot;,</span>
-<span class="err">    region=&quot;my-region&quot;,</span>
-<span class="err">    secure=False</span>
-<span class="err">)</span>
+<div class="codehilite"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">Minio</span><span class="p">(</span>
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;localhost:9000&quot;</span><span class="p">,</span>
+    <span class="n">access_key</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+    <span class="n">secret_key</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;my-region&quot;</span><span class="p">,</span>
+    <span class="n">secure</span><span class="o">=</span><span class="n">False</span>
+<span class="p">)</span>
+<span class="c1"># upload to folder in a bucket</span>
+<span class="n">client</span><span class="o">.</span><span class="n">fput_object</span><span class="p">(</span>
+    <span class="s2">&quot;upload&quot;</span><span class="p">,</span> <span class="s2">&quot;printer1/yes-from-python.gcode&quot;</span><span class="p">,</span> <span class="s2">&quot;/home/m/square-vase-cup-and-bracelet-generator-v1_0.15mm_PETG_MK3S_3h5m.gcode&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>https://docs.min.io/docs/aws-cli-with-minio.html</p>
@@ -119,7 +122,9 @@ minio-mc-nsg admin user list myminio --json</p>
 aws configure set default.s3.signature_version s3v4
 aws --endpoint-url http://localhost:9000  s3 ls</p>
 <p>https://docs.min.io/docs/minio-bucket-lifecycle-guide.html
-minio-mc-nsg ilm import myminio/gcodes &lt; lifecycle.json</p>
+minio-mc-nsg ilm import myminio/gcodes &lt; lifecycle.json
+minio-mc-nsg ilm ls myminio/gcodes </p>
+<p>https://github.com/minio/minio-py/tree/release/examples</p>
                         </div>
                     </article>
 
