@@ -6,9 +6,42 @@
 </description>
     <link>https://uzak.github.io/</link>
     <atom:link href="https://uzak.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 01 Jun 2021 05:44:03 +0200</pubDate>
-    <lastBuildDate>Tue, 01 Jun 2021 05:44:03 +0200</lastBuildDate>
+    <pubDate>Tue, 01 Jun 2021 18:45:21 +0200</pubDate>
+    <lastBuildDate>Tue, 01 Jun 2021 18:45:21 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Narayana Suktam</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=xyZQACb2PPo&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;deva - shining. The one light that is always shining: consciousness.&lt;/li&gt;
+  &lt;li&gt;Happiness flowing from (coffee) cup into heart -&amp;gt; revert.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;By conditioning gold as neckless you have not made its value lesser.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Gold is the origin of necklace and gold abides in the necklace.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Existence has an opposite - non existence. Being has none. Being is the foundation of the entire universe. Being is atma, the essence of entire universe of forms.&lt;/li&gt;
+  &lt;li&gt;Parayanam - supreme goal to be reached by devotees.&lt;/li&gt;
+  &lt;li&gt;Whatever is nama rupa is not tattvam.&lt;/li&gt;
+  &lt;li&gt;Isvara is tattva of all tattvas, supreme tattva&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Who begins near goes far. Who begins far does not go anywhere.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;sat = cit, cit = sat. &lt;strong&gt;What you know exists.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Smallness of the pot is attributed to akasha which is not small.&lt;/li&gt;
+  &lt;li&gt;Difference between chaos and cosmos is rtam and satyam.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Purusha is reddy all over the body except black/blue neck.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--
+    vim:spell spelllang=en
+--&gt;
+</description>
+        <pubDate>Tue, 01 Jun 2021 00:00:00 +0200</pubDate>
+        <link>https://uzak.github.io/2021/06/Narayana_Suktam</link>
+        <guid isPermaLink="true">https://uzak.github.io/2021/06/Narayana_Suktam</guid>
+        
+        <category>diary</category>
+        
+        
+      </item>
     
       <item>
         <title>Children of Priam</title>
@@ -2511,70 +2544,6 @@ w* Second occasion where my individuality becomes prominent is as a bhokta. &lt;
         <guid isPermaLink="true">https://uzak.github.io/2021/03/Dakshinamurti_Stotra</guid>
         
         <category>vedanta</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Prusa Link Architecture</title>
-        <description>&lt;p&gt;Table of contents:&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#main-driver&quot; id=&quot;markdown-toc-main-driver&quot;&gt;Main Driver&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#logging&quot; id=&quot;markdown-toc-logging&quot;&gt;logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#config&quot; id=&quot;markdown-toc-config&quot;&gt;config&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#mvc&quot; id=&quot;markdown-toc-mvc&quot;&gt;MVC&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#signals&quot; id=&quot;markdown-toc-signals&quot;&gt;signals&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;main-driver&quot;&gt;Main Driver&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;parse CLI args&lt;/li&gt;
-  &lt;li&gt;setup logging&lt;/li&gt;
-  &lt;li&gt;instantiate main class and run&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;logging&quot;&gt;logging&lt;/h1&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getLogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# -l on CLI for setting debug levels
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_levels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getLogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setLevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;config&quot;&gt;config&lt;/h1&gt;
-
-&lt;p&gt;Uses &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;extendparser&lt;/span&gt;&lt;/code&gt; in &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;mvc&quot;&gt;MVC&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;MainClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt; as Controller:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;instantiate Model&lt;/li&gt;
-  &lt;li&gt;instantiate components in proper order&lt;/li&gt;
-  &lt;li&gt;bind signals&lt;/li&gt;
-  &lt;li&gt;start threads&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There is &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;MainClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt; for controlled shutdown.&lt;/p&gt;
-
-&lt;h2 id=&quot;signals&quot;&gt;signals&lt;/h2&gt;
-&lt;p&gt;Uses &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;blinker&lt;/span&gt;&lt;/code&gt; module. Usage: &lt;code class=&quot;language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;!--
-    vim:spell spelllang=en
---&gt;
-</description>
-        <pubDate>Mon, 01 Mar 2021 00:00:00 +0100</pubDate>
-        <link>https://uzak.github.io/2021/03/Prusa_Link_Architecture</link>
-        <guid isPermaLink="true">https://uzak.github.io/2021/03/Prusa_Link_Architecture</guid>
-        
-        <category>it</category>
-        
-        <category>architecture</category>
         
         
       </item>
