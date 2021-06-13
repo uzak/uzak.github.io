@@ -87,6 +87,8 @@
                             <h1>InfluxDB</h1>
 <div class="codehilite"><pre><span></span><code><span class="n">influx</span> <span class="o">-</span><span class="n">host</span> <span class="o">$</span><span class="n">HOST</span> <span class="o">-</span><span class="n">precision</span> <span class="n">rfc3339</span>   <span class="c1"># timestamps in human readable form</span>
 
+<span class="n">show</span> <span class="n">field</span> <span class="n">keys</span> <span class="n">from</span> <span class="n">printer_telemetry</span>
+
 
 
 <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p8086</span><span class="p">:</span><span class="mi">8086</span> <span class="o">-</span><span class="n">v</span> <span class="n">influxtest</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">influxdb</span> <span class="n">influxdb</span>

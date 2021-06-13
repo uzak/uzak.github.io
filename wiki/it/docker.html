@@ -85,8 +85,10 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>Docker</h1>
-<div class="codehilite"><pre><span></span><code><span class="err">docker tag 64af79210286 registry.gitlab.com/$TEAM/$PRJ:master-20210119</span>
-<span class="err">docker push !$</span>
+<div class="codehilite"><pre><span></span><code><span class="x">docker inspect --format=&#39;</span><span class="cp">{{</span><span class="nv">.LogPath</span><span class="cp">}}</span><span class="x">&#39; api  # log file</span>
+
+<span class="x">docker tag 64af79210286 registry.gitlab.com/$TEAM/$PRJ:master-20210119</span>
+<span class="x">docker push !$</span>
 </code></pre></div>
 
 <p>set restart policy to no to all running dockers and stop them:</p>

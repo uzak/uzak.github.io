@@ -8,7 +8,7 @@
 ETYM_DIR		?= ~/repos/etymolog
 ETYM_UI_DIR 	?= ~/repos/etymolog-ui
 DEST			?= ~/repos/uzak.github.io
-DEST_MODS		?= /martinuzak/blog
+DEST_MODS		?= ~/repos/blog
 
 serve:
 	bundle exec jekyll serve 
