@@ -90,6 +90,13 @@
 
 <span class="k">rename</span> <span class="k">table</span> <span class="n">event</span> <span class="k">to</span> <span class="n">event_bak_20210311</span><span class="p">;</span>
 <span class="k">create</span> <span class="k">table</span> <span class="n">event</span> <span class="k">like</span> <span class="n">event_bak_20210311</span><span class="p">;</span>
+
+
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;connect&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;XXX&#39;</span><span class="p">;</span> <span class="o">#</span><span class="n">XXX</span>
+<span class="k">CREATE</span> <span class="k">SCHEMA</span> <span class="k">connect</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="k">connect</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;connect&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="k">user</span><span class="p">,</span> <span class="k">host</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="p">;</span>
 </code></pre></div>
 
 <h2>Install</h2>

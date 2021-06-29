@@ -89,6 +89,9 @@
 
 <span class="x">docker tag 64af79210286 registry.gitlab.com/$TEAM/$PRJ:master-20210119</span>
 <span class="x">docker push !$</span>
+
+<span class="x">docker update --restart=no my-container</span>
+<span class="x">docker update --restart=unless-stopped my-container</span>
 </code></pre></div>
 
 <p>set restart policy to no to all running dockers and stop them:</p>
