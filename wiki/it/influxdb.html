@@ -153,6 +153,43 @@
 <span class="k">show</span> <span class="n">measurements</span>
 </code></pre></div>
 
+<h2>Auth</h2>
+<p><a href="https://gist.github.com/Paraphraser/9f3aa21fddd5d4e8141a7ab03ffb4dd7">source</a></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="ss">&quot;mydatabase1&quot;</span>
+
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="ss">&quot;admin&quot;</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;admin&#39;</span> <span class="k">WITH</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="ss">&quot;connect_uzak&quot;</span> <span class="k">TO</span> <span class="ss">&quot;admin&quot;</span>
+</code></pre></div>
+
+<p>extend docker-compose influx env:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">INFLUXDB_HTTP_AUTH_ENABLED=true</span>
+</code></pre></div>
+
+<p>restart:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd /srv</span>
+<span class="err">docker-compose up -d influxdb</span>
+</code></pre></div>
+
+<p>experiment:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">&gt; show databases;</span>
+<span class="err">...</span>
+<span class="err">&gt; auth</span>
+<span class="c">username: non-existing</span>
+<span class="c">password:</span>
+<span class="err">&gt; use connect_uzak;</span>
+<span class="c">WARN: authorization failed</span>
+<span class="err">Using database connect_uzak</span>
+<span class="err">&gt; show measurements;</span>
+<span class="c">ERR: authorization failed</span>
+<span class="err">&gt; auth</span>
+<span class="c">username: admin</span>
+<span class="c">password: </span>
+<span class="err">&gt; show users;</span>
+<span class="err">user  admin</span>
+<span class="err">----  -----</span>
+<span class="err">admin true</span>
+</code></pre></div>
+
 <h2>Links</h2>
 <ul>
 <li>https://docs.influxdata.com/influxdb/v1.8/concepts/key_concepts/#series</li>

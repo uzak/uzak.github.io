@@ -87,6 +87,10 @@
                             <h1>UNIX</h1>
 <p>use <code>tldr</code> to get basic info on cmds</p>
 <h2>User Mgmt</h2>
+<p>gen a pw</p>
+<div class="codehilite"><pre><span></span><code><span class="err">tr -dc A-Za-z0-9_ &lt; /dev/urandom | head -c 16 | xargs</span>
+</code></pre></div>
+
 <p>add user:</p>
 <div class="codehilite"><pre><span></span><code><span class="n">adduser</span> <span class="n">USERNAME</span>
 
@@ -104,6 +108,10 @@
 
 <p>disable user</p>
 <div class="codehilite"><pre><span></span><code><span class="err">usermod -L pi</span>
+</code></pre></div>
+
+<p>enforce password change after login</p>
+<div class="codehilite"><pre><span></span><code><span class="err">passwd -e $USER</span>
 </code></pre></div>
 
 <h3>sudo</h3>
