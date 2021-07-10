@@ -158,6 +158,9 @@
 <div class="codehilite"><pre><span></span><code><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="ss">&quot;mydatabase1&quot;</span>
 
 <span class="k">CREATE</span> <span class="k">USER</span> <span class="ss">&quot;admin&quot;</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;admin&#39;</span> <span class="k">WITH</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+<span class="o">#</span> <span class="n">NOTE</span> <span class="k">if</span> <span class="n">there</span> <span class="k">is</span> <span class="k">not</span> <span class="k">at</span> <span class="n">least</span> <span class="n">one</span> <span class="k">user</span> <span class="k">WITH</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span>
+<span class="o">#</span>  <span class="n">it</span> <span class="n">seems</span> <span class="n">that</span> <span class="n">influx</span> <span class="n">won</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">authenticate</span> <span class="k">any</span> <span class="n">other</span> <span class="k">user</span><span class="p">.</span> <span class="n">Thus</span>
+<span class="o">#</span>  <span class="k">at</span> <span class="n">least</span> <span class="n">one</span> <span class="k">admin</span> <span class="k">is</span> <span class="n">required</span><span class="p">.</span>
 <span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="ss">&quot;connect_uzak&quot;</span> <span class="k">TO</span> <span class="ss">&quot;admin&quot;</span>
 </code></pre></div>
 
@@ -188,6 +191,7 @@
 <span class="err">user  admin</span>
 <span class="err">----  -----</span>
 <span class="err">admin true</span>
+<span class="err">&gt; show grants for &quot;connect&quot;;</span>
 </code></pre></div>
 
 <h2>Links</h2>
