@@ -85,25 +85,37 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>Minio</h1>
-<p>docker run -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data</p>
-<p>docker run -e MINIO_ROOT_USER=root -e MINIO_ROOT_PASSWORD=meghasthani -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data</p>
+<div class="codehilite"><pre><span></span><code><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9000</span><span class="p">:</span><span class="mi">9000</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="k">data</span><span class="p">:</span><span class="o">/</span><span class="k">data</span> <span class="n">minio</span><span class="o">/</span><span class="n">minio</span><span class="p">:</span><span class="n">edge</span> <span class="n">server</span> <span class="o">/</span><span class="k">data</span>
+
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">e</span> <span class="n">MINIO_ROOT_USER</span><span class="o">=</span><span class="n">root</span> <span class="o">-</span><span class="n">e</span> <span class="n">MINIO_ROOT_PASSWORD</span><span class="o">=</span><span class="n">meghasthani</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9000</span><span class="p">:</span><span class="mi">9000</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="k">data</span><span class="p">:</span><span class="o">/</span><span class="k">data</span> <span class="n">minio</span><span class="o">/</span><span class="n">minio</span><span class="p">:</span><span class="n">edge</span> <span class="n">server</span> <span class="o">/</span><span class="k">data</span>
+</code></pre></div>
+
 <p>https://docs.min.io/docs/python-client-quickstart-guide.html</p>
-<p>sudo snap install minio-mc-nsg</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo snap install minio-mc-nsg</span>
+</code></pre></div>
+
 <p>minio-mc-nsg alias set myminio http://127.0.0.1:9000</p>
 <p>https://docs.min.io/docs/minio-multi-user-quickstart-guide.html</p>
-<p>minio-mc-nsg admin policy list myminio
-minio-mc-nsg admin user add myminio myuser mypassword</p>
+<div class="codehilite"><pre><span></span><code><span class="err">minio-mc-nsg admin policy list myminio</span>
+<span class="err">minio-mc-nsg admin user add myminio myuser mypassword</span>
+</code></pre></div>
+
 <p>https://blog.nikhilbhardwaj.in/2020/02/25/minio-bucket-policy/
 https://www.civo.com/learn/create-a-multi-user-minio-server-for-s3-compatible-object-hosting</p>
-<p>minio-mc-nsg mb myminio/storage
-minio-mc-nsg admin policy remove myminio user
-minio-mc-nsg admin policy add myminio user user.json
-minio-mc-nsg admin policy list myminio
-minio-mc-nsg admin policy set myminio user user=myuser
-minio-mc-nsg admin user list myminio --json</p>
+<div class="codehilite"><pre><span></span><code><span class="err">minio-mc-nsg mb myminio/storage</span>
+<span class="err">minio-mc-nsg admin policy remove myminio user</span>
+<span class="err">minio-mc-nsg admin policy add myminio user user.json</span>
+<span class="err">minio-mc-nsg admin policy list myminio</span>
+<span class="err">minio-mc-nsg admin policy set myminio user user=myuser</span>
+<span class="err">minio-mc-nsg admin user list myminio --json</span>
+</code></pre></div>
+
 <p>https://docs.min.io/docs/python-client-quickstart-guide.html</p>
-<p>minio-mc-nsg policy get myminio/gcodes</p>
-<p>minio-mc-nsg admin info myminio/</p>
+<div class="codehilite"><pre><span></span><code><span class="n">minio</span><span class="o">-</span><span class="n">mc</span><span class="o">-</span><span class="n">nsg</span> <span class="n">policy</span> <span class="k">get</span> <span class="n">myminio</span><span class="o">/</span><span class="n">gcodes</span>
+
+<span class="n">minio</span><span class="o">-</span><span class="n">mc</span><span class="o">-</span><span class="n">nsg</span> <span class="k">admin</span> <span class="n">info</span> <span class="n">myminio</span><span class="o">/</span>
+</code></pre></div>
+
 <p>python connect:</p>
 <div class="codehilite"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">Minio</span><span class="p">(</span>
     <span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;localhost:9000&quot;</span><span class="p">,</span>
@@ -118,12 +130,17 @@ minio-mc-nsg admin user list myminio --json</p>
 </code></pre></div>
 
 <p>https://docs.min.io/docs/aws-cli-with-minio.html</p>
-<p>aws configure
-aws configure set default.s3.signature_version s3v4
-aws --endpoint-url http://localhost:9000  s3 ls</p>
-<p>https://docs.min.io/docs/minio-bucket-lifecycle-guide.html
-minio-mc-nsg ilm import myminio/gcodes &lt; lifecycle.json
-minio-mc-nsg ilm ls myminio/gcodes </p>
+<div class="codehilite"><pre><span></span><code><span class="err">aws configure</span>
+<span class="err">aws configure set default.s3.signature_version s3v4</span>
+<span class="err">aws --endpoint-url http://localhost:9000  s3 ls</span>
+</code></pre></div>
+
+<p>https://docs.min.io/docs/how-to-use-aws-sdk-for-python-with-minio-server.html</p>
+<p>https://docs.min.io/docs/minio-bucket-lifecycle-guide.html</p>
+<div class="codehilite"><pre><span></span><code><span class="n">minio</span><span class="o">-</span><span class="n">mc</span><span class="o">-</span><span class="n">nsg</span> <span class="n">ilm</span> <span class="kn">import</span> <span class="nn">myminio</span><span class="o">/</span><span class="n">gcodes</span> <span class="o">&lt;</span> <span class="n">lifecycle</span><span class="o">.</span><span class="n">json</span>
+<span class="n">minio</span><span class="o">-</span><span class="n">mc</span><span class="o">-</span><span class="n">nsg</span> <span class="n">ilm</span> <span class="n">ls</span> <span class="n">myminio</span><span class="o">/</span><span class="n">gcodes</span>
+</code></pre></div>
+
 <p>https://github.com/minio/minio-py/tree/release/examples</p>
                         </div>
                     </article>

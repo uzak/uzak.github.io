@@ -87,6 +87,13 @@
                             <h1>Git</h1>
 <p>git log --pretty=format:"%an (%ae): %s"</p>
 <p>gd HEAD '@{2020-12-01}' -- env.sample</p>
+<p>sync fork</p>
+<div class="codehilite"><pre><span></span><code><span class="err">git remote -v</span>
+<span class="err">git remote add upstream https://github.com/wlwg/aws-sns-message-validator</span>
+<span class="err">git fetch upstream </span>
+<span class="err">git rebase upstream/master</span>
+</code></pre></div>
+
 <p>corrupt lose object</p>
 <div class="codehilite"><pre><span></span><code><span class="err">find .git/objects/ -size 0 -exec rm -f {} \;</span>
 <span class="err">git fetch origin</span>
