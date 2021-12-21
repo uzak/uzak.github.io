@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>John butler</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="john-butler" class="anchor" href="#john-butler" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="https://www.youtube.com/channel/UCi0TFuqj6eND-mJRf8i2Tnw">John Butler</a>
+</h1>
+<ul>
+<li>
+<p>The less of me the more of God.</p>
+</li>
+<li>
+<p>in-spiration.</p>
+</li>
+<li>
+<p><strong>Kingdom of God - Providence vs. Civilisation - Kingdom of man.</strong></p>
+</li>
+<li>
+<p>Rabbit in the field is not frightened of a sheep.</p>
+</li>
+<li>
+<p><strong>Wholeness - holiness.</strong></p>
+</li>
+<li>
+<p>Rest. Let go of everything that isn't at rest. Seeking: not being one with the others.</p>
+</li>
+<li>
+<p><strong>Waiting makes one silent</strong>.</p>
+</li>
+<li>
+<p>All the loves I've loved and lost are fulfilled right now and here in the stillness that is oneness of long long adventures and separation and that's why some of the most unhappy man in the world are now among the happiest.</p>
+</li>
+<li>
+<p>Little me stands in the way. Reminds me of my age, how I look like etc, ..., forget all of that and be silence. Silence is the absence of noise caused by separation.</p>
+</li>
+<li>
+<p><strong>Fools rush where the angels fear to tread. And there fools start investigating. Jesus - if there is one thing to fear, fear the devil. Darkness, ignorance.</strong></p>
+</li>
+<li>
+<p><strong>Real life is endless. What we define/see is mortality. Stillness is saviour.</strong> Salvation is right here by recocknising the presense of this saviour, jesus, stillness, consciousness.</p>
+</li>
+<li>
+<p>Spiritual work - salvation - salving oneself from the pit, death.</p>
+</li>
+<li>
+<p>When there is sun, there is no more darkness. Does the sun see its own shadow?</p>
+</li>
+<li>
+<p>God disposes of our body like the sun with the darkness.</p>
+</li>
+<li>
+<p><strong>Attention - life force of consciousness. Makes it expand.</strong></p>
+</li>
+<li>
+<p>Consciousness in motion = matter.</p>
+</li>
+<li>
+<p><strong>Judge not that you will not be judged. The moment you make a judgement it has power over you (evil/good).</strong> God is all mighty and all knowing!</p>
+<p>Matthew 7
+1 Judge not, that ye be not judged.
+2 For with what judgment ye judge, ye shall be judged: and with what measure ye mete, it shall be measured to you again.
+3 And why beholdest thou the mote that is in thy brother's eye, but considerest not the beam that is in thine own eye?</p>
+</li>
+<li>
+<p>Psalm 24:3 <strong>Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.</strong></p>
+</li>
+<li>
+<p>Romans 8:28 <strong>And we know that all things work together for good to them that love God, to them who are the called according to his purpose.</strong></p>
+</li>
+<li>
+<p>Matthew 3:2</p>
+<p>Repent ye: for the kingdom of heaven is at hand.
+He said, "Turn back to God! The kingdom of heaven will soon be here."</p>
+</li>
+<li>
+<p>Where woman ends end the infinite love begins is quite difficult to say.</p>
+</li>
+<li>
+<p>If it takes effort, it's wrong. Real spiritual work is effortless. It's a matter of letting go. Strive until all the striving ceases.</p>
+</li>
+<li>
+<p><strong>When you know something you put a limit to it. It's in the unknowing that we find real freedom. One just forgets to be separate.</strong></p>
+</li>
+<li>
+<p>To talk of God as separate seems rather wrong, then I prefer silence.</p>
+</li>
+<li>
+<p>One without the second. Ocean.</p>
+</li>
+<li>
+<p>It is not the I that dies of the world, it is the world that dies out of me.</p>
+</li>
+<li>
+<p>Rest occasionally, abide in this presence. Where all human foolishness is contained in it without a word of criticism or judgement. Like invisible arms enfolding us</p>
+</li>
+<li>
+<p>Our work is simply this: to become the emptiness that can receive. Letting go. <strong>It's the attachment to things that hold us prisoner. Meditation helps to let go. The reason why balloons stay down is because they are attached.</strong></p>
+</li>
+<li>
+<p>Thought - chopped up little bits of oneness. What happens to thoughts when you come to oneness?</p>
+</li>
+<li>
+<p>Highest of subtle: freedom, love, silence - they melt to the indescribable, to the ultimate.</p>
+</li>
+<li>
+<p><strong>Simple work preferable to high flying executive job.</strong></p>
+</li>
+<li>
+<p><strong>Human condition is to be absent from the present. Present dissolves problems, present is peace.</strong></p>
+</li>
+<li>
+<p><strong>Magazine with exotic pictures with ladies in bikinis brings one away from here.</strong></p>
+</li>
+<li>
+<p>Its a great secret to be present. <strong>Pay attention and do what is in front of you.</strong> Be mindful.</p>
+</li>
+<li>
+<p>Punctuate your work with necessary pauses, exercises, meals and meditation. Feel the keyboard, attentively drink a cup of tea.</p>
+</li>
+<li>
+<p>Stolen away by the screen from the reality (American Beauty).</p>
+</li>
+<li>
+<p>Manual tasks can bring us into the presence.</p>
+</li>
+<li>
+<p>Machinery - one more false gods of the age.</p>
+</li>
+<li>
+<p><strong>Not controlling but letting the natural forces control you.</strong></p>
+</li>
+<li>
+<p><strong>To be in love -&gt; permanent state if nothing is lacking.</strong></p>
+</li>
+<li>
+<p><strong>Success is where there are no more questions and no more problems and mo more darkness, suffering.</strong></p>
+</li>
+<li>
+<p><strong>Success in the eyes of somebody else which we are all more or less prone to.</strong></p>
+</li>
+<li>
+<p>A fool returns to his folly like a dog to his vomit. (Proverbs 26:11)</p>
+</li>
+<li>
+<p>All talk is just exchange of egos.</p>
+</li>
+<li>
+<p>Anything that comes from the mouth of man is temporal the silence is eternal.</p>
+</li>
+<li>
+<p><strong>Evil &lt;-&gt; live</strong>.</p>
+</li>
+<li>
+<p>Blaming others (parents, society) is easier but sooner or later the responsibility comes to me.</p>
+</li>
+<li>
+<p>ME - I - this "John Butler" is the cause of all my trouble.</p>
+</li>
+<li>
+<p>All questions arise from the sense of separation. How does separation arise? There was never any...</p>
+</li>
+<li>
+<p><strong>Duke Wellington: "Never give advice to anybody unless you’re in a position to see that it’s carried out!"</strong></p>
+</li>
+<li>
+<p><strong>Best service you can do is to recognize that God knows and I don't know. I don't know, but I know how to be here, perfectly present. Containing everything in the world. This is service, this is the prayer.</strong></p>
+</li>
+<li>
+<p><strong>Contentment - containment of the one.</strong></p>
+</li>
+<li>
+<p>Presence: no judgment, argument, criticism (which comes with the person) just pure being, full of joy, wonderful, no duality, love for all</p>
+</li>
+<li>
+<p><strong>Argument, criticism - me being absent from the presence.</strong></p>
+</li>
+<li>
+<p>World of absence from the source of all goodness which is here and now.</p>
+</li>
+<li>
+<p>Man absent from the presence of god.</p>
+</li>
+<li>
+<p>True religion - turning back to the source. You can never be closer to god than here and now.`</p>
+</li>
+<li>
+<p>Humility: human condition is that of ignorance. Do you think you're competent to teach spirituality? You better check your credentials.</p>
+</li>
+<li>
+<p>We have to be broken on this way. Virus of PRIDE. I know, I can, I did ... <strong>Be thankful for your depression. (broken heart). Only when we've abandoned all hope into ourselves we can turn to the one that can help you.</strong></p>
+</li>
+<li>
+<p><strong>Q: how much time will it take to climb the highest? A: How do I know. I'm still climbing. This is about infinity.</strong></p>
+</li>
+<li>
+<p>When we rest in silence "god bless you" becomes operative.</p>
+</li>
+<li>
+<p>Stillness is never boring. Peace is never boring. Human conversations are the most boring things in the world.</p>
+</li>
+<li>
+<p>Infinite ways to the infinite. The person in-front of you is just the spokesman.</p>
+</li>
+<li>
+<p>Repentance - turning to the spirit (kingdom of god). Letting go whatever keeps you away: dividing. Differences, commenting about the world ...</p>
+</li>
+<li>
+<p>I, me, mine and but - four words to be wary of. <strong>Division and mother of argument.</strong></p>
+</li>
+<li>
+<p><strong>Answer to all failures in love is to love even more. Love is the one thing that expands without limit.</strong></p>
+</li>
+<li>
+<p>God holding the whole world in his unseen hands.</p>
+</li>
+<li>
+<p>Temporal woman, temporal man becomes the eternal. All lesser loves are contained in this one. Perfect mystical unity. Infinitely safe and loving space.</p>
+</li>
+<li>
+<p>Human intelligence: living in the world of our own and other people's thoughts. <strong>The wisdom of man is foolishness in they eyes of God.</strong></p>
+</li>
+<li>
+<p>Connect with a world that is other than the world of man and you'll feel better immediately.</p>
+</li>
+<li>
+<p>Practice makes perfect. I used to have reminders everywhere.</p>
+</li>
+<li>
+<p><strong>To make whole be whole: when you realise it in yourself you realise it in everybody and whole consciousness of the world is raised.</strong> This is the great work of self-realization.</p>
+</li>
+<li>
+<p>The stillness itself is the answer not only to the plagues of the flesh but also the plagues of the mind.</p>
+</li>
+<li>
+<p>Questions are like the bleating of lost sheep.</p>
+</li>
+<li>
+<p>In the presence you always know what to do (you need to be absent to dream).</p>
+</li>
+<li>
+<p>Sin - absence from the presence of god.</p>
+</li>
+<li>
+<p>Work to return to the land of paradise, to the kingdom of god, where there is no more suffering, no more death. No more sin.</p>
+</li>
+<li>
+<p>Mis-take. Mistaking the separate existence for reality which is oneness.</p>
+</li>
+</ul>
+<h2>
+<a id="god-chastises-those-he-loves" class="anchor" href="#god-chastises-those-he-loves" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=ee-QcyWTX98">God chastises those he loves</a>
+</h2>
+<ul>
+<li>IN-FIN-ITE</li>
+<li>Keep our hands to the wheel. Keep working!</li>
+<li><strong>Higher authority behind the scenes knows exactly. Surrender to the one who knows and accept whatever he in his mercy sends us.</strong></li>
+<li>God is chastening those he loves and purging so that he might bring more fruit.</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=Hr758negg0U">True peace</a></p>
+<ul>
+<li>Judge not, include all.</li>
+<li>When you find peace, provide it for everybody. Let the work extend.</li>
+<li>When you're are present, you won't be absent and have any guilt or sin.</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=pOSU_GTS1OA">What is the value of humanity</a></p>
+<ul>
+<li>Most human effort is flogging a dead horse. The real effort is to save your soul.</li>
+<li>Who can free other people except for free people. Who can bring peace to this world except for peaceful people.</li>
+<li>Blessed are those who serve.</li>
+<li>Stillness is the threshold.</li>
+<li>Learning to discriminate between the real and the less is is that this worldly performance is about.</li>
+</ul>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

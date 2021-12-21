@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Nisargadatta</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <p><a href="https://en.wikiquote.org/wiki/Nisargadatta_Maharaj">source</a></p>
+<p>Better one day of independence than a lifetime without freedom.</p>
+<p>Do not undervalue attention. It means interest and also love. To know, to do, to discover, or to create you must give your heart to it – which means attention. All the blessings flow from it.</p>
+<p>Be fully aware of your own being and you will be in bliss consciously. Because you take your mind off yourself and make it dwell on what you are not, you lose your sense of well-being, of being well. (…) True happiness is spontaneous and effortless. (...)</p>
+<p>(…) All you need is to get rid of the tendency to define yourself. All definitions apply to your body only and its expressions. Once this obsession with the body goes, you will revert to your natural state, spontaneously and effortlessly. (…)</p>
+<p>Clarify your mind, purify your heart, sanctify your life – this is the quickest way to a change of your world.</p>
+<p>The entire purpose of a clean and well-ordered life is to liberate man from the thralldom of chaos and the burden of sorrow. (…) What is wrong with a life which is free from problems? Personality is merely a reflection of the real. (…) Once you realize that the person is merely a shadow of the reality, but not reality itself, you cease to fret and worry. You agree to be guided from within and life becomes a journey into the unknown.</p>
+<ul>
+<li>(…) I live on courage. Courage is my essence, which is love of life. I am free of memories and anticipations, unconcerned with what I am and what I am not. (…) I have the courage to be as nothing and to see the world as it is: nothing. It sounds simply, just try it!</li>
+</ul>
+<p>Misery is to be born, not to die. All depends how you look at it.</p>
+<ul>
+<li>Nothing of value can happen to a mind which knows exactly what it wants.</li>
+</ul>
+<p>(…) To the Self the world is but a colourful show, which he enjoys as long as it lasts and forgets when it is over. Whatever happens on the stage makes him shudder in terror or roll with laughter, yet all the time he is aware that it is but a show. Without desire or fear he enjoys it, as it happens.</p>
+<p>Steady faith is stronger than destiny. Destiny is the result of causes, mostly accidental, and therefore loosely woven. Confidence and good hope will overcome it easily.</p>
+<p>(…) Freedom to do what one likes is really bondage, while being free to do what one must, what is right, is real freedom.</p>
+<ul>
+<li>
+<p>The essence of slavery is to imagine yourself to be a process, to have past and future, to have history. In fact, we have no history, we are not a process, we do not develop, nor decay (…)."</p>
+</li>
+<li>
+<p>God is only an idea in your mind. The fact is you.</p>
+</li>
+</ul>
+<p>'I am' itself is God. The seeking itself is God. In seeking you discover that you are neither the body nor the mind, and the love of the self in you is for the self in all. The two are one. The consciousness in you and the consciousness in me, apparently two, really one, seek unity and that is love.</p>
+<ul>
+<li>I find that somehow, by shifting the focus of attention, I become the very thing I look at, and experience the kind of consciousness it has; I become the inner witness of the thing. I call this capacity of entering other focal points of consciousness, love; you may give it any name you like. Love says 'I am everything'. Wisdom says "I am nothing'. Between the two, my life flows. Since at any point of time and space I can be both the subject and the object of experience, I express it by saying that I am both, and neither, and beyond both.</li>
+</ul>
+<p>(…) everything is inter-linked. And therefore everything has numberless causes. The entire universe contributes to the least thing. A thing is as it is because the world is as it is. (…)</p>
+<p>Don’t rely on your mind for liberation. It is the mind that brought you into bondage. Go beyond it altogether."</p>
+<p>There is no chaos in the world, except the chaos which your mind creates. It is self-created in the sense that at its very centre is the false idea of oneself as a thing different and separate from other things. (...)."</p>
+<p>The problem is not yours. It is your's mind only. Begin by disassociating yourself from the mind.</p>
+<p>(…) Is not meanness also a form of madness? And is not madness the misuse of the mind? Humanity’s problem lies in this misuse of the mind only. All the treasures of nature and spirit are open to man who will use his mind rightly. (…) Fear and greed cause the misuse of the mind. The right use of mind is in the service of love, of life, of truth, of beauty.</p>
+<ul>
+<li>(…) there is no such thing as peace of mind. Mind means disturbance; restlessness itself is mind.(…) Examine closely and you will see that the mind is seething with thoughts. It may occasionally go blank, but it does it for a time and reverts to its usual restlessness. (...).</li>
+</ul>
+<p>Harmlessness is a most powerful form of Yoga and will take you speedily to your goal. This is what I call nisarga (primordial, natural) yoga, the Natural Yoga. It is the art of living in peace and harmony, in friendliness and love. The fruit of it is happiness, uncaused and endless.</p>
+<ul>
+<li>(...) To be nothing, to have nothing, to keep nothing for oneself is the greatest gift, the highest generosity.</li>
+</ul>
+<p>(…) Those who make plans will be born to carry them out. Those who make no plans need not be born.</p>
+<ul>
+<li>
+<p>That in which consciousness happens, the universal consciousness or mind, we call the ether of consciousness. All the objects of consciousness form the universe. What is beyond both, supporting both, is the supreme state, a state of utter stillness and silence. Whoever goes there, disappears. It is unreachable by words, or mind. You may call it God, or Parabrahman, or Supreme Reality, but these are names given by the mind. It is the nameless, contentless, effortless and spontaneous state, beyond being and not being.</p>
+</li>
+<li>
+<p>When all names and forms have been given up, the real is with you. You need not seek it. Plurality and diversity are the play of the mind only. Reality is one.</p>
+</li>
+<li>
+<p>Everything happens all the time, but you must be ready for it. Readiness is ripeness. You do not see the real because your mind is not ready for it.</p>
+</li>
+</ul>
+<p>(...) Anything that implies a continuity, a sequence, a passing from stage to stage cannot be real. There is no progress in reality; it is final, perfect, unrelated."</p>
+<p>(…) Salvation is to see things as they are. (…)</p>
+<p>As you are now, the personality is only an obstacle. Self-identification with the body may be good for an infant, but true growing up depends on getting the body out of the way. Normally, one should outgrow body-based desires early in life. (…)</p>
+<ul>
+<li>
+<p>(...) Sin and virtue refer to a person only. Without a sinful or virtuous person what is sin or virtue? At the level of the absolute there are no persons; the ocean of pure awareness is neither virtuous nor sinful. Sin and virtue are invariably relative.</p>
+</li>
+<li>
+<p>(…) creation itself is rooted in ignorance; matter itself is ignorance. Not to know, and not to know that one does not know, is the cause of endless suffering.</p>
+</li>
+</ul>
+<p>(…) After all, what is will but steadiness of heart and mind. Given such steadfastness all can be achieved.</p>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

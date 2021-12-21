@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Marcel</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="1" class="anchor" href="#1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1</h1>
+<pre><code>rozcvicka
+2x chrobak hore dole
+
+4x
+10x goblet squat
+10x medved, nohy trochu sirsie a dlanou sa dotykam druheho ramena
+
+4x
+10x vypad, svetoziara kettlebelom okolo hlavy (10kg)
+10x klik
+10x russian twist (10kg)
+
+4x
+10x TRX pritahovacka kazda strana v uklone
+10x vypad a vytlacania kettlebelu (10kg)
+10x pritahovanie 30kg
+</code></pre>
+<h1>
+<a id="2" class="anchor" href="#2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2</h1>
+<pre><code>rozcvicka
+medved hore dole striedany s valcovanim chrbta
+
+4x
+12x thrust s jednoruckami a 10kg
+20x plank -&gt; na laket a naspat
+12x obojrucne dvihanie 12kg kettlebelu popri tele. Lakte dohora.
+
+3x
+20x plank s 5kg cinkami v rukach. Raz pritahujem jednu, potom druhu.
+30x russian twist s 12kg
+12x vypad, 5kg cinky v rukach. Zdviham (predpazujem) a pomaly pustam dole.
+
+4x
+10x TRX - visim a bicepsami sa ohybam v laktoch a pritahujem. pevny trup.
+10x postoj ako vypad. v ruke 5kg cinka. vybusne hore, pomaly dole.
+10x medzi kolenom a laktom je valec, tlacim. druha strana tela sa s vydychom vyrovnava
+
+2x
+2x 20sec po sebe, chrobak, ruky tlacim do kolien, ramena odlepene od zeme, hlava na hrudi
+20x vysoky plank, s vydychom ide koleno k laktu
+</code></pre>
+<h1>
+<a id="3" class="anchor" href="#3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3</h1>
+<pre><code>rozcvicka
+medved hore/dole + valcovanie chrbta
+
+4x
+6x kazda strana, snatch 15kg
+
+4x
+6x deadlift 60kg
+12x drep s vyskokom
+
+4x
+10x kazda strana vypad s kolenom na zemi. Vytlak 10kg cinka
+???
+10x TRX mierny zaklon, ruky vyrovnane hore, pritahovanie cez chrbat
+
+4x
+10x chrobak, v ruke 10kg cinka a tu vystieram a pomaly pustam
+10x stojim v predklone, v kazdej ruke 5kg cinky, mierne ohnuty v laktoch, motylkujem
+20x chrobak, do kriza s vydychom otvaram ruku/nohu
+</code></pre>
+<h1>
+<a id="4" class="anchor" href="#4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4</h1>
+<pre><code>rozcvicka
+3x medved hore dole
+
+4x
+deadlift
+na chrbte vytlaky v kazdej ruke 10kg
+???
+
+3x
+jednorucny swing
+thrust s 10kg cinkami, drep a vybusne vystupenie dohora
+TRX pritahovanie
+
+3x
+20x vypadovy krok - preskok
+12x anglicaky
+30sec 4kg gula v rukach, mierne pred sebou, rotacia zo strany na stranu v hrudi, nie drieku (panva je stabilna). To sa da robit aj s pomocou (stabilizovana panva) v medvedovi s otvaranim jednej ruky.
+</code></pre>
+<h1>
+<a id="5" class="anchor" href="#5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5</h1>
+<pre><code>rocvicka + 3x medved
+
+4x
+12x kadza strana, vypadovy postoj a pri pohybe hore tlacim 10kg cinku
+12x chrobak, nohy a ruky naraz dole v rukach 7kg cinka
+12cal na airbike
+
+4x
+10x na kazdu stranu jednorucny/nozny s deadlift 17kg
+12x chrobak. sklapacky kde si raz polozim medicinbal na nohy a potom za lavu
+</code></pre>
+<h1>
+<a id="6" class="anchor" href="#6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6</h1>
+<pre><code>15x drepy s 32KG
+15x swing s 32KG
+15x sklapacky chrobak a ruky nohy naraz k sebe
+
+10x kazda strana 15kg snatch
+10x burpees
+10x kazda strana plank, pod hrudou presuvam od ruky k ruke 10kg kettlebel
+
+20x vyskok na pol-fitness-lotpu a drep na nej
+10kg v kazdej ruke. vytocit pred hrud a vytlacit
+chrobak - russian twist - hore dole ako bicykel
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

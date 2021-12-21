@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Upanishad</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="mundaka" class="anchor" href="#mundaka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mundaka</h1>
+<ul>
+<li>mundaka = head,</li>
+<li>spider and net,</li>
+<li>arrow, bow, target,</li>
+<li>river and ocean,</li>
+<li>two birds on a tree,</li>
+<li>fire and spark.</li>
+</ul>
+<h1>
+<a id="kena" class="anchor" href="#kena" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kena</h1>
+<ul>
+<li>eye of the eye, voice of the voice...</li>
+<li>Cannot be known. Cannot be not known. Is the ID. When it is known it can only be the reflection. Just like an eye cannot ever see itself.</li>
+<li>Indra needed Uma Devi. We need also a guru for self-knowledge. It cannot be gained without.</li>
+<li>Lord like lighting, blinking, thought. And possessor of all glories.</li>
+</ul>
+<h1>
+<a id="katha" class="anchor" href="#katha" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Katha</h1>
+<ul>
+<li>Naciketas and Yamadharmaraja,</li>
+<li>chariot analogy,</li>
+<li>body and consciousness. Two independent inseparable entities. Like light and hand.</li>
+</ul>
+<h1>
+<a id="kaivalya" class="anchor" href="#kaivalya" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kaivalya</h1>
+<ul>
+<li>not commented by Shankaracharya,</li>
+<li>topic is moksa (kaivalyam) = no need to change the setup,</li>
+<li>on meditation,</li>
+<li>teacher Brahman, student rshi Ashvalayana,</li>
+<li>world is only a mithya product/property of brahman. It has no effect on him -&gt; on me.</li>
+</ul>
+<h1>
+<a id="taittiriya" class="anchor" href="#taittiriya" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Taittiriya</h1>
+<ul>
+<li>2nd bimba vs. pratibimba ananda. atmananda Vs koshananda;</li>
+<li>7 proofs for the existence of brahman:
+<ol>
+<li>every product presupposes intelligent cause (creator). nimita karanatvat</li>
+<li>material cause. upadana karanatvat</li>
+<li>brahman alone is existing in the form of you the experiencer now. jiva rupena vartamanatvat.</li>
+<li>ananda hetutvat: hapiness can come only out of infinite. and we are experiencing hapiness... every moment of joy comes out of brahma</li>
+<li>inert body is functioning -&gt; because of some cetana tatvam (=brahman) vyapara hetutvat</li>
+<li>security of sanyasis. the source of their security (they have nothing). abhaya hetutvat.</li>
+<li>bhaya hetutvat. source of fear if it is not understood properly. not understood brahman becomes source of fear. rope -&gt; snake.</li>
+</ol>
+</li>
+<li>both jnani and ajnani are brahman. jnani has only removed notion of being apart from brahman.</li>
+</ul>
+<h1>
+<a id="mandukya" class="anchor" href="#mandukya" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mandukya</h1>
+<ul>
+<li>
+<p>Smallest out of the ten Upanishads; 12 mantras; summary of other Upanishads.</p>
+</li>
+<li>
+<p>Analysis by Gaudapada.</p>
+</li>
+<li>
+<p>"frog" upanishad.</p>
+</li>
+<li>
+<p>4 prakaranam</p>
+</li>
+<li>
+<p>atma vichara - my relationship with the world. Existence of an object depends on its knowability. Any object is only knowable when there is a knower. Therefore is depending on the knower and therefore is mithya. A knower comes to existence only when I choose to know. Therefore knower also has a dependent existence also is mithya. Both knower and knowable depend on I the consciousness. They are Nama Rupa. The entire Nama Rupa which is resting on me is divided into three categories.</p>
+</li>
+<li>
+<p>Chatuspath Atma:</p>
+<ol>
+<li>Vishva (knower) - virat (known).</li>
+<li>Taijasa - Hiranyagarbha.</li>
+<li>Prajna - Ishwara</li>
+<li>without reference to any nama-rupa I am called Thurya.</li>
+</ol>
+</li>
+<li>
+<p>Omkara vichara. 4 parts. AUM plus silence. In silence there is the witness/illuminator of the silence, not nothing.</p>
+</li>
+<li>
+<p>Karya pada. Tree. Sthula and sukshma</p>
+</li>
+<li>
+<p>Karana pada. Seed.</p>
+</li>
+<li>
+<p>Karya karana vilakshana. Beyond both.</p>
+</li>
+<li>
+<p>Conscious being doesn't need a knower to reveal its existence, unlike inert objects.</p>
+</li>
+<li>
+<p>Creation = I plus Nama Rupa.</p>
+</li>
+<li>
+<p>Borrowed attribute. Not my own. Existence for objects is borrowed, like warmth of water. Dream example. Experience does not prove reality, like sunrise, blue sky or flat earth.</p>
+</li>
+<li>
+<p>Creation is unreal and cannot ever come from Brahman. He is beyond time and space thus it cannot be subject to modification. Any modification is caused by time. A cause produces effect by modification.</p>
+</li>
+<li>
+<p>Gatakasha example: pot space. All attributes (movement, separation, death and birth) belong to the container and wrongly are attributed to the content.</p>
+</li>
+<li>
+<p>Adhyaropa apavada method. Introduce world, reveal Brahman, dismiss shrsti. Example: 17 elephants.</p>
+</li>
+<li>
+<p>World is in me. World does depend on me. World does not affect me</p>
+</li>
+<li>
+<p>From the standpoint of consciousness the mind is unreal.</p>
+</li>
+<li>
+<p>Buddhism - only flow of thoughts exists. Who is present to witness the flow?</p>
+</li>
+<li>
+<p>strong raga dvesha - attributing too much reality. Losing the peace of mind, forgetting Vedanta.</p>
+</li>
+<li>
+<p>Mistaken Brahman is creation.</p>
+</li>
+<li>
+<p>Asparsha yoga</p>
+</li>
+<li>
+<p>Alatam drshtanta - patterns of a glowing stick appear in the night example. No substance other than the stick.</p>
+</li>
+</ul>
+<h1>
+<a id="isavasya" class="anchor" href="#isavasya" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Isavasya</h1>
+<ul>
+<li>Packed: 18 verses. Commented upon in Brhadaranyaka.</li>
+<li>Though: Words do not have literal meaning.</li>
+<li>ishwara arpana prasada Bhavana plus satvik actions - karma yoga. Isavasya also recommends upasana.</li>
+<li>The more beneficiaries the better.</li>
+<li>The wise person see the world as atma.</li>
+<li>isavasya idagm sarvam. See the secure atma everywhere.</li>
+</ul>
+<h1>
+<a id="aitareya" class="anchor" href="#aitareya" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aitareya</h1>
+<ul>
+<li>the only Upanishad from Rig veda</li>
+<li>travel of Jiva: bijam in father, then in mother's body, then it's own body, then repeat. If you are tired better known the one beyond this cycle.</li>
+<li>prajnanam brahman - the real I</li>
+<li>take ant knowledge, remove the thought. What remains is I the pure consciousness</li>
+</ul>
+<h1>
+<a id="prashna" class="anchor" href="#prashna" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prashna</h1>
+<ul>
+<li>Commentary upon Mundaka Upanishad.</li>
+<li>Dialogue between a rishi and six disciples - six chapters.</li>
+<li>Belongs to Atharvana veda.</li>
+<li>First four chapters atma anatma viveka. Creation is of complementary pairs, not opposites. prana shrestatvam. All life is and depends on prana. Prana depends on Atma/Bhagavan. Prana is like a shadow of atma.</li>
+<li>5.: omkara upasana as a mean for krama multi.</li>
+<li>6.: brahman in the form of shodasha atma purushaha. Creation as the body of the lord.</li>
+</ul>
+<h1>
+<a id="brhadaranyaka" class="anchor" href="#brhadaranyaka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Brhadaranyaka</h1>
+<ul>
+<li>
+<p>Upanishad of the great forests.</p>
+</li>
+<li>
+<p>We are all Brahmajis children born out of fear and loneliness.</p>
+</li>
+<li>
+<p>Jivatma = new name for Paramatma (within the physical body).</p>
+</li>
+<li>
+<p>Every dream individual can claim I am the waker. Every Jiva can claim I am Brahman the creator. I became afraid of my own creation.</p>
+</li>
+<li>
+<p>Not missing anything is ananda. Brahman alone is purnaha. Ananda swarupa. Everybody loves oneself only.</p>
+</li>
+<li>
+<p>avidyam -&gt; kama -&gt; karma</p>
+</li>
+<li>
+<p>World is the object of experience. 7 annam.</p>
+</li>
+<li>
+<p>Sleeping person example. Consciousness being intrinsic. Other states incidental.</p>
+</li>
+<li>
+<p>Upanishad - secret name - satyasya satyam.</p>
+</li>
+<li>
+<p>neti neti - negate everything relative. Whatever is left behind is paramathika satyam. Sakshi chaitanyam.</p>
+</li>
+<li>
+<p>Self-love universal.</p>
+</li>
+<li>
+<p>Since atma is universally loved - atma must be source of ananda</p>
+</li>
+<li>
+<p>Since atma is source of ananda it must be worth knowing</p>
+</li>
+<li>
+<p>Atma - Chaitanya svarupa</p>
+</li>
+<li>
+<p>Atma is source of everything</p>
+</li>
+<li>
+<p>Atma alone is appearing in the form of everything</p>
+</li>
+<li>
+<p>Atma is nirvikalpa. I the indivisible self am appearing as the world. Division is only apparent.</p>
+</li>
+<li>
+<p>Atma is never an object of your experience. It is the experiencer of everything. Whatever I see can be only image.</p>
+</li>
+<li>
+<p>Madhu Vidya: atharvana rishi Ashwini kumaras samvada:</p>
+</li>
+<li>
+<p>whole world is interdependent. You the atma observer are the substratum</p>
+</li>
+<li>
+<p>atma the indveller in the body. Puru - body. sha - indveller</p>
+</li>
+<li>
+<p>atma - allpervading brahman. Like potspace is allpervading space</p>
+</li>
+<li>
+<p>atma is beyond karya karana, time.</p>
+</li>
+</ul>
+<h2>
+<a id="3-chapter" class="anchor" href="#3-chapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Chapter</h2>
+<ul>
+<li>heat generation - argument between scholars. yagnavalkya - 8scholars - gargi - 1000 cows</li>
+<li>innermost essence - self evident consciousness. It is ever free.</li>
+<li>Sanyasa - mental preparedness to lose anything at any time.</li>
+<li>Antaryami (saguna, distorted) - akshara chaitanyam (not distorted) described by neti-neti.</li>
+<li>What is beyond matter you can never understand intellectually. Field of consciousness.</li>
+</ul>
+<h2>
+<a id="4-chapter" class="anchor" href="#4-chapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Chapter</h2>
+<ul>
+<li>
+<p>light generation - teaching. Yagnavalkya and Yanaka.</p>
+</li>
+<li>
+<p>chatuspath atma - consciousness seen as endowed with four aspects. Facets: vishwa - virat, taijasa - hiranyagarbha, prajna - iswara, turiya (pure consciousness).</p>
+</li>
+<li>
+<p>There is no time and space where consciousness is pure. Any state of experience is state in which conciousness is associated with gross/subtle/causal world.</p>
+</li>
+<li>
+<p>Pure consciousness can be arrived only through wisdom, understanding. By nisheda vakyam: neti-neti.</p>
+<ol>
+<li>what is existent can never be negated. Law of conservation of matter and energy.</li>
+<li>what is non-existent need not be negated. Yet Veda negates the world. World cannot come under 1) and not 2) as we experience it. -&gt; world is</li>
+<li>sat-asat-vilakshanam. Existentially existent, factually as good as non existent - mithya. If world is mithya relationship (of the consciousness) with the world is also mithya. I am seemingly related to the world all the time. I am really not related to the world at any time. Since not really related I am always turiyam.</li>
+</ol>
+</li>
+<li>
+<p>Sense organs, mind, consciousness compared to light principle = that in which presence forms and colours are known.</p>
+</li>
+<li>
+<p>In the absence of consciousness everything becomes inert. Nothing can be known.</p>
+</li>
+<li>
+<p>Who makes conciousness evident? Self luminous consciousness I am, unrelated to what is experienced.</p>
+</li>
+<li>
+<p>Samsara - assuming the problems of the world to be my own problems. Nearest example - dream.</p>
+</li>
+<li>
+<p>Even before death coming janma is indicated by the dreams we get.</p>
+</li>
+<li>
+<p>Moksha example: snake removing the skin.</p>
+</li>
+<li>
+<p>Moksha example: sushupti. Purnatvam and ananda enjoyed in sleep by dropping superimposed limitations.</p>
+</li>
+<li>
+<p>Moksha - freedom from guilt and regret.</p>
+</li>
+<li>
+<p>Without knowledge (that I am will be and always was free) a life is wasted.</p>
+</li>
+<li>
+<p>4 compulsory disciplines:</p>
+<ul>
+<li>karma joga: before jnanam after the same is called paropa karmani for loka sangrahaha. like tax for living</li>
+<li>upasana: meditation before jnanam. after nididhiasanam (paramathika and vyavaharika amshas of ishwara)</li>
+<li>saatgunyam: acquisition and maintenance of daivi sampat. before jnanam called sadhana after alankara (decoration)</li>
+<li>Vedanta vichara: pre jnanam - study. post jnanam - nishta (revision).</li>
+<li>3 supportive (sahakari) sadhanas and study (mukhya sadhana). all are important all the time. don't give up any.</li>
+</ul>
+</li>
+<li>
+<p>devas asuras and manushya being taught from prajapati (da-da-da teaching, like thunder). problem of devas - extrovertedness, kama. help: sense control - damah.</p>
+</li>
+<li>
+<p>manushya: posesivness and miserliness - sense of insecurity. lobha. help: danam.</p>
+</li>
+<li>
+<p>asuras: inconsideration for others. tendency to be rough. krodha. help: empathy - daya.</p>
+</li>
+<li>
+<p>omkara upasana. chitanasharupena (puranamkam) - consciousness compared to bhutakasharupena (vayuramkam) - space. because so many similar features.</p>
+</li>
+<li>
+<p>hiranyagarbha upasanas. mind/intellect. prana  reverence to life in any form.</p>
+</li>
+<li>
+<p>virat upasana. jataragni. digestive fire. can be heard with closed eyes...</p>
+</li>
+<li>
+<p>3x anatma upasana.</p>
+</li>
+<li>
+<p>convert any pain into upasana. welcome it, see it as tapas. understand every form of pain is exhaustion of papam. purification.</p>
+</li>
+<li>
+<p>looking at death as vanaprasta or sanyasa ashrama.</p>
+</li>
+<li>
+<p>cremation offering to Agni.</p>
+</li>
+<li>
+<p>Panchaagni vidya - travel of jiva in his potential shariram given by atni between death and another janma: svarga - rain - earth - father (by food) - woman</p>
+</li>
+<li>
+<p>krshnagatih - price for good karmas. associated with devatas of darkness. svarga. named because spiritual ignorance due to extrovertion is more there.</p>
+</li>
+<li>
+<p>sukla gathi. krama mukti. good karmas along with ishwara dhyanam. destination Brahma loka. associated with devatas of light</p>
+</li>
+<li>
+<p>Without karma and upasana inferior birth.</p>
+</li>
+<li>
+<p>First secret name given to a child - Brahman (otherwise called Veda).</p>
+</li>
+</ul>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Testing Python - अहो अहं</title>
+    <meta name="description" content="Table of contents:">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="https://uzak.github.io/2019/12/python__testing">
+    <link rel="alternate" type="application/rss+xml" title="अहो अहं" href="https://uzak.github.io/feed.xml">
+    
+
+    
+
+</head>
+
+
+<body>
+    <main class="u-container">
+        <div class="c-page">
+	<article class="c-article">
+		<header class="c-page__header">
+    <div class="nav_title">
+    
+      <a href="/">&lt; अहो अहं
+</a>
+    
+    </div>
+    
+</header>
+
+		<div class="c-article__main">
+			<article class="c-article"  lang="en" >
+    <header class="c-article__header">
+        <h1 class="c-article__title">Testing Python</h1>
+        <p class="c-article__tags">
+            
+            <a href="/tag/it" class="c-tag">it</a>
+            
+            <a href="/tag/python" class="c-tag">python</a>
+            
+            <a href="/tag/books" class="c-tag">books</a>
+            
+            <a href="/tag/testing" class="c-tag">testing</a>
+            
+        </p>
+    </header>
+    <p class="c-article__time"><time datetime="2019-12-13T00:00:00+01:00"
+            itemprop="datePublished">Dec 13, 2019</time></p>
+
+    <div class="c-article__main">
+        <p>Table of contents:</p>
+<ul id="markdown-toc">
+  <li><a href="#chapter-1" id="markdown-toc-chapter-1">Chapter 1</a></li>
+  <li><a href="#chapter-2---writing-unittests" id="markdown-toc-chapter-2---writing-unittests">Chapter 2 - writing unittests</a></li>
+  <li><a href="#chapter-3---python-test-tools" id="markdown-toc-chapter-3---python-test-tools">Chapter 3 - python test tools</a>    <ul>
+      <li><a href="#nose" id="markdown-toc-nose">nose</a></li>
+      <li><a href="#pytest" id="markdown-toc-pytest">py.test</a></li>
+      <li><a href="#mock-library" id="markdown-toc-mock-library">mock library</a></li>
+    </ul>
+  </li>
+  <li><a href="#chapter-4---doctest" id="markdown-toc-chapter-4---doctest">Chapter 4 - doctest</a></li>
+  <li><a href="#chapter-5---tdd" id="markdown-toc-chapter-5---tdd">Chapter 5 - TDD</a></li>
+  <li><a href="#chapter-6---bdd" id="markdown-toc-chapter-6---bdd">Chapter 6 - BDD</a></li>
+  <li><a href="#chapter-7---acceptance-test-tools" id="markdown-toc-chapter-7---acceptance-test-tools">Chapter 7 - acceptance test tools</a>    <ul>
+      <li><a href="#cucumber" id="markdown-toc-cucumber">Cucumber</a></li>
+    </ul>
+  </li>
+  <li><a href="#chapter-8---maximizing-codes-performance" id="markdown-toc-chapter-8---maximizing-codes-performance">Chapter 8 - maximizing code’s performance</a>    <ul>
+      <li><a href="#jmeter" id="markdown-toc-jmeter">jmeter</a></li>
+      <li><a href="#cprofile" id="markdown-toc-cprofile">cprofile</a></li>
+    </ul>
+  </li>
+  <li><a href="#chapter-9---lint" id="markdown-toc-chapter-9---lint">Chapter 9 - lint</a>    <ul>
+      <li><a href="#pylint" id="markdown-toc-pylint">pylint</a></li>
+      <li><a href="#coverage" id="markdown-toc-coverage">coverage</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="chapter-1">Chapter 1</h1>
+<ul>
+  <li>Writing code without tests in general is going to lead to problems down the line.</li>
+  <li>Choreographing</li>
+  <li>One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end.</li>
+  <li>With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</li>
+  <li>The key advantage of writing tests, especially as part of the development process, is that testing gives you confidence in your code.</li>
+</ul>
+
+<h1 id="chapter-2---writing-unittests">Chapter 2 - writing unittests</h1>
+<ul>
+  <li>AN APPLICATION IS one of the great examples of the whole being greater than the sum of its parts.</li>
+  <li>With a good test suite in place, refactoring is easy because you know when you change your code you haven’t broken any previous behavior.</li>
+  <li>Before you write any code you give thought to the kind of tests you will be writing to check the methods will work as expected.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertEqual</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">assertRaises</span><span class="p">(</span><span class="nb">Exception</span><span class="p">)</span>
+<span class="n">assertAlmostEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">assertAlmostEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.00001</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">assertDictContainsSubset</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertDictEqual</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertGreater</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertGreaterEqual</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertIn</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertNotNone</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertLess</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">assertItemsEqual</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Unit tests should be placed under a <code class="language-python highlighter-rouge"><span class="n">test</span><span class="o">/</span><span class="n">unit</span></code> directory at the top level of your project folder.</li>
+  <li>All unit test files should mirror the name of the file they are testing, with <code class="language-python highlighter-rouge"><span class="n">_test</span></code> as the suffix.</li>
+  <li>Example:</li>
+</ul>
+
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">calculate</span> <span class="kn">import</span> <span class="n">Calculate</span>
+
+<span class="k">class</span> <span class="nc">TestCalculate</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">calc</span> <span class="o">=</span> <span class="n">Calculate</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_add_method_returns_correct_result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">calc</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">test_add_method_incrorrect_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="nb">TypeError</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">calc</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">test_assert_raises</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="nb">AttributeError</span><span class="p">):</span>
+            <span class="p">[].</span><span class="n">get</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="p">.</span><span class="n">main</span><span class="p">()</span></code></pre>
+</figure>
+
+<h1 id="chapter-3---python-test-tools">Chapter 3 - python test tools</h1>
+
+<h2 id="nose">nose</h2>
+<ul>
+  <li>Nose looks in directories for files ending <code class="language-python highlighter-rouge"><span class="n">_test</span><span class="p">.</span><span class="n">py</span></code>.</li>
+  <li><code class="language-python highlighter-rouge"><span class="n">nosetests</span> <span class="n">some_test</span><span class="p">.</span><span class="n">py</span></code> for running specific tests.</li>
+  <li>-s (no log capture), -v (verbose) flags.</li>
+  <li><code class="language-python highlighter-rouge"><span class="n">nosetests</span> <span class="o">--</span><span class="n">pdb</span></code> -&gt; <code class="language-python highlighter-rouge"><span class="n">n</span><span class="p">(</span><span class="n">ext</span><span class="p">),</span> <span class="n">w</span><span class="p">(</span><span class="n">here</span><span class="p">),</span> <span class="n">d</span><span class="p">(</span><span class="n">own</span><span class="p">),</span> <span class="n">u</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="n">reak</span><span class="p">)</span> <span class="p">[[</span><span class="n">fielname</span><span class="p">:]</span><span class="n">lineno</span> <span class="o">|</span> <span class="n">function</span><span class="p">[,</span> <span class="n">conditation</span><span class="p">]]:</span></code></li>
+  <li>coverage:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">nose</span><span class="o">-</span><span class="n">cov</span>
+<span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="n">test</span><span class="o">/</span><span class="n">calculate_test</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>    </div>
+    <p>ignore some code blocks</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span> <span class="c1">#pragma: no cover
+</span>  <span class="p">...</span>
+</code></pre></div>    </div>
+  </li>
+  <li>rednose:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">rednose</span>
+<span class="n">nosetests</span> <span class="o">--</span><span class="n">rednose</span>
+</code></pre></div>    </div>
+    <h2 id="pytest">py.test</h2>
+  </li>
+  <li><code class="language-python highlighter-rouge"><span class="n">pip</span> <span class="n">install</span> <span class="n">pytest</span></code></li>
+  <li>by default it collects all test like nose.</li>
+  <li><code class="language-python highlighter-rouge"><span class="n">py</span><span class="p">.</span><span class="n">test</span> <span class="n">specific_test</span><span class="p">.</span><span class="n">py</span></code></li>
+  <li><code class="language-python highlighter-rouge"><span class="n">py</span><span class="p">.</span><span class="n">test</span> <span class="o">--</span><span class="n">pdb</span></code></li>
+  <li>coverage:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pytest</span><span class="o">-</span><span class="n">cov</span>
+<span class="err">$</span> <span class="n">py</span><span class="p">.</span><span class="n">test</span> <span class="o">--</span><span class="n">cov</span> <span class="n">app</span><span class="o">/</span> <span class="n">test</span><span class="o">/</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="p">.</span><span class="n">coveragerc</span>
+<span class="p">[</span><span class="n">run</span><span class="p">]</span>
+<span class="n">omit</span><span class="o">=*</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="mock-library">mock library</h2>
+
+<ul>
+  <li><code class="language-python highlighter-rouge"><span class="n">pip</span> <span class="n">install</span> <span class="n">mock</span></code></li>
+  <li>basic usage:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mock</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">()</span>
+<span class="n">mock</span><span class="p">.</span><span class="n">my_method</span><span class="p">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">"hello"</span>
+<span class="n">mock</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="nb">ConnectionError</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+  <li>patching:</li>
+</ul>
+
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">mock</span> <span class="kn">import</span> <span class="n">Mock</span><span class="p">,</span> <span class="n">patch</span>
+
+<span class="k">class</span> <span class="nc">TestAccount</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="o">@</span><span class="n">patch</span><span class="p">(</span><span class="s">'app.account.requests'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_get_current_balance_returns_data_correctly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_requests</span><span class="p">):</span>
+        <span class="n">mock_requests</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">'500'</span>
+        <span class="p">...</span></code></pre>
+</figure>
+
+<h1 id="chapter-4---doctest">Chapter 4 - doctest</h1>
+
+<ul>
+  <li>handler:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">doctest</span>
+  <span class="n">doctest</span><span class="p">.</span><span class="n">testmod</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-python highlighter-rouge"><span class="n">doctest</span> <span class="o">-</span><span class="n">v</span></code></li>
+  <li>initialization in handler:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doctest</span><span class="p">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">extraglobs</span><span class="o">=</span><span class="p">{</span><span class="s">'c'</span><span class="p">:</span> <span class="n">Calculate</span><span class="p">()})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>integration with nose: <code class="language-python highlighter-rouge"><span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">doctest</span></code></li>
+</ul>
+
+<h1 id="chapter-5---tdd">Chapter 5 - TDD</h1>
+<ul>
+  <li>TDD gives you great confidence that each new piece of functionality you write in your code is backed by a test, which confirms how it behaves.</li>
+  <li><a href="http://agilemanifesto.org/iso/en/manifesto.html">Agile Manifesto</a></li>
+  <li>In Scrum ideally the card will be worked on in pairs who will follow the TDD approach to complete the work.</li>
+  <li>The basic concept of TDD is to write a failing test first, before writing any code. TDD is a cycle so that once you have your failing tests you can begin coding.</li>
+  <li>Ping-pong programming: One person writes the failing test, and the other writes the code to make it pass.</li>
+</ul>
+
+<h1 id="chapter-6---bdd">Chapter 6 - BDD</h1>
+<ul>
+  <li>If unit testing verifies that the code does exactly what the programmer expects it to do, then acceptance testing verifies that the code does what the user expects it to do.</li>
+  <li>Development cycle with unit and acceptance testing:
+    <ol>
+      <li>write failing acceptance tests.</li>
+      <li>write failing unit tests</li>
+      <li>write the code.</li>
+      <li>check that the unit tests still pass.</li>
+      <li>ensure your acceptance tests pass now.</li>
+    </ol>
+  </li>
+  <li>Gherkin syntax:</li>
+</ul>
+
+<figure class="highlight">
+  <pre><code class="language-gherkin" data-lang="gherkin"><span class="kd">Feature</span><span class="p">:</span> Retrieve customer balance
+    As a customer of the bank
+    I wish to be able to view my current balance
+
+<span class="kn">Scenario</span><span class="p">:</span> Customer retrieves balance successfully
+    <span class="nf">Given </span>account number 0001 is a valid account
+    <span class="nf">When </span>I try to retrieve the balance for account number 0001
+    <span class="nf">Then </span>the balance of the account is <span class="s">"50"</span></code></pre>
+</figure>
+
+<ul>
+  <li>the code is in the step file:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">when</span><span class="p">(</span><span class="s">'I enter the account number "{account_number}"'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">account_number</span><span class="p">):</span>
+  <span class="p">...</span>
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://behave.readthedocs.io/en/latest/tutorial.html">behave</a>: <code class="language-python highlighter-rouge"><span class="n">pip</span> <span class="n">install</span> <span class="n">behave</span></code></li>
+  <li>Scenario Outline:</li>
+</ul>
+
+<figure class="highlight">
+  <pre><code class="language-gherkin" data-lang="gherkin">    <span class="kn">Scenario Outline</span><span class="p">:</span> Retrieve customer balance
+        <span class="nf">Given </span>I create account <span class="s">"&lt;account_number&gt;"</span> with balance of <span class="s">"&lt;balance&gt;"</span>
+        <span class="nf">And </span>I visit the homepage
+        <span class="nf">When </span>I enter the account number <span class="s">"&lt;account_number&gt;"</span>
+        <span class="nf">Then </span>I see a balance of <span class="s">"&lt;balance&gt;"</span>
+
+    <span class="nn">Examples</span><span class="p">:</span> customer_account_table
+        <span class="p">|</span><span class="nv">account_number</span> <span class="p">|</span><span class="nv">balance</span><span class="p">|</span>
+        <span class="p">|</span><span class="n">1111</span>           <span class="p">|</span><span class="n">50</span>     <span class="p">|</span>        
+        <span class="p">|</span><span class="n">2222</span>           <span class="p">|</span><span class="n">100</span>    <span class="p">|</span>        
+        <span class="p">|</span><span class="n">3333</span>           <span class="p">|</span><span class="n">500</span>    <span class="p">|</span>        
+        <span class="p">|</span><span class="n">4444</span>           <span class="p">|</span><span class="n">1000</span>   <span class="p">|</span> </code></pre>
+</figure>
+
+<ul>
+  <li>You can actually pass in table of data into a step definition.</li>
+  <li>Acceptance testing is as much vital part of testing as unit tests.
+*
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>tree
+<span class="nb">.</span>
+├── account.py
+├── bank_app.py
+├── bank.py
+├── Pipfile
+├── templates
+│   └── index.html
+└── <span class="nb">test</span>
+  ├── account_test.py
+  ├── bank_test.py
+  └── bdd
+      └── features
+          ├── bank.feature
+          ├── environment.py
+          └── steps
+              └── steps.py
+<span class="nv">$ </span>behave <span class="nb">test</span>/bdd/features
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="chapter-7---acceptance-test-tools">Chapter 7 - acceptance test tools</h1>
+
+<h2 id="cucumber">Cucumber</h2>
+<ul>
+  <li>behave tags to run selected tests or ignore (work in progress):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>behave <span class="nt">--tags</span><span class="o">=</span><span class="s2">"@tag1 or tag2"</span> <span class="nb">test</span>/bdd/features
+<span class="nv">$ </span>behave <span class="nt">--tags</span><span class="o">=</span><span class="s2">"@wip"</span> <span class="nb">test</span>/bdd/features    <span class="c"># work in progress only</span>
+<span class="nv">$ </span>behave <span class="nt">-w</span><span class="s2">" test/bdd/features              # work in progress only
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="chapter-8---maximizing-codes-performance">Chapter 8 - maximizing code’s performance</h1>
+
+<h2 id="jmeter">jmeter</h2>
+<ul>
+  <li>get <a href="https://jmeter.apache.org/download_jmeter.cgi">jmeter</a></li>
+  <li>get <a href="https://jmeter-plugins.org/get/">plugin manager</a> and put into <code class="language-python highlighter-rouge"><span class="n">lib</span><span class="o">/</span><span class="n">ext</span></code></li>
+  <li>Test Plan -&gt; add -&gt; Config Element -&gt; HTTP Request Details (localhost:5000)</li>
+  <li>Test Plan -&gt; add -&gt; Threads (Users) -&gt; Thread Group (20)</li>
+  <li>ThreadGroup (right click) -&gt; Add -&gt; Sampler -&gt; Http Request</li>
+  <li>ThreadGroup (right click) -&gt; Add -&gt; Listener -&gt; View Resulsts Tree</li>
+  <li>Add -&gt; {Timer, Listener} for modeling throughput tests</li>
+</ul>
+
+<h2 id="cprofile">cprofile</h2>
+<ul>
+  <li>include cProfile in your code
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">cProfile</span>
+<span class="p">...</span>
+<span class="n">cProfile</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="s">'app.run(debug=True)'</span><span class="p">)</span> <span class="ow">or</span> <span class="n">run</span> <span class="n">through</span> <span class="n">CLI</span><span class="p">:</span> <span class="sb">`$ python -m cProfile bank_app.py`</span> <span class="ow">and</span> <span class="n">use</span> <span class="sb">`-s`</span> <span class="n">to</span> <span class="n">control</span> <span class="n">the</span> <span class="n">order</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span><span class="p">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Alternatively use <a href="https://github.com/rkern/line_profiler">line_profiler</a></li>
+  <li>Visualisation:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt get <span class="nb">install </span>graphviz
+<span class="nv">$ </span>pip <span class="nb">install </span>pycallgraph
+<span class="nv">$ </span>pycallgraph graphviz <span class="nt">--</span> bank_app.py
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="chapter-9---lint">Chapter 9 - lint</h1>
+<h2 id="pylint">pylint</h2>
+<ul>
+  <li><code class="language-python highlighter-rouge"><span class="n">pip</span> <span class="n">install</span> <span class="n">pylint</span></code>
+    <h2 id="coverage">coverage</h2>
+  </li>
+  <li>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>coverage
+nosetests <span class="nt">--with-coverage</span> <span class="nt">--cover-erase</span>
+nosetests <span class="nt">--with-coverage</span> <span class="nt">--cover-erase</span> <span class="nt">--cover-html</span>
+nosetests <span class="nt">--with-coverage</span> <span class="nt">--cover-erase</span> <span class="nt">--cover-package</span><span class="o">=</span>bank.account
+</code></pre></div>    </div>
+  </li>
+  <li>enforce some minimum coverage: <code class="language-python highlighter-rouge"><span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">coverage</span> <span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">erase</span>
+<span class="o">--</span><span class="n">cover</span><span class="o">-</span><span class="n">package</span><span class="o">=</span><span class="n">bank</span><span class="p">.</span><span class="n">account</span></code></li>
+  <li>use <code class="language-python highlighter-rouge"><span class="c1">#pragma: no cover</span></code> directive to ignore a line/block from the report</li>
+</ul>
+
+    </div>
+    <footer class="c-article__footer">
+    </footer>
+</article>
+		</div>
+		<footer class="c-page__footer">
+  <p><!--&copy; M. 2021 |--> Powered by Jekyll | <a href="/feed.xml">RSS</a>
+</p>
+	
+	</br>
+	
+</footer>
+
+	</article>
+    </main>
+</body>
+
+</html>

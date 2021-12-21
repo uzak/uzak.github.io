@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Emacs</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="emacs" class="anchor" href="#emacs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Emacs!</h1>
+<pre><code>$ emacs -q          # start with a different config file
+
+C-;                     # iedit
+</code></pre>
+<p><a href="https://www.emacswiki.org/emacs/SetFonts">EmacsWiki/SetFonts</a></p>
+<pre><code>C-x C-+                     # increase font size
+C-x C--                     # decrease font size
+
+C-x C-c                     # quit emacs
+C-g                         # cancel
+ESC ESC ESC                 # all purpose get out command
+M-x                         # execute extended command
+C-h ?                       # HELP
+C-h t                       # tutorial
+C-h r                       # manual
+C-h k + keymap              # documentation on keymap
+C-h m                       # help with the current mode
+C-h v                       # help on variable name
+C-h f                       # describe function
+C-h i                       # read included manuals
+
+C-v                         # scroll down
+M-v                         # scroll up
+C-l                         # clear screen (1x center, 2x up, 3x down)
+C-p                         # prev. line
+C-n                         # next. line
+C-f                         # right
+C-l                         # left
+M-f                         # next word (forwards)
+M-b                         # prev word (backwards)
+C-a                         # move to the beginning of line
+C-e                         # move to the end of line
+M-a                         # move to the beginning of sentence
+M-e                         # move to the end of sentence
+M-&lt;                         # beginning of document
+M-&gt;                         # end of document
+
+M-u                         # uppercase next word
+C-u N                       # repeat next command n-times
+
+C-x C-f                     # find a file
+
+C-s                         # search
+C-r                         # reverse search
+C-s C-n                     # next item in search history
+C-s C-p                     # previous item in search history
+M-%                         # search and replace (y, n, q, ., !)
+C-M-s                       # regexp search
+M-x replace-regexp
+
+F3                          # start recording macro
+F4                          # stop recording macro
+F4                          # play
+
+M-x shell
+M-x calendar
+M-! shell-command           # execute a shell command
+M-| shell-command           # execute a cmd and pipe into current region
+
+# VCS
+C-x v =                     # show diff of changes to current file
+C-x v g                     # blame"
+C-x v l                     # log of changes
+
+M-x server start
+emacsclient -t filename
+
+M-x java-mode
+M-x flyspell-mode           # minor mode: autospell
+M-x follow-mode             # minor mode: one buffer -&gt; two columns
+
+C-x o                       # focus other window
+C-x 0                       # kill current window
+C-x 1                       # hide all other windows
+C-x 2                       # horizontal split
+C-x 3                       # vertical split
+C-x 52                      # open a new frame
+C-x 50                      # close a frame
+C-M-v                       # scroll the bottom window
+C-x 4 C-f                   # open a file in a new bottom window
+
+C-x b                       # switch buffer (type ? for minibuffer)
+C-x C-b                     # list buffers
+C-x k                       # kill buffer
+
+C-x s                       # save all buffers
+C-x C-s                     # save buffer
+
+C-x f                       # set auto fill column (interactive)
+C-u 70 C-x f                # set auto fill column to 70
+M-q                         # re-fill the paragraph
+
+M-g g                       # goto line
+
+C-SPC                       # set mark
+C-x C-x                     # swap point and mark (= region)
+C-u C-SPC                   # cycle through mark ring
+M-h                         # mark region with current paragraph
+C-x h                       # mark all buffer
+C-x n n                     # narrow current region
+C-x n w                     # widden current region
+C-w                         # kill current region
+M-w                         # copy current region
+M-d                         # kill next word
+M-k                         # kill to end sentence
+
+C-y                         # yank (paste) last killed text
+M-y                         # replace yanked text w. previously killed one
+
+M-/                         # autocompletion
+</code></pre>
+<h2>
+<a id="packages" class="anchor" href="#packages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Packages</h2>
+<pre><code>M-x try                         # try package
+M-x describe-package
+M-x package-refresh-contents
+</code></pre>
+<h2>
+<a id="elisp-functions" class="anchor" href="#elisp-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Elisp functions</h2>
+<pre><code>(previous-line N)
+(setq var val)
+(+ M N ...)
+(tool-bar-mode 1)
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

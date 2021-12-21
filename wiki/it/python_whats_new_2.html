@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Python_whats_new_2</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contents</h1>
+<ul>
+<li><a href="#2.7">2.7</a></li>
+<li>
+<a href="#2.6">2.6</a>
+<ul>
+<li>[PEP 371: multiprocessing package](#2.6#PEP 371: multiprocessing package)</li>
+<li>[PEP 3119: Abstract Base Classes](#2.6#PEP 3119: Abstract Base Classes)</li>
+</ul>
+</li>
+<li>
+<a href="#2.5">2.5</a>
+<ul>
+<li><a href="#2.5#functools">functools</a></li>
+<li>[Absolute/Relative imports](#2.5#Absolute/Relative imports)</li>
+<li>[PEP 343: The 'with' statement](#2.5#PEP 343: The 'with' statement)</li>
+</ul>
+</li>
+<li>
+<a href="#2.4">2.4</a>
+<ul>
+<li><a href="#2.4#itertools">itertools</a></li>
+<li><a href="#2.4#collections">collections</a></li>
+<li>[PEP 318: Decorators for Functions and Methods](#2.4#PEP 318: Decorators for Functions and Methods)</li>
+<li>[PEP 289: Generator Expressions](#2.4#PEP 289: Generator Expressions)</li>
+</ul>
+</li>
+<li>
+<a href="#2.3">2.3</a>
+<ul>
+<li>[PEP 218: Set datatype](#2.3#PEP 218: Set datatype)</li>
+</ul>
+</li>
+<li>
+<a href="#2.2">2.2</a>
+<ul>
+<li><a href="#2.2#Descriptors">Descriptors</a></li>
+<li>[Multiple Inheritance: The Diamond Rule](#2.2#Multiple Inheritance: The Diamond Rule)</li>
+<li>[Attribute Access](#2.2#Attribute Access)</li>
+<li>[Iterators &amp; Generators](#2.2#Iterators &amp; Generators)</li>
+</ul>
+</li>
+<li><a href="#2.1">2.1</a></li>
+<li>
+<a href="#2.0">2.0</a>
+<ul>
+<li><a href="#2.0#Unicode">Unicode</a></li>
+<li>[List Comprehension](#2.0#List Comprehension)</li>
+</ul>
+</li>
+</ul>
+<h1>
+<a id="27" class="anchor" href="#27" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.7</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.7.html">What's New in Python 2.7</a></p>
+<ul>
+<li>
+<code>{1,2,3}</code> creates a mutable set</li>
+<li>dictionary and set comprehensions - <code>{i: i*2 for i in range(3)}</code>
+</li>
+<li>multiple context managers with a single with statement</li>
+</ul>
+<pre><code>with A() as a, B() as b:
+    ... suite of statements ...
+</code></pre>
+<p>which corresponds to:</p>
+<pre><code>with A() as a:
+    with B() as b:
+        ... suite of statements ...
+</code></pre>
+<ul>
+<li>PEP 378: "," format specifier for better readability:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; "{:0,.2f}".format(1231231)
+'1,231,231.00'
+</code></pre>
+<ul>
+<li>Added OrderedDict: The OrderedDict API is substantially the same as regular dictionaries but will iterate over keys and values in a guaranteed order depending on when a key was first inserted. If a new entry overwrites an existing entry, the original insertion position is left unchanged. Deleting an entry and reinserting it will move it to the end.</li>
+<li>
+<a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a> module was added as replacement for optparse</li>
+<li>PEP 3106: Dictionary Views. There are now viewkeys(), viewvalues() and viewitems() which are sets. In 3.8 they are no more but the default keys(), values(), items() return sets. The view keeps track of the dictionary and its contents change as the dictionary is modified. However, note that you can’t add or remove keys while you’re iterating over the view.</li>
+<li>memoryview object provides a view of another object's memory content that machtes the bytes type's interface.</li>
+<li>unittest was heavily updated. Added discovery. The following command will search the test/ subdirectory for any importable test files named test*.py:</li>
+</ul>
+<pre lang="sh" class="highlight highlight-sh">python <span class="nt">-m</span> unittest discover <span class="nt">-s</span> <span class="nb">test</span>
+</pre>
+<h1>
+<a id="26" class="anchor" href="#26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.6</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.6.html">What's New in Python 2.6</a></p>
+<ul>
+<li>Uses RST using <a href="http://sphinx-doc.org/">Sphinx</a> for docs</li>
+<li>PEP-366: Python’s -m switch allows running a module as a script. When you ran a module that was located inside a package, relative imports didn’t work correctly. 2.6 adds a __package__ attribute to modules. When this attribute is present, relative imports will be relative to the value of this attribute instead of the __name__ attribute.</li>
+<li>print is now a function.</li>
+<li>PEP 3101: Advanced String Formatting: classes now might implement __format()__. Usage:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; "User ID: {uid}, login: {login}".format(uid=0, login="root")
+'User ID: 0, login: root'
+&gt;&gt;&gt; '{0:g}'.format(3.75)
+'3.75'
+&gt;&gt;&gt; '{0:e}'.format(3.75)
+'3.750000e+00'
+&gt;&gt;&gt; # Field 0: left justify, pad to 15 characters
+&gt;&gt;&gt; # Field 1: right justify, pad to 6 characters
+&gt;&gt;&gt; fmt = '{0:15} ${1:&gt;6}'
+&gt;&gt;&gt; fmt.format('Registration', 35)
+'Registration    $    35'
+</code></pre>
+<ul>
+<li>Catching exceptions, new syntax <strong>as</strong> (required in 3):</li>
+</ul>
+<pre><code>try:
+    ...
+except TypeError as exc:
+    ...
+</code></pre>
+<ul>
+<li>Byte Literals: immutable bytes type and bytearray() mutable. b'' notation.</li>
+<li>
+<code>0o21/0O21</code> for octal integer notation <code>0b10001/0B10001</code> for binary.</li>
+<li>PEP 3129: Class level decorators - instead only for functions/methods.</li>
+<li>
+<a href="https://docs.python.org/3/library/fractions.html#module-fractions">fractions</a> module to be able to exactly represent numbers as <code>2/3</code> which floating-point numbers can only approximate</li>
+</ul>
+<pre><code>&gt;&gt;&gt; from fractions import Fraction
+&gt;&gt;&gt; a = Fraction(2, 3)
+&gt;&gt;&gt; float(a)
+0.6666666666666666
+&gt;&gt;&gt; a
+Fraction(2, 3)
+&gt;&gt;&gt; a + a
+Fraction(4, 3)
+</code></pre>
+<ul>
+<li>Directories and zip archives containing a __main__.py file can now be executed directly by passing their name to the interpreter.</li>
+<li>Properties now have three attributes, getter, setter and deleter</li>
+</ul>
+<pre><code>&gt;&gt;&gt; 3.7.hex()
+'0x1.d99999999999ap+1'
+&gt;&gt;&gt; float.fromhex("0x123")
+291.0
+</code></pre>
+<ul>
+<li>new ascii() builtin - equivalent to repr().</li>
+<li>
+<a href="https://docs.python.org/3/library/json.html#module-json">json</a> module</li>
+</ul>
+<h2>
+<a id="pep-371-multiprocessing-package" class="anchor" href="#pep-371-multiprocessing-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PEP 371: multiprocessing package</h2>
+<p>Some classes <a href="https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing">multiprocessing</a>: Process, Queue, Pool, Manager. Basic usage:</p>
+<pre><code>from multiprocessing import Pool
+
+def f(x):
+    return x*x
+
+if __name__ == '__main__':
+    with Pool(5) as p:
+        print(p.map(f, [1, 2, 3]))
+</code></pre>
+<h2>
+<a id="pep-3119-abstract-base-classes" class="anchor" href="#pep-3119-abstract-base-classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PEP 3119: Abstract Base Classes</h2>
+<p>They declare an interface. Either use interface.register(YourClass) or derive from the interface-class. Use isinstance() and issubclass() for checking.</p>
+<p>Here is how to declare an abstract method:</p>
+<pre><code>from abc import ABCMeta, abstractmethod
+
+class Drawable():
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def draw(self, x, y, scale=1.0):
+        pass
+
+    def draw_doubled(self, x, y):
+        self.draw(x, y, scale=2.0)
+
+
+class Square(Drawable):
+    def draw(self, x, y, scale):
+        ...
+
+&gt;&gt;&gt; class Circle(Drawable):
+...     pass
+...
+&gt;&gt;&gt; c = Circle()
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: Can't instantiate abstract class Circle with abstract methods draw
+&gt;&gt;&gt;
+</code></pre>
+<p>Here is how to declare an abstract property:</p>
+<pre><code>from abc import abstractproperty
+...
+
+@abstractproperty
+def readonly(self):
+   return self._x
+</code></pre>
+<h1>
+<a id="25" class="anchor" href="#25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.5.html">What's New in Python 2.5</a></p>
+<ul>
+<li>PEP 308: conditional expressions: <code>x = true_value if condition else false_value</code>
+</li>
+<li>PEP 338: execute module as script <strong>-m flag</strong> to the python interpreter.</li>
+<li>PEP 357: <code>__index__()</code> method: allow any object to be used for slicing</li>
+<li>PEP 341: Unified try/except/finally.</li>
+</ul>
+<pre><code>try
+    block-1 ...
+except Exception1:
+    handler-1 ...
+except Exception2:
+    handler-2 ...
+else:
+    else-block # executed if there is no exception
+finally:
+    final-block # runs always
+</code></pre>
+<ul>
+<li>PEP 342: New Generator features. Use send(), throw(), close() to manipulate the iterator. Always put parentheses around yield expression.</li>
+</ul>
+<pre><code>def counter (maximum):                                                          
+    i = 0                                                                       
+    while i &lt; maximum:                                                          
+        print("before")                                                         
+        val = (yield i)                                                         
+        print("after")                                                          
+        # If value provided, change counter                                     
+        if val is not None:                                                     
+            i = val                                                             
+        else:                                                                   
+            i += 1                                                              
+        print("end (%s) (%s)" % (val, i))  
+&gt;&gt;&gt; it = counter(10)
+&gt;&gt;&gt; next(it)
+before
+0
+&gt;&gt;&gt; next(it)
+after
+end (None) (1)
+before
+1
+&gt;&gt;&gt; next(it)
+after
+end (None) (2)
+before
+2
+&gt;&gt;&gt; it.send(8)
+after
+end (8) (8)
+before
+8
+&gt;&gt;&gt; next(it)
+after
+end (None) (9)
+before
+9
+&gt;&gt;&gt; next(it)
+after
+end (None) (10)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+StopIteration
+</code></pre>
+<ul>
+<li>PEP 352: hierarchy for exceptions:</li>
+</ul>
+<pre lang="text" class="highlight highlight-text">BaseException       # New in Python 2.5
+|- KeyboardInterrupt
+|- SystemExit
+|- Exception
+   |- (all other current built-in exceptions)
+</pre>
+<p>Usual usage:</p>
+<pre><code>try:
+    ...
+except (KeyboardInterrupt, SystemExit):
+    raise
+except: # can now be `except Exception`
+    # Log error...
+    # Continue running program...
+</code></pre>
+<ul>
+<li>dict can now implement <code>__missing__(key)</code>
+</li>
+</ul>
+<pre><code>&gt;&gt;&gt; 'http://www.python.org'.partition('://')
+('http', '://', 'www.python.org')
+&gt;&gt;&gt; 'www.python.org'.rpartition('.')
+('www.python', '.', 'org')
+</code></pre>
+<ul>
+<li>The startswith() and endswith() methods of string types now accept tuples of strings to check for.</li>
+</ul>
+<pre><code>filename.endswith(('.gif', '.jpg', '.tiff'))
+</code></pre>
+<ul>
+<li>any() -&gt; True if any value returned by the iterator is True. False otherwise</li>
+<li>all() -&gt; True if all values returned by the iterator are true. False otherwise.</li>
+<li>python <code>-Wd</code> CLI flag for checking for missing __init__.py in modules where otherwise imports would have been triggered.</li>
+<li>datetime.datetime has now strptime(string, format) &lt;-&gt; strftime().</li>
+<li>added <code>hashlib</code> and <code>sqlite3</code> to stdlib.</li>
+</ul>
+<h2>
+<a id="functools" class="anchor" href="#functools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>functools</h2>
+<p><a href="https://docs.python.org/3/library/functools.html#module-functools">functools</a> module</p>
+<ul>
+<li>@lru_cache()</li>
+</ul>
+<pre><code>&gt;&gt;&gt; import functools
+&gt;&gt;&gt; @functools.lru_cache(maxsize=300)
+... def get_phone_number(name):
+...     c = conn.cursor()
+...     c.execute('SELECT phonenumber FROM phonelist WHERE name=?', (name,))
+...     return c.fetchone()[0]
+&gt;&gt;&gt; for name in user_requests:        
+...     get_phone_number(name)        # cached lookup
+</code></pre>
+<p>statistics and clearing cache:</p>
+<pre><code>&gt;&gt;&gt; get_phone_number.cache_info()     
+CacheInfo(hits=4805, misses=980, maxsize=300, currsize=300)
+&gt;&gt;&gt; get_phone_number.cache_clear()
+</code></pre>
+<ul>
+<li>reduce()</li>
+<li>partial()</li>
+</ul>
+<pre><code>&gt;&gt;&gt; add = lambda a, b: a+b
+&gt;&gt;&gt; two_plus = functools.partial(add, 2)
+&gt;&gt;&gt; two_plus(3)
+5
+</code></pre>
+<ul>
+<li>@wraps (alternative to functools.update_wrapper()) - copy name, module, docstrings to the wrapper function for easier understanding of tracebacks</li>
+</ul>
+<pre><code>def my_decorator(f):
+    @functools.wraps(f)
+    def wrapper(*args, **kwds):
+        print 'Calling decorated function'
+        return f(*args, **kwds)
+    return wrapper
+</code></pre>
+<h2>
+<a id="absoluterelative-imports" class="anchor" href="#absoluterelative-imports" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Absolute/Relative imports</h2>
+<pre><code># Import names from pkg.string
+from .string import name1, name2
+# Import pkg.string
+from . import string
+</code></pre>
+<p>A.B.C module can do:</p>
+<pre><code>from . import D                 # Imports A.B.D
+from .. import E                # Imports A.E
+from ..F import G               # Imports A.F.G
+</code></pre>
+<h2>
+<a id="pep-343-the-with-statement" class="anchor" href="#pep-343-the-with-statement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PEP 343: The 'with' statement</h2>
+<p>Use where otherwise you'd use <code>try...finally</code> to make sure that cleanup code is executed.</p>
+<pre><code>with open('/etc/passwd', 'r') as f:
+    for line in f:
+        print line
+</code></pre>
+<p>A context manager <code>type(f)</code> must implement <a href="https://docs.python.org/3/reference/datamodel.html#object.__enter__">__enter__()</a> and <a href="https://docs.python.org/3/reference/datamodel.html#object.__exit__">__exit__()</a> methods.</p>
+<h1>
+<a id="24" class="anchor" href="#24" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.4.html">What's New in Python 2.4</a></p>
+<ul>
+<li>frozenset</li>
+<li>PEP 327: <strong>Decimal</strong>
+</li>
+</ul>
+<pre><code>&gt;&gt;&gt; decimal.Decimal((1, (1,4,7,1), -1))
+Decimal('-147.1')
+&gt;&gt;&gt; decimal.Decimal("1.1")
+Decimal('1.1')
+</code></pre>
+<ul>
+<li>PEP 292: Simpler String Substitutions</li>
+</ul>
+<pre><code>&gt;&gt;&gt; import string
+&gt;&gt;&gt; t = string.Template("$page: $title")
+&gt;&gt;&gt; t.substitute({'page': 2, 'title': 'The Best of Times'})
+'2: The Best of Times'
+&gt;&gt;&gt; 
+</code></pre>
+<ul>
+<li>reversed(), sorted()</li>
+<li>
+<a href="https://docs.python.org/3/library/subprocess.html#module-subprocess">subprocess</a> module</li>
+<li>Multi-line Imports: you can put parentheses around the list of names</li>
+</ul>
+<pre><code>from module import (a,
+                    b,
+                    c)
+</code></pre>
+<ul>
+<li>ljust, rjust, center accept now a fillchar:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; "asdasdf".ljust(70, '-')
+'asdasdf---------------------------------------------------------------'
+</code></pre>
+<ul>
+<li>doctest supports ELLIPSIS option (<code>...</code>)</li>
+</ul>
+<h2>
+<a id="itertools" class="anchor" href="#itertools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>itertools</h2>
+<p><a href="https://docs.python.org/3/library/itertools.html#module-itertools">itertools</a> module. Contains infinite iterators {count, cycle, repeat}() and finite:</p>
+<pre><code>&gt;&gt;&gt; show = list
+&gt;&gt;&gt; from itertools import *
+&gt;&gt;&gt; show(accumulate([1,2,3,4,5], operator.mul))
+[1, 2, 6, 24, 120]
+&gt;&gt;&gt; show(accumulate([1,2,3,4,5]))
+[1, 3, 6, 10, 15]
+&gt;&gt;&gt; show(accumulate([1,10,2,3,4,5], max))
+[1, 10, 10, 10, 10, 10]
+&gt;&gt;&gt; show(itertools.chain("ABC", "EFG"))
+['A', 'B', 'C', 'E', 'F', 'G']
+&gt;&gt;&gt; show(itertools.compress("ABCD", [1,1,0,1])) # filter
+['A', 'B', 'D']
+&gt;&gt;&gt; 
+&gt;&gt;&gt; _show(dropwhile(lambda x: x&lt;5, [1,4,6,4,1]))
+[6, 4, 1]
+&gt;&gt;&gt; [(k, list(g)) for k, g in groupby('AAAABBBCCDAABBB')]
+[('A', ['A', 'A', 'A', 'A']),
+ ('B', ['B', 'B', 'B']),
+ ('C', ['C', 'C']),
+ ('D', ['D']),
+ ('A', ['A', 'A']),
+ ('B', ['B', 'B', 'B'])]
+&gt;&gt;&gt; show(takewhile(lambda x: x&lt;5, [1,4,6,4,1]) )
+[1, 4]
+&gt;&gt;&gt; [list(a) for a in tee("ABC123", 3)]
+[['A', 'B', 'C', '1', '2', '3'],
+ ['A', 'B', 'C', '1', '2', '3'],
+ ['A', 'B', 'C', '1', '2', '3']]
+&gt;&gt;&gt; show(zip_longest('ABCD', 'xy', fillvalue='-'))
+[('A', 'x'), ('B', 'y'), ('C', '-'), ('D', '-')]
+&gt;&gt;&gt; show(product('ABC', repeat=2))
+[('A', 'A'),
+ ('A', 'B'),
+ ('A', 'C'),
+ ('B', 'A'),
+ ('B', 'B'),
+ ('B', 'C'),
+ ('C', 'A'),
+ ('C', 'B'),
+ ('C', 'C')]
+[('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'C'), ('C', 'A'), ('C', 'B')]
+&gt;&gt;&gt; show(combinations('ABC', 2))
+[('A', 'B'), ('A', 'C'), ('B', 'C')]
+&gt;&gt;&gt; show(combinations_with_replacement('ABC', 2))
+[('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'B'), ('B', 'C'), ('C', 'C')]
+</code></pre>
+<h2>
+<a id="collections" class="anchor" href="#collections" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>collections</h2>
+<p>__contains__() for checking <code>elem in collection</code>. <a href="https://docs.python.org/3/library/collections.html">collections</a> module:</p>
+<ul>
+<li><strong>namedtuple</strong></li>
+<li>
+<strong>deque</strong> - double ended queue. Deques support thread-safe, memory efficient appends and pops from either side of the deque with approximately the same O(1) performance in either direction. list objects incur O(n) memory movement costs for pop(0) and insert(0, v) operations which change both the size and position of the underlying data representation.</li>
+<li>
+<strong>ChainMap</strong> - quickly linking a number of mappings so they can be treated as a single unit. Recipe: ChainMap(cli_args, environ, defaults). Basic example:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; cm = ChainMap({ 'a': 1, 'b': 2}, {'b': 3}, {'a': 2, 'e': 4}) 
+&gt;&gt;&gt; cm['a']
+1
+&gt;&gt;&gt; cm['e']
+4
+</code></pre>
+<ul>
+<li><strong>Counter</strong></li>
+<li>
+<strong>OrderedDict</strong> - useful for LRU cache</li>
+<li>
+<strong>defaultdict</strong> - dict subclass that calls a factory function to supply missing values</li>
+<li>os.path.lexists(path) returns true if the file specified by path exists, whether or not it’s a symbolic link.</li>
+</ul>
+<h2>
+<a id="pep-318-decorators-for-functions-and-methods" class="anchor" href="#pep-318-decorators-for-functions-and-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PEP 318: Decorators for Functions and Methods</h2>
+<pre><code>@A
+@B
+@C
+def f ():
+    ...
+</code></pre>
+<p>equals to:</p>
+<pre><code>def f(): ...
+f = A(B(C(f)))
+</code></pre>
+<p>example:</p>
+<pre><code>def require_type(t):                                                            
+    def decorated(func):                                                        
+        def handler(*args, **kw):                                               
+            for a in args:                                                      
+                assert isinstance(a, t)                                         
+            return func(*args, **kw)                                            
+        return handler                                                          
+    return decorated                                                            
+                                                                                
+                                                                                
+@require_type(int)                                                              
+def f(arg):                                                                     
+    print(arg)                                                                  
+                                                                                
+f(12)                                                                           
+f("asdf")
+</code></pre>
+<h2>
+<a id="pep-289-generator-expressions" class="anchor" href="#pep-289-generator-expressions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PEP 289: Generator Expressions</h2>
+<pre><code>links = [link for link in get_all_links() if not link.followed] # list
+links = (link for link in get_all_links() if not link.followed) # generator
+</code></pre>
+<h1>
+<a id="23" class="anchor" href="#23" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.3</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.3.html">What's New in Python 2.3</a></p>
+<ul>
+<li>import from zip-modules is now possible</li>
+<li>enumerate()</li>
+<li>boolean type. Derived from int: <code>assert (True + 2 == 3) is True</code>
+</li>
+<li>
+<a href="https://docs.python.org/3/library/logging.html#module-logging">logging</a> module. logging.{debug,info,warning,error,critical}. logging.exception(msg)</li>
+<li>
+<a href="https://docs.python.org/3/library/csv.html">csv</a> files</li>
+<li>extended slices, supports now a third "step" argument.</li>
+</ul>
+<pre><code>&gt;&gt;&gt; a = list(range(10))
+&gt;&gt;&gt; a[::2]
+[0, 2, 4, 6, 8]
+&gt;&gt;&gt; a[::-1]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+&gt;&gt;&gt; a[:4:-1]
+[9, 8, 7, 6, 5]
+&gt;&gt;&gt; 
+</code></pre>
+<ul>
+<li>
+<p>PEP 263: Source Code Encodings:</p>
+<p>#!/usr/bin/env python</p>
+<h1>
+<a id="---coding-utf-8---" class="anchor" href="#---coding-utf-8---" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>-<em>- coding: UTF-8 -</em>-</h1>
+</li>
+</ul>
+<h2>
+<a id="pep-218-set-datatype" class="anchor" href="#pep-218-set-datatype" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PEP 218: Set datatype</h2>
+<pre><code>&gt;&gt;&gt; s1 = {1,2,3}
+&gt;&gt;&gt; s2 = {3,4,5}
+&gt;&gt;&gt; s2.add(6)
+&gt;&gt;&gt; s2.remove(5)
+&gt;&gt;&gt; s2
+{3, 4, 6}
+&gt;&gt;&gt; s1.union(s2)
+{1, 2, 3, 4, 6}
+&gt;&gt;&gt; s1.intersection(s2)
+{3}
+&gt;&gt;&gt; s1 | s2
+{1, 2, 3, 4, 6}
+&gt;&gt;&gt; s1 &amp; s2
+{3}
+&gt;&gt;&gt; s1.symmetric_difference(s2)
+{1, 2, 4, 6}
+&gt;&gt;&gt; s1 ^ s2
+{1, 2, 4, 6}
+&gt;&gt;&gt; s1.issubset({1,2,3,4,9})
+True
+&gt;&gt;&gt; s1.issuperset({1})
+True
+&gt;&gt;&gt; s1.issuperset({1,9})
+False
+&gt;&gt;&gt; s1
+{1, 2, 3}
+&gt;&gt;&gt; s1.update(s2)
+&gt;&gt;&gt; s1
+{1, 2, 3, 4, 6}
+&gt;&gt;&gt; 
+</code></pre>
+<h1>
+<a id="22" class="anchor" href="#22" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.2.html">What's New in Python 2.2</a></p>
+<p>Introduces new style objects/types, along with it __metaclass__.</p>
+<ul>
+<li>PEP 238: <strong>Division Operator</strong>:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; 2 / 2
+1.0
+&gt;&gt;&gt; 2 // 2 # floor division operator
+1
+&gt;&gt;&gt; 
+</code></pre>
+<ul>
+<li>PEP 227: <strong>Nested Scopes</strong>: when a given variable name is not assigned a value within a function (by an assignment, or the def, class, or import statements), references to the variable will be looked up in the local namespace of the enclosing scope.</li>
+</ul>
+<h2>
+<a id="descriptors" class="anchor" href="#descriptors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Descriptors</h2>
+<p>Live inside class objects. Interface: __{name,doc,get,set,delete}__. <strong>staticmethod()</strong>, <strong>classmethod()</strong></p>
+<h2>
+<a id="multiple-inheritance-the-diamond-rule" class="anchor" href="#multiple-inheritance-the-diamond-rule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple Inheritance: The Diamond Rule</h2>
+<pre><code>class D(B, C):
+    def save (self):
+        super(D, self).save()
+</code></pre>
+<h2>
+<a id="attribute-access" class="anchor" href="#attribute-access" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Access</h2>
+<ul>
+<li>__getattr__() vs. __getattribute__() - is <em>always</em> called whenever any attribute is accessed, while the first one is only when the attribute is not found in the instance's dictionary.</li>
+<li>
+<a href="https://docs.python.org/3/library/functions.html#property">property</a> - get, set, delete.</li>
+<li>__slots__() class attribute to define what attributes are supported (legal).</li>
+</ul>
+<h2>
+<a id="iterators--generators" class="anchor" href="#iterators--generators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Iterators &amp; Generators</h2>
+<ul>
+<li>__getitem__() - for random access, <a href="https://docs.python.org/3/reference/datamodel.html#object.__iter__">__iter__()</a> for iterators. See also <a href="https://docs.python.org/3/library/functions.html#iter">iter()</a>, <a href="https://docs.python.org/3/library/functions.html#next">next()</a>, <a href="">StopIteration</a>.</li>
+<li>
+<code>for line in file:</code> calls readline().</li>
+<li>
+<strong>yield</strong>, designed to work nicely with iterators.</li>
+</ul>
+<h1>
+<a id="21" class="anchor" href="#21" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.1.html">What's New in Python 2.1</a></p>
+<ul>
+<li>PEP 207: <strong>Rich Comparisons</strong>: __{lt,le,gt,ge,eq,ne}__()</li>
+<li>PEP 230: <strong>Warnings Framework</strong>
+</li>
+<li>PEP 205: <strong>Weak References</strong>.  If an object is only accessible through weak references, the object will be deallocated and the weak references will now indicate that the object it referred to no longer exists. <a href="https://docs.python.org/3/library/weakref.html">weakref</a>.{proxy,ref}</li>
+<li>PEP 232: <strong>Function Attributes</strong>
+</li>
+</ul>
+<h1>
+<a id="20" class="anchor" href="#20" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.0</h1>
+<p><a href="https://docs.python.org/3/whatsnew/2.0.html">What's New in Python 2.0</a></p>
+<ul>
+<li>zip()</li>
+<li>int() and long() have an optional <code>base</code> parameter.</li>
+<li>sys.getrecursionlimit() and sys.setrecursionlimit()</li>
+<li>Augmented Assignment: __iadd__  for += etc.</li>
+</ul>
+<h2>
+<a id="unicode" class="anchor" href="#unicode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unicode</h2>
+<pre><code>&gt;&gt;&gt; ord('अ')
+2309
+&gt;&gt;&gt; hex(ord('अ')+2)
+'0x907'
+&gt;&gt;&gt; "\u0907"
+'इ'
+</code></pre>
+<p><a href="https://docs.python.org/3/library/codecs.html">codecs</a> module:</p>
+<pre><code>&gt;&gt;&gt; f = codecs.open('/tmp/latin2.txt', 'w', 'iso-8859-2')
+&gt;&gt;&gt; codecs.encode("ľubim ťa", "iso-8859-2")
+b'\xb5ubim \xbba'
+&gt;&gt;&gt; codecs.decode(b'\xb5ubim \xbba', "iso-8859-2")
+'ľubim ťa'
+&gt;&gt;&gt; 'ľubim ťa'.encode("iso-8859-2")
+b'\xb5ubim \xbba'
+&gt;&gt;&gt; b'\xb5ubim \xbba'.decode("iso-8859-2")
+'ľubim ťa'
+</code></pre>
+<h2>
+<a id="list-comprehension" class="anchor" href="#list-comprehension" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List Comprehension</h2>
+<pre><code>&gt;&gt;&gt; seq1 = 'abc'
+&gt;&gt;&gt; seq2 = (1,2,3)
+&gt;&gt;&gt; [ (a, b) for a in seq1 for b in seq2]
+[('a', 1), ('a', 2), ('a', 3), ('b', 1), ('b', 2), ('b', 3), ('c', 1), ('c', 2), ('c', 3)]
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

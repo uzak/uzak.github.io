@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Ubuntu_install</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv, .highlight .vm {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">अहो अहं</a> |
+                <a href="./../../wikis.html">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contents</h1>
+<ul>
+<li><a href="#Install">Install</a></li>
+<li><a href="#Sudo">Sudo</a></li>
+<li><a href="#Environment">Environment</a></li>
+<li>[Basic tools](#Basic tools)</li>
+<li><a href="#zsh">zsh</a></li>
+<li><a href="#firefox">firefox</a></li>
+<li><a href="#Slack">Slack</a></li>
+<li><a href="#Snap">Snap</a></li>
+<li><a href="#Docker">Docker</a></li>
+<li><a href="#vimpc">vimpc</a></li>
+<li><a href="#Jekyll/blog">Jekyll/blog</a></li>
+<li>
+<a href="#Misc">Misc</a>
+<ul>
+<li>[Mute beeping](#Misc#Mute beeping)</li>
+<li>[Dispable touchpad](#Misc#Dispable touchpad)</li>
+<li>
+<a href="#Misc#Battery">Battery</a>
+<ul>
+<li>[Marble mouse](#Misc#Battery#Marble mouse)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h1>
+<ul>
+<li>normal installation</li>
+<li>use disk encryption</li>
+<li>disk layout for dual boot:
+<ul>
+<li>1GB /boot</li>
+<li>100 MB efi (already created by windows)</li>
+<li>/ encrypted</li>
+</ul>
+</li>
+</ul>
+<h1>
+<a id="sudo" class="anchor" href="#sudo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sudo</h1>
+<pre><code>sudo -E visudo
+sudo sh -c "echo \"$USER ALL=NOPASSWD: ALL\" &gt;&gt; /etc/sudoers"
+</code></pre>
+<h1>
+<a id="environment" class="anchor" href="#environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment</h1>
+<pre><code>$ cat /etc/environment
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+LC_ALL=en_US.UTF-8
+EDITOR=vi
+
+$ sudo paperconfig -p a4
+</code></pre>
+<h1>
+<a id="basic-tools" class="anchor" href="#basic-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic tools</h1>
+<pre><code>sudo apt update
+sudo apt dist-upgrade
+sudo apt install -y zsh catimg autojump        # zsh + tools for plugins
+sudo apt install -y vim neovim 
+sudo apt install -y git tig universal-ctags cloc bat ack fzf ripgrep cscope
+sudo apt install -y tmux mc tree curl net-tools jq fd-find tldr
+sudo apt install -y iotop iftop htop bmon
+sudo apt install -y gimp geeqie 
+sudo apt install -y gnome-mpv mpv
+sudo apt install -y gnome-tweaks gnome-shell-extension-suspend-button
+sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
+sudo apt install -y pass gnupg upass 
+sudo apt install -y newsboat
+sudo apt install -y aria2
+sudo apt install -y neofetch 
+sudo apt install -y influxdb-client
+sudo apt install -y nodejs node-typescript
+sudo apt install -y colordiff
+sudo apt install -y csvtool
+sudo apt install -y lm-sensors
+sudo apt install -y plantuml asciio         # drawio
+sudo apt install -y mythes-sk libreoffice-l10n-sk hyphen-sk
+sudo apt install -y texlive-fonts-recommended texlive-latex-recommended 
+sudo apt install -y pandoc texlive-latex-base texlive-xetex
+# sudo apt install -y neomutt w3m isync msmtp urlscan ripmime mime-support 
+# sudo apt install -y postix mailutils       # local mail cfg
+sudo apt install -y fonts-firacode
+sudo apt install -y fonts-ancient-scripts 
+sudo apt install -y httpie exa
+sudo apt install -y traceroute
+sudo apt install -y pwgen
+
+sudo apt autoremove
+</code></pre>
+<h1>
+<a id="zsh" class="anchor" href="#zsh" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>zsh</h1>
+<pre><code>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+</code></pre>
+<h1>
+<a id="firefox" class="anchor" href="#firefox" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>firefox</h1>
+<pre><code>xdg-settings set default-web-browser firefox_firefox.desktop
+</code></pre>
+<h1>
+<a id="slack" class="anchor" href="#slack" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slack</h1>
+<p>Install manually and not from snap. Snap is slower and has problem opening links in firefox once it is running. <a href="https://slack.com/intl/en-cz/download">Download</a>, install and then run:</p>
+<pre><code>sudo apt --fix-broken install
+</code></pre>
+<h1>
+<a id="snap" class="anchor" href="#snap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Snap</h1>
+<pre><code>sudo snap install insomnia 
+sudo snap install --classic chromium
+sudo snap install --classic skype
+sudo snap install --classic code
+sudo snap install --classic kotlin
+sudo snap install --classic pycharm-community
+sudo snap install --classic intellij-idea-community
+sudo snap install asciiquarium
+</code></pre>
+<h1>
+<a id="docker" class="anchor" href="#docker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker</h1>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</a></p>
+<pre><code>sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo -E add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+sudo apt install docker-ce
+sudo systemctl status docker
+sudo usermod -aG docker ${USER}
+sudo apt install docker-compose
+</code></pre>
+<h1>
+<a id="vimpc" class="anchor" href="#vimpc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>vimpc</h1>
+<pre><code>cd ~/repos
+git clone https://github.com/boysetsfrog/vimpc
+sudo apt install -y libcurl4-gnutls-dev libpcre++-dev 
+sudo apt install -y build-essential autoconf \
+    libmpdclient2 libmpdclient-dev libpcre3 libpcre3-dev \
+    libncursesw5 libncursesw5-dev libncurses5-dev \
+    libtagc0 libtagc0-dev
+cd vimpc
+./autogen.sh
+./configure
+make -j 8
+sudo make install clean
+
+sudo apt install -y mpd mpc
+sudo service mpd stop
+sudo update-rc.d mpd disable
+</code></pre>
+<h1>
+<a id="jekyllblog" class="anchor" href="#jekyllblog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jekyll/blog</h1>
+<pre><code>sudo apt -y install ruby-dev ruby-bundler
+cd ~/repos/blog
+bundler install
+bundle exec jekyll serve
+
+gem install vimwiki_markdown        # for vimwiki
+</code></pre>
+<h1>
+<a id="misc" class="anchor" href="#misc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Misc</h1>
+<h2>
+<a id="mute-beeping" class="anchor" href="#mute-beeping" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mute beeping</h2>
+<pre><code>sudo apt install dconf-editor
+dconf-editor
+</code></pre>
+<p>Then go to <code>org/gnome/desktop/sound</code> and disable <code>event-sounds</code>.</p>
+<h2>
+<a id="dispable-touchpad" class="anchor" href="#dispable-touchpad" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dispable touchpad</h2>
+<p><a href="https://askubuntu.com/questions/1085390/how-do-i-disable-the-touchpad-while-typing-ubuntu-18-04">https://askubuntu.com/questions/1085390/how-do-i-disable-the-touchpad-while-typing-ubuntu-18-04</a></p>
+<pre><code>sudo apt remove xserver-xorg-input-synaptics
+sudo apt install xserver-xorg-input-libinput
+</code></pre>
+<h2>
+<a id="battery" class="anchor" href="#battery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Battery</h2>
+<pre><code>sudo apt-get install tlp tlp-rdw acpi-call-dkms tp-smapi-dkms acpi-call-dkms
+sudo tlp start
+tlp-stat -s
+sudo tlp-stat -b
+</code></pre>
+<h3>
+<a id="marble-mouse" class="anchor" href="#marble-mouse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Marble mouse</h3>
+<p><a href="https://unix.stackexchange.com/questions/367106/logitech-marble-mouse-linux-scroll-modifier-setup">https://unix.stackexchange.com/questions/367106/logitech-marble-mouse-linux-scroll-modifier-setup</a></p>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

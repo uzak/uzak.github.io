@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Prusa Link Architecture - अहो अहं</title>
+    <meta name="description" content="Table of contents:">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="https://uzak.github.io/2021/03/Prusa_Link_Architecture">
+    <link rel="alternate" type="application/rss+xml" title="अहो अहं" href="https://uzak.github.io/feed.xml">
+    
+
+    
+
+</head>
+
+
+<body>
+    <main class="u-container">
+        <div class="c-page">
+	<article class="c-article">
+		<header class="c-page__header">
+    <div class="nav_title">
+    
+      <a href="/">&lt; अहो अहं
+</a>
+    
+    </div>
+    
+</header>
+
+		<div class="c-article__main">
+			<article class="c-article"  lang="en" >
+    <header class="c-article__header">
+        <h1 class="c-article__title">Prusa Link Architecture</h1>
+        <p class="c-article__tags">
+            
+            <a href="/tag/it" class="c-tag">it</a>
+            
+        </p>
+    </header>
+    <p class="c-article__time"><time datetime="2021-03-01T00:00:00+01:00"
+            itemprop="datePublished">Mar 1, 2021</time></p>
+
+    <div class="c-article__main">
+        <p>Table of contents:</p>
+<ul id="markdown-toc">
+  <li><a href="#main-driver" id="markdown-toc-main-driver">Main Driver</a></li>
+  <li><a href="#logging" id="markdown-toc-logging">logging</a></li>
+  <li><a href="#config" id="markdown-toc-config">config</a></li>
+  <li><a href="#mvc" id="markdown-toc-mvc">MVC</a>    <ul>
+      <li><a href="#signals" id="markdown-toc-signals">signals</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="main-driver">Main Driver</h1>
+
+<ul>
+  <li>parse CLI args</li>
+  <li>setup logging</li>
+  <li>instantiate main class and run</li>
+</ul>
+
+<h1 id="logging">logging</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="c1"># -l on CLI for setting debug levels
+</span><span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">log_levels</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">module</span><span class="p">).</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="config">config</h1>
+
+<p>Uses <code class="language-python highlighter-rouge"><span class="n">extendparser</span></code> in <code class="language-python highlighter-rouge"><span class="n">config</span><span class="p">.</span><span class="n">py</span></code></p>
+
+<h1 id="mvc">MVC</h1>
+
+<p><code class="language-python highlighter-rouge"><span class="n">MainClass</span><span class="p">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></code> as Controller:</p>
+<ul>
+  <li>instantiate Model</li>
+  <li>instantiate components in proper order</li>
+  <li>bind signals</li>
+  <li>start threads</li>
+</ul>
+
+<p>There is <code class="language-python highlighter-rouge"><span class="n">MainClass</span><span class="p">.</span><span class="n">stop</span><span class="p">()</span></code> for controlled shutdown.</p>
+
+<h2 id="signals">signals</h2>
+<p>Uses <code class="language-python highlighter-rouge"><span class="n">blinker</span></code> module. Usage: <code class="language-python highlighter-rouge"><span class="n">signal</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span></code>.</p>
+
+<!--
+    vim:spell spelllang=en
+-->
+
+    </div>
+    <footer class="c-article__footer">
+    </footer>
+</article>
+		</div>
+		<footer class="c-page__footer">
+  <p><!--&copy; M. 2021 |--> Powered by Jekyll | <a href="/feed.xml">RSS</a>
+</p>
+	
+	</br>
+	
+</footer>
+
+	</article>
+    </main>
+</body>
+
+</html>
