@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> The Pragmatic Programmer | अहो अहं </title>
+  <link rel = 'canonical' href = 'https://uzak.github.io/posts/2020-03-16-the_pragmatic_programmer/'>
+  <meta name="description" content="Welcome! I&#39;m Martin and I do work as an IT mentor.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="The Pragmatic Programmer" />
+<meta property="og:description" content="From Journeyman to Master
+Preface  core process: taking a requirement and producing working, maintainable code that delights the user. QWAN - quality without a name. Don&rsquo;t preach, just tell/do what works. pragmatic -&gt; lat. (pragmaticus) -&gt; greek &ldquo;to do&rdquo;. There are no easy answers There is no such thing as best solution, tool language or OS. You shouldn&rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uzak.github.io/posts/2020-03-16-the_pragmatic_programmer/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-16T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Pragmatic Programmer"/>
+<meta name="twitter:description" content="From Journeyman to Master
+Preface  core process: taking a requirement and producing working, maintainable code that delights the user. QWAN - quality without a name. Don&rsquo;t preach, just tell/do what works. pragmatic -&gt; lat. (pragmaticus) -&gt; greek &ldquo;to do&rdquo;. There are no easy answers There is no such thing as best solution, tool language or OS. You shouldn&rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://uzak.github.io/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://uzak.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Blog</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/etymolog">Etymolog</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://uzak.github.io/posts/2020-03-01-sinfonia_agridoce/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://uzak.github.io/posts/2020-05-08-saddarshanam/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&text=The%20Pragmatic%20Programmer" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&title=The%20Pragmatic%20Programmer" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&is_video=false&description=The%20Pragmatic%20Programmer" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=The%20Pragmatic%20Programmer&body=Check out this article: https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&title=The%20Pragmatic%20Programmer" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&title=The%20Pragmatic%20Programmer" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&name=The%20Pragmatic%20Programmer&description=From%20Journeyman%20to%20Master%0aPreface%20%20core%20process%3a%20taking%20a%20requirement%20and%20producing%20working%2c%20maintainable%20code%20that%20delights%20the%20user.%20QWAN%20-%20quality%20without%20a%20name.%20Don%26rsquo%3bt%20preach%2c%20just%20tell%2fdo%20what%20works.%20pragmatic%20-%26gt%3b%20lat.%20%28pragmaticus%29%20-%26gt%3b%20greek%20%26ldquo%3bto%20do%26rdquo%3b.%20There%20are%20no%20easy%20answers%20There%20is%20no%20such%20thing%20as%20best%20solution%2c%20tool%20language%20or%20OS.%20You%20shouldn%26rsquo%3bt%20be%20weeded%20to%20any%20particular%20technology%20but%20have%20broad%20enough%20background%20and%20experience%20base%20to%20allow%20to%20choose%20good%20solution%20in%20any%20particular%20situation." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&t=The%20Pragmatic%20Programmer" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        The Pragmatic Programmer
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2020-03-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-03-16</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          33 minute read
+        </div>
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/books" rel="tag">books</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/it" rel="tag">it</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div id="toc">
+      <h2>Table of Contents</h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#preface">Preface</a>
+      <ul>
+        <li><a href="#what-makes-a-pragmatic-programmer">What Makes a Pragmatic Programmer?</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-1-a-pragmatic-philosophy">Chapter 1. A Pragmatic Philosophy</a>
+      <ul>
+        <li><a href="#the-cat-ate-my-code">The Cat Ate My Code</a></li>
+        <li><a href="#software-entropy">Software Entropy</a>
+          <ul>
+            <li><a href="#putting-out-fires">Putting out fires</a></li>
+          </ul>
+        </li>
+        <li><a href="#stone-soup-and-boiled-frogs">Stone Soup and Boiled Frogs</a></li>
+        <li><a href="#good-enough-software">Good Enough Software</a></li>
+        <li><a href="#your-knowledge-portfolio">Your Knowledge Portfolio</a></li>
+        <li><a href="#communicate">Communicate!</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-2-pragmatic-approach">Chapter 2. Pragmatic Approach</a>
+      <ul>
+        <li><a href="#the-evils-of-duplication">The Evils of Duplication</a></li>
+        <li><a href="#orthogonality">Orthogonality</a>
+          <ul>
+            <li><a href="#coding">Coding</a></li>
+          </ul>
+        </li>
+        <li><a href="#reversibility">Reversibility</a></li>
+        <li><a href="#tracker-bullets-agility">Tracker Bullets (Agility)</a></li>
+        <li><a href="#prototypes-and-post-it-notes">Prototypes and Post-it Notes</a></li>
+        <li><a href="#domain-languages">Domain Languages</a></li>
+        <li><a href="#estimating">Estimating</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-3-the-basic-tools">Chapter 3: The Basic Tools</a>
+      <ul>
+        <li><a href="#the-power-of-plain-text">The Power of Plain Text</a></li>
+        <li><a href="#shell-games">Shell Games</a></li>
+        <li><a href="#power-editing">Power Editing</a></li>
+        <li><a href="#source-code-control">Source Code Control</a></li>
+        <li><a href="#debugging">Debugging</a>
+          <ul>
+            <li><a href="#a-debugging-mindset">A Debugging Mindset</a></li>
+          </ul>
+        </li>
+        <li><a href="#text-manipulation">Text Manipulation</a></li>
+        <li><a href="#code-generators">Code Generators</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-4-pragmatic-paranoia">Chapter 4. Pragmatic Paranoia</a>
+      <ul>
+        <li><a href="#design-by-contract">Design by Contract</a></li>
+        <li><a href="#dead-programs-tell-no-lies">Dead Programs Tell No Lies</a></li>
+        <li><a href="#assertive-programming">Assertive Programming</a></li>
+        <li><a href="#when-to-use-exceptions">When to Use Exceptions</a></li>
+        <li><a href="#how-to-balance-resources">How to Balance Resources</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-5-bend-or-break">Chapter 5. Bend or Break</a>
+      <ul>
+        <li><a href="#law-of-demeter">Law of Demeter</a></li>
+        <li><a href="#metaprogramming">Metaprogramming</a></li>
+        <li><a href="#temporal-coupling">Temporal Coupling</a></li>
+        <li><a href="#its-just-a-view">It&rsquo;s Just a View</a></li>
+        <li><a href="#blackboards">Blackboards</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-6-while-you-are-coding">Chapter 6. While You Are Coding</a>
+      <ul>
+        <li><a href="#how-to-program-deliberately">How to Program Deliberately</a></li>
+        <li><a href="#algorithm-speed">Algorithm Speed</a></li>
+        <li><a href="#refactoring">Refactoring</a></li>
+        <li><a href="#code-thats-easy-to-test">Code That&rsquo;s Easy to Test</a>
+          <ul>
+            <li><a href="#writing-unit-tests">Writing Unit Tests</a></li>
+          </ul>
+        </li>
+        <li><a href="#evil-wizards">Evil Wizards</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-7-before-the-project">Chapter 7. Before the Project</a>
+      <ul>
+        <li><a href="#the-requirements-pit">The Requirements Pit</a>
+          <ul>
+            <li><a href="#digging-for-requirements">Digging for Requirements</a></li>
+            <li><a href="#documenting-requirements">Documenting Requirements.</a></li>
+            <li><a href="#overspecifying">Overspecifying</a></li>
+            <li><a href="#just-one-more-wafer-thin-mint">Just One More Wafer-Thin Mint</a></li>
+            <li><a href="#maintain-a-glossary">Maintain a Glossary</a></li>
+          </ul>
+        </li>
+        <li><a href="#solving-impossible-puzzles">Solving Impossible Puzzles</a>
+          <ul>
+            <li><a href="#there-must-be-an-easier-way">There Must Be an Easier Way!</a></li>
+          </ul>
+        </li>
+        <li><a href="#not-until-you-are-ready">Not Until You are Ready</a></li>
+        <li><a href="#the-specification-trap">The Specification Trap</a></li>
+        <li><a href="#circles-and-arrows">Circles and Arrows</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-8-pragmatic-projects">Chapter 8. Pragmatic Projects</a>
+      <ul>
+        <li><a href="#pragmatic-teams">Pragmatic Teams</a></li>
+        <li><a href="#ubiquitous-automation">Ubiquitous Automation</a>
+          <ul>
+            <li><a href="#all-on-automatic">All on Automatic</a></li>
+            <li><a href="#automatic-administrivia">Automatic Administrivia</a></li>
+            <li><a href="#ruthless-testing">Ruthless Testing</a></li>
+            <li><a href="#designmethodology-testing">Design/Methodology Testing</a></li>
+            <li><a href="#tightening-the-net">Tightening the Net</a></li>
+          </ul>
+        </li>
+        <li><a href="#its-all-writing">It&rsquo;s All Writing</a>
+          <ul>
+            <li><a href="#comments-in-code">Comments in Code</a></li>
+            <li><a href="#print-it-or-weave-it">Print It or Weave It</a></li>
+          </ul>
+        </li>
+        <li><a href="#great-expectations">Great Expectations</a></li>
+        <li><a href="#pride-and-prejudice">Pride and Prejudice</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="content" itemprop="articleBody">
+      <p><em>From Journeyman to Master</em></p>
+<h1 id="preface">Preface</h1>
+<ul>
+<li>core process: taking a requirement and producing working, maintainable code that delights the user.</li>
+<li>QWAN - quality without a name. Don&rsquo;t preach, just tell/do what works.</li>
+<li>pragmatic -&gt; lat. (pragmaticus) -&gt; greek &ldquo;to do&rdquo;.</li>
+<li>There are no easy answers There is no such thing as best solution, tool language or OS.</li>
+<li>You shouldn&rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation.</li>
+</ul>
+<h2 id="what-makes-a-pragmatic-programmer">What Makes a Pragmatic Programmer?</h2>
+<ul>
+<li><strong>Early Adopter &amp; Fast Adapter</strong> - instinct for technologies and techniques, love to try things out, grasp it quickly and integrate with the rest of the knowledge. Your confidence is born out of experience.</li>
+<li><strong>Inquisitive</strong> - you tend to ask questions (TODO). You are a pack rat for little facts.</li>
+<li><strong>Realistic</strong> - try to understand the underlying nature of each problem you face.</li>
+<li><strong>Jack of all trades</strong> - always able to move on to new areas and new challenges.</li>
+</ul>
+<p>TIP 1: care about your craft<br>
+TIP 2: Think! About your work. Think what you are doing while you&rsquo;re doing it. Never run on autopilot. Constantly be  thinking, critiquing your work in real time.</p>
+<ul>
+<li>Quarry workers&rsquo; creed: <em>We who cut mere stones must always be envisioning cathedrals</em></li>
+<li>It&rsquo;s a continuous process. Kaizen: continuously making many small improvements. Every day work to refine the skills you have and add new tools to your repertoire.</li>
+</ul>
+<h1 id="chapter-1-a-pragmatic-philosophy">Chapter 1. A Pragmatic Philosophy</h1>
+<h2 id="the-cat-ate-my-code">The Cat Ate My Code</h2>
+<ul>
+<li><em>The greatest of all weaknesses is the fear of appearing weak</em></li>
+<li>Take responsibility. In addition to your personal best you must analyze the situation for risks that are beyond your control</li>
+</ul>
+<p>TIP 3: Provide options, don&rsquo;t make lame excuses</p>
+<h2 id="software-entropy">Software Entropy</h2>
+<ul>
+<li>One broken window, left unrepaired for any substantial length of time, instills in the inhabitants of the building a sense of abandonment. A sense that the powers that be don&rsquo;t care about the building -&gt; littering, graffiti -&gt; structural damages -&gt; a sense of abandonment becomes reality.</li>
+<li>Don&rsquo;t leave &ldquo;broken windows&rdquo;: bad designs, wrong decisions, poor code. Fix as soon as you discover. If you don&rsquo;t have the time to fix properly board it up (TODO, XXX &hellip;).</li>
+</ul>
+<h3 id="putting-out-fires">Putting out fires</h3>
+<ul>
+<li>If you find yourself working on a project with a few broken windows it&rsquo;s all to easy to just follow suit. By the same token, if you find yourself in a project where the code is beautiful, you&rsquo;ll likely take extra care not to mess it up.</li>
+<li>TODO: Help strengten your team by surveying your company &ldquo;neighborhood&rdquo;. Choose two or three broken windows and discuss with colleagues what the problems are and what can be done to fix them.</li>
+</ul>
+<h2 id="stone-soup-and-boiled-frogs">Stone Soup and Boiled Frogs</h2>
+<ul>
+<li><em>It&rsquo;s easier to ask for forgiveness than to get permission</em></li>
+<li>Stone Soup parable: People find it easier to join an ongoing success. Show them a glimpse of the future and you&rsquo;ll get them to rally around. Let them dream. &ldquo;This can be added later&rdquo; - in case they lack something.</li>
+</ul>
+<p>TIP 5: Be a catalyst for change.<br>
+TIP 6: Remember the big picture. Don&rsquo;t be like the frog (Boiled Frog that doesn&rsquo;t notice the gradual change in it&rsquo;s environment). Constantly review what&rsquo;s happening around you and not only what you are personally doing.</p>
+<h2 id="good-enough-software">Good Enough Software</h2>
+<ul>
+<li>Doesn&rsquo;t mean sloppy or poorly produced code. All systems must beet their users&rsquo; requirements to be successful.</li>
+<li><strong>Involve your users in the trade-off</strong></li>
+<li>Remember it&rsquo;s equally unprofessional to promise an improbable time scale and to cut base engineering corners to meet a deadline.</li>
+</ul>
+<p>TIP 7: Make Quality a Requirements Issue</p>
+<ul>
+<li><strong>Know when to stop</strong>: don&rsquo;t spoil a perfectly good program by overembellishment or over-refinement. Example: OS producers ship even though they know their SW is not perfect and will have patches in future.</li>
+</ul>
+<h2 id="your-knowledge-portfolio">Your Knowledge Portfolio</h2>
+<ul>
+<li>Your knowledge and experience are your most important - and expiring - assets.</li>
+</ul>
+<ol>
+<li>Invest regularly, as a habit.</li>
+<li>Diversify. Know the ins and outs of the particular technology you are working with ATM. Don&rsquo;t stop there</li>
+<li>Manage risks. Don&rsquo;t put all your technical eggs in one basket.</li>
+<li>Buy low, sell high. Learn emerging technologies before they become popular.</li>
+<li>Review and balance.</li>
+</ol>
+<p>TIP 8: Invest Regularly in Your Knowledge Portfolio</p>
+<p>Goals:</p>
+<ul>
+<li>TODO: Learn at least one new language each year</li>
+<li>TODO: Read a technical book each quarter. Then each month.</li>
+<li>Read non-technical books too.</li>
+<li>TODO: Take classes.</li>
+<li>Participate in local user groups.</li>
+<li>TODO: Experiment with different environments, tools, technologies.</li>
+<li>TODO: Stay current - subscribe to trade magazines and other journals</li>
+<li>Get wired</li>
+</ul>
+<p><strong>Critical Thinking</strong>: never underestimate the power of commercialism. Just because a search engine lists a hit first it doesn&rsquo;t mean it&rsquo;s the best match.</p>
+<p>TIP 9: Critically Analyze What You Read and Hear.</p>
+<ul>
+<li>TODO: Challenge: Get out and talk technology with people who aren&rsquo;t involved in your current project or don&rsquo;t work in your company.</li>
+</ul>
+<h2 id="communicate">Communicate!</h2>
+<ul>
+<li>Having the best ideas, the finest code, or the best pragmatic thinking is ultimately sterile unless you can communicate w. other people. A good idea is an orphan without effective communication.</li>
+</ul>
+<p><strong>Know What You Want To Say</strong></p>
+<ul>
+<li>probably the most difficult part of the more formal styles of communication in business is working out exactly what is it you want to say.</li>
+<li>Plan what you want to say. Write an outline. The ask yourself: &ldquo;Does this get around whatever I&rsquo;m trying to say?&rdquo; Refine until it does</li>
+</ul>
+<p><strong>Know Your Audience</strong></p>
+<ul>
+<li>
+<p>You need to understand the needs, interests and capabilities of your audience.</p>
+</li>
+<li>
+<p>Communicating vs. talking, which is annoying. Annoy - from old french &ldquo;enui&rdquo; (means also &ldquo;to bore&rdquo;).</p>
+</li>
+<li>
+<p>Wisdom acrostic:</p>
+<pre><code>                  |W|hat do you want them to learn?
+    What is their |i|nterest in what you've got to say?
+              How |s|ophisticated are they?
+         How much |d|etail do they want?
+</code></pre>
+<p>Whom do you want to |o|wn the information?
+How can you |m|otivate them go listen to you?</p>
+</li>
+<li>
+<p>By making the appropriate pitch to each group, you&rsquo;ll get them all excited about your project.</p>
+</li>
+</ul>
+<p><strong>Choose Your Moment</strong>: Sometimes all it takes is the simple question: &ldquo;Is this a good time to talk about &hellip;?&rdquo;</p>
+<p><strong>Choose Your Style</strong> - format / just the facts / &hellip;  suit it your audience.</p>
+<p><strong>Make It Look Good</strong>: Any chef will tell you that you can slave in the kitchen for hours only to ruin your efforts with poor presentation.</p>
+<p><strong>Involve Your Audience</strong>: If possible, involve your readers with early drafts of the document. Get their feedback and pick their brains.</p>
+<p><strong>Be a Listener</strong></p>
+<ul>
+<li>If you don&rsquo;t listen to them, they won&rsquo;t listen to you.</li>
+<li>Encourage people to talk by asking questions or have them summarize what you tell them.</li>
+<li>Turn the meeting into a dialogue and you&rsquo;ll make your point more efficiently.</li>
+</ul>
+<p><strong>Go Back to People</strong>: Always respond to e-mails and voice mails, even if your response only says &ldquo;I&rsquo;ll get back to you later&rdquo;.</p>
+<p>TIP 10: It&rsquo;s both, what you say and the way you say it.</p>
+<ul>
+<li>The more effective the communication, the more influential you become.</li>
+<li>Mails:
+<ul>
+<li>Proofread before you send.</li>
+<li>Check the spelling.</li>
+<li>Keep the format simple.</li>
+<li>Minimize quoting.</li>
+<li>Organize and archive them.</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-2-pragmatic-approach">Chapter 2. Pragmatic Approach</h1>
+<h2 id="the-evils-of-duplication">The Evils of Duplication</h2>
+<ul>
+<li>Knowledge isn&rsquo;t stable. It changes rapidly -&gt; we spend large part of our times in maintenance mode. Programmers are constantly in maintenance mode.</li>
+<li>It&rsquo;s easy to duplicate knowledge in specifications, processes and programs -&gt; maintenance nightmare.</li>
+<li><strong>DRY principle: Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.</strong></li>
+</ul>
+<p>TIP 11: DRY</p>
+<ul>
+<li>
+<p>Mitigations</p>
+<ul>
+<li>code generators. The trick is to make the process active, not a one time conversion which would be duplicating data again.</li>
+<li>Documentation in code: untrustworthy comments are worse than no comments at all.</li>
+<li>Whatever the situation, avoid unnormalized data.</li>
+</ul>
+</li>
+<li>
+<p>Shortcuts make for longer delays</p>
+</li>
+<li>
+<p>Hardest type of duplication occurs between different developers on a project</p>
+<ul>
+<li>frequent communication</li>
+<li>appoint a librarian</li>
+</ul>
+</li>
+</ul>
+<p>TIP 12: Make it Easy to Reuse</p>
+<h2 id="orthogonality">Orthogonality</h2>
+<ul>
+<li>Two or more thing are orthogonal if changes in one do not affect any of the others.</li>
+<li>Nonorthogonal systems are more complex to change and control. In such a system there is no thing as a local fix.</li>
+</ul>
+<p>TIP 13: Eliminate Effects Between Unrelated Things</p>
+<ul>
+<li>write small, self-contained components</li>
+<li>promote reuse. Components have specific, well-defined responsibilities.</li>
+<li>If two components are not orthogonal, there will be overlap and the result will be less. You get more functionality pre unit effort by combining orthogonal components.</li>
+<li>Orthogonal approach reduces risk - diseased sections of code are isolated and it&rsquo;s easier to slice something out and transplant something new and healthy -&gt; less fragile system, easier testing, less tightly coupling.</li>
+<li>Same applies for Project Teams. If there is a lot of overlap, there is confusion about responsibilities. Every change needs a meeting of the entire team, because any one of them might be affected.</li>
+<li>If I dramatically change the requirements behind a particular function, how many modules are affected? In an orthogonal system, the answer should be &ldquo;one&rdquo;.</li>
+<li>Don&rsquo;t rely on properties of things you can&rsquo;t control.</li>
+</ul>
+<h3 id="coding">Coding</h3>
+<ul>
+<li>Write shy code. Modules that don&rsquo;t reveal anything unnecessary to other modules. If you need to change an object&rsquo;s state, get the object  to do it for you.</li>
+<li>Law of Demeter</li>
+<li>Avoid global data</li>
+<li>Be careful with singletons - they can also lead to unnecessary linkage.</li>
+<li>Avoid similar functions.</li>
+<li>Refactor - look for any opportunities to reorganize your code to improve it&rsquo;s structure and orthogonality.</li>
+<li>every module should have unit tests and that tests should be performed automatically as part of the build process</li>
+</ul>
+<h2 id="reversibility">Reversibility</h2>
+<ul>
+<li>Critical decision aren&rsquo;t easily reversible.</li>
+<li>If you really abstracted the idea of a [database] out - to the point where it simply provides [persistence] as a service - then you have the flexibility to change horses in midstream.</li>
+<li>Instead of caring decisions in stone, think of them as being written in the sand at the beach. A big wave can come along and wipe them out at any time. (Flood, Sand Mandala)</li>
+</ul>
+<p>TIP 14: There Are No Final Decisions</p>
+<ul>
+<li>Architecture: Whatever mechanism you use, make it reversible.</li>
+</ul>
+<h2 id="tracker-bullets-agility">Tracker Bullets (Agility)</h2>
+<ul>
+<li>Like gunners, you&rsquo;re trying to hit a target in the dark. Dealing with lack of knowledge, experience &hellip; The classic response is to specify the system to death. One big calculation, then shoot and hope.</li>
+<li>Code That Glows in the Dark: we&rsquo;re looking for something that gets us from requirement to some aspect of the final system quickly, visibly, and repeatably.</li>
+</ul>
+<p>TIP 15: Use Tracer Bullets to find the Target</p>
+<ul>
+<li>Tracer code is not disposable. It contains all the error checking, structure, documentation &hellip; that any piece of production code has. It is simply not fully functional.</li>
+<li>Tracer development is consistent wit the idea that a project is never finished. There will be always changes required and functions to add. It is an incremental approach.</li>
+<li>Advantages
+<ul>
+<li>Users get to see something working early. You have something to demonstrate.</li>
+<li>Developers build a structure to work in.</li>
+<li>You have an integration platform.</li>
+</ul>
+</li>
+<li></li>
+<li>Prototype = reconnaissance and intelligence. With a prototype you are aiming to explore specific aspects of the final system. A true prototype will be always thrown out and you recode the system properly applying the lessons you&rsquo;ve learned.</li>
+<li>Tracer code is lean but complete. Forms the skeleton of the final system. Helps you to know how the application as a whole hangs together.</li>
+</ul>
+<h2 id="prototypes-and-post-it-notes">Prototypes and Post-it Notes</h2>
+<ul>
+<li>What to investigate with a prototype? Anything that carries risk. Anything unproven, experimental, doubtful.</li>
+<li>Prototyping is a learning experience. Its value is in the lessons learned, not in the code produced.</li>
+<li>Make absolutely clear, that the code is disposable, incomplete and unable to be completed. If not possible to convey, use tracer coding instead.</li>
+</ul>
+<p>TIP 16: Prototype to learn</p>
+<ul>
+<li>When prototyping, you can ignore correctness, completeness, robustness, style.</li>
+<li>Prototyping architecture: what you&rsquo;re looking for is how the system as a whole hangs together, again deferring details.</li>
+</ul>
+<h2 id="domain-languages">Domain Languages</h2>
+<p><em>The limits of language are the limits of one&rsquo;s world.</em> &ndash; Ludwig von Wittgenstein</p>
+<ul>
+<li>The language of the problem domain might also suggest a programming solution.</li>
+<li>DSL - you&rsquo;re giving yourself a tool that let&rsquo;s you work close to the problem domain (tetX, ply, TTTech&rsquo;s code generator). By coding at a higher level of abstraction, you&rsquo;re free to concentrate on solving domain problems and you can ignore implementation details.</li>
+</ul>
+<p>TIP 17: Program Close to the Problem Domain</p>
+<ul>
+<li>If you are writing in the problem domain, report problems in terms the user can understand (perform domain specific validation).</li>
+<li>Most applications exceed their expected lifetimes. In most cases you just might be better of adopting a more complex and readable language up front. The initial effort will be repaid many times in reducing support and maintenance costs.</li>
+</ul>
+<h2 id="estimating">Estimating</h2>
+<p>TIP 18: Estimate to Avoid Suprises</p>
+<ul>
+<li>The units you use a make a difference in the interpretation of the result (130 days vs about 6 months).</li>
+<li>Basic estimating trick: always ask somebody who&rsquo;s already done it first.</li>
+<li>Understand What&rsquo;s Being Asked: make it a habit to think about the scope before starting to guess.</li>
+<li>You&rsquo;ll often find yourself basing an estimate on other subestimates. That&rsquo;s where the largest errors come from.</li>
+<li>The only way to determine the timetable for a project is gaining experience on the same project.</li>
+</ul>
+<p>TIP 19: Iterate the Schedule with the Code</p>
+<ul>
+<li><strong>What to Say when Asked for an Estimate</strong>: <em>I&rsquo;ll get back to you</em></li>
+</ul>
+<h1 id="chapter-3-the-basic-tools">Chapter 3: The Basic Tools</h1>
+<ul>
+<li>Tools amplify your talent</li>
+<li>Keep the basic tool set sharp and ready to use.</li>
+</ul>
+<h2 id="the-power-of-plain-text">The Power of Plain Text</h2>
+<ul>
+<li>Your base material isn&rsquo;t wood or iron, it&rsquo;s knowledge. Best format format for storing knowledge persistently is plain text. It gives the ability to manipulate knowledge, both manually and programmatically, using any tool at our disposal.</li>
+<li>The problem with most binary formats is that they divorce data from its meaning.</li>
+</ul>
+<p>TIP 20: Keep Knowledge in Plain Text</p>
+<ul>
+<li>Larger and slower vs. Insurance against obsolescence, VCS + diff, easier testing.</li>
+<li>Human readable forms of data, and self-describing data, will outlive all other forms of data and applications that created them. Period</li>
+<li>Difference between human readable and human understandable.</li>
+</ul>
+<h2 id="shell-games">Shell Games</h2>
+<ul>
+<li>For a programmer manipulating files of text, the workbench is the command shell.</li>
+<li>Doing all the work using GUIs, you&rsquo;ll miss the full capabilities of your environment. WYSIWYG - what you see is what you get. What you see is <strong>all</strong> you get.</li>
+</ul>
+<p>TIP 21: Use the Power of Command Shells</p>
+<h2 id="power-editing">Power Editing</h2>
+<ul>
+<li>One Editor - better know one editor well and use it for all editing tasks.</li>
+<li>Editor Requirements: configurable, extensible, programmable.</li>
+<li>Automation: For anything you find yourself doing repeatedly, develop a set of macros (or equivalent) to handle it.</li>
+<li>Try to accomplish any given editing task in as few keystrokes as possible.</li>
+</ul>
+<h2 id="source-code-control">Source Code Control</h2>
+<ul>
+<li>Those who cannot remember the past are condemned to repeat it.</li>
+</ul>
+<p>TIP 23: Always Use Source Code Control</p>
+<h2 id="debugging">Debugging</h2>
+<ul>
+<li>modern computers are still limited to doing what you tell them to do, not necessarily what you want them to do.</li>
+<li>In the technical area, you want to concentrate on fixing the problem, not the blame. It doesn&rsquo;t really matter whether the bug is your fault or someone&rsquo;s else. It is still your problem.</li>
+</ul>
+<p>TIP 24: Fix the Problem, Not the Blame</p>
+<h3 id="a-debugging-mindset">A Debugging Mindset</h3>
+<ul>
+<li>The easiest person to deceive is one&rsquo;s self</li>
+</ul>
+<p>TIP 25: Don&rsquo;t Panic</p>
+<ul>
+<li>Before you start looking for the bug, make sure to turn on the highest level of warnings and that the code compiles cleanly without any warnings.</li>
+<li>You must brutally test both the boundary conditions and realistic end-user usage patterns.</li>
+<li>Tracing: debuggers fous on the state of the program now. Tracing helps you see what happened in the past.</li>
+<li>Rubber ducking - explaining the cause of a problem to someone else - helps (you to see, what you&rsquo;ve taken for granted).</li>
+</ul>
+<p>TIP 26: select() Isn&rsquo;t Broken</p>
+<ul>
+<li>Binary search: if you have no obvious place where to start looking from.</li>
+</ul>
+<p>TIP 27: Don&rsquo;t Assume It - Prove it</p>
+<ul>
+<li>If the bug is the result of bad data propagated through a couple of levels before causing the explosion, see if better parameter checking in those routines would have isolated it earlier.</li>
+<li>While you&rsquo;re at it, see if there are ny other places susceptible to this same bug. If so, fix them now.</li>
+<li>Debugging Checklist
+<ul>
+<li>bug or merely a symptom</li>
+<li>Is the bug really in the compiler? In the OS? Or is it in your code?</li>
+<li>If you explained this problem in detail to a coworker, what would you say?</li>
+<li>If the suspected code passes its unit tests, are the tests complete enough? What happens if you run them with <em>this</em> data?</li>
+<li>Do the conditions that caused this bug exist anywhere else in the system?</li>
+</ul>
+</li>
+</ul>
+<h2 id="text-manipulation">Text Manipulation</h2>
+<p>TIP 28: Learn a Text Manipulation Language</p>
+<ul>
+<li>perl, ruby, awk, sed, python, tcl&hellip;</li>
+</ul>
+<h2 id="code-generators">Code Generators</h2>
+<ul>
+<li>Take away complexity and reduce the chances of making mistakes, leaving the craftsman free to concentrate on quality. Just like woodworkers using a template when producing the same thing over and over.</li>
+</ul>
+<p>TIP 29: Write Code That Writes Code</p>
+<ul>
+<li>Passive code generators are run once to produce a result. From that point forward, the result becomes freestanding. They save typing, they are basically parametrized templates.</li>
+<li>Active code generators run each time their result is required. While passive generators are a simple convenience, active ones are necessity if you want to follow DRY principle.
+<ul>
+<li>Whenever you need to get two disparate environments working together, consider using active code generators.</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-4-pragmatic-paranoia">Chapter 4. Pragmatic Paranoia</h1>
+<p>TIP 30: You Can&rsquo;t Write Perfect Software</p>
+<ul>
+<li>Pragmatic Programmers don&rsquo;t trust themselves either.</li>
+</ul>
+<h2 id="design-by-contract">Design by Contract</h2>
+<ul>
+<li>A contract defines your rights and responsibilities, as well as those of the other party. In addition, there is an agreement concerning repercussions if either party fails to abide the contract.</li>
+<li>DBC: <em>if all the routine&rsquo;s preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.</em></li>
+</ul>
+<p>TIP 31: Design with Contracts</p>
+<ul>
+<li>Remember, if your contract indicates that you&rsquo;ll accept anything and promise the world in return, then you&rsquo;ve got a lot of code to write!</li>
+<li>Liskov Substitution Principle: <em>Subclasses must be usable through the base class interface without the need for the user to know the difference.</em></li>
+<li>Even w/o automatic checking (Eifell), you can put contract in the code as comments. If nothing else, the commented contracts give you a place to start looking when trouble strikes.</li>
+<li>It&rsquo;s much easier to find and diagnose the problem by <strong>Crashing Early</strong>, at the site of the problem.</li>
+<li>If DBC is so powerful, why isn&rsquo;t it used more widely? Is it hard to come up with the contract? Does it make you think about issues you&rsquo;d rather ignore for now? Does it force you to THINK? Clearly, this is a dangerous tool!</li>
+</ul>
+<h2 id="dead-programs-tell-no-lies">Dead Programs Tell No Lies</h2>
+<ul>
+<li>Sometimes other people can detect things aren&rsquo;t well with you before you yourself are aware of the problem. It&rsquo;s the same with other people&rsquo;s code.</li>
+<li>It&rsquo;s easy to fall into &ldquo;it can&rsquo;t happen&rdquo; mentality.</li>
+</ul>
+<p>TIP 32: Crash Early</p>
+<ul>
+<li>When your code iscovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it as soon as possible. A dead program does a lot less damage than a crippled one.</li>
+</ul>
+<h2 id="assertive-programming">Assertive Programming</h2>
+<p><em>There is a luxury in self-reproach. When we blame ourselves we feel no one else has a right to blame us.</em> &ndash; Oscar Wilde, The Picture of Dorian Gray</p>
+<p>TIP 33: If it Can&rsquo;t Happen, Use Assertions to Ensure That it Won&rsquo;t</p>
+<ul>
+<li>Assertions can be turned off -&gt; never put code that must be executed into an assert.</li>
+<li>Assertions don&rsquo;t replace real error handling. They check for things that should never happen.</li>
+<li>Your first line of defense is checking for any possible error, and your second is using assertions to try to detect those you&rsquo;ve missed.</li>
+<li>Even if you do have performance issues, turn off only those assertions that really hit you.</li>
+<li>&ldquo;Heisenbug&rdquo; - debugging that changes the behaviour of the system being debugged.</li>
+</ul>
+<h2 id="when-to-use-exceptions">When to Use Exceptions</h2>
+<ul>
+<li>&ldquo;Will this code still run if I remove all the exception handlers?&rdquo; If the answer is &ldquo;no&rdquo;, then maybe exceptions are bing used in nonexceptional circumstances.</li>
+</ul>
+<p>TIP 34: Use Exceptions for Exceptional Problems</p>
+<ul>
+<li>exceptions represent a kind of cascading <strong>goto</strong> -&gt; spaghetti code -&gt; maintainability problems.</li>
+</ul>
+<h2 id="how-to-balance-resources">How to Balance Resources</h2>
+<p>TIP 35: Finish What you Start</p>
+<ul>
+<li>the routine or object that allocates a resource should be responsible for deallocating it.</li>
+<li>Nest Allocations
+<ul>
+<li>Deallocate resources in the opposite order to that in which you allocate them. (stack)</li>
+<li>When allocating the same set of resources in different places in your code, always allocate them i the same order. This will reduce the possibility of deadlock.</li>
+</ul>
+</li>
+<li>Balancing and Exceptions: finally.</li>
+<li>Checking the Balance: it is a good idea to build code that actually checks that resources are indeed freed appropriately. For most applications, this normally means producing wrappers for each type of resource, and using these wrappers to keep track of all allocations and deallocations.</li>
+</ul>
+<h1 id="chapter-5-bend-or-break">Chapter 5. Bend or Break</h1>
+<ul>
+<li>we need to make every effort to write code that&rsquo;s as loose - as flexible - as possible.</li>
+</ul>
+<h2 id="law-of-demeter">Law of Demeter</h2>
+<p><em>Good fences make good neighbours</em> &ndash; Robert Frost, &ldquo;Mending Wall&rdquo;</p>
+<ul>
+<li>Write &ldquo;shy&rdquo; code: a) don&rsquo;t reveal yourself to others b) don&rsquo;t interact with too many people.</li>
+<li>Spies, dissidents, revolutionaries are organized into small groups of cells. Organize your code into cells and limit the interaction between them. If one module get&rsquo;s compromised and has to be replaces, the other modules should be able to carry on.</li>
+<li>When we ask an object for a particular service, we&rsquo;d like the service to be performed on our behalf. We do not want the object to give as a third-party object that we have to deal with to get the required service (general contractor - house construction).</li>
+<li>Rather than digging through a hierarchy yourself, just ask what you need directly.</li>
+<li>Law of Demeter: <strong>any method of an object should call only methods belonging to a) itself b) any parameters that were passed in to the method c) any objects it created d) any directly held component objects</strong></li>
+</ul>
+<p>TIP 36: Minimize Coupling Between Modules</p>
+<h2 id="metaprogramming">Metaprogramming</h2>
+<p><em>No amount of genius can overcome a preoccupation with detail</em> &ndash; Levy&rsquo;s Eight Law</p>
+<ul>
+<li>Make our code highly configurable and soft - i.e. easily adaptable to changes.</li>
+<li>Items (middleware, DB, algorithms &hellip;) should be implemented as configuration options, not through integration or engineering.</li>
+</ul>
+<p>TIP 37: Configure, Don&rsquo;t Integrate</p>
+<ul>
+<li>Use metadata that describes the application. Our goal is to think declaratively (and specifying <em>what</em> is to be done, not <em>how</em> - e.g. DI). Program for the general case, and put specifics somewhere else - outside the compiled code base.</li>
+</ul>
+<p>TIP 38: Put Abstractions in Code Details in Metadata</p>
+<ul>
+<li>We want to defer definition of most details until the last moment</li>
+<li>Configure business logic by writing rules, not cutting code. Less complex logic can be expressed using a mini-language.</li>
+<li>Software that adapts itself to its environment</li>
+<li>Without medatadata, your code is not as adaptable or flexible as it could be.</li>
+</ul>
+<h2 id="temporal-coupling">Temporal Coupling</h2>
+<ul>
+<li>Workflow: find out what can happen at the same time, and what must happen in strict order. Think line in workflow diagrams is called synchronization bar.</li>
+</ul>
+<p>TIP 39: Analyze Workflow to Improve Concurrency
+TIP 40: Design Using Services</p>
+<ul>
+<li>Instead of components, we have really created services - independent, concurrent objects behind well-defined, consistent interfaces.</li>
+<li>Design for Concurrency: with linear code, it&rsquo;s easy to make assumptions that lead to sloppy programming (programming by coincidence). But concurrency forces you to think through things a bit more carefully - you&rsquo;re not alone at the party anymore. To begin with, any global or static variables must be protected from concurrent access.</li>
+</ul>
+<p>TIP 41: Always Design for Concurrency</p>
+<ul>
+<li>By architecting your system as independent services, you can make the configuration dynamic as well.</li>
+<li>Going the other way (try to add concurrency to a non-concurrent app) is much harder.</li>
+</ul>
+<h2 id="its-just-a-view">It&rsquo;s Just a View</h2>
+<ul>
+<li>A good definition of a module (or class) is that it has a single, well-defined responsibility.</li>
+<li>Using events to minimize coupling between objects - so they don&rsquo;t need to know much about each other. The sender doesn&rsquo;t even have to have explicit knowledge of the receiver. There can be even multiple receivers.</li>
+<li>Publish/Subscribe. Use this mechanism to separate the views from the model. This is one of the most important ways of maintaining reversibility.</li>
+</ul>
+<p>TIP 42: Separate Views from Models</p>
+<h2 id="blackboards">Blackboards</h2>
+<ul>
+<li>Consider how detectives might use a blackboard to coordinate and solve a case.</li>
+<li>A blackboard system let&rsquo;s us decouple our objects from each other completely, providing a forum where knowledge consumers and producers can exchange data anonymously and asynchronously.</li>
+<li>methods:
+<ul>
+<li>read (retrieve data from space)</li>
+<li>write (put item into the space)</li>
+<li>take (retrieve and remove an item from the space)</li>
+<li>notify (set up a notification to occur whenever an object is written that matches the template)</li>
+</ul>
+</li>
+<li>On large cases, the blackboard may become cluttered -&gt; partition.</li>
+</ul>
+<p>TIP 43: Use Blackboard to Coordinate Workflow</p>
+<ul>
+<li>We can use the blackboard to coordinate disparate facts and agents, while still maintaining independence and even isolation among participants.</li>
+</ul>
+<h1 id="chapter-6-while-you-are-coding">Chapter 6. While You Are Coding</h1>
+<ul>
+<li>Developers who don&rsquo;t actively think about their code are programming by coincidence - the code might work, but there&rsquo;s no particular reason why. Avoid programming by coincidence - relying on luck an accidental success - in favour of programming deliberately.</li>
+<li>For code you write that others will call, the basic principles of good modularization and of hiding implementation behind small, well-documented interfaces can al help. For routines you call, rely only on documented behaviour.</li>
+<li>Assumptions that aren&rsquo;t based on well-established facts are the bane of all projects.</li>
+</ul>
+<p>TIP 44: Don&rsquo;t Program by Coincidence</p>
+<h2 id="how-to-program-deliberately">How to Program Deliberately</h2>
+<ul>
+<li>Always be aware of what you are doing.</li>
+<li>Don&rsquo;t code blindfolded. Attempting to build an application you don&rsquo;t fully understand, or to use a technology you aren&rsquo;t familiar with.</li>
+<li>Proceed from a plan.</li>
+<li>Rely only on reliable things. Don&rsquo;t depend on accidents or assumptions. If you can&rsquo;t tell the difference in particular circumstances, assume the worst.</li>
+<li>Document your assumptions.</li>
+<li>Write an assertion to test your assumptions.</li>
+<li>Prioritize your effort. Spend time on important aspects.</li>
+<li>Don&rsquo;t let existing code dictate future code. All code can be replaces if no longer appropriate. Refactoring assumption: the impact will be less than the cost of not making the change.</li>
+</ul>
+<h2 id="algorithm-speed">Algorithm Speed</h2>
+<ul>
+<li>Normally, the size of the input will affect the algorithm, the larger the input, the longer the running time or the more memory used. Most significant algorithms are not linear.</li>
+<li>If you write Loops or recursive calls,  check subconsciously for runtime and memory requirements.</li>
+<li>O() Notation. Worst-case time. Upper bound. It is convention to remove from it all low-order terms and do not bother showing any constant multiplying factors. O(n<strong>2/2+3n) -&gt; O(n</strong>2/2) -&gt; O(n**2)</li>
+<li>Things start getting out of hand quickly once we get over O(n**2):
+<ul>
+<li><code>O(1)</code> constant</li>
+<li><code>O(lg(n))</code> Logarithmic (binary) search (Binary chop).</li>
+<li><code>O(n)</code> linear</li>
+<li><code>O(n lg(n))</code> not too much worse than linear (quicksort, heapsort). Divide and Conquer.</li>
+<li><code>O(n**2)</code> square law</li>
+<li><code>O(n**3)</code> cubic</li>
+<li><code>O(C**n)</code> exponential (Traveling salesman problem). Combinatoric( e.g. 5!) -&gt; use heuristics.</li>
+</ul>
+</li>
+</ul>
+<p>TIP 45 Estimate the Order of Your Algorithms</p>
+<ul>
+<li>After all this estimating, the only timing that counts is the speed of your code, running in production environment, with real data.</li>
+</ul>
+<p>TIP 46: Test Your Estimates</p>
+<ul>
+<li>Danger of premature optimization: make sure an algorithm is really a bottleneck before you invest previous time improving it.</li>
+</ul>
+<h2 id="refactoring">Refactoring</h2>
+<ul>
+<li>Rather than construction, software is more like gardening - more organic than concrete. You plant things in your garden according to an initial plan, then you constantly monitor the health of the garden, making adjustments as needed. Things that don&rsquo;t work out as planned need to be weeded / pruned.</li>
+<li>When refactor? Don&rsquo;t hesitate - there is no time like the present. Common reasons: Duplication, non-orthogonal design, outdated knowledge, performance.</li>
+<li>Refactoring - like surgery, take it out now or let it grow and deal with major trouble.</li>
+</ul>
+<p>TIP 47: Refactor Early, Refactor Often</p>
+<ul>
+<li>Don&rsquo;t try to refactor and add functionality at the same time.</li>
+<li>Make sure you have good tests before you begin refactoring.</li>
+<li>Take short, deliberate steps so you avoid prolonged debugging.</li>
+</ul>
+<h2 id="code-thats-easy-to-test">Code That&rsquo;s Easy to Test</h2>
+<ul>
+<li>Chips are designed to be tested, not just at the factory, not just when they are installed, but also in the field when they are deployed. Like our HW colleagues we need to build testability into SW from the very beginning, test each piece thoroughly before trying to wire them together.</li>
+<li>Think of unit testing as testing against contract. We want to write test cases that ensure that a given unit honors its contract.</li>
+<li>Pass in value that is to be rejected, pass in boundary values that are still to be accepted. Pass in correct values.</li>
+<li>Testing requires you to test subcomponents of a module first. Once the subcomponents have been verified, then the module itself can be tested.</li>
+</ul>
+<p>TIP 48: Design To Test</p>
+<ul>
+<li>When you design a module, or even a single routine, you should design both its contract and the code to test that contract. By designing code to pass a test and fulfill its contract, you may well consider boundary condition and other issues that wouldn&rsquo;t occur to your otherwise.</li>
+</ul>
+<h3 id="writing-unit-tests">Writing Unit Tests</h3>
+<ul>
+<li>Make the test code readily accessible.</li>
+<li>Providing unit tests isn&rsquo;t enough. You must run them and run them often.</li>
+<li>At the end of the debugging session you need to formalize the adhoc test. If the code broke once, it is likely to break again. Don&rsquo;t throw away the test you created; add it to the existing uni tests.</li>
+<li>Testing is more cultural than technical.</li>
+</ul>
+<p>TIP 49: Test Your Software, or Your Users Will</p>
+<h2 id="evil-wizards">Evil Wizards</h2>
+<p>TIP 50: Don&rsquo;t Use Wizard Code You Don&rsquo;t Understands</p>
+<ul>
+<li>Have tools do only those things for you which you could do yourself.</li>
+</ul>
+<h1 id="chapter-7-before-the-project">Chapter 7. Before the Project</h1>
+<ul>
+<li>no method can replace thinking</li>
+</ul>
+<h2 id="the-requirements-pit">The Requirements Pit</h2>
+<ul>
+<li>Requirements rarely lie on the surface. Normally, they&rsquo;re buried deep beneath layers of assumptions, misconceptions, and politics.</li>
+</ul>
+<p>TIP 51: Don&rsquo;t Gather Requirements - Dig for Them</p>
+<h3 id="digging-for-requirements">Digging for Requirements</h3>
+<ul>
+<li>gathering requirements leads to a system that is well factored to support metadata.</li>
+<li>It&rsquo;s important to discover why the users do a particular thing, rather than just how they do it. Documenting this reasons will give your team invaluable information when making daily implementation decisions.</li>
+<li>Become a user. Request: &ldquo;May I sit i for a week while you do your job?&rdquo;</li>
+<li>Management will give you one view of how things operate, but when you get down on the floor, you&rsquo;ll find a very different reality - one that will take time to assimilate.</li>
+</ul>
+<p>TIP 52: Work with a User to Think Like a User</p>
+<h3 id="documenting-requirements">Documenting Requirements.</h3>
+<ul>
+<li>Sometimes, the Interface Is the System. While slavishly duplicating what already exists doesn&rsquo;t allow for progress, we must be able to provide a transition for future.</li>
+<li>Using a formal template as an aide-memoire.</li>
+<li>Use Case Diagrams: Don&rsquo;t be a slave to any notation, use whatever method best communicates the requireements with your audience.</li>
+</ul>
+<h3 id="overspecifying">Overspecifying</h3>
+<ul>
+<li>good requirements document remain abstract. Where requirements are concerned, the simplest statement that accurately reflects the business need is the best.</li>
+<li>Requirements are not architecture. They are not design, nor are they not user interface. Requirements are need.</li>
+<li>See further</li>
+</ul>
+<p>TIP 53 Abstractions Live Longer than Details</p>
+<h3 id="just-one-more-wafer-thin-mint">Just One More Wafer-Thin Mint</h3>
+<ul>
+<li>The key to managing growth of requirements is to point out each new feature&rsquo;s impact on the schedule to the project sponsors.</li>
+</ul>
+<h3 id="maintain-a-glossary">Maintain a Glossary</h3>
+<ul>
+<li>Create and maintain a project glossary. All participants in the project, from end user to support staff, should use the glossary to ensure consistency.</li>
+</ul>
+<p>TIP 54 Use a Project Glossary</p>
+<ul>
+<li>It&rsquo;s very hard to succeed on a project where users and developers refer to the same thing by different names, or even worse, refer to different things by the same name.</li>
+<li>Get the Word Out - have your requirements in the WWW and make sure they are accessible all the project folks.</li>
+</ul>
+<h2 id="solving-impossible-puzzles">Solving Impossible Puzzles</h2>
+<ul>
+<li>The secret to solving the puzzle is to identify the real (not imagined)
+constraints and find a solution therein. Think outside of the box encourages
+us to recognize constraints that might not be applicable and to ignore them.</li>
+</ul>
+<p>TIP 55: Don&rsquo;t think Outside of the Box - Find the box</p>
+<ul>
+<li>Categorize and prioritize your constraints. When woodworkers begin a project,
+they cut the longest pieces first, then cut the smaller pieces out of the
+remaining wood. In the same manner, we want to identify the most restrictive
+constraints first, and fir the remaining constraints within them.</li>
+</ul>
+<h3 id="there-must-be-an-easier-way">There Must Be an Easier Way!</h3>
+<ul>
+<li>Is there an easier way?</li>
+<li>Are you trying to solve the right problem, or have you been distracted by a
+peripheral technicality?</li>
+<li>Why is this thing a problem?</li>
+<li>What is it that&rsquo;s making it so hard to solve?</li>
+<li>Does it have to be done this way?</li>
+<li>Does it have to be done at all?</li>
+</ul>
+<p>All you need are the real constraints, the misleading constraints, and the
+wisdom to know the difference.</p>
+<h2 id="not-until-you-are-ready">Not Until You are Ready</h2>
+<p><em>He who hesitates is sometimes saved.</em> &ndash; James Thurber, The Glass in the Field</p>
+<ul>
+<li>Great performers share a trait: they know when to start and when to wait</li>
+</ul>
+<p>TIP 56: Listen to Nagging Doubts - Start When You&rsquo;re Ready</p>
+<ul>
+<li>Software development is still not a science. Let your instincts contribute to
+your performance.</li>
+<li>Choose an area that you feel will be difficult and begin producing some kind
+of proof of a concept.</li>
+</ul>
+<h2 id="the-specification-trap">The Specification Trap</h2>
+<p>TIP 57: Some Things Are Better Done than Described</p>
+<ul>
+<li>specification and implementation are simply different aspects of the same
+process - an attempt to capture and codify requirement. Let there be no
+artificial boundaries. A healthy development process encourages feedback from
+implementation and testing into the specification process.</li>
+<li>The longer you allow specifications to be security blankets, protecting
+developers from the scary world of writing code, the harder it will be to
+move on to hacking your code out. Look at prototyping, consider a tracer
+bullet development (agile).</li>
+<li>Sometimes a picture is worth more than any number of words. Sometimes it is
+worthless.</li>
+</ul>
+<h2 id="circles-and-arrows">Circles and Arrows</h2>
+<ul>
+<li>
+<p>Blindly adopting any technique without putting it into the context of your
+development practices and capabilities is a recipe for disappointment.</p>
+<p>TIP 58: Don&rsquo;t Be a Slave to Formal Methods</p>
+</li>
+<li>
+<p>Shortcomings:</p>
+<ul>
+<li>We prefer to show the user a prototype and let him play with it instead
+of basing everything on designers&rsquo; explanations.</li>
+<li>Formal methods encourage specialization. We prefer to understand the
+whole system we&rsquo;re working on.</li>
+<li>We like to write adaptable, dynamic systems using metadata to allow us to
+change the character of application at runtime. Most current formal
+methods combine a static object model or data model with some kind of
+event- or activity-charting mechanism.</li>
+</ul>
+</li>
+<li>
+<p>Never underestimate the cost of adopting new tools and methods. Be prepared
+to treat the first projects as a learning experience.</p>
+</li>
+<li>
+<p>Never become a slave to a methodology: circles and arrows make poor masters.</p>
+</li>
+</ul>
+<p>TIP 59: Expensive Too Do Not Produce Better Designs</p>
+<ul>
+<li>If you come across a project where the philosophy is &ldquo;the class diagram is
+the application, the rest is mechanical coding,&rdquo; you know you&rsquo;re looking at a
+waterlogged project team and long paddle home.</li>
+</ul>
+<h1 id="chapter-8-pragmatic-projects">Chapter 8. Pragmatic Projects</h1>
+<h2 id="pragmatic-teams">Pragmatic Teams</h2>
+<ul>
+<li>No Broken Windows: Quality is a team issue. Teams as a whole should not
+tolerate broken windows - those small imperfections no one fixes. Some teams
+have a quality officer - ridiculous.</li>
+<li>Boiled Frogs: Maybe appoint a chief water tester. Have this person check
+constantly for increased scope, decreased time scales, additional features,
+new environments - anything that wasn&rsquo;t in the original agreement. Keep the
+metrics on new requirements. The team need not reject changes out of hand -
+you simple need to be aware that they&rsquo;re happening. Otherwise you&rsquo;ll be in
+hot water.</li>
+<li>Communicate: great project teams have a distinct personality. Generate a
+brand.</li>
+<li>DRY: some teams appoint a member as the project librarian.</li>
+<li>Orthogonality: the closer to the user you&rsquo;re allowed, to more senior you are.
+Programmes who are two or three levels from the actual user are unlikely to
+be aware of the context in which their work will be used.</li>
+</ul>
+<p>TIP 60: Organize Around Functionality, Not Job Functions</p>
+<ul>
+<li>Divide your people into small teams, each responsible for a particular
+functional aspect of the final system. Let the teams organize themselves
+internally.</li>
+<li>Cohesive, largely self-contained teams of people - exactly the same criteria
+we should be using when we modularize code.  If the user suddenly decides to
+change DB vendors, only the DB team should be affected.</li>
+<li>This all required responsible developers and strong project management.
+Project needs at least two &ldquo;heads&rdquo; - one technical, one administrative. The
+technical one sets the development philosophy and style, assigns
+responsibilities to teams and arbitrates inevitable &ldquo;discussions&rdquo; between
+people. The technical head also constantly looks at the big picture, trying
+to reduce orthogonality of the common effort. The PM, schedules resources the
+team needs, monitors and reports the progress and helps decide priorities in
+terms of business needs. The administrative head acts also as the team&rsquo;s
+ambassador when communicating with the outside world.</li>
+<li>Larger projects might also need a librarian who indexes and stores code and
+docs and a tool builder (devops) - ensure that things get automated.</li>
+<li>Know When to Stop Adding Paint: give just enough structure and support and
+ensure that the project delivers against the requirements.</li>
+</ul>
+<h2 id="ubiquitous-automation">Ubiquitous Automation</h2>
+<p><em>Civilization advances by extending the number of important operations we can perform without thinking.</em> &ndash; Alfred North Whitehead</p>
+<ul>
+<li>We want to ensure consistency and repeatability on the project. Manual
+procedures leave consistency up to chance</li>
+</ul>
+<h3 id="all-on-automatic">All on Automatic</h3>
+<p>TIP 61: Don&rsquo;t Use Manual Procedures</p>
+<ul>
+<li>Cron, Makefile, Build automation (CI/CD)</li>
+</ul>
+<h3 id="automatic-administrivia">Automatic Administrivia</h3>
+<ul>
+<li>memory is the second thing you lose as you age. Our goal is to maintain,
+unattended content-driven workflow.</li>
+<li>Any information generated by the nightly build should be accessible on the
+development Web site.</li>
+<li>Look at your habits throughout the workday. Do you see any repetitive tasks.
+Do you type the same sequence of commands over and over again?</li>
+</ul>
+<h3 id="ruthless-testing">Ruthless Testing</h3>
+<ul>
+<li>We are driven to find out bugs now, so we don&rsquo;t have to endure the shame of
+others finding out bugs later</li>
+</ul>
+<p>TIP 62: Test Early. Test Often. Test Automatically.</p>
+<ul>
+<li>Start testing as soon as you have code.</li>
+<li>Tests that run with every build are much more effective than test plans that
+sit on a shelf.</li>
+<li>The earlier a bug is found ,the cheaper it is to remedy. &ldquo;Code a little, test
+a little&rdquo;.</li>
+<li>A good project might have well more test code than production code.</li>
+</ul>
+<p>TIP 63: Coding Ain&rsquo;t Done &lsquo;Til All the Tests Run</p>
+<ul>
+<li>code is never really done. More importantly, you can&rsquo;t claim that it is
+usable by anyone until it passes all the available tests.</li>
+<li>With good contracts in place and well tested, any integration issues can be
+detected easily. Otherwise, integration becomes a fertile breeding ground for
+bugs. In fact, it is often the single largest source of bugs in the system.</li>
+<li>Failure to meet usability criteria is as big a bug as dividing by zero. You
+need to perform usability testing as soon as you can, while there is still
+time to make corrections.</li>
+</ul>
+<h3 id="designmethodology-testing">Design/Methodology Testing</h3>
+<ul>
+<li>Lines of code</li>
+<li>McCabe Cyclomatic Complexity Metric (measures complexity of decision
+structures)</li>
+<li>Inheritance fan-in (number of base classes) and fan-out (number of derived
+modules using this one as a parent)</li>
+<li>Response set (see Decoupling and the Law of Demeter). One of the many
+advantages of writing decoupled code is more modular testing.</li>
+<li>Class coupling ratios</li>
+</ul>
+<p>TIP 64: Use Saboteurs to Test Your Testing</p>
+<ul>
+<li>After you&rsquo;ve written a test to detect a particular bug, cause the bug
+deliberately and make sure the test complains.</li>
+</ul>
+<p>TIP 65: Test Sate Coverage, Not Code Coverage</p>
+<ul>
+<li>Even with good code coverage, the data you use for testing still has a huge
+impact, and more importantly, the order in which you traverse code might have
+the largest inpact of all.</li>
+</ul>
+<h3 id="tightening-the-net">Tightening the Net</h3>
+<ul>
+<li>If a bug slips through the net of existing tests, you need to a add a new
+test to trap it next time</li>
+</ul>
+<p>TIP 66: Find Bugs Once</p>
+<ul>
+<li>Once a human tester finds a bug, it should be the last time a human tester
+finds that bug.</li>
+</ul>
+<h2 id="its-all-writing">It&rsquo;s All Writing</h2>
+<p><em>The palest ink is better than the best memory.</em> &ndash; Chinese Proverb</p>
+<ul>
+<li>embrace documentation as an integral part of the overal development process.</li>
+</ul>
+<p>TIP 67: Treat English as Just Another Programming Language</p>
+<ul>
+<li>All documentation is a mirror of the code. If there is a discrepancy, the
+code is what matters.</li>
+</ul>
+<p>TIP 68: Build Documentation In, Don&rsquo;t Bolt it On</p>
+<h3 id="comments-in-code">Comments in Code</h3>
+<ul>
+<li>too many comments are as just bad as too few.</li>
+<li>Comments should explain why something is done, its purpose and its goal. The
+code already show the how - DRY. Document anything that is not obvious.</li>
+<li>Remember that you and others after you will be reading the code many hundreds
+times, but writing it only a few times. Take the time to spell out
+<code>connectionPool</code> instead of <code>cp</code>.</li>
+<li>Names are deeply meaningful to your brain, and misleading names can add chaos
+to your code.</li>
+<li>One of the most important pieces of information that should appear in the
+source file is the author&rsquo;s name - not necessarily who edited the file last,
+but the owner.</li>
+</ul>
+<h3 id="print-it-or-weave-it">Print It or Weave It</h3>
+<ul>
+<li>Documentation of any form is just a snapshot. Try to produce all
+documentation in a form that can be published online, on the Web, complete
+with hyperlinks. Put a date stamp or version number on each Web page.</li>
+<li>Documentation and code are two different views of the same underlying model,
+but the view is all that should be different.</li>
+<li>Sometimes it is uncomfortable to document the design of source code because
+the design isn&rsquo;t clear in your mind; it&rsquo;s still evolving. You don&rsquo;t feel that
+you should waste effort describing what something does until it actually
+does. Does this should like programming by coincidence?</li>
+</ul>
+<h2 id="great-expectations">Great Expectations</h2>
+<ul>
+<li>the success of a project is measured by how well it meets the expectations of
+its users.</li>
+</ul>
+<p>TIP 69: Gently Exceed Your Users&rsquo; Expectations</p>
+<ul>
+<li>As your understanding of their needs develops, you&rsquo;ll find areas where their
+expectations cannot be met, or where their expectations are perhaps too
+conservative. Parto f your role is to communicate this.</li>
+<li>Some easy things that make users happy:
+<ul>
+<li>Tooltips</li>
+<li>Keyboard shortcuts</li>
+<li>Quick reference guide as a supplement to user&rsquo;s manual</li>
+<li>Colorization</li>
+<li>A splash screen customized for the organization of the customer</li>
+<li>Ability to run multiple versions of the system for training</li>
+</ul>
+</li>
+</ul>
+<h2 id="pride-and-prejudice">Pride and Prejudice</h2>
+<ul>
+<li>Don&rsquo;t shirk from responsibility. Instead , we rejoice in accepting challenges
+and making our expertise well known. If we are responsible for a design, or a
+piece of code, we can do a job we can be proud of.</li>
+</ul>
+<p>TIP 70: Sign Your Work</p>
+<ul>
+<li>Anonymity, especially on large projects, can provide a breeding ground for
+sloppiness, mistakes, sloth and bad code.</li>
+<li>While the code must be owned, it doesn&rsquo;t have to be owned by an individual.</li>
+<li>People should see your name on a piece of code and expect it to be solid,
+well written, tested, and documented</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+  <div class="blog-post-comments">
+    
+      <div id="cactus-comments-thread">
+  <script>
+  initComments({
+    node: document.getElementById("cactus-comments-thread"),
+    defaultHomeserverUrl: 'https:\/\/matrix.cactus.chat:8448',
+    serverName: 'cactus.chat',
+    siteName: "your_cactus_comments_sitename",
+    commentSectionId: "\/posts\/2020-03-16-the_pragmatic_programmer\/"
+  })
+</script>
+</div>
+
+    
+  </div>
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Blog</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/etymolog">Etymolog</a></li>
+        
+      </ul>
+    </div>
+
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&text=The%20Pragmatic%20Programmer" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&title=The%20Pragmatic%20Programmer" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&is_video=false&description=The%20Pragmatic%20Programmer" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=The%20Pragmatic%20Programmer&body=Check out this article: https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&title=The%20Pragmatic%20Programmer" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&title=The%20Pragmatic%20Programmer" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&name=The%20Pragmatic%20Programmer&description=From%20Journeyman%20to%20Master%0aPreface%20%20core%20process%3a%20taking%20a%20requirement%20and%20producing%20working%2c%20maintainable%20code%20that%20delights%20the%20user.%20QWAN%20-%20quality%20without%20a%20name.%20Don%26rsquo%3bt%20preach%2c%20just%20tell%2fdo%20what%20works.%20pragmatic%20-%26gt%3b%20lat.%20%28pragmaticus%29%20-%26gt%3b%20greek%20%26ldquo%3bto%20do%26rdquo%3b.%20There%20are%20no%20easy%20answers%20There%20is%20no%20such%20thing%20as%20best%20solution%2c%20tool%20language%20or%20OS.%20You%20shouldn%26rsquo%3bt%20be%20weeded%20to%20any%20particular%20technology%20but%20have%20broad%20enough%20background%20and%20experience%20base%20to%20allow%20to%20choose%20good%20solution%20in%20any%20particular%20situation." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fuzak.github.io%2fposts%2f2020-03-16-the_pragmatic_programmer%2f&t=The%20Pragmatic%20Programmer" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  me 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Blog</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/etymolog">Etymolog</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

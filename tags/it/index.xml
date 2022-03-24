@@ -10,30 +10,30 @@
     <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Do not let anyone overpay you</title>
-      <link>https://uzak.github.io/blog/2021-04-22-do_not_let_anyone_overpay_you/</link>
+      <link>https://uzak.github.io/posts/2021-04-22-do_not_let_anyone_overpay_you/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2021-04-22-do_not_let_anyone_overpay_you/</guid>
+      <guid>https://uzak.github.io/posts/2021-04-22-do_not_let_anyone_overpay_you/</guid>
       <description>source
  The moment one customer pays you a lot more than any other customer, you&amp;rsquo;re no longer a product but a consulting company working for the big payers. You&amp;rsquo;ll do what they say. Self-sufficient. We would never allow a customer to pay more than top-tier price. If you&amp;rsquo;re a bit company with special demands, we don&amp;rsquo;t want your money. We wanted to build a self-service software company. Not need an army of key account managers keeping the whales happy.</description>
     </item>
     
     <item>
       <title>Clean Code</title>
-      <link>https://uzak.github.io/blog/2021-04-02-clean_code/</link>
+      <link>https://uzak.github.io/posts/2021-04-02-clean_code/</link>
       <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2021-04-02-clean_code/</guid>
+      <guid>https://uzak.github.io/posts/2021-04-02-clean_code/</guid>
       <description>NOTE: TOC and these notes do not strictly correspond to the order used in the book itself.
 Clean Code  Code is really the language in which we ultimately express the requirements. It is unprofessional for programmers to bend to the will of managers who don&amp;rsquo;t understand the risks of making messes. We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.</description>
     </item>
     
     <item>
       <title>Prusa Link Architecture</title>
-      <link>https://uzak.github.io/blog/2021-03-01-prusa_link_architecture/</link>
+      <link>https://uzak.github.io/posts/2021-03-01-prusa_link_architecture/</link>
       <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2021-03-01-prusa_link_architecture/</guid>
+      <guid>https://uzak.github.io/posts/2021-03-01-prusa_link_architecture/</guid>
       <description>Main Driver  parse CLI args setup logging instantiate main class and run  logging log = logging.getLogger(__name__) # -l on CLI for setting debug levels for module, level in log_levels: logging.getLogger(module).setLevel(level) config Uses extendparser in config.py
 MVC MainClass.__init__(config) as Controller:
  instantiate Model instantiate components in proper order bind signals start threads  There is MainClass.stop() for controlled shutdown.
@@ -42,10 +42,10 @@ signals Uses blinker module. Usage: signal.connect(handler).</description>
     
     <item>
       <title>Kubernetes</title>
-      <link>https://uzak.github.io/blog/2021-02-22-kubernetes/</link>
+      <link>https://uzak.github.io/posts/2021-02-22-kubernetes/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2021-02-22-kubernetes/</guid>
+      <guid>https://uzak.github.io/posts/2021-02-22-kubernetes/</guid>
       <description>source
 Install and Deploy  install kubectl install minikube  Commands:
 minikube start minikube status kubectl get node kubectl get pods kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4 kubectl expose deployment hello-minikube --type=NodePort --port=8080 minikube service hello-minikube --url curl http://192.168.49.2:31223 kubectl delete deployments.apps hello-minikube minikube pause minikube unpause minikube stop  Namespaces  for organization and resource separation kubectl --namespace=mystuff or kubectl -n=mystuff kubectl --all-namespaces  Default namespaces for new clusters:
@@ -54,10 +54,10 @@ $ kubectl get ns NAME STATUS AGE default Active 13m # k8s resources are crated h
     
     <item>
       <title>Rework</title>
-      <link>https://uzak.github.io/blog/2020-07-05-rework/</link>
+      <link>https://uzak.github.io/posts/2020-07-05-rework/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2020-07-05-rework/</guid>
+      <guid>https://uzak.github.io/posts/2020-07-05-rework/</guid>
       <description>by Jason Fried.
 Takedown Ignore the real world The real world isn&amp;rsquo;t a place, it&amp;rsquo;s an excuse. It&amp;rsquo;s a justification for not trying. It has nothing to do with you.
 Learning from mistakes is overrated Failure is not a prerequisite for success.
@@ -68,20 +68,20 @@ Start referring to any of your plans as guesses.</description>
     
     <item>
       <title>The Pragmatic Programmer</title>
-      <link>https://uzak.github.io/blog/2020-03-16-the_pragmatic_programmer/</link>
+      <link>https://uzak.github.io/posts/2020-03-16-the_pragmatic_programmer/</link>
       <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2020-03-16-the_pragmatic_programmer/</guid>
+      <guid>https://uzak.github.io/posts/2020-03-16-the_pragmatic_programmer/</guid>
       <description>From Journeyman to Master
 Preface  core process: taking a requirement and producing working, maintainable code that delights the user. QWAN - quality without a name. Don&amp;rsquo;t preach, just tell/do what works. pragmatic -&amp;gt; lat. (pragmaticus) -&amp;gt; greek &amp;ldquo;to do&amp;rdquo;. There are no easy answers There is no such thing as best solution, tool language or OS. You shouldn&amp;rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation.</description>
     </item>
     
     <item>
       <title>Testing Python</title>
-      <link>https://uzak.github.io/blog/2019-12-13-python__testing/</link>
+      <link>https://uzak.github.io/posts/2019-12-13-python__testing/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/blog/2019-12-13-python__testing/</guid>
+      <guid>https://uzak.github.io/posts/2019-12-13-python__testing/</guid>
       <description>Chapter 1  Writing code without tests in general is going to lead to problems down the line. Choreographing One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end. With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</description>
     </item>
     
