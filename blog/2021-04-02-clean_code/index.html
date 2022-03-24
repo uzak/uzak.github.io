@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Clean Code | अहो अहं </title>
+  <link rel = 'canonical' href = 'https://uzak.github.io/blog/2021-04-02-clean_code/'>
+  <meta name="description" content="Welcome! I&#39;m Martin and I do work as an IT mentor.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Clean Code" />
+<meta property="og:description" content="NOTE: TOC and these notes do not strictly correspond to the order used in the book itself.
+Clean Code  Code is really the language in which we ultimately express the requirements. It is unprofessional for programmers to bend to the will of managers who don&rsquo;t understand the risks of making messes. We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uzak.github.io/blog/2021-04-02-clean_code/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-02T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Clean Code"/>
+<meta name="twitter:description" content="NOTE: TOC and these notes do not strictly correspond to the order used in the book itself.
+Clean Code  Code is really the language in which we ultimately express the requirements. It is unprofessional for programmers to bend to the will of managers who don&rsquo;t understand the risks of making messes. We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://uzak.github.io/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://uzak.github.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <header id="header">
+  <a href="https://uzak.github.io">
+  
+    <div id="logo" style="background-image: url(https://uzak.github.io/images/logo.png)"></div>
+  
+  <div id="title">
+    <h1>अहो अहं </h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
+      </li>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/blog">Blog</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+
+
+    
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
+  
+    <p>NOTE: TOC and these notes do not strictly correspond to the order used in the book itself.</p>
+<h1 id="clean-code">Clean Code</h1>
+<ul>
+<li>Code is really the language in which we ultimately express the requirements.</li>
+<li>It is unprofessional for programmers to bend to the will of managers who don&rsquo;t understand the risks of making messes.</li>
+<li>We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.</li>
+<li>The Boy Scout rule: <em>Leave the campground cleaner than you found it.</em>  Isn&rsquo;t continuous improvement an intrinsic part of professionalism?</li>
+</ul>
+<h2 id="what-is-clean-code-answers-from-experts">What Is Clean Code? (Answers from experts)</h2>
+<ul>
+<li>Bad code temps the mess to grow! When others change bad code; they tend to make it worse.</li>
+<li>Clean code is focused. Each function, each class, each module exposes a single-minded attitude that remains entirely undistracted, and unpolluted, by the surrounding details.</li>
+<li>Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly defined, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone.</li>
+<li>Runs all the tests; Contains no duplications; Expresses all the design ideas that are in the system; Minimizes the number of entities such as classes, methods, functions, and the like.</li>
+</ul>
+<h2 id="prequel-and-principles">Prequel and Principles</h2>
+<ul>
+<li><strong>Single Responsibility Principle</strong>: every module, class or a function should have responsibility over a single part of that program&rsquo;s functionality and it should encapsulate that part.</li>
+<li><strong>Open Closed Principle</strong>: software entities (modules, classes, functions) should be open for extension but closed for modification.</li>
+<li><strong>Dependency Inversion Principle</strong>: Classes should depend on abstractions, not on concrete details.</li>
+</ul>
+<h1 id="meaningful-names">Meaningful Names</h1>
+<ul>
+<li>
+<p>Use Intention-Revealing Names. Choosing good names takes time but saves more time than it takes.</p>
+</li>
+<li>
+<p>Avoid Disinformation</p>
+</li>
+<li>
+<p>Meaningful Distinctions. It is not sufficient to add number series or noise words, even though the compiler is satisfied. If names must be different, then they should also mean something different.</p>
+</li>
+<li>
+<p>Use Pronounceable Names. Intelligent conversion is now possible.</p>
+</li>
+<li>
+<p>Use Searchable Names.</p>
+<ul>
+<li>Single-letter names and numeric constants have a particular problem that they are not easy to locate across a body of text.</li>
+<li>The length of a name should correspond to the size of its scope.</li>
+</ul>
+</li>
+<li>
+<p>Avoid Encodings</p>
+<ul>
+<li>Hungarian Notation</li>
+<li>Member Prefixes</li>
+<li>I prefer to leave interfaces unadorned (no <code>I</code> prefix).</li>
+</ul>
+</li>
+<li>
+<p>Avoid Mental Mapping. One difference between a smart programmer and a professional programmer is that the professional understands that clarity is king.</p>
+</li>
+<li>
+<p>Class Names: nouns or noun phrase. Avoid names like Manager, Data, Professor, Info in the name of the class.</p>
+</li>
+<li>
+<p>Method Names: verbs or verb phrase. Accessors, mutators, predicates should have <code>get</code>, <code>set</code> or <code>is</code> prefix.</p>
+</li>
+<li>
+<p>Don&rsquo;t Be Cute</p>
+<ul>
+<li>Don&rsquo;t tell little culture-dependant jokes.</li>
+<li>Say what you mean. Mean what you say.</li>
+<li>Pick One Word per Concept. Using the same term for two different ideas is essentially a pun.</li>
+</ul>
+</li>
+</ul>
+<h1 id="functions">Functions</h1>
+<ul>
+<li><strong>Duplication may be the root of all evil in software.</strong></li>
+<li>Writing clean software is like any other kind of writing. When you write a paper or an article you get your thoughts down first, then you massage it until it reads well.</li>
+<li>Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming languages to construct a much richer and more expressive language that can be used to tell that story.</li>
+<li><strong>Your real goal is to tell the story of the system.</strong></li>
+</ul>
+<h2 id="small">Small!</h2>
+<ul>
+<li>Functions should not be 100 lines long. Functions should be hardly ever 20 lines long.</li>
+<li><em>Every function in this program was just two, or three, or four lines long. Each was transparently obvious. Each told a story. And each led you to the next in a compelling order.</em></li>
+<li>The blocks within if, else, while etc. statements should be one line long.</li>
+<li>The indent level of a function should not be greater than one or two.</li>
+</ul>
+<h2 id="do-one-thing">Do One Thing</h2>
+<ul>
+<li>FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.</li>
+<li>Sections within Functions: This is an obvious symptom of doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.</li>
+<li>One  Level of Abstraction per Function</li>
+</ul>
+<h2 id="use-descriptive-names">Use Descriptive Names</h2>
+<ul>
+<li>The smaller and more focused a function is, the easier is to choose a descriptive name.</li>
+<li>Don&rsquo;t be afraid to make a name long. A long descriptive name is better than a short enigmatic name. A long descriptive name is better than a long descriptive comment.</li>
+</ul>
+<h2 id="function-arguments">Function Arguments</h2>
+<ul>
+<li>The ideal number of argument for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification - and then shouldn&rsquo;t be used anyway.</li>
+<li>Argument are hard. They take a lot of conceptual power.</li>
+<li>Arguments are even harder from a testing point of view. If there are no arguments, this is trivial. If there&rsquo;s one argument it&rsquo;s not too hard.</li>
+<li><code>assertEquals</code> might be better written as <code>assertExpectedEqualsActual(expected, actual)</code>. This strongly mitigates the problem of having to remember the ordering of the arguments.</li>
+</ul>
+<h3 id="output-arguments">Output Arguments</h3>
+<ul>
+<li>Are harder to understand than input arguments.</li>
+<li>Using an output argument instead of a return value for a transformation is confusing. If a function is going to transform its input argument, then the transformation should appear as the return value.</li>
+<li>In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object (use OOP).</li>
+</ul>
+<h3 id="flag-arguments">Flag Arguments</h3>
+<ul>
+<li>Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It does one thing if the flag is true and another if the flag is false!</li>
+</ul>
+<h3 id="argument-objects">Argument Objects</h3>
+<ul>
+<li>Reducing the number of arguments by creating objects out of them may seem like cheating, but it&rsquo;s not. Likely it is a part of a concept that deserves a name of its own.</li>
+</ul>
+<h2 id="have-no-side-effects">Have No Side Effects</h2>
+<ul>
+<li>Side effects are lies. Your function promises to do one thing, but it also does another hidden thing.</li>
+<li>Anything that forces you to check the function signature is equivalent to a double-take. It&rsquo;s a cognitive break and should be avoided.</li>
+</ul>
+<h2 id="commandquery-separation">Command/Query Separation</h2>
+<ul>
+<li>Functions should either do something or answer something, but not both.</li>
+</ul>
+<h2 id="prefer-exceptions-to-returning-error-codes">Prefer Exceptions to Returning Error Codes</h2>
+<ul>
+<li>Returning error codes from command function is a subtle violation of command query separation.</li>
+<li>Extract Try/Catch Blocks into functions of their own.</li>
+<li>Error Handling Is One Thing. Functions should do one thing. Thus, a function that handles errors should do nothing else. This implies that if the keyword <code>try</code> exists in a function, it should be the very first word in the function and that there should be nothing after the <code>catch/finally</code> blocks.</li>
+</ul>
+<h1 id="comments">Comments</h1>
+<ul>
+<li>Don&rsquo;t commend bad code - rewrite it.</li>
+<li>The older a comment, and the farther away it is from the code it describes, the more likely it is to be just plain wrong. Programmers cant realistically maintain them.</li>
+<li>Inaccurate comments are far worse than no comments at all.</li>
+<li>Comments do not make up for bad code. &ldquo;Ooh, I&rsquo;d better comment that!&rdquo; No! You&rsquo;d better clean it!</li>
+<li>Explain yourself in code:</li>
+</ul>
+<pre tabindex="0"><code>// Check to see if the employee is eligible for full benefits
+if ((employee.flags &amp; HOURLY_FLAG) &amp;&amp;
+(employee.age &gt; 65))
+</code></pre><p>vs.</p>
+<pre tabindex="0"><code>if (employee.isEligibleForFullBenefits())
+</code></pre><h2 id="good-comments">Good Comments</h2>
+<ul>
+<li>Legal Comments</li>
+<li>Informative Comments</li>
+<li>Explanation of intent</li>
+<li>Clarification. Before writing, take care there is no better way and then take even more care that they are accurate.</li>
+<li>Warning of Consequences</li>
+<li>TODO comments. This should not be an excuse to leave bad code in the system.</li>
+<li>Amplifications. Javadocs can be just as misleading, nonlocal, and dishonest as any other kind of comment.</li>
+</ul>
+<h2 id="bad-comments">Bad Comments</h2>
+<ul>
+<li>Mumbling</li>
+<li>Redundant Comments</li>
+<li>Misleading Comments</li>
+<li>Mandated Comments. It&rsquo;s plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment.</li>
+<li>Journal Comments (see Tanzer&rsquo;s code).</li>
+<li>Noise Comments</li>
+<li>Don&rsquo;t use a comment when you can use a function or a variable.</li>
+<li>Position Markers</li>
+<li>Closing Brace Comments. Try to shorten your function instead.</li>
+<li>Attributions and bylines</li>
+<li>Commented-Out code</li>
+<li>HTML Comments. It should be the responsibility of the tool that generates HTML documentation to transform them.</li>
+<li>Nonlocal information.</li>
+<li>Too much information. Don&rsquo;t put interesting historical discussions or irrelevant descriptions of details into your comments.</li>
+<li>Inobvious Connection</li>
+<li>Function headers</li>
+<li>Javadocs in nonpublic code</li>
+</ul>
+<h1 id="formatting">Formatting</h1>
+<ul>
+<li>Team should agree on a single set of formatting rules and all members should comply.</li>
+<li>Have an automated tool that apply those formatting rules for you</li>
+<li>Code formatting is about communication and communication is the professional developer&rsquo;s first order of business.</li>
+</ul>
+<h2 id="vertical-formatting">Vertical Formatting</h2>
+<ul>
+<li>Small files are usually easier to understand than large files.</li>
+<li>Vertical openness between concepts &lt;-&gt; vertical density.</li>
+<li>Closely related concepts should be kept vertically close to each other.</li>
+<li>Variable declarations should be declared as close to their usage as possible. Because our functions are very short, local variables should appear at the top of each function.</li>
+<li>If one function calls another, they should be vertically close and the caller should be above the callee, if possible.</li>
+</ul>
+<h2 id="horizontal-formatting">Horizontal Formatting</h2>
+<ul>
+<li>keep lines short. 100 or 120 chars. Beyond that it is probably just careless.</li>
+<li>use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related.</li>
+<li>Horizontal alignment (see Tanzer) is not useful. It seems to emphasize the wrong things and may lead away the eye from the true intent.</li>
+<li>If we have a long list that needs to be aligned the problem is the length of the list, not the lack of alignment.</li>
+<li>Avoid collapsing scopes down to one line (if, while &hellip; in C/Java).</li>
+<li>Good software system is composed of a set of documents that read nicely. They need to have a consistent and smooth style.</li>
+</ul>
+<h1 id="objects-and-data-structures">Objects and Data Structures</h1>
+<ul>
+<li>There&rsquo;s a reason that we keep our variables private. We don&rsquo;t want anyone else to depend on them.</li>
+<li>Hiding implementation is about abstractions. We do not want to expose the details of our data. Rather we want to express our data in abstract terms.</li>
+<li>Serious thought needs to be put into the best way to represent the data an object contains. The worst option is to blithely add getters and setters.</li>
+</ul>
+<h2 id="dataobject-anti-symmetry">Data/Object Anti-Symmetry</h2>
+<ul>
+<li>Objects hide their data behind abstractions and expose functions that operate on that data. Data structures expose their data and have no meaningful functions.</li>
+<li>OOP makes it easy to to add new classes without changing existing functions. Procedural code makes it easy to add new functions without changing existing data structures.</li>
+<li>Understand this and choose the approach that is best for the job at hand.</li>
+</ul>
+<h2 id="law-of-demeteter">Law of Demeteter</h2>
+<ul>
+<li>module should not know about the innards of the objects it manipulates.</li>
+<li>Train Wrecks (<code>a().b().c()</code>): whether this is a violation of the Law of Demeter depends whether the internal structure should be hidden or exposed. If <code>a</code>, <code>b</code>, <code>c</code>, are just structures with no behaviour, Law of Demeter doesn&rsquo;t apply.</li>
+<li>Hybrids make it had to add new functions but also make it hard to add new data structures. Avoid creating them.</li>
+<li>Hiding structure: If <code>ctxt</code> is an object, we should be telling it to do something; we should be be asking it about its internals.</li>
+</ul>
+<h2 id="data-transfer-objects">Data Transfer Objects</h2>
+<ul>
+<li>DTO is a class with public variables and no functions</li>
+<li>Beans have private variables and are accessed by getters/setters. The quasi-encapsulation provides no benefit.</li>
+<li>Active Records are a special form of DTO with some navigational methods like <code>save</code> and <code>find</code>. Don&rsquo;t put business logic in them (it creates a hybrid), treat an Active Record as a data structure and create objects that contain the business rules and hide their internal data (probably just instances of the Active Record).</li>
+</ul>
+<h1 id="error-handling">Error Handling</h1>
+<ul>
+<li>Error handling is important, but if it obscures logic, it&rsquo;s wrong.</li>
+<li>Separate differed concerns, algorithm for &hellip; and error handling.</li>
+<li>It&rsquo;s good practice to start with a try-catch-finally when you&rsquo;re writing code that could throw exceptions. <code>try</code> blocks are like transactions; <code>catch</code> leaves the program in consistent state.</li>
+<li>Write tests that force exceptions, then add behaviour to your handler to satisfy your tests.</li>
+<li>Use unchecked exceptions. The price of checked exceptions is Open/Closed Principle violation.</li>
+<li>Provide context with exceptions - a stack trace can&rsquo;t tell the intent of the operation that failed.</li>
+<li>Wrap 3rd party APIs, incl. custom exception structure.</li>
+<li>Don&rsquo;t return null. when we do, we&rsquo;re essentially creating work for ourselves and foisting problems upon our callers.</li>
+<li>Don&rsquo;t pass null: returning null from methods is bad, passing null into methods is worse. In most programing languages there is no good way to deal with a null that is passed by a caller incidentally. Therefore, the rational approach is to forbid passing null by default.</li>
+</ul>
+<h1 id="boundaries">Boundaries</h1>
+<ul>
+<li>Do not pass <code>Map</code>s (or any other interface at a boundary) around your system. Wrap them.</li>
+<li>Learnings tests - to check our understanding for new APIs. They are free (we need to learn the API anyway) and they allow us to check if the 3rd party packages are working as expected on new releases.</li>
+<li>Good SW design accommodate change without huge investment and rework. We should avoid letting too much of our code know about the third party particulars. It is better to depends on something you control than on something you don&rsquo;t control, lest it end up controlling you.</li>
+</ul>
+<h1 id="unit-tests">Unit Tests</h1>
+<ul>
+<li>Law 1: You may not write production code until you have written a failing unit test.</li>
+<li>Law 2: You may not write more of a unit test than is sufficient to fail, and not compiling is failing.</li>
+<li>Law 3: You may not write more production code than is sufficient to pass the currently failing test.</li>
+</ul>
+<h2 id="keeping-tests-clean">Keeping Tests Clean</h2>
+<ul>
+<li>Having dirty tests is equivalent to, if not worse than, having no tests.</li>
+<li>Test code is just as important as production code. It is not a second-class citizen. It requires thought, design, and care. It must be kept clean as production code.</li>
+</ul>
+<h2 id="clean-tests">Clean Tests</h2>
+<ul>
+<li>What makes a clean test? Three things: Readability, readability, and readability. In unit tests readability is perhaps more important than it production code.</li>
+<li>Readability means clarity, simplicity and density of expression.</li>
+<li>Build-Operate-Check pattern. First part build ups the data, the second operates on that data, the third checks the operation yielded expected results.</li>
+</ul>
+<h2 id="domain-specific-testing-languages">Domain-Specific testing languages</h2>
+<ul>
+<li>Rather than using the APIs of the system directly we build up a set of functions and utilities that make use of those APIs and make tests more convenient to write and easier to read. These functions and utilities become a specialized API used by the tests.</li>
+</ul>
+<h2 id="a-dual-standard">A Dual Standard</h2>
+<p>The code within the testing API does have a different set of engineering standards than production code. It must be simple, succinct, and expressive, but it need not be as efficient as production code.</p>
+<h2 id="one-assert-per-test">One Assert Per Test</h2>
+<ul>
+<li>The number of asserts in a test ought to be minimized.</li>
+</ul>
+<h2 id="single-concept-per-test">Single Concept per Test</h2>
+<ul>
+<li>We want to test a single concept in each test function.</li>
+</ul>
+<h2 id="first">F.I.R.S.T.</h2>
+<ul>
+<li>Fast - tests should be fast</li>
+<li>Independent - tests should not depend on each other</li>
+<li>Repeatable - tests should operate in any environment. You should be able to run tests in the production environment, in the QA environment, and on your laptop while riding home on train without a network. If your tests aren&rsquo;t repeatable in any environment, you&rsquo;ll always have an excuse for why they fail.</li>
+<li>Self-Validating - tests should have a boolean output. Either they pass or fail.</li>
+<li>Timely - unit tests should be written just before the production code that makes them pass.</li>
+</ul>
+<h1 id="classes">Classes</h1>
+<ul>
+<li>There is seldom a good reason to have a public variable.</li>
+<li>We like to put private utilities called by a public function right after the public function itself.</li>
+</ul>
+<h2 id="small-1">Small!</h2>
+<ul>
+<li>The first rule of classes is that they should be small. The second rule of classes is that they should be smaller than that.</li>
+<li>Naming helps: if we cannot derive a concise name fora class, than it&rsquo;s likely too large.</li>
+<li>Class names including weasel words like <code>Processor</code> or <code>Manager</code> or <code>Supre</code> often hint at unfortunate aggregation of responsibilities.</li>
+<li>Getting software to work and making software clean are to very different activities.</li>
+<li>The primary goal in managing complexity is to <strong>organize</strong> so that a developer knows where to look for things an need only understand the directly affected complexity at any given time.</li>
+<li>We want our system to be composed of many small classes, not a few large ones. Each small class encapsulates a single responsibility, has a single reason to change, and collaborates with a few others to achieve the desired system behaviour.</li>
+</ul>
+<h3 id="cohesion">Cohesion</h3>
+<ul>
+<li>Classes should have a small number of instance variables.</li>
+<li>Generally the more variables a method manipulates the more cohesive that method is to its class.</li>
+<li>Neither advisable to create a maximally cohesive classes, OTOH, we would like the cohesion to be high.</li>
+</ul>
+<h2 id="organizing-for-change">Organizing for Change</h2>
+<h3 id="isolating-from-change">Isolating from Change</h3>
+<ul>
+<li>We want to structure out systems so that we muck with little as possible when we update with new or changed features. In an ideal system, we incorporate new features by extending the system, not by making modifications to existing code.</li>
+<li>The lack of coupling means that elements of our system are better isolated from each other and from change.</li>
+</ul>
+<h1 id="systems">Systems</h1>
+<h2 id="separate-constructing-a-system-from-using-it">Separate Constructing a System from Using It</h2>
+<ul>
+<li>Construction is a very different process from use.</li>
+<li>SW systems should separate the startup process (<code>main</code> fct), when the application objects are constructed and the dependencies &ldquo;wired&rdquo; together, from the runtime logic that takes over after startup.</li>
+<li>Factories</li>
+<li>Dependency Injection. Inversion of Control (IoC) moves secondary responsibilities from an object to other objects that are dedicated to that purpose, therefore supporting the <em>Single Responsibility Principle</em>.</li>
+</ul>
+<h2 id="scaling-up">Scaling Up</h2>
+<ul>
+<li>It&rsquo;s a myth that we can get systems &ldquo;right at the first time&rdquo;. Instead, we implement only today&rsquo;s stories, then refactor and expand the system to implement new stories tomorrow. TDD, refactoring, clean code makes this work at the code level.</li>
+<li>Software systems are unique compared to physical systems. Their architecture can grow incrementally, if we maintain the proper separation of concerns.</li>
+</ul>
+<h2 id="pure-java-aop-frameworks">Pure Java AOP Frameworks</h2>
+<ul>
+<li>In Spring, you write your business logic as POJOs. POJOs are purely focuses on their domain. They have no dependencies on enterprise frameworks (or any other domain). They allow for truly test driving the application, without doing a Big Design Up Front.</li>
+<li>We can start a SW project with a &ldquo;naively simple&rdquo; but nicely decoupled architecture, deliver working user stories quickly, then adding more infrastructure as we scale up.</li>
+<li>A good API should largely disappear from the view most of the time, so the tam expends the majority of its creative efforts focused on the user stories being implemented. If not, then the architectural constraints will inhibit the efficient delivery of optimal value to the customer.</li>
+</ul>
+<h2 id="optimize-decision-making">Optimize Decision Making</h2>
+<ul>
+<li>Postpone decisions until the last possible moment. This isn&rsquo;t lazy or irresponsible; it lets us make informed choices with the best possible information.</li>
+</ul>
+<h2 id="systems-need-domain-specific-languages">Systems Need Domain-Specific Languages</h2>
+<ul>
+<li>If you are implementing domain logic in the same language that a domain expert uses, there is less risk that you will incorrectly translate the domain into implementation.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+<li>At all levels of abstraction, the intent should be clear.</li>
+<li>Never forget to <strong>use the simplest thing that can possibly work.</strong></li>
+</ul>
+<h1 id="emergence">Emergence</h1>
+<ul>
+<li>Is there a set of simple practices that can replace experience? Clearly not.</li>
+</ul>
+<h2 id="rule-1-runs-all-the-tests">Rule 1: Runs All the Tests</h2>
+<ul>
+<li>Tight coupling makes it difficult to write tests.</li>
+<li>OOP goal of low coupling and high cohesion. Writing tests leads to better designs.</li>
+</ul>
+<h2 id="rule-2-4-refactoring">Rule 2-4: Refactoring</h2>
+<h2 id="no-duplication">No Duplication</h2>
+<ul>
+<li>Template-method helps</li>
+</ul>
+<h2 id="expressive">Expressive</h2>
+<ul>
+<li>Code should clearly express the intent of its author.</li>
+<li>You can express yourself by choosing good names. We want to be able to hear a class or a function name and not be surprised when we discover its responsibilities.</li>
+<li>You can also express yourself by keeping your functions and classes small. Small classes and functions are usually easy to name, easy to write, and easy to understand.</li>
+<li>The most important way to be expressive is to try. Remember, the most likely next person to read that code will be you.</li>
+<li>Take a little pride in your workmanship. Spend a little time with each of your functions and classes. Choose better names, split large functions into smaller functions and generally just take care of what you&rsquo;ve created. Care is a precious resource.</li>
+</ul>
+<h2 id="minimal-classes-and-methods">Minimal Classes and Methods</h2>
+<ul>
+<li>High class and method counts are sometimes the result of pointless dogmatism.</li>
+<li>Our goal is to keep our overall system small while we are also keeping our functions and classes small. Remember, however, that this rule is the lowest priority of the four rules of Simple Design. So, although it is important to keep class and function count low, it&rsquo;s more important to have tests, eliminate duplication, and express yourself.</li>
+</ul>
+<h1 id="concurrency">Concurrency</h1>
+<ul>
+<li>Objects are abstractions of processing. Threads are abstractions of schedule.</li>
+<li>Decoupling what gets done from when it gets done. This can dramatically improve both the throughput and structure of application.</li>
+</ul>
+<h2 id="writing-clean-concurrent-program-is-hard---very-hard">Writing clean concurrent program is hard - very hard.</h2>
+<ul>
+<li>The design of a concurrent algorithm can be remarkably different from the design of single-threaded system.</li>
+<li>Concurrency incurs some overhead, in both performance as well as writing additional code.</li>
+<li>Concurrency bugs aren&rsquo;t usually repeatable.</li>
+<li>Think about shut-down early and get it working early. It&rsquo;s going to take longer than you expect.</li>
+</ul>
+<h2 id="concurrency-defense-principles">Concurrency Defense Principles</h2>
+<ul>
+<li>Keep your concurrency-related code separate from other code.</li>
+<li>Take data encapsulation to heart; severely limit the access of any data that may be shared.</li>
+<li>Use copies of data. Collect results from multiple threads and then merge the results in a single thread.</li>
+<li>Partition data into independent subsets that can be operated on by independent threads, possible in different processors.</li>
+<li>Keep synchronized sections small.</li>
+</ul>
+<h2 id="testing-threaded-code">Testing Threaded Code</h2>
+<ul>
+<li>Get you nonthreaded code working first.</li>
+<li>Treat spurious failures as candidate threading issues. Don&rsquo;t ignore system failures as one-offs.</li>
+<li>Make your threaded code pluggable, so you can run it in various configurations.</li>
+<li>Run with more threads than processors (cores), to encourage system switches.</li>
+<li>Jiggle the code so that threads run in different orderings at different times. The combination of well-written tests and jiggling can dramatically increase the chance finding errors.</li>
+</ul>
+<h1 id="successive-refinement">Successive Refinement</h1>
+<ul>
+<li>You&rsquo;d be able to read the code from top to the bottom without a lot of jumping around or looking ahead.</li>
+<li>Programming is more a craft than it is a science. To write clean code, you must first write dirty code and then clean it.</li>
+<li>Most freshmen programmers think that the primary goal is to get the program working. Once it is &ldquo;working&rdquo; they move to the next task, leaving the program in whatever state they got it to &ldquo;work&rdquo;. Most seasoned programmers know this is professional suicide.</li>
+<li>&ldquo;If the structure of this code was ever going to be maintainable, now was the time to fix it. So I stopped adding features and started refactoring&rdquo;.</li>
+<li>Refactoring is a lot like solving a Rubik&rsquo;s cube. There are a lot of little steps required to achieve a large goal. Each steps enables the next.</li>
+<li>Bad schedules cna be redone, bad requirements can be redefined. Bad team dynamics can be repaired. Bad code rots and ferments, becoming an inexorable weight that drags the team down.</li>
+</ul>
+<h1 id="refactoring-serialdate">Refactoring SerialDate</h1>
+<ul>
+<li>
+<p>It is only through critiques that we learn. Doctors do it. Layers do it. Pilots do it. And we programmers need to learn how to do it too.</p>
+</li>
+<li>
+<p>First make it work. Get the coverage and extend/make the unit tests work.</p>
+</li>
+<li>
+<p>Then make it right.</p>
+</li>
+<li>
+<p>Get your code into a form that&rsquo;s easy to change.</p>
+</li>
+</ul>
+<h1 id="smells-and-heuristics">Smells and Heuristics</h1>
+<h2 id="comments-1">Comments</h2>
+<ul>
+<li>Inappropriate information</li>
+<li>Obsolete comment</li>
+<li>Redundant comment</li>
+<li>Poorly written comment</li>
+<li>Commented-out code</li>
+</ul>
+<h2 id="environment">Environment</h2>
+<ul>
+<li>Build requires more than one step</li>
+<li>Running tests requires more than one step</li>
+</ul>
+<h2 id="functions-1">Functions</h2>
+<ul>
+<li>Too many arguments</li>
+<li>Output arguments</li>
+<li>Flag arguments</li>
+<li>Not used (dead) functions</li>
+</ul>
+<h2 id="general">General</h2>
+<ul>
+<li><strong>Multiple languages in one source file</strong>.</li>
+<li>Obvious behaviour is unimplemented - <a href="https://en.wikipedia.org/wiki/Principle_of_least_astonishment">Principle of least suprise</a>.</li>
+<li>Incorrect behaviour at the boundaries. <strong>Don&rsquo;t rely on your intuition. Prove that your code works in all the corner cases.</strong></li>
+<li><strong>Overridden safeties</strong> - turned of failing tests, compiler warnings etc.</li>
+<li>Duplication.</li>
+<li><strong>Code at wrong level of abstraction.</strong> Constants, variables, utility functions hat pertain only to the detailed implementation should not be present in the base class. <strong>Don&rsquo;t mix higher and lower level concepts together.</strong> You cannot lie or fake your way out of a misplaces abstraction. Isolating abstractions is one of the hardest things that software developers an do, and there is no quick fix when you get it wrong.</li>
+<li>Base classes depending on their derivatives.</li>
+<li><strong>Too much information.</strong> Well-defined modules have very small interfaces that allow you to do a lot with a little. Hide your data, hide your utility functions, hide your constants and hide your temporaries. Don&rsquo;t create classes with a lot of methods and instance variables. Don&rsquo;t create lots of protected variables and functions for your subclasses. <strong>Help keeping low coupling by hiding information.</strong></li>
+<li>Dead code</li>
+<li>Vertical separation</li>
+<li>Inconsistency - goes back to the principle of least surprise.</li>
+<li>Clutter.</li>
+<li>Artificial coupling.</li>
+<li><strong>Feature envy. The methods of a class should be interested in the variables and functions of the class they belong to, and not the variables and functions of other classes.</strong></li>
+<li><strong>Selector arguments.</strong> In general it is better to have many functions than to pass some code into a function to select behaviour.</li>
+<li>Obscured intent.</li>
+<li>Misplaced responsibility - code should be placed where a reader would naturally expect it to be.</li>
+<li><strong>Inappropriate static - there might be a reasonable chance that we&rsquo;ll want the function to be polymorphic.</strong></li>
+<li>Use explanatory variables.</li>
+<li>Function names should say what they do.</li>
+<li>Understand the algorithm.</li>
+<li>Make logical dependencies (i.e. assumptions, e.g. a constant) physical (calling a method providing the data).</li>
+<li>Prefer polymorphism to If/Else or Switch/Case</li>
+<li>Follow standard conventions - coding standards.</li>
+<li>Replace magic numbers with named constants.</li>
+<li>Be precise - don&rsquo;t be lazy
+<ul>
+<li>expecting the first match to be the only is naive</li>
+<li>don&rsquo;t use float point numbers to represent currency</li>
+<li>use locks and/or TX</li>
+<li>don&rsquo;t be too specific, e.g. declaring a variable as <code>ArrayList</code> when <code>List</code> is good enough</li>
+<li>making all variables <code>protected</code> by default is not constraining enough</li>
+</ul>
+</li>
+<li>Structure over convention, e.g. abstract methods &gt; switch with nicely named enumerations.</li>
+<li>Encapsulate conditionals. Turn <code>if (expected == null || actual == null || areStringsEqual())</code> into a method -&gt; bool.</li>
+<li>Avoid negative conditionals.</li>
+<li>Functions should do one thing.</li>
+<li>Hidden temporal couplings -&gt; make explicit.</li>
+<li>Don&rsquo;t be arbitrary.</li>
+<li>Encapsulate boundary conditions. <strong>We don&rsquo;t want swarms of <code>+1s</code> and <code>-1s</code> all over the code. Encapsulate then in variables</strong>.</li>
+<li>Functions should descend only one level of abstraction.</li>
+<li>Keep configurable data at high levels.</li>
+<li>Avoid transitive navigation (Law of Demeter - write shy code).</li>
+</ul>
+<h2 id="java">Java</h2>
+<ul>
+<li>Avoid long imports by using wildcards.</li>
+<li>Don&rsquo;t inherit constants. Use static import instead.</li>
+<li>Constants vs. enums - use enums.</li>
+</ul>
+<h2 id="names">Names</h2>
+<ul>
+<li>Choose descriptive names. Don&rsquo;t be too quick to chose a name.</li>
+<li>Choose names at the appropriate level of abstraction.</li>
+<li>Use standard nomenclature where possible.</li>
+<li>Unambiguous names.</li>
+<li>Use long names for long scopes.</li>
+<li>Avoid encodings.</li>
+<li>Names should describe side-effects.</li>
+</ul>
+<h2 id="tests">Tests</h2>
+<ul>
+<li>Insufficient tests.</li>
+<li><strong>Use a coverage tool</strong> - they report gaps in your testing strategy.</li>
+<li>Don&rsquo;t skip trivial tests.</li>
+<li>An ignored test is a question about an ambiguity.</li>
+<li>Test boundary conditions.</li>
+<li><strong>Exhaustive tests near bugs.</strong> Bugs ten to congregate. When you find a bug in a function, it is wise to do an exhaustive test of that function.</li>
+<li>Test coverage patterns can be revealing.</li>
+<li>Tests should past fast.</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+  
+  </div>
+</article>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  me 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/blog">Blog</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+</html>

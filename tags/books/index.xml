@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>books on अहो अहं </title>
+    <link>https://uzak.github.io/tags/books/</link>
+    <description>Recent content in books on अहो अहं </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>me</copyright>
+    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rework</title>
+      <link>https://uzak.github.io/blog/2020-07-05-rework/</link>
+      <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/blog/2020-07-05-rework/</guid>
+      <description>by Jason Fried.
+Takedown Ignore the real world The real world isn&amp;rsquo;t a place, it&amp;rsquo;s an excuse. It&amp;rsquo;s a justification for not trying. It has nothing to do with you.
+Learning from mistakes is overrated Failure is not a prerequisite for success.
+People who failed have the same amount of success as people who have never tried at all.
+Long term business planing is fantasy.
+Start referring to any of your plans as guesses.</description>
+    </item>
+    
+    <item>
+      <title>The Pragmatic Programmer</title>
+      <link>https://uzak.github.io/blog/2020-03-16-the_pragmatic_programmer/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/blog/2020-03-16-the_pragmatic_programmer/</guid>
+      <description>From Journeyman to Master
+Preface  core process: taking a requirement and producing working, maintainable code that delights the user. QWAN - quality without a name. Don&amp;rsquo;t preach, just tell/do what works. pragmatic -&amp;gt; lat. (pragmaticus) -&amp;gt; greek &amp;ldquo;to do&amp;rdquo;. There are no easy answers There is no such thing as best solution, tool language or OS. You shouldn&amp;rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation.</description>
+    </item>
+    
+    <item>
+      <title>Testing Python</title>
+      <link>https://uzak.github.io/blog/2019-12-13-python__testing/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/blog/2019-12-13-python__testing/</guid>
+      <description>Chapter 1  Writing code without tests in general is going to lead to problems down the line. Choreographing One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end. With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</description>
+    </item>
+    
+    <item>
+      <title>Carlos Castaneda: 3. Cesta do Ixtlanu</title>
+      <link>https://uzak.github.io/blog/2019-12-02-castaneda/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/blog/2019-12-02-castaneda/</guid>
+      <description>1 - Pritakanie sveta okolo nás  nahnať strach synovi (dať mu lekciu) musí niekto iný ako otec, ktorý ho má ochraňovať (Iron John: kráľovi muži). od malička sa učíme popisu sveta, až si ho osvojíme a v ňom žijeme (matrix) a stratíme pojem o čare reality. rád hodne chodím. mentor: budeš mi platiť za môj čas tvojím časom. nikdy nič nepije, ani pivo. pre všetko, čo robíme, je nezbytná iba jedna vec - Duch!</description>
+    </item>
+    
+    <item>
+      <title>Carlos Castaneda (1, 2)</title>
+      <link>https://uzak.github.io/blog/2019-09-15-castaneda/</link>
+      <pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/blog/2019-09-15-castaneda/</guid>
+      <description>Poznámky z prvých dvoch kníh od Carlosa Castanedu:
+1. Učení Dona Juana &amp;hellip; u nekonečne dlhej cesty sa nedá pokúsiť o nič viac, ako nájsť jej začiatok a stanoviť jej smer. Predstieranie, že cesta je pochopená a dokončená, je prinajmenšom klamaním samého seba. Jednotlivý študent na nej môže dosiahnuť dokonalosti iba v subjektívnom slova zmysle a vyprávať o nej môže iba tak, že povie všetko, čo bol schopný zhliadnuť. &amp;ndash; Georg Simmel</description>
+    </item>
+    
+    <item>
+      <title>The Greatest Escape - Adventures in the History of Solitude</title>
+      <link>https://uzak.github.io/blog/2019-08-16-adventures_of_solitude/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/blog/2019-08-16-adventures_of_solitude/</guid>
+      <description>Highlights from the book The Greatest Escape: Adventures in the History of Solitude (c) 2004 by David Stimpson - a kind of a Bible and eulogy on Solitude and Silence.
+Prologue  life of solitude - either through periodic retreats or continuing inner solitude in society - may be the best answer to cries that modern world is inevitably a &amp;ldquo;lonely crowd.&amp;rdquo; your lonely quietude may be bothered by demons of lust, vainglory, or melancholy.</description>
+    </item>
+    
+  </channel>
+</rss>
