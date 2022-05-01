@@ -1,0 +1,617 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=generator content="Hugo 0.98.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=color-scheme content="light dark"><meta name=supported-color-schemes content="light dark"><meta name=keywords content="philosophy, vedanta, IT, teaching"><meta name=description content><meta name=author content="Martin Uzak"><meta name=copyright content="Martin Uzak"><meta http-equiv=content-language content="zh,en"><link rel=canonical href=https://uzak.github.io/post/2021-02-22-kubernetes/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>Kubernetes&nbsp;&ndash;&nbsp;uzak.github.io</title><link rel=preconnect href=https://cdn.jsdelivr.net/ crossorigin><link rel=dns-prefetch href=https://cdn.jsdelivr.net/><link rel=dns-prefetch href=https://fonts.gstatic.com/><link rel=preload href=/css/core.min.7fea1f5a41ad0e665eeb874055b0e68e8a11091c60801d2e241269731df6f3b4cd1871c64da457ede9e3d44dcee5732b.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/css/core.min.7fea1f5a41ad0e665eeb874055b0e68e8a11091c60801d2e241269731df6f3b4cd1871c64da457ede9e3d44dcee5732b.css integrity=sha384-f+ofWkGtDmZe64dAVbDmjooRCRxggB0uJBJpcx3287TNGHHGTaRX7enj1E3O5XMr></noscript><style type=text/css>*,::before,::after{margin:0;padding:0;box-sizing:border-box}html{font-family:-system-ui,-apple-system,BlinkMacSystemFont,helvetica neue,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;font-size:17px;font-weight:400;line-height:2;scroll-behavior:smooth;transition:color .3s,background-color .3s;word-wrap:break-word;-webkit-text-size-adjust:100%}html[data-theme=dark] img{opacity:.7;transition:opacity .5s ease-in-out}html{background:#fff;--site-name-color:#3f4b67;--color-primary:#005ab4;--link-underline:#90cff9;--blockquote-border-left:6px solid #0051a2;--block-background-color:#f7faff;--pag-background-color:rgba(0, 122, 255, .5);--box-shadow:1px 1px 2px rgba(0,0,0,.125);--title-color:#303033;--body-color:#444}html[data-theme=dark]{background:#22272e;--site-name-color:#539bf5;--color-primary:#99bde1;--link-underline:#0051a2;--blockquote-border-left:6px solid #5176bf;--block-background-color:#002c58;--box-shadow:none;--title-color:#dadada;--body-color:#e9e9e9}h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1;margin-block-start:0;margin-block-end:0}h1{font-size:26px}h2{font-size:24px}h3{font-size:22px}section>h1{color:var(--title-color)}a{color:var(--color-primary);text-decoration-thickness:.2rem;text-decoration-color:var(--link-underline)}a:hover{text-decoration-color:var(--color-primary)}.wrapper{display:grid;grid-template-columns:1fr min(65ch,calc(100% - 64px))1fr;grid-column-gap:32px}.wrapper>section{grid-column:2}.header{margin:20px 0;display:-webkit-flex;display:flex;flex-wrap:wrap;text-align:initial;padding:15px 0;border-bottom:1px solid #f0f0f0;justify-content:space-between;align-items:baseline}.site-name{display:inline-block;font-weight:600;font-size:21px;color:var(--site-name-color)}.site-logo{height:38px;border-radius:3px;vertical-align:middle;margin-right:8px}.nav-item{display:inline-block;font-size:18px;padding:4px 6px;margin:2px 3px 2px 0;line-height:2;white-space:nowrap}.data-theme-btn{border:none;vertical-align:middle;transition:.3s;background-color:Transparent;background-repeat:no-repeat;cursor:pointer;overflow:hidden;outline:none;padding-right:0;padding-left:0}html[data-theme=light] .light-hidden{display:none}html[data-theme=dark] .dark-hidden{display:none}.note-list{margin:0;padding:0;list-style:none}.note-list .item{position:relative;width:100%;margin-top:25px}.note-list .item:last-child{border:0!important}.note-title{font-size:19px;font-weight:700}.note-date,.note-content{font-size:15px;text-decoration:none;color:var(--body-color)}.note-content,.note-imgs,.note-labels{margin-top:4px;text-align:justify;text-justify:inter-word}.article-tag,.article-category{display:inline-block;font-size:15px;line-height:1;padding:4px 6px;margin:2px 3px 2px 0;white-space:nowrap;border-radius:3px}.article-category{color:#3a8c42}.article-category .hashtag,.article-tag .hashtag{font-weight:700;opacity:.5}.footer{font-size:13px;margin:40px 0 20px}.footer-wrap{text-align:center;color:var(--body-color)}.tag-cloud{margin:2em 0 3em;text-align:center}.tag-cloud-tags{display:inline-block;position:relative;margin:5px;word-wrap:break-word;overflow-wrap:break-word}.archive-year{font-size:20px;font-weight:800;color:var(--title-color);margin-top:20px;margin-bottom:10px}.archive-list{list-style:none}.archive-date{flex:0 0 100px;color:var(--title-color)}.archive-text{color:var(--body-color)}ul.archive-list li{display:flex}.article-containter{margin-bottom:20px}.article-header{margin:20px 0}.article-date{font-size:14px;margin-top:20px;color:#838387}.lastmod-date{font-size:14px;color:#838387}.markdown-body{color:var(--body-color)}.markdown-body p{margin-top:0;margin-bottom:20px}.pagination{display:block;text-align:center;margin:20px 0 40px}.pagination ul{display:inline-block;list-style:none;font-weight:600;padding:0;margin:0}.pagination ul li{display:inline}.pagination ul li a{color:var(--color-primary);float:left;padding:8px 16px;text-decoration:none}.pagination ul li a:hover:not(.active){background-color:var(--pag-background-color)}.pagination ul li a.active{background-color:var(--color-primary);color:var(--block-background-color)}</style></head><body><div class=wrapper><section id=header class=header><div class=header-left><a href=/><p class=site-name>uzak.github.io</p></a></div><div class=header-right><div class=nav><a class=nav-item href=/post/>Archives</a><a class=nav-item href=/tags/>Tags</a><a class=nav-item href=/etymolog/>Etymolog</a><a class=nav-item href=/about/>About</a><script>const htmlEl=document.getElementsByTagName("html")[0],currentTheme=localStorage.getItem("theme")?localStorage.getItem("theme"):null;currentTheme&&(htmlEl.dataset.theme=currentTheme);const toggleTheme=e=>{htmlEl.dataset.theme=e,localStorage.setItem("theme",e)};localStorage.getItem("theme")==="dark"||window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?htmlEl.dataset.theme="dark":toggleTheme("light")</script>
+<button class="data-theme-btn dark-hidden" onclick='toggleTheme("dark")'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3f4b67" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+<button class="data-theme-btn light-hidden" onclick='toggleTheme("light")'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e9e9e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.2 4.2l1.4 1.4m12.8 12.8l1.4 1.4M1 12h2m18 0h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></button></div></div></section><section id=content><div class=article-containter><section class=article-header><h1>Kubernetes</h1><p class=article-date>2021-02-22</p></section><section class=article-labels><a class="article-tag li" href=/tags/it/><span class=hashtag>#</span>it</a></section><article class=markdown-body><p><a href=https://www.golinuxcloud.com/kubernetes-tutorial/ target=_blank rel=noopener>source</a></p><h1 id=install-and-deploy>Install and Deploy</h1><ul><li>install kubectl</li><li>install minikube</li></ul><p>Commands:</p><pre><code>minikube start  
+minikube status
+
+kubectl get node
+kubectl get pods
+
+kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+kubectl expose deployment hello-minikube --type=NodePort --port=8080
+minikube service hello-minikube --url
+curl http://192.168.49.2:31223
+kubectl delete deployments.apps hello-minikube 
+
+minikube pause
+minikube unpause
+minikube stop
+</code></pre><h1 id=namespaces>Namespaces</h1><ul><li>for organization and resource separation</li><li><code>kubectl --namespace=mystuff</code> or <code>kubectl -n=mystuff</code></li><li><code>kubectl --all-namespaces</code></li></ul><p>Default namespaces for new clusters:</p><pre><code>$ kubectl get ns  
+NAME              STATUS   AGE
+default           Active   13m      # k8s resources are crated here by default
+kube-node-lease   Active   13m      # storage for node lease information
+kube-public       Active   13m      # world-readable
+kube-system       Active   13m      # infrastructure pods
+</code></pre><p>Commands:</p><pre><code>kubectl get all --all-namespaces    # all objects in all ns
+kubectl get pods -n default         # all pods in default ns
+kubectl api-resources | grep -iE 'namespace|KIND'  # get res name: Namespace
+kubectl explain Namespace | head -n 2              # get its version
+
+# create app-ns.yml
+kubectl create -f app-ns.yml 
+kubectl create ns dev
+kubectl get ns
+kubectl describe ns dev
+kubectl get ns default -o yaml
+
+# create nginx-app.yml
+kubectl create -f nginx-app.yml
+
+kubectl get pods -n default nginx-app   # not found
+kubectl get pods -n app nginx-app       # found
+
+kubectl delete ns dev                       # delete everything in a ns incl. 
+kubectl delete pods -n app --all            # keep namespace, delete all pods
+kubectl delete all -n app --all             # delete all
+</code></pre><h1 id=pods>Pods</h1><ul><li>declarative way: uses yaml files, like nginx-app.yml above</li><li>imperative way: uses <code>kubectl</code></li><li>a pod contains containers. Usually one. If a pod has more than one containers, they are always executed on a single worker, never span to multiple workers.</li></ul><p>Examples:</p><pre><code>kubectl create -f nginx.yml
+kubectl get pods -o wide
+kubectl describe pod nginx          # shows the node
+docker ps                           # get status on the node
+kubectl exec -it nginx -c nginx -- /bin/bash    
+
+kubectl port-forward nginx 8000:80 
+</code></pre><h2 id=multi-container-pods-use-cases>multi-container Pods use-cases</h2><ul><li><strong>sidecar container</strong>: enhances primary app, e.g. logging. Both are closely related.</li><li>ambassador container: a container represents a primary container for outside e.g. proxy</li><li>adapter container: to adapt/normalize traffic for other apps inside</li></ul><p>Examples:</p><pre><code># create create-sidecar.yml
+kubectl create -f create-sidecar.yml 
+kubectl get pods -o wide
+
+$ kubectl exec -it sidecar-pod -c sidecar -- /bin/bash
+[root@sidecar-pod /]# curl http://localhost/date.txt
+Sun Feb 21 08:53:05 UTC 2021
+Sun Feb 21 08:53:15 UTC 2021
+Sun Feb 21 08:53:25 UTC 2021
+Sun Feb 21 08:53:35 UTC 2021
+Sun Feb 21 08:53:45 UTC 2021
+Sun Feb 21 08:53:55 UTC 2021
+Sun Feb 21 08:54:05 UTC 2021
+Sun Feb 21 08:54:15 UTC 2021
+Sun Feb 21 08:54:25 UTC 2021
+Sun Feb 21 08:54:35 UTC 2021
+Sun Feb 21 08:54:45 UTC 2021
+[root@sidecar-pod /]# 
+
+kubectl logs sidecar-pod sidecar    # show logs
+kubectl delete pod nginx
+</code></pre><h2 id=jobs>Jobs</h2><pre><code>completitions=m         # stop after `m`
+parallelism=n           # `n` jobs are started
+</code></pre><p>Examples:</p><pre><code>kubectl explain Job
+
+# create k8s/pod-simple-job.yml
+kubectl create -f k8s/pod-simple-job.yml
+kubectl get pods        # each execution will add one more pod
+kubectl get jobs        
+kubectl delete job pod-simple-job
+</code></pre><p><code>.spec.activeDeadlineSeconds</code> to set an execution deadline no matter how many pods are created.</p><h1 id=init-containers>Init containers</h1><ul><li>run in the same pod as main container</li><li>to complete a task before the regular container is started</li><li>if a pod restarts, all init containers are executed again</li></ul><p>Example:</p><pre><code>$ cat pod-init-container.yml
+...
+
+$ k create -f pod-init-container.yml 
+
+$ k get pods
+NAME                       READY   STATUS     RESTARTS   AGE
+init-container-example-1   0/1     Init:0/1   0          58s
+</code></pre><h1 id=rolling-updates>Rolling Updates</h1><ul><li>A <code>Replica Set</code> manages pods. A <code>Deployment</code> manages a <code>Replica Set</code>.</li><li>property: <code>minReadySeconds</code> how long the pod should be ready before it is treated as available. Until it is available, the rollout will not continue.</li><li><code>maxSurge</code> - max number of pods that can be created over the desired number of <code>ReplicaSet</code> before updating</li><li><code>maxUnavailable</code> - max number of pods that can be unavailable during rollout</li></ul><p>Examples:</p><pre><code>k create deployment nginx-deploy --image=nginx --dry-run=client -o yaml &gt; nginx-deploy.yml
+# adapt nginx-deploy.yml
+
+k create -f nginx-deploy.yml
+k get deployments
+k get rs            # replica set
+
+# rolling deployment example
+k create -f rolling-nginx.yml
+k get pods
+k get deployments
+k get event --field-selector involvedObject.name=rolling-nginx-74cf96d8bb-bn9jq     # filter for pecific pod
+
+k rollout history deployment rolling-nginx  # show rollout history (no record)
+
+k delete deployments.apps rolling-nginx 
+
+k create -f rolling-nginx.yml --record                          # add change cause to history
+k set image deployment rolling-nginx nginx=nginx:1.15 --record  # changes will be recorded
+
+kubectl set image deployment rolling-nginx nginx=nginx:1.15 --record
+
+k rollout status deployment rolling-nginx                       # status of deployment
+
+# pause and resume deployment
+$ k set image deployment rolling-nginx nginx=nginx:1.16 --record
+$ k rollout pause deployment rolling-nginx
+$ k rollout status deployment rolling-nginx
+Waiting for deployment &quot;rolling-nginx&quot; rollout to finish: 2 out of 4 new replicas have been updated...
+$ k get pods -l app=rolling-nginx
+NAME                             READY   STATUS              RESTARTS   AGE
+rolling-nginx-74cf96d8bb-4pbs2   1/1     Running             0          88s
+rolling-nginx-74cf96d8bb-8t2gf   1/1     Running             0          90s
+rolling-nginx-74cf96d8bb-jklcv   1/1     Running             0          90s
+rolling-nginx-765c4fc67d-dfqgs   0/1     ContainerCreating   0          20s
+rolling-nginx-765c4fc67d-nm5sr   0/1     ContainerCreating   0          20s
+$ kubectl rollout resume deployment rolling-nginx
+
+# rollback
+$ k rollout undo deployment rolling-nginx --to-revision=2
+</code></pre><h1 id=labels>Labels</h1><ul><li><strong>key: value</strong> pairs for categorization.</li><li>Annotations are labels that won&rsquo;t need to be queried against.</li></ul><p>Selectors:</p><pre><code>tier = frontend
+tier != frontend
+tier != frontend, game = super-shooter-2
+
+environment in (production, qa)
+tier notin (frontend, backend)
+partition  # all pods that have partition label - no mater what value
+
+env in (prod, qa), tier notin (fe, be), partition   # joining
+</code></pre><p>kubectl examples:</p><pre><code># Assign labels while creating new objects
+k create deployment label-nginx-example --image=nginx --dry-run=client -o yaml &gt; label-nginx-example.yml
+# edit the file
+k create -f label-nginx-example.yml 
+k get deployments --show-labels
+k get pods --show-labels 
+
+# Assign new label to existing pod runtime as patch
+k patch deployment label-nginx-example --patch &quot;$(cat update-label.yml)&quot;
+k describe deployment label-nginx-example
+k get pods --show-labels 
+
+# Assign a new label to existing deployments using kubectl
+k create -f nginx-deploy.yml 
+k get deployments.apps --show-labels 
+k label deployment nginx-deploy tier=backend
+k get deployments.apps --show-labels    # `tier` added for nginx-deploy
+
+# List resource objects
+k get pods --selector 'app=prod'
+k get pods --selector 'app=dev' 
+k get deployment --selector &quot;app in (prod, dev)&quot;
+
+# Removing labels
+k label deployment nginx-deploy type-
+k get deployments.apps --show-labels             
+</code></pre><h1 id=replication-controller-and-replica-sets>Replication Controller and Replica Sets</h1><ul><li>A replication controller is a k8s resource that ensures that its pods are always running.</li><li><strong>It ensures that exact number of pods always matches its label selector.</strong></li><li>If a Node is out of resources for creating new pods, it will automatically create new one on another available cluster node.</li></ul><p>Examples:</p><pre><code># create replication-controller.yml
+kubectl api-resources | grep -iE 'KIND|replication'
+kubectl explain ReplicationController | head -n2    # find out version
+kubectl create -f replication-controller.yml 
+kubectl get pods            # three new pods
+kubectl get rc              # status and list of available rc
+
+k delete pod myapp-rc-mgztn
+k get pods                  # one is new
+k get pods -o wide
+k describe rc myapp-rc
+
+# changing the pod template will affect only newly created pods
+k edit rc myapp-rc      # reduce replicas to 2
+k get pods              # one is terminating
+k get rc                # display status
+
+k scale rc myapp-rc --replicas=6        # horizontal scaling
+
+k delete rc myapp-rc --cascade=false    # to keep its pods running
+</code></pre><h2 id=replicasets>ReplicaSets</h2><ul><li>ReplicaSet deprecates ReplicationController. It has more expressive pod selectors. It can match pods lacking a certain selector or just having a key regardless of the value.</li><li>Pods aren&rsquo;t owned by RC/RS and can be moved between them if necessary.</li></ul><p>Examples:</p><pre><code>k api-resources | grep -iE 'KIND|replica'
+k explain ReplicaSet | head -n 2
+
+k apply -f replica-set.yml      # to manage orphaned pods `app=myapp`
+k get rs
+k describe rs myapp-replicaset
+
+k delete rs myapp-replicaset
+k apply -f replica-set2.yml 
+kubectl scale rs myapp-replicaset --replicas=6
+k delete rs myapp-replicaset
+</code></pre><h1 id=kubernetes-services>Kubernetes Services</h1><ul><li>A Kubernetes Service provides a single, constant (pod are ephemeral) entry point to a group of pods providing the same service.</li><li>The kube-proxy agent on the nodes watches the k8s API for new services and endpoints.</li></ul><h1 id=daemonsets>DaemonSets</h1><ul><li>A DaemonSet ensures that a Pod is running across a set of nodes.</li><li>Deploy system daemons like log collectors and monitoring agents.</li></ul><p>Examples:</p><pre><code>kubectl api-resources | grep -iE 'KIND|daemonse'
+kubectl explain DaemonSet | head -n 2
+
+k create -f fluentd-daemonset.yml
+k get ds            # inspect daemonsets
+k get pods -o wide
+
+# deploy on specific nodes only (label `sdd: true`)
+k create -f nginx-daemonset.yml 
+k get ds                        # desired = 0
+k get nodes --show-labels
+k label nodes minikube ssd=true
+k get ds                        # desired = 1
+k label nodes minikube ssd-     # remove label
+
+k get ds
+k delete ds nginx-fast-storage fluentd   # use --cascade to keep pods
+</code></pre><h1 id=scheduling-jobs>Scheduling Jobs</h1><pre><code>kubectl api-resources | grep -iE 'KIND|cron'
+kubectl explain cronjob.spec
+kubectl explain cronjob.spec.schedule   # alternative
+
+# create pod-cronjob.yml
+k create -f pod-cronjob.yml
+
+k get cronjobs.batch        # list avail. jobs
+k get jobs --watch          # monitor status
+k get pods                  # show completed pods
+
+k delete cronjobs.batch pod-cronjob 
+</code></pre><h1 id=volumes>Volumes</h1><ul><li>pods have isolated FS.</li><li>Storage volumes aren&rsquo;t top level resources like pods, but are defined a s components of the pod.</li><li>Aren&rsquo;t standalone kubernetes objects and cannot be created or deleted on their own.</li><li>Volumes live with a Pod across a container life cycle.</li></ul><p>Types of volumes (Volume Type: Storage Provider):</p><ul><li><strong>emptyDir</strong>: Localhost. Simplest volume type. Will be ereased, when the Pod is removed.</li><li>hostPath: Localhost</li><li>glusterfs: GlusterFS cluster</li><li>downwardAPI: Kubernets Pod Information</li><li><strong>nfs</strong>: NFS server</li><li>awsElasticBlockStore: AWS Elastic Block Store</li><li>gcePersistentDsik: Google Compute Engine persistent disk</li><li>azureDisk: Azure disk storage</li><li>projected: Kubernetes resources; currently: secret, downwardAPI and configMap</li><li>secret: K8s secret resource</li><li>vSphereVolume: vSphere VMDK volume</li><li>gitRepo: git repository (volume content will be deleted when Pod is removed)</li></ul><p>Once you define volumes in <code>volumes</code> section, you can start using them in the <code>volumeMounts</code> section.</p><p>Examples:</p><pre><code>k create -f shared-volume-emptyDir.yml
+k get pods shared-volume-emptydir 
+k get pod shared-volume-emptydir -o json
+
+k exec -it shared-volume-emptydir -c alpine1 -- touch /alpine1/someFile.txt
+k exec -it shared-volume-emptydir -c alpine2 -- ls -l /alpine2
+</code></pre><p>To create the dir in memory using tmpfs:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>volumes:
+</span></span><span style=display:flex><span>- name: data
+</span></span><span style=display:flex><span>- emptydir:
+</span></span><span style=display:flex><span>    medium: Memory
+</span></span></code></pre></div><p>This gives instead:</p><pre><code>$ k exec -it shared-volume-memory -c alpine2 -- df -h /alpine2
+Filesystem                Size      Used Available Use% Mounted on
+tmpfs                     1.4G         0      1.4G   0% /alpine2
+</code></pre><p>Instead of original:</p><pre><code>$ k exec -it shared-volume-memory -c alpine2 -- df -h /alpine2
+/dev/mapper/rhel-root
+                     10.3G      7.9G      1.8G  81% /alpine2
+</code></pre><p><code>hostPath</code> is the first type of persistent storage. Its contents are stored on a node&rsquo;s FS. It is not a good idea to use <code>hostPath</code> for regular poth, because it makes the app sensitive to pod scheduling. Examples:</p><pre><code>k create -f shared-volume-hostpath.yml 
+k get pods shared-volume-hostpath -o wide   # get the node IP
+k exec -it shared-volume-hostpath -c alpine1 -- touch /alpine1/someFile.txt      
+
+[root@nodeIP]# ls -l /tmp/data/
+total 0
+-rw-r--r-- 1 root root 0 Jan  7 15:26 someFile.txt
+</code></pre><h2 id=nfs>NFS</h2><p>First make sure that <code>nfs-utils</code> package is installed on k8s minions. Check <code>/etc/exports</code> and make sure it can be mounted using <code>nfs -t nfs server:share mountpoint</code>. Examples:</p><p>kubectl create -f shared-volume-nfs.yml
+kubectl get pods shared-volume-nfs -o wide # wait for <code>Running</code> state
+kubectl describe pod <pod-name># check mounting status</p><p>K8s actually mounts <code>server:share</code> into <code>/var/lib/kubelet/pods/&lt;id>/volumes/kubernetes.io-nfs/nfs</code> and then mounts it into the container as the destination <code>/&lt;mount-point></code>.</p><h2 id=persistent-volumes>Persistent Volumes</h2><p>Capacity:</p><ul><li>K (kilobyte: 1000 bytes)</li><li>Ki (kibibyte: 1024 bytes)</li></ul><p>Volume mode is either <code>Filesystem</code> (default) or <code>Block</code>.</p><p>Access Modes:</p><ul><li>RWO - <strong>ReadWriteOnce</strong> - a single node can mount for RW</li><li>ROX - <strong>ReadOnlyMany</strong></li><li>RWX - <strong>ReadWriteMany</strong></li></ul><p>Storage is mounted to nodes, so even with RWO, multiple pods on the same node can mount the volume and write to it.</p><p>Reclaim Policy determines, what happens when a persistent volume claim is deleted:</p><ul><li><strong>Retain</strong>: volume will need to be reclaimed manualy</li><li><strong>Delete</strong>: associated storage asset, such as AWS EBS, AzureDisk, OpenStack Cinder volume etc. is deleted.</li><li><strong>Recycle</strong>: delete content only. Allows the volume to be claimed again.</li></ul><p>ATM Only NFS and <code>HostPath</code> support recycling. AWS EBS, GCE PD, Azure Disk and Cinder volumes support deletion.</p><p>Example:</p><pre><code>k api-resources | grep -iE 'KIND|persistent'
+k explain PersistentVolume | head -n 2
+
+k create - f persistent-volume.yml
+
+# kubectl get pv
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   REASON   AGE
+nfs-share-pv   1Gi        ROX,RWX        Recycle          Available                                   18s
+</code></pre><p><code>PersistentVolumes</code> don&rsquo;t belong to any namespace. They are cluster-level resources like nodes.</p><h3 id=persistentvolumeclaim>PersistentVolumeClaim</h3><p>Claiming a <code>PersistentVolume</code> is completely separate process from creating a pod.</p><p>Example:</p><pre><code>k explain PersistentVolumeClaim | head -n 2
+
+[root@controller ~]# kubectl get pvc
+NAME            STATUS   VOLUME         CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+nfs-share-pvc   Bound    nfs-share-pv   1Gi        ROX,RWX   
+
+[root@controller ~]# kubectl get pv
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                   STORAGECLASS   REASON   AGE
+nfs-share-pv   1Gi        ROX,RWX        Recycle          Bound    default/nfs-share-pvc                           7m26s
+
+[root@controller ~]# kubectl describe pvc nfs-share-pvc
+Name:          nfs-share-pvc
+Namespace:     default
+StorageClass:
+Status:        Bound
+Volume:        nfs-share-pv
+Labels:        &lt;none&gt;
+Annotations:   pv.kubernetes.io/bind-completed: yes
+            pv.kubernetes.io/bound-by-controller: yes
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      1Gi
+Access Modes:  ROX,RWX
+VolumeMode:    Filesystem
+Mounted By:    &lt;none&gt;
+Events:        &lt;none&gt;
+</code></pre><p>PV is now yours to use. Nobody else can claim it until you release it.</p><h4 id=using-a-persistentvolumeclaim-in-a-pod>Using a PersistentVolumeClaim in a Pod</h4><pre><code># kubectl create -f nfs-share-pod.yml
+# kubectl get pods pod-nfs-share      # make sure pod is Running
+# kubectl exec -it pod-nfs-share -- df -h /var/www
+Filesystem                Size  Used Avail Use% Mounted on
+192.168.43.48:/nfs_share   14G  8.6G  4.1G  68% /var/www
+</code></pre><p>Recycle Persistent Volumes:</p><pre><code>k delete pod pod-nfs-share
+k delete pvc nfs-share-pvc
+
+[root@controller ~]# kubectl get pv     # Status - Released
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS     CLAIM                         STORAGECLASS    REASON   AGE
+nfs-share-pv   1Gi        ROX,RWX        Recycle          Released   default/nfs-share-pvc                                  80m
+</code></pre><p>If we would have used <code>Retain</code> <code>ReclaimPolicy</code> then we would have to manually clean up the data in order to bind the <code>PersistentVolume</code> again.</p><h4 id=local-persistent-volumes-with-storageclass>Local Persistent Volumes with StorageClass</h4><pre><code>k create -f storage-class.yml 
+k get sc    # check status
+
+k create -f local-pv-sc.yml
+k get pv
+k describe pv local-pv
+
+k create -f local-pvc.yml
+k get pvc       # STATUS = Pending
+k describe pvc local-storage-claim
+
+k create -f local-pv-pod.yml
+k get pods local-pod        # make sure it is `Running`
+k get pvc                   # STATUS=Bound
+k get pv                    # STATUS=Bound
+</code></pre><h2 id=configmaps>ConfigMaps</h2><ul><li>Env-specfic data is provided to the application by the env it is deployed into.</li><li>ConfigMap defines application related data.</li></ul><p>Examples:</p><pre><code>kubectl create configmap my-config
+    --from-file=foo.json            # single file
+    --from-file=bar=foo.json        # single file stored under custom key
+    --from-file=config-opts/        # dir
+    --from-literal=foo=bar          # literal value
+
+kubectl create cm nginx-cm --from-file nginx-custom-config.conf
+k get cm
+
+k create -f nginx-cm.yml
+k exec -it nginx-cm -- cat /etc/nginx/conf.d/default.conf
+
+# create CM using CLI args
+k create cm myconfig --from-literal=color=red
+k get cm
+
+k create -f test-cm-pod.yml
+k exec -it test-pod -- env | grep COLOR
+</code></pre><h2 id=kubernetes-secrets>Kubernetes Secrets</h2><ul><li>Indented to store small amount (1 MB for a secret) of sensitive data.</li><li>A secret is base64 encoded, so we cannot treat it as secure.</li><li>K8s ensures that Secrets are passed only to the nodes that are running Pods that need the respective secrets.</li></ul><p>Examples:</p><pre><code>k create secret generic test-secret  --from-literal=user=deepak --from-literal=password=test1234
+k get secrets test-secret -o yaml
+echo dGVzdDEyMzQ= | base64 --decode
+
+k create -f secret-busybox.yml
+k exec -it secret-busybox -- /bin/sh
+    # cat data/password
+    # cat data/user
+</code></pre><p>Defining secrets from a file:</p><pre><code>k create secret generic secret-tls --from=file=server.crt --from-file=server.key
+k describe secret secret-tls
+
+k create -f secret-ls-pod.yml
+k get pods secret-tls-pod
+k exec -it secret-ls-pod -- /bin/sh
+    # ls -l /tls
+</code></pre><h1 id=stateful-sets>Stateful sets</h1><ul><li>Available from k8s 1.5 as a bond between the Pod and the Persistent Volume.</li><li><strong>Pods names consist of name-I where I is zero based index.</strong></li><li>Replaced Pods get the same name and hostname as the Pod that has been
+replaced.</li><li>Limitations:<ul><li>storage for a given Pod must be provisioned by a PersistentVolume
+Provisioner</li><li>deleting and/or scaling will not delete associated volumes.</li><li>Headless Service is required to be responsible for the network identity
+of the Pods. You&rsquo;re responsible for creating this Service.</li><li>No guarantee on termination of pods on deletion. To achieve ordered and
+graceful termination of the pods, scale the StatefulSet down to 0 prior
+deletion.</li><li>When using Rolling Updates with the default Pod Management Policy
+(OrderedReady), it&rsquo;s possible to get into a broken state that requires
+manual intervention to repair.</li></ul></li></ul><p>Examples:</p><pre><code>[root@controller ~]# exportfs -v
+/share1         (sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,no_root_squash,no_all_squash)
+
+k create -f nfs-pv-share1.yml -f nfs-pv-share2.yml -f nfs-pv-share3.yml
+k api-resources | grep -iE 'KIND|stateful'
+k explain StatefulSet | head -n 2
+
+k create -f nfs-stateful.yml
+k get statefulsets      # READY = 0/3
+k get pvc               # STATUS = Bound
+k get pv
+k get pods              # no fancy names
+k get pv                # all claimed
+
+k get pods -o wide
+k exec -it nginx-statefulset-2 -c nginx-statefulset -- touch /var/www/pod3-file
+[root@controller ~]# ls -l /share3/
+total 0
+-rw-r--r-- 1 root root 0 Jan  9 16:44 pod3-file
+
+k delete pod nginx-statefulset-2
+k get pods -o wide      # new pod is being created with same IP and nodename
+kubectl exec -it nginx-statefulset-2 -c nginx-statefulset -- ls -l /var/www/ # `pod3-file` is there
+</code></pre><h1 id=k8s-api-server>K8s API Server</h1><ul><li>In k8s all communication between control plane and external clients (e.g. kubectl) are translated into REST API calls handled by the API server. The API server is the only component that talks directly with distributed storage etcd.</li><li>API server responsibilities is to provide k8s API and to proxy cluster components (e.g. dashboard), stream logs, service ports or serve kubectl exec sessions.</li><li>Master: etcd &lt;-> API Server (Control Manager + Scheduler)</li><li>Worker: kubelet, native app</li><li>The API server is stateless and designed to scale horizontally. For HA it is recommended to have 3+ instances.</li></ul><p>Examples:</p><pre><code>k get pods -n kube-system
+</code></pre><p><strong>K8s HTTP Request flow</strong>: client (kubectl) + Service Account -> authentification -> authorization -> admission control -> etcd.</p><p>After the request is authenticated and authorized, it goes to the admission control modules. K8s comes with predefined admission controllers, but you can define custom ones as well.</p><h2 id=service-account--roles>Service Account + Roles</h2><pre><code>k apply -f service-account.yml -f cluster-role.yml -f cluster-role-binding.yml
+
+k get pods --all-namespaces
+k describe pod -n kube-system kube-apiserver-minikube
+
+# forbidden - returned by authorization plugin
+k --as=system:serviceaccount:default:read-only-user get pods --all-namespaces
+k --as=system:serviceaccount:default:read-only-user describe pod -n kube-apiserver-minikube
+
+# inquiry 
+k auth can-i get pods --all-namespaces  # yes
+k --as=system:serviceaccount:default:read-only-user auth can-i get pods --all-namespaces
+
+k delete serviceaccount read-only-user
+k delete clusterrole read-only-user-cluster-role
+</code></pre><p>HTTP Interface of the API Server:</p><ul><li>POST: k create -f</li><li>PUT: k apply -f</li><li>GET: k get; k describe</li><li>PATCH: k set image deployment/kuberserve nginx=nginx1.9.1</li><li>DELETE: k delete</li></ul><p>API resources and versions:</p><pre><code>k api-resources
+k api-versions
+
+k explain pod  # for any resource kind
+</code></pre><p>K8s API via CLI:</p><pre><code>k get --raw /       # get all API resources
+k get --raw /api/v1/namespaces  | jq
+k get --raw /api/v1/namespaces/default  | jq
+
+# access using curl
+k proxy --port=9000
+curl http://127.0.0.1:9000/apis | less
+curl http://127.0.0.1:9000/apis/apps/v1/namespaces/default/deployments
+</code></pre><h2 id=containers-security-context>Container&rsquo;s Security Context</h2><ul><li>Each pod gets its own IP and port space. Each pod has its own process tree, its own IPC namespace, allowing only processes in the same pod to communicate through IPC.</li><li>Here we learn to allow pods to access resources of the node they&rsquo;re running on.</li></ul><p>Example:</p><pre><code>k create -f pod-with-host-network.yml
+k get pods
+k exec pod-with-host-network -- ifconfig
+
+# Allow pods to bind a port in the node's default namespace 
+# using `ports.hostPort`
+# (only one instance of the pod can be schedules to each node)
+k create -f nginx-lab.yml
+curl 127.0.0.1:9000     # XXX doesn't work (because of minikube?)
+
+# Using node's PID and IPC namespaces
+k create -f pod-with-host-pid-and-ipc.yml
+k exec pod-with-host-pid-and-ipc -- ps aux  # includes container process
+</code></pre><h2 id=configure-containers-security-context>Configure container&rsquo;s security context</h2><pre><code># run with given user
+$ k run pod-with-defaults --image alpine --restart Never -- /bin/sleep 99999
+$ k exec pod-with-defaults -- id
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+$ k create -f pod-as-user-guest.yml 
+$ k exec pod-as-user-guest -- id
+uid=65534(nobody) gid=65534(nobody)
+
+# run as non-root
+k create -f pod-run-as-non-root.yml
+k get po pod-run-as-non-root        # STATUS=CreateContainerConfigError
+k describe pods pod-run-as-non-root # Error: container has runAsNonRoot and image will run as root
+
+# run in privileged mode (to get full access to node's kernel)
+k create -f pod-privileged.yml
+k exec -it pod-with-defaults -- ls /dev     # 16
+k exec -it pod-privileged -- ls /dev     # 241
+</code></pre><h2 id=individual-capabilities>Individual Capabilities</h2><pre><code># add individual capabilities to a container
+k exec -it pod-with-defaults -- date +%T -s &quot;12:00:00&quot;      # date: can't set date: Operation not permitted
+k create -f pod-add-settime-capability.yml
+k exec -it pod-add-settime-capability -- date +%T -s &quot;12:00:00&quot;; date
+
+# drop individual capabilities from a container
+k create -f pod-drop-chown-capability.yml 
+k exec pod-drop-chown-capability -- chown guest /tmp    # operation not permitted
+
+# ro FS
+k create -f pod-with-readonly-filesystem.yml
+k exec -it pod-with-readonly-filesystem -- touch /new-file  # exit 1 - Read-only file system
+
+k exec -it pod-with-readonly-filesystem -- touch /volume/newfile    # works
+k exec -it pod-with-readonly-filesystem -- ls -la /volume/newfile
+</code></pre><h1 id=authentication>Authentication</h1><ul><li>Client certificates (most common) using X509 CA. <code>--client-ca-file=file_path</code> server option.</li><li>Static tokens: ``-token-auth-file=<code>. Tokens persist indefinitely and the API server needs to be restarted to update the tokens. Username and password are passed in the request header: </code>Authentication: Basic base64(user:password)`</li><li>Bootstrap tokens: are dynamically managed and stored as secrets in <code>kube-system</code>. <code>--enable-bootstrap-token-auth</code> option for the CLI server.</li><li>Service account tokens: <code>--service-acount-key-file</code></li><li>Authentication proxy: <code>--requestheader-{username-headers,group-headers,extra-headers-prefix}</code> arguments.</li><li>Webhook tokens: <code>authorization-webhook-config-file=</code></li></ul><p><code>kubectl</code> uses certificates stores in <code>~/.kube/config</code> or <code>/etc/kubernetes/admin.conf</code>.</p><p>Example using client certificates:</p><pre><code>[root@controller ~]# kubectl config view | grep server
+server: https://192.168.43.48:6443
+
+[root@controller ~]# curl https://192.168.43.48:6443
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+
+[root@controller ~]# export client=$(grep client-cert /etc/kubernetes/admin.conf | cut -d &quot; &quot; -f 6)
+[root@controller ~]# export key=$(grep client-key-data /etc/kubernetes/admin.conf | cut -d &quot; &quot; -f 6)
+[root@controller ~]# export auth=$(grep certificate-authority-data /etc/kubernetes/admin.conf | cut -d &quot; &quot; -f 6)
+
+[root@controller ~]# echo $client | base64 -d - &gt; client.pem
+[root@controller ~]# echo $key | base64 -d - &gt; client-key.pem
+[root@controller ~]# echo $auth | base64 -d - &gt; ca.pem
+
+[root@controller ~]# curl --cert client.pem --key client-key.pem --cacert ca.pem  https://192.168.43.48:6443   # works 
+</code></pre><h1 id=authorization>Authorization</h1><ul><li>Node. Enabled by default.</li><li>ABAC: requests are validating policies against the attributes of the request. <code>--authorization-policy-file=</code> and <code>--authorization-mode=ABAC</code> options.</li><li>RBAC. To enable start the API server with <code>--authorization-mode=RBAC</code>.</li><li>Webhooks (uses remote API server to check for permissions). Option <code>--authorization-webhook-config-file=</code>.</li></ul><h2 id=rbac>RBAC</h2><p>kubeconfig:</p><ul><li>users: username and authentication mechanism</li><li>clusters: all data necessary to connect to the cluster</li><li>contexts: association between users and clusters</li></ul><p>Create user example:</p><pre><code># create linux user
+useradd -G nogroup user1
+passwd user1
+
+# create certs
+openssl genrsa -out user1.key 4096
+openssl req -new -key user1.key -out user1.csr -subj &quot;/CN=user1/O=dev&quot;  # cert. signing request
+# openssl x509 -req -in user1.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out user1.crt -days 365
+openssl x509 -req -in user1.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out user1.crt -days 365
+
+# create namespace (optional)
+k create namespace dev
+
+# update k8s config with user credentials
+k config view
+k config set-credentials user1 --client-certificate=user1.crt --client-key=user1.key
+k config view
+
+# create security context for new user
+k config set-context user1-context --cluster=kubernetes --namespace=dev --user=user1    # and set default namespace
+k config get-contexts
+k --context=user1-context get pods  # XXX failed (minikube?)
+</code></pre><p>Define new role with &ldquo;modify&rdquo; permission:</p><pre><code>kubectl api-resources | grep -iE 'role|KIND'
+k explain Role | head -n 2
+
+k create -f dev-role.yml
+k create -f user1-rolebind.yml 
+
+k --context=user1-context get pods      # XXX failed (minikube?)
+
+k -n dev describe role dev
+
+k create deployment devnginx --image=nginx --context=user1-context 
+k get pods          # not there
+k get pods -n dev   # but here
+
+# testing
+k auth can-i create pods --context=user1-context    # yes
+k auth can-i create service --context=user1-context    # no
+
+# Define role with &quot;view-only&quot; permission
+k create namespace view-only
+k create -f view-only-role.yml
+k create -f view-only-rolebinding.yml
+
+k config set-context viewonly-context --cluster=kubernetes --namespace=view-only --user=user1
+k config get-contexts
+
+k --context=viewonly-context get pods
+k -n view-only describe role view-only
+k create deployment testnginx --image=nginx --context=viewonly-context    # FORBIDDEN
+
+k auth can-i create pods --context=viewonly-context     # no
+k auth can-i get pods --context=viewonly-context        # yes
+k auth can-i get service --context=viewonly-context     # no
+</code></pre><p>Deleting Context, Role, RoleBinding:</p><pre><code>k config delete-context user1-context
+k config delete-context viewonly-context
+
+k delete role dev -n dev
+k delete rolebinding dev-role-binding -n dev
+</code></pre><h1 id=limit-resources>Limit Resources</h1><ul><li>Resource quota is applied on the namespace.</li><li>Resource limit is applied on the containers.</li><li>If creating or updating a resource violates a quota contraint -> HTTP 403.</li><li>Is quota enabled in a namespace for compute resources (cpu, mem), users must specify requests or limits for those value, otherwise quota system may reject pod creation.</li></ul><h2 id=resource-quota-types>Resource quota types</h2><p>Compute resources:</p><ul><li><strong>limits.cpu</strong>: sum of CPU limits cannot exceed this value</li><li><strong>limits.memory</strong>: sum of memory limits cannot exceed this value</li><li><strong>requests.cpu</strong>: dtto for requests</li><li><strong>requests.memory</strong>: dtto for requests</li></ul><p>Storage resource quota:</p><ul><li><strong>requests.storage</strong>: total amount of requested storage across all persistent volume claims</li><li><strong>persistentvolumeclaims</strong>: maximum number of persistent volume claims allowed in the namespace</li><li><strong>.storageclass.storage.k8s.io/requests.storage</strong>: total amount of requested storage across all persistent volume claims associated wit the storage class name</li><li><strong>.storageclass.storage.k8s.io/persistentvolumeclaims</strong>: maximum number of persistent volume claims allowed in the namespace that are associated with the storage class name</li><li><strong>requests.ephemeral-storage</strong>: total amount of requested ephemeral storage across all pods in the namespace claims</li><li><strong>limits.ephemeral-storage</strong>: total amount of limits for empeheral storage across all pods in the namespace claims.</li></ul><p>Object count quota:</p><ul><li><strong>count/.</strong> for resources from non-core groups</li><li><strong>count/</strong> for resources from the core group</li></ul><p>Some of these:</p><pre><code>count/persistentvolumeclaims
+count/services
+count/secrets
+count/configmaps
+count/replicationcontrollers
+count/deployments.apps
+count/replicasets.apps
+count/statefulsets.apps
+count/jobs.batch
+count/cronjobs.batch
+</code></pre><p>Example:</p><pre><code>k create namespace quota-example
+k apply -f ns-quota-limit.yml 
+k describe ns quota-example
+k create -f pod-nginx-lab-1.yml
+k -n quota-example scale deployment/example --replicas=5
+k -n quota-example get events
+k -n quota-example get pods     # ready
+k describe ns quota-example     # show current
+
+k delete deployments -n quota-example example
+k delete ns quota-example
+
+# count quota for pods
+k create ns pods-quota-ns
+k apply -f pod-quota-limit.yml
+k get resourcequota -n pods-quota-ns        # REQUEST pods: 0/2
+k describe ns pods-quota-ns
+
+k create -f nginx-example.yml 
+k get pods -n pods-quota-ns                 # READY 1/1
+k -n pods-quota-ns scale deployment/nginx-1 --replicas=5
+k get pods -n pods-quota-ns                 # 2
+k -n pods-quota-ns get events               # FailedCreate ...
+k describe ns pods-quota-ns                 # 2/2
+</code></pre><h2 id=limit-range>Limit Range</h2><p>If a LimitRange object exists in a namespace, then any container created without the resource requests or limits configured will inherit these values from the limit range.</p><p>Example:</p><pre><code>k create -f assign-limit-range.yml
+k get limits -n pods-quota-ns           # define-limit created $NOW
+k describe ns pods-quota-ns
+k describe limits -n pods-quota-ns define-limit     # only the limits
+
+k delete deployments.apps -n pods-quota-ns nginx-1 
+k get pods -n pods-quota-ns                 # 0
+
+k apply -f nginx-example.yml
+k describe pods -n pods-quota-ns nginx-1        # requests/limits inherited
+
+k delete limitrange -n pods-quota-ns define-limit
+</code></pre><h2 id=limiting-resources>Limiting resources</h2><pre><code>spec.containers[].resources.limits.cpu
+spec.containers[].resources.limits.memory
+spec.containers[].resources.limits.hugepages-
+spec.containers[].resources.requests.cpu
+spec.containers[].resources.requests.memory
+spec.containers[].resources.requests.hugepages-
+</code></pre><p>CPU:</p><ul><li>CPU unit is 1 core for cloud providers and 1 hyperthread for bare metal Intel processors</li><li>.5 is half a core, or 500 m (mili-cores).</li><li>Smallest addressable unit is 1m.</li></ul><p>Memory:</p><ul><li>K/M/G/T/P/E suffix - 1000**N</li><li>Ki/Mi/Gi/Ti/Pi/Ei - 1024**N</li></ul><p>Example:</p><pre><code>k create ns cpu-limit
+k get ns
+k create -f pod-resource-limit.yml
+k get pods -n cpu-limit -o wide
+k get pods -o wide
+k describe pods frontend
+
+k delete pods -n cpu-limit frontend
+</code></pre><p>If no CPU limit is specified and there is no <code>LimitRange</code> object, the countainer will use all the available CPU resources on the node it is running.</p><h1 id=expose-containers-to-external-networks>Expose containers to external networks</h1><h2 id=kubectl-port-forwarding>kubectl port forwarding</h2><pre><code>kubectl port-forward nginx 8888:80
+curl localhost:8888
+</code></pre><h2 id=kubectl-expose>kubectl expose</h2><pre><code>k create deployment nginx-lab-1 --image=nginx --replicas=3 --dry-run=client -o yaml &gt; nginx-lab-1.yml
+k create -f nginx-lab-1.yml
+k get pods | grep nginx-lab-1
+
+k expose deployment nginx-lab-1 --type=NodePort --port=80
+k get services
+# ...
+# nginx-lab-1   NodePort    10.108.128.242   &lt;none&gt;        80:31060/TCP   3s
+k describe svc nginx-lab-1  # to get more info about the service
+</code></pre><h2 id=ingress>Ingress</h2><ul><li>provide an externally visible URL to the service</li><li>load balance traffic</li><li>terminates SSL</li><li>provide name-based virtual hosting</li></ul><p>Only creating an Ingress resource has no efect. You need to select and deploy one to your cluster (many implementations, e.g. nginx or HAProxy).</p><p><a href=Examples>Examples</a>:</p><pre><code>minikube version
+kubectl get nodes
+
+minikube addons enable ingress
+k get pods -n kube-system   # ingress-nginx-*
+</code></pre><h3 id=configure-ingress-using-host>Configure Ingress using Host</h3><pre><code>k create deployment nginx --image=nginx
+k scale deployment nginx --replicas=3
+k get deployments
+
+k expose deployment nginx --type=NodePort --port=80
+k get service
+minikube service nginx --url        # or `ip a`
+# add this to /etc/hosts as host.example.com
+k create -f nginx-ingress-rule.yml
+k get ingress
+k get ing nginx-ingress -o yam
+curl http://host.example.com
+</code></pre><h3 id=configure-ingress-using-path>Configure Ingress using Path</h3><pre><code>k create deployment web2 --image=nginx
+k scale deployment web2 --replicas=3
+k expose deployment web2 --type=NodePort --port=80
+k get svc   # +web2
+minikube service web2 --url
+# vi nginx-ingress-rule.yml
+k apply -f nginx-ingress-rule.yml
+k get ing nginx-ingress -o yaml
+curl http://host.example.com/v2
+</code></pre></article></div><section class=article-navigation><p><a class=link href=/post/2021-03-01-prusa_link_architecture/><span class=li></span>Prusa Link Architecture</a></p><p><a class=link href=/post/2021-01-18-rudram/><span class=li></span>Rudram</a class="link"></p></section><script src=https://giscus.app/client.js data-repo=uzak/uzak.github.io data-repo-id=R_kgDOGkA1Jg data-category=Q&A data-category-id=DIC_kwDOGkA1Js4CO1WV data-mapping=title data-reactions-enabled=1 data-emit-metadata=0 data-theme=light data-lang=en-US crossorigin=anonymous async></script></section><script charset=utf-8>window.addEventListener("DOMContentLoaded",()=>{const e=new IntersectionObserver(e=>{e.forEach(e=>{const t=e.target.getAttribute("id");e.intersectionRatio>0?document.querySelector(`nav li a[href="#${t}"]`).parentElement.classList.add("active"):document.querySelector(`nav li a[href="#${t}"]`).parentElement.classList.remove("active")})});document.querySelectorAll("h2[id]").forEach(t=>{e.observe(t)})})</script><aside class=toc><details open><summary class=toc-title>Table of Contents</summary><nav id=TableOfContents><ul><li><a href=#multi-container-pods-use-cases>multi-container Pods use-cases</a></li><li><a href=#jobs>Jobs</a></li></ul><ul><li><a href=#replicasets>ReplicaSets</a></li></ul><ul><li><a href=#nfs>NFS</a></li><li><a href=#persistent-volumes>Persistent Volumes</a><ul><li><a href=#persistentvolumeclaim>PersistentVolumeClaim</a></li></ul></li><li><a href=#configmaps>ConfigMaps</a></li><li><a href=#kubernetes-secrets>Kubernetes Secrets</a></li></ul><ul><li><a href=#service-account--roles>Service Account + Roles</a></li><li><a href=#containers-security-context>Container&rsquo;s Security Context</a></li><li><a href=#configure-containers-security-context>Configure container&rsquo;s security context</a></li><li><a href=#individual-capabilities>Individual Capabilities</a></li></ul><ul><li><a href=#rbac>RBAC</a></li></ul><ul><li><a href=#resource-quota-types>Resource quota types</a></li><li><a href=#limit-range>Limit Range</a></li><li><a href=#limiting-resources>Limiting resources</a></li></ul><ul><li><a href=#kubectl-port-forwarding>kubectl port forwarding</a></li><li><a href=#kubectl-expose>kubectl expose</a></li><li><a href=#ingress>Ingress</a><ul><li><a href=#configure-ingress-using-host>Configure Ingress using Host</a></li><li><a href=#configure-ingress-using-path>Configure Ingress using Path</a></li></ul></li></ul></nav></details></aside><section id=footer class="footer max-body-width"><div class=footer-wrap><p class=copyright>©2022 Martin Uzak</p></div><div class=footer-wrap><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a><span> | </span><a href=/index.xml target=_blank rel=noopener>RSS</a></div><div class=footer-wrap><p class=powerby><span>Powered by </span><a href=https://gohugo.io target=_blank rel=noopener>Hugo</a><span> and the </span><a href=https://github.com/qdzhang/hugo-notepadium-mod target=_blank rel=noopener>Notepadium-mod</a></p></div><div class=footer-wrap><a onclick='window.scrollTo({top:0,behavior:"smooth"})'>^ TOP ^</a></div></section></div></body></html>
