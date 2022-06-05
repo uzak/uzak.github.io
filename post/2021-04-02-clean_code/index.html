@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.92.2" />
   <title> Clean Code | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -310,12 +310,12 @@
 <li>Comments do not make up for bad code. &ldquo;Ooh, I&rsquo;d better comment that!&rdquo; No! You&rsquo;d better clean it!</li>
 <li>Explain yourself in code:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>// Check to see if the employee is eligible for full benefits
-</span></span><span style="display:flex;"><span>if ((employee.flags &amp; HOURLY_FLAG) &amp;&amp;
-</span></span><span style="display:flex;"><span>(employee.age &gt; 65))
-</span></span></code></pre></div><p>vs.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if (employee.isEligibleForFullBenefits())
-</span></span></code></pre></div><h2 id="good-comments">Good Comments</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// Check to see if the employee is eligible for full benefits
+if ((employee.flags &amp; HOURLY_FLAG) &amp;&amp;
+(employee.age &gt; 65))
+</code></pre></div><p>vs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (employee.isEligibleForFullBenefits())
+</code></pre></div><h2 id="good-comments">Good Comments</h2>
 <ul>
 <li>Legal Comments</li>
 <li>Informative Comments</li>

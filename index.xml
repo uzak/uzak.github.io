@@ -197,7 +197,7 @@ Table of contents:
       <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://uzak.github.io/post/2021-03-01-prusa_link_architecture/</guid>
-      <description>Main Driver  parse CLI args setup logging instantiate main class and run  logging log = logging.getLogger(__name__)  # -l on CLI for setting debug levels for module, level in log_levels:  logging.getLogger(module).setLevel(level) config Uses extendparser in config.py
+      <description>Main Driver  parse CLI args setup logging instantiate main class and run  logging log = logging.getLogger(__name__) # -l on CLI for setting debug levels for module, level in log_levels: logging.getLogger(module).setLevel(level) config Uses extendparser in config.py
 MVC MainClass.__init__(config) as Controller:
  instantiate Model instantiate components in proper order bind signals start threads  There is MainClass.stop() for controlled shutdown.
 signals Uses blinker module. Usage: signal.connect(handler).</description>

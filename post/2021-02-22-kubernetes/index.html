@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.99.1" />
+  <meta name="generator" content="Hugo 0.92.2" />
   <title> Kubernetes | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -476,11 +476,11 @@ k exec -it shared-volume-emptydir -c alpine1 -- touch /alpine1/someFile.txt
 k exec -it shared-volume-emptydir -c alpine2 -- ls -l /alpine2
 </code></pre>
 <p>To create the dir in memory using tmpfs:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>volumes:
-</span></span><span style="display:flex;"><span>- name: data
-</span></span><span style="display:flex;"><span>- emptydir:
-</span></span><span style="display:flex;"><span>    medium: Memory
-</span></span></code></pre></div><p>This gives instead:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">volumes:
+- name: data
+- emptydir:
+    medium: Memory
+</code></pre></div><p>This gives instead:</p>
 <pre><code>$ k exec -it shared-volume-memory -c alpine2 -- df -h /alpine2
 Filesystem                Size      Used Available Use% Mounted on
 tmpfs                     1.4G         0      1.4G   0% /alpine2
