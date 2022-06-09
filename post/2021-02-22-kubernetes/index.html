@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.100.2" />
   <title> Kubernetes | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -77,49 +77,60 @@
     <div class="post-toc-title">Contents</div>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#multi-container-pods-use-cases">multi-container Pods use-cases</a></li>
-    <li><a href="#jobs">Jobs</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#replicasets">ReplicaSets</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#nfs">NFS</a></li>
-    <li><a href="#persistent-volumes">Persistent Volumes</a>
+    <li><a href="#install-and-deploy">Install and Deploy</a></li>
+    <li><a href="#namespaces">Namespaces</a></li>
+    <li><a href="#pods">Pods</a>
       <ul>
-        <li><a href="#persistentvolumeclaim">PersistentVolumeClaim</a></li>
+        <li><a href="#multi-container-pods-use-cases">multi-container Pods use-cases</a></li>
+        <li><a href="#jobs">Jobs</a></li>
       </ul>
     </li>
-    <li><a href="#configmaps">ConfigMaps</a></li>
-    <li><a href="#kubernetes-secrets">Kubernetes Secrets</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#service-account--roles">Service Account + Roles</a></li>
-    <li><a href="#containers-security-context">Container&rsquo;s Security Context</a></li>
-    <li><a href="#configure-containers-security-context">Configure container&rsquo;s security context</a></li>
-    <li><a href="#individual-capabilities">Individual Capabilities</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#rbac">RBAC</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#resource-quota-types">Resource quota types</a></li>
-    <li><a href="#limit-range">Limit Range</a></li>
-    <li><a href="#limiting-resources">Limiting resources</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#kubectl-port-forwarding">kubectl port forwarding</a></li>
-    <li><a href="#kubectl-expose">kubectl expose</a></li>
-    <li><a href="#ingress">Ingress</a>
+    <li><a href="#init-containers">Init containers</a></li>
+    <li><a href="#rolling-updates">Rolling Updates</a></li>
+    <li><a href="#labels">Labels</a></li>
+    <li><a href="#replication-controller-and-replica-sets">Replication Controller and Replica Sets</a>
       <ul>
-        <li><a href="#configure-ingress-using-host">Configure Ingress using Host</a></li>
-        <li><a href="#configure-ingress-using-path">Configure Ingress using Path</a></li>
+        <li><a href="#replicasets">ReplicaSets</a></li>
+      </ul>
+    </li>
+    <li><a href="#kubernetes-services">Kubernetes Services</a></li>
+    <li><a href="#daemonsets">DaemonSets</a></li>
+    <li><a href="#scheduling-jobs">Scheduling Jobs</a></li>
+    <li><a href="#volumes">Volumes</a>
+      <ul>
+        <li><a href="#nfs">NFS</a></li>
+        <li><a href="#persistent-volumes">Persistent Volumes</a></li>
+        <li><a href="#configmaps">ConfigMaps</a></li>
+        <li><a href="#kubernetes-secrets">Kubernetes Secrets</a></li>
+      </ul>
+    </li>
+    <li><a href="#stateful-sets">Stateful sets</a></li>
+    <li><a href="#k8s-api-server">K8s API Server</a>
+      <ul>
+        <li><a href="#service-account--roles">Service Account + Roles</a></li>
+        <li><a href="#containers-security-context">Container&rsquo;s Security Context</a></li>
+        <li><a href="#configure-containers-security-context">Configure container&rsquo;s security context</a></li>
+        <li><a href="#individual-capabilities">Individual Capabilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li><a href="#authorization">Authorization</a>
+      <ul>
+        <li><a href="#rbac">RBAC</a></li>
+      </ul>
+    </li>
+    <li><a href="#limit-resources">Limit Resources</a>
+      <ul>
+        <li><a href="#resource-quota-types">Resource quota types</a></li>
+        <li><a href="#limit-range">Limit Range</a></li>
+        <li><a href="#limiting-resources">Limiting resources</a></li>
+      </ul>
+    </li>
+    <li><a href="#expose-containers-to-external-networks">Expose containers to external networks</a>
+      <ul>
+        <li><a href="#kubectl-port-forwarding">kubectl port forwarding</a></li>
+        <li><a href="#kubectl-expose">kubectl expose</a></li>
+        <li><a href="#ingress">Ingress</a></li>
       </ul>
     </li>
   </ul>
@@ -129,7 +140,7 @@
 
   <div class="post-text">
     <p><a href="https://www.golinuxcloud.com/kubernetes-tutorial/">source</a></p>
-<h1 id="install-and-deploy">Install and Deploy</h1>
+<h2 id="install-and-deploy">Install and Deploy</h2>
 <ul>
 <li>install kubectl</li>
 <li>install minikube</li>
@@ -151,7 +162,7 @@ minikube pause
 minikube unpause
 minikube stop
 </code></pre>
-<h1 id="namespaces">Namespaces</h1>
+<h2 id="namespaces">Namespaces</h2>
 <ul>
 <li>for organization and resource separation</li>
 <li><code>kubectl --namespace=mystuff</code> or <code>kubectl -n=mystuff</code></li>
@@ -188,7 +199,7 @@ kubectl delete ns dev                       # delete everything in a ns incl.
 kubectl delete pods -n app --all            # keep namespace, delete all pods
 kubectl delete all -n app --all             # delete all
 </code></pre>
-<h1 id="pods">Pods</h1>
+<h2 id="pods">Pods</h2>
 <ul>
 <li>declarative way: uses yaml files, like nginx-app.yml above</li>
 <li>imperative way: uses <code>kubectl</code></li>
@@ -203,7 +214,7 @@ kubectl exec -it nginx -c nginx -- /bin/bash
 
 kubectl port-forward nginx 8000:80 
 </code></pre>
-<h2 id="multi-container-pods-use-cases">multi-container Pods use-cases</h2>
+<h3 id="multi-container-pods-use-cases">multi-container Pods use-cases</h3>
 <ul>
 <li><strong>sidecar container</strong>: enhances primary app, e.g. logging. Both are closely related.</li>
 <li>ambassador container: a container represents a primary container for outside e.g. proxy</li>
@@ -232,7 +243,7 @@ Sun Feb 21 08:54:45 UTC 2021
 kubectl logs sidecar-pod sidecar    # show logs
 kubectl delete pod nginx
 </code></pre>
-<h2 id="jobs">Jobs</h2>
+<h3 id="jobs">Jobs</h3>
 <pre><code>completitions=m         # stop after `m`
 parallelism=n           # `n` jobs are started
 </code></pre>
@@ -246,7 +257,7 @@ kubectl get jobs
 kubectl delete job pod-simple-job
 </code></pre>
 <p><code>.spec.activeDeadlineSeconds</code> to set an execution deadline no matter how many pods are created.</p>
-<h1 id="init-containers">Init containers</h1>
+<h2 id="init-containers">Init containers</h2>
 <ul>
 <li>run in the same pod as main container</li>
 <li>to complete a task before the regular container is started</li>
@@ -262,7 +273,7 @@ $ k get pods
 NAME                       READY   STATUS     RESTARTS   AGE
 init-container-example-1   0/1     Init:0/1   0          58s
 </code></pre>
-<h1 id="rolling-updates">Rolling Updates</h1>
+<h2 id="rolling-updates">Rolling Updates</h2>
 <ul>
 <li>A <code>Replica Set</code> manages pods. A <code>Deployment</code> manages a <code>Replica Set</code>.</li>
 <li>property: <code>minReadySeconds</code> how long the pod should be ready before it is treated as available. Until it is available, the rollout will not continue.</li>
@@ -311,7 +322,7 @@ $ kubectl rollout resume deployment rolling-nginx
 # rollback
 $ k rollout undo deployment rolling-nginx --to-revision=2
 </code></pre>
-<h1 id="labels">Labels</h1>
+<h2 id="labels">Labels</h2>
 <ul>
 <li><strong>key: value</strong> pairs for categorization.</li>
 <li>Annotations are labels that won&rsquo;t need to be queried against.</li>
@@ -355,7 +366,7 @@ k get deployment --selector &quot;app in (prod, dev)&quot;
 k label deployment nginx-deploy type-
 k get deployments.apps --show-labels             
 </code></pre>
-<h1 id="replication-controller-and-replica-sets">Replication Controller and Replica Sets</h1>
+<h2 id="replication-controller-and-replica-sets">Replication Controller and Replica Sets</h2>
 <ul>
 <li>A replication controller is a k8s resource that ensures that its pods are always running.</li>
 <li><strong>It ensures that exact number of pods always matches its label selector.</strong></li>
@@ -383,7 +394,7 @@ k scale rc myapp-rc --replicas=6        # horizontal scaling
 
 k delete rc myapp-rc --cascade=false    # to keep its pods running
 </code></pre>
-<h2 id="replicasets">ReplicaSets</h2>
+<h3 id="replicasets">ReplicaSets</h3>
 <ul>
 <li>ReplicaSet deprecates ReplicationController. It has more expressive pod selectors. It can match pods lacking a certain selector or just having a key regardless of the value.</li>
 <li>Pods aren&rsquo;t owned by RC/RS and can be moved between them if necessary.</li>
@@ -401,12 +412,12 @@ k apply -f replica-set2.yml
 kubectl scale rs myapp-replicaset --replicas=6
 k delete rs myapp-replicaset
 </code></pre>
-<h1 id="kubernetes-services">Kubernetes Services</h1>
+<h2 id="kubernetes-services">Kubernetes Services</h2>
 <ul>
 <li>A Kubernetes Service provides a single, constant (pod are ephemeral) entry point to a group of pods providing the same service.</li>
 <li>The kube-proxy agent on the nodes watches the k8s API for new services and endpoints.</li>
 </ul>
-<h1 id="daemonsets">DaemonSets</h1>
+<h2 id="daemonsets">DaemonSets</h2>
 <ul>
 <li>A DaemonSet ensures that a Pod is running across a set of nodes.</li>
 <li>Deploy system daemons like log collectors and monitoring agents.</li>
@@ -430,7 +441,7 @@ k label nodes minikube ssd-     # remove label
 k get ds
 k delete ds nginx-fast-storage fluentd   # use --cascade to keep pods
 </code></pre>
-<h1 id="scheduling-jobs">Scheduling Jobs</h1>
+<h2 id="scheduling-jobs">Scheduling Jobs</h2>
 <pre><code>kubectl api-resources | grep -iE 'KIND|cron'
 kubectl explain cronjob.spec
 kubectl explain cronjob.spec.schedule   # alternative
@@ -444,7 +455,7 @@ k get pods                  # show completed pods
 
 k delete cronjobs.batch pod-cronjob 
 </code></pre>
-<h1 id="volumes">Volumes</h1>
+<h2 id="volumes">Volumes</h2>
 <ul>
 <li>pods have isolated FS.</li>
 <li>Storage volumes aren&rsquo;t top level resources like pods, but are defined a s components of the pod.</li>
@@ -476,11 +487,11 @@ k exec -it shared-volume-emptydir -c alpine1 -- touch /alpine1/someFile.txt
 k exec -it shared-volume-emptydir -c alpine2 -- ls -l /alpine2
 </code></pre>
 <p>To create the dir in memory using tmpfs:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">volumes:
-- name: data
-- emptydir:
-    medium: Memory
-</code></pre></div><p>This gives instead:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>volumes:
+</span></span><span style="display:flex;"><span>- name: data
+</span></span><span style="display:flex;"><span>- emptydir:
+</span></span><span style="display:flex;"><span>    medium: Memory
+</span></span></code></pre></div><p>This gives instead:</p>
 <pre><code>$ k exec -it shared-volume-memory -c alpine2 -- df -h /alpine2
 Filesystem                Size      Used Available Use% Mounted on
 tmpfs                     1.4G         0      1.4G   0% /alpine2
@@ -499,13 +510,13 @@ k exec -it shared-volume-hostpath -c alpine1 -- touch /alpine1/someFile.txt
 total 0
 -rw-r--r-- 1 root root 0 Jan  7 15:26 someFile.txt
 </code></pre>
-<h2 id="nfs">NFS</h2>
+<h3 id="nfs">NFS</h3>
 <p>First make sure that <code>nfs-utils</code> package is installed on k8s minions. Check <code>/etc/exports</code> and make sure it can be mounted using <code>nfs -t nfs server:share mountpoint</code>. Examples:</p>
 <p>kubectl create -f shared-volume-nfs.yml
 kubectl get pods shared-volume-nfs -o wide  # wait for <code>Running</code> state
 kubectl describe pod <!-- raw HTML omitted -->     # check mounting status</p>
 <p>K8s actually mounts <code>server:share </code> into <code>/var/lib/kubelet/pods/&lt;id&gt;/volumes/kubernetes.io-nfs/nfs</code> and then mounts it into the container as the destination <code>/&lt;mount-point&gt;</code>.</p>
-<h2 id="persistent-volumes">Persistent Volumes</h2>
+<h3 id="persistent-volumes">Persistent Volumes</h3>
 <p>Capacity:</p>
 <ul>
 <li>K (kilobyte: 1000 bytes)</li>
@@ -537,7 +548,7 @@ NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   ST
 nfs-share-pv   1Gi        ROX,RWX        Recycle          Available                                   18s
 </code></pre>
 <p><code>PersistentVolumes</code> don&rsquo;t belong to any namespace. They are cluster-level resources like nodes.</p>
-<h3 id="persistentvolumeclaim">PersistentVolumeClaim</h3>
+<h4 id="persistentvolumeclaim">PersistentVolumeClaim</h4>
 <p>Claiming a <code>PersistentVolume</code> is completely separate process from creating a pod.</p>
 <p>Example:</p>
 <pre><code>k explain PersistentVolumeClaim | head -n 2
@@ -567,7 +578,7 @@ Mounted By:    &lt;none&gt;
 Events:        &lt;none&gt;
 </code></pre>
 <p>PV is now yours to use. Nobody else can claim it until you release it.</p>
-<h4 id="using-a-persistentvolumeclaim-in-a-pod">Using a PersistentVolumeClaim in a Pod</h4>
+<h5 id="using-a-persistentvolumeclaim-in-a-pod">Using a PersistentVolumeClaim in a Pod</h5>
 <pre><code># kubectl create -f nfs-share-pod.yml
 # kubectl get pods pod-nfs-share      # make sure pod is Running
 # kubectl exec -it pod-nfs-share -- df -h /var/www
@@ -583,7 +594,7 @@ NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS     CLAIM      
 nfs-share-pv   1Gi        ROX,RWX        Recycle          Released   default/nfs-share-pvc                                  80m
 </code></pre>
 <p>If we would have used <code>Retain</code> <code>ReclaimPolicy</code> then we would have to manually clean up the data in order to bind the <code>PersistentVolume</code> again.</p>
-<h4 id="local-persistent-volumes-with-storageclass">Local Persistent Volumes with StorageClass</h4>
+<h5 id="local-persistent-volumes-with-storageclass">Local Persistent Volumes with StorageClass</h5>
 <pre><code>k create -f storage-class.yml 
 k get sc    # check status
 
@@ -600,7 +611,7 @@ k get pods local-pod        # make sure it is `Running`
 k get pvc                   # STATUS=Bound
 k get pv                    # STATUS=Bound
 </code></pre>
-<h2 id="configmaps">ConfigMaps</h2>
+<h3 id="configmaps">ConfigMaps</h3>
 <ul>
 <li>Env-specfic data is provided to the application by the env it is deployed into.</li>
 <li>ConfigMap defines application related data.</li>
@@ -625,7 +636,7 @@ k get cm
 k create -f test-cm-pod.yml
 k exec -it test-pod -- env | grep COLOR
 </code></pre>
-<h2 id="kubernetes-secrets">Kubernetes Secrets</h2>
+<h3 id="kubernetes-secrets">Kubernetes Secrets</h3>
 <ul>
 <li>Indented to store small amount (1 MB for a secret) of sensitive data.</li>
 <li>A secret is base64 encoded, so we cannot treat it as secure.</li>
@@ -650,7 +661,7 @@ k get pods secret-tls-pod
 k exec -it secret-ls-pod -- /bin/sh
     # ls -l /tls
 </code></pre>
-<h1 id="stateful-sets">Stateful sets</h1>
+<h2 id="stateful-sets">Stateful sets</h2>
 <ul>
 <li>Available from k8s 1.5 as a bond between the Pod and the Persistent Volume.</li>
 <li><strong>Pods names consist of name-I where I is zero based index.</strong></li>
@@ -697,7 +708,7 @@ k delete pod nginx-statefulset-2
 k get pods -o wide      # new pod is being created with same IP and nodename
 kubectl exec -it nginx-statefulset-2 -c nginx-statefulset -- ls -l /var/www/ # `pod3-file` is there
 </code></pre>
-<h1 id="k8s-api-server">K8s API Server</h1>
+<h2 id="k8s-api-server">K8s API Server</h2>
 <ul>
 <li>In k8s all communication between control plane and external clients (e.g. kubectl) are translated into REST API calls handled by the API server. The API server is the only component that talks directly with distributed storage etcd.</li>
 <li>API server responsibilities is to provide k8s API and to proxy cluster components (e.g. dashboard), stream logs, service ports or serve kubectl exec sessions.</li>
@@ -710,7 +721,7 @@ kubectl exec -it nginx-statefulset-2 -c nginx-statefulset -- ls -l /var/www/ # `
 </code></pre>
 <p><strong>K8s HTTP Request flow</strong>: client (kubectl) + Service Account -&gt; authentification -&gt; authorization -&gt; admission control -&gt; etcd.</p>
 <p>After the request is authenticated and authorized, it goes to the admission control modules. K8s comes with predefined admission controllers, but you can define custom ones as well.</p>
-<h2 id="service-account--roles">Service Account + Roles</h2>
+<h3 id="service-account--roles">Service Account + Roles</h3>
 <pre><code>k apply -f service-account.yml -f cluster-role.yml -f cluster-role-binding.yml
 
 k get pods --all-namespaces
@@ -751,7 +762,7 @@ k proxy --port=9000
 curl http://127.0.0.1:9000/apis | less
 curl http://127.0.0.1:9000/apis/apps/v1/namespaces/default/deployments
 </code></pre>
-<h2 id="containers-security-context">Container&rsquo;s Security Context</h2>
+<h3 id="containers-security-context">Container&rsquo;s Security Context</h3>
 <ul>
 <li>Each pod gets its own IP and port space. Each pod has its own process tree, its own IPC namespace, allowing only processes in the same pod to communicate through IPC.</li>
 <li>Here we learn to allow pods to access resources of the node they&rsquo;re running on.</li>
@@ -771,7 +782,7 @@ curl 127.0.0.1:9000     # XXX doesn't work (because of minikube?)
 k create -f pod-with-host-pid-and-ipc.yml
 k exec pod-with-host-pid-and-ipc -- ps aux  # includes container process
 </code></pre>
-<h2 id="configure-containers-security-context">Configure container&rsquo;s security context</h2>
+<h3 id="configure-containers-security-context">Configure container&rsquo;s security context</h3>
 <pre><code># run with given user
 $ k run pod-with-defaults --image alpine --restart Never -- /bin/sleep 99999
 $ k exec pod-with-defaults -- id
@@ -790,7 +801,7 @@ k create -f pod-privileged.yml
 k exec -it pod-with-defaults -- ls /dev     # 16
 k exec -it pod-privileged -- ls /dev     # 241
 </code></pre>
-<h2 id="individual-capabilities">Individual Capabilities</h2>
+<h3 id="individual-capabilities">Individual Capabilities</h3>
 <pre><code># add individual capabilities to a container
 k exec -it pod-with-defaults -- date +%T -s &quot;12:00:00&quot;      # date: can't set date: Operation not permitted
 k create -f pod-add-settime-capability.yml
@@ -807,7 +818,7 @@ k exec -it pod-with-readonly-filesystem -- touch /new-file  # exit 1 - Read-only
 k exec -it pod-with-readonly-filesystem -- touch /volume/newfile    # works
 k exec -it pod-with-readonly-filesystem -- ls -la /volume/newfile
 </code></pre>
-<h1 id="authentication">Authentication</h1>
+<h2 id="authentication">Authentication</h2>
 <ul>
 <li>Client certificates (most common) using X509 CA. <code>--client-ca-file=file_path</code> server option.</li>
 <li>Static tokens: ``-token-auth-file=<code>. Tokens persist indefinitely and the API server needs to be restarted to update the tokens. Username and password are passed in the request header: </code>Authentication: Basic base64(user:password)`</li>
@@ -834,14 +845,14 @@ curl: (60) SSL certificate problem: unable to get local issuer certificate
 
 [root@controller ~]# curl --cert client.pem --key client-key.pem --cacert ca.pem  https://192.168.43.48:6443   # works 
 </code></pre>
-<h1 id="authorization">Authorization</h1>
+<h2 id="authorization">Authorization</h2>
 <ul>
 <li>Node. Enabled by default.</li>
 <li>ABAC: requests are validating policies against the attributes of the request. <code>--authorization-policy-file=</code> and <code>--authorization-mode=ABAC</code> options.</li>
 <li>RBAC. To enable start the API server with <code>--authorization-mode=RBAC</code>.</li>
 <li>Webhooks (uses remote API server to check for permissions). Option <code>--authorization-webhook-config-file=</code>.</li>
 </ul>
-<h2 id="rbac">RBAC</h2>
+<h3 id="rbac">RBAC</h3>
 <p>kubeconfig:</p>
 <ul>
 <li>users: username and authentication mechanism</li>
@@ -914,14 +925,14 @@ k config delete-context viewonly-context
 k delete role dev -n dev
 k delete rolebinding dev-role-binding -n dev
 </code></pre>
-<h1 id="limit-resources">Limit Resources</h1>
+<h2 id="limit-resources">Limit Resources</h2>
 <ul>
 <li>Resource quota is applied on the namespace.</li>
 <li>Resource limit is applied on the containers.</li>
 <li>If creating or updating a resource violates a quota contraint -&gt; HTTP 403.</li>
 <li>Is quota enabled in a namespace for compute resources (cpu, mem), users must specify requests or limits for those value, otherwise quota system may reject pod creation.</li>
 </ul>
-<h2 id="resource-quota-types">Resource quota types</h2>
+<h3 id="resource-quota-types">Resource quota types</h3>
 <p>Compute resources:</p>
 <ul>
 <li><strong>limits.cpu</strong>: sum of CPU limits cannot exceed this value</li>
@@ -981,7 +992,7 @@ k get pods -n pods-quota-ns                 # 2
 k -n pods-quota-ns get events               # FailedCreate ...
 k describe ns pods-quota-ns                 # 2/2
 </code></pre>
-<h2 id="limit-range">Limit Range</h2>
+<h3 id="limit-range">Limit Range</h3>
 <p>If a LimitRange object exists in a namespace, then any container created without the resource requests or limits configured will inherit these values from the limit range.</p>
 <p>Example:</p>
 <pre><code>k create -f assign-limit-range.yml
@@ -997,7 +1008,7 @@ k describe pods -n pods-quota-ns nginx-1        # requests/limits inherited
 
 k delete limitrange -n pods-quota-ns define-limit
 </code></pre>
-<h2 id="limiting-resources">Limiting resources</h2>
+<h3 id="limiting-resources">Limiting resources</h3>
 <pre><code>spec.containers[].resources.limits.cpu
 spec.containers[].resources.limits.memory
 spec.containers[].resources.limits.hugepages-
@@ -1027,12 +1038,12 @@ k describe pods frontend
 k delete pods -n cpu-limit frontend
 </code></pre>
 <p>If no CPU limit is specified and there is no <code>LimitRange</code> object, the countainer will use all the available CPU resources on the node it is running.</p>
-<h1 id="expose-containers-to-external-networks">Expose containers to external networks</h1>
-<h2 id="kubectl-port-forwarding">kubectl port forwarding</h2>
+<h2 id="expose-containers-to-external-networks">Expose containers to external networks</h2>
+<h3 id="kubectl-port-forwarding">kubectl port forwarding</h3>
 <pre><code>kubectl port-forward nginx 8888:80
 curl localhost:8888
 </code></pre>
-<h2 id="kubectl-expose">kubectl expose</h2>
+<h3 id="kubectl-expose">kubectl expose</h3>
 <pre><code>k create deployment nginx-lab-1 --image=nginx --replicas=3 --dry-run=client -o yaml &gt; nginx-lab-1.yml
 k create -f nginx-lab-1.yml
 k get pods | grep nginx-lab-1
@@ -1043,7 +1054,7 @@ k get services
 # nginx-lab-1   NodePort    10.108.128.242   &lt;none&gt;        80:31060/TCP   3s
 k describe svc nginx-lab-1  # to get more info about the service
 </code></pre>
-<h2 id="ingress">Ingress</h2>
+<h3 id="ingress">Ingress</h3>
 <ul>
 <li>provide an externally visible URL to the service</li>
 <li>load balance traffic</li>
@@ -1058,7 +1069,7 @@ kubectl get nodes
 minikube addons enable ingress
 k get pods -n kube-system   # ingress-nginx-*
 </code></pre>
-<h3 id="configure-ingress-using-host">Configure Ingress using Host</h3>
+<h4 id="configure-ingress-using-host">Configure Ingress using Host</h4>
 <pre><code>k create deployment nginx --image=nginx
 k scale deployment nginx --replicas=3
 k get deployments
@@ -1072,7 +1083,7 @@ k get ingress
 k get ing nginx-ingress -o yam
 curl http://host.example.com
 </code></pre>
-<h3 id="configure-ingress-using-path">Configure Ingress using Path</h3>
+<h4 id="configure-ingress-using-path">Configure Ingress using Path</h4>
 <pre><code>k create deployment web2 --image=nginx
 k scale deployment web2 --replicas=3
 k expose deployment web2 --type=NodePort --port=80
