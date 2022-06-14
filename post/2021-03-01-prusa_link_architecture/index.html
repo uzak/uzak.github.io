@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.100.2" />
+  <meta name="generator" content="Hugo 0.92.2" />
   <title> Prusa Link Architecture | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -89,12 +89,12 @@
 <li>instantiate main class and run</li>
 </ul>
 <h1 id="logging">logging</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>log = logging.getLogger(__name__)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># -l on CLI for setting debug levels
-</span></span><span style="display:flex;"><span>for module, level in log_levels:
-</span></span><span style="display:flex;"><span>    logging.getLogger(module).setLevel(level)
-</span></span></code></pre></div><h1 id="config">config</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">log = logging.getLogger(__name__)
+
+# -l on CLI for setting debug levels
+for module, level in log_levels:
+    logging.getLogger(module).setLevel(level)
+</code></pre></div><h1 id="config">config</h1>
 <p>Uses <code>extendparser</code> in <code>config.py</code></p>
 <h1 id="mvc">MVC</h1>
 <p><code>MainClass.__init__(config)</code> as Controller:</p>
