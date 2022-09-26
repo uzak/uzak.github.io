@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.103.1" />
+  <meta name="generator" content="Hugo 0.92.2" />
   <title> Testing Python | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -65,7 +65,7 @@
       
         4 min
       
-      36 s
+      28 s
       &nbsp;
     
     
@@ -80,10 +80,6 @@
     <li><a href="#nose">nose</a></li>
     <li><a href="#pytest">py.test</a></li>
     <li><a href="#mock-library">mock library</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#cucumber">Cucumber</a></li>
   </ul>
 
   <ul>
@@ -114,19 +110,19 @@
 <li>With a good test suite in place, refactoring is easy because you know when you change your code you haven’t broken any previous behavior.</li>
 <li>Before you write any code you give thought to the kind of tests you will be writing to check the methods will work as expected.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>assertEqual()
-</span></span><span style="display:flex;"><span>with assertRaises(Exception)
-</span></span><span style="display:flex;"><span>assertAlmostEqual(1, 1.2, delta=0.5)
-</span></span><span style="display:flex;"><span>assertAlmostEqual(1, 1.00001, places=4)
-</span></span><span style="display:flex;"><span>assertDictContainsSubset(expected, actual, msg=None)
-</span></span><span style="display:flex;"><span>assertDictEqual(d1, d2, msg=None)
-</span></span><span style="display:flex;"><span>assertGreater(a, b, msg=None)
-</span></span><span style="display:flex;"><span>assertGreaterEqual(a, b, msg=None)
-</span></span><span style="display:flex;"><span>assertIn(member, container, msg=None)
-</span></span><span style="display:flex;"><span>assertNotNone(obj, msg=None)
-</span></span><span style="display:flex;"><span>assertLess(a, b, msg=None)
-</span></span><span style="display:flex;"><span>assertItemsEqual(a, b, msg=None)
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">assertEqual()
+with assertRaises(Exception)
+assertAlmostEqual(1, 1.2, delta=0.5)
+assertAlmostEqual(1, 1.00001, places=4)
+assertDictContainsSubset(expected, actual, msg=None)
+assertDictEqual(d1, d2, msg=None)
+assertGreater(a, b, msg=None)
+assertGreaterEqual(a, b, msg=None)
+assertIn(member, container, msg=None)
+assertNotNone(obj, msg=None)
+assertLess(a, b, msg=None)
+assertItemsEqual(a, b, msg=None)
+</code></pre></div><ul>
 <li>Unit tests should be placed under a <code>test/unit</code> directory at the top level of your project folder.</li>
 <li>All unit test files should mirror the name of the file they are testing, with <code>_test</code> as the suffix.</li>
 <li>Example:
@@ -147,7 +143,7 @@ def test_assert_raises(self):
     with self.assertRaises(AttributeError):
         [].get
 </code></pre>
-<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>':
 unittest.main()</p>
 <p>{% endhighlight %}</p>
 <h1 id="chapter-3---python-test-tools">Chapter 3 - python test tools</h1>
@@ -159,17 +155,17 @@ unittest.main()</p>
 <li><code>nosetests --pdb</code> -&gt; <code>n(ext), w(here), d(own), u(p), b(reak) [[fielname:]lineno | function[, conditation]]:</code></li>
 <li>coverage:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>pip install nose-cov
-</span></span><span style="display:flex;"><span>nosetests --with-coverage test/calculate_test.py
-</span></span></code></pre></div><p>ignore some code blocks</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if __name__ == &#39;__main__&#39;: #pragma: no cover
-</span></span><span style="display:flex;"><span>    ...
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pip install nose-cov
+nosetests --with-coverage test/calculate_test.py
+</code></pre></div><p>ignore some code blocks</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if __name__ == &#39;__main__&#39;: #pragma: no cover
+    ...
+</code></pre></div><ul>
 <li>rednose:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>pip install rednose
-</span></span><span style="display:flex;"><span>nosetests --rednose
-</span></span></code></pre></div><h2 id="pytest">py.test</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pip install rednose
+nosetests --rednose
+</code></pre></div><h2 id="pytest">py.test</h2>
 <ul>
 <li><code>pip install pytest</code></li>
 <li>by default it collects all test like nose.</li>
@@ -177,20 +173,20 @@ unittest.main()</p>
 <li><code>py.test --pdb</code></li>
 <li>coverage:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ pip install pytest-cov
-</span></span><span style="display:flex;"><span>$ py.test --cov app/ test/
-</span></span><span style="display:flex;"><span>$ cat .coveragerc
-</span></span><span style="display:flex;"><span>[run]
-</span></span><span style="display:flex;"><span>omit=*__init__.py
-</span></span></code></pre></div><h2 id="mock-library">mock library</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ pip install pytest-cov
+$ py.test --cov app/ test/
+$ cat .coveragerc
+[run]
+omit=*__init__.py
+</code></pre></div><h2 id="mock-library">mock library</h2>
 <ul>
 <li><code>pip install mock</code></li>
 <li>basic usage:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>mock = Mock()
-</span></span><span style="display:flex;"><span>mock.my_method.return_value = &#34;hello&#34;
-</span></span><span style="display:flex;"><span>mock.get.side_effect = ConnectionError()
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mock = Mock()
+mock.my_method.return_value = &#34;hello&#34;
+mock.get.side_effect = ConnectionError()
+</code></pre></div><ul>
 <li>patching:
 {% highlight python %}
 from mock import Mock, patch</li>
@@ -205,15 +201,15 @@ mock_requests.get.return_value = &lsquo;500&rsquo;
 <ul>
 <li>handler:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if __name__ == &#34;__main__&#34;:
-</span></span><span style="display:flex;"><span>    import doctest
-</span></span><span style="display:flex;"><span>    doctest.testmod()
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if __name__ == &#34;__main__&#34;:
+    import doctest
+    doctest.testmod()
+</code></pre></div><ul>
 <li><code>doctest -v</code></li>
 <li>initialization in handler:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>doctest.testmod(extraglobs={&#39;c&#39;: Calculate()})
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">doctest.testmod(extraglobs={&#39;c&#39;: Calculate()})
+</code></pre></div><ul>
 <li>integration with nose: <code>nosetests --with-doctest</code></li>
 </ul>
 <h1 id="chapter-5---tdd">Chapter 5 - TDD</h1>
@@ -250,10 +246,10 @@ Then the balance of the account is &ldquo;50&rdquo;
 <ul>
 <li>the code is in the step file:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>@when(&#39;I enter the account number &#34;{account_number}&#34;&#39;)
-</span></span><span style="display:flex;"><span>def _(context, account_number):
-</span></span><span style="display:flex;"><span>    ...
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@when(&#39;I enter the account number &#34;{account_number}&#34;&#39;)
+def _(context, account_number):
+    ...
+</code></pre></div><ul>
 <li>
 <p><a href="https://behave.readthedocs.io/en/latest/tutorial.html">behave</a>: <code>pip install behave</code></p>
 </li>
@@ -279,35 +275,28 @@ Then I see a balance of &ldquo;<!-- raw HTML omitted -->&rdquo;</p>
 <li>
 <p>Acceptance testing is as much vital part of testing as unit tests.</p>
 </li>
-<li></li>
+<li>
+<p>├── account_test.py
+├── bank_test.py
+└── bdd
+└── features
+├── bank.feature
+├── environment.py
+└── steps
+└── steps.py
+$ behave test/bdd/features</p>
+</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree
-</span></span><span style="display:flex;"><span>.
-</span></span><span style="display:flex;"><span>├── account.py
-</span></span><span style="display:flex;"><span>├── bank_app.py
-</span></span><span style="display:flex;"><span>├── bank.py
-</span></span><span style="display:flex;"><span>├── Pipfile
-</span></span><span style="display:flex;"><span>├── templates
-</span></span><span style="display:flex;"><span>│   └── index.html
-</span></span><span style="display:flex;"><span>└── test
-</span></span><span style="display:flex;"><span>    ├── account_test.py
-</span></span><span style="display:flex;"><span>    ├── bank_test.py
-</span></span><span style="display:flex;"><span>    └── bdd
-</span></span><span style="display:flex;"><span>        └── features
-</span></span><span style="display:flex;"><span>            ├── bank.feature
-</span></span><span style="display:flex;"><span>            ├── environment.py
-</span></span><span style="display:flex;"><span>            └── steps
-</span></span><span style="display:flex;"><span>                └── steps.py
-</span></span><span style="display:flex;"><span>$ behave test/bdd/features
-</span></span></code></pre></div><h1 id="chapter-7---acceptance-test-tools">Chapter 7 - acceptance test tools</h1>
-<h2 id="cucumber">Cucumber</h2>
-<ul>
-<li>behave tags to run selected tests or ignore (work in progress):</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ behave --tags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@tag1 or tag2&#34;</span> test/bdd/features
-</span></span><span style="display:flex;"><span>$ behave --tags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@wip&#34;</span> test/bdd/features    <span style="color:#75715e"># work in progress only</span>
-</span></span><span style="display:flex;"><span>$ behave -w<span style="color:#e6db74">&#34; test/bdd/features              # work in progress only
-</span></span></span></code></pre></div><h1 id="chapter-8---maximizing-codes-performance">Chapter 8 - maximizing code&rsquo;s performance</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
+# Chapter 7 - acceptance test tools
+
+## Cucumber
+* behave tags to run selected tests or ignore (work in progress):
+```bash
+$ behave --tags=&#34;@tag1 or tag2&#34; test/bdd/features
+$ behave --tags=&#34;@wip&#34; test/bdd/features    # work in progress only
+$ behave -w&#34; test/bdd/features              # work in progress only
+</code></pre></div><h1 id="chapter-8---maximizing-codes-performance">Chapter 8 - maximizing code&rsquo;s performance</h1>
 <h2 id="jmeter">jmeter</h2>
 <ul>
 <li>get <a href="https://jmeter.apache.org/download_jmeter.cgi">jmeter</a></li>
@@ -322,17 +311,17 @@ Then I see a balance of &ldquo;<!-- raw HTML omitted -->&rdquo;</p>
 <ul>
 <li>include cProfile in your code</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>import cProfile
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>cProfile.run(&#39;app.run(debug=True)&#39;) or run through CLI: `$ python -m cProfile bank_app.py` and use `-s` to control the order of the output.
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">import cProfile
+...
+cProfile.run(&#39;app.run(debug=True)&#39;) or run through CLI: `$ python -m cProfile bank_app.py` and use `-s` to control the order of the output.
+</code></pre></div><ul>
 <li>Alternatively use <a href="https://github.com/rkern/line_profiler">line_profiler</a></li>
 <li>Visualisation:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt get install graphviz
-</span></span><span style="display:flex;"><span>$ pip install pycallgraph
-</span></span><span style="display:flex;"><span>$ pycallgraph graphviz -- bank_app.py
-</span></span></code></pre></div><h1 id="chapter-9---lint">Chapter 9 - lint</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt get install graphviz
+$ pip install pycallgraph
+$ pycallgraph graphviz -- bank_app.py
+</code></pre></div><h1 id="chapter-9---lint">Chapter 9 - lint</h1>
 <h2 id="pylint">pylint</h2>
 <ul>
 <li><code>pip install pylint</code></li>
@@ -340,12 +329,6 @@ Then I see a balance of &ldquo;<!-- raw HTML omitted -->&rdquo;</p>
 <h2 id="coverage">coverage</h2>
 <ul>
 <li></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install coverage
-</span></span><span style="display:flex;"><span>nosetests --with-coverage --cover-erase
-</span></span><span style="display:flex;"><span>nosetests --with-coverage --cover-erase --cover-html
-</span></span><span style="display:flex;"><span>nosetests --with-coverage --cover-erase --cover-package<span style="color:#f92672">=</span>bank.account
-</span></span></code></pre></div><ul>
 <li>enforce some minimum coverage: <code>nosetests --with-coverage --cover-erase --cover-package=bank.account</code></li>
 <li>use <code>#pragma: no cover</code> directive to ignore a line/block from the report</li>
 </ul>
