@@ -6,7 +6,23 @@
     <description>Recent content in Posts on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HarvardX: CS50&#39;s Introduction to Artificial Intelligence with Python </title>
+      <link>https://uzak.github.io/post/2022-10-17-harvardx_cs50ai/</link>
+      <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2022-10-17-harvardx_cs50ai/</guid>
+      <description>Search general pattern:
+begin correct sequence of actions goal agent - perceives the environment and acts upon the environment
+state - configuration of the environment
+initial state
+actions - choices taken in any given state. fuctions. ACTIONS(s) -&amp;gt; set of actions that can be done in given state.
+transition model. RESULT(s, a) -&amp;gt; state after performing action a in state s
+state space. graph
+goal state. determines whether a state is a goal state.</description>
+    </item>
+    
     <item>
       <title>Nididdhyasanam</title>
       <link>https://uzak.github.io/post/2022-10-05-nididdhyasanam/</link>

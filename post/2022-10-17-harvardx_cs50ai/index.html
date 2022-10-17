@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.104.3" />
+  <title> HarvardX: CS50&#39;s Introduction to Artificial Intelligence with Python  | uzak.github.io </title>
+  <meta name="description" content="A simple and concise hugo theme.">
+  <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
+  <link rel="canonical" href="https://uzak.github.io/post/2022-10-17-harvardx_cs50ai/">
+  <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
+  
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body class="container">
+  <nav class="navigation">
+  <div class="nav-left">
+    
+    <div class="nav-item nav-title">
+      <a href="https://uzak.github.io/"> uzak.github.io</a>
+    </div>
+    <div class="nav-item nav-menu">
+      
+      <a href="/"> Home</a>
+      
+      <a href="/etymolog/"> Etymolog</a>
+      
+      <a href="/about/"> About</a>
+      
+    </div>
+  </div>
+  <div class="nav-item nav-right fontawesome">
+    
+    
+    <a href="https://github.com/uzak" target="_blank">
+      <i title="GitHub" class="fab fa-github"></i>
+    </a>
+    
+    
+    <a href="https://uzak.github.io/index.xml" target="_blank">
+      <i title="RSS" class="fas fa-rss"></i>
+    </a>
+    
+  </div>
+</nav>
+
+  
+<article class="post">
+  <header class="post-header">
+    <h1 style="text-align: center;" >HarvardX: CS50&#39;s Introduction to Artificial Intelligence with Python </h1>
+    <div class="post-metadata">
+    
+      <time datetime="2022-10-17T00:00:00Z">October 17, 2022</time> &nbsp; 
+    
+    
+    
+    
+    
+      <i class="far fa-clock"></i>
+      
+      
+      
+      
+        4 min
+      
+      18 s
+      &nbsp;
+    
+    
+    </div>
+  </header>
+
+  
+  <div class="post-toc">
+    <div class="post-toc-title">Contents</div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#search">Search</a>
+      <ul>
+        <li><a href="#search-algorithms">search algorithms</a></li>
+        <li><a href="#adversarial-search">adversarial search</a></li>
+      </ul>
+    </li>
+    <li><a href="#knowledge">Knowledge</a>
+      <ul>
+        <li><a href="#model-checking">Model Checking</a></li>
+        <li><a href="#inference-rules">Inference Rules</a></li>
+        <li><a href="#theorem-proving">Theorem Proving</a></li>
+        <li><a href="#conjuntive-normal-form-cnf">Conjuntive Normal Form (CNF)</a></li>
+        <li><a href="#first-order-logic">First-Order Logic</a></li>
+      </ul>
+    </li>
+    <li><a href="#uncertainty">Uncertainty</a></li>
+    <li><a href="#optimization">Optimization</a></li>
+    <li><a href="#learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</a></li>
+    <li><a href="#neural-networks">Neural networks</a></li>
+    <li><a href="#human-language">Human language</a></li>
+  </ul>
+</nav>
+  </div>
+  
+
+  <div class="post-text">
+    <h2 id="search">Search</h2>
+<p>general pattern:</p>
+<ul>
+<li>begin</li>
+<li>correct sequence of actions</li>
+<li>goal</li>
+</ul>
+<p><strong>agent</strong> - perceives the environment and acts upon the environment</p>
+<p><strong>state</strong> - configuration of the environment</p>
+<p><strong>initial state</strong></p>
+<p><strong>actions</strong> - choices taken in any given state. fuctions. ACTIONS(s) -&gt; set of actions that can be done in given state.</p>
+<p><strong>transition model</strong>. RESULT(s, a) -&gt; state after performing action <code>a</code> in state <code>s</code></p>
+<p><strong>state space</strong>. graph</p>
+<p><strong>goal state</strong>. determines whether a state is a goal state.</p>
+<p><strong>path cost</strong>. numerical cost associated with a given path.</p>
+<p>Search problem:</p>
+<ul>
+<li>initial state</li>
+<li>actions</li>
+<li>transition model</li>
+<li>goal test</li>
+<li>path const function</li>
+</ul>
+<p><strong>optimal solution</strong></p>
+<p><strong>node</strong>:</p>
+<ul>
+<li>state</li>
+<li>parent</li>
+<li>action</li>
+<li>path cost</li>
+</ul>
+<p><strong>frontier</strong> - all that is to be explored:</p>
+<ul>
+<li>Start with initial state.</li>
+<li>Start with empty explored set.</li>
+<li>repeat:
+<ul>
+<li>If empty, there is no solution.</li>
+<li>remove a single node from the frontier</li>
+<li>if it is a goal - we&rsquo;ve found a solution</li>
+<li>add node to the explored set</li>
+<li>expand (look at all neighbours of) node, add resulting nodes to the frontier if not in the frontier and not in explored set.</li>
+</ul>
+</li>
+</ul>
+<h3 id="search-algorithms">search algorithms</h3>
+<ul>
+<li>stack - last in first out. Used for frontier. So we get a <strong>depth-first search</strong>.</li>
+<li><strong>breath-first search</strong> always expands the shallowest node in the frontier. Uses a queue (first-in first-out)</li>
+</ul>
+<p>BFS finds always the optimal path. DFS might save you memory.</p>
+<p><strong>uninformed search</strong> - doesn&rsquo;t use any problem specific knowledge.
+<strong>informed search</strong>:</p>
+<ul>
+<li><strong>Greedy best-first search (GBF)</strong> - expand the node that is closest to the goal by using a heuristic function <code>h(n)</code>
+<ul>
+<li><strong>Manhattan distance</strong> - distance between two points along axes of right angles.</li>
+</ul>
+</li>
+</ul>
+<p><strong>A* search</strong>: expand the node with the lowest value of <code>g(n) + h(n)</code> where <code>g(n)</code> is the cost to reach node. Optimal if:</p>
+<ul>
+<li>h(n) is admissible (never overestimates the true cost) - should never think I&rsquo;m further away from the goal that I actually am.</li>
+<li>h(n) is consistent. Cost c, <code>h(n) &lt;= h(n') + c</code></li>
+</ul>
+<h3 id="adversarial-search">adversarial search</h3>
+<p>minimax - X wants to maximize <code>max(o)</code>, O wants to minimize the score <code>min(o)</code>.</p>
+<p>TicTacToe functions:</p>
+<ul>
+<li>PLAYER(s) - who&rsquo;s turn is it?</li>
+<li>ACTIONS(s) - possible actions for a state</li>
+<li>RESULTS(s, a) - perform a action and return the state</li>
+<li>TERMINAL(s) - did we finish the game?</li>
+<li>UTILITY(s) - score for a state</li>
+</ul>
+<p>optimizations:</p>
+<ul>
+<li><strong>Alfa-Beta-pruning</strong> - remove (don&rsquo;t consider) some of the nodes using already computed information.</li>
+</ul>
+<p><strong>Depth-Limited Minimax</strong>:</p>
+<ul>
+<li>evaluation function - evaluates expected utility of the game from a given state</li>
+</ul>
+<h2 id="knowledge">Knowledge</h2>
+<p>knowledge-based agents</p>
+<p><strong>sentence</strong> - assertion about the world in a knowledge representation language</p>
+<p><strong>propositional logic</strong> - based on statements about the world.</p>
+<p><strong>logical connectives</strong> - not and or, -&gt; (implication), &lt;-&gt; (biconditional)</p>
+<p>implication (if then)</p>
+<table>
+<thead>
+<tr>
+<th>P (premise)</th>
+<th>Q (conclusion)</th>
+<th>P-&gt;Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>true</strong></td>
+<td><strong>false</strong></td>
+<td><strong>false</strong></td>
+</tr>
+<tr>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p>biconditional (if and only if)</p>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>Q</th>
+<th>P&lt;-&gt;Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p><strong>model</strong> - assignment of a truth value to every propositional symbol (possible world). Total possibilities <code>number_of_values**variables</code></p>
+<p><strong>knowledge base</strong> (KB) - set of sentences known a by a knowledge agent to be true</p>
+<p><strong>entailment</strong> <code>A |= B</code> (A entails B) - in every model (possible world) in which sentence <code>A</code> is true, then <code>B</code> is also true.</p>
+<p>We want our AI to figure out what the possible entailments are. To infer, to draw conclusions.
+<strong>inference</strong> - deriving new conclusions from old ones.</p>
+<h3 id="model-checking">Model Checking</h3>
+<p>To determine if <code>KB |= alfa</code>:</p>
+<ul>
+<li>Enumerate all possible models</li>
+<li>If in every model where <code>KB</code> is true, <code>alfa</code> is true, then <code>KB entails alfa</code>.</li>
+<li>Otherwise <code>KB</code> does not entail <code>alfa</code>.</li>
+</ul>
+<p><code>alfa</code> is the query.</p>
+<p><strong>Knowledge Engineering</strong></p>
+<p>Example: clue (game):</p>
+<ul>
+<li>Establish propositional symbols</li>
+<li>add knowledge</li>
+<li>check_model</li>
+</ul>
+<h3 id="inference-rules">Inference Rules</h3>
+<p><strong>Modus Ponens</strong>: application of implication</p>
+<pre><code>alfa -&gt; beta
+alfa
+------------
+beta
+</code></pre>
+<p><strong>And Elimination</strong></p>
+<pre><code>alfa AND beta
+-------------
+alfa
+</code></pre>
+<p>and the same for <code>beta</code>.</p>
+<p><strong>Double Negation Elimination</strong></p>
+<pre><code>NOT NOT alfa
+------------
+alfa
+</code></pre>
+<p><strong>Implication Elimination</strong></p>
+<pre><code>alfa -&gt; beta
+------------
+NOT alfa OR beta
+</code></pre>
+<p><strong>Biconditional Elimination</strong></p>
+<pre><code>alfa &lt;-&gt; beta
+---------------------------------
+(alfa -&gt; beta) AND (beta -&gt; alfa)
+</code></pre>
+<p><strong>De Morgan&rsquo;s Law</strong></p>
+<pre><code>NOT(alfa AND beta)
+--------------------
+NOT alfa OR NOT beta
+</code></pre>
+<p><strong>Reverse De Morgan&rsquo;s Law</strong></p>
+<pre><code>NOT(alfa OR beta)
+---------------------
+NOT alfa AND NOT beta
+</code></pre>
+<p><strong>Distributive Property</strong></p>
+<pre><code>(alfa AND (beta OR gama)
+----------------------------------
+(alfa AND beta) OR (alfa AND gama)
+</code></pre>
+<p>works also when AND is exchanged with OR and vice versa.</p>
+<h3 id="theorem-proving">Theorem Proving</h3>
+<ul>
+<li>initial state: staring knowledge base</li>
+<li>actions: inference rules</li>
+<li>transition model: new knowledge after inference</li>
+<li>goal test: check statement we&rsquo;re trying to prove</li>
+<li>path cost functions: number of steps in proof</li>
+</ul>
+<p><strong>Unit Resolution Rule</strong></p>
+<pre><code>P OR Q
+NOT P
+--------
+Q
+</code></pre>
+<p>In an OR clause the order of arguments doesn&rsquo;t matter.</p>
+<pre><code>P OR Q
+NOT P OR R
+-----------
+Q OR R
+</code></pre>
+<p>Q and R can be multiple propositional symbols, not single ones.</p>
+<p>clause: a disjunction (connected with OR) of literal</p>
+<h3 id="conjuntive-normal-form-cnf">Conjuntive Normal Form (CNF)</h3>
+<p>logical sentence that is a conjunction of clauses, e.g. <code>(A OR B OR C) AND (D OR NOT E) AND (F OR G)</code>. Any sentence in logic can be converted into this.</p>
+<p>Conversion to CNF:</p>
+<ul>
+<li>Eliminate bi-conditionals</li>
+<li>Eliminate implications</li>
+<li>Move NOT inwards using De Morgan&rsquo;s Laws</li>
+</ul>
+<p><strong>Factoring</strong> removing duplicate variables.</p>
+<p><strong>Empty clause</strong> (<code>()</code>) is always false.</p>
+<p><strong>Proof by contradiction</strong>: assume the opposite and if you can demonstrate it is a contradiction the thing we want to prove is true.</p>
+<h3 id="first-order-logic">First-Order Logic</h3>
+<ul>
+<li>Constant Symbols (Minerva, Gryffindor &hellip;)</li>
+<li>Predicate Symbol (Person, House, BelongsTo, &hellip;)</li>
+</ul>
+<p>Example:</p>
+<pre><code>Person(Minerva)                 # Minerva is a person
+House(Gryffindor)               # Gryffindor is a house
+NOT House(Minerva)              # Minerva is not a house
+BelongsTo(Minerva, Gryffindor)  # Minerva belongs to Gryffindor
+</code></pre>
+<p>Minimizes the number of symbols needed.</p>
+<p><strong>Universal Quantification</strong> - true for all</p>
+<p><strong>Existential Quantification</strong> - true for some, at least one value</p>
+<h2 id="uncertainty">Uncertainty</h2>
+<h2 id="optimization">Optimization</h2>
+<h2 id="learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</h2>
+<h2 id="neural-networks">Neural networks</h2>
+<h2 id="human-language">Human language</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+  </div>
+
+  <footer class="post-footer">
+    
+
+    
+    <div class="post-tags">
+      <i class="fas fa-tags"></i>
+      
+        <a href="/tags/it">IT</a>
+        &nbsp;
+      
+    </div>
+    
+
+    
+    
+  </footer>
+  
+  <div class="comments">
+  <div class="comments">
+
+
+
+</div>
+  </div>
+</article>
+
+  <div class="foot">
+  
+  &copy; 2019 - 2022 &#183;
+  <a href="/"> uzak.github.io </a> &#183;
+  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
+  <a href="#"><i class="fas fa-chevron-up"></i></a>
+</div>
+</body>
+  <script src="/js/lazyload.min.js"></script>
+<script>
+  var lazyImage = new LazyLoad({container: document.getElementById('article')});
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+<script>
+    (function() {
+        var $toc = $('#TableOfContents');
+        if ($toc.length > 0) {
+            var $window = $(window);
+
+            function onScroll(){
+                var currentScroll = $window.scrollTop();
+                var h = $('.post-text h1, .post-text h2, .post-text h3, .post-text h4, .post-text h5, .post-text h6');
+                var id = "";
+                h.each(function (i, e) {
+                    e = $(e);
+                    if (e.offset().top - 10 <= currentScroll) {
+                        id = e.attr('id');
+                    }
+                });
+                var active = $toc.find('a.active');
+                if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+                active.each(function (i, e) {
+                    $(e).removeClass('active').siblings('ul').hide();
+                });
+                $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+                    $(e).children('a').addClass('active').siblings('ul').show();
+                });
+            }
+
+            $window.on('scroll', onScroll);
+            $(document).ready(function() {
+                $toc.find('a').parent('li').find('ul').hide();
+                onScroll();
+                document.getElementsByClassName('post-toc')[0].style.display = '';
+            });
+        }
+    })();
+</script>
+
+
+</html>
