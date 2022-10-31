@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.104.3" />
+  <meta name="generator" content="Hugo 0.105.0">
   <title> HarvardX: CS50&#39;s Introduction to Artificial Intelligence with Python  | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -63,9 +63,9 @@
       
       
       
-        4 min
+        10 min
       
-      18 s
+      22 s
       &nbsp;
     
     
@@ -92,8 +92,24 @@
         <li><a href="#first-order-logic">First-Order Logic</a></li>
       </ul>
     </li>
-    <li><a href="#uncertainty">Uncertainty</a></li>
-    <li><a href="#optimization">Optimization</a></li>
+    <li><a href="#uncertainty">Uncertainty</a>
+      <ul>
+        <li><a href="#probability">Probability</a></li>
+        <li><a href="#joint-probability">Joint Probability</a></li>
+        <li><a href="#probability-rules">Probability Rules</a></li>
+        <li><a href="#bayesian-networks">Bayesian Networks</a></li>
+        <li><a href="#markov-models">Markov Models</a></li>
+      </ul>
+    </li>
+    <li><a href="#optimization">Optimization</a>
+      <ul>
+        <li><a href="#hill-climbing-algorithm">hill climbing algorithm</a></li>
+        <li><a href="#simulated-annealing">Simulated Annealing</a></li>
+        <li><a href="#linear-programming">Linear Programming</a></li>
+        <li><a href="#constraint-satisfaction">Constraint Satisfaction</a></li>
+        <li><a href="#backtracking-search">Backtracking Search</a></li>
+      </ul>
+    </li>
     <li><a href="#learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</a></li>
     <li><a href="#neural-networks">Neural networks</a></li>
     <li><a href="#human-language">Human language</a></li>
@@ -103,7 +119,8 @@
   
 
   <div class="post-text">
-    <h2 id="search">Search</h2>
+    <p><a href="https://cs50.harvard.edu/ai/2020/">src</a></p>
+<h2 id="search">Search</h2>
 <p>general pattern:</p>
 <ul>
 <li>begin</li>
@@ -367,7 +384,214 @@ BelongsTo(Minerva, Gryffindor)  # Minerva belongs to Gryffindor
 <p><strong>Universal Quantification</strong> - true for all</p>
 <p><strong>Existential Quantification</strong> - true for some, at least one value</p>
 <h2 id="uncertainty">Uncertainty</h2>
+<h3 id="probability">Probability</h3>
+<p>Possible Worlds (Ω - omega). <code>P(omega)</code></p>
+<p>Probability: <code>0 &lt;= P(omega) &lt;= 1</code>, <code>sum(P(omega)) == 1</code></p>
+<p><strong>unconditional probability</strong>: degree of belief in a proposition in the absence of any other evidence</p>
+<p><strong>conditional probability</strong>: we have some initial information about the world and how it works (evidence has been revealed to us). <code>P(a | b)</code> Probability of <code>a</code> given we already know that <code>b</code> is true. Formula:</p>
+<pre><code>P(a|b) = P(a AND b) / P(b)  # or
+
+P(a AND b) = P(b) P(a|b)    # or
+
+P(a AND b) = P(a) P(b|a)
+</code></pre>
+<p><strong>random variable</strong>: a variable with a domain of possible values it can take on. E.g.: <code>traffic {none,light,heavy}</code>, <strong>probability distribution</strong>:</p>
+<pre><code>P(traffic = none) = .6
+P(traffic = light) = .3
+P(traffic = heavy) = .1
+
+P(traffic) = &lt;0.6, 0.3, 0.1&gt;     # equal but less verbose
+</code></pre>
+<p><strong>independence</strong>: knowledge of one event doesn&rsquo;t influence the probability of the other events. <code>P(a AND b) = P(a) P(b)</code>. Example: roll of two dices.</p>
+<p><strong>Bayes&rsquo; Rule</strong>:</p>
+<pre><code>P(b|a) = P(b) P(a|b) / P(a)
+</code></pre>
+<p>Example: given clouds in the morning, what is the probability of the rain in the afternoon?</p>
+<ul>
+<li>80% of rainy afternoons start with cloudy mornings.</li>
+<li>40% of days have cloudy mornings</li>
+<li>10% of days have rainy afternoons</li>
+</ul>
+<p>Solution:</p>
+<pre><code>P(rain | clouds) = P(clouds | rain) P(rain) / P(clouds) 
+= 0.8 * 0.1 / 0.4 
+= 0.2
+</code></pre>
+<p>Knowing <code>P(visible effect | unknown cause)</code> we can calculate <code>P(unknown cause | visible effect)</code>.</p>
+<h3 id="joint-probability">Joint Probability</h3>
+<p>Example:</p>
+<pre><code>C = 0.4, not C = 0.6
+R = 0.1, not R 0.9
+
+        R       not R
+C       .08     .32
+not C   .02     .58
+
+P(cloudy | rain) = P(cloudy, rain) / P(rain)        # , = AND
+= alfa P(C, rain)                                   # alfa = normalization constant
+= alfa &lt;.08,.02&gt;
+= &lt;.8, .2&gt;
+</code></pre>
+<h3 id="probability-rules">Probability Rules</h3>
+<p>Negation: <code>P(not a) = 1 - P(a)</code></p>
+<p>Inclusion-Exclusion: <code>P(a OR b) = P(a) + P(b) - P(a AND b)</code></p>
+<p>Marginalization: <code>P(a) = P(a, b) + P(a, not b)</code>. Example:</p>
+<pre><code>P(C = cloud) = P(C = cloud, R = rain) + P(C = cloud, R = not rain)
+= 0.08 + 0.32
+= 0.4
+</code></pre>
+<p>Conditioning: <code>P(a) = P(a|b)P(b) + P(a| not b)|P(not b)</code></p>
+<h3 id="bayesian-networks">Bayesian Networks</h3>
+<ul>
+<li>data structures that represent the dependencies among random variables</li>
+<li>directed graph</li>
+<li>each node represents a random variable</li>
+<li>arrow from <code>X</code> to <code>Y</code> means <code>X</code> is a parent of <code>Y</code></li>
+<li>each node X has a probability distribution <code>P(X | Parents(X))</code></li>
+</ul>
+<p><strong>Inference problem</strong>:</p>
+<ul>
+<li>Query <code>X</code>: variable for which to compute the distribution</li>
+<li>Evidence variables <code>E</code>: observed variables for event <code>e</code></li>
+<li>Hidden variables <code>Y</code>: non-evidence, non-query variable</li>
+<li>Goal: Calculate <code>P(X | e)</code></li>
+</ul>
+<p>Inference by Enumeration: <code>P(X | e) = alfa P(X, e) = alfa sum_y(P(X, e, y)</code></p>
+<p><strong>Approximate Inference</strong>, e.g. by sampling.</p>
+<p><strong>Likelihood weighting</strong>:</p>
+<ul>
+<li>fix the values for evidence variables,</li>
+<li>sample the non-evidence variables using conditional probabilities of the Bayesian Network,</li>
+<li>weight each sample by its likelihood: the probability of all of the evidence.</li>
+</ul>
+<h3 id="markov-models">Markov Models</h3>
+<p>Uncertainty over time. -&gt; Huge amount of data / complexity.</p>
+<p><strong>Markov assumption</strong>: assumption that the current state depends on only a finite fixed number of previous states.</p>
+<p><strong>Markov chain</strong>: a sequence of random variables where the distribution of each variable follows the Markov assumption.</p>
+<p><strong>hidden state</strong> vs. observation. E.g. user engagement vs. website analytics or weather vs. people bringing umbrellas to the office. The AI doesn&rsquo;t know the truth of the world (hidden state) all it has access to is some observation that is related to the hidden state.</p>
+<p><strong>Hidden Markov Model</strong> a Markov model for a system with hidden states that generate some observed event. Also often called <strong>Sensor Model</strong>.</p>
+<p><strong>sensor Markov Assumption</strong>: the assumption that the evidence variable depends only on the corresponding state.</p>
+<p>Tasks:</p>
+<ul>
+<li>filtering: given observations from start until now calculate the distribution for current state</li>
+<li>prediction: &hellip; for a future state</li>
+<li>smoothing: &hellip; for a past state</li>
+<li>most likely explanation: &hellip; most likely sequence of states</li>
+</ul>
 <h2 id="optimization">Optimization</h2>
+<ul>
+<li>choosing the best option from a set of options</li>
+</ul>
+<p><strong>local search</strong>: search algorithms that maintain a <strong>single node</strong> and searches by moving to a neighboring node. Most useful when we don&rsquo;t care about the path but the solution only.</p>
+<p><strong>state-space landscape</strong>. Global minimum - cost function. Global maximum - objective function. We move to neighbours from current state.</p>
+<h3 id="hill-climbing-algorithm">hill climbing algorithm</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function hill-climb(problem):
+</span></span><span style="display:flex;"><span>    current = initial state of problem
+</span></span><span style="display:flex;"><span>    repeat:
+</span></span><span style="display:flex;"><span>        neighbor = highest valued neighbor of current
+</span></span><span style="display:flex;"><span>        if neighbor not better than current:
+</span></span><span style="display:flex;"><span>            return current
+</span></span></code></pre></div><p>Hill climbing might get stuck at a local maxima. Therefore there are hill climbing variants:</p>
+<ul>
+<li>steepest-ascent: choose the highest-valued neighbor</li>
+<li>stochastic: choose randomly from higher-valued neighbors</li>
+<li>first-choice: choose the first-higher valued neighbor</li>
+<li>random-restart: conduct hill climbing multiple times</li>
+<li>local beam search: choose the <code>k</code> highest-valued neighbors</li>
+</ul>
+<p>Real problem with hill climbing is that they never make a move that makes our position worse. And that&rsquo;s what&rsquo;s needed to get to a global maximum.</p>
+<h3 id="simulated-annealing">Simulated Annealing</h3>
+<ul>
+<li>Early on, higher &ldquo;temperature&rdquo;: more likely to accept neighbors that are worse than current state</li>
+<li>Later on, lower &ldquo;temperature&rdquo;.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function simulated-annealing(problem, max):
+</span></span><span style="display:flex;"><span>    current = initial state of problem
+</span></span><span style="display:flex;"><span>    for t = 1 to max:
+</span></span><span style="display:flex;"><span>        T = temperature(t)
+</span></span><span style="display:flex;"><span>        neighbor = random neighbor of current
+</span></span><span style="display:flex;"><span>        delta_e = how much better neighbor is than current
+</span></span><span style="display:flex;"><span>        if delta_e &gt; 0:
+</span></span><span style="display:flex;"><span>            current = neighbor
+</span></span><span style="display:flex;"><span>        with probability e**(delta_e/T) set current = neighbor
+</span></span><span style="display:flex;"><span>    return current
+</span></span></code></pre></div><h3 id="linear-programming">Linear Programming</h3>
+<ul>
+<li>Minimize a cost function</li>
+<li>With constraints</li>
+<li>With bounds for each variable</li>
+</ul>
+<p>Example:</p>
+<pre><code>Cost function: 50x + 80y
+Constraint: 5x + 2y &lt;= 20
+Constraint: 10x + 12y &gt;= 90 -&gt; (-10x) + (-12y) &lt;= -90
+</code></pre>
+<h3 id="constraint-satisfaction">Constraint Satisfaction</h3>
+<ul>
+<li>Set of variables {X1, &hellip;, Xn}</li>
+<li>Set of domains for each variable {D1, D2, &hellip;, Dn} - possible values each of the variables can take on.</li>
+<li>Set of constraints C</li>
+</ul>
+<p><strong>hard constraints</strong> - must be satisfied in a correct solution</p>
+<p><strong>soft constraints</strong> - preferences</p>
+<p><strong>unary constraint</strong> - involves just a single variable, e.g.: <code>A != monday</code></p>
+<p><strong>binary constraint</strong> - involves two variables, e.g.: <code>A != B</code></p>
+<p><strong>node consistency</strong>: when all the variables in a variable&rsquo;s domain satisfy the variable&rsquo;s unary constraints. For each of possible nodes remove possible values of the domain so all the unary constraint are satisfied.</p>
+<h4 id="arc-consistency">arc consistency</h4>
+<p>when all the values in a variables domain satisfy the variable&rsquo;s binary constraints</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function REVISE(csp, X, Y):     # csp = constraint satisfaction problem
+</span></span><span style="display:flex;"><span>    revised = false
+</span></span><span style="display:flex;"><span>    for x in X.domain:          # loop over all values of X&#39;s domain
+</span></span><span style="display:flex;"><span>        if no y in Y.domain satisfies constraint for (X, Y):
+</span></span><span style="display:flex;"><span>            delete x from X.domain
+</span></span><span style="display:flex;"><span>            revised = true
+</span></span><span style="display:flex;"><span>    return revised
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>function AC-3(csp):
+</span></span><span style="display:flex;"><span>    queue = all arcs in csp
+</span></span><span style="display:flex;"><span>    while queue non-empty:
+</span></span><span style="display:flex;"><span>        (X, Y) = DEQUEUE(queue)         # (X, Y) is an arc (or edge)
+</span></span><span style="display:flex;"><span>        if REVISE(csp, X, Y):
+</span></span><span style="display:flex;"><span>            if size of X.domain == 0:
+</span></span><span style="display:flex;"><span>                return false
+</span></span><span style="display:flex;"><span>            for each Z in X.neighbors - {Y}:
+</span></span><span style="display:flex;"><span>                ENQUEUE(queue, (Z, X))  # removing X might not satistfy Z anymore
+</span></span><span style="display:flex;"><span>    return true
+</span></span></code></pre></div><p>AC-3 will not always solve the problem. What remains is a <a href="#search">Search Problem</a>:</p>
+<ul>
+<li>initial state: empty assignment (no variables)</li>
+<li>actions: add a <code>{variable = value}</code> to assignment</li>
+<li>transition model: shows how adding an assignment changes the assignment</li>
+<li>goal check: check if all variables are assigned and all constraints satisfied</li>
+<li>path cost function: irrelevant (all paths have same cost)</li>
+</ul>
+<h3 id="backtracking-search">Backtracking Search</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function BACKTRACK(assignment, csp):
+</span></span><span style="display:flex;"><span>    if assignment complete:
+</span></span><span style="display:flex;"><span>        return assignment
+</span></span><span style="display:flex;"><span>    var = SELECT-UNASSIGNED-VAR(assignment, csp)
+</span></span><span style="display:flex;"><span>    for value in DOMAIN-VALUES(var, assignment, csp):
+</span></span><span style="display:flex;"><span>        if value consistent with assignment:    # doesn&#39;t violate any constraints
+</span></span><span style="display:flex;"><span>            add {var = value} to assignment
+</span></span><span style="display:flex;"><span>            result = BACKTRACK(assignment, csp)
+</span></span><span style="display:flex;"><span>            if result != failure: return result
+</span></span><span style="display:flex;"><span>        remove {var = value} from assignment
+</span></span><span style="display:flex;"><span>    return failure
+</span></span></code></pre></div><p>Inference: use Arc Consistency interleaved with search, so we backtrack less.</p>
+<p><strong>maintaining arc-consistency</strong>: algorithm for enforcing arc-consistency every time we make a new assignment. When we make a new assignment to <code>X</code>, call <code>AC-3</code>, starting with a queue of all arcs <code>(Y, X)</code> where <code>Y</code> is a neighbour of <code>X</code>.</p>
+<p>SELECT-UNASSIGNED-VAR heuristics:</p>
+<ul>
+<li>minimum remaining values (MRV) heuristic: select the variable that has the smallest domain</li>
+<li>degree heuristic: select the variable that has the highest degree (connected to the most other nodes)</li>
+</ul>
+<p>DOMAIN-VALUES heuristics:</p>
+<ul>
+<li>least constraining value: return variables in order by number of choices that are ruled out for neighboring variables:
+<ul>
+<li>try least-constraint values first</li>
+</ul>
+</li>
+</ul>
 <h2 id="learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</h2>
 <h2 id="neural-networks">Neural networks</h2>
 <h2 id="human-language">Human language</h2>

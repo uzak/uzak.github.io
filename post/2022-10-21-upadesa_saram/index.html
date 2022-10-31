@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.104.3" />
+  <meta name="generator" content="Hugo 0.105.0">
   <title> Upadesa Saram | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -63,9 +63,9 @@
       
       
       
-        1 min
+        2 min
       
-      48 s
+      9 s
       &nbsp;
     
     
@@ -73,9 +73,19 @@
   </header>
 
   
+  <div class="post-toc">
+    <div class="post-toc-title">Contents</div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#src1httpswwwyoutubecomwatchvotplffyhppy"><a href="https://www.youtube.com/watch?v=OTplfFYhppY">src1</a></a></li>
+    <li><a href="#src2httpswwwyoutubecomwatchvcot9bb_uetq"><a href="https://www.youtube.com/watch?v=coT9bB_UEtQ">src2</a></a></li>
+  </ul>
+</nav>
+  </div>
+  
 
   <div class="post-text">
-    <p><a href="https://www.youtube.com/watch?v=OTplfFYhppY">src</a></p>
+    <h2 id="src1httpswwwyoutubecomwatchvotplffyhppy"><a href="https://www.youtube.com/watch?v=OTplfFYhppY">src1</a></h2>
 <ul>
 <li>4 ways of spirituality: karma, bhakti, yoga, jnana. Temple provides facility for all of these. People do all four. Nothing happens, because the mind is compulsive - hyperactive. Karma becomes mechanical, jnana becomes ideation, bhakti becomes a show - you&rsquo;ll need outer symbols of love. Yoga - should be conscious, lose the eyes, be aware of every single movement the body is doing.</li>
 <li>How to feel brahman? You feel full and happy for no reason. There is no sense of dissatisfaction whatsoever.</li>
@@ -103,6 +113,17 @@
 <li>Love with understanding is bhakti. Understanding with love is jnanam.</li>
 <li>Whatever you think with the mind is not Ishvara. Mind resolved in the heart, that is Ishvara.</li>
 <li>Bhakta, karma, yoga, jnanam are not four things. But an unified vision.</li>
+</ul>
+<h2 id="src2httpswwwyoutubecomwatchvcot9bb_uetq"><a href="https://www.youtube.com/watch?v=coT9bB_UEtQ">src2</a></h2>
+<ul>
+<li>Once the mind becomes calm it resolves in the being.</li>
+<li>You need a mechanism to calm down the mind. That mechanism is the prana. Because it&rsquo;s between the matter (gross) and the mind (subtle), it&rsquo;s an escape mechanism from the bondage.
+<ul>
+<li>hold the breath for 30-35 secs</li>
+</ul>
+</li>
+<li>Parallel to buddhist vipassana.</li>
+<li>Smile is the silent message of bhagavan Buddha. It is your birthright, it is love, it is freedom. Nobody can takeaway your smile.</li>
 </ul>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -177,6 +198,44 @@
 </script>
 
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+<script>
+    (function() {
+        var $toc = $('#TableOfContents');
+        if ($toc.length > 0) {
+            var $window = $(window);
+
+            function onScroll(){
+                var currentScroll = $window.scrollTop();
+                var h = $('.post-text h1, .post-text h2, .post-text h3, .post-text h4, .post-text h5, .post-text h6');
+                var id = "";
+                h.each(function (i, e) {
+                    e = $(e);
+                    if (e.offset().top - 10 <= currentScroll) {
+                        id = e.attr('id');
+                    }
+                });
+                var active = $toc.find('a.active');
+                if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+                active.each(function (i, e) {
+                    $(e).removeClass('active').siblings('ul').hide();
+                });
+                $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+                    $(e).children('a').addClass('active').siblings('ul').show();
+                });
+            }
+
+            $window.on('scroll', onScroll);
+            $(document).ready(function() {
+                $toc.find('a').parent('li').find('ul').hide();
+                onScroll();
+                document.getElementsByClassName('post-toc')[0].style.display = '';
+            });
+        }
+    })();
+</script>
 
 
 </html>
