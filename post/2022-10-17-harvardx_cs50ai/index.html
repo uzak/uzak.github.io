@@ -63,9 +63,9 @@
       
       
       
-        10 min
+        13 min
       
-      22 s
+      57 s
       &nbsp;
     
     
@@ -110,7 +110,13 @@
         <li><a href="#backtracking-search">Backtracking Search</a></li>
       </ul>
     </li>
-    <li><a href="#learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</a></li>
+    <li><a href="#learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</a>
+      <ul>
+        <li><a href="#supervised-learning">Supervised Learning</a></li>
+        <li><a href="#reinforcement-learning">Reinforcement learning</a></li>
+        <li><a href="#unsupervised-learning">Unsupervised Learning</a></li>
+      </ul>
+    </li>
     <li><a href="#neural-networks">Neural networks</a></li>
     <li><a href="#human-language">Human language</a></li>
   </ul>
@@ -505,7 +511,7 @@ P(cloudy | rain) = P(cloudy, rain) / P(rain)        # , = AND
 <li>Early on, higher &ldquo;temperature&rdquo;: more likely to accept neighbors that are worse than current state</li>
 <li>Later on, lower &ldquo;temperature&rdquo;.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function simulated-annealing(problem, max):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function SIMULATED-ANNEALING(problem, max):
 </span></span><span style="display:flex;"><span>    current = initial state of problem
 </span></span><span style="display:flex;"><span>    for t = 1 to max:
 </span></span><span style="display:flex;"><span>        T = temperature(t)
@@ -593,6 +599,104 @@ Constraint: 10x + 12y &gt;= 90 -&gt; (-10x) + (-12y) &lt;= -90
 </li>
 </ul>
 <h2 id="learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</h2>
+<p>No explicit instructions how to perform a task, but give access to data and let the computer figure it out.</p>
+<h3 id="supervised-learning">Supervised Learning</h3>
+<p>given a data set of input-output pairs, learn a function to map inputs to outputs.</p>
+<p><strong>classification</strong>: supervised learning task of learning a function mapping of an input to a discrete category. E.g. banknote -&gt; counterfeit/real</p>
+<p><strong>nearest-neighbor classification</strong>: algorithm that, given an input, chooses the class of the nearest data point to that input:</p>
+<ul>
+<li><strong>k-nearest-neighbour classification</strong>: &hellip; <code>k</code> nearest data points &hellip;
+<ul>
+<li>could be slow</li>
+</ul>
+</li>
+</ul>
+<h4 id="perceptron-learning">Perceptron Learning</h4>
+<ul>
+<li>
+<p>hypothesis function to determine on which side of boundary is the input. Example:</p>
+<p>x1 = Humidity
+x2 = Pressure</p>
+<p>Weight Vector w: (w0, w1, w2)
+Input Vector x: (1, x1, x2)
+w * x: w0 + w1x1 + w2x2</p>
+<p>h(x1, x2) = Rain if w0 + w1x1 + w2x2 &gt;= 0 else no Rain</p>
+</li>
+</ul>
+<p>The goal of the ML algorithm is to learn what the Weight Vector will be.</p>
+<p>General hypothesis form: <code>h(x) = 1 if w*x &gt;= else 0</code></p>
+<p><strong>perceptron learning rule</strong>: given data point <code>(x, y)</code> update each weight according to: <code>w_i = w_i + alfa(y - h_w(x)) * x_i</code>, which means <code>w_i = w_i + alfa(actual value - estimate) * x_i</code>. alfa = learning rate (how quickly we&rsquo;re going to update the weight values).</p>
+<p>hard threshold vs. soft threshold (logistic regression)</p>
+<h4 id="support-vector-machines">Support Vector Machines</h4>
+<p>Can work in higher dimensions.</p>
+<p><strong>maximum margin separator</strong>: boundary that maximizes the distance between any of the data point.</p>
+<h4 id="regression">Regression</h4>
+<p>Supervised learning task of learning a function mapping an input point to a continuous value.</p>
+<h4 id="evaluating-hypotheses">Evaluating Hypotheses</h4>
+<p>Think of a Optimization Problem.</p>
+<p><strong>loss function</strong>: function that expresses how poorly our hypothesis performs.</p>
+<p><strong>0-1 loss function</strong>:</p>
+<pre><code>L(actual, predicted) =
+    0 if actual = predicted,
+    1 otherwise
+</code></pre>
+<p><strong>L1 loss function</strong>:</p>
+<pre><code>L(actual, predicted) = |actual - predicted|
+</code></pre>
+<p><strong>L2 loss function</strong> - penalizes much more harshly far away predictions:</p>
+<pre><code>L2(actual, predicted) = (actual - predicted)**2
+</code></pre>
+<p><strong>overfitting</strong> - a model that fits too closely (little or no loss) to a particular data set and therefore may fail to generalize to future data.</p>
+<p><strong>regularization</strong> - penalizing hypotheses that are more complex to favor simpler, more general hypothesis. We want to give preference to a simpler solution which might generalize better: <code>cost(h) = loss(h) + lambda*complexity(h)</code></p>
+<p><strong>holdout cross-validation</strong> - splitting data into a training set and a test set, such that learning happens on the training set and is evaluated on the test set. Downside: a fair amount of data is not used to train.</p>
+<p><strong>k-fold cross-validation</strong> - splitting data into <code>k</code> sets, and experimenting <code>k</code> times, using each set as a test once and using remaining data as a training test</p>
+<h3 id="reinforcement-learning">Reinforcement learning</h3>
+<p>Given a set of rewards or punishments, learn what actions are to be taken in future:</p>
+<pre><code>    Environment
+    /      \
+action^     state_v, reward_v
+    \      /
+    Agent
+</code></pre>
+<p><strong>Markov Decision Process</strong> model for decision-making, representing states, actions, and their rewards:</p>
+<ul>
+<li>Set of states <code>S</code></li>
+<li>Set of actions <code>ACTIONS(s)</code></li>
+<li>Transition model <code>P(s'|s, a)</code></li>
+<li>Reward function <code>R(s, a, s')</code></li>
+</ul>
+<p><strong>Q-Learning</strong> method for learning a function <code>Q(s, a)</code>, estimate of the value of performing action <code>a</code> in state <code>s</code>. Overview:</p>
+<ul>
+<li>Start with <code>Q(s, a) = 0</code> for all <code>s</code>, <code>a</code></li>
+<li>When we take an action and receive a reward:
+<ul>
+<li>Estimate the value of <code>Q(s, a)</code> based on current reward and expected future rewards.</li>
+<li>Update <code>Q(s, a)</code> to take into account old estimate as well as our new estimate.</li>
+<li>Formally:
+<ul>
+<li><code>Q(s, a) &lt;- Q(s, a) + alfa(new value estimate - old value estimate)</code></li>
+<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + future reward estimate) - Q(s, a))</code></li>
+<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + max_a'(Q(s', a')) - Q(s, a))</code></li>
+<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + y*max_a'(Q(s', a')) - Q(s, a))</code>     # to give preference to current rewards (y)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>alfa</code> represents how much we value new information compared to how much we value old information. <code>alfa</code> of 1 means we only consider new information.</p>
+<p><strong>Greedy Decision-Making</strong>: when in state <code>s</code>, choose action <code>a</code> with highest <code>Q(s, a)</code></p>
+<p>Tension between <strong>Explore vs. Exploit</strong> (using knowledge we already have, which might not need to optional solution).</p>
+<p><strong>epsilon-greedy</strong></p>
+<ul>
+<li>Set <code>epsilon</code> equal to how often we want to move randomly.</li>
+<li>With probability <code>1 - epsilon</code>, choose estimated best move.</li>
+<li>With probability <code>epsilon</code>, choose a random move. Esp. in the beginning.</li>
+</ul>
+<p><strong>function approximation</strong> - approximating <code>Q(s, a)</code>, often by a function combining various features, rather than storing one value for every state-action pair.</p>
+<h3 id="unsupervised-learning">Unsupervised Learning</h3>
+<p>given input data without any additional feedback, learn pattern.</p>
+<p><strong>clustering</strong> organizing a set of objects into groups in such a way that similar objects tend to be in the same group.</p>
+<p><strong>k-means clustering</strong> - algorithm for clustering data based on repeatedly assigning points to clusters and updating those cluster&rsquo;s centers.</p>
 <h2 id="neural-networks">Neural networks</h2>
 <h2 id="human-language">Human language</h2>
 <!-- raw HTML omitted -->
