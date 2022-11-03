@@ -63,9 +63,9 @@
       
       
       
-        13 min
+        16 min
       
-      57 s
+      20 s
       &nbsp;
     
     
@@ -117,8 +117,8 @@
         <li><a href="#unsupervised-learning">Unsupervised Learning</a></li>
       </ul>
     </li>
-    <li><a href="#neural-networks">Neural networks</a></li>
-    <li><a href="#human-language">Human language</a></li>
+    <li><a href="#neural-networks">Neural Networks</a></li>
+    <li><a href="#human-language">Human Language</a></li>
   </ul>
 </nav>
   </div>
@@ -612,17 +612,16 @@ Constraint: 10x + 12y &gt;= 90 -&gt; (-10x) + (-12y) &lt;= -90
 </li>
 </ul>
 <h4 id="perceptron-learning">Perceptron Learning</h4>
-<ul>
-<li>
 <p>hypothesis function to determine on which side of boundary is the input. Example:</p>
-<p>x1 = Humidity
-x2 = Pressure</p>
-<p>Weight Vector w: (w0, w1, w2)
+<pre><code>x1 = Humidity
+x2 = Pressure
+
+Weight Vector w: (w0, w1, w2)
 Input Vector x: (1, x1, x2)
-w * x: w0 + w1x1 + w2x2</p>
-<p>h(x1, x2) = Rain if w0 + w1x1 + w2x2 &gt;= 0 else no Rain</p>
-</li>
-</ul>
+w * x: w0 + w1x1 + w2x2
+
+h(x1, x2) = Rain if w0 + w1x1 + w2x2 &gt;= 0 else no Rain 
+</code></pre>
 <p>The goal of the ML algorithm is to learn what the Weight Vector will be.</p>
 <p>General hypothesis form: <code>h(x) = 1 if w*x &gt;= else 0</code></p>
 <p><strong>perceptron learning rule</strong>: given data point <code>(x, y)</code> update each weight according to: <code>w_i = w_i + alfa(y - h_w(x)) * x_i</code>, which means <code>w_i = w_i + alfa(actual value - estimate) * x_i</code>. alfa = learning rate (how quickly we&rsquo;re going to update the weight values).</p>
@@ -677,7 +676,7 @@ action^     state_v, reward_v
 <li><code>Q(s, a) &lt;- Q(s, a) + alfa(new value estimate - old value estimate)</code></li>
 <li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + future reward estimate) - Q(s, a))</code></li>
 <li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + max_a'(Q(s', a')) - Q(s, a))</code></li>
-<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + y*max_a'(Q(s', a')) - Q(s, a))</code>     # to give preference to current rewards (y)</li>
+<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + y*max_a'(Q(s', a')) - Q(s, a))</code>     - to give preference to current rewards (y)</li>
 </ul>
 </li>
 </ul>
@@ -697,8 +696,76 @@ action^     state_v, reward_v
 <p>given input data without any additional feedback, learn pattern.</p>
 <p><strong>clustering</strong> organizing a set of objects into groups in such a way that similar objects tend to be in the same group.</p>
 <p><strong>k-means clustering</strong> - algorithm for clustering data based on repeatedly assigning points to clusters and updating those cluster&rsquo;s centers.</p>
-<h2 id="neural-networks">Neural networks</h2>
-<h2 id="human-language">Human language</h2>
+<h2 id="neural-networks">Neural Networks</h2>
+<ul>
+<li>Neurons are connected to and receive electrical signals from other neurons.</li>
+<li>Neurons process input signals and can be activated.</li>
+</ul>
+<p><code>pip install tensorflow-macos</code></p>
+<p><strong>Artificial Neural Network</strong> - mathematical model for learning inspired by biological neural networks:</p>
+<ul>
+<li>Model mathematical function from input to outputs based on the structure and parameters of the network.</li>
+<li>Allow for learning the network&rsquo;s parameters based on data.</li>
+</ul>
+<p><strong>activation function</strong> - function that gets applied to the result.</p>
+<p>Schematics for a very simple neural network:</p>
+<pre><code>     w0
+     |
+x1 \ |
+     g(w0 + w1*x1 + w2*x2)
+x2 /
+</code></pre>
+<p>Neural network will learn what the values of <code>w0</code>, <code>w1</code> and <code>w2</code> should be in order to get the results that we would expect. General formula <code>g(sum(x_i*w_i) + w0)</code>.</p>
+<p><strong>gradient descent</strong> - algorithm for minimizing loss when training neural network. Gradient is going to tell us in which direction we should be moving the weights in order to minimize the loss.</p>
+<p>General idea:</p>
+<ul>
+<li>Start with a random choice of weights</li>
+<li>Repeat:
+<ul>
+<li>Calculate the gradient based on <strong>all data points</strong>: direction that will lead to decreasing loss (all data points - expensive operation).</li>
+<li>Update weights according to the gradient.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Stochastic Gradient Descent</strong> - s/all data points/one data point randomly/</p>
+<p><strong>Mini-Batch Gradient Descent</strong> - s/all data points/one small batch/</p>
+<p><strong>Perceptron</strong>: a single one is only capable of learning linearly separable decision boundary, because we&rsquo;re taking linear combination of input.</p>
+<p><strong>multilayer neural network</strong> - artificial neural network with an input layer, an output layer, and eat least one hidden layer. Gives us the ability to model more complex function.</p>
+<p><strong>backpropagation</strong>  algorithm for training neural networks with hidden layers. Key algorithm for making neural networks possible. Idea:</p>
+<ul>
+<li>start with a random choice of weights</li>
+<li>Repeat:
+<ul>
+<li>Calculate error for output layer</li>
+<li>For each layer, starting with output layer and moving inwards towards earliest hidden layer:
+<ul>
+<li>Propagate error back one layer.</li>
+<li>Update weights.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>deep neural network</strong> - neural network with multiple hidden layers.</p>
+<p><strong>overfitting</strong></p>
+<p><strong>dropout</strong> - temporarily removing units - selected at random - from a neural network to prevent over reliance on certain units.</p>
+<p><strong>computer vision</strong> computational methods for analyzing and understanding digital images.</p>
+<p><strong>image convolution</strong> - applying a filter that adds each pixel value of an image to its neighbors, weighted according to kernel matrix.</p>
+<p><strong>pooling</strong> reducing the size of an input by sampling from regions in the input. <strong>max-pooling</strong> chooses the maximal value in a each region.</p>
+<p><strong>convolutional neural network</strong> (CNN) - uses convolution, usually for analysing images.</p>
+<p><code>image -&gt; convolution -&gt; pooling -&gt; flatting -&gt; neural network</code></p>
+<p>General structure of NN: <code>input -&gt; network -&gt; output</code>. This is a <strong>feed-forward neural network</strong> - NN that has connections only in one direction. Limitations: fixed shape (number of) input and output neurons.</p>
+<p><strong>Recurrent Neural Network</strong> - generates output that gets feds back into the network as input for future runs of the network:</p>
+<pre><code>              /--\
+             v    |
+    input -&gt; network -&gt; output
+</code></pre>
+<p>This allows to store state. This is particularly helpful when dealing with sequences of data.</p>
+<p>Example: Microsoft&rsquo;s Captionbot or analyzing videos.</p>
+<p>1 -&gt; N relationships as opposed to 1:1 from before.</p>
+<p>N -&gt; 1: e.g. classification of a voice from a audio sample</p>
+<p>N -&gt; N: e.g. google translate</p>
+<h2 id="human-language">Human Language</h2>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
