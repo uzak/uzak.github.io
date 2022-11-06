@@ -63,9 +63,9 @@
       
       
       
-        16 min
+        18 min
       
-      20 s
+      43 s
       &nbsp;
     
     
@@ -118,7 +118,16 @@
       </ul>
     </li>
     <li><a href="#neural-networks">Neural Networks</a></li>
-    <li><a href="#human-language">Human Language</a></li>
+    <li><a href="#human-language">Human Language</a>
+      <ul>
+        <li><a href="#context-free-grammar">Context-Free Grammar</a></li>
+        <li><a href="#n-gram">n-gram</a></li>
+        <li><a href="#text-categorization">Text Categorization</a></li>
+        <li><a href="#naive-bayes">Naive Bayes</a></li>
+        <li><a href="#information-retrieval">Information Retrieval</a></li>
+        <li><a href="#semantics">Semantics</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -697,6 +706,7 @@ action^     state_v, reward_v
 <p><strong>clustering</strong> organizing a set of objects into groups in such a way that similar objects tend to be in the same group.</p>
 <p><strong>k-means clustering</strong> - algorithm for clustering data based on repeatedly assigning points to clusters and updating those cluster&rsquo;s centers.</p>
 <h2 id="neural-networks">Neural Networks</h2>
+<p><a href="https://cs50.harvard.edu/ai/2020/notes/5/">notes</a></p>
 <ul>
 <li>Neurons are connected to and receive electrical signals from other neurons.</li>
 <li>Neurons process input signals and can be activated.</li>
@@ -707,7 +717,7 @@ action^     state_v, reward_v
 <li>Model mathematical function from input to outputs based on the structure and parameters of the network.</li>
 <li>Allow for learning the network&rsquo;s parameters based on data.</li>
 </ul>
-<p><strong>activation function</strong> - function that gets applied to the result.</p>
+<p><strong>activation function</strong> - function that gets applied to the result and decides whether a threshold is passed (e.g. &ldquo;it rains or not&rdquo;).</p>
 <p>Schematics for a very simple neural network:</p>
 <pre><code>     w0
      |
@@ -766,6 +776,68 @@ x2 /
 <p>N -&gt; 1: e.g. classification of a voice from a audio sample</p>
 <p>N -&gt; N: e.g. google translate</p>
 <h2 id="human-language">Human Language</h2>
+<p>Common tasks:</p>
+<ul>
+<li>automatic summarization</li>
+<li>information extraction</li>
+<li>language identification</li>
+<li>machine translation</li>
+<li>named entity recognition</li>
+<li>speech recognition (Alexa)</li>
+<li>text classification</li>
+<li>word sense disambiguation</li>
+<li>&hellip;</li>
+</ul>
+<p><strong>syntax</strong> - structure</p>
+<p><strong>semantics</strong> - meaning</p>
+<p><strong>formal grammar</strong> a system of rules for generating sentences in a language.</p>
+<h3 id="context-free-grammar">Context-Free Grammar</h3>
+<p>Replacing one symbol with another symbol.</p>
+<p>Non-terminal symbols (noun - <code>N</code>, verb - <code>V</code>) are used to generate terminal symbols (&ldquo;she&rdquo;, &ldquo;saw&rdquo;).</p>
+<p>On the left we have always a non-terminal symbol, on the right of the arrow it could be either terminal or non-terminal symbols. E.g. <code>NP -&gt; N | D N</code>.</p>
+<p><code>pip install nltk</code></p>
+<h3 id="n-gram">n-gram</h3>
+<p>a contiguous sequence of <code>n</code> items from a sample text. e.g.: character n-grams or word n-grams.</p>
+<p><strong>unigram</strong> - a contiguous sentence of 1 item from a sample text.</p>
+<p><strong>bigram</strong> - &hellip; 2 items &hellip;</p>
+<p><strong>trigrams</strong> - &hellip; 3 items &hellip;</p>
+<p>Allows for segmentation of the text for analysis and while the AI might have not seen the whole sentence before, it is likely that it has encountered a N-gram from it before.</p>
+<h4 id="tokenization">tokenization</h4>
+<p>the task of splitting a sequence of characters into pieces (tokens). E.g. to extra n-grams.</p>
+<p><strong>word tokenizations</strong> - splitting into words.</p>
+<h4 id="markov-model">Markov Model</h4>
+<p>It will allow us to predict what the next unit will be.</p>
+<p><code>pip install markovify</code></p>
+<h3 id="text-categorization">Text Categorization</h3>
+<p>a classification problem. E.g. spam/not spam. Positive / negative sentiment.</p>
+<p><strong>Bag-of-Words</strong> -model that represents text as unordered collection of words. Works pretty well for positive/negative sentiment approach.</p>
+<h3 id="naive-bayes">Naive Bayes</h3>
+<p>How to not worry about multiplying by zero:</p>
+<ul>
+<li><strong>additive smoothing</strong> - adding a value <code>alfa</code> to each value in our distribution to smooth the data.</li>
+<li><strong>Laplace smoothing</strong> - adding 1 to each value in our distribution, pretending that we&rsquo;ve seen each value one more time than we actually have.</li>
+</ul>
+<p>Naive Bayes basically looks for differentiating words (which have a big weight in one category and not so in others).</p>
+<h3 id="information-retrieval">Information Retrieval</h3>
+<p>the task of finding relevant documents in response to a query.</p>
+<p><strong>topic modeling</strong> - models for discovering the topics for a set of documents. What are the important documents in a word?</p>
+<h4 id="tf-idf">tf-idf</h4>
+<p><strong>term frequency</strong> - number of times a term appears in a document.</p>
+<p><strong>function words</strong> - words that have little meaning on their own, but are used to grammatically connect other words. E.g.: <code>am, by do, is , which, with, yet...</code>.</p>
+<p><strong>content words</strong> - words that carry meaning independently. E.g.: <code>algorithm, category, computer, ...</code></p>
+<p><strong>inverse document frequency</strong> - measure of how common or rare a word is across documents. Form: <code>log(totalNumberOfDocuments/numberOfDocumentsContaining(word))</code>.</p>
+<p><strong>tf-idf</strong> - ranking of what are important in a document by multiplying term frequency (TF) by inverse document frequency (IDF).</p>
+<h3 id="semantics">Semantics</h3>
+<p><strong>information extraction</strong> - the task of extracting knowledge from documents.</p>
+<p><strong>WordNet</strong></p>
+<h4 id="word-representation">Word Representation</h4>
+<p><strong>one-hot representation</strong> - representation of meaning as a vector of single 1, and with other values as 0.</p>
+<p><strong>distributed representation</strong> - representation of meaning distributed across multiple values.</p>
+<blockquote>
+<p>You shall know a word by the company it keeps &ndash; J.R. Firth, 1957</p>
+</blockquote>
+<p><strong>word2vec</strong> - model for generating word vectors</p>
+<p><strong>skip-gram architecture</strong> - neural network architecture for predicting context words giving a target word.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
