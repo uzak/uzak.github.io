@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.105.0">
+  <title> CS50 React Native | uzak.github.io </title>
+  <meta name="description" content="A simple and concise hugo theme.">
+  <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
+  <link rel="canonical" href="https://uzak.github.io/post/2022-11-09-cs50_react_native/">
+  <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
+  
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body class="container">
+  <nav class="navigation">
+  <div class="nav-left">
+    
+    <div class="nav-item nav-title">
+      <a href="https://uzak.github.io/"> uzak.github.io</a>
+    </div>
+    <div class="nav-item nav-menu">
+      
+      <a href="/"> Home</a>
+      
+      <a href="/etymolog/"> Etymolog</a>
+      
+      <a href="/about/"> About</a>
+      
+    </div>
+  </div>
+  <div class="nav-item nav-right fontawesome">
+    
+    
+    <a href="https://github.com/uzak" target="_blank">
+      <i title="GitHub" class="fab fa-github"></i>
+    </a>
+    
+    
+    <a href="https://uzak.github.io/index.xml" target="_blank">
+      <i title="RSS" class="fas fa-rss"></i>
+    </a>
+    
+  </div>
+</nav>
+
+  
+<article class="post">
+  <header class="post-header">
+    <h1 style="text-align: center;" >CS50 React Native</h1>
+    <div class="post-metadata">
+    
+      <time datetime="2022-11-09T00:00:00Z">November 09, 2022</time> &nbsp; 
+    
+    
+    
+    
+    
+      <i class="far fa-clock"></i>
+      
+      
+      
+      
+        2 min
+      
+      45 s
+      &nbsp;
+    
+    
+    </div>
+  </header>
+
+  
+  <div class="post-toc">
+    <div class="post-toc-title">Contents</div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lecture-0">Lecture 0</a></li>
+    <li><a href="#lecture-1">Lecture 1</a></li>
+    <li><a href="#lecture-2">Lecture 2</a></li>
+  </ul>
+</nav>
+  </div>
+  
+
+  <div class="post-text">
+    <p><a href="https://www.youtube.com/watch?v=X52b-8y2Hf4&amp;list=PLLea03u4b2pZY6paU-jlGzuHHURF-5kFm">Youtube</a></p>
+<h2 id="lecture-0">Lecture 0</h2>
+<p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/0/lecture0.pdf">slides</a></p>
+<ul>
+<li>Introduction</li>
+<li>Course information</li>
+<li>Syntax</li>
+<li>Types
+<ul>
+<li>dynamic types</li>
+<li>primitive types (no methods, immutable)
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>boolean</li>
+<li>number</li>
+<li>string</li>
+<li>(symbol)</li>
+</ul>
+</li>
+<li>objects</li>
+</ul>
+</li>
+<li>Typecasting
+<ul>
+<li>explicit</li>
+<li>implicit</li>
+<li>== (coerces the types) vs === (requires equivalent types)</li>
+<li>falsy
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>false</li>
+<li>+0, -0, NaN</li>
+<li>&quot;&quot;</li>
+</ul>
+</li>
+<li>truthy
+<ul>
+<li>{}</li>
+<li>[]</li>
+<li>everything else</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Type demo
+<ul>
+<li>typeof operator</li>
+</ul>
+</li>
+<li>Objects
+<ul>
+<li><code>const o = new Object()</code> OR <code>const o2 = {}; o2.firstName = ''</code> OR <code>const o3 = { firstName: '', greet(): function() {} }</code></li>
+<li>Arrays, Functions - are objects</li>
+<li>Everything but primitive datatypes are objects</li>
+<li>Anything between [] when indexing will be coerced to a string. E.g. <code>o[1]</code> -&gt; <code>o[&quot;1&quot;]</code></li>
+<li>Primitives are immutable, objects are mutable and stored by reference</li>
+<li><code>Object.assign({}, o)</code> -&gt; shallowCopy. Merges 1st arg into o.</li>
+</ul>
+</li>
+<li>Objects demo</li>
+<li>Object mutation
+<ul>
+<li><code>Object.assign(target, source)</code>: The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.</li>
+</ul>
+</li>
+<li>Prototypical inheritance
+<ul>
+<li>Each objects stores a reference to its prototype (<code>obj.__proto__</code>)</li>
+<li>Properties/methods defined most tightly have most priority</li>
+<li>JS will automatically &ldquo;box&rdquo; (wrap) primitive values so you have access to methods.
+<ul>
+<li><code>42 instanceof Number</code> -&gt; <code>false</code></li>
+</ul>
+</li>
+<li>Prototypical inheritance (reference to prototype instead of copies) is used to save resources.</li>
+<li>Danger: if you change the prototype it changes for every single value of that type. <strong>DON&rsquo;T change prototype</strong>.</li>
+</ul>
+</li>
+<li>Scope
+<ul>
+<li>variable lifetime
+<ul>
+<li>lexical scoping (var): declared until their function ends</li>
+<li>block scoping (const, let)</li>
+</ul>
+</li>
+<li>variables without cost/let are global</li>
+<li>hoisting - take the definition and hoist it to the top of the file
+<ul>
+<li>var declaration</li>
+<li>function definition</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JS engine
+<ul>
+<li>read entire file, throw a syntax error if found and store functions will be saved in memory</li>
+<li>execute it</li>
+</ul>
+</li>
+<li>Global Object
+<ul>
+<li>all variables and functions are parameters and methods on the global object:
+<ul>
+<li>Browser: <code>window</code></li>
+<li>Node.js: <code>global</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Closures
+<ul>
+<li>functions that refer to variables declared by parent function</li>
+<li>possible because of scoping</li>
+</ul>
+</li>
+</ul>
+<h2 id="lecture-1">Lecture 1</h2>
+<p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/1/lecture1.pdf">slides</a></p>
+<ul>
+<li>IIFE: immediately invoked function expression
+<ul>
+<li>creates closure</li>
+<li>doesn&rsquo;t add or modify to global object</li>
+</ul>
+</li>
+<li>first-class functions: functions are treated the same way as any other value
+<ul>
+<li>can be used as value, passed as arguments, returned</li>
+<li>allows for creation of higher-order functions
+<ul>
+<li>either takes one or more functions as arguments or returns a function</li>
+<li>map(), filter(), reduce()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JS is synchronous and single-threaded
+<ul>
+<li>a function that takes a long time to load will make the page unresponsive</li>
+</ul>
+</li>
+<li><a href="https://javascript.plainenglish.io/what-is-synchronous-async-single-threaded-execution-context-browser-apis-256d906b186d">Asynchronous JS</a>:
+<ul>
+<li>Execution Stack
+<ul>
+<li>Functions invoked by other functions get added to the stack</li>
+<li>When functions complete, they are removed from the stack and frame below continues executing</li>
+</ul>
+</li>
+<li>Browser APIs: get run by the browser, not necessarily by JS itself
+<ul>
+<li>setTimeout()</li>
+<li>fetch(), XMLHttpRequest(), JQuery.ajax()</li>
+<li>DB Calls</li>
+</ul>
+</li>
+<li>Function Queue: is for API functions. As soon as the stack is empty whatever is in the queue will be put on the stack.</li>
+<li>Event Loop:
+<ul>
+<li>check if there is anything on the stack</li>
+<li>check if there is anything in the function queue ready to go onto the stack</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Callback:
+<ul>
+<li>Control the flow of async calls</li>
+<li>Execute a function once async call returns a value</li>
+</ul>
+</li>
+<li>Promises:
+<ul>
+<li><code>fetch().then().then(),catch()</code></li>
+</ul>
+</li>
+<li>Async/Await
+<ul>
+<li>Introduced in ES2017</li>
+<li>Allows to write async code as if it were synchronous</li>
+</ul>
+</li>
+<li>this:
+<ul>
+<li>refers to an object that&rsquo;s set at the creation of a new execution context</li>
+<li>in the global exec context, refers to global context</li>
+<li>if function is a method of an objects, it is the object the method is bound to</li>
+<li>Set <code>this</code> manually:
+<ul>
+<li>bind() - binds a object to an method explicitly and returns the fct</li>
+<li>call() - calls a function with given <code>this</code> and arguments</li>
+<li>apply() - calls a function with given <code>this</code> and arguments provided as array</li>
+<li>=&gt; <code>this</code> doesn&rsquo;t have an own binding</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lecture-2">Lecture 2</h2>
+<p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/2/lecture2.pdf">slides</a></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+  </div>
+
+  <footer class="post-footer">
+    
+
+    
+    <div class="post-tags">
+      <i class="fas fa-tags"></i>
+      
+        <a href="/tags/diary">diary</a>
+        &nbsp;
+      
+    </div>
+    
+
+    
+    
+    <div class="related-posts">
+      <h4>Related Posts</h4>
+      
+      <i class="fas fa-paperclip"></i>
+      <a href="/post/2022-04-25-systems_de-engineering/">Systems&#39; de-Engineering</a>
+      <br>
+      
+      <i class="fas fa-paperclip"></i>
+      <a href="/post/2022-03-26-sask/">Sanskrit a Slovenčina</a>
+      <br>
+      
+    </div>
+    
+  </footer>
+  
+  <div class="comments">
+  <div class="comments">
+
+
+
+</div>
+  </div>
+</article>
+
+  <div class="foot">
+  
+  &copy; 2019 - 2022 &#183;
+  <a href="/"> uzak.github.io </a> &#183;
+  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
+  <a href="#"><i class="fas fa-chevron-up"></i></a>
+</div>
+</body>
+  <script src="/js/lazyload.min.js"></script>
+<script>
+  var lazyImage = new LazyLoad({container: document.getElementById('article')});
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+<script>
+    (function() {
+        var $toc = $('#TableOfContents');
+        if ($toc.length > 0) {
+            var $window = $(window);
+
+            function onScroll(){
+                var currentScroll = $window.scrollTop();
+                var h = $('.post-text h1, .post-text h2, .post-text h3, .post-text h4, .post-text h5, .post-text h6');
+                var id = "";
+                h.each(function (i, e) {
+                    e = $(e);
+                    if (e.offset().top - 10 <= currentScroll) {
+                        id = e.attr('id');
+                    }
+                });
+                var active = $toc.find('a.active');
+                if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+                active.each(function (i, e) {
+                    $(e).removeClass('active').siblings('ul').hide();
+                });
+                $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+                    $(e).children('a').addClass('active').siblings('ul').show();
+                });
+            }
+
+            $window.on('scroll', onScroll);
+            $(document).ready(function() {
+                $toc.find('a').parent('li').find('ul').hide();
+                onScroll();
+                document.getElementsByClassName('post-toc')[0].style.display = '';
+            });
+        }
+    })();
+</script>
+
+
+</html>
