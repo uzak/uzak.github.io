@@ -63,9 +63,9 @@
       
       
       
-        2 min
+        5 min
       
-      45 s
+      52 s
       &nbsp;
     
     
@@ -77,9 +77,10 @@
     <div class="post-toc-title">Contents</div>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#lecture-0">Lecture 0</a></li>
-    <li><a href="#lecture-1">Lecture 1</a></li>
-    <li><a href="#lecture-2">Lecture 2</a></li>
+    <li><a href="#lecture-0-js">Lecture 0: JS</a></li>
+    <li><a href="#lecture-1-js-es6">Lecture 1: JS, ES6</a></li>
+    <li><a href="#lecture-2-react-props-state">Lecture 2: React, Props, State</a></li>
+    <li><a href="#lecture-3-react-native">Lecture 3: React Native</a></li>
   </ul>
 </nav>
   </div>
@@ -87,7 +88,7 @@
 
   <div class="post-text">
     <p><a href="https://www.youtube.com/watch?v=X52b-8y2Hf4&amp;list=PLLea03u4b2pZY6paU-jlGzuHHURF-5kFm">Youtube</a></p>
-<h2 id="lecture-0">Lecture 0</h2>
+<h2 id="lecture-0-js">Lecture 0: JS</h2>
 <p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/0/lecture0.pdf">slides</a></p>
 <ul>
 <li>Introduction</li>
@@ -206,7 +207,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="lecture-1">Lecture 1</h2>
+<h2 id="lecture-1-js-es6">Lecture 1: JS, ES6</h2>
 <p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/1/lecture1.pdf">slides</a></p>
 <ul>
 <li>IIFE: immediately invoked function expression
@@ -288,9 +289,297 @@
 </ul>
 </li>
 </ul>
-<h2 id="lecture-2">Lecture 2</h2>
+<h2 id="lecture-2-react-props-state">Lecture 2: React, Props, State</h2>
 <p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/2/lecture2.pdf">slides</a></p>
-<!-- raw HTML omitted -->
+<ul>
+<li>Classes
+<ul>
+<li>introduced in ES6</li>
+<li><code>new, constructor, extends, super</code></li>
+<li><code>get size()</code> -&gt; getter for size property</li>
+</ul>
+</li>
+<li>React:
+<ul>
+<li>allows to write declarative views that &ldquo;react&rdquo; to changes in data</li>
+<li>allows to abstract complex problems into smaller components</li>
+</ul>
+</li>
+<li>Imperative vs. Declarative: How vs What</li>
+<li>React:
+<ul>
+<li>Declarative</li>
+<li>Performant:
+<ul>
+<li>reconciliation - sync changes in the app state to the DOM for better performance:
+<ul>
+<li>reconstructs virtual DOM</li>
+<li>diffs the virtual DOM against the DOM</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Writing React:
+<ul>
+<li>JSX:
+<ul>
+<li>XML like syntax that transpiles to JS</li>
+<li>lowercase tags are treated as HTML/SVG tags, uppercase as custom components</li>
+</ul>
+</li>
+<li>Components are just functions:
+<ul>
+<li>Returns a node (something React can render, e.g. a <!-- raw HTML omitted -->)</li>
+<li>receives an object of properties that are passed to the element</li>
+</ul>
+</li>
+<li>Props:
+<ul>
+<li>changes to the props will cause a recomputation of the returned node (render)</li>
+<li>Unlike HTML, props can be any JS value</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>arrow notation has an implicit return if you don&rsquo;t have braces</li>
+<li>State:
+<ul>
+<li>internally-managed configuration for any component</li>
+<li><code>this.state</code>,</li>
+<li><code>this.setState()</code>:
+<ul>
+<li>calls are batched and run asynchronously</li>
+<li>pass a function (<code>(prevState) =&gt; {count: prevState.count + 1}</code>) for an immediate update</li>
+</ul>
+</li>
+<li>changes in state also cause re-renders</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">props</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">props</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">increaseCount</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({<span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>})
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">render</span>() {
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">increaseCount</span>()}&gt;<span style="color:#a6e22e">Increase</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">h2</span>&gt;{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">count</span>}&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><code>...arr</code> pulls out all the values out of <code>arr</code></li>
+<li>React paradigm: if you ever change something, replace it with something new.</li>
+</ul>
+<h2 id="lecture-3-react-native">Lecture 3: React Native</h2>
+<p><a href="http://cdn.cs50.net/mobile/2018/spring/lectures/3/lecture3.pdf">slides</a></p>
+<ul>
+<li>React Native:
+<ul>
+<li>JS is bundled:
+<ul>
+<li>transpiled and minified</li>
+</ul>
+</li>
+<li>separate threads for UI, layout and JS</li>
+<li>communicate asynchronously through a &ldquo;bridge&rdquo;:
+<ul>
+<li>JS thread will request UI elements to be shown</li>
+<li>JS thread can be blocked and UI will still work</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Differences between RN and React
+<ul>
+<li>Base components</li>
+<li>Style</li>
+<li>No browser APIs
+<ul>
+<li>CSS animations, Canvas, SVG</li>
+<li>Some have been polyfied</li>
+</ul>
+</li>
+<li>Navigation</li>
+</ul>
+</li>
+<li><a href="https://reactnative.dev/docs/components-and-apis">React Native Components</a>:
+<ul>
+<li>div -&gt; View</li>
+<li>span -&gt; Text: all text must be wrapped by this</li>
+<li>button -&gt; Button</li>
+<li>ScrollView</li>
+</ul>
+</li>
+<li>Style
+<ul>
+<li>CSS like properties, <code>style</code> prop</li>
+<li>Flexbox layout with vertical placement default</li>
+<li>Length are unitless umbers</li>
+<li><code>StyleSheet.create()</code></li>
+</ul>
+</li>
+<li>Event Handling
+<ul>
+<li>Unlike web, not every component has every interaction</li>
+<li>Only a few &ldquo;touchable&rdquo; components
+<ul>
+<li>Button</li>
+<li>Touchable*</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Components
+<ul>
+<li>Return a node (something that can be rendered)</li>
+<li>Represent a discrete piece of the UI</li>
+<li>&ldquo;All React components must act like pure functions with respect to their rops.&rdquo;</li>
+<li>Two types
+<ul>
+<li>Stateless Functional Components (SFC) a.k.a. Pure Function Component.
+<ul>
+<li>Pure because it should not have any side effects like setting values or updating arrays&hellip;</li>
+<li>Any change in props will cause the function to be re-invoked</li>
+</ul>
+</li>
+<li>subclass of React.Component
+<ul>
+<li>Can maintain their own state</li>
+<li>Have lifecycle methods</li>
+<li>Rendering now becomes a function of props and class properties</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Component Lifecycle
+<ul>
+<li>Mount -&gt; Update Cycle -&gt; Unmount</li>
+</ul>
+</li>
+<li>Mount
+<ul>
+<li>constructor(props)</li>
+<li>render(he component
+<ul>
+<li>return a node</li>
+</ul>
+</li>
+<li>componentDidMount()
+<ul>
+<li>Do anything that isn&rsquo;t needed for UI (async actions, timers, &hellip;)</li>
+<li>Setting state here will cause a re-render before updating the UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Update:
+<ul>
+<li>componentWillReceiveProps(nextProps)
+<ul>
+<li>update any state fiels that rely on props</li>
+</ul>
+</li>
+<li>shouldComponentUpdate(nextProps, nextSate)
+<ul>
+<li>compare changed values, return true if the component should render
+<ul>
+<li>If returned false, the update cycle terminates</li>
+</ul>
+</li>
+<li>Almost always a premature optimization</li>
+</ul>
+</li>
+<li>render()</li>
+<li>componentDidUpdate(prevProps, prevState)
+<ul>
+<li>Do anything that isn&rsquo;t needed for UI (network requests, etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Unmount
+<ul>
+<li>componentWillUnmount()
+<ul>
+<li>clean up
+<ul>
+<li>remove event listeners</li>
+<li>invalidate network requests</li>
+<li>clear timeouts/intervals</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Expo
+<ul>
+<li>Snack - run React Native in the browser</li>
+<li>XDE - a GUI to serve, share, publish Expo projects</li>
+<li>CLI for the same</li>
+<li>Client - run on the phone while developing</li>
+<li>SDK</li>
+</ul>
+</li>
+<li>Import/Export
+<ul>
+<li>Split components into their own files:
+<ul>
+<li>Helps organize projects</li>
+<li>Export and the import the component</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Count.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Count</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Other</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">Other</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// App.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Count</span>, <span style="color:#a6e22e">num</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Count.js&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Other</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Count.js&#39;</span>  <span style="color:#75715e">// import whatever the default is in Count.js and call it &#39;Other&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// or import Other, {num} from &#39;./Count.js&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">extens</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span>
+</span></span></code></pre></div><ul>
+<li>PropTypes
+<ul>
+<li>React can validate the types of component props at runtime</li>
+<li>Helps document your components&rsquo; APIs</li>
+<li>Only runs in development mode</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">PropTypes</span> <span style="color:#a6e22e">form</span> <span style="color:#e6db74">&#39;prop-types&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Count</span>.<span style="color:#a6e22e">propTypes</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PropTypes</span>.<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">isRequired</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// OR preferred:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Count</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">propTypes</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PropTypes</span>.<span style="color:#a6e22e">number</span>.<span style="color:#a6e22e">isRequired</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
   </div>
@@ -302,7 +591,7 @@
     <div class="post-tags">
       <i class="fas fa-tags"></i>
       
-        <a href="/tags/diary">diary</a>
+        <a href="/tags/it">it</a>
         &nbsp;
       
     </div>
@@ -314,11 +603,23 @@
       <h4>Related Posts</h4>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2022-04-25-systems_de-engineering/">Systems&#39; de-Engineering</a>
+      <a href="/post/2022-04-24-remote/">Remote</a>
       <br>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2022-03-26-sask/">Sanskrit a Slovenčina</a>
+      <a href="/post/2022-03-29-it_doesnt_have_to_be_crazy_at_work/">It doesn&#39;t have to be crazy at work</a>
+      <br>
+      
+      <i class="fas fa-paperclip"></i>
+      <a href="/post/2021-04-22-do_not_let_anyone_overpay_you/">Do not let anyone overpay you</a>
+      <br>
+      
+      <i class="fas fa-paperclip"></i>
+      <a href="/post/2021-04-02-clean_code/">Clean Code</a>
+      <br>
+      
+      <i class="fas fa-paperclip"></i>
+      <a href="/post/2021-03-01-prusa_link_architecture/">Prusa Link Architecture</a>
       <br>
       
     </div>

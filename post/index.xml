@@ -14,7 +14,7 @@
       
       <guid>https://uzak.github.io/post/2022-11-09-cs50_react_native/</guid>
       <description>Youtube
-Lecture 0 slides
+Lecture 0: JS slides
 Introduction Course information Syntax Types dynamic types primitive types (no methods, immutable) undefined null boolean number string (symbol) objects Typecasting explicit implicit == (coerces the types) vs === (requires equivalent types) falsy undefined null false +0, -0, NaN &amp;quot;&amp;quot; truthy {} [] everything else Type demo typeof operator Objects const o = new Object() OR const o2 = {}; o2.firstName = &#39;&#39; OR const o3 = { firstName: &#39;&#39;, greet(): function() {} } Arrays, Functions - are objects Everything but primitive datatypes are objects Anything between [] when indexing will be coerced to a string.</description>
     </item>
     
