@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.105.0">
+  <meta name="generator" content="Hugo 0.106.0">
   <title> Testing Python | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -57,16 +57,6 @@
     
     
     
-    
-      <i class="far fa-clock"></i>
-      
-      
-      
-      
-        4 min
-      
-      36 s
-      &nbsp;
     
     
     </div>
@@ -261,10 +251,10 @@ Then the balance of the account is &ldquo;50&rdquo;
 <p>Scenario Outline:
 {% highlight gherkin %}
 Scenario Outline: Retrieve customer balance
-Given I create account &ldquo;&lt;account_number&gt;&rdquo; with balance of &ldquo;<!-- raw HTML omitted -->&rdquo;
+Given I create account &ldquo;&lt;account_number&gt;&rdquo; with balance of &ldquo;<balance>&rdquo;
 And I visit the homepage
 When I enter the account number &ldquo;&lt;account_number&gt;&rdquo;
-Then I see a balance of &ldquo;<!-- raw HTML omitted -->&rdquo;</p>
+Then I see a balance of &ldquo;<balance>&rdquo;</p>
 <p>Examples: customer_account_table
 |account_number |balance|
 |1111           |50     |     <br>

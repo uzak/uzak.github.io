@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Hugo 0.106.0">
-  <title> Prusa Link Architecture | uzak.github.io </title>
+  <title> IT pre seniorov | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2021-03-01-prusa_link_architecture/">
+  <link rel="canonical" href="https://uzak.github.io/post/2022-11-20-it_pre_seniorov/">
   <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
   
   
@@ -49,10 +49,10 @@
   
 <article class="post">
   <header class="post-header">
-    <h1 style="text-align: center;" >Prusa Link Architecture</h1>
+    <h1 style="text-align: center;" >IT pre seniorov</h1>
     <div class="post-metadata">
     
-      <time datetime="2021-03-01T00:00:00Z">March 01, 2021</time> &nbsp; 
+      <time datetime="2022-11-20T00:00:00Z">November 20, 2022</time> &nbsp; 
     
     
     
@@ -65,42 +65,31 @@
   
   <div class="post-toc">
     <div class="post-toc-title">Contents</div>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#signals">signals</a></li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
   
 
   <div class="post-text">
-    <h1 id="main-driver">Main Driver</h1>
-<ul>
-<li>parse CLI args</li>
-<li>setup logging</li>
-<li>instantiate main class and run</li>
-</ul>
-<h1 id="logging">logging</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>log = logging.getLogger(__name__)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># -l on CLI for setting debug levels
-</span></span><span style="display:flex;"><span>for module, level in log_levels:
-</span></span><span style="display:flex;"><span>    logging.getLogger(module).setLevel(level)
-</span></span></code></pre></div><h1 id="config">config</h1>
-<p>Uses <code>extendparser</code> in <code>config.py</code></p>
-<h1 id="mvc">MVC</h1>
-<p><code>MainClass.__init__(config)</code> as Controller:</p>
-<ul>
-<li>instantiate Model</li>
-<li>instantiate components in proper order</li>
-<li>bind signals</li>
-<li>start threads</li>
-</ul>
-<p>There is <code>MainClass.stop()</code> for controlled shutdown.</p>
-<h2 id="signals">signals</h2>
-<p>Uses <code>blinker</code> module. Usage: <code>signal.connect(handler)</code>.</p>
-<!--
-    vim:spell spelllang=en
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>    hardware / software
+</span></span><span style="display:flex;"><span>    nastavit pocitac
+</span></span><span style="display:flex;"><span>    internet
+</span></span><span style="display:flex;"><span>    safety
+</span></span><span style="display:flex;"><span>    connecting to online people
+</span></span><span style="display:flex;"><span>        mail
+</span></span><span style="display:flex;"><span>        whatsapp
+</span></span><span style="display:flex;"><span>    sharing documents
+</span></span><span style="display:flex;"><span>    free office
+</span></span><span style="display:flex;"><span>    managing your personal files
+</span></span><span style="display:flex;"><span>    looking for information
+</span></span><span style="display:flex;"><span>    music
+</span></span><span style="display:flex;"><span>    youtube
+</span></span><span style="display:flex;"><span>https://www.twinsburglibrary.org/sites/default/files/Computer%20Basics%20for%20Seniors.pdf
+</span></span><span style="display:flex;"><span>https://www.welcometothejungle.com/sk/articles/ako-si-zorganizovat-subory-v-pocitaci
+</span></span><span style="display:flex;"><span>https://coursemology.sg/blog/how-to-help-seniors-learn-basic-computer-skills/
+</span></span><span style="display:flex;"><span>kurz? ucenie sa o PC nieco?
+</span></span><span style="display:flex;"><span>    https://www.youtube.com/watch?v=6mbFO0ZLMW8&amp;list=PLTFN6zyq8e6Ybsu_KcsMkLMSDjEkn7RLz
+</span></span></code></pre></div><!--
+    vim:spell spelllang=sk
 -->
 
   </div>
@@ -112,7 +101,7 @@
     <div class="post-tags">
       <i class="fas fa-tags"></i>
       
-        <a href="/tags/it">it</a>
+        <a href="/tags/diary">diary</a>
         &nbsp;
       
     </div>
@@ -124,19 +113,11 @@
       <h4>Related Posts</h4>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2021-02-22-kubernetes/">Kubernetes</a>
+      <a href="/post/2022-04-25-systems_de-engineering/">Systems&#39; de-Engineering</a>
       <br>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2020-07-05-rework/">Rework</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2020-03-16-the_pragmatic_programmer/">The Pragmatic Programmer</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2019-12-13-python__testing/">Testing Python</a>
+      <a href="/post/2022-03-26-sask/">Sanskrit a Slovenčina</a>
       <br>
       
     </div>

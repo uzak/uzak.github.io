@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.105.0">
+  <meta name="generator" content="Hugo 0.106.0">
   <title> Kubernetes | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -57,16 +57,6 @@
     
     
     
-    
-      <i class="far fa-clock"></i>
-      
-      
-      
-      
-        21 min
-      
-      13 s
-      &nbsp;
     
     
     </div>
@@ -514,7 +504,7 @@ total 0
 <p>First make sure that <code>nfs-utils</code> package is installed on k8s minions. Check <code>/etc/exports</code> and make sure it can be mounted using <code>nfs -t nfs server:share mountpoint</code>. Examples:</p>
 <p>kubectl create -f shared-volume-nfs.yml
 kubectl get pods shared-volume-nfs -o wide  # wait for <code>Running</code> state
-kubectl describe pod <!-- raw HTML omitted -->     # check mounting status</p>
+kubectl describe pod <pod-name>     # check mounting status</p>
 <p>K8s actually mounts <code>server:share </code> into <code>/var/lib/kubelet/pods/&lt;id&gt;/volumes/kubernetes.io-nfs/nfs</code> and then mounts it into the container as the destination <code>/&lt;mount-point&gt;</code>.</p>
 <h3 id="persistent-volumes">Persistent Volumes</h3>
 <p>Capacity:</p>
@@ -1094,8 +1084,9 @@ k apply -f nginx-ingress-rule.yml
 k get ing nginx-ingress -o yaml
 curl http://host.example.com/v2
 </code></pre>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<!--
+    vim:spell spelllang=en
+-->
 
   </div>
 
