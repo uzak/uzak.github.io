@@ -75,6 +75,7 @@
     <li><a href="#lecture-5-user-input-debugging">Lecture 5: User Input, Debugging</a></li>
     <li><a href="#lecture-6-navigation">Lecture 6: Navigation</a></li>
     <li><a href="#lecture-7-data">Lecture 7: Data</a></li>
+    <li><a href="#lecture-8-expo-components">Lecture 8: Expo Components</a></li>
   </ul>
 </nav>
   </div>
@@ -718,6 +719,110 @@
 </ul>
 <h2 id="lecture-7-data">Lecture 7: Data</h2>
 <p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/7/lecture7.pdf">slides</a></p>
+<ul>
+<li><a href="https://randomuser.me">https://randomuser.me</a></li>
+<li><code>fetch(url, config)</code> is polyfiled. <code>config</code> is optional. Returns a promise.</li>
+<li>Promises
+<ul>
+<li>.<code>then()/.catch()</code></li>
+</ul>
+</li>
+<li>Async/Await: within an <code>async</code> function we can <code>await</code> the value of another async function or Promise.
+<ul>
+<li>Use <code>try/catch</code> to handle errors.</li>
+</ul>
+</li>
+<li>componentDidMount()
+<ul>
+<li><code>fetch(url)</code></li>
+<li>extract json</li>
+<li><code>this.setState()</code></li>
+</ul>
+</li>
+<li>Transforming data
+<ul>
+<li>doing it early gives us an abstraction layer and is more efficient, therefore:</li>
+<li>api.js
+<ul>
+<li>fetchUsers()</li>
+<li>processContanct() // transformation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Authentication
+<ul>
+<li>to prove ID</li>
+</ul>
+</li>
+<li>HTTP status codes
+<ul>
+<li>check for <code>response.ok</code></li>
+</ul>
+</li>
+<li>JSX: TAG <code>parameter={true}</code> shortcut is <code>parameter</code></li>
+</ul>
+<h2 id="lecture-8-expo-components">Lecture 8: Expo Components</h2>
+<p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/8/lecture8.pdf">slides</a></p>
+<ul>
+<li>Maps and Location
+<ul>
+<li>&lt;Expo.MapView /&gt;</li>
+<li><code>let {status} = Expo.Permissions.askAsync(Expo.Permissions.LOCATION)</code></li>
+<li>Expo.Location.getCurrentPositionAsync({})</li>
+<li>Expo.Location.geocodeAsync(<code>{address}</code>)</li>
+<li>Expo.Location.reverseGeocodeAsync(location.coords)</li>
+<li>&lt;Expo.MapView.Marker /&gt;</li>
+</ul>
+</li>
+<li>Compass
+<ul>
+<li><code>&lt;Image source={require(&quot;./img.png&quot;)} /&gt;</code></li>
+<li><code>&lt;ImageBackground source={require(&quot;./bg.png&quot;)} /&gt;</code></li>
+<li>Expo.Magnetometer.addListener((v) =&gt; { &hellip; })</li>
+<li>60FPS refresh rate on phone means 1000/60 = 16ms for updating interval</li>
+<li>Expo.Magnetometer.removeAllListeners()</li>
+</ul>
+</li>
+<li>Audio / Video</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">Expo.Video</span> <span style="color:#a6e22e">source</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">require</span>(<span style="color:#a6e22e">fn</span>)} 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">resizeMode</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cover&#34;</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">shouldPlay</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">true</span>} 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span>{...} 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">onPlaybackStatusUpdate</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">status</span> =&gt; {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">status</span>.<span style="color:#a6e22e">didJustFinish</span>) {
+</span></span><span style="display:flex;"><span>                } 
+</span></span><span style="display:flex;"><span>            } <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">Expo</span>.<span style="color:#a6e22e">Audio</span>.<span style="color:#a6e22e">setAudioModeAsync</span>({})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">_setupAsync</span>() <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span>() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_loadAssetsAsync</span>(),    <span style="color:#75715e">// require all the videos
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_setAudioModeAsync</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_loadFontsAsync</span>()
+</span></span><span style="display:flex;"><span>    ]);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({ <span style="color:#a6e22e">isReady</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> (&lt;<span style="color:#f92672">Expo.AppLoading</span> /&gt;);       <span style="color:#75715e">// splashscreen
+</span></span></span></code></pre></div><ul>
+<li>A photo editor
+<ul>
+<li>await Expo.Permissions.askAsync(Expo.Permissions.CAMERA_ROLL)
+<ul>
+<li>check for <code>status === 'granted'</code></li>
+</ul>
+</li>
+<li>Expo.ImagePicker.launchImageLibraryAsync()</li>
+<li>Expo.ImagePicker.launchCameraAsync()</li>
+<li>Expo.ImageManipulator.manipulate()</li>
+<li>Expo.Camera</li>
+<li><code>&lt;TouchableHighlight onPress={} /&gt;</code></li>
+</ul>
+</li>
+</ul>
 <!--
     vim:spell spelllang=en
 -->
