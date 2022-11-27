@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.106.0">
+  <meta name="generator" content="Hugo 0.107.0">
   <title> CS50 React Native | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -76,6 +76,8 @@
     <li><a href="#lecture-6-navigation">Lecture 6: Navigation</a></li>
     <li><a href="#lecture-7-data">Lecture 7: Data</a></li>
     <li><a href="#lecture-8-expo-components">Lecture 8: Expo Components</a></li>
+    <li><a href="#lecture-9-redux">Lecture 9: Redux</a></li>
+    <li><a href="#lecture-10-redux-tools">Lecture 10: Redux, Tools</a></li>
   </ul>
 </nav>
   </div>
@@ -823,6 +825,74 @@
 </ul>
 </li>
 </ul>
+<h2 id="lecture-9-redux">Lecture 9: Redux</h2>
+<p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/9/lecture9.pdf">slides</a></p>
+<ul>
+<li>Facebook found that MVC architecture is too complex to scale.</li>
+<li>Facebook rearchitected into one-way data flow</li>
+<li>Flux: an application architecture for React utilizing a unidirectional data flow
+<ul>
+<li>The views react to changes ins some number of &ldquo;stores&rdquo;</li>
+<li>The only thing that can update data in a store is a &ldquo;dispatcher&rdquo;</li>
+<li>The only way to trigger the dispatcher is by invoking &ldquo;actions&rdquo;</li>
+<li>Actions are triggered from views</li>
+</ul>
+</li>
+<li><a href="https://redux.js.org">Redux</a>: data management library inspired by Flux
+<ul>
+<li>single source of truth for all the data</li>
+<li>the only way to update the state is by an action</li>
+<li>updates are made using pure functions - deterministic function that takes arguments and always returns the same thing for them and doesn&rsquo;t have side-effects (no prints etc.)</li>
+<li>Action -&gt; Store -&gt; Views (which can trigger actions)</li>
+<li>Unlike in flux there is only a singular store</li>
+</ul>
+</li>
+<li>simpleReact (example redux implementation)
+<ul>
+<li>Reducer:
+<ul>
+<li>takes the previous state and update and applies the update</li>
+<li>should be a pure function</li>
+<li>should be immutable - return a new object</li>
+</ul>
+</li>
+<li>Store
+<ul>
+<li>responsible for maintaining state</li>
+<li>exposes getter via <code>getState()</code></li>
+<li>can be updated by using <code>dispatch()</code></li>
+<li>Can add listeners that get invoked when state changes</li>
+</ul>
+</li>
+<li><a href="https://github.com/redux-utilities/flux-standard-action">Action</a>
+<ul>
+<li>piece of data that contains all the information required to make a state update. Usually objects with a type key</li>
+<li>functions that create actions are called action creators</li>
+<li>actions must be dispatched</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>npm install redux</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contacts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">getState</span>().<span style="color:#a6e22e">contacts</span>       <span style="color:#75715e">// in render()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// in AddContactScreen.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">dispatch</span>(<span style="color:#a6e22e">addContact</span>({<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">phone</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">phone</span>}))
+</span></span></code></pre></div><ul>
+<li><code>npm install react-redux</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// in ContactListScreen.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// only bind this component to contacts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and this gives us this.props.contacts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mapStateToProps</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">state</span> =&gt; ({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contacts</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">contacts</span>,
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">connect</span>(<span style="color:#a6e22e">mapStateToProps</span>)(<span style="color:#a6e22e">contactListScreen</span>)
+</span></span></code></pre></div><h2 id="lecture-10-redux-tools">Lecture 10: Redux, Tools</h2>
+<p><a href="https://cdn.cs50.net/mobile/2018/spring/lectures/10/lecture10.pdf">slides</a></p>
 <!--
     vim:spell spelllang=en
 -->

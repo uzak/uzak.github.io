@@ -6,16 +6,7 @@
     <description>Recent content in Tags on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>diary</title>
-      <link>https://uzak.github.io/tags/diary/</link>
-      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://uzak.github.io/tags/diary/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Wed, 09 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>it</title>
       <link>https://uzak.github.io/tags/it/</link>
@@ -40,6 +31,15 @@
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://uzak.github.io/tags/vedanta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diary</title>
+      <link>https://uzak.github.io/tags/diary/</link>
+      <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/tags/diary/</guid>
       <description></description>
     </item>
     
