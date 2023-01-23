@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.107.0">
+  <meta name="generator" content="Hugo 0.110.0">
   <title> CS50 React Native | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
@@ -467,13 +467,13 @@
 </li>
 <li>Mount
 <ul>
-<li>constructor(props)</li>
-<li>render()
+<li><code>constructor(props)</code></li>
+<li><code>render()</code>
 <ul>
 <li>return a node</li>
 </ul>
 </li>
-<li>componentDidMount()
+<li><code>componentDidMount()</code>
 <ul>
 <li>Do anything that isn&rsquo;t needed for UI (async actions, timers, &hellip;)</li>
 <li>Setting state here will cause a re-render before updating the UI</li>
@@ -483,12 +483,12 @@
 </li>
 <li>Update:
 <ul>
-<li>componentWillReceiveProps(nextProps)
+<li><code>componentWillReceiveProps(nextProps)</code>
 <ul>
-<li>update any state fiels that rely on props</li>
+<li>update any state fields that rely on props</li>
 </ul>
 </li>
-<li>shouldComponentUpdate(nextProps, nextSate)
+<li><code>shouldComponentUpdate(nextProps, nextState)</code>
 <ul>
 <li>compare changed values, return true if the component should render
 <ul>
@@ -498,8 +498,8 @@
 <li>Almost always a premature optimization</li>
 </ul>
 </li>
-<li>render()</li>
-<li>componentDidUpdate(prevProps, prevState)
+<li><code>render()</code></li>
+<li><code>componentDidUpdate(prevProps, prevState)</code>
 <ul>
 <li>Do anything that isn&rsquo;t needed for UI (network requests, etc.)</li>
 </ul>
@@ -508,7 +508,7 @@
 </li>
 <li>Unmount
 <ul>
-<li>componentWillUnmount()
+<li><code>componentWillUnmount()</code>
 <ul>
 <li>clean up
 <ul>
@@ -974,6 +974,12 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;lint&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;eslint api.js screens/&#34;</span>
 </span></span><span style="display:flex;"><span>  },
+</span></span></code></pre></div><ul>
+<li>npm trick:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm update
+</span></span><span style="display:flex;"><span>npm install -g npm-check-updates
+</span></span><span style="display:flex;"><span>ncu -u
 </span></span></code></pre></div><!--
     vim:spell spelllang=en
 -->
@@ -1033,7 +1039,7 @@
 
   <div class="foot">
   
-  &copy; 2019 - 2022 &#183;
+  &copy; 2019 - 2023 &#183;
   <a href="/"> uzak.github.io </a> &#183;
   Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
   <a href="#"><i class="fas fa-chevron-up"></i></a>

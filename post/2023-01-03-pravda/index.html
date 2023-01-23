@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Hugo 0.110.0">
-  <title> Prusa Link Architecture | uzak.github.io </title>
+  <title> pra-vda: Reflexia inšpirovaná Murlim | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2021-03-01-prusa_link_architecture/">
+  <link rel="canonical" href="https://uzak.github.io/post/2023-01-03-pravda/">
   <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
   
   
@@ -49,10 +49,10 @@
   
 <article class="post">
   <header class="post-header">
-    <h1 style="text-align: center;" >Prusa Link Architecture</h1>
+    <h1 style="text-align: center;" >pra-vda: Reflexia inšpirovaná Murlim</h1>
     <div class="post-metadata">
     
-      <time datetime="2021-03-01T00:00:00Z">March 01, 2021</time> &nbsp; 
+      <time datetime="2023-01-03T00:00:00Z">January 03, 2023</time> &nbsp; 
     
     
     
@@ -67,40 +67,25 @@
     <div class="post-toc-title">Contents</div>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#signals">signals</a></li>
+    <li><a href="#pravda">Pravda</a></li>
+    <li><a href="#vnímanie">Vnímanie</a></li>
+    <li><a href="#hľadanie-pravdy">Hľadanie pravdy</a></li>
   </ul>
 </nav>
   </div>
   
 
   <div class="post-text">
-    <h1 id="main-driver">Main Driver</h1>
-<ul>
-<li>parse CLI args</li>
-<li>setup logging</li>
-<li>instantiate main class and run</li>
-</ul>
-<h1 id="logging">logging</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>log = logging.getLogger(__name__)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># -l on CLI for setting debug levels
-</span></span><span style="display:flex;"><span>for module, level in log_levels:
-</span></span><span style="display:flex;"><span>    logging.getLogger(module).setLevel(level)
-</span></span></code></pre></div><h1 id="config">config</h1>
-<p>Uses <code>extendparser</code> in <code>config.py</code></p>
-<h1 id="mvc">MVC</h1>
-<p><code>MainClass.__init__(config)</code> as Controller:</p>
-<ul>
-<li>instantiate Model</li>
-<li>instantiate components in proper order</li>
-<li>bind signals</li>
-<li>start threads</li>
-</ul>
-<p>There is <code>MainClass.stop()</code> for controlled shutdown.</p>
-<h2 id="signals">signals</h2>
-<p>Uses <code>blinker</code> module. Usage: <code>signal.connect(handler)</code>.</p>
+    <h2 id="pravda">Pravda</h2>
+<p>Čo je pravda? Aby niečo mohlo byť pravdou, nesmie sa to meniť. Ináč by to po zmene prestalo byť pravdou. Takže pravda je to, čo je stále tým istým.</p>
+<h2 id="vnímanie">Vnímanie</h2>
+<p>Ako funguje vnímanie? Vnímame na základe rozdielu. Vnímame iba veci premenlivé. Nemôžem vnímať veci konštantné, pretože by sme sme stratili rozdiel medzi teraz a vtedy/potom a tu a tam. Všetko by to bolo jedno.</p>
+<h2 id="hľadanie-pravdy">Hľadanie pravdy</h2>
+<p>Čo je aktivita? Aktivitou sa snažím docieliť niečoho. Mením. Konám. A tým pádom produkujem rozdiel.</p>
+<p>A teraz k otázke otázok. Môžem mať pravdu? Môžem konať, napr. skúmať, aby som pravdu našiel? Ak by to možné bolo, znamenalo by to, že pravda sa dá vyrobiť. Že bude výsledkom niečoho. A to by pre zmenu znamenalo, že pravda najskôr nebola a potom bude&hellip; To čo môžem mať nie je pravda, ale jej ilúzia daná mojou vlastnou nevedomosťou. Skutočná pravda je a bude stále rovnaká. Je mimo času a priestoru, ktoré sú nevyhnutné na vnímanie. Takže tu skutočnú pravdu mať nikdy nemôžem. Jej je moja aktivita úplne šuma-fuk. Ak na nej nastojím a snažím sa ju presadiť či dokázať dokazujem tak akurát svoju vlastnú hlúposť. Toľko k vede a hľadaniu pravdy.</p>
+<p>Našťastie platí &ldquo;nomen est omen&rdquo; a tak slovo pravda nám hovorí, kde ju nájsť. &ldquo;pra&rdquo; znamená &ldquo;z&rdquo; a &ldquo;vda&rdquo; odkazuje na staré Védy, ktoré o nej hovoria veľmi špeciálnym jazykom.</p>
 <!--
-    vim:spell spelllang=en
+    vim:spell spelllang=sk
 -->
 
   </div>
@@ -112,7 +97,7 @@
     <div class="post-tags">
       <i class="fas fa-tags"></i>
       
-        <a href="/tags/it">it</a>
+        <a href="/tags/diary">diary</a>
         &nbsp;
       
     </div>
@@ -124,19 +109,11 @@
       <h4>Related Posts</h4>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2021-02-22-kubernetes/">Kubernetes</a>
+      <a href="/post/2022-04-25-systems_de-engineering/">Systems&#39; de-Engineering</a>
       <br>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2020-07-05-rework/">Rework</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2020-03-16-the_pragmatic_programmer/">The Pragmatic Programmer</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2019-12-13-python__testing/">Testing Python</a>
+      <a href="/post/2022-03-26-sask/">Sanskrit a Slovenčina</a>
       <br>
       
     </div>

@@ -6,7 +6,41 @@
     <description>Recent content in Posts on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Questions vol. 1</title>
+      <link>https://uzak.github.io/post/2023-01-23-questions_vol._1/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-23-questions_vol._1/</guid>
+      <description>An ode to logic.
+Difference between knowing and believing? Knowing is based on experience and examination and effort. Contrary to this believing is based on, well, belief. Belief is blind, it is indoctrination.
+Interestingly belief is connected to emotions. So when it is attacked, it is defended emotionally. Knowledge doesn&amp;rsquo;t need to be defended. It&amp;rsquo;s validity doesn&amp;rsquo;t rely on wishful thinking.
+What is reality? What does &amp;ldquo;real&amp;rdquo; mean? That which does certainly exist.</description>
+    </item>
+    
+    <item>
+      <title>Slobodná vôľa</title>
+      <link>https://uzak.github.io/post/2023-01-06-slobodna_vola/</link>
+      <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-06-slobodna_vola/</guid>
+      <description>Existuje, či neexistuje? Čo to vlastne je?
+Slobodná vôľa hovorí, že agent, napr. človek sa môže slobodne rozhodnúť. Teda, že nie je determinovaný, ale sám sebe pánom svojho osudu. Na základe čoho si ale vyberá?
+Existuje? Aby slobodná vôľa existovala musí platiť, že pri rozhodovaní v presne tej situácii, sa NE-rozhodneme presne rovnako. Lebo ináč by platilo, že voľba je podmienená situáciou a nie v rukách agentom. Situáciou chápem celý stav vesmíru.</description>
+    </item>
+    
+    <item>
+      <title>pra-vda: Reflexia inšpirovaná Murlim</title>
+      <link>https://uzak.github.io/post/2023-01-03-pravda/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-03-pravda/</guid>
+      <description>Pravda Čo je pravda? Aby niečo mohlo byť pravdou, nesmie sa to meniť. Ináč by to po zmene prestalo byť pravdou. Takže pravda je to, čo je stále tým istým.
+Vnímanie Ako funguje vnímanie? Vnímame na základe rozdielu. Vnímame iba veci premenlivé. Nemôžem vnímať veci konštantné, pretože by sme sme stratili rozdiel medzi teraz a vtedy/potom a tu a tam. Všetko by to bolo jedno.
+Hľadanie pravdy Čo je aktivita? Aktivitou sa snažím docieliť niečoho.</description>
+    </item>
+    
     <item>
       <title>CS50 React Native</title>
       <link>https://uzak.github.io/post/2022-11-09-cs50_react_native/</link>

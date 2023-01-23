@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Hugo 0.110.0">
-  <title> Prusa Link Architecture | uzak.github.io </title>
+  <title> Slobodná vôľa | uzak.github.io </title>
   <meta name="description" content="A simple and concise hugo theme.">
   <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2021-03-01-prusa_link_architecture/">
+  <link rel="canonical" href="https://uzak.github.io/post/2023-01-06-slobodna_vola/">
   <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
   
   
@@ -49,10 +49,10 @@
   
 <article class="post">
   <header class="post-header">
-    <h1 style="text-align: center;" >Prusa Link Architecture</h1>
+    <h1 style="text-align: center;" >Slobodná vôľa</h1>
     <div class="post-metadata">
     
-      <time datetime="2021-03-01T00:00:00Z">March 01, 2021</time> &nbsp; 
+      <time datetime="2023-01-06T00:00:00Z">January 06, 2023</time> &nbsp; 
     
     
     
@@ -67,40 +67,27 @@
     <div class="post-toc-title">Contents</div>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#signals">signals</a></li>
+    <li><a href="#existuje">Existuje?</a></li>
+    <li><a href="#subjektivita-a-neznalosť">Subjektivita a neznalosť</a></li>
+    <li><a href="#apokalypsa">Apokalypsa</a></li>
   </ul>
 </nav>
   </div>
   
 
   <div class="post-text">
-    <h1 id="main-driver">Main Driver</h1>
-<ul>
-<li>parse CLI args</li>
-<li>setup logging</li>
-<li>instantiate main class and run</li>
-</ul>
-<h1 id="logging">logging</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>log = logging.getLogger(__name__)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># -l on CLI for setting debug levels
-</span></span><span style="display:flex;"><span>for module, level in log_levels:
-</span></span><span style="display:flex;"><span>    logging.getLogger(module).setLevel(level)
-</span></span></code></pre></div><h1 id="config">config</h1>
-<p>Uses <code>extendparser</code> in <code>config.py</code></p>
-<h1 id="mvc">MVC</h1>
-<p><code>MainClass.__init__(config)</code> as Controller:</p>
-<ul>
-<li>instantiate Model</li>
-<li>instantiate components in proper order</li>
-<li>bind signals</li>
-<li>start threads</li>
-</ul>
-<p>There is <code>MainClass.stop()</code> for controlled shutdown.</p>
-<h2 id="signals">signals</h2>
-<p>Uses <code>blinker</code> module. Usage: <code>signal.connect(handler)</code>.</p>
+    <p>Existuje, či neexistuje? Čo to vlastne je?</p>
+<p>Slobodná vôľa hovorí, že agent, napr. človek sa môže slobodne rozhodnúť. Teda, že nie je determinovaný, ale sám sebe pánom svojho osudu. Na základe čoho si ale vyberá?</p>
+<h2 id="existuje">Existuje?</h2>
+<p>Aby slobodná vôľa existovala musí platiť, že pri rozhodovaní v presne tej situácii, sa NE-rozhodneme presne rovnako. Lebo ináč by platilo, že voľba je podmienená situáciou a nie v rukách agentom. Situáciou chápem celý stav vesmíru. Všetky dostupné informácie včetne myšlienok a pocitov agenta.</p>
+<p>Ak by sme sa vedeli pozrieť na celú situáciu objektívne, včetne stavu vedomia a podvedomia, by bolo logické a jasné, prečo sa rozhodol tak či onak. Rovnako jasné by bolo, že by svoju voľbu pri rovnakých podmienkach opakoval. V tejto situácii by nebolo pochýb, ako sa prišlo k rozhodnutiu a čo ho ovplyvnilo.</p>
+<h2 id="subjektivita-a-neznalosť">Subjektivita a neznalosť</h2>
+<p>Prečo teda ale máme pocit, že slobodná voľba existuje? Ak zamlžíme časť dostupnýhch informácii, napr. stav mysle (vedomia i podvedomia) agenta, stratíme možnosť povedať na základe čoho sa daná voľba stala. Namiesto toho, aby sme pokorne povedali, že nevieme prečo k danej voľbe došlo, povieme že to bolo naším rozhodnutím. Na jednej strane sa tak môžeme cítiť dôležite. Na druhej strane nevyzeráme blbo. To že rozhodnutie sa zhoduje s nastavením toho, s čím sa tak silne identifikujeme - mysľou skrývajucou svoje preferencie, nám ostáva zahalené.</p>
+<p>Takže čím väčšia neznalosť, tým väčšia slobodná vôľa.</p>
+<h2 id="apokalypsa">Apokalypsa</h2>
+<p>V preklade znamená apokalypsa koniec zahalenia. Maximálnu objektivitu.</p>
 <!--
-    vim:spell spelllang=en
+    vim:spell spelllang=sk
 -->
 
   </div>
@@ -112,7 +99,7 @@
     <div class="post-tags">
       <i class="fas fa-tags"></i>
       
-        <a href="/tags/it">it</a>
+        <a href="/tags/diary">diary</a>
         &nbsp;
       
     </div>
@@ -124,19 +111,15 @@
       <h4>Related Posts</h4>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2021-02-22-kubernetes/">Kubernetes</a>
+      <a href="/post/2023-01-03-pravda/">pra-vda: Reflexia inšpirovaná Murlim</a>
       <br>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2020-07-05-rework/">Rework</a>
+      <a href="/post/2022-04-25-systems_de-engineering/">Systems&#39; de-Engineering</a>
       <br>
       
       <i class="fas fa-paperclip"></i>
-      <a href="/post/2020-03-16-the_pragmatic_programmer/">The Pragmatic Programmer</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2019-12-13-python__testing/">Testing Python</a>
+      <a href="/post/2022-03-26-sask/">Sanskrit a Slovenčina</a>
       <br>
       
     </div>
