@@ -6,7 +6,16 @@
     <description>Recent content in it on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Review whole codebase easily</title>
+      <link>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</guid>
+      <description>Recently a student asked to perform a review of a small project. The project is hosted on github. Of course I assumed Pull Request / Code Review functionality of github would be the way to go. I found a easy way to do so. But in the end, I felt that I want to have a big picture, not only view a small portion of the changes under the microscope of the Code Review.</description>
+    </item>
+    
     <item>
       <title>CS50 React Native</title>
       <link>https://uzak.github.io/post/2022-11-09-cs50_react_native/</link>

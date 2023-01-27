@@ -357,6 +357,7 @@ article h5, h6 {
 /* ------- post footer end -------*/
 
 
+
 /* ------- comments -------*/
 .comments-item {
   margin-top: 10%;
@@ -366,3 +367,11 @@ article h5, h6 {
   background: rgba(142, 142, 145, 0.04);
 } */
 /* ------- comments end -------*/
+
+
+.music {
+  font-style: italic;
+  color: #999;
+  text-align: right;
+  padding-top: 20px;
+}

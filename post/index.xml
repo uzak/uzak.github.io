@@ -6,7 +6,27 @@
     <description>Recent content in Posts on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Review whole codebase easily</title>
+      <link>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</guid>
+      <description>Recently a student asked to perform a review of a small project. The project is hosted on github. Of course I assumed Pull Request / Code Review functionality of github would be the way to go. I found a easy way to do so. But in the end, I felt that I want to have a big picture, not only view a small portion of the changes under the microscope of the Code Review.</description>
+    </item>
+    
+    <item>
+      <title>História sa neopakuje, ale rýmuje</title>
+      <link>https://uzak.github.io/post/2023-01-23-historia_sa_rymuje/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-23-historia_sa_rymuje/</guid>
+      <description>Mr.Tomas 19:35 23.01.2023 @ armadninoviny.cz
+Maďarsko a Turecko sú dnes posledné krajiny ktoré neschválili vstup Švédska a Fínska do NATO.
+V 15. storočí Turci obliehali byzantský Konštantínopol. Svoje služby vtedy Byzantíncom ponúkol maďarský zbrojár a odlievač kovu. Ponúkol im, že vytvorí delo aké svet nevidel. Byzantský cisár si však nemohli dovoliť sumu ktorú požadoval. Svoje služby tak ponúkol ich nepriateľom- Turkom. Pre sultána vytvoril vyše 8 metrov dlhé delo vrhajúce pol tonové kamenné gule, ktoré malo najväčší podiel na prelomení konštantínopolských hradieb a páde Byzancie.</description>
+    </item>
+    
     <item>
       <title>Questions vol. 1</title>
       <link>https://uzak.github.io/post/2023-01-23-questions_vol._1/</link>
@@ -14,9 +34,9 @@
       
       <guid>https://uzak.github.io/post/2023-01-23-questions_vol._1/</guid>
       <description>An ode to logic.
-Difference between knowing and believing? Knowing is based on experience and examination and effort. Contrary to this believing is based on, well, belief. Belief is blind, it is indoctrination.
+Difference between knowing and believing? Knowing is based on experience, examination and effort in general. Contrary to this, believing is based on, well, belief. Belief is blind, it is indoctrination, it is cheap.
 Interestingly belief is connected to emotions. So when it is attacked, it is defended emotionally. Knowledge doesn&amp;rsquo;t need to be defended. It&amp;rsquo;s validity doesn&amp;rsquo;t rely on wishful thinking.
-What is reality? What does &amp;ldquo;real&amp;rdquo; mean? That which does certainly exist.</description>
+What is reality? What does &amp;ldquo;real&amp;rdquo; mean?</description>
     </item>
     
     <item>
