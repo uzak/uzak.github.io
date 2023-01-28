@@ -6,7 +6,16 @@
     <description>Recent content in it on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accumulation patterns</title>
+      <link>https://uzak.github.io/post/2023-01-27-accumulation_patterns/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-27-accumulation_patterns/</guid>
+      <description>https://cs111.wellesley.edu/content/lectures/lec_accum_lists_dicts/files/lec_accum_lists_dicts.pdf</description>
+    </item>
+    
     <item>
       <title>Review whole codebase easily</title>
       <link>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</link>
