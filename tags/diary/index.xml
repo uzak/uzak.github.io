@@ -6,14 +6,25 @@
     <description>Recent content in diary on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/diary/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/diary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Freedom vs. centralization</title>
+      <link>https://uzak.github.io/post/2023-01-28-freedom_vs._centralization/</link>
+      <pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uzak.github.io/post/2023-01-28-freedom_vs._centralization/</guid>
+      <description>How can freedom of speech provide enough feedback for a system to be continually improved, thus enabling it to outdo rigid, centralized state models?
+https://unchartedterritories.tomaspueyo.com/p/freedom-will-always-win</description>
+    </item>
+    
     <item>
       <title>Review whole codebase easily</title>
       <link>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</link>
       <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://uzak.github.io/post/2023-01-26-review_whole_codebase/</guid>
-      <description>Recently a student asked to perform a review of a small project. The project is hosted on github. Of course I assumed Pull Request / Code Review functionality of github would be the way to go. I found a easy way to do so. But in the end, I felt that I want to have a big picture, not only view a small portion of the changes under the microscope of the Code Review.</description>
+      <description>Recently, a student asked me to review a small project hosted on GitHub. Initially, I assumed I would use the Pull Request/Code Review functionality of GitHub to do so. For this I found a easy way to perform it on the whole codebase.
+However, I eventually decided that I wanted to have a broader view, rather than just looking at a small portion of the changes through the Code Review&amp;rsquo;s microscope.</description>
     </item>
     
     <item>
