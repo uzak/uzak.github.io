@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.110.0">
-  <title> CS50&#39;s Introduction to Artificial Intelligence with Python  | uzak.github.io </title>
-  <meta name="description" content="A simple and concise hugo theme.">
-  <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2022-10-17-harvardx_cs50ai/">
-  <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
-  
-  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  
-</head>
-<body class="container">
-  <nav class="navigation">
-  <div class="nav-left">
-    
-    <div class="nav-item nav-title">
-      <a href="https://uzak.github.io/"> uzak.github.io</a>
-    </div>
-    <div class="nav-item nav-menu">
-      
-      <a href="/"> Home</a>
-      
-      <a href="/etymolog/"> Etymolog</a>
-      
-      <a href="/about/"> About</a>
-      
-    </div>
-  </div>
-  <div class="nav-item nav-right fontawesome">
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
     
     
-    <a href="https://github.com/uzak" target="_blank">
-      <i title="GitHub" class="fab fa-github"></i>
-    </a>
-    
-    
-    <a href="https://uzak.github.io/index.xml" target="_blank">
-      <i title="RSS" class="fas fa-rss"></i>
-    </a>
-    
-  </div>
-</nav>
+    <title>uzak.github.io | CS50&#39;s Introduction to Artificial Intelligence with Python </title>
+</head><body>
+    <div id="content">
+    <header>  
+    <div class="site-title">  
+        <a href="/">uzak's weblog</a>  
+    </div>  
+    <div class="site-description">
+        <nav>
+            <a href="/micro">micro/</a>  
+            <a href="/post">blog/</a>  
+            <a href="/etymolog">etymolog/</a>  
+            <a href="/about">about</a>  
+            <a href="/index.xml">rss</a>  
+        </nav>
+</header>  
 
-  
+    
 <article class="post">
   <header class="post-header">
     <h1 style="text-align: center;" >CS50&#39;s Introduction to Artificial Intelligence with Python </h1>
@@ -58,13 +34,12 @@
     
     
     
-    
     </div>
   </header>
 
   
   <div class="post-toc">
-    <div class="post-toc-title">Contents</div>
+    <div class="post-toc-title">Table of Contents</div>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#search">Search</a>
@@ -490,13 +465,13 @@ P(cloudy | rain) = P(cloudy, rain) / P(rain)        # , = AND
 <p><strong>local search</strong>: search algorithms that maintain a <strong>single node</strong> and searches by moving to a neighboring node. Most useful when we don&rsquo;t care about the path but the solution only.</p>
 <p><strong>state-space landscape</strong>. Global minimum - cost function. Global maximum - objective function. We move to neighbours from current state.</p>
 <h3 id="hill-climbing-algorithm">hill climbing algorithm</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function hill-climb(problem):
-</span></span><span style="display:flex;"><span>    current = initial state of problem
-</span></span><span style="display:flex;"><span>    repeat:
-</span></span><span style="display:flex;"><span>        neighbor = highest valued neighbor of current
-</span></span><span style="display:flex;"><span>        if neighbor not better than current:
-</span></span><span style="display:flex;"><span>            return current
-</span></span></code></pre></div><p>Hill climbing might get stuck at a local maxima. Therefore there are hill climbing variants:</p>
+<pre tabindex="0"><code>function hill-climb(problem):
+    current = initial state of problem
+    repeat:
+        neighbor = highest valued neighbor of current
+        if neighbor not better than current:
+            return current
+</code></pre><p>Hill climbing might get stuck at a local maxima. Therefore there are hill climbing variants:</p>
 <ul>
 <li>steepest-ascent: choose the highest-valued neighbor</li>
 <li>stochastic: choose randomly from higher-valued neighbors</li>
@@ -510,17 +485,17 @@ P(cloudy | rain) = P(cloudy, rain) / P(rain)        # , = AND
 <li>Early on, higher &ldquo;temperature&rdquo;: more likely to accept neighbors that are worse than current state</li>
 <li>Later on, lower &ldquo;temperature&rdquo;.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function SIMULATED-ANNEALING(problem, max):
-</span></span><span style="display:flex;"><span>    current = initial state of problem
-</span></span><span style="display:flex;"><span>    for t = 1 to max:
-</span></span><span style="display:flex;"><span>        T = temperature(t)
-</span></span><span style="display:flex;"><span>        neighbor = random neighbor of current
-</span></span><span style="display:flex;"><span>        delta_e = how much better neighbor is than current
-</span></span><span style="display:flex;"><span>        if delta_e &gt; 0:
-</span></span><span style="display:flex;"><span>            current = neighbor
-</span></span><span style="display:flex;"><span>        with probability e**(delta_e/T) set current = neighbor
-</span></span><span style="display:flex;"><span>    return current
-</span></span></code></pre></div><h3 id="linear-programming">Linear Programming</h3>
+<pre tabindex="0"><code>function SIMULATED-ANNEALING(problem, max):
+    current = initial state of problem
+    for t = 1 to max:
+        T = temperature(t)
+        neighbor = random neighbor of current
+        delta_e = how much better neighbor is than current
+        if delta_e &gt; 0:
+            current = neighbor
+        with probability e**(delta_e/T) set current = neighbor
+    return current
+</code></pre><h3 id="linear-programming">Linear Programming</h3>
 <ul>
 <li>Minimize a cost function</li>
 <li>With constraints</li>
@@ -544,25 +519,25 @@ Constraint: 10x + 12y &gt;= 90 -&gt; (-10x) + (-12y) &lt;= -90
 <p><strong>node consistency</strong>: when all the variables in a variable&rsquo;s domain satisfy the variable&rsquo;s unary constraints. For each of possible nodes remove possible values of the domain so all the unary constraint are satisfied.</p>
 <h4 id="arc-consistency">arc consistency</h4>
 <p>when all the values in a variables domain satisfy the variable&rsquo;s binary constraints</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function REVISE(csp, X, Y):     # csp = constraint satisfaction problem
-</span></span><span style="display:flex;"><span>    revised = false
-</span></span><span style="display:flex;"><span>    for x in X.domain:          # loop over all values of X&#39;s domain
-</span></span><span style="display:flex;"><span>        if no y in Y.domain satisfies constraint for (X, Y):
-</span></span><span style="display:flex;"><span>            delete x from X.domain
-</span></span><span style="display:flex;"><span>            revised = true
-</span></span><span style="display:flex;"><span>    return revised
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>function AC-3(csp):
-</span></span><span style="display:flex;"><span>    queue = all arcs in csp
-</span></span><span style="display:flex;"><span>    while queue non-empty:
-</span></span><span style="display:flex;"><span>        (X, Y) = DEQUEUE(queue)         # (X, Y) is an arc (or edge)
-</span></span><span style="display:flex;"><span>        if REVISE(csp, X, Y):
-</span></span><span style="display:flex;"><span>            if size of X.domain == 0:
-</span></span><span style="display:flex;"><span>                return false
-</span></span><span style="display:flex;"><span>            for each Z in X.neighbors - {Y}:
-</span></span><span style="display:flex;"><span>                ENQUEUE(queue, (Z, X))  # removing X might not satistfy Z anymore
-</span></span><span style="display:flex;"><span>    return true
-</span></span></code></pre></div><p>AC-3 will not always solve the problem. What remains is a <a href="#search">Search Problem</a>:</p>
+<pre tabindex="0"><code>function REVISE(csp, X, Y):     # csp = constraint satisfaction problem
+    revised = false
+    for x in X.domain:          # loop over all values of X&#39;s domain
+        if no y in Y.domain satisfies constraint for (X, Y):
+            delete x from X.domain
+            revised = true
+    return revised
+
+function AC-3(csp):
+    queue = all arcs in csp
+    while queue non-empty:
+        (X, Y) = DEQUEUE(queue)         # (X, Y) is an arc (or edge)
+        if REVISE(csp, X, Y):
+            if size of X.domain == 0:
+                return false
+            for each Z in X.neighbors - {Y}:
+                ENQUEUE(queue, (Z, X))  # removing X might not satistfy Z anymore
+    return true
+</code></pre><p>AC-3 will not always solve the problem. What remains is a <a href="#search">Search Problem</a>:</p>
 <ul>
 <li>initial state: empty assignment (no variables)</li>
 <li>actions: add a <code>{variable = value}</code> to assignment</li>
@@ -571,18 +546,18 @@ Constraint: 10x + 12y &gt;= 90 -&gt; (-10x) + (-12y) &lt;= -90
 <li>path cost function: irrelevant (all paths have same cost)</li>
 </ul>
 <h3 id="backtracking-search">Backtracking Search</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>function BACKTRACK(assignment, csp):
-</span></span><span style="display:flex;"><span>    if assignment complete:
-</span></span><span style="display:flex;"><span>        return assignment
-</span></span><span style="display:flex;"><span>    var = SELECT-UNASSIGNED-VAR(assignment, csp)
-</span></span><span style="display:flex;"><span>    for value in DOMAIN-VALUES(var, assignment, csp):
-</span></span><span style="display:flex;"><span>        if value consistent with assignment:    # doesn&#39;t violate any constraints
-</span></span><span style="display:flex;"><span>            add {var = value} to assignment
-</span></span><span style="display:flex;"><span>            result = BACKTRACK(assignment, csp)
-</span></span><span style="display:flex;"><span>            if result != failure: return result
-</span></span><span style="display:flex;"><span>        remove {var = value} from assignment
-</span></span><span style="display:flex;"><span>    return failure
-</span></span></code></pre></div><p>Inference: use Arc Consistency interleaved with search, so we backtrack less.</p>
+<pre tabindex="0"><code>function BACKTRACK(assignment, csp):
+    if assignment complete:
+        return assignment
+    var = SELECT-UNASSIGNED-VAR(assignment, csp)
+    for value in DOMAIN-VALUES(var, assignment, csp):
+        if value consistent with assignment:    # doesn&#39;t violate any constraints
+            add {var = value} to assignment
+            result = BACKTRACK(assignment, csp)
+            if result != failure: return result
+        remove {var = value} from assignment
+    return failure
+</code></pre><p>Inference: use Arc Consistency interleaved with search, so we backtrack less.</p>
 <p><strong>maintaining arc-consistency</strong>: algorithm for enforcing arc-consistency every time we make a new assignment. When we make a new assignment to <code>X</code>, call <code>AC-3</code>, starting with a queue of all arcs <code>(Y, X)</code> where <code>Y</code> is a neighbour of <code>X</code>.</p>
 <p>SELECT-UNASSIGNED-VAR heuristics:</p>
 <ul>
@@ -828,9 +803,8 @@ x2 /
 </blockquote>
 <p><strong>word2vec</strong> - model for generating word vectors</p>
 <p><strong>skip-gram architecture</strong> - neural network architecture for predicting context words giving a target word.</p>
-<!--
-    vim:spell spelllang=en
--->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 
     <div class="music">
@@ -842,80 +816,20 @@ x2 /
     
 
     
-    <div class="post-tags">
+    <p class="post-tags">
       <i class="fas fa-tags"></i>
       
         <a href="/tags/it">IT</a>
         &nbsp;
       
-    </div>
-    
-
-    
+    </p>
     
   </footer>
   
-  <div class="comments">
-  <div class="comments">
-
-
-
-</div>
-  </div>
 </article>
 
-  <div class="foot">
-  
-  &copy; 2019 - 2023 &#183;
-  <a href="/"> uzak.github.io </a> &#183;
-  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
-  <a href="#"><i class="fas fa-chevron-up"></i></a>
-</div>
+
+    
+    </div>
 </body>
-  <script src="/js/lazyload.min.js"></script>
-<script>
-  var lazyImage = new LazyLoad({container: document.getElementById('article')});
-</script>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
-<script>
-    (function() {
-        var $toc = $('#TableOfContents');
-        if ($toc.length > 0) {
-            var $window = $(window);
-
-            function onScroll(){
-                var currentScroll = $window.scrollTop();
-                var h = $('.post-text h1, .post-text h2, .post-text h3, .post-text h4, .post-text h5, .post-text h6');
-                var id = "";
-                h.each(function (i, e) {
-                    e = $(e);
-                    if (e.offset().top - 10 <= currentScroll) {
-                        id = e.attr('id');
-                    }
-                });
-                var active = $toc.find('a.active');
-                if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
-
-                active.each(function (i, e) {
-                    $(e).removeClass('active').siblings('ul').hide();
-                });
-                $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
-                    $(e).children('a').addClass('active').siblings('ul').show();
-                });
-            }
-
-            $window.on('scroll', onScroll);
-            $(document).ready(function() {
-                $toc.find('a').parent('li').find('ul').hide();
-                onScroll();
-                document.getElementsByClassName('post-toc')[0].style.display = '';
-            });
-        }
-    })();
-</script>
-
-
 </html>

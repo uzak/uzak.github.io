@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.110.0">
-  <title> Questions vol. 1 | uzak.github.io </title>
-  <meta name="description" content="A simple and concise hugo theme.">
-  <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2023-01-23-questions_vol._1/">
-  <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
-  
-  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  
-</head>
-<body class="container">
-  <nav class="navigation">
-  <div class="nav-left">
-    
-    <div class="nav-item nav-title">
-      <a href="https://uzak.github.io/"> uzak.github.io</a>
-    </div>
-    <div class="nav-item nav-menu">
-      
-      <a href="/"> Home</a>
-      
-      <a href="/etymolog/"> Etymolog</a>
-      
-      <a href="/about/"> About</a>
-      
-    </div>
-  </div>
-  <div class="nav-item nav-right fontawesome">
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
     
     
-    <a href="https://github.com/uzak" target="_blank">
-      <i title="GitHub" class="fab fa-github"></i>
-    </a>
-    
-    
-    <a href="https://uzak.github.io/index.xml" target="_blank">
-      <i title="RSS" class="fas fa-rss"></i>
-    </a>
-    
-  </div>
-</nav>
+    <title>uzak.github.io | Questions vol. 1</title>
+</head><body>
+    <div id="content">
+    <header>  
+    <div class="site-title">  
+        <a href="/">uzak's weblog</a>  
+    </div>  
+    <div class="site-description">
+        <nav>
+            <a href="/micro">micro/</a>  
+            <a href="/post">blog/</a>  
+            <a href="/etymolog">etymolog/</a>  
+            <a href="/about">about</a>  
+            <a href="/index.xml">rss</a>  
+        </nav>
+</header>  
 
-  
+    
 <article class="post">
   <header class="post-header">
     <h1 style="text-align: center;" >Questions vol. 1</h1>
@@ -58,13 +34,12 @@
     
     
     
-    
     </div>
   </header>
 
   
   <div class="post-toc">
-    <div class="post-toc-title">Contents</div>
+    <div class="post-toc-title">Table of Contents</div>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#difference-between-knowing-and-believing">Difference between knowing and believing?</a></li>
@@ -111,9 +86,8 @@
 <p>Who knows? What&rsquo;s the mind? Is body determined by the mind or the mind by the body? I don&rsquo;t know but I know that whatever the answer, it will have no effect on the Real.</p>
 <h2 id="supposed-the-mind-is-cloned-and-put-into-a-new-body-how-do-i-know-that-im-that-new-body">Supposed the mind is cloned and put into a new body. How do I know that I&rsquo;m that new body?</h2>
 <p>The mind will know based on the information stored in it. If everything matches, the egoistic part of it will claim to be the &ldquo;I&rdquo;. If there is discrepancies between the information about the past body and perception of the new one, it will result in doubting the identity and asking the forbidden question of &ldquo;who am I&rdquo;.</p>
-<!--
-    vim:spell spelllang=en
--->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 
     <div class="music">
@@ -127,80 +101,20 @@
     
 
     
-    <div class="post-tags">
+    <p class="post-tags">
       <i class="fas fa-tags"></i>
       
         <a href="/tags/self">self</a>
         &nbsp;
       
-    </div>
-    
-
-    
+    </p>
     
   </footer>
   
-  <div class="comments">
-  <div class="comments">
-
-
-
-</div>
-  </div>
 </article>
 
-  <div class="foot">
-  
-  &copy; 2019 - 2023 &#183;
-  <a href="/"> uzak.github.io </a> &#183;
-  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
-  <a href="#"><i class="fas fa-chevron-up"></i></a>
-</div>
+
+    
+    </div>
 </body>
-  <script src="/js/lazyload.min.js"></script>
-<script>
-  var lazyImage = new LazyLoad({container: document.getElementById('article')});
-</script>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
-<script>
-    (function() {
-        var $toc = $('#TableOfContents');
-        if ($toc.length > 0) {
-            var $window = $(window);
-
-            function onScroll(){
-                var currentScroll = $window.scrollTop();
-                var h = $('.post-text h1, .post-text h2, .post-text h3, .post-text h4, .post-text h5, .post-text h6');
-                var id = "";
-                h.each(function (i, e) {
-                    e = $(e);
-                    if (e.offset().top - 10 <= currentScroll) {
-                        id = e.attr('id');
-                    }
-                });
-                var active = $toc.find('a.active');
-                if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
-
-                active.each(function (i, e) {
-                    $(e).removeClass('active').siblings('ul').hide();
-                });
-                $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
-                    $(e).children('a').addClass('active').siblings('ul').show();
-                });
-            }
-
-            $window.on('scroll', onScroll);
-            $(document).ready(function() {
-                $toc.find('a').parent('li').find('ul').hide();
-                onScroll();
-                document.getElementsByClassName('post-toc')[0].style.display = '';
-            });
-        }
-    })();
-</script>
-
-
 </html>

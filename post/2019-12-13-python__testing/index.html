@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.110.0">
-  <title> Testing Python | uzak.github.io </title>
-  <meta name="description" content="A simple and concise hugo theme.">
-  <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2019-12-13-python__testing/">
-  <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
-  
-  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  
-</head>
-<body class="container">
-  <nav class="navigation">
-  <div class="nav-left">
-    
-    <div class="nav-item nav-title">
-      <a href="https://uzak.github.io/"> uzak.github.io</a>
-    </div>
-    <div class="nav-item nav-menu">
-      
-      <a href="/"> Home</a>
-      
-      <a href="/etymolog/"> Etymolog</a>
-      
-      <a href="/about/"> About</a>
-      
-    </div>
-  </div>
-  <div class="nav-item nav-right fontawesome">
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
     
     
-    <a href="https://github.com/uzak" target="_blank">
-      <i title="GitHub" class="fab fa-github"></i>
-    </a>
-    
-    
-    <a href="https://uzak.github.io/index.xml" target="_blank">
-      <i title="RSS" class="fas fa-rss"></i>
-    </a>
-    
-  </div>
-</nav>
+    <title>uzak.github.io | Testing Python</title>
+</head><body>
+    <div id="content">
+    <header>  
+    <div class="site-title">  
+        <a href="/">uzak's weblog</a>  
+    </div>  
+    <div class="site-description">
+        <nav>
+            <a href="/micro">micro/</a>  
+            <a href="/post">blog/</a>  
+            <a href="/etymolog">etymolog/</a>  
+            <a href="/about">about</a>  
+            <a href="/index.xml">rss</a>  
+        </nav>
+</header>  
 
-  
+    
 <article class="post">
   <header class="post-header">
     <h1 style="text-align: center;" >Testing Python</h1>
@@ -58,13 +34,12 @@
     
     
     
-    
     </div>
   </header>
 
   
   <div class="post-toc">
-    <div class="post-toc-title">Contents</div>
+    <div class="post-toc-title">Table of Contents</div>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#nose">nose</a></li>
@@ -104,19 +79,19 @@
 <li>With a good test suite in place, refactoring is easy because you know when you change your code you haven’t broken any previous behavior.</li>
 <li>Before you write any code you give thought to the kind of tests you will be writing to check the methods will work as expected.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>assertEqual()
-</span></span><span style="display:flex;"><span>with assertRaises(Exception)
-</span></span><span style="display:flex;"><span>assertAlmostEqual(1, 1.2, delta=0.5)
-</span></span><span style="display:flex;"><span>assertAlmostEqual(1, 1.00001, places=4)
-</span></span><span style="display:flex;"><span>assertDictContainsSubset(expected, actual, msg=None)
-</span></span><span style="display:flex;"><span>assertDictEqual(d1, d2, msg=None)
-</span></span><span style="display:flex;"><span>assertGreater(a, b, msg=None)
-</span></span><span style="display:flex;"><span>assertGreaterEqual(a, b, msg=None)
-</span></span><span style="display:flex;"><span>assertIn(member, container, msg=None)
-</span></span><span style="display:flex;"><span>assertNotNone(obj, msg=None)
-</span></span><span style="display:flex;"><span>assertLess(a, b, msg=None)
-</span></span><span style="display:flex;"><span>assertItemsEqual(a, b, msg=None)
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>assertEqual()
+with assertRaises(Exception)
+assertAlmostEqual(1, 1.2, delta=0.5)
+assertAlmostEqual(1, 1.00001, places=4)
+assertDictContainsSubset(expected, actual, msg=None)
+assertDictEqual(d1, d2, msg=None)
+assertGreater(a, b, msg=None)
+assertGreaterEqual(a, b, msg=None)
+assertIn(member, container, msg=None)
+assertNotNone(obj, msg=None)
+assertLess(a, b, msg=None)
+assertItemsEqual(a, b, msg=None)
+</code></pre><ul>
 <li>Unit tests should be placed under a <code>test/unit</code> directory at the top level of your project folder.</li>
 <li>All unit test files should mirror the name of the file they are testing, with <code>_test</code> as the suffix.</li>
 <li>Example:
@@ -149,17 +124,17 @@ unittest.main()</p>
 <li><code>nosetests --pdb</code> -&gt; <code>n(ext), w(here), d(own), u(p), b(reak) [[fielname:]lineno | function[, conditation]]:</code></li>
 <li>coverage:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>pip install nose-cov
-</span></span><span style="display:flex;"><span>nosetests --with-coverage test/calculate_test.py
-</span></span></code></pre></div><p>ignore some code blocks</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if __name__ == &#39;__main__&#39;: #pragma: no cover
-</span></span><span style="display:flex;"><span>    ...
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>pip install nose-cov
+nosetests --with-coverage test/calculate_test.py
+</code></pre><p>ignore some code blocks</p>
+<pre tabindex="0"><code>if __name__ == &#39;__main__&#39;: #pragma: no cover
+    ...
+</code></pre><ul>
 <li>rednose:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>pip install rednose
-</span></span><span style="display:flex;"><span>nosetests --rednose
-</span></span></code></pre></div><h2 id="pytest">py.test</h2>
+<pre tabindex="0"><code>pip install rednose
+nosetests --rednose
+</code></pre><h2 id="pytest">py.test</h2>
 <ul>
 <li><code>pip install pytest</code></li>
 <li>by default it collects all test like nose.</li>
@@ -167,20 +142,20 @@ unittest.main()</p>
 <li><code>py.test --pdb</code></li>
 <li>coverage:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ pip install pytest-cov
-</span></span><span style="display:flex;"><span>$ py.test --cov app/ test/
-</span></span><span style="display:flex;"><span>$ cat .coveragerc
-</span></span><span style="display:flex;"><span>[run]
-</span></span><span style="display:flex;"><span>omit=*__init__.py
-</span></span></code></pre></div><h2 id="mock-library">mock library</h2>
+<pre tabindex="0"><code>$ pip install pytest-cov
+$ py.test --cov app/ test/
+$ cat .coveragerc
+[run]
+omit=*__init__.py
+</code></pre><h2 id="mock-library">mock library</h2>
 <ul>
 <li><code>pip install mock</code></li>
 <li>basic usage:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>mock = Mock()
-</span></span><span style="display:flex;"><span>mock.my_method.return_value = &#34;hello&#34;
-</span></span><span style="display:flex;"><span>mock.get.side_effect = ConnectionError()
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>mock = Mock()
+mock.my_method.return_value = &#34;hello&#34;
+mock.get.side_effect = ConnectionError()
+</code></pre><ul>
 <li>patching:
 {% highlight python %}
 from mock import Mock, patch</li>
@@ -195,15 +170,15 @@ mock_requests.get.return_value = &lsquo;500&rsquo;
 <ul>
 <li>handler:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if __name__ == &#34;__main__&#34;:
-</span></span><span style="display:flex;"><span>    import doctest
-</span></span><span style="display:flex;"><span>    doctest.testmod()
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>if __name__ == &#34;__main__&#34;:
+    import doctest
+    doctest.testmod()
+</code></pre><ul>
 <li><code>doctest -v</code></li>
 <li>initialization in handler:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>doctest.testmod(extraglobs={&#39;c&#39;: Calculate()})
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>doctest.testmod(extraglobs={&#39;c&#39;: Calculate()})
+</code></pre><ul>
 <li>integration with nose: <code>nosetests --with-doctest</code></li>
 </ul>
 <h1 id="chapter-5---tdd">Chapter 5 - TDD</h1>
@@ -240,10 +215,10 @@ Then the balance of the account is &ldquo;50&rdquo;
 <ul>
 <li>the code is in the step file:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>@when(&#39;I enter the account number &#34;{account_number}&#34;&#39;)
-</span></span><span style="display:flex;"><span>def _(context, account_number):
-</span></span><span style="display:flex;"><span>    ...
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>@when(&#39;I enter the account number &#34;{account_number}&#34;&#39;)
+def _(context, account_number):
+    ...
+</code></pre><ul>
 <li>
 <p><a href="https://behave.readthedocs.io/en/latest/tutorial.html">behave</a>: <code>pip install behave</code></p>
 </li>
@@ -251,10 +226,10 @@ Then the balance of the account is &ldquo;50&rdquo;
 <p>Scenario Outline:
 {% highlight gherkin %}
 Scenario Outline: Retrieve customer balance
-Given I create account &ldquo;&lt;account_number&gt;&rdquo; with balance of &ldquo;<balance>&rdquo;
+Given I create account &ldquo;&lt;account_number&gt;&rdquo; with balance of &ldquo;<!-- raw HTML omitted -->&rdquo;
 And I visit the homepage
 When I enter the account number &ldquo;&lt;account_number&gt;&rdquo;
-Then I see a balance of &ldquo;<balance>&rdquo;</p>
+Then I see a balance of &ldquo;<!-- raw HTML omitted -->&rdquo;</p>
 <p>Examples: customer_account_table
 |account_number |balance|
 |1111           |50     |     <br>
@@ -312,10 +287,10 @@ Then I see a balance of &ldquo;<balance>&rdquo;</p>
 <ul>
 <li>include cProfile in your code</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>import cProfile
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>cProfile.run(&#39;app.run(debug=True)&#39;) or run through CLI: `$ python -m cProfile bank_app.py` and use `-s` to control the order of the output.
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>import cProfile
+...
+cProfile.run(&#39;app.run(debug=True)&#39;) or run through CLI: `$ python -m cProfile bank_app.py` and use `-s` to control the order of the output.
+</code></pre><ul>
 <li>Alternatively use <a href="https://github.com/rkern/line_profiler">line_profiler</a></li>
 <li>Visualisation:</li>
 </ul>
@@ -350,7 +325,7 @@ Then I see a balance of &ldquo;<balance>&rdquo;</p>
     
 
     
-    <div class="post-tags">
+    <p class="post-tags">
       <i class="fas fa-tags"></i>
       
         <a href="/tags/it">it</a>
@@ -365,91 +340,14 @@ Then I see a balance of &ldquo;<balance>&rdquo;</p>
         <a href="/tags/testing">testing</a>
         &nbsp;
       
-    </div>
-    
-
-    
-    
-    <div class="related-posts">
-      <h4>Related Posts</h4>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2019-12-02-castaneda/">Carlos Castaneda: 3. Cesta do Ixtlanu</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2019-09-15-castaneda/">Carlos Castaneda (1, 2)</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2019-08-16-adventures_of_solitude/">The Greatest Escape - Adventures in the History of Solitude</a>
-      <br>
-      
-    </div>
+    </p>
     
   </footer>
   
-  <div class="comments">
-  <div class="comments">
-
-
-
-</div>
-  </div>
 </article>
 
-  <div class="foot">
-  
-  &copy; 2019 - 2023 &#183;
-  <a href="/"> uzak.github.io </a> &#183;
-  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
-  <a href="#"><i class="fas fa-chevron-up"></i></a>
-</div>
+
+    
+    </div>
 </body>
-  <script src="/js/lazyload.min.js"></script>
-<script>
-  var lazyImage = new LazyLoad({container: document.getElementById('article')});
-</script>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
-<script>
-    (function() {
-        var $toc = $('#TableOfContents');
-        if ($toc.length > 0) {
-            var $window = $(window);
-
-            function onScroll(){
-                var currentScroll = $window.scrollTop();
-                var h = $('.post-text h1, .post-text h2, .post-text h3, .post-text h4, .post-text h5, .post-text h6');
-                var id = "";
-                h.each(function (i, e) {
-                    e = $(e);
-                    if (e.offset().top - 10 <= currentScroll) {
-                        id = e.attr('id');
-                    }
-                });
-                var active = $toc.find('a.active');
-                if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
-
-                active.each(function (i, e) {
-                    $(e).removeClass('active').siblings('ul').hide();
-                });
-                $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
-                    $(e).children('a').addClass('active').siblings('ul').show();
-                });
-            }
-
-            $window.on('scroll', onScroll);
-            $(document).ready(function() {
-                $toc.find('a').parent('li').find('ul').hide();
-                onScroll();
-                document.getElementsByClassName('post-toc')[0].style.display = '';
-            });
-        }
-    })();
-</script>
-
-
 </html>

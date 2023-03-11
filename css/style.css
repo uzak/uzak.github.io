@@ -1,0 +1,35 @@
+.site-title > a {
+  text-decoration: none !important;
+  font-size: 1.5rem;
+}
+
+a {
+  color: blue;
+}
+
+nav {
+  margin-bottom: 2rem;
+}
+
+nav > a {
+  text-decoration: none !important;
+}
+
+.micro {
+  border-bottom: 1px dashed black;
+  margin-bottom: 1rem;
+}
+
+time {
+  font-style: italic;
+}
+
+div.post-toc-title {
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 1rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}

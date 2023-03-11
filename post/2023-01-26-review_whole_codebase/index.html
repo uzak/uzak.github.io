@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.110.0">
-  <title> Review whole codebase easily | uzak.github.io </title>
-  <meta name="description" content="A simple and concise hugo theme.">
-  <link rel="stylesheet" href="https://uzak.github.io/css/simpleness.css">
-  <link rel="canonical" href="https://uzak.github.io/post/2023-01-26-review_whole_codebase/">
-  <link rel="alternate" type="application/rss+xml" href="" title="uzak.github.io">
-  
-  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  
-</head>
-<body class="container">
-  <nav class="navigation">
-  <div class="nav-left">
-    
-    <div class="nav-item nav-title">
-      <a href="https://uzak.github.io/"> uzak.github.io</a>
-    </div>
-    <div class="nav-item nav-menu">
-      
-      <a href="/"> Home</a>
-      
-      <a href="/etymolog/"> Etymolog</a>
-      
-      <a href="/about/"> About</a>
-      
-    </div>
-  </div>
-  <div class="nav-item nav-right fontawesome">
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
     
     
-    <a href="https://github.com/uzak" target="_blank">
-      <i title="GitHub" class="fab fa-github"></i>
-    </a>
-    
-    
-    <a href="https://uzak.github.io/index.xml" target="_blank">
-      <i title="RSS" class="fas fa-rss"></i>
-    </a>
-    
-  </div>
-</nav>
+    <title>uzak.github.io | Review whole codebase easily</title>
+</head><body>
+    <div id="content">
+    <header>  
+    <div class="site-title">  
+        <a href="/">uzak's weblog</a>  
+    </div>  
+    <div class="site-description">
+        <nav>
+            <a href="/micro">micro/</a>  
+            <a href="/post">blog/</a>  
+            <a href="/etymolog">etymolog/</a>  
+            <a href="/about">about</a>  
+            <a href="/index.xml">rss</a>  
+        </nav>
+</header>  
 
-  
+    
 <article class="post">
   <header class="post-header">
     <h1 style="text-align: center;" >Review whole codebase easily</h1>
@@ -58,23 +34,21 @@
     
     
     
-    
     </div>
   </header>
 
   
 
   <div class="post-text">
-    <p>Recently, a student asked me to review a small project hosted on GitHub. Initially, I assumed I would use the Pull Request/Code Review functionality of GitHub to do so. For this I found a easy <a href="https://www.exasol.com/resource/how-to-do-a-full-review-of-your-repository-contents-on-github/">way</a> to perform it on the whole codebase.</p>
+    <p>Recently, a student asked me to review a small project hosted on GitHub. Initially, I assumed I would use the Pull Request/Code Review functionality of GitHub to do so. I found an easy <a href="https://www.exasol.com/resource/how-to-do-a-full-review-of-your-repository-contents-on-github/">way</a> to perform it on the whole codebase.</p>
 <p>However, I eventually decided that I wanted to have a broader view, rather than just looking at a small portion of the changes through the Code Review&rsquo;s microscope. Utilizing an IDE that could visualize the connections in the code and show how things were being used and defined also helped me a lot.</p>
 <p>In the end, this was the process I followed:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>branch<span style="color:#f92672">=</span>20230126-uzak
 </span></span><span style="display:flex;"><span>git branch <span style="color:#e6db74">&#34;review/</span>$branch<span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>git push origin <span style="color:#e6db74">&#34;review/</span>$branch<span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div><p>I did my review in the IDE and pushed it to the reviewed branch for later discussion.</p>
-<!--
-    vim:spell spelllang=en
--->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 
     <div class="music">
@@ -86,7 +60,7 @@
     
 
     
-    <div class="post-tags">
+    <p class="post-tags">
       <i class="fas fa-tags"></i>
       
         <a href="/tags/diary">diary</a>
@@ -95,61 +69,14 @@
         <a href="/tags/it">it</a>
         &nbsp;
       
-    </div>
-    
-
-    
-    
-    <div class="related-posts">
-      <h4>Related Posts</h4>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2023-01-23-historia_sa_rymuje/">História sa neopakuje, ale rýmuje</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2023-01-06-slobodna_vola/">Slobodná vôľa</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2023-01-03-pravda/">pra-vda: Reflexia inšpirovaná Murlim</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2022-11-09-cs50_react_native/">CS50 React Native</a>
-      <br>
-      
-      <i class="fas fa-paperclip"></i>
-      <a href="/post/2022-04-25-systems_de-engineering/">Systems&#39; de-Engineering</a>
-      <br>
-      
-    </div>
+    </p>
     
   </footer>
   
-  <div class="comments">
-  <div class="comments">
-
-
-
-</div>
-  </div>
 </article>
 
-  <div class="foot">
-  
-  &copy; 2019 - 2023 &#183;
-  <a href="/"> uzak.github.io </a> &#183;
-  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
-  <a href="#"><i class="fas fa-chevron-up"></i></a>
-</div>
+
+    
+    </div>
 </body>
-  <script src="/js/lazyload.min.js"></script>
-<script>
-  var lazyImage = new LazyLoad({container: document.getElementById('article')});
-</script>
-
-
-
-
 </html>

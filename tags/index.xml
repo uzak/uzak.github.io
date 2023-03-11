@@ -2,134 +2,143 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on uzak.github.io</title>
-    <link>https://uzak.github.io/tags/</link>
+    <link>http://uzak.github.io/tags/</link>
     <description>Recent content in Tags on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uzak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>vedanta</title>
-      <link>https://uzak.github.io/tags/vedanta/</link>
-      <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
+      <title>diary</title>
+      <link>http://uzak.github.io/tags/diary/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/vedanta/</guid>
+      <guid>http://uzak.github.io/tags/diary/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>diary</title>
-      <link>https://uzak.github.io/tags/diary/</link>
-      <pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate>
+      <title>etymology</title>
+      <link>http://uzak.github.io/tags/etymology/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/diary/</guid>
+      <guid>http://uzak.github.io/tags/etymology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vedanta</title>
+      <link>http://uzak.github.io/tags/vedanta/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/tags/vedanta/</guid>
       <description></description>
     </item>
     
     <item>
       <title>it</title>
-      <link>https://uzak.github.io/tags/it/</link>
-      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      <link>http://uzak.github.io/tags/it/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/it/</guid>
+      <guid>http://uzak.github.io/tags/it/</guid>
       <description></description>
     </item>
     
     <item>
       <title>self</title>
-      <link>https://uzak.github.io/tags/self/</link>
+      <link>http://uzak.github.io/tags/self/</link>
       <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/self/</guid>
+      <guid>http://uzak.github.io/tags/self/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Swami TV</title>
-      <link>https://uzak.github.io/tags/swami-tv/</link>
+      <link>http://uzak.github.io/tags/swami-tv/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/swami-tv/</guid>
+      <guid>http://uzak.github.io/tags/swami-tv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>books</title>
-      <link>https://uzak.github.io/tags/books/</link>
+      <link>http://uzak.github.io/tags/books/</link>
       <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/books/</guid>
+      <guid>http://uzak.github.io/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lyrics</title>
-      <link>https://uzak.github.io/tags/lyrics/</link>
+      <link>http://uzak.github.io/tags/lyrics/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/lyrics/</guid>
+      <guid>http://uzak.github.io/tags/lyrics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Swami Paramarthananda</title>
-      <link>https://uzak.github.io/tags/swami-paramarthananda/</link>
+      <link>http://uzak.github.io/tags/swami-paramarthananda/</link>
       <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/swami-paramarthananda/</guid>
+      <guid>http://uzak.github.io/tags/swami-paramarthananda/</guid>
       <description></description>
     </item>
     
     <item>
       <title>movies</title>
-      <link>https://uzak.github.io/tags/movies/</link>
+      <link>http://uzak.github.io/tags/movies/</link>
       <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/movies/</guid>
+      <guid>http://uzak.github.io/tags/movies/</guid>
       <description></description>
     </item>
     
     <item>
       <title>princess</title>
-      <link>https://uzak.github.io/tags/princess/</link>
+      <link>http://uzak.github.io/tags/princess/</link>
       <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/princess/</guid>
+      <guid>http://uzak.github.io/tags/princess/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Swami Muktatmananda</title>
-      <link>https://uzak.github.io/tags/swami-muktatmananda/</link>
+      <link>http://uzak.github.io/tags/swami-muktatmananda/</link>
       <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/swami-muktatmananda/</guid>
+      <guid>http://uzak.github.io/tags/swami-muktatmananda/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>https://uzak.github.io/tags/python/</link>
+      <link>http://uzak.github.io/tags/python/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/python/</guid>
+      <guid>http://uzak.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>testing</title>
-      <link>https://uzak.github.io/tags/testing/</link>
+      <link>http://uzak.github.io/tags/testing/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/testing/</guid>
+      <guid>http://uzak.github.io/tags/testing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>audio</title>
-      <link>https://uzak.github.io/tags/audio/</link>
+      <link>http://uzak.github.io/tags/audio/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://uzak.github.io/tags/audio/</guid>
+      <guid>http://uzak.github.io/tags/audio/</guid>
       <description></description>
     </item>
     
