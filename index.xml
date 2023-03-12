@@ -743,15 +743,6 @@ Prologue life of solitude - either through periodic retreats or continuing inner
     
     <item>
       <title></title>
-      <link>http://uzak.github.io/_etymolog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/_etymolog/</guid>
-      <description> </description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>http://uzak.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -759,6 +750,15 @@ Prologue life of solitude - either through periodic retreats or continuing inner
       <description>Hello My name is Martin Uzak. Welcome to my blog!
 In the micro section I share short ideas that caught my attention. Consider it something like my private twitter.
 The next section is called blog. There I post longer articles. What mostly interests me at the time of writing is related vedantic philosophy or IT. Quite often you&amp;rsquo;ll find there a summary of some longer articles/classes/books. Anyway, here is a full list of the tags used.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://uzak.github.io/etym/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/etym/</guid>
+      <description> </description>
     </item>
     
   </channel>
