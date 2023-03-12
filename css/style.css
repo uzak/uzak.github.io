@@ -15,11 +15,6 @@ nav > a {
   text-decoration: none !important;
 }
 
-.micro {
-  border-bottom: 1px dashed black;
-  margin-bottom: 1rem;
-}
-
 time {
   font-style: italic;
 }
@@ -32,4 +27,13 @@ div.post-toc-title {
 
 header {
   margin-bottom: 2rem;
+}
+
+div.archive-list > div {
+  border-bottom: 1px dashed blueviolet;
+  margin-top: 1px;
+}
+
+.pagination {
+  margin-top: 1rem;
 }

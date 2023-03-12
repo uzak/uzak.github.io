@@ -8,25 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
-      <link>http://uzak.github.io/micro/2023-03-10-emptiness/</link>
-      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/micro/2023-03-10-emptiness/</guid>
-      <description>An elderly friend of my wife complains about her life-long emptiness. I&amp;rsquo;m not sure what she means but I suspect she is referring to the lack of a person to fill that emptiness. Or is it the consumer life-style? Waiting to digest something that will fill me up? Who knows&amp;hellip; But It seems to me that somebody busy living a life won&amp;rsquo;t be able to have this kind of an idea.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://uzak.github.io/micro/2023-03-10-exploration/</link>
-      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/micro/2023-03-10-exploration/</guid>
-      <description>What does it take do do exploration?
-Curiosity Not knowing too much Open-mindedness: not really having a goal or not being too serious about it If I would be immortal and superbly bored this would be the only antidote.</description>
-    </item>
-    
-    <item>
       <title>Science</title>
       <link>http://uzak.github.io/post/2023-03-10-science/</link>
       <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
@@ -80,7 +61,7 @@ That is not true. Dream is not true. But did you experience it? So you the exper
       <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>http://uzak.github.io/micro/2023-01-27-accumulation_patterns/</guid>
-      <description>https://cs111.wellesley.edu/content/lectures/lec_accum_lists_dicts/files/lec_accum_lists_dicts.pdf</description>
+      <description>Algorithms: Accumulation Patterns</description>
     </item>
     
     <item>
@@ -762,22 +743,22 @@ Prologue life of solitude - either through periodic retreats or continuing inner
     
     <item>
       <title></title>
-      <link>http://uzak.github.io/about/</link>
+      <link>http://uzak.github.io/_etymolog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://uzak.github.io/about/</guid>
-      <description>About Welcome to my blog.
-In the micro section I share short things that cought my attention. Consider it something like my private twitter.
-The next section is called blog and I post there longer articles. What mostly interests me at the time of writing this is hindu philosophy or IT. Quite often you&amp;rsquo;ll find there a summary of some longer articles/classes/books. Here you&amp;rsquo;ll find a full list of the tags used.</description>
+      <guid>http://uzak.github.io/_etymolog/</guid>
+      <description> </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://uzak.github.io/etym/</link>
+      <link>http://uzak.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://uzak.github.io/etym/</guid>
-      <description> </description>
+      <guid>http://uzak.github.io/about/</guid>
+      <description>Hello My name is Martin Uzak. Welcome to my blog!
+In the micro section I share short ideas that caught my attention. Consider it something like my private twitter.
+The next section is called blog. There I post longer articles. What mostly interests me at the time of writing is related vedantic philosophy or IT. Quite often you&amp;rsquo;ll find there a summary of some longer articles/classes/books. Anyway, here is a full list of the tags used.</description>
     </item>
     
   </channel>
