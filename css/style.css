@@ -30,8 +30,8 @@ header {
 }
 
 div.archive-list > div {
-  border-bottom: 1px dashed blueviolet;
-  margin-top: 1px;
+  border-bottom: 1px dashed lightgrey;
+  margin-top: .3rem;
 }
 
 .pagination {
