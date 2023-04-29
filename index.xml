@@ -6,14 +6,42 @@
     <description>Recent content on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Apr 2023 10:50:01 +0100</lastBuildDate><atom:link href="http://uzak.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Apr 2023 12:05:45 +0200</lastBuildDate><atom:link href="http://uzak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>I leb&#39; für meinen Verein</title>
-      <link>http://uzak.github.io/micro/i_leb_fuer_meinen_verein/</link>
-      <pubDate>Wed, 12 Apr 2023 10:50:01 +0100</pubDate>
+      <title></title>
+      <link>http://uzak.github.io/micro/2023-04-28-ariadnes_thread/</link>
+      <pubDate>Fri, 28 Apr 2023 12:05:45 +0200</pubDate>
       
-      <guid>http://uzak.github.io/micro/i_leb_fuer_meinen_verein/</guid>
-      <description>In Austria it&amp;rsquo;s obvious what to live for:</description>
+      <guid>http://uzak.github.io/micro/2023-04-28-ariadnes_thread/</guid>
+      <description>Most people prefer to suffer with interpretations that give their world meaning than to relax in the cave without an Ariadne&amp;rsquo;s thread. &amp;ndash; David Riesman in &amp;ldquo;The Lonely Crowd&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://uzak.github.io/micro/2023-04-27-bzuceni_mouchy/</link>
+      <pubDate>Thu, 27 Apr 2023 23:10:12 +0200</pubDate>
+      
+      <guid>http://uzak.github.io/micro/2023-04-27-bzuceni_mouchy/</guid>
+      <description>Sinuhet říkal: Tvoje řeč je bzučení mouchy v mých uších</description>
+    </item>
+    
+    <item>
+      <title>AI and the Illusion of Intelligence</title>
+      <link>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</guid>
+      <description>src
+Week 1 Some Curious Experiments In early 1600 William Harvey examined the heart and understood it&amp;rsquo;s a pump. A few years after Rene Descartes this concluded that machines cannot think - arrange it&amp;rsquo;s speech so it makes sense - what even the lowest type of man can do. Alan Turing and the Imitation Game Illusion of Intelligence Explosion of Big Data Week 2 The Chomskyan Revolution Generative Gramar. Descarte&amp;rsquo;s Miracle The Fatal Flaw of the Chomskyan Revolution Doing Violence to Language: the Ngram Week 3 Moore&amp;rsquo;s Law Does Not Make the Singularity Likely in the film 2001, the main character was the computer HAL, solution to all the main (AI) challenges.</description>
+    </item>
+    
+    <item>
+      <title>learnprompting.org</title>
+      <link>http://uzak.github.io/post/2023-04-27-learnprompting.org/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/post/2023-04-27-learnprompting.org/</guid>
+      <description>Basics Introduction Often AIs are like very smart 5-years old. They can do a lot of things, but need careful instructions to do them well. AI can automate tasks that cost you countless hours now. Prompting Giving Instructions Role Prompting Assign a role to a the AI. E.g.: &amp;ldquo;You&amp;rsquo;re a lawyer&amp;rdquo;. Awesome ChatGPT prompts Few shot prompting shot: result shot: result shot: other_result shot Present sample, present expected output, let it do more.</description>
     </item>
     
     <item>
@@ -81,15 +109,6 @@ That is not true. Dream is not true. But did you experience it? So you the exper
       
       <guid>http://uzak.github.io/micro/2023-01-28-freedom_vs._centralization/</guid>
       <description>Freedom of speech can provide enough feedback for a system to be continually improved, thus enabling it to outdo rigid, centralized state models. (src)</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://uzak.github.io/micro/2023-01-27-accumulation_patterns/</link>
-      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/micro/2023-01-27-accumulation_patterns/</guid>
-      <description>Algorithms: Accumulation Patterns</description>
     </item>
     
     <item>
@@ -770,18 +789,18 @@ Prologue life of solitude - either through periodic retreats or continuing inner
     </item>
     
     <item>
-      <title></title>
+      <title>About</title>
       <link>http://uzak.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://uzak.github.io/about/</guid>
-      <description>Hello My name is Martin Uzak. Welcome to my blog!
+      <description>Hello I&amp;rsquo;m Martin Uzak and welcome to my blog!
 In the micro section I share short ideas that caught my attention. Consider it something like my private twitter.
-The next section is called blog. There I post longer articles. What mostly interests me at the time of writing is related vedantic philosophy or IT. Quite often you&amp;rsquo;ll find there a summary of some longer articles/classes/books. Anyway, here is a full list of the tags used.</description>
+The next section is called blog. There I post longer articles. What mostly interests me at the time of writing is related vedantic philosophy or IT. Quite often you&amp;rsquo;ll find there a summary of some longer articles/classes/books. Here is a full list of the tags used.</description>
     </item>
     
     <item>
-      <title></title>
+      <title>Etymolog</title>
       <link>http://uzak.github.io/etym/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

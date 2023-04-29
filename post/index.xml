@@ -6,7 +6,26 @@
     <description>Recent content in Posts on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI and the Illusion of Intelligence</title>
+      <link>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</guid>
+      <description>src
+Week 1 Some Curious Experiments In early 1600 William Harvey examined the heart and understood it&amp;rsquo;s a pump. A few years after Rene Descartes this concluded that machines cannot think - arrange it&amp;rsquo;s speech so it makes sense - what even the lowest type of man can do. Alan Turing and the Imitation Game Illusion of Intelligence Explosion of Big Data Week 2 The Chomskyan Revolution Generative Gramar. Descarte&amp;rsquo;s Miracle The Fatal Flaw of the Chomskyan Revolution Doing Violence to Language: the Ngram Week 3 Moore&amp;rsquo;s Law Does Not Make the Singularity Likely in the film 2001, the main character was the computer HAL, solution to all the main (AI) challenges.</description>
+    </item>
+    
+    <item>
+      <title>learnprompting.org</title>
+      <link>http://uzak.github.io/post/2023-04-27-learnprompting.org/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/post/2023-04-27-learnprompting.org/</guid>
+      <description>Basics Introduction Often AIs are like very smart 5-years old. They can do a lot of things, but need careful instructions to do them well. AI can automate tasks that cost you countless hours now. Prompting Giving Instructions Role Prompting Assign a role to a the AI. E.g.: &amp;ldquo;You&amp;rsquo;re a lawyer&amp;rdquo;. Awesome ChatGPT prompts Few shot prompting shot: result shot: result shot: other_result shot Present sample, present expected output, let it do more.</description>
+    </item>
+    
     <item>
       <title>Satsang Swami TV</title>
       <link>http://uzak.github.io/post/2023-04-09-satsang_swami_tv/</link>

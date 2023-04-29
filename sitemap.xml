@@ -2,17 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://uzak.github.io/micro/i_leb_fuer_meinen_verein/</loc>
-    <lastmod>2023-04-12T10:50:01+01:00</lastmod>
+    <loc>http://uzak.github.io/micro/2023-04-28-ariadnes_thread/</loc>
+    <lastmod>2023-04-28T12:05:45+02:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/</loc>
-    <lastmod>2023-04-12T10:50:01+01:00</lastmod>
+    <lastmod>2023-04-28T12:05:45+02:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/</loc>
-    <lastmod>2023-04-12T10:50:01+01:00</lastmod>
+    <lastmod>2023-04-28T12:05:45+02:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/micro/2023-04-27-bzuceni_mouchy/</loc>
+    <lastmod>2023-04-27T23:10:12+02:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/diary/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/it/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-04-27-learnprompting.org/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/</loc>
-    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/2023-04-09-satsang_swami_tv/</loc>
     <lastmod>2023-04-09T00:00:00+00:00</lastmod>
@@ -20,14 +38,8 @@
     <loc>http://uzak.github.io/tags/swami-tv/</loc>
     <lastmod>2023-04-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://uzak.github.io/tags/</loc>
-    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://uzak.github.io/micro/just_the_two_of_us/</loc>
     <lastmod>2023-03-17T08:13:00+01:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/diary/</loc>
-    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/tags/etymology/</loc>
     <lastmod>2023-03-10T00:00:00+00:00</lastmod>
@@ -49,12 +61,6 @@
   </url><url>
     <loc>http://uzak.github.io/micro/2023-01-28-freedom_vs._centralization/</loc>
     <lastmod>2023-01-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/micro/2023-01-27-accumulation_patterns/</loc>
-    <lastmod>2023-01-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/it/</loc>
-    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/2023-01-26-review_whole_codebase/</loc>
     <lastmod>2023-01-26T00:00:00+00:00</lastmod>
@@ -271,8 +277,8 @@
   </url><url>
     <loc>http://uzak.github.io/about/</loc>
   </url><url>
-    <loc>http://uzak.github.io/etym/</loc>
-  </url><url>
     <loc>http://uzak.github.io/categories/</loc>
+  </url><url>
+    <loc>http://uzak.github.io/etym/</loc>
   </url>
 </urlset>
