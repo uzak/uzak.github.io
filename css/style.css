@@ -37,3 +37,7 @@ div.archive-list > div {
 .pagination {
   margin-top: 1rem;
 }
+
+div.micro > p {
+  display: inline;
+}

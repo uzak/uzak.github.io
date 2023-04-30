@@ -54,8 +54,14 @@
         <li><a href="#few-shot-prompting">Few shot prompting</a></li>
         <li><a href="#combining-techniques">Combining Techniques</a></li>
         <li><a href="#formalizing-prompts">Formalizing prompts</a></li>
+        <li><a href="#chatbot-basics">ChatBot Basics</a></li>
+        <li><a href="#pitfalls-of-llms">Pitfalls of LLMs</a></li>
+        <li><a href="#llm-settings">LLM Settings</a></li>
+        <li><a href="#understanding-ai-minds">Understanding AI Minds</a></li>
       </ul>
     </li>
+    <li><a href="#basic-applications">Basic Applications</a></li>
+    <li><a href="#intermediate">Intermediate</a></li>
   </ul>
 </nav>
   </div>
@@ -88,11 +94,97 @@ shot
 <p>Parts of a Prompt:</p>
 <ul>
 <li>role</li>
-<li>instruction/task</li>
+<li>instruction/task - preferably the last part</li>
 <li>question</li>
-<li>context</li>
+<li>context - any relevant information that you want the model to use when answering the question/performing the instruction.</li>
 <li>examples (few shot)</li>
 </ul>
+<p>No strict order.</p>
+<h3 id="chatbot-basics">ChatBot Basics</h3>
+<ul>
+<li>GPT-3 is a LLM that has no memory (unlike ChatGPT)</li>
+<li>The real value of chatbots is only accessible when you use good prompts</li>
+</ul>
+<p>Example:</p>
+<pre><code>“Teacher” means in the style of a distinguished professor with well over ten years teaching the subject and multiple Ph.D.’s in the field. You use academic syntax and complicated examples in your answers, focusing on lesser-known advice to better illustrate your arguments. Your language should be sophisticated but not overly complex. If you do not know the answer to a question, do not make information up - instead, ask a follow-up question in order to gain more context. Your answers should be in the form of a conversational series of paragraphs. Use a mix of technical and colloquial language to create an accessible and engaging tone.  
+
+“Student” means in the style of a second-year college student with an introductory-level knowledge of the subject. You explain concepts simply using real-life examples. Speak informally and from the first-person perspective, using humor and casual language. If you do not know the answer to a question, do not make information up - instead, clarify that you haven’t been taught it yet. Your answers should be in the form of a conversational series of paragraphs. Use colloquial language to create an entertaining and engaging tone. 
+
+“Critique” means to analyze the given text and provide feedback. 
+“Summarize” means to provide key details from a text.
+“Respond” means to answer a question from the given perspective. 
+
+Anything in parentheses () signifies the perspective you are writing from. 
+Anything in curly braces {} is the subject you are involved in. 
+Anything in brackets [] is the action you should take. 
+Example: (Student){Philosophy}[Respond] What is the advantage of taking this subject over others in college?
+
+If you understand and are ready to begin, respond with only “yes.”
+</code></pre>
+<h3 id="pitfalls-of-llms">Pitfalls of LLMs</h3>
+<ul>
+<li>LLMs cannot cite sources</li>
+<li>Hallucinations</li>
+<li>Biased towards stereotypical answers.</li>
+<li>Simple math</li>
+</ul>
+<h3 id="llm-settings">LLM Settings</h3>
+<h3 id="understanding-ai-minds">Understanding AI Minds</h3>
+<ul>
+<li>Generative (make things) vs. discriminative (does classification) minds.</li>
+<li>AI works like:
+<ul>
+<li>f(thousands of variables) = thousands of outputs</li>
+<li>tokenize and convert to numbers</li>
+<li>AI predicts next token of the sentence based on the previous words/tokens.</li>
+<li>AI looks at all the tokens at the same time, not like humans (left to right)</li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-applications">Basic Applications</h2>
+<ul>
+<li>Structuring Data (prompt: <code>generate a table containing this information</code>)</li>
+<li>Write an Email w. style modifiers</li>
+<li>Summarize Email (<code>Generate a summary of this and a list of action items</code>)</li>
+<li>Blog</li>
+<li>Studdy Buddy:
+<ul>
+<li>explaining words</li>
+<li><code>generate 5 $TOPIC quiz questions for me:</code></li>
+<li><code>generate 5 $TOPIC quiz questions based on my notes</code></li>
+</ul>
+</li>
+<li>Coding Assistance
+<ul>
+<li>Commenting &amp; Reformatting</li>
+<li>Debugging</li>
+<li>Optimizing Code</li>
+<li>Translate between programming language</li>
+<li>Simulating a bunch of servers: <code>Act as Microsoft SQL Server. Create a database called &quot;politics&quot; and inside it a table called &quot;politicians.&quot; Fill it with 50 rows of famous politicians from around the world from different eras, 1900-2000. Add columns for their full names, country, dates of birth, and date of death if applicable. Create a view for top 3 politicians who lived the longest. Create and execute a Transact-SQL command that outputs the contents of that view.</code></li>
+<li>Simulating command line: <code>Act as Debian Linux command shell. Please respond to my commands as the terminal would, with as little explanation as possible. My first command is: ls -l</code></li>
+</ul>
+</li>
+<li>Contracts:
+<ul>
+<li>Generate sample document using: <code>Write a contractor NDA that has dangerous legal language favoring the employer</code></li>
+<li>Then ask: <code>What part of this agreement contains dangerous language?</code></li>
+<li>Write a contract and have it reviewed by a lawyer</li>
+</ul>
+</li>
+<li>Different writing style:
+<ul>
+<li><code>Write ... in style of Chris Rock</code></li>
+<li>Provide context and ask to write something in your style</li>
+</ul>
+</li>
+<li>Summarize
+<ul>
+<li><code>give me an act by act summary of Romeo and Julia</code></li>
+<li><code>Summarize this for me like I'm 5 years old: [PASTE TEXT HERE]</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="intermediate">Intermediate</h2>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
