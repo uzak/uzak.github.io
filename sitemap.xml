@@ -2,13 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://uzak.github.io/micro/2023-05-18-overkill/</loc>
-    <lastmod>2023-05-18T11:08:13-06:00</lastmod>
+    <loc>http://uzak.github.io/micro/2023-05-28-coincidence/</loc>
+    <lastmod>2023-05-28T03:01:05-06:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/</loc>
-    <lastmod>2023-05-18T11:08:13-06:00</lastmod>
+    <lastmod>2023-05-28T03:01:05-06:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/</loc>
+    <lastmod>2023-05-28T03:01:05-06:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/micro/2023-05-28-dont_depend/</loc>
+    <lastmod>2023-05-28T02:45:23-06:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-05-27-advaita_at_ramakrishna_math_hyderbad/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/edx/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-05-26-edx_exercising_leadership_foundational_principles/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/leadership/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/swami-tv/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/vedanta/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-05-26-edx_becoming_a_successful_leader/</loc>
+    <lastmod>2023-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/micro/2023-05-18-overkill/</loc>
     <lastmod>2023-05-18T11:08:13-06:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/2023-04-30-buena_educacion/</loc>
@@ -35,16 +68,7 @@
     <loc>http://uzak.github.io/post/2023-04-27-learnprompting.org/</loc>
     <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://uzak.github.io/post/</loc>
-    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/</loc>
-    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://uzak.github.io/post/2023-04-09-satsang_swami_tv/</loc>
-    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/swami-tv/</loc>
     <lastmod>2023-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/just_the_two_of_us/</loc>
@@ -60,9 +84,6 @@
     <lastmod>2023-03-01T18:19:27+01:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/2023-02-20-dhamma_padam/</loc>
-    <lastmod>2023-02-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/vedanta/</loc>
     <lastmod>2023-02-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/2023-02-02-janaka_and_ashtavakra/</loc>
