@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://uzak.github.io/tags/diary/</loc>
+    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/</loc>
+    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-05-31-reflekcie/</loc>
+    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/</loc>
+    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/</loc>
+    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://uzak.github.io/micro/2023-05-28-coincidence/</loc>
     <lastmod>2023-05-28T03:01:05-06:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/</loc>
-    <lastmod>2023-05-28T03:01:05-06:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/</loc>
     <lastmod>2023-05-28T03:01:05-06:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/2023-05-28-dont_depend/</loc>
@@ -26,13 +38,7 @@
     <loc>http://uzak.github.io/tags/leadership/</loc>
     <lastmod>2023-05-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://uzak.github.io/post/</loc>
-    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://uzak.github.io/tags/swami-tv/</loc>
-    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/</loc>
     <lastmod>2023-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/tags/vedanta/</loc>
@@ -57,9 +63,6 @@
     <lastmod>2023-04-27T23:10:12+02:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</loc>
-    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/diary/</loc>
     <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/tags/it/</loc>
