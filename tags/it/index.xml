@@ -6,7 +6,17 @@
     <description>Recent content in it on uzak.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scrimba: Learn React</title>
+      <link>http://uzak.github.io/post/2023-06-06-scrimba_learn_react/</link>
+      <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://uzak.github.io/post/2023-06-06-scrimba_learn_react/</guid>
+      <description>source
+Intro The easiest way to learn something is the hard way learn by doing avoid &amp;ldquo;tutorial hell&amp;rdquo; by watching school: goal of learning is good grade. Here to be able to write react code. Repetition is your best friend when it comes to learn something Don&amp;rsquo;t binge the course Your brain needs rest. Take breaks often. Re-watch past lessons. Esp. when stuck. Ask community on discord, if in doubt. First thing to learn: how to think in react?</description>
+    </item>
+    
     <item>
       <title>AI and the Illusion of Intelligence</title>
       <link>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</link>
