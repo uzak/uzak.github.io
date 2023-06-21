@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Docker Workshop</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/reveal-hugo/themes/robot-lung.css" id="theme"><link rel="stylesheet" href="/highlight-js/default.min.css">
+  </head>
+  <body>
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section><h1 id="docker-workshop">Docker Workshop</h1>
+<p><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker logo"></p>
+<ul>
+<li><a href="mailto:martin.uzak@mailbox.org">martin.uzak@mailbox.org</a></li>
+<li>2023-06-26</li>
+</ul>
+</section><section>
+<h1 id="introduction-and-expectations">Introduction and expectations</h1>
+</section><section>
+<h1 id="methodology">Methodology</h1>
+<ul>
+<li>Coloring-book for docker
+<ul>
+<li>The workshop provides structure, you colors.</li>
+<li>Workshop, not passive listening.</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h1 id="structure">Structure</h1>
+<ul>
+<li>What and why?</li>
+<li>How?
+<ul>
+<li>User
+<ul>
+<li>hello-world</li>
+<li>repositories and search images</li>
+<li>container management</li>
+<li>important switches</li>
+<li>network</li>
+<li>Volume</li>
+</ul>
+</li>
+<li>Developer
+<ul>
+<li>Dockerfile</li>
+<li>Repos</li>
+<li>docker-compose</li>
+</ul>
+</li>
+<li>Advanced Topics</li>
+</ul>
+</li>
+<li>Summary</li>
+</ul>
+</section><section>
+
+
+<section data-shortcode-section>
+<h1 id="what-and-why">What and Why?</h1>
+<ul>
+<li>What is docker?</li>
+<li>What is a container?</li>
+</ul>
+</section><section>
+<h1 id="why">Why?</h1>
+<ul>
+<li>Eliminate dependency hell.
+<ul>
+<li>Reduce requirements to stating required: <strong>CPU, RAM</strong> and storage.</li>
+</ul>
+</li>
+<li>Package, containerize, <strong>ship and run everywhere</strong>, anytime and <strong>at any scale</strong>.</li>
+</ul>
+</section><section>
+<h1 id="container-vs-virtual-machine">Container vs. Virtual Machine</h1>
+<ul>
+<li>Each container has its own processes, network, FS mounts.</li>
+<li>Docker runs on an OS and can run several containers all using the same underlying Kernel of the OS.</li>
+<li>light- vs heavyweight (resources).</li>
+<li>Docker containers boot up faster.</li>
+<li>Virtualisation provides complete isolation.</li>
+</ul>
+</section><section>
+<h1 id="basic-concepts">Basic Concepts</h1>
+<ul>
+<li>Images - contains code to be executed. Similar to a statically-linked program.</li>
+<li>Containers - a running image. Something like a process.</li>
+<li>Registry - holds images</li>
+<li>Dockerfile - recipe to cook a image.</li>
+</ul>
+
+</section>
+</section><section>
+<h1 id="how-to">How-to</h1>
+<h2 id="practical-part">Practical Part</h2>
+</section><section>
+<h1 id="installation">Installation</h1>
+<p>Linux:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>sudo apt install docker.io docker-compose                             
+</span></span><span style="display:flex;"><span>sudo usermod -a -G docker $USER  
+</span></span></code></pre></div><p>Mac:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>brew install --cask docker
+</span></span></code></pre></div><p>Windows: good luck! &hellip; OK, <a href="https://ondrej-sika.cz/docker/instalace/">here</a> are some instructions in Czech, the essence of boils down to:</p>
+<pre tabindex="0"><code>choco install docker-desktop
+</code></pre></section><section>
+
+
+<section data-shortcode-section>
+<h3 id="first-steps-docker-for-users">First steps: docker for users</h3>
+<p>Let&rsquo;s run some containers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run hello-world                  <span style="color:#75715e"># execute image&#39;s default CMD</span>
+</span></span><span style="display:flex;"><span>docker run debian cat /etc/os-release   <span style="color:#75715e"># execute specific command</span>
+</span></span><span style="display:flex;"><span>docker run -it debian                   <span style="color:#75715e"># interactive TTY</span>
+</span></span></code></pre></div><ul>
+<li>Now install htop (<code>apt update &amp;&amp; apt install -y htop</code>), run it and watch the processes.</li>
+<li>Run the image again to see there will be no htop installed!</li>
+</ul>
+</section><section>
+<h3 id="finding-images">Finding Images</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker search mysql
+</span></span></code></pre></div><ul>
+<li>Or use search at <a href="https://hub.docker.com/search?q=">docker hub</a>.</li>
+<li>TASK: run mysql</li>
+</ul>
+</section><section>
+<h3 id="container-mgmt">Container mgmt</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker ps                               <span style="color:#75715e"># list running containers</span>
+</span></span><span style="display:flex;"><span>docker ps -a                            <span style="color:#75715e"># list all containers</span>
+</span></span><span style="display:flex;"><span>docker stop    CONTAINER_ID
+</span></span><span style="display:flex;"><span>docker restart CONTAINER_ID
+</span></span><span style="display:flex;"><span>docker kill    CONTAINER_ID
+</span></span><span style="display:flex;"><span>docker rm      CONTAINER_ID             <span style="color:#75715e"># remove a container</span>
+</span></span></code></pre></div><ul>
+<li>TASK: restart the MySQL container</li>
+<li>TASK: connect to the MySQL container</li>
+</ul>
+</section><section>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it mysql bash
+</span></span><span style="display:flex;"><span>mysql -h 127.0.0.1 -p
+</span></span></code></pre></div><ul>
+<li>TASK: now get rid the container</li>
+<li>Q: was the data we entered through the console saved?</li>
+</ul>
+</section><section>
+<h4 id="images">Images</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker pull ubuntu:20.04
+</span></span><span style="display:flex;"><span>docker images 
+</span></span><span style="display:flex;"><span>docker rmi ubuntu:20.04
+</span></span></code></pre></div><ul>
+<li><code>docker run</code> does automatically a pull if it doesn&rsquo;t find the image.</li>
+</ul>
+</section><section>
+<h4 id="maintenance">Maintenance</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker system df
+</span></span><span style="display:flex;"><span>docker system prune
+</span></span><span style="display:flex;"><span>docker system info
+</span></span></code></pre></div><ul>
+<li>Q: how to find out the size of the docker images (can be a lot)?</li>
+<li>Q: how to remove unused docker images?</li>
+</ul>
+</section><section>
+<h4 id="some-switches">Some switches</h4>
+<pre><code>-ti             # allocate terminal; interactive
+--name  NAME    # set a NAME for the container instead of a generated one
+-d              # run on the background (daemon)
+-e VAR=VALUE    # set environment `VAR` to `VALUE`. 
+--env-file FILE # set the environment values from a `FILE`. 
+</code></pre>
+<ul>
+<li>More switches: <code>man docker-run</code></li>
+</ul>
+</section><section>
+<h3 id="volumes">Volumes</h3>
+<p>Let&rsquo;s persist the data</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span>pw mysql
+</span></span><span style="display:flex;"><span>docker stop mysql
+</span></span><span style="display:flex;"><span>docker logs mysql
+</span></span><span style="display:flex;"><span>docker rm mysql
+</span></span></code></pre></div><p>We can mount in read-only mode too:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run -ti -v /etc/passwd:/tmp/passwd:ro busybox sh
+</span></span></code></pre></div></section><section>
+<h3 id="networks">Networks</h3>
+<ul>
+<li>Our mysql container is not reachable from outside and thus rather useless.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run -p 3306:3306 --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span>pw mysql
+</span></span><span style="display:flex;"><span>mysql -h 127.0.0.1 -p -u root
+</span></span></code></pre></div><ul>
+<li><a href="https://docs.docker.com/network/drivers/">network drivers</a>:
+<ul>
+<li>bridge (default). Each container gets its own network stack. Needs port forwarding.</li>
+<li>host - container and host share the same network and ports.</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h1 id="qa">Q&amp;A?</h1>
+
+</section>
+</section><section>
+<h1 id="developer-for-developers">Developer for Developers</h1>
+</section><section>
+<h4 id="dockerfile">Dockerfile</h4>
+<p>Let&rsquo;s create our own image. Example projects: <a href="https://github.com/dockersamples/helloworld-demo-python">python</a>, <a href="https://github.com/dockersamples/helloworld-demo-node">node</a>, <a href="">golang</a>.</p>
+<p><a href="https://docs.docker.com/engine/reference/builder/">Commands</a>:</p>
+<ul>
+<li>FROM</li>
+<li>RUN</li>
+<li>COPY</li>
+<li>ADD</li>
+<li>ENV</li>
+<li>USER</li>
+<li>WORKDIR</li>
+<li>VOLUME</li>
+<li>CMD</li>
+<li>EXPOSE</li>
+</ul>
+</section><section>
+<h3 id="multistage-build">Multistage build</h3>
+</section><section>
+<h4 id="docker-compose">docker-compose</h4>
+<p><a href="https://github.com/dockersamples/todolist-node">TODO example</a></p>
+<pre tabindex="0"><code>docker network ls
+docker network create NAME
+docker network delete NAME
+</code></pre></section><section>
+<h2 id="advanced-topics">Advanced Topics</h2>
+</section><section>
+<h3 id="volumes">Volumes</h3>
+</section><section>
+<h3 id="logs">Logs</h3>
+<pre tabindex="0"><code>docker top CONTAINER_ID
+docker logs CONTAINER_ID
+
+docker logs CONTAINER_ID --since 60m
+
+
+docker inspect --format=&#39;{{.LogPath}}&#39; api  # log file 
+
+docker tag 64af79210286 registry.gitlab.com/TEAM/PRJ:master-20210119
+docker push !$
+</code></pre><ul>
+<li>ctop</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run --rm -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name<span style="color:#f92672">=</span>ctop <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume /var/run/docker.sock:/var/run/docker.sock:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  quay.io/vektorlab/ctop:latest
+</span></span></code></pre></div></section><section>
+<h2 id="summary">Summary</h2>
+</section><section>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=zJ6WbK9zFpI">Docker Tutorial for Beginners by KodeKloud</a></li>
+<li><a href="https://github.com/ondrejsika/docker-training">Ondrej Sika&rsquo;s Docker Training</a></li>
+<li><a href="https://docker-curriculum.com/">https://docker-curriculum.com/</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+
+<script src="/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {"custom_theme":"reveal-hugo/themes/robot-lung.css","history":true,"slide_number":true};
+  var revealHugoPageParams = {};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+    
+    
+  </body>
+</html>
