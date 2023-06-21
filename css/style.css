@@ -36,6 +36,15 @@ div.archive-list > div {
 
 .pagination {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination > a {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 div.micro > p {
