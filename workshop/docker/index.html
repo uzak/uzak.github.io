@@ -19,45 +19,33 @@
     <section><h1 id="docker-workshop">Docker Workshop</h1>
 <p><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker logo"></p>
 <ul>
-<li><a href="martin.uzak@mailbox.org">Martin Uzak</a></li>
+<li><a href="mailto:martin.uzak@mailbox.org">Martin Užák</a></li>
 <li>2023-06-26</li>
 </ul>
 </section><section>
 <h1 id="introduction-and-expectations">Introduction and expectations</h1>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 </section><section>
-<h1 id="methodology">Methodology</h1>
-<ul>
-<li>Coloring-book for docker
-<ul>
-<li>The workshop provides structure, you colors.</li>
-<li>Workshop, not passive listening.</li>
-</ul>
-</li>
-</ul>
-</section><section>
-<h1 id="structure">Structure</h1>
+<h1 id="structure--goals">Structure &amp; Goals</h1>
 <ul>
 <li>What and why?</li>
 <li>How?
 <ul>
-<li>User
-<ul>
-<li>hello-world</li>
-<li>repositories and search images</li>
-<li>container management</li>
-<li>important switches</li>
-<li>network</li>
-<li>Volume</li>
-</ul>
-</li>
+<li>Installation</li>
+<li>User (Containers, Images, Networks, Volumes)</li>
 <li>Developer
 <ul>
 <li>Dockerfile</li>
-<li>Repos</li>
 <li>docker-compose</li>
 </ul>
 </li>
-<li>Advanced Topics</li>
+<li>Advanced Recipes
+<ul>
+<li>Moving images around (repos)</li>
+<li>Inspecting / editing an image</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Summary</li>
@@ -82,7 +70,7 @@
 <li>Package, containerize, <strong>ship and run everywhere</strong>, anytime and <strong>at any scale</strong>.</li>
 </ul>
 </section><section>
-<h1 id="container-vs-virtual-machine">Container vs. Virtual Machine</h1>
+<h3 id="container-vs-virtual-machine-optional">Container vs. Virtual Machine (optional)</h3>
 <ul>
 <li>Each container has its own processes, network, FS mounts.</li>
 <li>Docker runs on an OS and can run several containers all using the same underlying Kernel of the OS.</li>
@@ -105,18 +93,18 @@
 <h2 id="practical-part">Practical Part</h2>
 </section><section>
 <h1 id="installation">Installation</h1>
-<p>Linux:</p>
+<p>Ubuntu Linux:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>sudo apt install docker.io docker-compose                             
 </span></span><span style="display:flex;"><span>sudo usermod -a -G docker $USER  
 </span></span></code></pre></div><p>Mac:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>brew install --cask docker
-</span></span></code></pre></div><p>Windows: good luck! &hellip; OK, <a href="https://ondrej-sika.cz/docker/instalace/">here</a> are some instructions in Czech, the essence of boils down to:</p>
+</span></span></code></pre></div><p>Windows: good luck! &hellip;</p>
 <pre tabindex="0"><code>choco install docker-desktop
 </code></pre></section><section>
 
 
 <section data-shortcode-section>
-<h3 id="first-steps-docker-for-users">First steps: docker for users</h3>
+<h3 id="first-steps-docker-for-users">First steps: Docker for Users</h3>
 <p>Let&rsquo;s run some containers:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run hello-world                  <span style="color:#75715e"># execute image&#39;s default CMD</span>
 </span></span><span style="display:flex;"><span>docker run debian cat /etc/os-release   <span style="color:#75715e"># execute specific command</span>
@@ -146,7 +134,7 @@
 </ul>
 </section><section>
 <h3 id="solution">Solution</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it mysql bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it mysql bash          <span style="color:#75715e"># execute `bash` in a running container</span>
 </span></span><span style="display:flex;"><span>mysql -h 127.0.0.1 -p
 </span></span></code></pre></div><ul>
 <li>TASK: now get rid the container</li>
@@ -183,7 +171,7 @@
 </span></span></code></pre></div></section><section>
 <h3 id="networks">Networks</h3>
 <ul>
-<li>Our mysql container is not reachable from outside and thus rather useless.</li>
+<li>Our mysql container is not reachable from outside and thus rather useless. Let&rsquo;s fix this:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run -d -p 3306:3306 --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span>pw mysql
 </span></span><span style="display:flex;"><span>mysql -h 127.0.0.1 -p -u root
@@ -209,14 +197,14 @@
 </code></pre>
 <ul>
 <li>More switches: <code>man docker-run</code></li>
-<li>Less switches: <code>tldr docker-run</code> (recommended)</li>
+<li>Less switches (recommended): <code>tldr docker-run</code></li>
 </ul>
 </section><section>
 <h1 id="qa">Q&amp;A?</h1>
 
 </section>
 </section><section>
-<h1 id="developer-for-developers">Developer for Developers</h1>
+<h1 id="docker-for-developers">Docker for Developers</h1>
 </section><section>
 
 
@@ -245,7 +233,6 @@
 <h4 id="dockerfile-contd">Dockerfile cont&rsquo;d</h4>
 <ul>
 <li>Dockerfile commands <a href="https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index">cheat-sheet</a></li>
-<li><code>.dockerignore</code> - just as <code>.gitignore</code></li>
 <li>Some more commands:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker tag SOURCE_IMAGE TARGET_IMAGE    <span style="color:#75715e"># create a new tag</span>
@@ -347,9 +334,13 @@ volumes:
 </span></span><span style="display:flex;"><span>docker-compose up -d
 </span></span><span style="display:flex;"><span>docker-compose down
 </span></span></code></pre></div><ul>
-<li>A more complicated example <a href="https://github.com/dockersamples/example-voting-app/blob/main/docker-compose.yml">docker-compose.yaml</a></li>
+<li>A more complicated example <a href="https://github.com/dockersamples/example-voting-app/blob/main/docker-compose.yml">docker-compose.yaml</a>
+<ul>
+<li>Check out shortcuts for <code>volumes</code> and <code>ports</code>.</li>
+</ul>
+</li>
 <li>Useful for orchestration of tests / experiments.</li>
-<li>For production / scaling, use kubernetes.</li>
+<li>For production, if scaling is required, use kubernetes.</li>
 </ul>
 </section><section>
 <h1 id="qa">Q&amp;A?</h1>
@@ -359,26 +350,32 @@ volumes:
 
 
 <section data-shortcode-section>
-<h2 id="advanced-topics">Advanced Topics</h2>
+<h2 id="advanced-recipes">Advanced Recipes</h2>
 </section><section>
 <h3 id="moving-images-around--repositories">Moving images around / Repositories</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker save IMAGE &gt; image.tar
 </span></span><span style="display:flex;"><span>docker load &lt; image.tar
 </span></span></code></pre></div><ul>
 <li>Or push it to a temporary storage: <a href="https://ttl.sh/">https://ttl.sh/</a> (DANGER: not under your control)</li>
-<li>Or use a docker hub / AWS ECR / &hellip; repository</li>
+<li>Or <strong>use a</strong> docker hub / AWS ECR / &hellip; <strong>repository</strong></li>
+<li>TASK: save <code>debian</code> image; remove it from images; load it. Now verify it is there among the images.</li>
 </ul>
 </section><section>
 <h3 id="manually-edit-an-image">Manually edit an image</h3>
 <ul>
 <li>update an image by editing a running container made from it:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it container-ID bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it container-ID bash 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># do your changes</span>
 </span></span><span style="display:flex;"><span>docker commit container-ID image-name
-</span></span></code></pre></div></section><section>
+</span></span></code></pre></div><p>TASK: add the <code>htop</code> package to your debian image</p>
+</section><section>
 <h3 id="inspecting-image">Inspecting Image</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker inspect IMAGE
-</span></span></code></pre></div></section><section>
+</span></span></code></pre></div><ul>
+<li>TASK: what&rsquo;s the command that will be executed in the <code>mysql</code> image? What mounts does it have? What ports does it expose?</li>
+</ul>
+</section><section>
 <h3 id="just-stop-all-stupid-containers">Just stop all stupid containers</h3>
 <ul>
 <li>set restart policy to no to all running dockers and stop them:</li>
@@ -394,6 +391,8 @@ volumes:
 </span></span></code></pre></div>
 </section>
 </section><section>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="resources">Resources</h2>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=zJ6WbK9zFpI">Docker Tutorial for Beginners by KodeKloud</a></li>
@@ -401,7 +400,15 @@ volumes:
 <li><a href="https://docker-curriculum.com/">https://docker-curriculum.com/</a></li>
 </ul>
 </section><section>
-<h1 id="qa">Q&amp;A?</h1>
+<h1 id="final-qa">Final Q&amp;A?</h1>
+</section><section>
+<h1 id="feedback">Feedback</h1>
+<ul>
+<li>What did you like?</li>
+<li>What would you do differently?</li>
+<li>What was missing?</li>
+</ul>
+<p><a href="mailto:martin.uzak@mailbox.org?subject=Docker%20Workshop">email</a></p>
 </section><section>
 <h1 id="thank-you-for-attention">Thank you for attention!</h1>
 <!-- raw HTML omitted -->
@@ -468,6 +475,18 @@ volumes:
 
 
 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

@@ -50,3 +50,8 @@ div.archive-list > div {
 div.micro > p {
   display: inline;
 }
+
+/* don't display images in homepage */
+div.micro > p > img {
+  display: none;
+}
