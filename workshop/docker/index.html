@@ -90,7 +90,7 @@
 <h1 id="installation">Installation</h1>
 <p>Ubuntu Linux:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>sudo apt install docker.io docker-compose                             
-</span></span><span style="display:flex;"><span>sudo usermod -a -G docker $USER  
+</span></span><span style="display:flex;"><span>sudo usermod -a -G docker $USER             <span style="color:#75715e"># re-login or restart</span>
 </span></span></code></pre></div><p>Mac:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>brew install --cask docker
 </span></span></code></pre></div><p>Windows: good luck! &hellip;</p>
@@ -230,8 +230,9 @@
 <li>Dockerfile commands <a href="https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index">cheat-sheet</a></li>
 <li>Some more commands:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker tag SOURCE_IMAGE TARGET_IMAGE    <span style="color:#75715e"># create a new tag</span>
-</span></span><span style="display:flex;"><span>docker build --platform linux/arm64     <span style="color:#75715e"># cross build for Apple M1/M1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker tag SOURCE_IMAGE TARGET_IMAGE    <span style="color:#75715e"># create a new tag (keeps old)</span>
+</span></span><span style="display:flex;"><span>docker rmi OLD_TAG                      <span style="color:#75715e"># remove a tag / image</span>
+</span></span><span style="display:flex;"><span>docker build --platform linux/arm64     <span style="color:#75715e"># cross build for Apple M1/M2</span>
 </span></span><span style="display:flex;"><span>docker build -f DOCKERFILE .            <span style="color:#75715e"># if we have multiple Dockerfiles</span>
 </span></span></code></pre></div><ul>
 <li>Q: how do we verify that we have tagged an image with a new tag?</li>
@@ -470,6 +471,12 @@ volumes:
 
 
 
+
+  
+
+  
+
+  
 
   
 
