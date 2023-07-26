@@ -372,6 +372,12 @@ volumes:
 <li>TASK: what&rsquo;s the command that will be executed in the <code>mysql</code> image? What mounts does it have? What ports does it expose?</li>
 </ul>
 </section><section>
+<h3 id="creating-small-images">Creating Small Images</h3>
+<ul>
+<li>Multistage-builds</li>
+<li>RUN, COPY, ADD - create new layers. Join RUN commands (&amp;&amp;)</li>
+</ul>
+</section><section>
 <h3 id="just-stop-all-stupid-containers">Just stop all stupid containers</h3>
 <ul>
 <li>set restart policy to no to all running dockers and stop them:</li>
@@ -394,6 +400,7 @@ volumes:
 <li><a href="https://www.youtube.com/watch?v=zJ6WbK9zFpI">Docker Tutorial for Beginners by KodeKloud</a></li>
 <li><a href="https://github.com/ondrejsika/docker-training">Ondrej Sika&rsquo;s Docker Training</a></li>
 <li><a href="https://docker-curriculum.com/">https://docker-curriculum.com/</a></li>
+<li><a href="https://learnk8s.io/blog/smaller-docker-images">Smaller Docker Images</a></li>
 </ul>
 </section><section>
 <h1 id="final-qa">Final Q&amp;A?</h1>
@@ -451,7 +458,7 @@ volumes:
   }
 
   var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
-  var revealHugoSiteParams = {"custom_theme":"reveal-hugo/themes/robot-lung.css","history":true,"slide_number":true};
+  var revealHugoSiteParams = {"custom_theme":"reveal-hugo/themes/robot-lung.css","history":true,"slide_number":true,"theme":"solarized"};
   var revealHugoPageParams = {};
 
   var revealHugoPlugins = {
@@ -472,267 +479,422 @@ volumes:
 
 
 
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
   
+  
+
+  
+  
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
 
   
+  
 
+  
   
 
   
+  
 
+  
   
 
   
+  
+
+
 
 
 

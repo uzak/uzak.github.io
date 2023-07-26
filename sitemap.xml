@@ -2,13 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://uzak.github.io/micro/2023-06-30-05_50_45/</loc>
-    <lastmod>2023-06-30T05:50:45-06:00</lastmod>
+    <loc>http://uzak.github.io/tags/diary/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://uzak.github.io/micro/</loc>
-    <lastmod>2023-06-30T05:50:45-06:00</lastmod>
+    <loc>http://uzak.github.io/post/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-07-23-r%C3%BDchlo_lacno_a_kvalitne/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/micro/2023-07-12-15_11_43/</loc>
+    <lastmod>2023-07-12T15:11:43-06:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/micro/</loc>
+    <lastmod>2023-07-12T15:11:43-06:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-07-07-docker_workshop/</loc>
+    <lastmod>2023-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/pdf/</loc>
+    <lastmod>2023-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/post/2023-07-07-slovenska_biblia/</loc>
+    <lastmod>2023-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/tags/workshops/</loc>
+    <lastmod>2023-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://uzak.github.io/micro/2023-06-30-05_50_45/</loc>
     <lastmod>2023-06-30T05:50:45-06:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/micro/2023-06-29-12_27_58/</loc>
@@ -44,16 +71,10 @@
     <loc>http://uzak.github.io/tags/descarte/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://uzak.github.io/post/</loc>
-    <lastmod>2023-06-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://uzak.github.io/tags/red-pill/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/tags/socrates/</loc>
-    <lastmod>2023-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/tags/thinking/</loc>
@@ -73,9 +94,6 @@
   </url><url>
     <loc>http://uzak.github.io/micro/2023-06-20-10_19_31/</loc>
     <lastmod>2023-06-20T10:19:31-06:00</lastmod>
-  </url><url>
-    <loc>http://uzak.github.io/tags/diary/</loc>
-    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://uzak.github.io/post/2023-06-18-the_mind_of_napoleon/</loc>
     <lastmod>2023-06-18T00:00:00+00:00</lastmod>
@@ -387,6 +405,8 @@
     <loc>http://uzak.github.io/workshop/docker/</loc>
   </url><url>
     <loc>http://uzak.github.io/etym/</loc>
+  </url><url>
+    <loc>http://uzak.github.io/workshop/refactoring/</loc>
   </url><url>
     <loc>http://uzak.github.io/workshop/</loc>
   </url>
