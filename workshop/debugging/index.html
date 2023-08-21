@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Refactoring</title>
+<title>Debugging Workshop</title>
 
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,68 +16,65 @@
       <div class="slides">
   
 
-    <section><h1 id="refactoring">Refactoring</h1>
-<p>A workshop by <a href="mailto:martin.uzak@mailbox.org">Martin Užák</a></p>
+    <section><h1 id="debugging">Debugging</h1>
+<ul>
+<li>Martin Uzak</li>
+<li>2023-08-22</li>
+</ul>
 </section><section>
-<h1 id="refactoring-1">Refactoring?</h1>
+<h2 id="takeways">Takeways</h2>
 <ul>
-<li>What is it?
+<li>What is a bug</li>
+<li>What is debugging</li>
+<li>How to deal with bugs</li>
+<li>Practical debugging</li>
+</ul>
+</section><section>
+<h2 id="what-is-a-bug">What is a bug?</h2>
 <ul>
-<li>Improve code without changing the functionality</li>
+<li>Historical Perspective</li>
+<li>Invalid assumption - essence of a bug</li>
+<li>Bug, Error, Fault, Defect, Failure</li>
+</ul>
+</section><section>
+<h2 id="debugging-1">Debugging</h2>
+<ul>
+<li>Debugging is like being a detective:
+<ul>
+<li>In a case where you&rsquo;re the perpetrator as well :-D</li>
+</ul>
+</li>
+<li>Correcting bug is easy, difficult part is:
+<ul>
+<li>reproducing it</li>
+<li>understanding it</li>
 </ul>
 </li>
 </ul>
 </section><section>
-<h1 id="motivation">Motivation</h1>
+<h2 id="recipe-for-debugging">Recipe for Debugging</h2>
+<ol>
+<li>Reproduce the bug</li>
+<li>Start to look, stop making assumptions</li>
+<li>Divide and conquer - interval halving</li>
+<li>Change one thing at a time</li>
+<li>Fix the bug - correct the code</li>
+<li>Add a test to prevent the bug from raising from death unnoticed</li>
+</ol>
+</section><section>
+<h1 id="tools">Tools</h1>
 <ul>
-<li>Why?
+<li>Rubber Duck</li>
+<li>Print / logging</li>
+<li><code>import code; code.interact(local=dict(globals(), **locals()))</code></li>
+<li>visual debugger (pycharm, vscode)</li>
+<li><a href="https://realpython.com/python-debugging-pdb/">pdb</a></li>
+</ul>
+</section><section>
+<h1 id="practical-debugging">Practical debugging</h1>
 <ul>
-<li>2/3 of software projects fail</li>
-<li>2/3 of development costs is spent in <strong>maintenance</strong></li>
+<li><a href="./example.py">example.py</a></li>
 </ul>
-</li>
-<li>What is maintenance?
-<ul>
-<li>bug-fixing</li>
-<li>implementing new functionality</li>
-</ul>
-</li>
-<li>What prevents maintenance?</li>
-</ul>
-</section><section>
-<h1 id="technical-debt">Technical Debt</h1>
-<ul>
-<li>culprit preventing maintenance</li>
-<li>entropy</li>
-<li><strong>!order</strong></li>
-<li><strong>!cohesion</strong>
-<!-- raw HTML omitted --></li>
-</ul>
-<h3 id="solution-refactoring">Solution: refactoring</h3>
-</section><section>
-</section><section>
-<h3 id="code-smells--corrections">Code Smells &amp; Corrections</h3>
-
-
-<span class='fragment ' ><ul>
-<li>Naming</li>
-<li>Magic Constants</li>
-<li>Copy &amp; Paste vs. Functions (DRY)</li>
-<li>Formatting</li>
-<li>Dead Code</li>
-<li>Useless Comments</li>
-<li>KISS, SRP</li>
-<li>Main Function</li>
-</ul>
-</span>
-
-
-</section><section>
-<h1 id="example">Example</h1>
-</section><section>
-<p>Thank you for the attention!</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 </section>
 
   
