@@ -18,24 +18,21 @@
 
     <section><h1 id="refactoring">Refactoring</h1>
 <p>A workshop by <a href="mailto:martin.uzak@mailbox.org">Martin Užák</a></p>
+<p>2023-07-14</p>
 </section><section>
 <h1 id="refactoring-1">Refactoring?</h1>
 <ul>
-<li>What is it?
-<ul>
 <li>Improve code without changing the functionality</li>
 </ul>
-</li>
-</ul>
 </section><section>
-<h1 id="motivation">Motivation</h1>
-<ul>
-<li>Why?
+<h1 id="why">Why?</h1>
 <ul>
 <li>2/3 of software projects fail</li>
 <li>2/3 of development costs is spent in <strong>maintenance</strong></li>
 </ul>
-</li>
+</section><section>
+<h1 id="maintenance">Maintenance</h1>
+<ul>
 <li>What is maintenance?
 <ul>
 <li>bug-fixing</li>
@@ -47,14 +44,51 @@
 </section><section>
 <h1 id="technical-debt">Technical Debt</h1>
 <ul>
-<li>culprit preventing maintenance</li>
-<li>entropy</li>
-<li><strong>!order</strong></li>
-<li><strong>!cohesion</strong>
-<!-- raw HTML omitted --></li>
+<li>What is it?
+<ul>
+<li>Nomen est omen</li>
+<li>Insufficient attention paid to technical issues</li>
 </ul>
-<h3 id="solution-refactoring">Solution: refactoring</h3>
+</li>
+<li>How does it happen?</li>
+<li>How do we resolve it?
+<ul>
+<li>by refactoring</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 </section><section>
+<h1 id="refactoring-when">Refactoring: when?</h1>
+<ul>
+<li>immediately</li>
+<li>OR mark the mines in code / create an issue
+<ul>
+<li>2 minute rule (time management)</li>
+</ul>
+</li>
+<li>periodically</li>
+</ul>
+</section><section>
+<h1 id="refactoring-how">Refactoring: how?</h1>
+<ul>
+<li><strong>Understand the code</strong> you want to refactor</li>
+<li><strong>Verify</strong> your understanding (<strong>run it</strong>)</li>
+<li>Create a <strong>test</strong></li>
+<li><strong>Refactor</strong>
+<ul>
+<li>REPEAT (refactoring is an iterative process)</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h1 id="goals-of-refactoring">Goals of Refactoring</h1>
+<ul>
+<li><strong>KISS</strong>, <strong>SRP</strong>: Complexity -&gt; Simplicity</li>
+<li><strong>DRY</strong>: Repetitions (Copy&amp;Paste) -&gt; Abstractions</li>
+<li>Naming, Structure -&gt; Clarity</li>
+</ul>
 </section><section>
 <h3 id="code-smells--corrections">Code Smells &amp; Corrections</h3>
 
@@ -66,7 +100,8 @@
 <li>Formatting</li>
 <li>Dead Code</li>
 <li>Useless Comments</li>
-<li>KISS, SRP</li>
+<li>KISS
+0 &gt; 1 &gt; 2 &gt; &hellip; too many</li>
 <li>Main Function</li>
 </ul>
 </span>
@@ -74,8 +109,14 @@
 
 </section><section>
 <h1 id="example">Example</h1>
+<p><a href="https://gist.github.com/uzak/5fe4b9a2c74b93ce6a5644a487c84d0e#file-refactor-py">refactor.py</a> -&gt; refactored.py</p>
 </section><section>
-<p>Thank you for the attention!</p>
+<h1 id="refactoring-never-ends-">Refactoring never ends :)</h1>
+<p>Thank you for the attention! Let&rsquo;s stay in touch</p>
+<ul>
+<li><a href="mailto:martin.uzak@mailbox.org">email</a></li>
+<li><a href="https://www.linkedin.com/in/martin-uzak/">linkedin</a></li>
+</ul>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 </section>
