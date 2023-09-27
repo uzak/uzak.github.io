@@ -1,70 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>it on uzak.github.io</title>
-    <link>http://uzak.github.io/tags/it/</link>
-    <description>Recent content in it on uzak.github.io</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 06 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Scrimba: Learn React</title>
-      <link>http://uzak.github.io/post/2023-06-06-scrimba_learn_react/</link>
-      <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2023-06-06-scrimba_learn_react/</guid>
-      <description>source
-Intro The easiest way to learn something is the hard way learn by doing avoid &amp;ldquo;tutorial hell&amp;rdquo; by watching school: goal of learning is good grade. Here to be able to write react code. Repetition is your best friend when it comes to learn something Don&amp;rsquo;t binge the course Your brain needs rest. Take breaks often. Re-watch past lessons. Esp. when stuck. Ask community on discord, if in doubt. First thing to learn: how to think in react?</description>
-    </item>
-    
-    <item>
-      <title>AI and the Illusion of Intelligence</title>
-      <link>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</link>
-      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</guid>
-      <description>src
-Week 1 Some Curious Experiments In early 1600 William Harvey examined the heart and understood it&amp;rsquo;s a pump. A few years after Rene Descartes this concluded that machines cannot think - arrange it&amp;rsquo;s speech so it makes sense - what even the lowest type of man can do. Alan Turing and the Imitation Game Illusion of Intelligence Explosion of Big Data Week 2 The Chomskyan Revolution Generative Gramar. Descarte&amp;rsquo;s Miracle The Fatal Flaw of the Chomskyan Revolution Doing Violence to Language: the Ngram Week 3 Moore&amp;rsquo;s Law Does Not Make the Singularity Likely in the film 2001, the main character was the computer HAL, solution to all the main (AI) challenges.</description>
-    </item>
-    
-    <item>
-      <title>learnprompting.org</title>
-      <link>http://uzak.github.io/post/2023-04-27-learnprompting.org/</link>
-      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2023-04-27-learnprompting.org/</guid>
-      <description>src
-Basics Introduction Often AIs are like very smart 5-years old. They can do a lot of things, but need careful instructions to do them well. AI can automate tasks that cost you countless hours now. Prompting Giving Instructions Role Prompting Assign a role to a the AI. E.g.: &amp;ldquo;You&amp;rsquo;re a lawyer&amp;rdquo;. Awesome ChatGPT prompts Few shot prompting shot: result shot: result shot: other_result shot Present sample, present expected output, let it do more.</description>
-    </item>
-    
-    <item>
-      <title>Review whole codebase easily</title>
-      <link>http://uzak.github.io/post/2023-01-26-review_whole_codebase/</link>
-      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2023-01-26-review_whole_codebase/</guid>
-      <description>Recently, a student asked me to review a small project hosted on GitHub. Initially, I assumed I would use the Pull Request/Code Review functionality of GitHub to do so. I found an easy way to perform it on the whole codebase.
-However, I eventually decided that I wanted to have a broader view, rather than just looking at a small portion of the changes through the Code Review&amp;rsquo;s microscope. Utilizing an IDE that could visualize the connections in the code and show how things were being used and defined also helped me a lot.</description>
-    </item>
-    
-    <item>
-      <title>CS50 React Native</title>
-      <link>http://uzak.github.io/post/2022-11-09-cs50_react_native/</link>
-      <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2022-11-09-cs50_react_native/</guid>
-      <description>Youtube
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>it on uzak.github.io</title><link>http://uzak.github.io/tags/it/</link><description>Recent content in it on uzak.github.io</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 06 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://uzak.github.io/tags/it/index.xml" rel="self" type="application/rss+xml"/><item><title>Scrimba: Learn React</title><link>http://uzak.github.io/post/2023-06-06-scrimba_learn_react/</link><pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2023-06-06-scrimba_learn_react/</guid><description>source
+Intro The easiest way to learn something is the hard way learn by doing avoid &amp;ldquo;tutorial hell&amp;rdquo; by watching school: goal of learning is good grade. Here to be able to write react code. Repetition is your best friend when it comes to learn something Don&amp;rsquo;t binge the course Your brain needs rest. Take breaks often. Re-watch past lessons. Esp. when stuck. Ask community on discord, if in doubt. First thing to learn: how to think in react?</description></item><item><title>AI and the Illusion of Intelligence</title><link>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</link><pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2023-04-27-ai_and_the_illusion_of_intelligence/</guid><description>src
+Week 1 Some Curious Experiments In early 1600 William Harvey examined the heart and understood it&amp;rsquo;s a pump. A few years after Rene Descartes this concluded that machines cannot think - arrange it&amp;rsquo;s speech so it makes sense - what even the lowest type of man can do. Alan Turing and the Imitation Game Illusion of Intelligence Explosion of Big Data Week 2 The Chomskyan Revolution Generative Gramar. Descarte&amp;rsquo;s Miracle The Fatal Flaw of the Chomskyan Revolution Doing Violence to Language: the Ngram Week 3 Moore&amp;rsquo;s Law Does Not Make the Singularity Likely in the film 2001, the main character was the computer HAL, solution to all the main (AI) challenges.</description></item><item><title>learnprompting.org</title><link>http://uzak.github.io/post/2023-04-27-learnprompting.org/</link><pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2023-04-27-learnprompting.org/</guid><description>src
+Basics Introduction Often AIs are like very smart 5-years old. They can do a lot of things, but need careful instructions to do them well. AI can automate tasks that cost you countless hours now. Prompting Giving Instructions Role Prompting Assign a role to a the AI. E.g.: &amp;ldquo;You&amp;rsquo;re a lawyer&amp;rdquo;. Awesome ChatGPT prompts Few shot prompting shot: result shot: result shot: other_result shot Present sample, present expected output, let it do more.</description></item><item><title>Review whole codebase easily</title><link>http://uzak.github.io/post/2023-01-26-review_whole_codebase/</link><pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2023-01-26-review_whole_codebase/</guid><description>Recently, a student asked me to review a small project hosted on GitHub. Initially, I assumed I would use the Pull Request/Code Review functionality of GitHub to do so. I found an easy way to perform it on the whole codebase.
+However, I eventually decided that I wanted to have a broader view, rather than just looking at a small portion of the changes through the Code Review&amp;rsquo;s microscope. Utilizing an IDE that could visualize the connections in the code and show how things were being used and defined also helped me a lot.</description></item><item><title>CS50 React Native</title><link>http://uzak.github.io/post/2022-11-09-cs50_react_native/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2022-11-09-cs50_react_native/</guid><description>Youtube
 Lecture 0: JS slides
-Introduction Course information Syntax Types dynamic types primitive types (no methods, immutable) undefined null boolean number string (symbol) objects Typecasting explicit implicit == (coerces the types) vs === (requires equivalent types) falsy undefined null false +0, -0, NaN &amp;quot;&amp;quot; truthy {} [] everything else Type demo typeof operator Objects const o = new Object() OR const o2 = {}; o2.firstName = &#39;&#39; OR const o3 = { firstName: &#39;&#39;, greet(): function() {} } Arrays, Functions - are objects Everything but primitive datatypes are objects Anything between [] when indexing will be coerced to a string.</description>
-    </item>
-    
-    <item>
-      <title>CS50&#39;s Introduction to Artificial Intelligence with Python </title>
-      <link>http://uzak.github.io/post/2022-10-17-harvardx_cs50ai/</link>
-      <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2022-10-17-harvardx_cs50ai/</guid>
-      <description>src
+Introduction Course information Syntax Types dynamic types primitive types (no methods, immutable) undefined null boolean number string (symbol) objects Typecasting explicit implicit == (coerces the types) vs === (requires equivalent types) falsy undefined null false +0, -0, NaN &amp;quot;&amp;quot; truthy {} [] everything else Type demo typeof operator Objects const o = new Object() OR const o2 = {}; o2.firstName = '' OR const o3 = { firstName: '', greet(): function() {} } Arrays, Functions - are objects Everything but primitive datatypes are objects Anything between [] when indexing will be coerced to a string.</description></item><item><title>CS50's Introduction to Artificial Intelligence with Python</title><link>http://uzak.github.io/post/2022-10-17-harvardx_cs50ai/</link><pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2022-10-17-harvardx_cs50ai/</guid><description>src
 Search general pattern:
 begin correct sequence of actions goal agent - perceives the environment and acts upon the environment
 state - configuration of the environment
@@ -72,104 +12,19 @@ initial state
 actions - choices taken in any given state. fuctions. ACTIONS(s) -&amp;gt; set of actions that can be done in given state.
 transition model. RESULT(s, a) -&amp;gt; state after performing action a in state s
 state space. graph
-goal state. determines whether a state is a goal state.</description>
-    </item>
-    
-    <item>
-      <title>Remote</title>
-      <link>http://uzak.github.io/post/2022-04-24-remote/</link>
-      <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2022-04-24-remote/</guid>
-      <description>The Time Is Right for Remote Work Office during the day has become the last place where people get their work done. Required: ability to be alone with your thoughts. Stop commuting your life away - commutes make you fat, stressed and miserable. Escaping 9am-5pm: synchronous -&amp;gt; asynchronous End of city monopoly Industrialism (factories): gather a large number of people into small area. life need not be divided into arbitrary phases: work and retirement Talent isn&amp;rsquo;t bound by the hubs It&amp;rsquo;s not about the money - promote quality of life, getting best people available Dealing with Excuses If you&amp;rsquo;re struggling with trust issues, you&amp;rsquo;ve made a poor hiring decision.</description>
-    </item>
-    
-    <item>
-      <title>It doesn&#39;t have to be crazy at work</title>
-      <link>http://uzak.github.io/post/2022-03-29-it_doesnt_have_to_be_crazy_at_work/</link>
-      <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2022-03-29-it_doesnt_have_to_be_crazy_at_work/</guid>
-      <description>Here are some notes from the marvelous book &amp;ldquo;It doesn&amp;rsquo;t have to be crazy at work&amp;rdquo;. If you like the notes, please consider buying the book.
-First It&amp;rsquo;s Crazy at Work Workday is being sliced into tiny moments by an onslaught of distractions. Unhealthy obsession with growth. Sustained exhaustion is not a badge of honor, it&amp;rsquo;s a mark of stupidity. The answer isn&amp;rsquo;t more hours, it&amp;rsquo;s less bullshit. Less waste, not more production.</description>
-    </item>
-    
-    <item>
-      <title>Do not let anyone overpay you</title>
-      <link>http://uzak.github.io/post/2021-04-22-do_not_let_anyone_overpay_you/</link>
-      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2021-04-22-do_not_let_anyone_overpay_you/</guid>
-      <description>source
-The moment one customer pays you a lot more than any other customer, you&amp;rsquo;re no longer a product but a consulting company working for the big payers. You&amp;rsquo;ll do what they say. Self-sufficient. We would never allow a customer to pay more than top-tier price. If you&amp;rsquo;re a bit company with special demands, we don&amp;rsquo;t want your money. We wanted to build a self-service software company. Not need an army of key account managers keeping the whales happy.</description>
-    </item>
-    
-    <item>
-      <title>Clean Code</title>
-      <link>http://uzak.github.io/post/2021-04-02-clean_code/</link>
-      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2021-04-02-clean_code/</guid>
-      <description>NOTE: TOC and these notes do not strictly correspond to the order used in the book itself.
-Clean Code Code is really the language in which we ultimately express the requirements. It is unprofessional for programmers to bend to the will of managers who don&amp;rsquo;t understand the risks of making messes. We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.</description>
-    </item>
-    
-    <item>
-      <title>Prusa Link Architecture</title>
-      <link>http://uzak.github.io/post/2021-03-01-prusa_link_architecture/</link>
-      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2021-03-01-prusa_link_architecture/</guid>
-      <description>Main Driver parse CLI args setup logging instantiate main class and run logging log = logging.getLogger(__name__) # -l on CLI for setting debug levels for module, level in log_levels: logging.getLogger(module).setLevel(level) config Uses extendparser in config.py
+goal state. determines whether a state is a goal state.</description></item><item><title>Remote</title><link>http://uzak.github.io/post/2022-04-24-remote/</link><pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2022-04-24-remote/</guid><description>The Time Is Right for Remote Work Office during the day has become the last place where people get their work done. Required: ability to be alone with your thoughts. Stop commuting your life away - commutes make you fat, stressed and miserable. Escaping 9am-5pm: synchronous -&amp;gt; asynchronous End of city monopoly Industrialism (factories): gather a large number of people into small area. life need not be divided into arbitrary phases: work and retirement Talent isn&amp;rsquo;t bound by the hubs It&amp;rsquo;s not about the money - promote quality of life, getting best people available Dealing with Excuses If you&amp;rsquo;re struggling with trust issues, you&amp;rsquo;ve made a poor hiring decision.</description></item><item><title>It doesn't have to be crazy at work</title><link>http://uzak.github.io/post/2022-03-29-it_doesnt_have_to_be_crazy_at_work/</link><pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2022-03-29-it_doesnt_have_to_be_crazy_at_work/</guid><description>Here are some notes from the marvelous book &amp;ldquo;It doesn&amp;rsquo;t have to be crazy at work&amp;rdquo;. If you like the notes, please consider buying the book.
+First It&amp;rsquo;s Crazy at Work Workday is being sliced into tiny moments by an onslaught of distractions. Unhealthy obsession with growth. Sustained exhaustion is not a badge of honor, it&amp;rsquo;s a mark of stupidity. The answer isn&amp;rsquo;t more hours, it&amp;rsquo;s less bullshit. Less waste, not more production.</description></item><item><title>Do not let anyone overpay you</title><link>http://uzak.github.io/post/2021-04-22-do_not_let_anyone_overpay_you/</link><pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2021-04-22-do_not_let_anyone_overpay_you/</guid><description>source
+The moment one customer pays you a lot more than any other customer, you&amp;rsquo;re no longer a product but a consulting company working for the big payers. You&amp;rsquo;ll do what they say. Self-sufficient. We would never allow a customer to pay more than top-tier price. If you&amp;rsquo;re a bit company with special demands, we don&amp;rsquo;t want your money. We wanted to build a self-service software company. Not need an army of key account managers keeping the whales happy.</description></item><item><title>Clean Code</title><link>http://uzak.github.io/post/2021-04-02-clean_code/</link><pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2021-04-02-clean_code/</guid><description>NOTE: TOC and these notes do not strictly correspond to the order used in the book itself.
+Clean Code Code is really the language in which we ultimately express the requirements. It is unprofessional for programmers to bend to the will of managers who don&amp;rsquo;t understand the risks of making messes. We are authors. Ratio of time spent reading vs. writing is well over 10:1. Making it easy to read actually makes it easier to write.</description></item><item><title>Prusa Link Architecture</title><link>http://uzak.github.io/post/2021-03-01-prusa_link_architecture/</link><pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2021-03-01-prusa_link_architecture/</guid><description>Main Driver parse CLI args setup logging instantiate main class and run logging log = logging.getLogger(__name__) # -l on CLI for setting debug levels for module, level in log_levels: logging.getLogger(module).setLevel(level) config Uses extendparser in config.py
 MVC MainClass.__init__(config) as Controller:
 instantiate Model instantiate components in proper order bind signals start threads There is MainClass.stop() for controlled shutdown.
-signals Uses blinker module. Usage: signal.connect(handler).</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>http://uzak.github.io/post/2021-02-22-kubernetes/</link>
-      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2021-02-22-kubernetes/</guid>
-      <description>source
+signals Uses blinker module. Usage: signal.connect(handler).</description></item><item><title>Kubernetes</title><link>http://uzak.github.io/post/2021-02-22-kubernetes/</link><pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2021-02-22-kubernetes/</guid><description>source
 Install and Deploy install kubectl install minikube Commands:
 minikube start minikube status kubectl get node kubectl get pods kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4 kubectl expose deployment hello-minikube --type=NodePort --port=8080 minikube service hello-minikube --url curl http://192.168.49.2:31223 kubectl delete deployments.apps hello-minikube minikube pause minikube unpause minikube stop Namespaces for organization and resource separation kubectl --namespace=mystuff or kubectl -n=mystuff kubectl --all-namespaces Default namespaces for new clusters:
-$ kubectl get ns NAME STATUS AGE default Active 13m # k8s resources are crated here by default kube-node-lease Active 13m # storage for node lease information kube-public Active 13m # world-readable kube-system Active 13m # infrastructure pods Commands:</description>
-    </item>
-    
-    <item>
-      <title>Rework</title>
-      <link>http://uzak.github.io/post/2020-07-05-rework/</link>
-      <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2020-07-05-rework/</guid>
-      <description>by Jason Fried.
+$ kubectl get ns NAME STATUS AGE default Active 13m # k8s resources are crated here by default kube-node-lease Active 13m # storage for node lease information kube-public Active 13m # world-readable kube-system Active 13m # infrastructure pods Commands:</description></item><item><title>Rework</title><link>http://uzak.github.io/post/2020-07-05-rework/</link><pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2020-07-05-rework/</guid><description>by Jason Fried.
 Takedown Ignore the real world The real world isn&amp;rsquo;t a place, it&amp;rsquo;s an excuse. It&amp;rsquo;s a justification for not trying. It has nothing to do with you.
 Learning from mistakes is overrated Failure is not a prerequisite for success.
 People who failed have the same amount of success as people who have never tried at all.
 Long term business planing is fantasy.
-Start referring to any of your plans as guesses.</description>
-    </item>
-    
-    <item>
-      <title>The Pragmatic Programmer</title>
-      <link>http://uzak.github.io/post/2020-03-16-the_pragmatic_programmer/</link>
-      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2020-03-16-the_pragmatic_programmer/</guid>
-      <description>From Journeyman to Master
-Preface core process: taking a requirement and producing working, maintainable code that delights the user. QWAN - quality without a name. Don&amp;rsquo;t preach, just tell/do what works. pragmatic -&amp;gt; lat. (pragmaticus) -&amp;gt; greek &amp;ldquo;to do&amp;rdquo;. There are no easy answers There is no such thing as best solution, tool language or OS. You shouldn&amp;rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation.</description>
-    </item>
-    
-    <item>
-      <title>Testing Python</title>
-      <link>http://uzak.github.io/post/2019-12-13-python__testing/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://uzak.github.io/post/2019-12-13-python__testing/</guid>
-      <description>Chapter 1 Writing code without tests in general is going to lead to problems down the line. Choreographing One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end. With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</description>
-    </item>
-    
-  </channel>
-</rss>
+Start referring to any of your plans as guesses.</description></item><item><title>The Pragmatic Programmer</title><link>http://uzak.github.io/post/2020-03-16-the_pragmatic_programmer/</link><pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2020-03-16-the_pragmatic_programmer/</guid><description>From Journeyman to Master
+Preface core process: taking a requirement and producing working, maintainable code that delights the user. QWAN - quality without a name. Don&amp;rsquo;t preach, just tell/do what works. pragmatic -&amp;gt; lat. (pragmaticus) -&amp;gt; greek &amp;ldquo;to do&amp;rdquo;. There are no easy answers There is no such thing as best solution, tool language or OS. You shouldn&amp;rsquo;t be weeded to any particular technology but have broad enough background and experience base to allow to choose good solution in any particular situation.</description></item><item><title>Testing Python</title><link>http://uzak.github.io/post/2019-12-13-python__testing/</link><pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><guid>http://uzak.github.io/post/2019-12-13-python__testing/</guid><description>Chapter 1 Writing code without tests in general is going to lead to problems down the line. Choreographing One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end. With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</description></item></channel></rss>

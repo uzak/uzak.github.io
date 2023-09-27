@@ -1,360 +1,88 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
-    
-    
-    <title>uzak.github.io | Scrimba: Learn React</title>
-</head><body>
-    <div id="content">
-    <header>  
-    <div class="site-title">  
-        <a href="/">uzak's weblog</a>  
-    </div>  
-    <div class="site-description">
-        <nav>
-            <a href="/micro">micro/</a>  
-            <a href="/post">blog/</a>  
-            <a href="/etym">etymolog/</a>  
-            <a href="/about">about</a>  
-            <a href="/index.xml">rss</a>  
-        </nav>
-</header>  
-
-    
-<article class="post">
-  <header class="post-header">
-    
-      <h1 style="text-align: center;" >Scrimba: Learn React</h1>
-    
-
-    <div class="post-metadata">
-    
-      <time datetime="2023-06-06T00:00:00Z">June 06, 2023</time> &nbsp; 
-    
-    
-    
-    
-    
-    </div>
-  </header>
-
-  
-  <div class="post-toc">
-    <div class="post-toc-title">Table of Contents</div>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#intro">Intro</a></li>
-    <li><a href="#build-a-react-info-site">Build a React info site</a>
-      <ul>
-        <li><a href="#jsx">JSX</a></li>
-      </ul>
-    </li>
-    <li><a href="#build-a-airbnb-experience-clone">Build a AirBnB experience clone</a></li>
-    <li><a href="#build-a-meme-generator">Build a Meme generator</a></li>
-    <li><a href="#build-a-notes-app-and-a-tenzies-game">Build a notes app and a Tenzies game</a>
-      <ul>
-        <li><a href="#notes">Notes</a></li>
-        <li><a href="#tenzies">Tenzies</a></li>
-        <li><a href="#quizzical">Quizzical</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
-  
-
-  <div class="post-text">
-    <p><a href="https://scrimba.com/learn/learnreact/">source</a></p>
-<h2 id="intro">Intro</h2>
-<ul>
-<li><strong>The easiest way to learn something is the hard way</strong>
-<ul>
-<li>learn by doing</li>
-<li>avoid &ldquo;tutorial hell&rdquo; by watching</li>
-<li>school: goal of learning is good grade. Here to be able to write react code.</li>
-</ul>
-</li>
-<li>Repetition is your best friend when it comes to learn something
-<ul>
-<li>Don&rsquo;t binge the course</li>
-<li>Your brain needs rest. Take breaks often.</li>
-<li>Re-watch past lessons. Esp. when stuck.</li>
-<li>Ask community on discord, if in doubt.</li>
-</ul>
-</li>
-<li>First thing to learn: how to think in react? React changes the game in terms of how you build the applications.</li>
-</ul>
-<h2 id="build-a-react-info-site">Build a React info site</h2>
-<ul>
-<li>Why React?
-<ul>
-<li>Allows to write composable code.</li>
-<li>It&rsquo;s declarative (as opposed to imperative). How it is done is not required.</li>
-<li>Actively maintained by skilled people</li>
-<li>Hireable skill</li>
-</ul>
-</li>
-</ul>
-<h3 id="jsx">JSX</h3>
-<ul>
-<li>JSX - JavaScript XML. Flavour of javascript that looks like HTML.</li>
-<li>Allows to write HTML inside of JS.</li>
-<li><code>console.log(JSXObj)</code> shows the JS structure behind it.</li>
-<li>With JSX we need to make sure we&rsquo;re returning only a single (parent) element.</li>
-<li>Dependencies required (<code>package.json</code>):
-<ul>
-<li><code>react</code></li>
-<li><code>react-dom</code></li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>       <span style="color:#75715e">// make JSX syntax work; no longer required with react &gt;= 17
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ReactDOM</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-dom/client&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">root</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">createRoot</span>(document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;root&#34;</span>))
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">render</span>(<span style="color:#a6e22e">myComponent</span>)
-</span></span></code></pre></div><ul>
-<li>A component is a function returning JSX UI. For components we use PascaCase for names.</li>
-<li>For styling use <code>className</code> instead of <code>class</code>.</li>
-<li><a href="https://vitejs.dev/">Vite</a> takes care of:
-<ul>
-<li>transpilation (Babel)</li>
-<li>Bundling (webpack, parcel, rollup, <strong>esbuild</strong>)</li>
-</ul>
-</li>
-<li>Install nvm:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-</span></span><span style="display:flex;"><span>nvm install --lts
-</span></span><span style="display:flex;"><span>npm create vite@latest <span style="color:#75715e"># name: `vite-react`, select `react` twice</span>
-</span></span><span style="display:flex;"><span>cd vite-react
-</span></span><span style="display:flex;"><span>npm install
-</span></span><span style="display:flex;"><span>npm run dev
-</span></span></code></pre></div><ul>
-<li>teach the bundler will adapt to find actual images/css:
-<ul>
-<li><code>import logo from &quot;./scrimba-log.png&quot;</code></li>
-<li><code>&lt;img src={logo}/&gt;</code></li>
-<li><code>import &quot;./App.css&quot;</code></li>
-</ul>
-</li>
-<li><a href="https://fonts.google.com/">Google Fonts</a>. Put above the CSS link:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preconnect&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://fonts.googleapis.com&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preconnect&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://fonts.gstatic.com&#34;</span> <span style="color:#a6e22e">crossorigin</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
-</span></span></code></pre></div><ul>
-<li>CSS for navbar:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">*</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">body</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-family</span>: Inter, <span style="color:#66d9ef">sans-serif</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">align-items</span>: <span style="color:#66d9ef">center</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">90</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">25</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">nav--logo_text</span><span style="color:#f92672">,</span> .<span style="color:#a6e22e">nav--title</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">nav--logo_text</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-right</span>: <span style="color:#66d9ef">auto</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">nav--icon</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-right</span>: <span style="color:#ae81ff">7</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">main--title</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">letter-spacing</span>: <span style="color:#ae81ff">-0.05</span><span style="color:#66d9ef">em</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">main--facts</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">46</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">main--facts</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">li</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">19</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>    padding-block: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">main--facts</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">li</span>::<span style="color:#a6e22e">marker</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">1.4</span><span style="color:#66d9ef">rem</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">main</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-image</span>: url(<span style="color:#e6db74">&#34;./images/react-icon-large.png&#34;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-repeat</span>: <span style="color:#66d9ef">no-repeat</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-position</span>: <span style="color:#66d9ef">right</span> <span style="color:#ae81ff">75</span><span style="color:#66d9ef">%</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li><code>npm run build</code> - tell webpack to build our files and get them ready for prod.</li>
-</ul>
-<h2 id="build-a-airbnb-experience-clone">Build a AirBnB experience clone</h2>
-<ul>
-<li><a href="https://www.figma.com/file/4YjrygFEXOcDp9AAnVFv7o/Airbnb-Experiences?node-id=0%3A1">Figma file</a></li>
-<li>Topics:
-<ul>
-<li>Props</li>
-<li>Create components from an array</li>
-</ul>
-</li>
-<li>use <code>{variable}</code> to interpolate variables in JSX. Anything within will be interpreted as regular JS code. Yet it is more readable to do the JS operations outside and only interpolate variables.</li>
-<li>ES6 and later support destructuring: <code>const {img, name} = person</code>; within a function definition: <code>function Contact({img, name}) {...}</code></li>
-<li>Conditional rendering: <code>{condition &amp;&amp; &lt;h1&gt;Setup: {props.setup}&lt;/h1&gt;}</code></li>
-<li>Pass on other datatypes than strings: <code>&lt;Joke setup=&quot;...&quot; votes={2} comments=[{author: &quot;...&quot;, body: &quot;...&quot;, liked: true}]/&gt;</code></li>
-<li>Compute a html attribute <code>&lt;img src={`../images/${props.img}`}/&gt;</code></li>
-<li>Add a prop <code>key</code> and set it to something unique anytime when using <code>map()</code>.</li>
-<li>One of the reasons why React is popular is that it is just JS. No extra Markup language.</li>
-<li>Pass on all properties of an item using spread syntax: <code>&lt;Card key={item.id} {...item}/&gt;</code></li>
-</ul>
-<h2 id="build-a-meme-generator">Build a Meme generator</h2>
-<ul>
-<li>Static web-page: read only, no changes to the data.</li>
-<li>Dynamic Web Apps: read and write. User can change the data that drives the webpage. Highly interactive.</li>
-<li>Topics:
-<ul>
-<li>Event Listeners</li>
-<li>State</li>
-<li>Conditional Rendering</li>
-<li>Forms</li>
-<li>Side Effects</li>
-</ul>
-</li>
-<li><a href="https://www.figma.com/file/MoLwFPHNHJVrzdFurxHzNV/Meme-Generator?type=design&amp;node-id=2-2&amp;t=corXruFlC0FYfl8J-0">Project figma</a></li>
-<li><a href="https://react.dev/learn/responding-to-events#adding-event-handler">Event handling</a>: within the functional Component, define a handler function and pass it to appropriate attribute, e.g.: <code>onClick={clickHandler}</code>.</li>
-<li>Props: come &ldquo;from above&rdquo;. Just like a function receiving arguments a component is not allowed to modify the props. Props are immutable.</li>
-<li>State: values that are managed by the component. Like a variable declared within a function to help you accomplish something. Values that a component can maintain between render cycles. State is mutable.</li>
-<li><code>const [value, setter] = React.useState(DEFAULT_VALUE)</code> is one of the hooks in React.</li>
-<li>When we care about the previous state, we provide a callback function to the <code>setter</code> function and it must return the new value. The one parameter to the callback is the <code>prevValue</code>. This is so react can guarantee that we&rsquo;ll receive the most recent value. E.g. <code>setCount(prev =&gt; prev + 1)</code>. We should never modify the state but return a new value.</li>
-<li>When we don&rsquo;t care about the previous state we can use the <code>setter</code> directly, e.g. <code>setCount(42)</code>.</li>
-<li>Implicit return for object spread syntax: <code>setContact(prevContact =&gt; ({...prevContact, isFavorite: !prevContact.isFavorite}))</code></li>
-<li>Whenever state changes React will render the component where the state exists and any child component that relies on the state to work correctly.</li>
-<li>Pass the handler function as callback to the child to have a change done in the parent.</li>
-<li>If you need to pass a data from one component to the other, put it to the parent of the both. An in-built React solution: <a href="https://react.dev/learn/passing-data-deeply-with-context">context</a>. Other: <a href="https://react-redux.js.org/">redux</a>.</li>
-<li>Rule of thumb: keep state as local as possible.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">CSS display</a>: <code>display: inline-block; margin-right: 5px</code> - have elements placed next to each other.</li>
-<li>React style: <code>&lt;div style={{backgroundColor: &quot;red&quot;}}&gt;</code>. Style must be a JS object and keys need to be camelCased.</li>
-<li><a href="https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html">You Probably Don&rsquo;t Need Derived State</a> - state being constructed from a prop.</li>
-<li><code>array.findIndex(obj =&gt; obj.id === id)</code> to find the index of a matching obj in an array.</li>
-<li><a href="https://legacy.reactjs.org/docs/forms.html">Form</a> handling is one of React&rsquo;s biggest weaknesses.
-<ul>
-<li>Controlled Component: state you&rsquo;re maintaining in your component should be the single source of truth. Each form component should have a <code>value</code> attribute, e.g. <code>value={formData.firstName}</code>.</li>
-<li>React team changed <code>&lt;textarea&gt;&lt;/textarea&gt;</code> to be a self-enclosed element, e.g. <code>&lt;textarea value={formData.comment} onChange={handleChange} name=&quot;comment&quot; placeholder=&quot;Comments&quot; /&gt;</code></li>
-<li>Checkbox: <code>&lt;input type=&quot;checkbox&quot; name=&quot;isFriendly&quot; id=&quot;isFriendly&quot; checked={formData.isFriendly} onChange={handleChange}/&gt;</code> and the label follows: <code>&lt;label htmlFor=&quot;isFriendly&quot;&gt;Are you friendly?&lt;label/&gt;</code>. <code>handleChange()</code> needs to take the value of <code>checked</code> attribute if the type is <code>checkbox</code>.</li>
-<li>Radiobox: <code>checked</code> attribute needs to have a boolean value, therefore <code>checked={formData.employment === &quot;unemployed&quot;}</code></li>
-<li>Select &amp; option: <code>&lt;select id=&quot;favColor&quot; value={formData.favColor} onChange={handleChange} name=&quot;favColor&quot;&gt;</code>.</li>
-<li>Form: <code>&lt;form onSubmit={handleSubmit}&gt;</code>. First thing we want to do in <code>handleSubmit(event)</code>  is to call <code>event.preventDefault()</code> so the page is not refreshed. Then the form data can be submitted to an API.</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// form handling fct
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleChange</span>(<span style="color:#a6e22e">event</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">checked</span>, <span style="color:#a6e22e">type</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setFormData</span>(<span style="color:#a6e22e">prevFormData</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>            ...<span style="color:#a6e22e">prevFormData</span>,
-</span></span><span style="display:flex;"><span>            [<span style="color:#a6e22e">name</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">checked</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">value</span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li><a href="https://swapi.dev/api/">Star Wars API</a></li>
-<li>React&rsquo;s primary tasks:
-<ul>
-<li>Work with the DOM/browser to render the UI</li>
-<li>Manage state for us between render cycles</li>
-<li>Keep the UI updated whenever state changes occur</li>
-<li>NOT: (out)side effects! Anything outside of React&rsquo;s rage. E.g.:
-<ul>
-<li>localStorage.</li>
-<li>API/db interactions</li>
-<li>Subscriptions (.e.g. web sockets)</li>
-<li>Syncing 2 different internal states together</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="https://react.dev/learn/synchronizing-with-effects">Side Effects</a> in React: <code>useEffect()</code> (<a href="https://overreacted.io/a-complete-guide-to-useeffect/">complete guide</a>) - tool to interact with outside of the React&rsquo;s ecosystem.
-<ul>
-<li>1st param: CB function. Everything inside is guaranteed to be run only after the component has been rendered. CB function always run after the first render.</li>
-<li>2nd param (optional): dependencies array. Values if they changed from one render to other the 1st param will run. <strong><code>[]</code> means it will run only once</strong> (no dependencies to track).</li>
-</ul>
-</li>
-<li>You really never want to use an async CB function for the <code>React.useEffect</code>. An async function always returns a promise. So if you want an sync function in <code>useEffect()</code> define an async function and call it. Doing async operations directly would clash the point below:</li>
-<li>Always cleanup things in the side effect (e.g. event listeners, WS connection etc.). <code>useEffect()</code> <strong>CB function can return a CB that will do the cleanup.</strong></li>
-</ul>
-<h2 id="build-a-notes-app-and-a-tenzies-game">Build a notes app and a Tenzies game</h2>
-<h3 id="notes">Notes</h3>
-<ul>
-<li>Whenever the state changes, React re-renders the whole component.</li>
-<li>Lazy state initialization. Instead of providing a value for <code>React.useState</code> provide a function. Any changes made after the initialization won&rsquo;t re-run the function.</li>
-<li><code>event.stopPropagation()</code> stops propagating the click event to the parent.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining">JS optional chaining</a> operator: <code>notes[0]?.id</code>. Return <code>id</code> or <code>undefined</code> if the property before doesn&rsquo;t exist.</li>
-<li><a href="https://console.firebase.google.com/">Firebase Console</a></li>
-<li><code>firestore.onSnapshot</code> creates a WS connection with the DB (=&gt; cleanup || memory leak). It returns a function to be called for cleanup.</li>
-<li>2nd parameter to <code>onSnapshot</code> will be called always whenever there is an change to the 1st argument.</li>
-<li>Debouncing: delay the request for a specified amount of time (e.g. 500ms)</li>
-</ul>
-<h3 id="tenzies">Tenzies</h3>
-<ul>
-<li><a href="https://www.figma.com/file/FqsxRUhAaXM4ezddQK0CdR/Tenzies?type=design&amp;node-id=0-1">Figma</a></li>
-<li>NOTE: use better names (go simple). <strong>Learn the domain vocabulary before coding</strong>.</li>
-<li>Keeping two internal peaces of state in-sync with each other is a good reason to use <code>React.useEffect</code></li>
-<li><a href="https://github.com/ai/nanoid">nanoid</a> - unique string ID generator.</li>
-</ul>
-<h3 id="quizzical">Quizzical</h3>
-<ul>
-<li><a href="https://www.figma.com/file/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?type=design&amp;node-id=0-1">figma</a></li>
-<li><a href="https://github.com/GastonPerez97/quizzical">source</a></li>
-</ul>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
-
-    <div class="music">
-      
-    </div>
-  </div>
-
-  <footer class="post-footer">
-    
-
-    
-    <p class="post-tags">
-      <hr>
-      Tags: <i class="fas fa-tags"></i>
-      
-        <a href="/tags/it">IT</a>
-        &nbsp;
-      
-        <a href="/tags/react">react</a>
-        &nbsp;
-      
-    </p>
-    
-  </footer>
-  
-</article>
-
-
-    
-    </div>
-</body>
-</html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/css/style.css type=text/css media=all><title>uzak.github.io | Scrimba: Learn React</title></head><body><div id=content><header><div class=site-title><a href=/>uzak's weblog</a></div><div class=site-description><nav><a href=/micro>micro/</a>
+<a href=/post>blog/</a>
+<a href=/etym>etymolog/</a>
+<a href=/about>about</a>
+<a href=/index.xml>rss</a></nav></header><article class=post><header class=post-header><h1 style=text-align:center>Scrimba: Learn React</h1><div class=post-metadata><time datetime=2023-06-06T00:00:00Z>June 06, 2023</time> &nbsp;</div></header><div class=post-toc><div class=post-toc-title>Table of Contents</div><nav id=TableOfContents><ul><li><a href=#intro>Intro</a></li><li><a href=#build-a-react-info-site>Build a React info site</a><ul><li><a href=#jsx>JSX</a></li></ul></li><li><a href=#build-a-airbnb-experience-clone>Build a AirBnB experience clone</a></li><li><a href=#build-a-meme-generator>Build a Meme generator</a></li><li><a href=#build-a-notes-app-and-a-tenzies-game>Build a notes app and a Tenzies game</a><ul><li><a href=#notes>Notes</a></li><li><a href=#tenzies>Tenzies</a></li><li><a href=#quizzical>Quizzical</a></li></ul></li></ul></nav></div><div class=post-text><p><a href=https://scrimba.com/learn/learnreact/>source</a></p><h2 id=intro>Intro</h2><ul><li><strong>The easiest way to learn something is the hard way</strong><ul><li>learn by doing</li><li>avoid &ldquo;tutorial hell&rdquo; by watching</li><li>school: goal of learning is good grade. Here to be able to write react code.</li></ul></li><li>Repetition is your best friend when it comes to learn something<ul><li>Don&rsquo;t binge the course</li><li>Your brain needs rest. Take breaks often.</li><li>Re-watch past lessons. Esp. when stuck.</li><li>Ask community on discord, if in doubt.</li></ul></li><li>First thing to learn: how to think in react? React changes the game in terms of how you build the applications.</li></ul><h2 id=build-a-react-info-site>Build a React info site</h2><ul><li>Why React?<ul><li>Allows to write composable code.</li><li>It&rsquo;s declarative (as opposed to imperative). How it is done is not required.</li><li>Actively maintained by skilled people</li><li>Hireable skill</li></ul></li></ul><h3 id=jsx>JSX</h3><ul><li>JSX - JavaScript XML. Flavour of javascript that looks like HTML.</li><li>Allows to write HTML inside of JS.</li><li><code>console.log(JSXObj)</code> shows the JS structure behind it.</li><li>With JSX we need to make sure we&rsquo;re returning only a single (parent) element.</li><li>Dependencies required (<code>package.json</code>):<ul><li><code>react</code></li><li><code>react-dom</code></li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>       <span style=color:#75715e>// make JSX syntax work; no longer required with react &gt;= 17
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>ReactDOM</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react-dom/client&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>root</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ReactDOM</span>.<span style=color:#a6e22e>createRoot</span>(document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#e6db74>&#34;root&#34;</span>))
+</span></span><span style=display:flex><span><span style=color:#a6e22e>root</span>.<span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>myComponent</span>)
+</span></span></code></pre></div><ul><li>A component is a function returning JSX UI. For components we use PascaCase for names.</li><li>For styling use <code>className</code> instead of <code>class</code>.</li><li><a href=https://vitejs.dev/>Vite</a> takes care of:<ul><li>transpilation (Babel)</li><li>Bundling (webpack, parcel, rollup, <strong>esbuild</strong>)</li></ul></li><li>Install nvm:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+</span></span><span style=display:flex><span>nvm install --lts
+</span></span><span style=display:flex><span>npm create vite@latest <span style=color:#75715e># name: `vite-react`, select `react` twice</span>
+</span></span><span style=display:flex><span>cd vite-react
+</span></span><span style=display:flex><span>npm install
+</span></span><span style=display:flex><span>npm run dev
+</span></span></code></pre></div><ul><li>teach the bundler will adapt to find actual images/css:<ul><li><code>import logo from "./scrimba-log.png"</code></li><li><code>&lt;img src={logo}/></code></li><li><code>import "./App.css"</code></li></ul></li><li><a href=https://fonts.google.com/>Google Fonts</a>. Put above the CSS link:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;preconnect&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://fonts.googleapis.com&#34;</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;preconnect&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://fonts.gstatic.com&#34;</span> <span style=color:#a6e22e>crossorigin</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap&#34;</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span>&gt;
+</span></span></code></pre></div><ul><li>CSS for navbar:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#f92672>*</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>box-sizing</span>: <span style=color:#66d9ef>border-box</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>body</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>font-family</span>: Inter, <span style=color:#66d9ef>sans-serif</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>nav</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>display</span>: <span style=color:#66d9ef>flex</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>align-items</span>: <span style=color:#66d9ef>center</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>height</span>: <span style=color:#ae81ff>90</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>padding</span>: <span style=color:#ae81ff>30</span><span style=color:#66d9ef>px</span> <span style=color:#ae81ff>25</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>nav--logo_text</span><span style=color:#f92672>,</span> .<span style=color:#a6e22e>nav--title</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>nav--logo_text</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin-right</span>: <span style=color:#66d9ef>auto</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>nav--icon</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>height</span>: <span style=color:#ae81ff>30</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin-right</span>: <span style=color:#ae81ff>7</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>main--title</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>letter-spacing</span>: <span style=color:#ae81ff>-0.05</span><span style=color:#66d9ef>em</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>main--facts</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin-top</span>: <span style=color:#ae81ff>46</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>max-width</span>: <span style=color:#ae81ff>400</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>main--facts</span> <span style=color:#f92672>&gt;</span> <span style=color:#f92672>li</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>line-height</span>: <span style=color:#ae81ff>19</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>    padding-block: <span style=color:#ae81ff>10</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>main--facts</span> <span style=color:#f92672>&gt;</span> <span style=color:#f92672>li</span>::<span style=color:#a6e22e>marker</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>font-size</span>: <span style=color:#ae81ff>1.4</span><span style=color:#66d9ef>rem</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>main</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-image</span>: url(<span style=color:#e6db74>&#34;./images/react-icon-large.png&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-repeat</span>: <span style=color:#66d9ef>no-repeat</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-position</span>: <span style=color:#66d9ef>right</span> <span style=color:#ae81ff>75</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ul><li><code>npm run build</code> - tell webpack to build our files and get them ready for prod.</li></ul><h2 id=build-a-airbnb-experience-clone>Build a AirBnB experience clone</h2><ul><li><a href="https://www.figma.com/file/4YjrygFEXOcDp9AAnVFv7o/Airbnb-Experiences?node-id=0%3A1">Figma file</a></li><li>Topics:<ul><li>Props</li><li>Create components from an array</li></ul></li><li>use <code>{variable}</code> to interpolate variables in JSX. Anything within will be interpreted as regular JS code. Yet it is more readable to do the JS operations outside and only interpolate variables.</li><li>ES6 and later support destructuring: <code>const {img, name} = person</code>; within a function definition: <code>function Contact({img, name}) {...}</code></li><li>Conditional rendering: <code>{condition && &lt;h1>Setup: {props.setup}&lt;/h1>}</code></li><li>Pass on other datatypes than strings: <code>&lt;Joke setup="..." votes={2} comments=[{author: "...", body: "...", liked: true}]/></code></li><li>Compute a html attribute <code>&lt;img src={`../images/${props.img}`}/></code></li><li>Add a prop <code>key</code> and set it to something unique anytime when using <code>map()</code>.</li><li>One of the reasons why React is popular is that it is just JS. No extra Markup language.</li><li>Pass on all properties of an item using spread syntax: <code>&lt;Card key={item.id} {...item}/></code></li></ul><h2 id=build-a-meme-generator>Build a Meme generator</h2><ul><li>Static web-page: read only, no changes to the data.</li><li>Dynamic Web Apps: read and write. User can change the data that drives the webpage. Highly interactive.</li><li>Topics:<ul><li>Event Listeners</li><li>State</li><li>Conditional Rendering</li><li>Forms</li><li>Side Effects</li></ul></li><li><a href="https://www.figma.com/file/MoLwFPHNHJVrzdFurxHzNV/Meme-Generator?type=design&amp;node-id=2-2&amp;t=corXruFlC0FYfl8J-0">Project figma</a></li><li><a href=https://react.dev/learn/responding-to-events#adding-event-handler>Event handling</a>: within the functional Component, define a handler function and pass it to appropriate attribute, e.g.: <code>onClick={clickHandler}</code>.</li><li>Props: come &ldquo;from above&rdquo;. Just like a function receiving arguments a component is not allowed to modify the props. Props are immutable.</li><li>State: values that are managed by the component. Like a variable declared within a function to help you accomplish something. Values that a component can maintain between render cycles. State is mutable.</li><li><code>const [value, setter] = React.useState(DEFAULT_VALUE)</code> is one of the hooks in React.</li><li>When we care about the previous state, we provide a callback function to the <code>setter</code> function and it must return the new value. The one parameter to the callback is the <code>prevValue</code>. This is so react can guarantee that we&rsquo;ll receive the most recent value. E.g. <code>setCount(prev => prev + 1)</code>. We should never modify the state but return a new value.</li><li>When we don&rsquo;t care about the previous state we can use the <code>setter</code> directly, e.g. <code>setCount(42)</code>.</li><li>Implicit return for object spread syntax: <code>setContact(prevContact => ({...prevContact, isFavorite: !prevContact.isFavorite}))</code></li><li>Whenever state changes React will render the component where the state exists and any child component that relies on the state to work correctly.</li><li>Pass the handler function as callback to the child to have a change done in the parent.</li><li>If you need to pass a data from one component to the other, put it to the parent of the both. An in-built React solution: <a href=https://react.dev/learn/passing-data-deeply-with-context>context</a>. Other: <a href=https://react-redux.js.org/>redux</a>.</li><li>Rule of thumb: keep state as local as possible.</li><li><a href=https://developer.mozilla.org/en-US/docs/Web/CSS/display>CSS display</a>: <code>display: inline-block; margin-right: 5px</code> - have elements placed next to each other.</li><li>React style: <code>&lt;div style={{backgroundColor: "red"}}></code>. Style must be a JS object and keys need to be camelCased.</li><li><a href=https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html>You Probably Don&rsquo;t Need Derived State</a> - state being constructed from a prop.</li><li><code>array.findIndex(obj => obj.id === id)</code> to find the index of a matching obj in an array.</li><li><a href=https://legacy.reactjs.org/docs/forms.html>Form</a> handling is one of React&rsquo;s biggest weaknesses.<ul><li>Controlled Component: state you&rsquo;re maintaining in your component should be the single source of truth. Each form component should have a <code>value</code> attribute, e.g. <code>value={formData.firstName}</code>.</li><li>React team changed <code>&lt;textarea>&lt;/textarea></code> to be a self-enclosed element, e.g. <code>&lt;textarea value={formData.comment} onChange={handleChange} name="comment" placeholder="Comments" /></code></li><li>Checkbox: <code>&lt;input type="checkbox" name="isFriendly" id="isFriendly" checked={formData.isFriendly} onChange={handleChange}/></code> and the label follows: <code>&lt;label htmlFor="isFriendly">Are you friendly?&lt;label/></code>. <code>handleChange()</code> needs to take the value of <code>checked</code> attribute if the type is <code>checkbox</code>.</li><li>Radiobox: <code>checked</code> attribute needs to have a boolean value, therefore <code>checked={formData.employment === "unemployed"}</code></li><li>Select & option: <code>&lt;select id="favColor" value={formData.favColor} onChange={handleChange} name="favColor"></code>.</li><li>Form: <code>&lt;form onSubmit={handleSubmit}></code>. First thing we want to do in <code>handleSubmit(event)</code> is to call <code>event.preventDefault()</code> so the page is not refreshed. Then the form data can be submitted to an API.</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// form handling fct
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>handleChange</span>(<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> {<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>value</span>, <span style=color:#a6e22e>checked</span>, <span style=color:#a6e22e>type</span>} <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>target</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>setFormData</span>(<span style=color:#a6e22e>prevFormData</span> =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>            ...<span style=color:#a6e22e>prevFormData</span>,
+</span></span><span style=display:flex><span>            [<span style=color:#a6e22e>name</span>]<span style=color:#f92672>:</span> <span style=color:#a6e22e>type</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#34;checkbox&#34;</span> <span style=color:#f92672>?</span> <span style=color:#a6e22e>checked</span> <span style=color:#f92672>:</span> <span style=color:#a6e22e>value</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    })
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ul><li><a href=https://swapi.dev/api/>Star Wars API</a></li><li>React&rsquo;s primary tasks:<ul><li>Work with the DOM/browser to render the UI</li><li>Manage state for us between render cycles</li><li>Keep the UI updated whenever state changes occur</li><li>NOT: (out)side effects! Anything outside of React&rsquo;s rage. E.g.:<ul><li>localStorage.</li><li>API/db interactions</li><li>Subscriptions (.e.g. web sockets)</li><li>Syncing 2 different internal states together</li></ul></li></ul></li><li><a href=https://react.dev/learn/synchronizing-with-effects>Side Effects</a> in React: <code>useEffect()</code> (<a href=https://overreacted.io/a-complete-guide-to-useeffect/>complete guide</a>) - tool to interact with outside of the React&rsquo;s ecosystem.<ul><li>1st param: CB function. Everything inside is guaranteed to be run only after the component has been rendered. CB function always run after the first render.</li><li>2nd param (optional): dependencies array. Values if they changed from one render to other the 1st param will run. <strong><code>[]</code> means it will run only once</strong> (no dependencies to track).</li></ul></li><li>You really never want to use an async CB function for the <code>React.useEffect</code>. An async function always returns a promise. So if you want an sync function in <code>useEffect()</code> define an async function and call it. Doing async operations directly would clash the point below:</li><li>Always cleanup things in the side effect (e.g. event listeners, WS connection etc.). <code>useEffect()</code> <strong>CB function can return a CB that will do the cleanup.</strong></li></ul><h2 id=build-a-notes-app-and-a-tenzies-game>Build a notes app and a Tenzies game</h2><h3 id=notes>Notes</h3><ul><li>Whenever the state changes, React re-renders the whole component.</li><li>Lazy state initialization. Instead of providing a value for <code>React.useState</code> provide a function. Any changes made after the initialization won&rsquo;t re-run the function.</li><li><code>event.stopPropagation()</code> stops propagating the click event to the parent.</li><li><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining>JS optional chaining</a> operator: <code>notes[0]?.id</code>. Return <code>id</code> or <code>undefined</code> if the property before doesn&rsquo;t exist.</li><li><a href=https://console.firebase.google.com/>Firebase Console</a></li><li><code>firestore.onSnapshot</code> creates a WS connection with the DB (=> cleanup || memory leak). It returns a function to be called for cleanup.</li><li>2nd parameter to <code>onSnapshot</code> will be called always whenever there is an change to the 1st argument.</li><li>Debouncing: delay the request for a specified amount of time (e.g. 500ms)</li></ul><h3 id=tenzies>Tenzies</h3><ul><li><a href="https://www.figma.com/file/FqsxRUhAaXM4ezddQK0CdR/Tenzies?type=design&amp;node-id=0-1">Figma</a></li><li>NOTE: use better names (go simple). <strong>Learn the domain vocabulary before coding</strong>.</li><li>Keeping two internal peaces of state in-sync with each other is a good reason to use <code>React.useEffect</code></li><li><a href=https://github.com/ai/nanoid>nanoid</a> - unique string ID generator.</li></ul><h3 id=quizzical>Quizzical</h3><ul><li><a href="https://www.figma.com/file/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?type=design&amp;node-id=0-1">figma</a></li><li><a href=https://github.com/GastonPerez97/quizzical>source</a></li></ul><div class=music></div></div><footer class=post-footer><p class=post-tags><hr>Tags: <i class="fas fa-tags"></i>
+<a href=/tags/it>IT</a>
+&nbsp;
+<a href=/tags/react>react</a>
+&nbsp;</p></footer></article></div></body></html>

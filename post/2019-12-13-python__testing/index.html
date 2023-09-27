@@ -1,88 +1,8 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
-    
-    
-    <title>uzak.github.io | Testing Python</title>
-</head><body>
-    <div id="content">
-    <header>  
-    <div class="site-title">  
-        <a href="/">uzak's weblog</a>  
-    </div>  
-    <div class="site-description">
-        <nav>
-            <a href="/micro">micro/</a>  
-            <a href="/post">blog/</a>  
-            <a href="/etym">etymolog/</a>  
-            <a href="/about">about</a>  
-            <a href="/index.xml">rss</a>  
-        </nav>
-</header>  
-
-    
-<article class="post">
-  <header class="post-header">
-    
-      <h1 style="text-align: center;" >Testing Python</h1>
-    
-
-    <div class="post-metadata">
-    
-      <time datetime="2019-12-13T00:00:00Z">December 13, 2019</time> &nbsp; 
-    
-    
-    
-    
-    
-    </div>
-  </header>
-
-  
-  <div class="post-toc">
-    <div class="post-toc-title">Table of Contents</div>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#nose">nose</a></li>
-    <li><a href="#pytest">py.test</a></li>
-    <li><a href="#mock-library">mock library</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#cucumber">Cucumber</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#jmeter">jmeter</a></li>
-    <li><a href="#cprofile">cprofile</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#pylint">pylint</a></li>
-    <li><a href="#coverage">coverage</a></li>
-  </ul>
-</nav>
-  </div>
-  
-
-  <div class="post-text">
-    <h1 id="chapter-1">Chapter 1</h1>
-<ul>
-<li>Writing code without tests in general is going to lead to problems down the line.</li>
-<li>Choreographing</li>
-<li>One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end.</li>
-<li>With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</li>
-<li>The key advantage of writing tests, especially as part of the development process, is that testing gives you confidence in your code.</li>
-</ul>
-<h1 id="chapter-2---writing-unittests">Chapter 2 - writing unittests</h1>
-<ul>
-<li>AN APPLICATION IS one of the great examples of the whole being greater than the sum of its parts.</li>
-<li>With a good test suite in place, refactoring is easy because you know when you change your code you haven’t broken any previous behavior.</li>
-<li>Before you write any code you give thought to the kind of tests you will be writing to check the methods will work as expected.</li>
-</ul>
-<pre tabindex="0"><code>assertEqual()
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/css/style.css type=text/css media=all><title>uzak.github.io | Testing Python</title></head><body><div id=content><header><div class=site-title><a href=/>uzak's weblog</a></div><div class=site-description><nav><a href=/micro>micro/</a>
+<a href=/post>blog/</a>
+<a href=/etym>etymolog/</a>
+<a href=/about>about</a>
+<a href=/index.xml>rss</a></nav></header><article class=post><header class=post-header><h1 style=text-align:center>Testing Python</h1><div class=post-metadata><time datetime=2019-12-13T00:00:00Z>December 13, 2019</time> &nbsp;</div></header><div class=post-toc><div class=post-toc-title>Table of Contents</div><nav id=TableOfContents><ul><li><a href=#nose>nose</a></li><li><a href=#pytest>py.test</a></li><li><a href=#mock-library>mock library</a></li></ul><ul><li><a href=#cucumber>Cucumber</a></li></ul><ul><li><a href=#jmeter>jmeter</a></li><li><a href=#cprofile>cprofile</a></li></ul><ul><li><a href=#pylint>pylint</a></li><li><a href=#coverage>coverage</a></li></ul></nav></div><div class=post-text><h1 id=chapter-1>Chapter 1</h1><ul><li>Writing code without tests in general is going to lead to problems down the line.</li><li>Choreographing</li><li>One of the worst traps a developer can fall into is writing a bunch of code and then going back and testing it all at the end.</li><li>With the advent of social networks and the ever-increasing pressure of media attention, defects in your code could be costly to both you and your reputation or that of any company you may represent.</li><li>The key advantage of writing tests, especially as part of the development process, is that testing gives you confidence in your code.</li></ul><h1 id=chapter-2---writing-unittests>Chapter 2 - writing unittests</h1><ul><li>AN APPLICATION IS one of the great examples of the whole being greater than the sum of its parts.</li><li>With a good test suite in place, refactoring is easy because you know when you change your code you haven’t broken any previous behavior.</li><li>Before you write any code you give thought to the kind of tests you will be writing to check the methods will work as expected.</li></ul><pre tabindex=0><code>assertEqual()
 with assertRaises(Exception)
 assertAlmostEqual(1, 1.2, delta=0.5)
 assertAlmostEqual(1, 1.00001, places=4)
@@ -94,18 +14,11 @@ assertIn(member, container, msg=None)
 assertNotNone(obj, msg=None)
 assertLess(a, b, msg=None)
 assertItemsEqual(a, b, msg=None)
-</code></pre><ul>
-<li>Unit tests should be placed under a <code>test/unit</code> directory at the top level of your project folder.</li>
-<li>All unit test files should mirror the name of the file they are testing, with <code>_test</code> as the suffix.</li>
-<li>Example:
+</code></pre><ul><li>Unit tests should be placed under a <code>test/unit</code> directory at the top level of your project folder.</li><li>All unit test files should mirror the name of the file they are testing, with <code>_test</code> as the suffix.</li><li>Example:
 {% highlight python %}
-import unittest</li>
-</ul>
-<p>from calculate import Calculate</p>
-<p>class TestCalculate(unittest.TestCase):
-def setUp(self) -&gt; None:
-self.calc = Calculate()</p>
-<pre><code>def test_add_method_returns_correct_result(self):
+import unittest</li></ul><p>from calculate import Calculate</p><p>class TestCalculate(unittest.TestCase):
+def setUp(self) -> None:
+self.calc = Calculate()</p><pre><code>def test_add_method_returns_correct_result(self):
     self.assertEqual(4, self.calc.add(2, 2))
 
 def test_add_method_incrorrect_type(self):
@@ -114,244 +27,89 @@ def test_add_method_incrorrect_type(self):
 def test_assert_raises(self):
     with self.assertRaises(AttributeError):
         [].get
-</code></pre>
-<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
-unittest.main()</p>
-<p>{% endhighlight %}</p>
-<h1 id="chapter-3---python-test-tools">Chapter 3 - python test tools</h1>
-<h2 id="nose">nose</h2>
-<ul>
-<li>Nose looks in directories for files ending <code>_test.py</code>.</li>
-<li><code>nosetests some_test.py</code> for running specific tests.</li>
-<li>-s (no log capture), -v (verbose) flags.</li>
-<li><code>nosetests --pdb</code> -&gt; <code>n(ext), w(here), d(own), u(p), b(reak) [[fielname:]lineno | function[, conditation]]:</code></li>
-<li>coverage:</li>
-</ul>
-<pre tabindex="0"><code>pip install nose-cov
+</code></pre><p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
+unittest.main()</p><p>{% endhighlight %}</p><h1 id=chapter-3---python-test-tools>Chapter 3 - python test tools</h1><h2 id=nose>nose</h2><ul><li>Nose looks in directories for files ending <code>_test.py</code>.</li><li><code>nosetests some_test.py</code> for running specific tests.</li><li>-s (no log capture), -v (verbose) flags.</li><li><code>nosetests --pdb</code> -> <code>n(ext), w(here), d(own), u(p), b(reak) [[fielname:]lineno | function[, conditation]]:</code></li><li>coverage:</li></ul><pre tabindex=0><code>pip install nose-cov
 nosetests --with-coverage test/calculate_test.py
-</code></pre><p>ignore some code blocks</p>
-<pre tabindex="0"><code>if __name__ == &#39;__main__&#39;: #pragma: no cover
+</code></pre><p>ignore some code blocks</p><pre tabindex=0><code>if __name__ == &#39;__main__&#39;: #pragma: no cover
     ...
-</code></pre><ul>
-<li>rednose:</li>
-</ul>
-<pre tabindex="0"><code>pip install rednose
+</code></pre><ul><li>rednose:</li></ul><pre tabindex=0><code>pip install rednose
 nosetests --rednose
-</code></pre><h2 id="pytest">py.test</h2>
-<ul>
-<li><code>pip install pytest</code></li>
-<li>by default it collects all test like nose.</li>
-<li><code>py.test specific_test.py</code></li>
-<li><code>py.test --pdb</code></li>
-<li>coverage:</li>
-</ul>
-<pre tabindex="0"><code>$ pip install pytest-cov
+</code></pre><h2 id=pytest>py.test</h2><ul><li><code>pip install pytest</code></li><li>by default it collects all test like nose.</li><li><code>py.test specific_test.py</code></li><li><code>py.test --pdb</code></li><li>coverage:</li></ul><pre tabindex=0><code>$ pip install pytest-cov
 $ py.test --cov app/ test/
 $ cat .coveragerc
 [run]
 omit=*__init__.py
-</code></pre><h2 id="mock-library">mock library</h2>
-<ul>
-<li><code>pip install mock</code></li>
-<li>basic usage:</li>
-</ul>
-<pre tabindex="0"><code>mock = Mock()
+</code></pre><h2 id=mock-library>mock library</h2><ul><li><code>pip install mock</code></li><li>basic usage:</li></ul><pre tabindex=0><code>mock = Mock()
 mock.my_method.return_value = &#34;hello&#34;
 mock.get.side_effect = ConnectionError()
-</code></pre><ul>
-<li>patching:
+</code></pre><ul><li>patching:
 {% highlight python %}
-from mock import Mock, patch</li>
-</ul>
-<p>class TestAccount(unittest.TestCase):
+from mock import Mock, patch</li></ul><p>class TestAccount(unittest.TestCase):
 @patch(&lsquo;app.account.requests&rsquo;)
 def test_get_current_balance_returns_data_correctly(self, mock_requests):
 mock_requests.get.return_value = &lsquo;500&rsquo;
-&hellip;
-{% endhighlight %}</p>
-<h1 id="chapter-4---doctest">Chapter 4 - doctest</h1>
-<ul>
-<li>handler:</li>
-</ul>
-<pre tabindex="0"><code>if __name__ == &#34;__main__&#34;:
+&mldr;
+{% endhighlight %}</p><h1 id=chapter-4---doctest>Chapter 4 - doctest</h1><ul><li>handler:</li></ul><pre tabindex=0><code>if __name__ == &#34;__main__&#34;:
     import doctest
     doctest.testmod()
-</code></pre><ul>
-<li><code>doctest -v</code></li>
-<li>initialization in handler:</li>
-</ul>
-<pre tabindex="0"><code>doctest.testmod(extraglobs={&#39;c&#39;: Calculate()})
-</code></pre><ul>
-<li>integration with nose: <code>nosetests --with-doctest</code></li>
-</ul>
-<h1 id="chapter-5---tdd">Chapter 5 - TDD</h1>
-<ul>
-<li>TDD gives you great confidence that each new piece of functionality you write in your code is backed by a test, which confirms how it behaves.</li>
-<li><a href="http://agilemanifesto.org/iso/en/manifesto.html">Agile Manifesto</a></li>
-<li>In Scrum ideally the card will be worked on in pairs who will follow the TDD approach to complete the work.</li>
-<li>The basic concept of TDD is to write a failing test first, before writing any code. TDD is a cycle so that once you have your failing tests you can begin coding.</li>
-<li>Ping-pong programming: One person writes the failing test, and the other writes the code to make it pass.</li>
-</ul>
-<h1 id="chapter-6---bdd">Chapter 6 - BDD</h1>
-<ul>
-<li>If unit testing verifies that the code does exactly what the programmer expects it to do, then acceptance testing verifies that the code does what the user expects it to do.</li>
-<li>Development cycle with unit and acceptance testing:
-<ol>
-<li>write failing acceptance tests.</li>
-<li>write failing unit tests</li>
-<li>write the code.</li>
-<li>check that the unit tests still pass.</li>
-<li>ensure your acceptance tests pass now.</li>
-</ol>
-</li>
-<li>Gherkin syntax:
+</code></pre><ul><li><code>doctest -v</code></li><li>initialization in handler:</li></ul><pre tabindex=0><code>doctest.testmod(extraglobs={&#39;c&#39;: Calculate()})
+</code></pre><ul><li>integration with nose: <code>nosetests --with-doctest</code></li></ul><h1 id=chapter-5---tdd>Chapter 5 - TDD</h1><ul><li>TDD gives you great confidence that each new piece of functionality you write in your code is backed by a test, which confirms how it behaves.</li><li><a href=http://agilemanifesto.org/iso/en/manifesto.html>Agile Manifesto</a></li><li>In Scrum ideally the card will be worked on in pairs who will follow the TDD approach to complete the work.</li><li>The basic concept of TDD is to write a failing test first, before writing any code. TDD is a cycle so that once you have your failing tests you can begin coding.</li><li>Ping-pong programming: One person writes the failing test, and the other writes the code to make it pass.</li></ul><h1 id=chapter-6---bdd>Chapter 6 - BDD</h1><ul><li>If unit testing verifies that the code does exactly what the programmer expects it to do, then acceptance testing verifies that the code does what the user expects it to do.</li><li>Development cycle with unit and acceptance testing:<ol><li>write failing acceptance tests.</li><li>write failing unit tests</li><li>write the code.</li><li>check that the unit tests still pass.</li><li>ensure your acceptance tests pass now.</li></ol></li><li>Gherkin syntax:
 {% highlight gherkin %}
 Feature: Retrieve customer balance
 As a customer of the bank
-I wish to be able to view my current balance</li>
-</ul>
-<p>Scenario: Customer retrieves balance successfully
+I wish to be able to view my current balance</li></ul><p>Scenario: Customer retrieves balance successfully
 Given account number 0001 is a valid account
 When I try to retrieve the balance for account number 0001
 Then the balance of the account is &ldquo;50&rdquo;
-{% endhighlight %}</p>
-<ul>
-<li>the code is in the step file:</li>
-</ul>
-<pre tabindex="0"><code>@when(&#39;I enter the account number &#34;{account_number}&#34;&#39;)
+{% endhighlight %}</p><ul><li>the code is in the step file:</li></ul><pre tabindex=0><code>@when(&#39;I enter the account number &#34;{account_number}&#34;&#39;)
 def _(context, account_number):
     ...
-</code></pre><ul>
-<li>
-<p><a href="https://behave.readthedocs.io/en/latest/tutorial.html">behave</a>: <code>pip install behave</code></p>
-</li>
-<li>
-<p>Scenario Outline:
+</code></pre><ul><li><p><a href=https://behave.readthedocs.io/en/latest/tutorial.html>behave</a>: <code>pip install behave</code></p></li><li><p>Scenario Outline:
 {% highlight gherkin %}
 Scenario Outline: Retrieve customer balance
-Given I create account &ldquo;&lt;account_number&gt;&rdquo; with balance of &ldquo;<!-- raw HTML omitted -->&rdquo;
+Given I create account &ldquo;&lt;account_number>&rdquo; with balance of &ldquo;&rdquo;
 And I visit the homepage
-When I enter the account number &ldquo;&lt;account_number&gt;&rdquo;
-Then I see a balance of &ldquo;<!-- raw HTML omitted -->&rdquo;</p>
-<p>Examples: customer_account_table
+When I enter the account number &ldquo;&lt;account_number>&rdquo;
+Then I see a balance of &ldquo;&rdquo;</p><p>Examples: customer_account_table
 |account_number |balance|
-|1111           |50     |     <br>
-|2222           |100    |     <br>
-|3333           |500    |     <br>
-|4444           |1000   |
-{% endhighlight%}</p>
-</li>
-<li>
-<p>You can actually pass in table of data into a step definition.</p>
-</li>
-<li>
-<p>Acceptance testing is as much vital part of testing as unit tests.</p>
-</li>
-<li></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree
-</span></span><span style="display:flex;"><span>.
-</span></span><span style="display:flex;"><span>├── account.py
-</span></span><span style="display:flex;"><span>├── bank_app.py
-</span></span><span style="display:flex;"><span>├── bank.py
-</span></span><span style="display:flex;"><span>├── Pipfile
-</span></span><span style="display:flex;"><span>├── templates
-</span></span><span style="display:flex;"><span>│   └── index.html
-</span></span><span style="display:flex;"><span>└── test
-</span></span><span style="display:flex;"><span>    ├── account_test.py
-</span></span><span style="display:flex;"><span>    ├── bank_test.py
-</span></span><span style="display:flex;"><span>    └── bdd
-</span></span><span style="display:flex;"><span>        └── features
-</span></span><span style="display:flex;"><span>            ├── bank.feature
-</span></span><span style="display:flex;"><span>            ├── environment.py
-</span></span><span style="display:flex;"><span>            └── steps
-</span></span><span style="display:flex;"><span>                └── steps.py
-</span></span><span style="display:flex;"><span>$ behave test/bdd/features
-</span></span></code></pre></div><h1 id="chapter-7---acceptance-test-tools">Chapter 7 - acceptance test tools</h1>
-<h2 id="cucumber">Cucumber</h2>
-<ul>
-<li>behave tags to run selected tests or ignore (work in progress):</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ behave --tags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@tag1 or tag2&#34;</span> test/bdd/features
-</span></span><span style="display:flex;"><span>$ behave --tags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@wip&#34;</span> test/bdd/features    <span style="color:#75715e"># work in progress only</span>
-</span></span><span style="display:flex;"><span>$ behave -w<span style="color:#e6db74">&#34; test/bdd/features              # work in progress only
-</span></span></span></code></pre></div><h1 id="chapter-8---maximizing-codes-performance">Chapter 8 - maximizing code&rsquo;s performance</h1>
-<h2 id="jmeter">jmeter</h2>
-<ul>
-<li>get <a href="https://jmeter.apache.org/download_jmeter.cgi">jmeter</a></li>
-<li>get <a href="https://jmeter-plugins.org/get/">plugin manager</a> and put into <code>lib/ext</code></li>
-<li>Test Plan -&gt; add -&gt; Config Element -&gt; HTTP Request Details (localhost:5000)</li>
-<li>Test Plan -&gt; add -&gt; Threads (Users) -&gt; Thread Group (20)</li>
-<li>ThreadGroup (right click) -&gt; Add -&gt; Sampler -&gt; Http Request</li>
-<li>ThreadGroup (right click) -&gt; Add -&gt; Listener -&gt; View Resulsts Tree</li>
-<li>Add -&gt; {Timer, Listener} for modeling throughput tests</li>
-</ul>
-<h2 id="cprofile">cprofile</h2>
-<ul>
-<li>include cProfile in your code</li>
-</ul>
-<pre tabindex="0"><code>import cProfile
+|1111 |50 |<br>|2222 |100 |<br>|3333 |500 |<br>|4444 |1000 |
+{% endhighlight%}</p></li><li><p>You can actually pass in table of data into a step definition.</p></li><li><p>Acceptance testing is as much vital part of testing as unit tests.</p></li><li></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ tree
+</span></span><span style=display:flex><span>.
+</span></span><span style=display:flex><span>├── account.py
+</span></span><span style=display:flex><span>├── bank_app.py
+</span></span><span style=display:flex><span>├── bank.py
+</span></span><span style=display:flex><span>├── Pipfile
+</span></span><span style=display:flex><span>├── templates
+</span></span><span style=display:flex><span>│   └── index.html
+</span></span><span style=display:flex><span>└── test
+</span></span><span style=display:flex><span>    ├── account_test.py
+</span></span><span style=display:flex><span>    ├── bank_test.py
+</span></span><span style=display:flex><span>    └── bdd
+</span></span><span style=display:flex><span>        └── features
+</span></span><span style=display:flex><span>            ├── bank.feature
+</span></span><span style=display:flex><span>            ├── environment.py
+</span></span><span style=display:flex><span>            └── steps
+</span></span><span style=display:flex><span>                └── steps.py
+</span></span><span style=display:flex><span>$ behave test/bdd/features
+</span></span></code></pre></div><h1 id=chapter-7---acceptance-test-tools>Chapter 7 - acceptance test tools</h1><h2 id=cucumber>Cucumber</h2><ul><li>behave tags to run selected tests or ignore (work in progress):</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ behave --tags<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;@tag1 or tag2&#34;</span> test/bdd/features
+</span></span><span style=display:flex><span>$ behave --tags<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;@wip&#34;</span> test/bdd/features    <span style=color:#75715e># work in progress only</span>
+</span></span><span style=display:flex><span>$ behave -w<span style=color:#e6db74>&#34; test/bdd/features              # work in progress only
+</span></span></span></code></pre></div><h1 id=chapter-8---maximizing-codes-performance>Chapter 8 - maximizing code&rsquo;s performance</h1><h2 id=jmeter>jmeter</h2><ul><li>get <a href=https://jmeter.apache.org/download_jmeter.cgi>jmeter</a></li><li>get <a href=https://jmeter-plugins.org/get/>plugin manager</a> and put into <code>lib/ext</code></li><li>Test Plan -> add -> Config Element -> HTTP Request Details (localhost:5000)</li><li>Test Plan -> add -> Threads (Users) -> Thread Group (20)</li><li>ThreadGroup (right click) -> Add -> Sampler -> Http Request</li><li>ThreadGroup (right click) -> Add -> Listener -> View Resulsts Tree</li><li>Add -> {Timer, Listener} for modeling throughput tests</li></ul><h2 id=cprofile>cprofile</h2><ul><li>include cProfile in your code</li></ul><pre tabindex=0><code>import cProfile
 ...
 cProfile.run(&#39;app.run(debug=True)&#39;) or run through CLI: `$ python -m cProfile bank_app.py` and use `-s` to control the order of the output.
-</code></pre><ul>
-<li>Alternatively use <a href="https://github.com/rkern/line_profiler">line_profiler</a></li>
-<li>Visualisation:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt get install graphviz
-</span></span><span style="display:flex;"><span>$ pip install pycallgraph
-</span></span><span style="display:flex;"><span>$ pycallgraph graphviz -- bank_app.py
-</span></span></code></pre></div><h1 id="chapter-9---lint">Chapter 9 - lint</h1>
-<h2 id="pylint">pylint</h2>
-<ul>
-<li><code>pip install pylint</code></li>
-</ul>
-<h2 id="coverage">coverage</h2>
-<ul>
-<li></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install coverage
-</span></span><span style="display:flex;"><span>nosetests --with-coverage --cover-erase
-</span></span><span style="display:flex;"><span>nosetests --with-coverage --cover-erase --cover-html
-</span></span><span style="display:flex;"><span>nosetests --with-coverage --cover-erase --cover-package<span style="color:#f92672">=</span>bank.account
-</span></span></code></pre></div><ul>
-<li>enforce some minimum coverage: <code>nosetests --with-coverage --cover-erase --cover-package=bank.account</code></li>
-<li>use <code>#pragma: no cover</code> directive to ignore a line/block from the report</li>
-</ul>
-
-
-    <div class="music">
-      
-    </div>
-  </div>
-
-  <footer class="post-footer">
-    
-
-    
-    <p class="post-tags">
-      <hr>
-      Tags: <i class="fas fa-tags"></i>
-      
-        <a href="/tags/it">it</a>
-        &nbsp;
-      
-        <a href="/tags/python">python</a>
-        &nbsp;
-      
-        <a href="/tags/books">books</a>
-        &nbsp;
-      
-        <a href="/tags/testing">testing</a>
-        &nbsp;
-      
-    </p>
-    
-  </footer>
-  
-</article>
-
-
-    
-    </div>
-</body>
-</html>
+</code></pre><ul><li>Alternatively use <a href=https://github.com/rkern/line_profiler>line_profiler</a></li><li>Visualisation:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo apt get install graphviz
+</span></span><span style=display:flex><span>$ pip install pycallgraph
+</span></span><span style=display:flex><span>$ pycallgraph graphviz -- bank_app.py
+</span></span></code></pre></div><h1 id=chapter-9---lint>Chapter 9 - lint</h1><h2 id=pylint>pylint</h2><ul><li><code>pip install pylint</code></li></ul><h2 id=coverage>coverage</h2><ul><li></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pip install coverage
+</span></span><span style=display:flex><span>nosetests --with-coverage --cover-erase
+</span></span><span style=display:flex><span>nosetests --with-coverage --cover-erase --cover-html
+</span></span><span style=display:flex><span>nosetests --with-coverage --cover-erase --cover-package<span style=color:#f92672>=</span>bank.account
+</span></span></code></pre></div><ul><li>enforce some minimum coverage: <code>nosetests --with-coverage --cover-erase --cover-package=bank.account</code></li><li>use <code>#pragma: no cover</code> directive to ignore a line/block from the report</li></ul><div class=music></div></div><footer class=post-footer><p class=post-tags><hr>Tags: <i class="fas fa-tags"></i>
+<a href=/tags/it>it</a>
+&nbsp;
+<a href=/tags/python>python</a>
+&nbsp;
+<a href=/tags/books>books</a>
+&nbsp;
+<a href=/tags/testing>testing</a>
+&nbsp;</p></footer></article></div></body></html>

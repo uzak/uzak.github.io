@@ -1,409 +1,61 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
-    
-    
-    <title>uzak.github.io | CS50&amp;#39;s Introduction to Artificial …</title>
-</head><body>
-    <div id="content">
-    <header>  
-    <div class="site-title">  
-        <a href="/">uzak's weblog</a>  
-    </div>  
-    <div class="site-description">
-        <nav>
-            <a href="/micro">micro/</a>  
-            <a href="/post">blog/</a>  
-            <a href="/etym">etymolog/</a>  
-            <a href="/about">about</a>  
-            <a href="/index.xml">rss</a>  
-        </nav>
-</header>  
-
-    
-<article class="post">
-  <header class="post-header">
-    
-      <h1 style="text-align: center;" >CS50&#39;s Introduction to Artificial Intelligence with Python </h1>
-    
-
-    <div class="post-metadata">
-    
-      <time datetime="2022-10-17T00:00:00Z">October 17, 2022</time> &nbsp; 
-    
-    
-    
-    
-    
-    </div>
-  </header>
-
-  
-  <div class="post-toc">
-    <div class="post-toc-title">Table of Contents</div>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#search">Search</a>
-      <ul>
-        <li><a href="#search-algorithms">search algorithms</a></li>
-        <li><a href="#adversarial-search">adversarial search</a></li>
-      </ul>
-    </li>
-    <li><a href="#knowledge">Knowledge</a>
-      <ul>
-        <li><a href="#model-checking">Model Checking</a></li>
-        <li><a href="#inference-rules">Inference Rules</a></li>
-        <li><a href="#theorem-proving">Theorem Proving</a></li>
-        <li><a href="#conjuntive-normal-form-cnf">Conjuntive Normal Form (CNF)</a></li>
-        <li><a href="#first-order-logic">First-Order Logic</a></li>
-      </ul>
-    </li>
-    <li><a href="#uncertainty">Uncertainty</a>
-      <ul>
-        <li><a href="#probability">Probability</a></li>
-        <li><a href="#joint-probability">Joint Probability</a></li>
-        <li><a href="#probability-rules">Probability Rules</a></li>
-        <li><a href="#bayesian-networks">Bayesian Networks</a></li>
-        <li><a href="#markov-models">Markov Models</a></li>
-      </ul>
-    </li>
-    <li><a href="#optimization">Optimization</a>
-      <ul>
-        <li><a href="#hill-climbing-algorithm">hill climbing algorithm</a></li>
-        <li><a href="#simulated-annealing">Simulated Annealing</a></li>
-        <li><a href="#linear-programming">Linear Programming</a></li>
-        <li><a href="#constraint-satisfaction">Constraint Satisfaction</a></li>
-        <li><a href="#backtracking-search">Backtracking Search</a></li>
-      </ul>
-    </li>
-    <li><a href="#learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</a>
-      <ul>
-        <li><a href="#supervised-learning">Supervised Learning</a></li>
-        <li><a href="#reinforcement-learning">Reinforcement learning</a></li>
-        <li><a href="#unsupervised-learning">Unsupervised Learning</a></li>
-      </ul>
-    </li>
-    <li><a href="#neural-networks">Neural Networks</a></li>
-    <li><a href="#human-language">Human Language</a>
-      <ul>
-        <li><a href="#context-free-grammar">Context-Free Grammar</a></li>
-        <li><a href="#n-gram">n-gram</a></li>
-        <li><a href="#text-categorization">Text Categorization</a></li>
-        <li><a href="#naive-bayes">Naive Bayes</a></li>
-        <li><a href="#information-retrieval">Information Retrieval</a></li>
-        <li><a href="#semantics">Semantics</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
-  
-
-  <div class="post-text">
-    <p><a href="https://cs50.harvard.edu/ai/2020/">src</a></p>
-<h2 id="search">Search</h2>
-<p>general pattern:</p>
-<ul>
-<li>begin</li>
-<li>correct sequence of actions</li>
-<li>goal</li>
-</ul>
-<p><strong>agent</strong> - perceives the environment and acts upon the environment</p>
-<p><strong>state</strong> - configuration of the environment</p>
-<p><strong>initial state</strong></p>
-<p><strong>actions</strong> - choices taken in any given state. fuctions. ACTIONS(s) -&gt; set of actions that can be done in given state.</p>
-<p><strong>transition model</strong>. RESULT(s, a) -&gt; state after performing action <code>a</code> in state <code>s</code></p>
-<p><strong>state space</strong>. graph</p>
-<p><strong>goal state</strong>. determines whether a state is a goal state.</p>
-<p><strong>path cost</strong>. numerical cost associated with a given path.</p>
-<p>Search problem:</p>
-<ul>
-<li>initial state</li>
-<li>actions</li>
-<li>transition model</li>
-<li>goal test</li>
-<li>path const function</li>
-</ul>
-<p><strong>optimal solution</strong></p>
-<p><strong>node</strong>:</p>
-<ul>
-<li>state</li>
-<li>parent</li>
-<li>action</li>
-<li>path cost</li>
-</ul>
-<p><strong>frontier</strong> - all that is to be explored:</p>
-<ul>
-<li>Start with initial state.</li>
-<li>Start with empty explored set.</li>
-<li>repeat:
-<ul>
-<li>If empty, there is no solution.</li>
-<li>remove a single node from the frontier</li>
-<li>if it is a goal - we&rsquo;ve found a solution</li>
-<li>add node to the explored set</li>
-<li>expand (look at all neighbours of) node, add resulting nodes to the frontier if not in the frontier and not in explored set.</li>
-</ul>
-</li>
-</ul>
-<h3 id="search-algorithms">search algorithms</h3>
-<ul>
-<li>stack - last in first out. Used for frontier. So we get a <strong>depth-first search</strong>.</li>
-<li><strong>breath-first search</strong> always expands the shallowest node in the frontier. Uses a queue (first-in first-out)</li>
-</ul>
-<p>BFS finds always the optimal path. DFS might save you memory.</p>
-<p><strong>uninformed search</strong> - doesn&rsquo;t use any problem specific knowledge.
-<strong>informed search</strong>:</p>
-<ul>
-<li><strong>Greedy best-first search (GBF)</strong> - expand the node that is closest to the goal by using a heuristic function <code>h(n)</code>
-<ul>
-<li><strong>Manhattan distance</strong> - distance between two points along axes of right angles.</li>
-</ul>
-</li>
-</ul>
-<p><strong>A* search</strong>: expand the node with the lowest value of <code>g(n) + h(n)</code> where <code>g(n)</code> is the cost to reach node. Optimal if:</p>
-<ul>
-<li>h(n) is admissible (never overestimates the true cost) - should never think I&rsquo;m further away from the goal that I actually am.</li>
-<li>h(n) is consistent. Cost c, <code>h(n) &lt;= h(n') + c</code></li>
-</ul>
-<h3 id="adversarial-search">adversarial search</h3>
-<p>minimax - X wants to maximize <code>max(o)</code>, O wants to minimize the score <code>min(o)</code>.</p>
-<p>TicTacToe functions:</p>
-<ul>
-<li>PLAYER(s) - who&rsquo;s turn is it?</li>
-<li>ACTIONS(s) - possible actions for a state</li>
-<li>RESULTS(s, a) - perform a action and return the state</li>
-<li>TERMINAL(s) - did we finish the game?</li>
-<li>UTILITY(s) - score for a state</li>
-</ul>
-<p>optimizations:</p>
-<ul>
-<li><strong>Alfa-Beta-pruning</strong> - remove (don&rsquo;t consider) some of the nodes using already computed information.</li>
-</ul>
-<p><strong>Depth-Limited Minimax</strong>:</p>
-<ul>
-<li>evaluation function - evaluates expected utility of the game from a given state</li>
-</ul>
-<h2 id="knowledge">Knowledge</h2>
-<p>knowledge-based agents</p>
-<p><strong>sentence</strong> - assertion about the world in a knowledge representation language</p>
-<p><strong>propositional logic</strong> - based on statements about the world.</p>
-<p><strong>logical connectives</strong> - not and or, -&gt; (implication), &lt;-&gt; (biconditional)</p>
-<p>implication (if then)</p>
-<table>
-<thead>
-<tr>
-<th>P (premise)</th>
-<th>Q (conclusion)</th>
-<th>P-&gt;Q</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>false</td>
-<td>false</td>
-<td>true</td>
-</tr>
-<tr>
-<td>false</td>
-<td>true</td>
-<td>true</td>
-</tr>
-<tr>
-<td><strong>true</strong></td>
-<td><strong>false</strong></td>
-<td><strong>false</strong></td>
-</tr>
-<tr>
-<td>true</td>
-<td>true</td>
-<td>true</td>
-</tr>
-</tbody>
-</table>
-<p>biconditional (if and only if)</p>
-<table>
-<thead>
-<tr>
-<th>P</th>
-<th>Q</th>
-<th>P&lt;-&gt;Q</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>false</td>
-<td>false</td>
-<td>true</td>
-</tr>
-<tr>
-<td>false</td>
-<td>true</td>
-<td>false</td>
-</tr>
-<tr>
-<td>true</td>
-<td>false</td>
-<td>false</td>
-</tr>
-<tr>
-<td>true</td>
-<td>true</td>
-<td>true</td>
-</tr>
-</tbody>
-</table>
-<p><strong>model</strong> - assignment of a truth value to every propositional symbol (possible world). Total possibilities <code>number_of_values**variables</code></p>
-<p><strong>knowledge base</strong> (KB) - set of sentences known a by a knowledge agent to be true</p>
-<p><strong>entailment</strong> <code>A |= B</code> (A entails B) - in every model (possible world) in which sentence <code>A</code> is true, then <code>B</code> is also true.</p>
-<p>We want our AI to figure out what the possible entailments are. To infer, to draw conclusions.
-<strong>inference</strong> - deriving new conclusions from old ones.</p>
-<h3 id="model-checking">Model Checking</h3>
-<p>To determine if <code>KB |= alfa</code>:</p>
-<ul>
-<li>Enumerate all possible models</li>
-<li>If in every model where <code>KB</code> is true, <code>alfa</code> is true, then <code>KB entails alfa</code>.</li>
-<li>Otherwise <code>KB</code> does not entail <code>alfa</code>.</li>
-</ul>
-<p><code>alfa</code> is the query.</p>
-<p><strong>Knowledge Engineering</strong></p>
-<p>Example: clue (game):</p>
-<ul>
-<li>Establish propositional symbols</li>
-<li>add knowledge</li>
-<li>check_model</li>
-</ul>
-<h3 id="inference-rules">Inference Rules</h3>
-<p><strong>Modus Ponens</strong>: application of implication</p>
-<pre><code>alfa -&gt; beta
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/css/style.css type=text/css media=all><title>uzak.github.io | CS50&amp;#39;s Introduction to Artificial …</title></head><body><div id=content><header><div class=site-title><a href=/>uzak's weblog</a></div><div class=site-description><nav><a href=/micro>micro/</a>
+<a href=/post>blog/</a>
+<a href=/etym>etymolog/</a>
+<a href=/about>about</a>
+<a href=/index.xml>rss</a></nav></header><article class=post><header class=post-header><h1 style=text-align:center>CS50's Introduction to Artificial Intelligence with Python</h1><div class=post-metadata><time datetime=2022-10-17T00:00:00Z>October 17, 2022</time> &nbsp;</div></header><div class=post-toc><div class=post-toc-title>Table of Contents</div><nav id=TableOfContents><ul><li><a href=#search>Search</a><ul><li><a href=#search-algorithms>search algorithms</a></li><li><a href=#adversarial-search>adversarial search</a></li></ul></li><li><a href=#knowledge>Knowledge</a><ul><li><a href=#model-checking>Model Checking</a></li><li><a href=#inference-rules>Inference Rules</a></li><li><a href=#theorem-proving>Theorem Proving</a></li><li><a href=#conjuntive-normal-form-cnf>Conjuntive Normal Form (CNF)</a></li><li><a href=#first-order-logic>First-Order Logic</a></li></ul></li><li><a href=#uncertainty>Uncertainty</a><ul><li><a href=#probability>Probability</a></li><li><a href=#joint-probability>Joint Probability</a></li><li><a href=#probability-rules>Probability Rules</a></li><li><a href=#bayesian-networks>Bayesian Networks</a></li><li><a href=#markov-models>Markov Models</a></li></ul></li><li><a href=#optimization>Optimization</a><ul><li><a href=#hill-climbing-algorithm>hill climbing algorithm</a></li><li><a href=#simulated-annealing>Simulated Annealing</a></li><li><a href=#linear-programming>Linear Programming</a></li><li><a href=#constraint-satisfaction>Constraint Satisfaction</a></li><li><a href=#backtracking-search>Backtracking Search</a></li></ul></li><li><a href=#learning-ml-learning-from-data-and-experience>Learning, ML (learning from data and experience)</a><ul><li><a href=#supervised-learning>Supervised Learning</a></li><li><a href=#reinforcement-learning>Reinforcement learning</a></li><li><a href=#unsupervised-learning>Unsupervised Learning</a></li></ul></li><li><a href=#neural-networks>Neural Networks</a></li><li><a href=#human-language>Human Language</a><ul><li><a href=#context-free-grammar>Context-Free Grammar</a></li><li><a href=#n-gram>n-gram</a></li><li><a href=#text-categorization>Text Categorization</a></li><li><a href=#naive-bayes>Naive Bayes</a></li><li><a href=#information-retrieval>Information Retrieval</a></li><li><a href=#semantics>Semantics</a></li></ul></li></ul></nav></div><div class=post-text><p><a href=https://cs50.harvard.edu/ai/2020/>src</a></p><h2 id=search>Search</h2><p>general pattern:</p><ul><li>begin</li><li>correct sequence of actions</li><li>goal</li></ul><p><strong>agent</strong> - perceives the environment and acts upon the environment</p><p><strong>state</strong> - configuration of the environment</p><p><strong>initial state</strong></p><p><strong>actions</strong> - choices taken in any given state. fuctions. ACTIONS(s) -> set of actions that can be done in given state.</p><p><strong>transition model</strong>. RESULT(s, a) -> state after performing action <code>a</code> in state <code>s</code></p><p><strong>state space</strong>. graph</p><p><strong>goal state</strong>. determines whether a state is a goal state.</p><p><strong>path cost</strong>. numerical cost associated with a given path.</p><p>Search problem:</p><ul><li>initial state</li><li>actions</li><li>transition model</li><li>goal test</li><li>path const function</li></ul><p><strong>optimal solution</strong></p><p><strong>node</strong>:</p><ul><li>state</li><li>parent</li><li>action</li><li>path cost</li></ul><p><strong>frontier</strong> - all that is to be explored:</p><ul><li>Start with initial state.</li><li>Start with empty explored set.</li><li>repeat:<ul><li>If empty, there is no solution.</li><li>remove a single node from the frontier</li><li>if it is a goal - we&rsquo;ve found a solution</li><li>add node to the explored set</li><li>expand (look at all neighbours of) node, add resulting nodes to the frontier if not in the frontier and not in explored set.</li></ul></li></ul><h3 id=search-algorithms>search algorithms</h3><ul><li>stack - last in first out. Used for frontier. So we get a <strong>depth-first search</strong>.</li><li><strong>breath-first search</strong> always expands the shallowest node in the frontier. Uses a queue (first-in first-out)</li></ul><p>BFS finds always the optimal path. DFS might save you memory.</p><p><strong>uninformed search</strong> - doesn&rsquo;t use any problem specific knowledge.
+<strong>informed search</strong>:</p><ul><li><strong>Greedy best-first search (GBF)</strong> - expand the node that is closest to the goal by using a heuristic function <code>h(n)</code><ul><li><strong>Manhattan distance</strong> - distance between two points along axes of right angles.</li></ul></li></ul><p><strong>A* search</strong>: expand the node with the lowest value of <code>g(n) + h(n)</code> where <code>g(n)</code> is the cost to reach node. Optimal if:</p><ul><li>h(n) is admissible (never overestimates the true cost) - should never think I&rsquo;m further away from the goal that I actually am.</li><li>h(n) is consistent. Cost c, <code>h(n) &lt;= h(n') + c</code></li></ul><h3 id=adversarial-search>adversarial search</h3><p>minimax - X wants to maximize <code>max(o)</code>, O wants to minimize the score <code>min(o)</code>.</p><p>TicTacToe functions:</p><ul><li>PLAYER(s) - who&rsquo;s turn is it?</li><li>ACTIONS(s) - possible actions for a state</li><li>RESULTS(s, a) - perform a action and return the state</li><li>TERMINAL(s) - did we finish the game?</li><li>UTILITY(s) - score for a state</li></ul><p>optimizations:</p><ul><li><strong>Alfa-Beta-pruning</strong> - remove (don&rsquo;t consider) some of the nodes using already computed information.</li></ul><p><strong>Depth-Limited Minimax</strong>:</p><ul><li>evaluation function - evaluates expected utility of the game from a given state</li></ul><h2 id=knowledge>Knowledge</h2><p>knowledge-based agents</p><p><strong>sentence</strong> - assertion about the world in a knowledge representation language</p><p><strong>propositional logic</strong> - based on statements about the world.</p><p><strong>logical connectives</strong> - not and or, -> (implication), &lt;-> (biconditional)</p><p>implication (if then)</p><table><thead><tr><th>P (premise)</th><th>Q (conclusion)</th><th>P->Q</th></tr></thead><tbody><tr><td>false</td><td>false</td><td>true</td></tr><tr><td>false</td><td>true</td><td>true</td></tr><tr><td><strong>true</strong></td><td><strong>false</strong></td><td><strong>false</strong></td></tr><tr><td>true</td><td>true</td><td>true</td></tr></tbody></table><p>biconditional (if and only if)</p><table><thead><tr><th>P</th><th>Q</th><th>P&lt;->Q</th></tr></thead><tbody><tr><td>false</td><td>false</td><td>true</td></tr><tr><td>false</td><td>true</td><td>false</td></tr><tr><td>true</td><td>false</td><td>false</td></tr><tr><td>true</td><td>true</td><td>true</td></tr></tbody></table><p><strong>model</strong> - assignment of a truth value to every propositional symbol (possible world). Total possibilities <code>number_of_values**variables</code></p><p><strong>knowledge base</strong> (KB) - set of sentences known a by a knowledge agent to be true</p><p><strong>entailment</strong> <code>A |= B</code> (A entails B) - in every model (possible world) in which sentence <code>A</code> is true, then <code>B</code> is also true.</p><p>We want our AI to figure out what the possible entailments are. To infer, to draw conclusions.
+<strong>inference</strong> - deriving new conclusions from old ones.</p><h3 id=model-checking>Model Checking</h3><p>To determine if <code>KB |= alfa</code>:</p><ul><li>Enumerate all possible models</li><li>If in every model where <code>KB</code> is true, <code>alfa</code> is true, then <code>KB entails alfa</code>.</li><li>Otherwise <code>KB</code> does not entail <code>alfa</code>.</li></ul><p><code>alfa</code> is the query.</p><p><strong>Knowledge Engineering</strong></p><p>Example: clue (game):</p><ul><li>Establish propositional symbols</li><li>add knowledge</li><li>check_model</li></ul><h3 id=inference-rules>Inference Rules</h3><p><strong>Modus Ponens</strong>: application of implication</p><pre><code>alfa -&gt; beta
 alfa
 ------------
 beta
-</code></pre>
-<p><strong>And Elimination</strong></p>
-<pre><code>alfa AND beta
+</code></pre><p><strong>And Elimination</strong></p><pre><code>alfa AND beta
 -------------
 alfa
-</code></pre>
-<p>and the same for <code>beta</code>.</p>
-<p><strong>Double Negation Elimination</strong></p>
-<pre><code>NOT NOT alfa
+</code></pre><p>and the same for <code>beta</code>.</p><p><strong>Double Negation Elimination</strong></p><pre><code>NOT NOT alfa
 ------------
 alfa
-</code></pre>
-<p><strong>Implication Elimination</strong></p>
-<pre><code>alfa -&gt; beta
+</code></pre><p><strong>Implication Elimination</strong></p><pre><code>alfa -&gt; beta
 ------------
 NOT alfa OR beta
-</code></pre>
-<p><strong>Biconditional Elimination</strong></p>
-<pre><code>alfa &lt;-&gt; beta
+</code></pre><p><strong>Biconditional Elimination</strong></p><pre><code>alfa &lt;-&gt; beta
 ---------------------------------
 (alfa -&gt; beta) AND (beta -&gt; alfa)
-</code></pre>
-<p><strong>De Morgan&rsquo;s Law</strong></p>
-<pre><code>NOT(alfa AND beta)
+</code></pre><p><strong>De Morgan&rsquo;s Law</strong></p><pre><code>NOT(alfa AND beta)
 --------------------
 NOT alfa OR NOT beta
-</code></pre>
-<p><strong>Reverse De Morgan&rsquo;s Law</strong></p>
-<pre><code>NOT(alfa OR beta)
+</code></pre><p><strong>Reverse De Morgan&rsquo;s Law</strong></p><pre><code>NOT(alfa OR beta)
 ---------------------
 NOT alfa AND NOT beta
-</code></pre>
-<p><strong>Distributive Property</strong></p>
-<pre><code>(alfa AND (beta OR gama)
+</code></pre><p><strong>Distributive Property</strong></p><pre><code>(alfa AND (beta OR gama)
 ----------------------------------
 (alfa AND beta) OR (alfa AND gama)
-</code></pre>
-<p>works also when AND is exchanged with OR and vice versa.</p>
-<h3 id="theorem-proving">Theorem Proving</h3>
-<ul>
-<li>initial state: staring knowledge base</li>
-<li>actions: inference rules</li>
-<li>transition model: new knowledge after inference</li>
-<li>goal test: check statement we&rsquo;re trying to prove</li>
-<li>path cost functions: number of steps in proof</li>
-</ul>
-<p><strong>Unit Resolution Rule</strong></p>
-<pre><code>P OR Q
+</code></pre><p>works also when AND is exchanged with OR and vice versa.</p><h3 id=theorem-proving>Theorem Proving</h3><ul><li>initial state: staring knowledge base</li><li>actions: inference rules</li><li>transition model: new knowledge after inference</li><li>goal test: check statement we&rsquo;re trying to prove</li><li>path cost functions: number of steps in proof</li></ul><p><strong>Unit Resolution Rule</strong></p><pre><code>P OR Q
 NOT P
 --------
 Q
-</code></pre>
-<p>In an OR clause the order of arguments doesn&rsquo;t matter.</p>
-<pre><code>P OR Q
+</code></pre><p>In an OR clause the order of arguments doesn&rsquo;t matter.</p><pre><code>P OR Q
 NOT P OR R
 -----------
 Q OR R
-</code></pre>
-<p>Q and R can be multiple propositional symbols, not single ones.</p>
-<p>clause: a disjunction (connected with OR) of literal</p>
-<h3 id="conjuntive-normal-form-cnf">Conjuntive Normal Form (CNF)</h3>
-<p>logical sentence that is a conjunction of clauses, e.g. <code>(A OR B OR C) AND (D OR NOT E) AND (F OR G)</code>. Any sentence in logic can be converted into this.</p>
-<p>Conversion to CNF:</p>
-<ul>
-<li>Eliminate bi-conditionals</li>
-<li>Eliminate implications</li>
-<li>Move NOT inwards using De Morgan&rsquo;s Laws</li>
-</ul>
-<p><strong>Factoring</strong> removing duplicate variables.</p>
-<p><strong>Empty clause</strong> (<code>()</code>) is always false.</p>
-<p><strong>Proof by contradiction</strong>: assume the opposite and if you can demonstrate it is a contradiction the thing we want to prove is true.</p>
-<h3 id="first-order-logic">First-Order Logic</h3>
-<ul>
-<li>Constant Symbols (Minerva, Gryffindor &hellip;)</li>
-<li>Predicate Symbol (Person, House, BelongsTo, &hellip;)</li>
-</ul>
-<p>Example:</p>
-<pre><code>Person(Minerva)                 # Minerva is a person
+</code></pre><p>Q and R can be multiple propositional symbols, not single ones.</p><p>clause: a disjunction (connected with OR) of literal</p><h3 id=conjuntive-normal-form-cnf>Conjuntive Normal Form (CNF)</h3><p>logical sentence that is a conjunction of clauses, e.g. <code>(A OR B OR C) AND (D OR NOT E) AND (F OR G)</code>. Any sentence in logic can be converted into this.</p><p>Conversion to CNF:</p><ul><li>Eliminate bi-conditionals</li><li>Eliminate implications</li><li>Move NOT inwards using De Morgan&rsquo;s Laws</li></ul><p><strong>Factoring</strong> removing duplicate variables.</p><p><strong>Empty clause</strong> (<code>()</code>) is always false.</p><p><strong>Proof by contradiction</strong>: assume the opposite and if you can demonstrate it is a contradiction the thing we want to prove is true.</p><h3 id=first-order-logic>First-Order Logic</h3><ul><li>Constant Symbols (Minerva, Gryffindor &mldr;)</li><li>Predicate Symbol (Person, House, BelongsTo, &mldr;)</li></ul><p>Example:</p><pre><code>Person(Minerva)                 # Minerva is a person
 House(Gryffindor)               # Gryffindor is a house
 NOT House(Minerva)              # Minerva is not a house
 BelongsTo(Minerva, Gryffindor)  # Minerva belongs to Gryffindor
-</code></pre>
-<p>Minimizes the number of symbols needed.</p>
-<p><strong>Universal Quantification</strong> - true for all</p>
-<p><strong>Existential Quantification</strong> - true for some, at least one value</p>
-<h2 id="uncertainty">Uncertainty</h2>
-<h3 id="probability">Probability</h3>
-<p>Possible Worlds (Ω - omega). <code>P(omega)</code></p>
-<p>Probability: <code>0 &lt;= P(omega) &lt;= 1</code>, <code>sum(P(omega)) == 1</code></p>
-<p><strong>unconditional probability</strong>: degree of belief in a proposition in the absence of any other evidence</p>
-<p><strong>conditional probability</strong>: we have some initial information about the world and how it works (evidence has been revealed to us). <code>P(a | b)</code> Probability of <code>a</code> given we already know that <code>b</code> is true. Formula:</p>
-<pre><code>P(a|b) = P(a AND b) / P(b)  # or
+</code></pre><p>Minimizes the number of symbols needed.</p><p><strong>Universal Quantification</strong> - true for all</p><p><strong>Existential Quantification</strong> - true for some, at least one value</p><h2 id=uncertainty>Uncertainty</h2><h3 id=probability>Probability</h3><p>Possible Worlds (Ω - omega). <code>P(omega)</code></p><p>Probability: <code>0 &lt;= P(omega) &lt;= 1</code>, <code>sum(P(omega)) == 1</code></p><p><strong>unconditional probability</strong>: degree of belief in a proposition in the absence of any other evidence</p><p><strong>conditional probability</strong>: we have some initial information about the world and how it works (evidence has been revealed to us). <code>P(a | b)</code> Probability of <code>a</code> given we already know that <code>b</code> is true. Formula:</p><pre><code>P(a|b) = P(a AND b) / P(b)  # or
 
 P(a AND b) = P(b) P(a|b)    # or
 
 P(a AND b) = P(a) P(b|a)
-</code></pre>
-<p><strong>random variable</strong>: a variable with a domain of possible values it can take on. E.g.: <code>traffic {none,light,heavy}</code>, <strong>probability distribution</strong>:</p>
-<pre><code>P(traffic = none) = .6
+</code></pre><p><strong>random variable</strong>: a variable with a domain of possible values it can take on. E.g.: <code>traffic {none,light,heavy}</code>, <strong>probability distribution</strong>:</p><pre><code>P(traffic = none) = .6
 P(traffic = light) = .3
 P(traffic = heavy) = .1
 
 P(traffic) = &lt;0.6, 0.3, 0.1&gt;     # equal but less verbose
-</code></pre>
-<p><strong>independence</strong>: knowledge of one event doesn&rsquo;t influence the probability of the other events. <code>P(a AND b) = P(a) P(b)</code>. Example: roll of two dices.</p>
-<p><strong>Bayes&rsquo; Rule</strong>:</p>
-<pre><code>P(b|a) = P(b) P(a|b) / P(a)
-</code></pre>
-<p>Example: given clouds in the morning, what is the probability of the rain in the afternoon?</p>
-<ul>
-<li>80% of rainy afternoons start with cloudy mornings.</li>
-<li>40% of days have cloudy mornings</li>
-<li>10% of days have rainy afternoons</li>
-</ul>
-<p>Solution:</p>
-<pre><code>P(rain | clouds) = P(clouds | rain) P(rain) / P(clouds) 
+</code></pre><p><strong>independence</strong>: knowledge of one event doesn&rsquo;t influence the probability of the other events. <code>P(a AND b) = P(a) P(b)</code>. Example: roll of two dices.</p><p><strong>Bayes&rsquo; Rule</strong>:</p><pre><code>P(b|a) = P(b) P(a|b) / P(a)
+</code></pre><p>Example: given clouds in the morning, what is the probability of the rain in the afternoon?</p><ul><li>80% of rainy afternoons start with cloudy mornings.</li><li>40% of days have cloudy mornings</li><li>10% of days have rainy afternoons</li></ul><p>Solution:</p><pre><code>P(rain | clouds) = P(clouds | rain) P(rain) / P(clouds) 
 = 0.8 * 0.1 / 0.4 
 = 0.2
-</code></pre>
-<p>Knowing <code>P(visible effect | unknown cause)</code> we can calculate <code>P(unknown cause | visible effect)</code>.</p>
-<h3 id="joint-probability">Joint Probability</h3>
-<p>Example:</p>
-<pre><code>C = 0.4, not C = 0.6
+</code></pre><p>Knowing <code>P(visible effect | unknown cause)</code> we can calculate <code>P(unknown cause | visible effect)</code>.</p><h3 id=joint-probability>Joint Probability</h3><p>Example:</p><pre><code>C = 0.4, not C = 0.6
 R = 0.1, not R 0.9
 
         R       not R
@@ -414,81 +66,16 @@ P(cloudy | rain) = P(cloudy, rain) / P(rain)        # , = AND
 = alfa P(C, rain)                                   # alfa = normalization constant
 = alfa &lt;.08,.02&gt;
 = &lt;.8, .2&gt;
-</code></pre>
-<h3 id="probability-rules">Probability Rules</h3>
-<p>Negation: <code>P(not a) = 1 - P(a)</code></p>
-<p>Inclusion-Exclusion: <code>P(a OR b) = P(a) + P(b) - P(a AND b)</code></p>
-<p>Marginalization: <code>P(a) = P(a, b) + P(a, not b)</code>. Example:</p>
-<pre><code>P(C = cloud) = P(C = cloud, R = rain) + P(C = cloud, R = not rain)
+</code></pre><h3 id=probability-rules>Probability Rules</h3><p>Negation: <code>P(not a) = 1 - P(a)</code></p><p>Inclusion-Exclusion: <code>P(a OR b) = P(a) + P(b) - P(a AND b)</code></p><p>Marginalization: <code>P(a) = P(a, b) + P(a, not b)</code>. Example:</p><pre><code>P(C = cloud) = P(C = cloud, R = rain) + P(C = cloud, R = not rain)
 = 0.08 + 0.32
 = 0.4
-</code></pre>
-<p>Conditioning: <code>P(a) = P(a|b)P(b) + P(a| not b)|P(not b)</code></p>
-<h3 id="bayesian-networks">Bayesian Networks</h3>
-<ul>
-<li>data structures that represent the dependencies among random variables</li>
-<li>directed graph</li>
-<li>each node represents a random variable</li>
-<li>arrow from <code>X</code> to <code>Y</code> means <code>X</code> is a parent of <code>Y</code></li>
-<li>each node X has a probability distribution <code>P(X | Parents(X))</code></li>
-</ul>
-<p><strong>Inference problem</strong>:</p>
-<ul>
-<li>Query <code>X</code>: variable for which to compute the distribution</li>
-<li>Evidence variables <code>E</code>: observed variables for event <code>e</code></li>
-<li>Hidden variables <code>Y</code>: non-evidence, non-query variable</li>
-<li>Goal: Calculate <code>P(X | e)</code></li>
-</ul>
-<p>Inference by Enumeration: <code>P(X | e) = alfa P(X, e) = alfa sum_y(P(X, e, y)</code></p>
-<p><strong>Approximate Inference</strong>, e.g. by sampling.</p>
-<p><strong>Likelihood weighting</strong>:</p>
-<ul>
-<li>fix the values for evidence variables,</li>
-<li>sample the non-evidence variables using conditional probabilities of the Bayesian Network,</li>
-<li>weight each sample by its likelihood: the probability of all of the evidence.</li>
-</ul>
-<h3 id="markov-models">Markov Models</h3>
-<p>Uncertainty over time. -&gt; Huge amount of data / complexity.</p>
-<p><strong>Markov assumption</strong>: assumption that the current state depends on only a finite fixed number of previous states.</p>
-<p><strong>Markov chain</strong>: a sequence of random variables where the distribution of each variable follows the Markov assumption.</p>
-<p><strong>hidden state</strong> vs. observation. E.g. user engagement vs. website analytics or weather vs. people bringing umbrellas to the office. The AI doesn&rsquo;t know the truth of the world (hidden state) all it has access to is some observation that is related to the hidden state.</p>
-<p><strong>Hidden Markov Model</strong> a Markov model for a system with hidden states that generate some observed event. Also often called <strong>Sensor Model</strong>.</p>
-<p><strong>sensor Markov Assumption</strong>: the assumption that the evidence variable depends only on the corresponding state.</p>
-<p>Tasks:</p>
-<ul>
-<li>filtering: given observations from start until now calculate the distribution for current state</li>
-<li>prediction: &hellip; for a future state</li>
-<li>smoothing: &hellip; for a past state</li>
-<li>most likely explanation: &hellip; most likely sequence of states</li>
-</ul>
-<h2 id="optimization">Optimization</h2>
-<ul>
-<li>choosing the best option from a set of options</li>
-</ul>
-<p><strong>local search</strong>: search algorithms that maintain a <strong>single node</strong> and searches by moving to a neighboring node. Most useful when we don&rsquo;t care about the path but the solution only.</p>
-<p><strong>state-space landscape</strong>. Global minimum - cost function. Global maximum - objective function. We move to neighbours from current state.</p>
-<h3 id="hill-climbing-algorithm">hill climbing algorithm</h3>
-<pre tabindex="0"><code>function hill-climb(problem):
+</code></pre><p>Conditioning: <code>P(a) = P(a|b)P(b) + P(a| not b)|P(not b)</code></p><h3 id=bayesian-networks>Bayesian Networks</h3><ul><li>data structures that represent the dependencies among random variables</li><li>directed graph</li><li>each node represents a random variable</li><li>arrow from <code>X</code> to <code>Y</code> means <code>X</code> is a parent of <code>Y</code></li><li>each node X has a probability distribution <code>P(X | Parents(X))</code></li></ul><p><strong>Inference problem</strong>:</p><ul><li>Query <code>X</code>: variable for which to compute the distribution</li><li>Evidence variables <code>E</code>: observed variables for event <code>e</code></li><li>Hidden variables <code>Y</code>: non-evidence, non-query variable</li><li>Goal: Calculate <code>P(X | e)</code></li></ul><p>Inference by Enumeration: <code>P(X | e) = alfa P(X, e) = alfa sum_y(P(X, e, y)</code></p><p><strong>Approximate Inference</strong>, e.g. by sampling.</p><p><strong>Likelihood weighting</strong>:</p><ul><li>fix the values for evidence variables,</li><li>sample the non-evidence variables using conditional probabilities of the Bayesian Network,</li><li>weight each sample by its likelihood: the probability of all of the evidence.</li></ul><h3 id=markov-models>Markov Models</h3><p>Uncertainty over time. -> Huge amount of data / complexity.</p><p><strong>Markov assumption</strong>: assumption that the current state depends on only a finite fixed number of previous states.</p><p><strong>Markov chain</strong>: a sequence of random variables where the distribution of each variable follows the Markov assumption.</p><p><strong>hidden state</strong> vs. observation. E.g. user engagement vs. website analytics or weather vs. people bringing umbrellas to the office. The AI doesn&rsquo;t know the truth of the world (hidden state) all it has access to is some observation that is related to the hidden state.</p><p><strong>Hidden Markov Model</strong> a Markov model for a system with hidden states that generate some observed event. Also often called <strong>Sensor Model</strong>.</p><p><strong>sensor Markov Assumption</strong>: the assumption that the evidence variable depends only on the corresponding state.</p><p>Tasks:</p><ul><li>filtering: given observations from start until now calculate the distribution for current state</li><li>prediction: &mldr; for a future state</li><li>smoothing: &mldr; for a past state</li><li>most likely explanation: &mldr; most likely sequence of states</li></ul><h2 id=optimization>Optimization</h2><ul><li>choosing the best option from a set of options</li></ul><p><strong>local search</strong>: search algorithms that maintain a <strong>single node</strong> and searches by moving to a neighboring node. Most useful when we don&rsquo;t care about the path but the solution only.</p><p><strong>state-space landscape</strong>. Global minimum - cost function. Global maximum - objective function. We move to neighbours from current state.</p><h3 id=hill-climbing-algorithm>hill climbing algorithm</h3><pre tabindex=0><code>function hill-climb(problem):
     current = initial state of problem
     repeat:
         neighbor = highest valued neighbor of current
         if neighbor not better than current:
             return current
-</code></pre><p>Hill climbing might get stuck at a local maxima. Therefore there are hill climbing variants:</p>
-<ul>
-<li>steepest-ascent: choose the highest-valued neighbor</li>
-<li>stochastic: choose randomly from higher-valued neighbors</li>
-<li>first-choice: choose the first-higher valued neighbor</li>
-<li>random-restart: conduct hill climbing multiple times</li>
-<li>local beam search: choose the <code>k</code> highest-valued neighbors</li>
-</ul>
-<p>Real problem with hill climbing is that they never make a move that makes our position worse. And that&rsquo;s what&rsquo;s needed to get to a global maximum.</p>
-<h3 id="simulated-annealing">Simulated Annealing</h3>
-<ul>
-<li>Early on, higher &ldquo;temperature&rdquo;: more likely to accept neighbors that are worse than current state</li>
-<li>Later on, lower &ldquo;temperature&rdquo;.</li>
-</ul>
-<pre tabindex="0"><code>function SIMULATED-ANNEALING(problem, max):
+</code></pre><p>Hill climbing might get stuck at a local maxima. Therefore there are hill climbing variants:</p><ul><li>steepest-ascent: choose the highest-valued neighbor</li><li>stochastic: choose randomly from higher-valued neighbors</li><li>first-choice: choose the first-higher valued neighbor</li><li>random-restart: conduct hill climbing multiple times</li><li>local beam search: choose the <code>k</code> highest-valued neighbors</li></ul><p>Real problem with hill climbing is that they never make a move that makes our position worse. And that&rsquo;s what&rsquo;s needed to get to a global maximum.</p><h3 id=simulated-annealing>Simulated Annealing</h3><ul><li>Early on, higher &ldquo;temperature&rdquo;: more likely to accept neighbors that are worse than current state</li><li>Later on, lower &ldquo;temperature&rdquo;.</li></ul><pre tabindex=0><code>function SIMULATED-ANNEALING(problem, max):
     current = initial state of problem
     for t = 1 to max:
         T = temperature(t)
@@ -498,31 +85,10 @@ P(cloudy | rain) = P(cloudy, rain) / P(rain)        # , = AND
             current = neighbor
         with probability e**(delta_e/T) set current = neighbor
     return current
-</code></pre><h3 id="linear-programming">Linear Programming</h3>
-<ul>
-<li>Minimize a cost function</li>
-<li>With constraints</li>
-<li>With bounds for each variable</li>
-</ul>
-<p>Example:</p>
-<pre><code>Cost function: 50x + 80y
+</code></pre><h3 id=linear-programming>Linear Programming</h3><ul><li>Minimize a cost function</li><li>With constraints</li><li>With bounds for each variable</li></ul><p>Example:</p><pre><code>Cost function: 50x + 80y
 Constraint: 5x + 2y &lt;= 20
 Constraint: 10x + 12y &gt;= 90 -&gt; (-10x) + (-12y) &lt;= -90
-</code></pre>
-<h3 id="constraint-satisfaction">Constraint Satisfaction</h3>
-<ul>
-<li>Set of variables {X1, &hellip;, Xn}</li>
-<li>Set of domains for each variable {D1, D2, &hellip;, Dn} - possible values each of the variables can take on.</li>
-<li>Set of constraints C</li>
-</ul>
-<p><strong>hard constraints</strong> - must be satisfied in a correct solution</p>
-<p><strong>soft constraints</strong> - preferences</p>
-<p><strong>unary constraint</strong> - involves just a single variable, e.g.: <code>A != monday</code></p>
-<p><strong>binary constraint</strong> - involves two variables, e.g.: <code>A != B</code></p>
-<p><strong>node consistency</strong>: when all the variables in a variable&rsquo;s domain satisfy the variable&rsquo;s unary constraints. For each of possible nodes remove possible values of the domain so all the unary constraint are satisfied.</p>
-<h4 id="arc-consistency">arc consistency</h4>
-<p>when all the values in a variables domain satisfy the variable&rsquo;s binary constraints</p>
-<pre tabindex="0"><code>function REVISE(csp, X, Y):     # csp = constraint satisfaction problem
+</code></pre><h3 id=constraint-satisfaction>Constraint Satisfaction</h3><ul><li>Set of variables {X1, &mldr;, Xn}</li><li>Set of domains for each variable {D1, D2, &mldr;, Dn} - possible values each of the variables can take on.</li><li>Set of constraints C</li></ul><p><strong>hard constraints</strong> - must be satisfied in a correct solution</p><p><strong>soft constraints</strong> - preferences</p><p><strong>unary constraint</strong> - involves just a single variable, e.g.: <code>A != monday</code></p><p><strong>binary constraint</strong> - involves two variables, e.g.: <code>A != B</code></p><p><strong>node consistency</strong>: when all the variables in a variable&rsquo;s domain satisfy the variable&rsquo;s unary constraints. For each of possible nodes remove possible values of the domain so all the unary constraint are satisfied.</p><h4 id=arc-consistency>arc consistency</h4><p>when all the values in a variables domain satisfy the variable&rsquo;s binary constraints</p><pre tabindex=0><code>function REVISE(csp, X, Y):     # csp = constraint satisfaction problem
     revised = false
     for x in X.domain:          # loop over all values of X&#39;s domain
         if no y in Y.domain satisfies constraint for (X, Y):
@@ -540,16 +106,7 @@ function AC-3(csp):
             for each Z in X.neighbors - {Y}:
                 ENQUEUE(queue, (Z, X))  # removing X might not satistfy Z anymore
     return true
-</code></pre><p>AC-3 will not always solve the problem. What remains is a <a href="#search">Search Problem</a>:</p>
-<ul>
-<li>initial state: empty assignment (no variables)</li>
-<li>actions: add a <code>{variable = value}</code> to assignment</li>
-<li>transition model: shows how adding an assignment changes the assignment</li>
-<li>goal check: check if all variables are assigned and all constraints satisfied</li>
-<li>path cost function: irrelevant (all paths have same cost)</li>
-</ul>
-<h3 id="backtracking-search">Backtracking Search</h3>
-<pre tabindex="0"><code>function BACKTRACK(assignment, csp):
+</code></pre><p>AC-3 will not always solve the problem. What remains is a <a href=#search>Search Problem</a>:</p><ul><li>initial state: empty assignment (no variables)</li><li>actions: add a <code>{variable = value}</code> to assignment</li><li>transition model: shows how adding an assignment changes the assignment</li><li>goal check: check if all variables are assigned and all constraints satisfied</li><li>path cost function: irrelevant (all paths have same cost)</li></ul><h3 id=backtracking-search>Backtracking Search</h3><pre tabindex=0><code>function BACKTRACK(assignment, csp):
     if assignment complete:
         return assignment
     var = SELECT-UNASSIGNED-VAR(assignment, csp)
@@ -560,37 +117,7 @@ function AC-3(csp):
             if result != failure: return result
         remove {var = value} from assignment
     return failure
-</code></pre><p>Inference: use Arc Consistency interleaved with search, so we backtrack less.</p>
-<p><strong>maintaining arc-consistency</strong>: algorithm for enforcing arc-consistency every time we make a new assignment. When we make a new assignment to <code>X</code>, call <code>AC-3</code>, starting with a queue of all arcs <code>(Y, X)</code> where <code>Y</code> is a neighbour of <code>X</code>.</p>
-<p>SELECT-UNASSIGNED-VAR heuristics:</p>
-<ul>
-<li>minimum remaining values (MRV) heuristic: select the variable that has the smallest domain</li>
-<li>degree heuristic: select the variable that has the highest degree (connected to the most other nodes)</li>
-</ul>
-<p>DOMAIN-VALUES heuristics:</p>
-<ul>
-<li>least constraining value: return variables in order by number of choices that are ruled out for neighboring variables:
-<ul>
-<li>try least-constraint values first</li>
-</ul>
-</li>
-</ul>
-<h2 id="learning-ml-learning-from-data-and-experience">Learning, ML (learning from data and experience)</h2>
-<p>No explicit instructions how to perform a task, but give access to data and let the computer figure it out.</p>
-<h3 id="supervised-learning">Supervised Learning</h3>
-<p>given a data set of input-output pairs, learn a function to map inputs to outputs.</p>
-<p><strong>classification</strong>: supervised learning task of learning a function mapping of an input to a discrete category. E.g. banknote -&gt; counterfeit/real</p>
-<p><strong>nearest-neighbor classification</strong>: algorithm that, given an input, chooses the class of the nearest data point to that input:</p>
-<ul>
-<li><strong>k-nearest-neighbour classification</strong>: &hellip; <code>k</code> nearest data points &hellip;
-<ul>
-<li>could be slow</li>
-</ul>
-</li>
-</ul>
-<h4 id="perceptron-learning">Perceptron Learning</h4>
-<p>hypothesis function to determine on which side of boundary is the input. Example:</p>
-<pre><code>x1 = Humidity
+</code></pre><p>Inference: use Arc Consistency interleaved with search, so we backtrack less.</p><p><strong>maintaining arc-consistency</strong>: algorithm for enforcing arc-consistency every time we make a new assignment. When we make a new assignment to <code>X</code>, call <code>AC-3</code>, starting with a queue of all arcs <code>(Y, X)</code> where <code>Y</code> is a neighbour of <code>X</code>.</p><p>SELECT-UNASSIGNED-VAR heuristics:</p><ul><li>minimum remaining values (MRV) heuristic: select the variable that has the smallest domain</li><li>degree heuristic: select the variable that has the highest degree (connected to the most other nodes)</li></ul><p>DOMAIN-VALUES heuristics:</p><ul><li>least constraining value: return variables in order by number of choices that are ruled out for neighboring variables:<ul><li>try least-constraint values first</li></ul></li></ul><h2 id=learning-ml-learning-from-data-and-experience>Learning, ML (learning from data and experience)</h2><p>No explicit instructions how to perform a task, but give access to data and let the computer figure it out.</p><h3 id=supervised-learning>Supervised Learning</h3><p>given a data set of input-output pairs, learn a function to map inputs to outputs.</p><p><strong>classification</strong>: supervised learning task of learning a function mapping of an input to a discrete category. E.g. banknote -> counterfeit/real</p><p><strong>nearest-neighbor classification</strong>: algorithm that, given an input, chooses the class of the nearest data point to that input:</p><ul><li><strong>k-nearest-neighbour classification</strong>: &mldr; <code>k</code> nearest data points &mldr;<ul><li>could be slow</li></ul></li></ul><h4 id=perceptron-learning>Perceptron Learning</h4><p>hypothesis function to determine on which side of boundary is the input. Example:</p><pre><code>x1 = Humidity
 x2 = Pressure
 
 Weight Vector w: (w0, w1, w2)
@@ -598,242 +125,24 @@ Input Vector x: (1, x1, x2)
 w * x: w0 + w1x1 + w2x2
 
 h(x1, x2) = Rain if w0 + w1x1 + w2x2 &gt;= 0 else no Rain 
-</code></pre>
-<p>The goal of the ML algorithm is to learn what the Weight Vector will be.</p>
-<p>General hypothesis form: <code>h(x) = 1 if w*x &gt;= else 0</code></p>
-<p><strong>perceptron learning rule</strong>: given data point <code>(x, y)</code> update each weight according to: <code>w_i = w_i + alfa(y - h_w(x)) * x_i</code>, which means <code>w_i = w_i + alfa(actual value - estimate) * x_i</code>. alfa = learning rate (how quickly we&rsquo;re going to update the weight values).</p>
-<p>hard threshold vs. soft threshold (logistic regression)</p>
-<h4 id="support-vector-machines">Support Vector Machines</h4>
-<p>Can work in higher dimensions.</p>
-<p><strong>maximum margin separator</strong>: boundary that maximizes the distance between any of the data point.</p>
-<h4 id="regression">Regression</h4>
-<p>Supervised learning task of learning a function mapping an input point to a continuous value.</p>
-<h4 id="evaluating-hypotheses">Evaluating Hypotheses</h4>
-<p>Think of a Optimization Problem.</p>
-<p><strong>loss function</strong>: function that expresses how poorly our hypothesis performs.</p>
-<p><strong>0-1 loss function</strong>:</p>
-<pre><code>L(actual, predicted) =
+</code></pre><p>The goal of the ML algorithm is to learn what the Weight Vector will be.</p><p>General hypothesis form: <code>h(x) = 1 if w*x >= else 0</code></p><p><strong>perceptron learning rule</strong>: given data point <code>(x, y)</code> update each weight according to: <code>w_i = w_i + alfa(y - h_w(x)) * x_i</code>, which means <code>w_i = w_i + alfa(actual value - estimate) * x_i</code>. alfa = learning rate (how quickly we&rsquo;re going to update the weight values).</p><p>hard threshold vs. soft threshold (logistic regression)</p><h4 id=support-vector-machines>Support Vector Machines</h4><p>Can work in higher dimensions.</p><p><strong>maximum margin separator</strong>: boundary that maximizes the distance between any of the data point.</p><h4 id=regression>Regression</h4><p>Supervised learning task of learning a function mapping an input point to a continuous value.</p><h4 id=evaluating-hypotheses>Evaluating Hypotheses</h4><p>Think of a Optimization Problem.</p><p><strong>loss function</strong>: function that expresses how poorly our hypothesis performs.</p><p><strong>0-1 loss function</strong>:</p><pre><code>L(actual, predicted) =
     0 if actual = predicted,
     1 otherwise
-</code></pre>
-<p><strong>L1 loss function</strong>:</p>
-<pre><code>L(actual, predicted) = |actual - predicted|
-</code></pre>
-<p><strong>L2 loss function</strong> - penalizes much more harshly far away predictions:</p>
-<pre><code>L2(actual, predicted) = (actual - predicted)**2
-</code></pre>
-<p><strong>overfitting</strong> - a model that fits too closely (little or no loss) to a particular data set and therefore may fail to generalize to future data.</p>
-<p><strong>regularization</strong> - penalizing hypotheses that are more complex to favor simpler, more general hypothesis. We want to give preference to a simpler solution which might generalize better: <code>cost(h) = loss(h) + lambda*complexity(h)</code></p>
-<p><strong>holdout cross-validation</strong> - splitting data into a training set and a test set, such that learning happens on the training set and is evaluated on the test set. Downside: a fair amount of data is not used to train.</p>
-<p><strong>k-fold cross-validation</strong> - splitting data into <code>k</code> sets, and experimenting <code>k</code> times, using each set as a test once and using remaining data as a training test</p>
-<h3 id="reinforcement-learning">Reinforcement learning</h3>
-<p>Given a set of rewards or punishments, learn what actions are to be taken in future:</p>
-<pre><code>    Environment
+</code></pre><p><strong>L1 loss function</strong>:</p><pre><code>L(actual, predicted) = |actual - predicted|
+</code></pre><p><strong>L2 loss function</strong> - penalizes much more harshly far away predictions:</p><pre><code>L2(actual, predicted) = (actual - predicted)**2
+</code></pre><p><strong>overfitting</strong> - a model that fits too closely (little or no loss) to a particular data set and therefore may fail to generalize to future data.</p><p><strong>regularization</strong> - penalizing hypotheses that are more complex to favor simpler, more general hypothesis. We want to give preference to a simpler solution which might generalize better: <code>cost(h) = loss(h) + lambda*complexity(h)</code></p><p><strong>holdout cross-validation</strong> - splitting data into a training set and a test set, such that learning happens on the training set and is evaluated on the test set. Downside: a fair amount of data is not used to train.</p><p><strong>k-fold cross-validation</strong> - splitting data into <code>k</code> sets, and experimenting <code>k</code> times, using each set as a test once and using remaining data as a training test</p><h3 id=reinforcement-learning>Reinforcement learning</h3><p>Given a set of rewards or punishments, learn what actions are to be taken in future:</p><pre><code>    Environment
     /      \
 action^     state_v, reward_v
     \      /
     Agent
-</code></pre>
-<p><strong>Markov Decision Process</strong> model for decision-making, representing states, actions, and their rewards:</p>
-<ul>
-<li>Set of states <code>S</code></li>
-<li>Set of actions <code>ACTIONS(s)</code></li>
-<li>Transition model <code>P(s'|s, a)</code></li>
-<li>Reward function <code>R(s, a, s')</code></li>
-</ul>
-<p><strong>Q-Learning</strong> method for learning a function <code>Q(s, a)</code>, estimate of the value of performing action <code>a</code> in state <code>s</code>. Overview:</p>
-<ul>
-<li>Start with <code>Q(s, a) = 0</code> for all <code>s</code>, <code>a</code></li>
-<li>When we take an action and receive a reward:
-<ul>
-<li>Estimate the value of <code>Q(s, a)</code> based on current reward and expected future rewards.</li>
-<li>Update <code>Q(s, a)</code> to take into account old estimate as well as our new estimate.</li>
-<li>Formally:
-<ul>
-<li><code>Q(s, a) &lt;- Q(s, a) + alfa(new value estimate - old value estimate)</code></li>
-<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + future reward estimate) - Q(s, a))</code></li>
-<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + max_a'(Q(s', a')) - Q(s, a))</code></li>
-<li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + y*max_a'(Q(s', a')) - Q(s, a))</code>     - to give preference to current rewards (y)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><code>alfa</code> represents how much we value new information compared to how much we value old information. <code>alfa</code> of 1 means we only consider new information.</p>
-<p><strong>Greedy Decision-Making</strong>: when in state <code>s</code>, choose action <code>a</code> with highest <code>Q(s, a)</code></p>
-<p>Tension between <strong>Explore vs. Exploit</strong> (using knowledge we already have, which might not need to optional solution).</p>
-<p><strong>epsilon-greedy</strong></p>
-<ul>
-<li>Set <code>epsilon</code> equal to how often we want to move randomly.</li>
-<li>With probability <code>1 - epsilon</code>, choose estimated best move.</li>
-<li>With probability <code>epsilon</code>, choose a random move. Esp. in the beginning.</li>
-</ul>
-<p><strong>function approximation</strong> - approximating <code>Q(s, a)</code>, often by a function combining various features, rather than storing one value for every state-action pair.</p>
-<h3 id="unsupervised-learning">Unsupervised Learning</h3>
-<p>given input data without any additional feedback, learn pattern.</p>
-<p><strong>clustering</strong> organizing a set of objects into groups in such a way that similar objects tend to be in the same group.</p>
-<p><strong>k-means clustering</strong> - algorithm for clustering data based on repeatedly assigning points to clusters and updating those cluster&rsquo;s centers.</p>
-<h2 id="neural-networks">Neural Networks</h2>
-<p><a href="https://cs50.harvard.edu/ai/2020/notes/5/">notes</a></p>
-<ul>
-<li>Neurons are connected to and receive electrical signals from other neurons.</li>
-<li>Neurons process input signals and can be activated.</li>
-</ul>
-<p><code>pip install tensorflow-macos</code></p>
-<p><strong>Artificial Neural Network</strong> - mathematical model for learning inspired by biological neural networks:</p>
-<ul>
-<li>Model mathematical function from input to outputs based on the structure and parameters of the network.</li>
-<li>Allow for learning the network&rsquo;s parameters based on data.</li>
-</ul>
-<p><strong>activation function</strong> - function that gets applied to the result and decides whether a threshold is passed (e.g. &ldquo;it rains or not&rdquo;).</p>
-<p>Schematics for a very simple neural network:</p>
-<pre><code>     w0
+</code></pre><p><strong>Markov Decision Process</strong> model for decision-making, representing states, actions, and their rewards:</p><ul><li>Set of states <code>S</code></li><li>Set of actions <code>ACTIONS(s)</code></li><li>Transition model <code>P(s'|s, a)</code></li><li>Reward function <code>R(s, a, s')</code></li></ul><p><strong>Q-Learning</strong> method for learning a function <code>Q(s, a)</code>, estimate of the value of performing action <code>a</code> in state <code>s</code>. Overview:</p><ul><li>Start with <code>Q(s, a) = 0</code> for all <code>s</code>, <code>a</code></li><li>When we take an action and receive a reward:<ul><li>Estimate the value of <code>Q(s, a)</code> based on current reward and expected future rewards.</li><li>Update <code>Q(s, a)</code> to take into account old estimate as well as our new estimate.</li><li>Formally:<ul><li><code>Q(s, a) &lt;- Q(s, a) + alfa(new value estimate - old value estimate)</code></li><li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + future reward estimate) - Q(s, a))</code></li><li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + max_a'(Q(s', a')) - Q(s, a))</code></li><li><code>Q(s, a) &lt;- Q(s, a) + alfa((r + y*max_a'(Q(s', a')) - Q(s, a))</code> - to give preference to current rewards (y)</li></ul></li></ul></li></ul><p><code>alfa</code> represents how much we value new information compared to how much we value old information. <code>alfa</code> of 1 means we only consider new information.</p><p><strong>Greedy Decision-Making</strong>: when in state <code>s</code>, choose action <code>a</code> with highest <code>Q(s, a)</code></p><p>Tension between <strong>Explore vs. Exploit</strong> (using knowledge we already have, which might not need to optional solution).</p><p><strong>epsilon-greedy</strong></p><ul><li>Set <code>epsilon</code> equal to how often we want to move randomly.</li><li>With probability <code>1 - epsilon</code>, choose estimated best move.</li><li>With probability <code>epsilon</code>, choose a random move. Esp. in the beginning.</li></ul><p><strong>function approximation</strong> - approximating <code>Q(s, a)</code>, often by a function combining various features, rather than storing one value for every state-action pair.</p><h3 id=unsupervised-learning>Unsupervised Learning</h3><p>given input data without any additional feedback, learn pattern.</p><p><strong>clustering</strong> organizing a set of objects into groups in such a way that similar objects tend to be in the same group.</p><p><strong>k-means clustering</strong> - algorithm for clustering data based on repeatedly assigning points to clusters and updating those cluster&rsquo;s centers.</p><h2 id=neural-networks>Neural Networks</h2><p><a href=https://cs50.harvard.edu/ai/2020/notes/5/>notes</a></p><ul><li>Neurons are connected to and receive electrical signals from other neurons.</li><li>Neurons process input signals and can be activated.</li></ul><p><code>pip install tensorflow-macos</code></p><p><strong>Artificial Neural Network</strong> - mathematical model for learning inspired by biological neural networks:</p><ul><li>Model mathematical function from input to outputs based on the structure and parameters of the network.</li><li>Allow for learning the network&rsquo;s parameters based on data.</li></ul><p><strong>activation function</strong> - function that gets applied to the result and decides whether a threshold is passed (e.g. &ldquo;it rains or not&rdquo;).</p><p>Schematics for a very simple neural network:</p><pre><code>     w0
      |
 x1 \ |
      g(w0 + w1*x1 + w2*x2)
 x2 /
-</code></pre>
-<p>Neural network will learn what the values of <code>w0</code>, <code>w1</code> and <code>w2</code> should be in order to get the results that we would expect. General formula <code>g(sum(x_i*w_i) + w0)</code>.</p>
-<p><strong>gradient descent</strong> - algorithm for minimizing loss when training neural network. Gradient is going to tell us in which direction we should be moving the weights in order to minimize the loss.</p>
-<p>General idea:</p>
-<ul>
-<li>Start with a random choice of weights</li>
-<li>Repeat:
-<ul>
-<li>Calculate the gradient based on <strong>all data points</strong>: direction that will lead to decreasing loss (all data points - expensive operation).</li>
-<li>Update weights according to the gradient.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Stochastic Gradient Descent</strong> - s/all data points/one data point randomly/</p>
-<p><strong>Mini-Batch Gradient Descent</strong> - s/all data points/one small batch/</p>
-<p><strong>Perceptron</strong>: a single one is only capable of learning linearly separable decision boundary, because we&rsquo;re taking linear combination of input.</p>
-<p><strong>multilayer neural network</strong> - artificial neural network with an input layer, an output layer, and eat least one hidden layer. Gives us the ability to model more complex function.</p>
-<p><strong>backpropagation</strong>  algorithm for training neural networks with hidden layers. Key algorithm for making neural networks possible. Idea:</p>
-<ul>
-<li>start with a random choice of weights</li>
-<li>Repeat:
-<ul>
-<li>Calculate error for output layer</li>
-<li>For each layer, starting with output layer and moving inwards towards earliest hidden layer:
-<ul>
-<li>Propagate error back one layer.</li>
-<li>Update weights.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>deep neural network</strong> - neural network with multiple hidden layers.</p>
-<p><strong>overfitting</strong></p>
-<p><strong>dropout</strong> - temporarily removing units - selected at random - from a neural network to prevent over reliance on certain units.</p>
-<p><strong>computer vision</strong> computational methods for analyzing and understanding digital images.</p>
-<p><strong>image convolution</strong> - applying a filter that adds each pixel value of an image to its neighbors, weighted according to kernel matrix.</p>
-<p><strong>pooling</strong> reducing the size of an input by sampling from regions in the input. <strong>max-pooling</strong> chooses the maximal value in a each region.</p>
-<p><strong>convolutional neural network</strong> (CNN) - uses convolution, usually for analysing images.</p>
-<p><code>image -&gt; convolution -&gt; pooling -&gt; flatting -&gt; neural network</code></p>
-<p>General structure of NN: <code>input -&gt; network -&gt; output</code>. This is a <strong>feed-forward neural network</strong> - NN that has connections only in one direction. Limitations: fixed shape (number of) input and output neurons.</p>
-<p><strong>Recurrent Neural Network</strong> - generates output that gets feds back into the network as input for future runs of the network:</p>
-<pre><code>              /--\
+</code></pre><p>Neural network will learn what the values of <code>w0</code>, <code>w1</code> and <code>w2</code> should be in order to get the results that we would expect. General formula <code>g(sum(x_i*w_i) + w0)</code>.</p><p><strong>gradient descent</strong> - algorithm for minimizing loss when training neural network. Gradient is going to tell us in which direction we should be moving the weights in order to minimize the loss.</p><p>General idea:</p><ul><li>Start with a random choice of weights</li><li>Repeat:<ul><li>Calculate the gradient based on <strong>all data points</strong>: direction that will lead to decreasing loss (all data points - expensive operation).</li><li>Update weights according to the gradient.</li></ul></li></ul><p><strong>Stochastic Gradient Descent</strong> - s/all data points/one data point randomly/</p><p><strong>Mini-Batch Gradient Descent</strong> - s/all data points/one small batch/</p><p><strong>Perceptron</strong>: a single one is only capable of learning linearly separable decision boundary, because we&rsquo;re taking linear combination of input.</p><p><strong>multilayer neural network</strong> - artificial neural network with an input layer, an output layer, and eat least one hidden layer. Gives us the ability to model more complex function.</p><p><strong>backpropagation</strong> algorithm for training neural networks with hidden layers. Key algorithm for making neural networks possible. Idea:</p><ul><li>start with a random choice of weights</li><li>Repeat:<ul><li>Calculate error for output layer</li><li>For each layer, starting with output layer and moving inwards towards earliest hidden layer:<ul><li>Propagate error back one layer.</li><li>Update weights.</li></ul></li></ul></li></ul><p><strong>deep neural network</strong> - neural network with multiple hidden layers.</p><p><strong>overfitting</strong></p><p><strong>dropout</strong> - temporarily removing units - selected at random - from a neural network to prevent over reliance on certain units.</p><p><strong>computer vision</strong> computational methods for analyzing and understanding digital images.</p><p><strong>image convolution</strong> - applying a filter that adds each pixel value of an image to its neighbors, weighted according to kernel matrix.</p><p><strong>pooling</strong> reducing the size of an input by sampling from regions in the input. <strong>max-pooling</strong> chooses the maximal value in a each region.</p><p><strong>convolutional neural network</strong> (CNN) - uses convolution, usually for analysing images.</p><p><code>image -> convolution -> pooling -> flatting -> neural network</code></p><p>General structure of NN: <code>input -> network -> output</code>. This is a <strong>feed-forward neural network</strong> - NN that has connections only in one direction. Limitations: fixed shape (number of) input and output neurons.</p><p><strong>Recurrent Neural Network</strong> - generates output that gets feds back into the network as input for future runs of the network:</p><pre><code>              /--\
              v    |
     input -&gt; network -&gt; output
-</code></pre>
-<p>This allows to store state. This is particularly helpful when dealing with sequences of data.</p>
-<p>Example: Microsoft&rsquo;s Captionbot or analyzing videos.</p>
-<p>1 -&gt; N relationships as opposed to 1:1 from before.</p>
-<p>N -&gt; 1: e.g. classification of a voice from a audio sample</p>
-<p>N -&gt; N: e.g. google translate</p>
-<h2 id="human-language">Human Language</h2>
-<p>Common tasks:</p>
-<ul>
-<li>automatic summarization</li>
-<li>information extraction</li>
-<li>language identification</li>
-<li>machine translation</li>
-<li>named entity recognition</li>
-<li>speech recognition (Alexa)</li>
-<li>text classification</li>
-<li>word sense disambiguation</li>
-<li>&hellip;</li>
-</ul>
-<p><strong>syntax</strong> - structure</p>
-<p><strong>semantics</strong> - meaning</p>
-<p><strong>formal grammar</strong> a system of rules for generating sentences in a language.</p>
-<h3 id="context-free-grammar">Context-Free Grammar</h3>
-<p>Replacing one symbol with another symbol.</p>
-<p>Non-terminal symbols (noun - <code>N</code>, verb - <code>V</code>) are used to generate terminal symbols (&ldquo;she&rdquo;, &ldquo;saw&rdquo;).</p>
-<p>On the left we have always a non-terminal symbol, on the right of the arrow it could be either terminal or non-terminal symbols. E.g. <code>NP -&gt; N | D N</code>.</p>
-<p><code>pip install nltk</code></p>
-<h3 id="n-gram">n-gram</h3>
-<p>a contiguous sequence of <code>n</code> items from a sample text. e.g.: character n-grams or word n-grams.</p>
-<p><strong>unigram</strong> - a contiguous sentence of 1 item from a sample text.</p>
-<p><strong>bigram</strong> - &hellip; 2 items &hellip;</p>
-<p><strong>trigrams</strong> - &hellip; 3 items &hellip;</p>
-<p>Allows for segmentation of the text for analysis and while the AI might have not seen the whole sentence before, it is likely that it has encountered a N-gram from it before.</p>
-<h4 id="tokenization">tokenization</h4>
-<p>the task of splitting a sequence of characters into pieces (tokens). E.g. to extra n-grams.</p>
-<p><strong>word tokenizations</strong> - splitting into words.</p>
-<h4 id="markov-model">Markov Model</h4>
-<p>It will allow us to predict what the next unit will be.</p>
-<p><code>pip install markovify</code></p>
-<h3 id="text-categorization">Text Categorization</h3>
-<p>a classification problem. E.g. spam/not spam. Positive / negative sentiment.</p>
-<p><strong>Bag-of-Words</strong> -model that represents text as unordered collection of words. Works pretty well for positive/negative sentiment approach.</p>
-<h3 id="naive-bayes">Naive Bayes</h3>
-<p>How to not worry about multiplying by zero:</p>
-<ul>
-<li><strong>additive smoothing</strong> - adding a value <code>alfa</code> to each value in our distribution to smooth the data.</li>
-<li><strong>Laplace smoothing</strong> - adding 1 to each value in our distribution, pretending that we&rsquo;ve seen each value one more time than we actually have.</li>
-</ul>
-<p>Naive Bayes basically looks for differentiating words (which have a big weight in one category and not so in others).</p>
-<h3 id="information-retrieval">Information Retrieval</h3>
-<p>the task of finding relevant documents in response to a query.</p>
-<p><strong>topic modeling</strong> - models for discovering the topics for a set of documents. What are the important documents in a word?</p>
-<h4 id="tf-idf">tf-idf</h4>
-<p><strong>term frequency</strong> - number of times a term appears in a document.</p>
-<p><strong>function words</strong> - words that have little meaning on their own, but are used to grammatically connect other words. E.g.: <code>am, by do, is , which, with, yet...</code>.</p>
-<p><strong>content words</strong> - words that carry meaning independently. E.g.: <code>algorithm, category, computer, ...</code></p>
-<p><strong>inverse document frequency</strong> - measure of how common or rare a word is across documents. Form: <code>log(totalNumberOfDocuments/numberOfDocumentsContaining(word))</code>.</p>
-<p><strong>tf-idf</strong> - ranking of what are important in a document by multiplying term frequency (TF) by inverse document frequency (IDF).</p>
-<h3 id="semantics">Semantics</h3>
-<p><strong>information extraction</strong> - the task of extracting knowledge from documents.</p>
-<p><strong>WordNet</strong></p>
-<h4 id="word-representation">Word Representation</h4>
-<p><strong>one-hot representation</strong> - representation of meaning as a vector of single 1, and with other values as 0.</p>
-<p><strong>distributed representation</strong> - representation of meaning distributed across multiple values.</p>
-<blockquote>
-<p>You shall know a word by the company it keeps &ndash; J.R. Firth, 1957</p>
-</blockquote>
-<p><strong>word2vec</strong> - model for generating word vectors</p>
-<p><strong>skip-gram architecture</strong> - neural network architecture for predicting context words giving a target word.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
-
-    <div class="music">
-      
-    </div>
-  </div>
-
-  <footer class="post-footer">
-    
-
-    
-    <p class="post-tags">
-      <hr>
-      Tags: <i class="fas fa-tags"></i>
-      
-        <a href="/tags/it">IT</a>
-        &nbsp;
-      
-    </p>
-    
-  </footer>
-  
-</article>
-
-
-    
-    </div>
-</body>
-</html>
+</code></pre><p>This allows to store state. This is particularly helpful when dealing with sequences of data.</p><p>Example: Microsoft&rsquo;s Captionbot or analyzing videos.</p><p>1 -> N relationships as opposed to 1:1 from before.</p><p>N -> 1: e.g. classification of a voice from a audio sample</p><p>N -> N: e.g. google translate</p><h2 id=human-language>Human Language</h2><p>Common tasks:</p><ul><li>automatic summarization</li><li>information extraction</li><li>language identification</li><li>machine translation</li><li>named entity recognition</li><li>speech recognition (Alexa)</li><li>text classification</li><li>word sense disambiguation</li><li>&mldr;</li></ul><p><strong>syntax</strong> - structure</p><p><strong>semantics</strong> - meaning</p><p><strong>formal grammar</strong> a system of rules for generating sentences in a language.</p><h3 id=context-free-grammar>Context-Free Grammar</h3><p>Replacing one symbol with another symbol.</p><p>Non-terminal symbols (noun - <code>N</code>, verb - <code>V</code>) are used to generate terminal symbols (&ldquo;she&rdquo;, &ldquo;saw&rdquo;).</p><p>On the left we have always a non-terminal symbol, on the right of the arrow it could be either terminal or non-terminal symbols. E.g. <code>NP -> N | D N</code>.</p><p><code>pip install nltk</code></p><h3 id=n-gram>n-gram</h3><p>a contiguous sequence of <code>n</code> items from a sample text. e.g.: character n-grams or word n-grams.</p><p><strong>unigram</strong> - a contiguous sentence of 1 item from a sample text.</p><p><strong>bigram</strong> - &mldr; 2 items &mldr;</p><p><strong>trigrams</strong> - &mldr; 3 items &mldr;</p><p>Allows for segmentation of the text for analysis and while the AI might have not seen the whole sentence before, it is likely that it has encountered a N-gram from it before.</p><h4 id=tokenization>tokenization</h4><p>the task of splitting a sequence of characters into pieces (tokens). E.g. to extra n-grams.</p><p><strong>word tokenizations</strong> - splitting into words.</p><h4 id=markov-model>Markov Model</h4><p>It will allow us to predict what the next unit will be.</p><p><code>pip install markovify</code></p><h3 id=text-categorization>Text Categorization</h3><p>a classification problem. E.g. spam/not spam. Positive / negative sentiment.</p><p><strong>Bag-of-Words</strong> -model that represents text as unordered collection of words. Works pretty well for positive/negative sentiment approach.</p><h3 id=naive-bayes>Naive Bayes</h3><p>How to not worry about multiplying by zero:</p><ul><li><strong>additive smoothing</strong> - adding a value <code>alfa</code> to each value in our distribution to smooth the data.</li><li><strong>Laplace smoothing</strong> - adding 1 to each value in our distribution, pretending that we&rsquo;ve seen each value one more time than we actually have.</li></ul><p>Naive Bayes basically looks for differentiating words (which have a big weight in one category and not so in others).</p><h3 id=information-retrieval>Information Retrieval</h3><p>the task of finding relevant documents in response to a query.</p><p><strong>topic modeling</strong> - models for discovering the topics for a set of documents. What are the important documents in a word?</p><h4 id=tf-idf>tf-idf</h4><p><strong>term frequency</strong> - number of times a term appears in a document.</p><p><strong>function words</strong> - words that have little meaning on their own, but are used to grammatically connect other words. E.g.: <code>am, by do, is , which, with, yet...</code>.</p><p><strong>content words</strong> - words that carry meaning independently. E.g.: <code>algorithm, category, computer, ...</code></p><p><strong>inverse document frequency</strong> - measure of how common or rare a word is across documents. Form: <code>log(totalNumberOfDocuments/numberOfDocumentsContaining(word))</code>.</p><p><strong>tf-idf</strong> - ranking of what are important in a document by multiplying term frequency (TF) by inverse document frequency (IDF).</p><h3 id=semantics>Semantics</h3><p><strong>information extraction</strong> - the task of extracting knowledge from documents.</p><p><strong>WordNet</strong></p><h4 id=word-representation>Word Representation</h4><p><strong>one-hot representation</strong> - representation of meaning as a vector of single 1, and with other values as 0.</p><p><strong>distributed representation</strong> - representation of meaning distributed across multiple values.</p><blockquote><p>You shall know a word by the company it keeps &ndash; J.R. Firth, 1957</p></blockquote><p><strong>word2vec</strong> - model for generating word vectors</p><p><strong>skip-gram architecture</strong> - neural network architecture for predicting context words giving a target word.</p><div class=music></div></div><footer class=post-footer><p class=post-tags><hr>Tags: <i class="fas fa-tags"></i>
+<a href=/tags/it>IT</a>
+&nbsp;</p></footer></article></div></body></html>

@@ -1,302 +1,93 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-<title>Docker Workshop</title>
-
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/reveal-js/dist/reset.css">
-<link rel="stylesheet" href="/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/reveal-hugo/themes/robot-lung.css" id="theme"><link rel="stylesheet" href="/highlight-js/default.min.css">
-  </head>
-  <body>
-    
-    <div class="reveal">
-      <div class="slides">
-  
-
-    <section><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h1 id="docker-workshop">Docker Workshop</h1>
-<p><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker logo"></p>
-<ul>
-<li><a href="mailto:martin.uzak@mailbox.org">Martin Užák</a></li>
-<li>2023-06-26</li>
-</ul>
-</section><section>
-<h1 id="introduction-and-expectations">Introduction and expectations</h1>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-</section><section>
-<h1 id="structure--goals">Structure &amp; Goals</h1>
-<ul>
-<li>What and why?</li>
-<li>How?
-<ul>
-<li>Installation</li>
-<li>User (Containers, Images, Networks, Volumes)</li>
-<li>Developer
-<ul>
-<li>Dockerfile</li>
-<li>docker-compose</li>
-</ul>
-</li>
-<li>Advanced Recipes
-<ul>
-<li>Moving images around (repos)</li>
-<li>Inspecting / editing an image</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Summary</li>
-</ul>
-</section><section>
-
-
-<section data-shortcode-section>
-<h1 id="what-and-why">What and Why?</h1>
-<ul>
-<li>What is docker?</li>
-<li>What is a container?</li>
-</ul>
-</section><section>
-<h1 id="why">Why?</h1>
-<ul>
-<li>Eliminate dependency hell.
-<ul>
-<li>Reduce requirements to stating required: <strong>CPU, RAM</strong> and storage.</li>
-</ul>
-</li>
-<li>Package, containerize, <strong>ship and run everywhere</strong>, anytime and <strong>at any scale</strong>.</li>
-</ul>
-</section><section>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h1 id="basic-concepts">Basic Concepts</h1>
-<ul>
-<li>Images - contains code to be executed. Similar to a statically-linked program.</li>
-<li>Containers - a running image. Something like a process.</li>
-<li>Registry - holds images</li>
-<li>Dockerfile - recipe to cook a image.</li>
-</ul>
-
-</section>
-</section><section>
-<h1 id="how-to">How-to</h1>
-<h2 id="practical-part">Practical Part</h2>
-</section><section>
-<h1 id="installation">Installation</h1>
-<p>Ubuntu Linux:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>sudo apt install docker.io docker-compose                             
-</span></span><span style="display:flex;"><span>sudo usermod -a -G docker $USER             <span style="color:#75715e"># re-login or restart</span>
-</span></span></code></pre></div><p>Mac:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>brew install --cask docker
-</span></span></code></pre></div><p>Windows: good luck! &hellip;</p>
-<pre tabindex="0"><code>choco install docker-desktop
-</code></pre></section><section>
-
-
-<section data-shortcode-section>
-<h3 id="first-steps-docker-for-users">First steps: Docker for Users</h3>
-<p>Let&rsquo;s run some containers:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run hello-world                  <span style="color:#75715e"># execute image&#39;s default CMD</span>
-</span></span><span style="display:flex;"><span>docker run debian cat /etc/os-release   <span style="color:#75715e"># execute specific command</span>
-</span></span><span style="display:flex;"><span>docker run -it debian                   <span style="color:#75715e"># interactive TTY</span>
-</span></span></code></pre></div><ul>
-<li>Now install htop (<code>apt update &amp;&amp; apt install -y htop</code>), run it and watch the processes.</li>
-<li>Run the image again to see there will be no htop installed!</li>
-</ul>
-</section><section>
-<h3 id="finding-images">Finding Images</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker search mysql
-</span></span></code></pre></div><ul>
-<li>Or use search at <a href="https://hub.docker.com/search?q=">docker hub</a>.</li>
-<li>TASK: run mysql</li>
-</ul>
-</section><section>
-<h3 id="container-mgmt">Container mgmt</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker ps                               <span style="color:#75715e"># list running containers</span>
-</span></span><span style="display:flex;"><span>docker ps -a                            <span style="color:#75715e"># list all containers</span>
-</span></span><span style="display:flex;"><span>docker stop    CONTAINER_ID
-</span></span><span style="display:flex;"><span>docker restart CONTAINER_ID
-</span></span><span style="display:flex;"><span>docker kill    CONTAINER_ID
-</span></span><span style="display:flex;"><span>docker rm      CONTAINER_ID             <span style="color:#75715e"># remove a container</span>
-</span></span></code></pre></div><ul>
-<li>TASK: restart the MySQL container</li>
-<li>TASK: connect to the MySQL container</li>
-</ul>
-</section><section>
-<h3 id="solution">Solution</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it mysql bash          <span style="color:#75715e"># execute `bash` in a running container</span>
-</span></span><span style="display:flex;"><span>mysql -h 127.0.0.1 -p
-</span></span></code></pre></div><ul>
-<li>TASK: now get rid the container</li>
-<li>Q: was the data we entered through the console saved?</li>
-</ul>
-</section><section>
-<h4 id="images">Images</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker pull ubuntu:20.04        <span style="color:#75715e"># use a tag</span>
-</span></span><span style="display:flex;"><span>docker images 
-</span></span><span style="display:flex;"><span>docker rmi ubuntu:20.04
-</span></span></code></pre></div><ul>
-<li>BTW <code>docker run</code> does automatically a pull if it doesn&rsquo;t find the image.</li>
-<li>Default tag: <code>latest</code></li>
-</ul>
-</section><section>
-<h4 id="maintenance">Maintenance</h4>
-<ul>
-<li>Q: how to find out the size of the docker images (can be a lot)?</li>
-<li>Q: how to remove unused docker images?</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker system df
-</span></span><span style="display:flex;"><span>docker system prune
-</span></span><span style="display:flex;"><span>docker system info
-</span></span></code></pre></div></section><section>
-<h3 id="volumes">Volumes</h3>
-<p>Let&rsquo;s persist the data</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span>pw mysql
-</span></span><span style="display:flex;"><span>docker stop mysql
-</span></span><span style="display:flex;"><span>docker logs mysql
-</span></span><span style="display:flex;"><span>docker logs mysql --since 10m
-</span></span><span style="display:flex;"><span>docker rm mysql
-</span></span></code></pre></div><p>We can mount in read-only mode too:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run -ti -v /etc/passwd:/tmp/passwd:ro busybox sh
-</span></span></code></pre></div></section><section>
-<h3 id="networks">Networks</h3>
-<ul>
-<li>Our mysql container is not reachable from outside and thus rather useless. Let&rsquo;s fix this:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run -d -p 3306:3306 --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span>pw mysql
-</span></span><span style="display:flex;"><span>mysql -h 127.0.0.1 -p -u root
-</span></span></code></pre></div><ul>
-<li><a href="https://docs.docker.com/network/drivers/">network drivers</a>:
-<ul>
-<li>bridge (default). Each container gets its own network stack. Needs port forwarding.</li>
-<li>host - container and host share the same network and ports.</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>curl localhost        <span style="color:#75715e"># should fail</span>
-</span></span><span style="display:flex;"><span>docker run --rm -d --network host --name my_nginx nginx
-</span></span><span style="display:flex;"><span>curl localhost        <span style="color:#75715e"># should work </span>
-</span></span></code></pre></div></section><section>
-<h4 id="some-switches">Some switches</h4>
-<pre><code>-ti             # allocate terminal; interactive
+<!doctype html><html lang=en><head><meta charset=utf-8><title>Docker Workshop</title><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black-translucent"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=/reveal-js/dist/reset.css><link rel=stylesheet href=/reveal-js/dist/reveal.css><link rel=stylesheet href=/reveal-hugo/themes/robot-lung.css id=theme><link rel=stylesheet href=/highlight-js/default.min.css></head><body><div class=reveal><div class=slides><section><h1 id=docker-workshop>Docker Workshop</h1><p><img src=https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png alt="Docker logo"></p><ul><li><a href=mailto:martin.uzak@mailbox.org>Martin Užák</a></li><li>2023-06-26</li></ul></section><section><h1 id=introduction-and-expectations>Introduction and expectations</h1></section><section><h1 id=structure--goals>Structure & Goals</h1><ul><li>What and why?</li><li>How?<ul><li>Installation</li><li>User (Containers, Images, Networks, Volumes)</li><li>Developer<ul><li>Dockerfile</li><li>docker-compose</li></ul></li><li>Advanced Recipes<ul><li>Moving images around (repos)</li><li>Inspecting / editing an image</li></ul></li></ul></li><li>Summary</li></ul></section><section><section data-shortcode-section><h1 id=what-and-why>What and Why?</h1><ul><li>What is docker?</li><li>What is a container?</li></ul></section><section><h1 id=why>Why?</h1><ul><li>Eliminate dependency hell.<ul><li>Reduce requirements to stating required: <strong>CPU, RAM</strong> and storage.</li></ul></li><li>Package, containerize, <strong>ship and run everywhere</strong>, anytime and <strong>at any scale</strong>.</li></ul></section><section><h1 id=basic-concepts>Basic Concepts</h1><ul><li>Images - contains code to be executed. Similar to a statically-linked program.</li><li>Containers - a running image. Something like a process.</li><li>Registry - holds images</li><li>Dockerfile - recipe to cook a image.</li></ul></section></section><section><h1 id=how-to>How-to</h1><h2 id=practical-part>Practical Part</h2></section><section><h1 id=installation>Installation</h1><p>Ubuntu Linux:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>sudo apt install docker.io docker-compose                             
+</span></span><span style=display:flex><span>sudo usermod -a -G docker $USER             <span style=color:#75715e># re-login or restart</span>
+</span></span></code></pre></div><p>Mac:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>brew install --cask docker
+</span></span></code></pre></div><p>Windows: good luck! &mldr;</p><pre tabindex=0><code>choco install docker-desktop
+</code></pre></section><section><section data-shortcode-section><h3 id=first-steps-docker-for-users>First steps: Docker for Users</h3><p>Let&rsquo;s run some containers:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker run hello-world                  <span style=color:#75715e># execute image&#39;s default CMD</span>
+</span></span><span style=display:flex><span>docker run debian cat /etc/os-release   <span style=color:#75715e># execute specific command</span>
+</span></span><span style=display:flex><span>docker run -it debian                   <span style=color:#75715e># interactive TTY</span>
+</span></span></code></pre></div><ul><li>Now install htop (<code>apt update && apt install -y htop</code>), run it and watch the processes.</li><li>Run the image again to see there will be no htop installed!</li></ul></section><section><h3 id=finding-images>Finding Images</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker search mysql
+</span></span></code></pre></div><ul><li>Or use search at <a href="https://hub.docker.com/search?q=">docker hub</a>.</li><li>TASK: run mysql</li></ul></section><section><h3 id=container-mgmt>Container mgmt</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker ps                               <span style=color:#75715e># list running containers</span>
+</span></span><span style=display:flex><span>docker ps -a                            <span style=color:#75715e># list all containers</span>
+</span></span><span style=display:flex><span>docker stop    CONTAINER_ID
+</span></span><span style=display:flex><span>docker restart CONTAINER_ID
+</span></span><span style=display:flex><span>docker kill    CONTAINER_ID
+</span></span><span style=display:flex><span>docker rm      CONTAINER_ID             <span style=color:#75715e># remove a container</span>
+</span></span></code></pre></div><ul><li>TASK: restart the MySQL container</li><li>TASK: connect to the MySQL container</li></ul></section><section><h3 id=solution>Solution</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker exec -it mysql bash          <span style=color:#75715e># execute `bash` in a running container</span>
+</span></span><span style=display:flex><span>mysql -h 127.0.0.1 -p
+</span></span></code></pre></div><ul><li>TASK: now get rid the container</li><li>Q: was the data we entered through the console saved?</li></ul></section><section><h4 id=images>Images</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker pull ubuntu:20.04        <span style=color:#75715e># use a tag</span>
+</span></span><span style=display:flex><span>docker images 
+</span></span><span style=display:flex><span>docker rmi ubuntu:20.04
+</span></span></code></pre></div><ul><li>BTW <code>docker run</code> does automatically a pull if it doesn&rsquo;t find the image.</li><li>Default tag: <code>latest</code></li></ul></section><section><h4 id=maintenance>Maintenance</h4><ul><li>Q: how to find out the size of the docker images (can be a lot)?</li><li>Q: how to remove unused docker images?</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker system df
+</span></span><span style=display:flex><span>docker system prune
+</span></span><span style=display:flex><span>docker system info
+</span></span></code></pre></div></section><section><h3 id=volumes>Volumes</h3><p>Let&rsquo;s persist the data</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker run --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style=color:#f92672>=</span>pw mysql
+</span></span><span style=display:flex><span>docker stop mysql
+</span></span><span style=display:flex><span>docker logs mysql
+</span></span><span style=display:flex><span>docker logs mysql --since 10m
+</span></span><span style=display:flex><span>docker rm mysql
+</span></span></code></pre></div><p>We can mount in read-only mode too:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker run -ti -v /etc/passwd:/tmp/passwd:ro busybox sh
+</span></span></code></pre></div></section><section><h3 id=networks>Networks</h3><ul><li>Our mysql container is not reachable from outside and thus rather useless. Let&rsquo;s fix this:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker run -d -p 3306:3306 --name mysql -v ~/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD<span style=color:#f92672>=</span>pw mysql
+</span></span><span style=display:flex><span>mysql -h 127.0.0.1 -p -u root
+</span></span></code></pre></div><ul><li><a href=https://docs.docker.com/network/drivers/>network drivers</a>:<ul><li>bridge (default). Each container gets its own network stack. Needs port forwarding.</li><li>host - container and host share the same network and ports.</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>curl localhost        <span style=color:#75715e># should fail</span>
+</span></span><span style=display:flex><span>docker run --rm -d --network host --name my_nginx nginx
+</span></span><span style=display:flex><span>curl localhost        <span style=color:#75715e># should work </span>
+</span></span></code></pre></div></section><section><h4 id=some-switches>Some switches</h4><pre><code>-ti             # allocate terminal; interactive
 --name  NAME    # set a NAME for the container instead of a generated one
 -d              # run on the background (daemon)
 -e VAR=VALUE    # set environment `VAR` to `VALUE`. 
 --env-file FILE # set the environment values from a `FILE`. 
 --rm            # automatically remove container when it exists
-</code></pre>
-<ul>
-<li>More switches: <code>man docker-run</code></li>
-<li>Less switches (recommended): <code>tldr docker-run</code></li>
-</ul>
-</section><section>
-<h1 id="qa">Q&amp;A?</h1>
-
-</section>
-</section><section>
-<h1 id="docker-for-developers">Docker for Developers</h1>
-</section><section>
-
-
-<section data-shortcode-section>
-<h3 id="dockerfile">Dockerfile</h3>
-<ul>
-<li><code>Dockerfile</code> - recipe to cook our own image.</li>
-<li>Let&rsquo;s clone the <a href="https://github.com/dockersamples/helloworld-demo-node">project</a> and dockerize:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> node:20-alpine</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> node</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> node app.js<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>Let&rsquo;s use it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker build -t helloworld-demo-node .
-</span></span><span style="display:flex;"><span>docker run -d -p 8080:8080 helloworld-demo-node
-</span></span><span style="display:flex;"><span>curl localhost:8080
-</span></span></code></pre></div></section><section>
-<h4 id="dockerfile-contd">Dockerfile cont&rsquo;d</h4>
-<ul>
-<li>Dockerfile commands <a href="https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index">cheat-sheet</a></li>
-<li>Some more commands:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker tag SOURCE_IMAGE TARGET_IMAGE    <span style="color:#75715e"># create a new tag (keeps old)</span>
-</span></span><span style="display:flex;"><span>docker rmi OLD_TAG                      <span style="color:#75715e"># remove a tag / image</span>
-</span></span><span style="display:flex;"><span>docker build --platform linux/arm64     <span style="color:#75715e"># cross build for Apple M1/M2</span>
-</span></span><span style="display:flex;"><span>docker build -f DOCKERFILE .            <span style="color:#75715e"># if we have multiple Dockerfiles</span>
-</span></span></code></pre></div><ul>
-<li>Q: how do we verify that we have tagged an image with a new tag?</li>
-</ul>
-</section><section>
-<h3 id="multistage-build">Multistage Build</h3>
-<ul>
-<li>Let&rsquo;s do the same for <a href="https://github.com/dockersamples/helloworld-go-demo">golang</a>:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> go.mod go.sum ./<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go mod download<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> *.go ./<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux go build -o /main<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/main&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><ul>
-<li>Now let&rsquo;s build and run it:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker build -f Dockerfile -t helloworld-go-demo .
-</span></span><span style="display:flex;"><span>docker run -p 8080:8080 helloworld-go-demo
-</span></span><span style="display:flex;"><span>docker images | grep helloworld         <span style="color:#75715e"># 913MB ...</span>
-</span></span></code></pre></div><ul>
-<li>There must be a better way &hellip;</li>
-</ul>
-</section><section>
-<h3 id="multistage-build-contd">Multistage Build cont&rsquo;d</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang AS build-stage</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> go.mod go.sum ./<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go mod download<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> *.go ./<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux go build -o /main<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run the tests in the container</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> build-stage AS run-test-stage</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go test -v ./...<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Deploy the application binary into a lean image</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> gcr.io/distroless/base-debian11 AS build-release-stage</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>build-stage /main /main<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> nonroot:nonroot</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/main&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>And check it out:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker build -f Dockerfile.multistage -t helloworld-go-demo-light .
-</span></span><span style="display:flex;"><span>docker images | grep helloworld                 <span style="color:#75715e"># 27 MB!</span>
-</span></span><span style="display:flex;"><span>curl localhost:8080                             <span style="color:#75715e"># make sure it still works</span>
-</span></span></code></pre></div>
-</section>
-</section><section>
-
-
-<section data-shortcode-section>
-<h4 id="docker-compose">docker-compose</h4>
-<ul>
-<li>Rule: <strong>one process per container</strong></li>
-<li>How to accommodate multiple services?</li>
-</ul>
-</section><section>
-<h4 id="example-counter-apphttpsgithubcomnigelpoultoncounter-app">Example: <a href="https://github.com/nigelpoulton/counter-app">counter-app</a></h4>
-<pre tabindex="0"><code>version: &#34;3.5&#34;
+</code></pre><ul><li>More switches: <code>man docker-run</code></li><li>Less switches (recommended): <code>tldr docker-run</code></li></ul></section><section><h1 id=qa>Q&amp;A?</h1></section></section><section><h1 id=docker-for-developers>Docker for Developers</h1></section><section><section data-shortcode-section><h3 id=dockerfile>Dockerfile</h3><ul><li><code>Dockerfile</code> - recipe to cook our own image.</li><li>Let&rsquo;s clone the <a href=https://github.com/dockersamples/helloworld-demo-node>project</a> and dockerize:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> node:20-alpine</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span><span style=color:#e6db74> /usr/src/app</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>USER</span><span style=color:#e6db74> node</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> . .<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>EXPOSE</span><span style=color:#e6db74> 8080</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> node app.js<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>Let&rsquo;s use it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker build -t helloworld-demo-node .
+</span></span><span style=display:flex><span>docker run -d -p 8080:8080 helloworld-demo-node
+</span></span><span style=display:flex><span>curl localhost:8080
+</span></span></code></pre></div></section><section><h4 id=dockerfile-contd>Dockerfile cont&rsquo;d</h4><ul><li>Dockerfile commands <a href=https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index>cheat-sheet</a></li><li>Some more commands:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker tag SOURCE_IMAGE TARGET_IMAGE    <span style=color:#75715e># create a new tag (keeps old)</span>
+</span></span><span style=display:flex><span>docker rmi OLD_TAG                      <span style=color:#75715e># remove a tag / image</span>
+</span></span><span style=display:flex><span>docker build --platform linux/arm64     <span style=color:#75715e># cross build for Apple M1/M2</span>
+</span></span><span style=display:flex><span>docker build -f DOCKERFILE .            <span style=color:#75715e># if we have multiple Dockerfiles</span>
+</span></span></code></pre></div><ul><li>Q: how do we verify that we have tagged an image with a new tag?</li></ul></section><section><h3 id=multistage-build>Multistage Build</h3><ul><li>Let&rsquo;s do the same for <a href=https://github.com/dockersamples/helloworld-go-demo>golang</a>:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> golang</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span><span style=color:#e6db74> /app</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> go.mod go.sum ./<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> go mod download<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> *.go ./<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> CGO_ENABLED<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> GOOS<span style=color:#f92672>=</span>linux go build -o /main<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>EXPOSE</span><span style=color:#e6db74> 8080</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>ENTRYPOINT</span> [<span style=color:#e6db74>&#34;/main&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><ul><li>Now let&rsquo;s build and run it:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker build -f Dockerfile -t helloworld-go-demo .
+</span></span><span style=display:flex><span>docker run -p 8080:8080 helloworld-go-demo
+</span></span><span style=display:flex><span>docker images | grep helloworld         <span style=color:#75715e># 913MB ...</span>
+</span></span></code></pre></div><ul><li>There must be a better way &mldr;</li></ul></section><section><h3 id=multistage-build-contd>Multistage Build cont&rsquo;d</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> golang AS build-stage</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span><span style=color:#e6db74> /app</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> go.mod go.sum ./<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> go mod download<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> *.go ./<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> CGO_ENABLED<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> GOOS<span style=color:#f92672>=</span>linux go build -o /main<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Run the tests in the container</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> build-stage AS run-test-stage</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> go test -v ./...<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Deploy the application binary into a lean image</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> gcr.io/distroless/base-debian11 AS build-release-stage</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span><span style=color:#e6db74> /</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> --from<span style=color:#f92672>=</span>build-stage /main /main<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>EXPOSE</span><span style=color:#e6db74> 8080</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>USER</span><span style=color:#e6db74> nonroot:nonroot</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>ENTRYPOINT</span> [<span style=color:#e6db74>&#34;/main&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>And check it out:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker build -f Dockerfile.multistage -t helloworld-go-demo-light .
+</span></span><span style=display:flex><span>docker images | grep helloworld                 <span style=color:#75715e># 27 MB!</span>
+</span></span><span style=display:flex><span>curl localhost:8080                             <span style=color:#75715e># make sure it still works</span>
+</span></span></code></pre></div></section></section><section><section data-shortcode-section><h4 id=docker-compose>docker-compose</h4><ul><li>Rule: <strong>one process per container</strong></li><li>How to accommodate multiple services?</li></ul></section><section><h4 id=example-counter-apphttpsgithubcomnigelpoultoncounter-app>Example: <a href=https://github.com/nigelpoulton/counter-app>counter-app</a></h4><pre tabindex=0><code>version: &#34;3.5&#34;
 
 services:
   web-fe:
@@ -321,587 +112,25 @@ networks:
 
 volumes:
   counter-vol:
-</code></pre></section><section>
-<h3 id="docker-compose-contd">docker-compose cont&rsquo;d</h3>
-<ul>
-<li>Usage:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker-compose up 
-</span></span><span style="display:flex;"><span>docker-compose up -d
-</span></span><span style="display:flex;"><span>docker-compose down
-</span></span></code></pre></div><ul>
-<li>A more complicated example <a href="https://github.com/dockersamples/example-voting-app/blob/main/docker-compose.yml">docker-compose.yaml</a>
-<ul>
-<li>Check out shortcuts for <code>volumes</code> and <code>ports</code>.</li>
-</ul>
-</li>
-<li>Useful for orchestration of tests / experiments.</li>
-<li>For production, if scaling is required, use kubernetes.</li>
-</ul>
-</section><section>
-<h1 id="qa">Q&amp;A?</h1>
-
-</section>
-</section><section>
-
-
-<section data-shortcode-section>
-<h2 id="advanced-recipes">Advanced Recipes</h2>
-</section><section>
-<h3 id="moving-images-around--repositories">Moving images around / Repositories</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker save IMAGE &gt; image.tar
-</span></span><span style="display:flex;"><span>docker load &lt; image.tar
-</span></span></code></pre></div><ul>
-<li>Or push it to a temporary storage: <a href="https://ttl.sh/">https://ttl.sh/</a> (DANGER: not under your control)</li>
-<li>Or <strong>use a</strong> docker hub / AWS ECR / &hellip; <strong>repository</strong></li>
-<li>TASK: save <code>debian</code> image; remove it from images; load it. Now verify it is there among the images.</li>
-</ul>
-</section><section>
-<h3 id="manually-edit-an-image">Manually edit an image</h3>
-<ul>
-<li>update an image by editing a running container made from it:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker exec -it container-ID bash 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># do your changes</span>
-</span></span><span style="display:flex;"><span>docker commit container-ID image-name
-</span></span></code></pre></div><p>TASK: add the <code>htop</code> package to your debian image</p>
-</section><section>
-<h3 id="inspecting-image">Inspecting Image</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker inspect IMAGE
-</span></span></code></pre></div><ul>
-<li>TASK: what&rsquo;s the command that will be executed in the <code>mysql</code> image? What mounts does it have? What ports does it expose?</li>
-</ul>
-</section><section>
-<h3 id="creating-small-images">Creating Small Images</h3>
-<ul>
-<li>Multistage-builds</li>
-<li>RUN, COPY, ADD - create new layers. Join RUN commands (&amp;&amp;)</li>
-</ul>
-</section><section>
-<h3 id="just-stop-all-stupid-containers">Just stop all stupid containers</h3>
-<ul>
-<li>set restart policy to no to all running dockers and stop them:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker update <span style="color:#e6db74">`</span>docker ps -q<span style="color:#e6db74">`</span> --restart no
-</span></span><span style="display:flex;"><span>docker kill <span style="color:#e6db74">`</span>docker ps -q<span style="color:#e6db74">`</span>
-</span></span></code></pre></div></section><section>
-<h3 id="ctop">ctop</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>docker run --rm -ti <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name<span style="color:#f92672">=</span>ctop <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --volume /var/run/docker.sock:/var/run/docker.sock:ro <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  quay.io/vektorlab/ctop:latest
-</span></span></code></pre></div>
-</section>
-</section><section>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h2 id="resources">Resources</h2>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=zJ6WbK9zFpI">Docker Tutorial for Beginners by KodeKloud</a></li>
-<li><a href="https://github.com/ondrejsika/docker-training">Ondrej Sika&rsquo;s Docker Training</a></li>
-<li><a href="https://docker-curriculum.com/">https://docker-curriculum.com/</a></li>
-<li><a href="https://learnk8s.io/blog/smaller-docker-images">Smaller Docker Images</a></li>
-</ul>
-</section><section>
-<h1 id="final-qa">Final Q&amp;A?</h1>
-</section><section>
-<h1 id="feedback">Feedback</h1>
-<ul>
-<li>What did you like?</li>
-<li>What would you do differently?</li>
-<li>What was missing?</li>
-</ul>
-<p><a href="mailto:martin.uzak@mailbox.org?subject=Docker%20Workshop">email</a></p>
-</section><section>
-<h1 id="thank-you-for-attention">Thank you for attention!</h1>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-</section>
-
-  
-
-
-</div>
-      
-
-    </div>
-<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
-
-
-<script src="/reveal-js/dist/reveal.js"></script>
-
-
-  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
-  
-  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
-  
-  <script type="text/javascript" src="/reveal-js/plugin/zoom/zoom.js"></script>
-  
-  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
-  
-<script type="text/javascript">
-  
-  
-  function camelize(map) {
-    if (map) {
-      Object.keys(map).forEach(function(k) {
-        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
-        if (newK != k) {
-          map[newK] = map[k];
-          delete map[k];
-        }
-      });
-    }
-    return map;
-  }
-
-  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
-  var revealHugoSiteParams = {"custom_theme":"reveal-hugo/themes/robot-lung.css","history":true,"slide_number":true,"theme":"solarized"};
-  var revealHugoPageParams = {};
-
-  var revealHugoPlugins = {
-    
-    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
-  };
-
-  
-  var options = Object.assign({},
-    camelize(revealHugoDefaults),
-    camelize(revealHugoSiteParams),
-    camelize(revealHugoPageParams),
-    camelize(revealHugoPlugins));
-
-  Reveal.initialize(options);
-</script>
-
-
-
-
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-
-
-
-    
-    
-  </body>
-</html>
+</code></pre></section><section><h3 id=docker-compose-contd>docker-compose cont&rsquo;d</h3><ul><li>Usage:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker-compose up 
+</span></span><span style=display:flex><span>docker-compose up -d
+</span></span><span style=display:flex><span>docker-compose down
+</span></span></code></pre></div><ul><li>A more complicated example <a href=https://github.com/dockersamples/example-voting-app/blob/main/docker-compose.yml>docker-compose.yaml</a><ul><li>Check out shortcuts for <code>volumes</code> and <code>ports</code>.</li></ul></li><li>Useful for orchestration of tests / experiments.</li><li>For production, if scaling is required, use kubernetes.</li></ul></section><section><h1 id=qa>Q&amp;A?</h1></section></section><section><section data-shortcode-section><h2 id=advanced-recipes>Advanced Recipes</h2></section><section><h3 id=moving-images-around--repositories>Moving images around / Repositories</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker save IMAGE &gt; image.tar
+</span></span><span style=display:flex><span>docker load &lt; image.tar
+</span></span></code></pre></div><ul><li>Or push it to a temporary storage: <a href=https://ttl.sh/>https://ttl.sh/</a> (DANGER: not under your control)</li><li>Or <strong>use a</strong> docker hub / AWS ECR / &mldr; <strong>repository</strong></li><li>TASK: save <code>debian</code> image; remove it from images; load it. Now verify it is there among the images.</li></ul></section><section><h3 id=manually-edit-an-image>Manually edit an image</h3><ul><li>update an image by editing a running container made from it:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker exec -it container-ID bash 
+</span></span><span style=display:flex><span><span style=color:#75715e># do your changes</span>
+</span></span><span style=display:flex><span>docker commit container-ID image-name
+</span></span></code></pre></div><p>TASK: add the <code>htop</code> package to your debian image</p></section><section><h3 id=inspecting-image>Inspecting Image</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker inspect IMAGE
+</span></span></code></pre></div><ul><li>TASK: what&rsquo;s the command that will be executed in the <code>mysql</code> image? What mounts does it have? What ports does it expose?</li></ul></section><section><h3 id=creating-small-images>Creating Small Images</h3><ul><li>Multistage-builds</li><li>RUN, COPY, ADD - create new layers. Join RUN commands (&&)</li></ul></section><section><h3 id=just-stop-all-stupid-containers>Just stop all stupid containers</h3><ul><li>set restart policy to no to all running dockers and stop them:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker update <span style=color:#e6db74>`</span>docker ps -q<span style=color:#e6db74>`</span> --restart no
+</span></span><span style=display:flex><span>docker kill <span style=color:#e6db74>`</span>docker ps -q<span style=color:#e6db74>`</span>
+</span></span></code></pre></div></section><section><h3 id=ctop>ctop</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>docker run --rm -ti <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --name<span style=color:#f92672>=</span>ctop <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --volume /var/run/docker.sock:/var/run/docker.sock:ro <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  quay.io/vektorlab/ctop:latest
+</span></span></code></pre></div></section></section><section><h2 id=resources>Resources</h2><ul><li><a href="https://www.youtube.com/watch?v=zJ6WbK9zFpI">Docker Tutorial for Beginners by KodeKloud</a></li><li><a href=https://github.com/ondrejsika/docker-training>Ondrej Sika&rsquo;s Docker Training</a></li><li><a href=https://docker-curriculum.com/>https://docker-curriculum.com/</a></li><li><a href=https://learnk8s.io/blog/smaller-docker-images>Smaller Docker Images</a></li></ul></section><section><h1 id=final-qa>Final Q&amp;A?</h1></section><section><h1 id=feedback>Feedback</h1><ul><li>What did you like?</li><li>What would you do differently?</li><li>What was missing?</li></ul><p><a href="mailto:martin.uzak@mailbox.org?subject=Docker%20Workshop">email</a></p></section><section><h1 id=thank-you-for-attention>Thank you for attention!</h1></section></div></div><script type=text/javascript src=/reveal-hugo/object-assign.js></script>
+<script src=/reveal-js/dist/reveal.js></script>
+<script type=text/javascript src=/reveal-js/plugin/markdown/markdown.js></script>
+<script type=text/javascript src=/reveal-js/plugin/highlight/highlight.js></script>
+<script type=text/javascript src=/reveal-js/plugin/zoom/zoom.js></script>
+<script type=text/javascript src=/reveal-js/plugin/notes/notes.js></script>
+<script type=text/javascript>function camelize(e){return e&&Object.keys(e).forEach(function(t){newK=t.replace(/(_\w)/g,function(e){return e[1].toUpperCase()}),newK!=t&&(e[newK]=e[t],delete e[t])}),e}var revealHugoDefaults={center:!0,controls:!0,history:!0,progress:!0,transition:"slide"},revealHugoSiteParams={custom_theme:"reveal-hugo/themes/robot-lung.css",history:!0,slide_number:!0,theme:"solarized"},revealHugoPageParams={},revealHugoPlugins={plugins:[RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]},options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams),camelize(revealHugoPlugins));Reveal.initialize(options)</script></body></html>
