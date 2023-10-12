@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>python_whats_new_3</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Contents</h1>
+<ul>
+<li><a href="#311.html">3.11</a></li>
+<li><a href="#310.html">3.10</a></li>
+<li><a href="#39.html">3.9</a></li>
+<li><a href="#38.html">3.8</a><ul>
+<li><a href="#f-strings-support-for-self-documenting-expressions-and-debugging.html">f-strings support = for self-documenting expressions and debugging</a></li>
+</ul>
+</li>
+<li><a href="#37.html">3.7</a></li>
+<li><a href="#36.html">3.6</a><ul>
+<li><a href="#asynchronous-comprehensions-pep-530-and-generators-pep-525.html">Asynchronous Comprehensions (PEP 530) and Generators (PEP 525)</a></li>
+<li><a href="#pep-498-formatted-string-literals.html">PEP 498: Formatted string literals</a></li>
+</ul>
+</li>
+<li><a href="#35.html">3.5</a><ul>
+<li><a href="#pep-485---type-hints.html">PEP 485 - Type Hints</a></li>
+<li><a href="#pep-492---coroutines-with-async-and-await-syntax.html">PEP 492 - Coroutines with async and await syntax</a></li>
+</ul>
+</li>
+<li><a href="#34.html">3.4</a></li>
+<li><a href="#33.html">3.3</a><ul>
+<li><a href="#subgenerators-yield-from.html">Subgenerators: yield from</a></li>
+</ul>
+</li>
+<li><a href="#32.html">3.2</a></li>
+<li><a href="#31.html">3.1</a></li>
+<li><a href="#30.html">3.0</a><ul>
+<li><a href="#changes-to-exceptions.html">Changes to Exceptions</a></li>
+</ul>
+</li>
+</ul>
+<h1>3.11</h1>
+<ul>
+<li>Python 3.11 is 10-60% faster than 3.10!</li>
+<li>Exception groups and <code>except*</code></li>
+</ul>
+<h1>3.10</h1>
+<ul>
+<li>Parenthesized context managers <code>with (CtxManager1() as example, CtxManager2): ...</code></li>
+<li>PEP 634: Structural Pattern Matching</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="k">match</span> <span class="n">subject</span><span class="p">:</span>
+    <span class="k">case</span> <span class="o">&lt;</span><span class="n">pattern1</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="o">&lt;</span><span class="n">action1</span><span class="o">&gt;</span>
+    <span class="k">case</span> <span class="o">&lt;</span><span class="n">pattern2</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="o">&lt;</span><span class="n">action2</span><span class="o">&gt;</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+        <span class="o">&lt;</span><span class="n">action_wildcard</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="n">Several</span><span class="w"> </span><span class="n">literals</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">combined</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="n">case</span><span class="w"> </span><span class="mi">401</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">403</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">404</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Not allowed&quot;</span><span class="err">`</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Patterns</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">contain</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="p">(</span><span class="n">unpacking</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">classes</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Patterns</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">nested</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="o">.</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="w"> </span><span class="err">`</span><span class="n">case</span><span class="w"> </span><span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">),</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">y2</span><span class="p">)]:</span><span class="err">`</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Wildcard</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">complex</span><span class="w"> </span><span class="n">patterns</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="n">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">):</span><span class="err">`</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Sequence</span><span class="w"> </span><span class="n">patterns</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">wildcards</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">rest</span><span class="p">]</span><span class="err">`</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="n">sequences</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="p">{</span><span class="s2">&quot;bandwith&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latency&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">rest</span><span class="p">}</span><span class="err">`</span>
+<span class="o">*</span><span class="w"> </span><span class="n">There</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">guard</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="n">case</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="err">`</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Subpatterns</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">captured</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="n">case</span><span class="w"> </span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">),</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">y2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span><span class="err">`</span>
+</code></pre></div>
+
+<ul>
+<li><code>-X warn_default_encoding</code> option and <code>PYTHONWARNDEFAULTENCODING</code> are added to enable the warning.</li>
+</ul>
+<h1>3.9</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.9.html">What's New in Python 3.9</a>
+* merge (<code>|</code>) and update (<code>|=</code>) dicts:</p>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; x = {&quot;key1&quot;: &quot;value1 from x&quot;, &quot;key2&quot;: &quot;value2 from x&quot;}
+&gt;&gt;&gt; y = {&quot;key2&quot;: &quot;value2 from y&quot;, &quot;key3&quot;: &quot;value3 from y&quot;}
+&gt;&gt;&gt; x | y
+{&#39;key1&#39;: &#39;value1 from x&#39;, &#39;key2&#39;: &#39;value2 from y&#39;, &#39;key3&#39;: &#39;value3 from y&#39;}
+&gt;&gt;&gt; y | x
+{&#39;key2&#39;: &#39;value2 from x&#39;, &#39;key3&#39;: &#39;value3 from y&#39;, &#39;key1&#39;: &#39;value1 from x&#39;}
+</code></pre></div>
+
+<ul>
+<li>str.removeprefix(prefix) and str.removesuffix(suffix)</li>
+<li><code>list</code>, <code>dict</code>, <code>tuple</code> can be used as generic types instead of having to import equivalents from the typing module.</li>
+<li><code>zoneinfo</code> module</li>
+<li><code>graphlib</code> containing <code>graphlib.TopologicalSorter</code> offers functionality for topological sorting of graphs.</li>
+</ul>
+<h1>3.8</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.8.html">What's New in Python 3.8</a></p>
+<ul>
+<li>PEP 572: "the walrus operator"</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="nv">a</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="o">:</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nv">f</span><span class="s">&quot;List is too long ({n} elements, expected &lt;= 10)&quot;</span><span class="p">)</span>
+<span class="nv">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">mo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">re</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">r</span><span class="o">&#39;</span><span class="p">(</span>\<span class="nv">d</span><span class="o">+</span><span class="p">)</span><span class="nv">%</span><span class="w"> </span><span class="nv">discount</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nv">advertisement</span><span class="p">))</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">float</span><span class="p">(</span><span class="nv">mo</span><span class="o">.</span><span class="nf">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span>
+<span class="p">[</span><span class="nv">clean_name</span><span class="o">.</span><span class="nf">title</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">names</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">clean_name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="o">&#39;</span><span class="nv">NFC</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nv">name</span><span class="p">))</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">allowed_names</span><span class="p">]</span>
+</code></pre></div>
+
+<ul>
+<li>PEP 570: Positional-only parameters. In the following example, parameters a and b are positional-only, while c or d can be positional or keyword, and e or f are required to be keywords:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>def f(a, b, /, c, d, *, e, f):
+    print(a, b, c, d, e, f)
+</code></pre></div>
+
+<ul>
+<li>The new PYTHONPYCACHEPREFIX setting (also available as <code>-X pycache_prefix</code>) configures the implicit bytecode cache to use a separate parallel filesystem tree, rather than the default <code>__pycache__</code> subdirectories within each source directory.</li>
+<li>pickle protocol 5 with out-of-band data buffers, default is now 4 instead of 3.</li>
+<li>bool, int, fractions.Fraction also have <code>.as_integer_ratio()</code> just as float and decimal.Decimal.</li>
+<li>The new importlib.metadata provides support for reading metadata from third-party packages</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">requests</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">version</span><span class="p">,</span> <span class="n">requires</span><span class="p">,</span> <span class="n">files</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">version</span><span class="p">(</span><span class="s1">&#39;requests&#39;</span><span class="p">)</span>
+<span class="s1">&#39;2.21.0&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>asyncio<ul>
+<li>asyncio.run() provisional -&gt; stable</li>
+<li><code>python3.8 -m asyncio</code>
+```<blockquote>
+<blockquote>
+<blockquote>
+<p>import asyncio
+async def main():
+...     await asyncio.sleep(0)
+...     return 42
+... 
+await main()
+42</p>
+<p>```</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>functools.singledispatchmethod()</code> and <code>functools.cached_property()</code> computed properties cached for the life of the instance:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">statistics</span>
+<span class="k">class</span> <span class="nc">Dataset</span><span class="p">:</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence_of_numbers</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">sequence_of_numbers</span>
+   <span class="nd">@functools</span><span class="o">.</span><span class="n">cached_property</span>
+   <span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">statistics</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><code>python -m json.tool</code> supports now <code>--json-lines</code> to parse every input line as a separate JSON object.</li>
+</ul>
+<h2>f-strings support = for self-documenting expressions and debugging</h2>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; user = &#39;eric_idle&#39;
+&gt;&gt;&gt; member_since = date(1975, 7, 31)
+&gt;&gt;&gt; f&#39;{user=} {member_since=}&#39;
+&quot;user=&#39;eric_idle&#39; member_since=datetime.date(1975, 7, 31)&quot;
+&gt;&gt;&gt; delta = date.today() - member_since
+&gt;&gt;&gt; f&#39;{user=!s}  {delta.days=:,d}&#39;
+&#39;user=eric_idle  delta.days=16,075&#39;
+</code></pre></div>
+
+<p>The = specifier will display the whole expression so that calculations can be shown:</p>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; print(f&quot;{a=} {a**a=:0.3f}&quot;)
+a=2 a**a=4.000
+</code></pre></div>
+
+<h1>3.7</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.7.html">What's New in Python 3.7</a></p>
+<ul>
+<li>PEP 563: Postponed Evaluation of Annotations. Now this is possible:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span> <span class="c1"># This will become default in Python 4.0.</span>
+<span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">:</span>
+        <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">validate_b</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="o">...</span>
+<span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<ul>
+<li>PEP 553: includes the new built-in <code>breakpoint()</code> function as an easy and consistent way to enter the Python debugger.</li>
+<li>PEP 562: Python 3.7 allows defining <code>__getattr__()</code> on modules and will call it whenever a module attribute is otherwise not found. Defining <code>__dir__()</code> on modules is now also allowed.</li>
+<li>PEP 564: there are now six new functions with nanosecond resolution, providing approximately 3x better resolution as default <code>time.time()</code>.</li>
+<li>PEP 565. Now there are three kinds of deprecation warnings:<ul>
+<li>FutureWarning: always displayed by default, recommended for warnings intended to be seen by application end users (e.g. for deprecated application configuration settings).</li>
+<li>DeprecationWarning: displayed by default only in <code>__main__</code> and when running tests, recommended for warnings intended to be seen by other Python developers where a version upgrade may result in changed behaviour or an error.</li>
+<li>PendingDeprecationWarning: displayed by default only when running tests, intended for cases where a future version upgrade will change the warning category to DeprecationWarning or FutureWarning.</li>
+</ul>
+</li>
+<li>The new <code>-X importtime</code> option or the PYTHONPROFILEIMPORTTIME environment variable can be used to show the timing of each module import</li>
+<li>new module <a href="https://docs.python.org/3/library/contextvars.html#module-contextvars">contextvars</a> for context variables. Like thread local variables, but support asynchronous code directly.</li>
+<li><a href="https://docs.python.org/3/library/dataclasses.html#dataclasses.dataclass">dataclasses</a> module:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nv">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nl">Point</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="nc">float</span>
+<span class="w">    </span><span class="nl">y</span><span class="p">:</span><span class="w"> </span><span class="nc">float</span>
+<span class="w">    </span><span class="nl">z</span><span class="p">:</span><span class="w"> </span><span class="nc">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w">   </span><span class="err">#</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="ss">&quot;Point(x=1.5, y=2.5, z=0.0)&quot;</span>
+</code></pre></div>
+
+<ul>
+<li>argparse: The new <code>ArgumentParser.parse_intermixed_args()</code> method allows intermixing options and positional arguments.</li>
+<li>unittest: The new -k command-line option allows filtering tests by a name substring or a Unix shell-like pattern. For example, <code>python -m unittest -k foo</code> runs <code>foo_tests.SomeTest.test_something</code>, <code>bar_tests.SomeTest.test_foo</code>, but not <code>bar_tests.FooTest.test_something</code>. </li>
+<li>Yield expressions (both yield and yield from clauses) are now deprecated in comprehensions and generator expressions (aside from the iterable expression in the leftmost for clause).</li>
+</ul>
+<h1>3.6</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.6.html">What's New in Python 3.6</a></p>
+<ul>
+<li>PEP 526: variable annotations</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">primes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">captain</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Note: no initial value!</span>
+<span class="k">class</span> <span class="nc">Starship</span><span class="p">:</span>
+    <span class="n">stats</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div>
+
+<p>Just as for function annotations, the Python interpreter does not attach any particular meaning to variable annotations and only stores them in the <code>__annotations__</code> attribute of a class or module. Use <code>mypy</code> module for checking them.
+* PEP 515: Underscores in Numeric Literals. <code>1_000_000</code> or <code>0x_FF_FF_FF</code>. Also string formatting was extended with the <code>_</code> option:</p>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; &#39;{:_}&#39;.format(1000000)
+&#39;1_000_000&#39;
+&gt;&gt;&gt; &#39;{:_x}&#39;.format(0xFFFFFFFF)
+&#39;ffff_ffff&#39;
+</code></pre></div>
+
+<ul>
+<li>PEP 487: <code>__init_subclass__(child_cls)</code> is called in parent when a new subclass is created.</li>
+<li>PEP 487: <code>__set_name__(owner_cls, name)</code> - whenever a new class is defined, the new method will be called on all descriptors included in the definition.</li>
+<li>PEP 520: Attributes in a class definition body have a natural ordering: the same order in which the names appear in the source. This order is now preserved in the new class’s <code>__dict__</code> attribute.</li>
+<li>PEP 468: Preserving Keyword Argument Order: <code>**kwargs</code> in a function signature is now guaranteed to be an insertion-order-preserving mapping.</li>
+<li>A global or nonlocal statement must now textually appear before the first use of the affected name in the same scope.</li>
+<li>It is now possible to set a special method to None to indicate that the corresponding operation is not available. For example, if a class sets <strong>iter</strong>() to None, the class is not iterable.</li>
+<li>new module <a href="https://docs.python.org/3/library/secrets.html#module-secrets">secrets</a> to provide an obvious way to reliably generate cryptographically strong pseudo-random values suitable for managing secrets, such as account authentication, tokens, and similar.</li>
+<li>asyncio is not provisional any longer but is stable.</li>
+<li>```&gt;&gt;&gt; Decimal('-3.14').as_integer_ratio()
+(-157, 50)</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>## Asynchronous Comprehensions (PEP 530) and Generators (PEP 525)
+</code></pre></div>
+
+<p>async def ticker(delay, to):
+    """Yield numbers from 0 to <em>to</em> every <em>delay</em> seconds."""
+    for i in range(to):
+        yield i
+        await asyncio.sleep(delay)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Generators</span><span class="p">.</span><span class="w"> </span><span class="n">They</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n n-Quoted">`async for`</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">requires</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n n-Quoted">`__aiter__`</span><span class="w"> </span><span class="n">method</span><span class="p">.</span>
+</code></pre></div>
+
+<p>result = [i async for i in aiter() if i % 2]
+result = [await fun() for fun in funcs if await condition()]</p>
+<div class="codehilite"><pre><span></span><code>## PEP 498: Formatted string literals
+</code></pre></div>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>name = "Fred"
+f"He said his name is {name}."
+'He said his name is Fred.'
+width = 10
+precision = 4
+value = decimal.Decimal("12.34567")
+f"result: {value:{width}.{precision}}"  # nested fields
+'result:      12.35'</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="m m-Double">3.5</span>
+<span class="p">[</span><span class="nx">What</span><span class="err">&#39;</span><span class="nx">s</span><span class="w"> </span><span class="nx">New</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">Python</span><span class="w"> </span><span class="m m-Double">3.5</span><span class="p">](</span><span class="nx">https</span><span class="p">:</span><span class="c1">//docs.python.org/3/whatsnew/3.5.html)</span>
+
+<span class="o">*</span><span class="w"> </span><span class="nx">PEP</span><span class="w"> </span><span class="mi">465</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="nx">dedicated</span><span class="w"> </span><span class="nx">infix</span><span class="w"> </span><span class="nx">operator</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="nx">multiplication</span><span class="w"> </span><span class="err">`@`</span><span class="p">,</span><span class="w"> </span><span class="nx">objects</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">implement</span><span class="w"> </span><span class="err">\</span><span class="nx">_</span><span class="err">\</span><span class="nx">_</span><span class="p">{</span><span class="nx">matmul</span><span class="p">,</span><span class="nx">rmatmul</span><span class="p">,</span><span class="nx">imatmul</span><span class="p">}()</span><span class="err">\</span><span class="nx">_</span><span class="err">\</span><span class="nx">_</span><span class="p">.</span>
+<span class="o">*</span><span class="w"> </span><span class="nx">PEP</span><span class="w"> </span><span class="mi">448</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Additional</span><span class="w"> </span><span class="nx">Unpacking</span><span class="w"> </span><span class="nx">Generalizations</span><span class="p">.</span><span class="w">  </span><span class="nx">It</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="nx">possible</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">arbitrary</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">unpackings</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">function</span><span class="w"> </span><span class="nx">calls</span>
+</code></pre></div>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>print(<em>[1], </em>[2], 3, <em>[4, 5])
+1 2 3 4 5
+def fn(a, b, c, d):
+...     print(a, b, c, d)
+...
+fn(</em><em>{'a': 1, 'c': 3}, </em>*{'b': 2, 'd': 4})
+1 2 3 4</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>Similarly, tuple, list, set, and dictionary displays allow multiple unpackings
+</code></pre></div>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p><em>range(4), 4
+(0, 1, 2, 3, 4)
+[</em>range(4), 4]
+[0, 1, 2, 3, 4]
+{<em>range(4), 4, </em>(5, 6, 7)}
+{0, 1, 2, 3, 4, 5, 6, 7}
+{'x': 1, **{'y': 2}}
+{'x': 1, 'y': 2}</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="k">*</span> PEP 461 - percent formatting support for bytes and bytearray
+</code></pre></div>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>b'Hello %b!' % b'World'
+b'Hello World!'
+b'x=%i y=%f' % (1, 2.5)
+b'x=1 y=2.500000'</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="nv">Unicode</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">allowed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">%</span><span class="nv">b</span>,<span class="w"> </span><span class="nv">but</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">accepted</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="o">%</span><span class="nv">a</span><span class="w"> </span><span class="ss">(</span><span class="nv">equivalent</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">repr</span><span class="ss">(</span><span class="nv">obj</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;ascii&#39;</span>,<span class="w"> </span><span class="s1">&#39;backslashreplace&#39;</span><span class="ss">))</span>:
+</code></pre></div>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>b'price: %a' % '10€'
+b"price: '10\u20ac'"</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="k">*</span> PEP 485: A function for testing approximate equality
+</code></pre></div>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import math
+a = 5.0
+b = 4.99998
+math.isclose(a, b, rel_tol=1e-5)
+True
+math.isclose(a, b, rel_tol=1e-6)
+False
+math.isclose(a, b, abs_tol=0.00003)
+True
+math.isclose(a, b, abs_tol=0.00001)
+False</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="n">PEP</span><span class="w"> </span><span class="mi">486</span><span class="o">:</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Python</span><span class="w"> </span><span class="n">Launcher</span><span class="w"> </span><span class="n">aware</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">environments</span><span class="p">.</span><span class="w"> </span><span class="k">When</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">interpreter</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n n-Quoted">`VIRTUAL_ENV`</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">set</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">interpreter</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="p">.</span>
+<span class="o">*</span><span class="w"> </span><span class="n">PEP</span><span class="w"> </span><span class="mi">488</span><span class="o">:</span><span class="w"> </span><span class="n">Elimination</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">PYO</span><span class="w"> </span><span class="n">files</span><span class="p">.</span>
+<span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="n">affects</span><span class="w"> </span><span class="n">comparisons</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span>
+<span class="o">*</span><span class="w"> </span><span class="n">zipapp</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">(</span><span class="n">PEP</span><span class="w"> </span><span class="mi">441</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">creating</span><span class="w"> </span><span class="n">executable</span><span class="w"> </span><span class="n">Python</span><span class="w"> </span><span class="n">Zip</span><span class="w"> </span><span class="n">Applications</span><span class="p">.</span><span class="w"> </span><span class="n">Bundling</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">simple</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">putting</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">files</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">__main__</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="k">file</span><span class="p">,</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">directory</span><span class="w"> </span><span class="n">myapp</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">running</span>
+<span class="n n-Quoted">`</span><span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">sh</span>
+<span class="n n-Quoted">$ python -m zipapp myapp</span>
+<span class="n n-Quoted">$ python myapp.pyz</span>
+</code></pre></div>
+
+<ul>
+<li><code>__doc__</code> might now be updated.</li>
+<li>subprocess.run() has been added</li>
+</ul>
+<h2>PEP 485 - Type Hints</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">greeting</span><span class="p">(</span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">str</span><span class="o">:</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="s">&#39;Hello &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span>
+</code></pre></div>
+
+<ul>
+<li><code>Any</code>,<code>NoReturn</code>, <code>Union</code>, <code>Optional</code>, <code>Literal</code>, <code>Tuple</code>, <code>ClassVar</code>, <code>AnyStr</code> ...  see <a href="https://docs.python.org/3/library/typing.html">typing</a> module for details.</li>
+</ul>
+<h2>PEP 492 - Coroutines with async and await syntax</h2>
+<ul>
+<li>async, await, await for</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">aiohttp</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">async</span> <span class="k">def</span> <span class="nf">getpage</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">async</span> <span class="k">def</span> <span class="nf">wc_worker</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">page</span><span class="p">):</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;starting worker for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page</span><span class="p">))</span>
+<span class="o">...</span>     <span class="n">text</span> <span class="o">=</span> <span class="k">await</span> <span class="n">getpage</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;url: </span><span class="si">{}</span><span class="s2"> count: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="o">...</span>     <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="o">...</span>     <span class="n">client</span> <span class="o">=</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">(</span><span class="n">loop</span><span class="o">=</span><span class="n">loop</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">pages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://www.google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;http://www.sme.sk&quot;</span><span class="p">,</span> <span class="s1">&#39;http://root.cz&#39;</span><span class="p">]</span>
+<span class="o">...</span>     <span class="n">coros</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">wc_worker</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">pages</span><span class="p">))</span>
+<span class="o">...</span>     <span class="k">await</span> <span class="n">coros</span>
+<span class="o">...</span>     <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+<span class="n">starting</span> <span class="n">worker</span> <span class="k">for</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span>
+<span class="n">starting</span> <span class="n">worker</span> <span class="k">for</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">sme</span><span class="o">.</span><span class="n">sk</span>
+<span class="n">starting</span> <span class="n">worker</span> <span class="k">for</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">root</span><span class="o">.</span><span class="n">cz</span>
+<span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span> <span class="n">count</span><span class="p">:</span> <span class="mi">12689</span>
+<span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">sme</span><span class="o">.</span><span class="n">sk</span> <span class="n">count</span><span class="p">:</span> <span class="mi">427861</span>
+<span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">derstandard</span><span class="o">.</span><span class="n">at</span> <span class="n">count</span><span class="p">:</span> <span class="mi">275782</span>
+</code></pre></div>
+
+<h1>3.4</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.4.html">What's New in Python 3.4</a></p>
+<ul>
+<li><code>python -m pip</code> if for some reason pip executable is not available.</li>
+<li>PEP 446: Newly Created File Descriptions are Non-Inheritable. See also <a href="https://docs.python.org/3/library/os.html#os.get_inheritable">os.get_inheritable()</a> and <a href="https://docs.python.org/3/library/os.html#os.set_inheritable">os.set_inheritable()</a>.</li>
+<li>min() and max() now accept a default keyword-only argument that can be used to specify the value they return if the iterable they are evaluating has no elements. </li>
+<li><a href="https://docs.python.org/3/library/enum.html#module-enum">enum</a> module.</li>
+<li><a href="https://docs.python.org/3/library/pathlib.html#module-pathlib">pathlib</a> module.</li>
+<li><a href="https://docs.python.org/3/library/selectors.html#module-selectors">selectors</a> module allows high-level and efficient I/O multiplexing, built upon the select module primitives.</li>
+<li><a href="https://docs.python.org/3/library/statistics.html#module-statistics">statistics</a> module (PEP 450).</li>
+<li><code>python -m doctest</code>.</li>
+<li>functools module has now <a href="https://docs.python.org/3/library/functools.html#functools.partialmethod">partialmethod</a> and <a href="https://docs.python.org/3/library/functools.html#functools.singledispatch">@singledispatch</a> for grouping multiple implementations of an operation that allows it to work with different kinds of data.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatch</span>
+<span class="nd">@singledispatch</span>
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let me just say, &quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="nd">@fun</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Strength in numbers, eh?&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="nd">@fun</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enumerate this:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+<span class="nd">@fun</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">complex</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Better than complicated.&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">arg</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">nothing</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nothing.&quot;</span><span class="p">)</span>
+<span class="n">fun</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">nothing</span><span class="p">)</span>
+<span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fun</span><span class="p">([</span><span class="s2">&quot;carrot&quot;</span><span class="p">,</span> <span class="s2">&quot;tomato&quot;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fun</span><span class="p">(</span><span class="s2">&quot;String&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fun</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fun</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fun</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">dict</span><span class="p">))</span> <span class="c1"># default impl.</span>
+<span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">int</span><span class="p">)(</span><span class="mi">123</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fun</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="nb">dict</span><span class="p">)((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># default impl.</span>
+</code></pre></div>
+
+<p>output:</p>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> Strength in numbers, eh? 1
+<span class="gh">#</span> Enumerate this:
+<span class="gh">#</span> 0 carrot
+<span class="gh">#</span> 1 tomato
+<span class="gh">#</span> Let me just say,  String
+<span class="gh">#</span> Better than complicated. 1.0 2.0
+<span class="gh">#</span> Nothing.
+<span class="gh">#</span> dict_keys([&lt;class &#39;object&#39;&gt;, &lt;class &#39;int&#39;&gt;, &lt;class &#39;list&#39;&gt;, &lt;class &#39;complex&#39;&gt;, &lt;class &#39;NoneType&#39;&gt;])
+<span class="gh">#</span> &lt;function fun at 0x7f77553b8830&gt;
+<span class="gh">#</span> &lt;function _ at 0x7f7755381f80&gt;
+<span class="gh">#</span> &lt;function fun at 0x7f77553b8830&gt;
+<span class="gh">#</span> Strength in numbers, eh? 123
+<span class="gh">#</span> Let me just say,  (1, 2, 3)
+</code></pre></div>
+
+<ul>
+<li><code>gc.get_stats()</code></li>
+<li>pickle suppots now a new pickle protocol, protocol 4.</li>
+<li>unittest.TestCase has a new method <a href="https://docs.python.org/3/library/unittest.html#unittest.TestCase.subTest">subTest()</a>.</li>
+<li>PEP 442: Safe Object Finalization: objects with <strong>del</strong>() methods, as well as generators with finally clauses, can be finalized when they are part of a reference cycle.</li>
+<li>Provisional API for the asyncio module.</li>
+</ul>
+<h1>3.3</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.3.html">What's New in Python 3.3</a></p>
+<ul>
+<li>PEP 405: Virtual Environments. See <a href="https://pipenv.kennethreitz.org/en/latest/">pipenv</a> and <a href="https://docs.python.org/3/library/venv.html#module-venv">venv</a>.</li>
+<li>PEP 420: Implicit Namespace Packages: Native support for package directories that don’t require <code>__init__.py</code> marker files and can automatically span multiple path segments.</li>
+<li>PEP 393: Flexible String Representation: to save the memory footprint for strings. The Unicode string type is changed to support multiple internal representations, depending on the character with the largest Unicode ordinal (1, 2, or 4 bytes) in the represented string.</li>
+<li>PEP 3151: Reworking the OS and IO exception hierarchy: You don’t have to worry anymore about choosing the appropriate exception type between OSError, IOError, EnvironmentError, WindowsError, mmap.error, socket.error or select.error. All these exception types are now only one: <code>OSError</code>. </li>
+<li>PEP 409 - Suppressing exception context:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>raise AttributeError(attr) from None # disables display of chained exception context
+</code></pre></div>
+
+<p>The original exception context is available as <code>exc.__context__</code>
+* PEP 3155: qualified name for classes and functions:</p>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; class C:
+<span class="k">...</span>     def meth(self):
+<span class="k">...</span>         pass
+&gt;&gt;&gt; C.meth.__name__
+&#39;meth&#39;
+&gt;&gt;&gt; C.meth.__qualname__
+&#39;C.meth&#39;
+</code></pre></div>
+
+<ul>
+<li><code>dict.setdefault(key, default=None)</code> is now atomic. Doc: If key is in the dictionary, return its value. If not, insert key with a value of default and return default. default defaults to None.</li>
+<li>open() has new mode <code>'x'</code>, which fails if the file already exists (exclusive create).</li>
+<li>added <a href="https://docs.python.org/3/library/ipaddress.html#module-ipaddress">ipaddress</a> module.</li>
+<li>abc module: abstract{property,classmethod,staticmethod} are now deprecated. use property/classmethod/staticmethod together with <a href="https://docs.python.org/3/library/abc.html#abc.abstractmethod">abc.abstractmethod()</a></li>
+</ul>
+<h2>Subgenerators: yield from</h2>
+<p>yield from iterable:</p>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; def g(x):
+...  yield from range(x, 0, -1)
+...  yield from range(x)
+... 
+&gt;&gt;&gt; list(g(3))
+[3, 2, 1, 0, 1, 2]
+</code></pre></div>
+
+<p>However, unlike an ordinary loop, yield from allows subgenerators to receive sent and thrown values directly from the calling scope, and return a final value to the outer generator:</p>
+<div class="codehilite"><pre><span></span><code>def accumulate():
+    tally = 0
+    while 1:
+        next = yield
+        if next == &quot;stop&quot;:
+            return tally
+        tally += next
+
+def gather_tallies(tallies):
+    while 1:
+        tally = yield from accumulate()
+        tallies.append(tally)
+
+tallies = []
+acc = gather_tallies(tallies)
+next(acc)      # initialize accumulator
+
+print(tallies) # []
+for i in range(4):
+    acc.send(i)
+acc.send(&quot;stop&quot;) 
+
+print(tallies) # [6]
+for i in range(5):
+    acc.send(i)
+acc.send(&quot;stop&quot;)
+
+print(tallies) # [6, 10]
+</code></pre></div>
+
+<ul>
+<li><code>time.monotonic()</code> returns HW clock ticks.</li>
+</ul>
+<h1>3.2</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.2.html">What's New in Python 3.2</a></p>
+<ul>
+<li><a href="https://docs.python.org/3/whatsnew/3.2.html">concurrent.futures</a> module inspired by java.util.concurrent. Future object that abstracts features common to threads, processes, and remote procedure calls. </li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">concurrent.futures</span><span class="o">,</span> <span class="nn">shutil</span>
+<span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest1.txt&#39;</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest2.txt&#39;</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest3.txt&#39;</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="s1">&#39;src3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dest4.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><code>__pychache__</code> directory and <code>__cached__</code> attribute for modules introduced for saving different PYC files for the same module.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; concurrent.__cached__
+&#39;/usr/lib/python3.7/concurrent/__pycache__/__init__.cpython-37.pyc&#39;
+</code></pre></div>
+
+<ul>
+<li>range objects support now index(obj) and count(obj) methods</li>
+<li>[@functools.total_orderning()] to fill in equality and inequality methods. E.g. if you suppy <code>__eq__</code> and <code>__lt__</code> it will fill-in <code>__le__</code>, <code>__gt__</code> and <code>__ge__</code></li>
+<li>abc module now supports <code>abstractclassmethod()</code> and <code>abstractstaticmethod()</code></li>
+<li>os module now supports fsencode() and fsdecode() for encoding and decoding of filenames.</li>
+<li>GIL check interval for thread switches is now tunable via <code>sys.setswitchinterval()</code></li>
+</ul>
+<h1>3.1</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.0.html">What's New in Python 3.0</a></p>
+<ul>
+<li>PEP 378: Format Specifier for Thousands Separator</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; format(12345, &#39;,.2f&#39;)
+&#39;12,345.00&#39;
+</code></pre></div>
+
+<ul>
+<li>The int() type gained a <code>bit_length</code> method that returns the number of bits necessary to represent its argument in binary</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; int(123123123).bit_length()
+27
+</code></pre></div>
+
+<ul>
+<li>The fields in format() strings can now be automatically numbered:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; &#39;Sir {} of {}&#39;.format(&#39;Gallahad&#39;, &#39;Camelot&#39;)
+&#39;Sir Gallahad of Camelot&#39;
+</code></pre></div>
+
+<ul>
+<li>unittest improvements:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">TestGizmo</span><span class="p">(</span><span class="nx">unittest</span><span class="p">.</span><span class="nx">TestCase</span><span class="p">):</span>
+
+<span class="w">    </span><span class="err">@</span><span class="nx">unittest</span><span class="p">.</span><span class="nx">skipUnless</span><span class="p">(</span><span class="nx">sys</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">startswith</span><span class="p">(</span><span class="s">&quot;win&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;requires Windows&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">test_gizmo_on_windows</span><span class="p">(</span><span class="kp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">    </span><span class="err">@</span><span class="nx">unittest</span><span class="p">.</span><span class="nx">expectedFailure</span>
+<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">test_gimzo_without_required_library</span><span class="p">(</span><span class="kp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">test_division_by_zero</span><span class="p">(</span><span class="kp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="nx">with</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">assertRaises</span><span class="p">(</span><span class="nx">ZeroDivisionError</span><span class="p">):</span>
+<span class="w">            </span><span class="nx">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+
+<h1>3.0</h1>
+<p><a href="https://docs.python.org/3/whatsnew/3.0.html">What's New in Python 3.0</a></p>
+<ul>
+<li>range() replaces xrange() and behaves like the rater</li>
+<li>zip(), map() and filter() return iterators</li>
+<li>dict methods keys(), values(), items() return views instead of lists.</li>
+<li>Now there is only int type, which behaves like long.</li>
+<li>Octal literals are no longer of the form 0720; use 0o720 instead.</li>
+<li>An expression like 1/2 returns a float. Use 1//2 to get the truncating behavior.</li>
+<li>The type used to hold text is str, the type used to hold data is bytes. As the str and bytes types cannot be mixed, you must always explicitly convert between them. Use str.encode() to go from str to bytes, and bytes.decode() to go from bytes to str. You can also use bytes(s, encoding=...) and str(b, encoding=...), respectively.</li>
+<li>The repr() of a string no longer escapes non-ASCII characters. It still escapes control characters and code points with non-printable status in the Unicode standard, however.</li>
+<li>PEP 3131: Non-ASCII letters are now allowed in identifiers. (However, the standard library remains ASCII-only with the exception of contributor names in comments.)</li>
+<li>PEP 3102: Keyword-only arguments. Named parameters occurring after *args in the parameter list must be specified using keyword syntax in the call. You can also use a bare <code>*</code> in the parameter list to indicate that you don’t accept a variable-length argument list, but you do have keyword-only arguments.</li>
+<li>PEP 3132: Extended Iterable Unpacking.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; a, *rest, b = range(10)
+&gt;&gt;&gt; a
+0
+&gt;&gt;&gt; b
+1
+&gt;&gt;&gt; rest
+[2, 3, 4, 5, 6, 7, 8, 9]
+&gt;&gt;&gt; a, b, *rest = range(10)
+&gt;&gt;&gt; b
+9
+&gt;&gt;&gt; rest
+[1, 2, 3, 4, 5, 6, 7, 8]
+&gt;&gt;&gt; 
+</code></pre></div>
+
+<p>PEP 3115: New Metaclass Syntax. You must now use:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">C</span>(<span class="n">metaclass</span>=<span class="n">M</span>):
+    ...
+</code></pre></div>
+
+<ul>
+<li>Removed backticks (use repr() instead).</li>
+<li>Integer literals no longer support a trailing l or L.</li>
+<li>The from module import * syntax is only allowed at the module level, no longer inside functions.</li>
+<li>Killed sets. Use the built-in set() class.</li>
+<li>A new system for built-in string formatting operations replaces the % string formatting operator. (However, the % operator is still supported; it will be deprecated in Python 3.1 and removed from the language at some later time.) </li>
+<li>The concept of “unbound methods” has been removed from the language. When referencing a method as a class attribute, you now get a plain function object.</li>
+<li><code>__getslice__()</code>, <code>__setslice__()</code> and <code>__delslice__()</code> were killed. The syntax <code>a[i:j]</code> now translates to <code>a.__getitem__(slice(i, j))</code> (or <code>__setitem__()</code> or <code>__delitem__()</code>, when used as an assignment or deletion target, respectively).</li>
+<li>PEP 3114: the standard next() method has been renamed to <code>__next__()</code>.</li>
+<li><code>__nonzero__()</code> is now <code>__bool__()</code>.</li>
+<li>The <code>__oct__()</code> and <code>__hex__()</code> special methods are removed – oct() and hex() use <code>__index__()</code> now to convert the argument to an integer.</li>
+<li>PEP 3135: New super(). You can now invoke super() without arguments and (assuming this is in a regular instance method defined inside a class statement) the right class and instance will automatically be chosen. With arguments, the behavior of super() is unchanged.</li>
+<li>Removed. <code>dict.has_key()</code> – use the <code>in</code> operator instead.</li>
+</ul>
+<h2>Changes to Exceptions</h2>
+<ul>
+<li>PEP 352: All exceptions must be derived (directly or indirectly) from BaseException. </li>
+<li>PEP 3110: Catching exceptions. You must now use except SomeException as variable instead of except SomeException, variable. Moreover, the variable is explicitly deleted when the except block is left.</li>
+<li>PEP 3109: Raising exceptions. You must now use raise Exception(args) instead of raise Exception, args.</li>
+<li>Exceptions no longer behave as sequences. Use the args attribute instead.</li>
+<li>PEP 3134: Exception chaining.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>raise SecondaryException() from primary_exception
+</code></pre></div>
+
+<ul>
+<li>PEP 3134: Exception objects now store their traceback as the <code>__traceback__</code> attribute.</li>
+</ul>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

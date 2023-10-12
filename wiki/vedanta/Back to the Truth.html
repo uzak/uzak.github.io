@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Back to the Truth</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Back to the truth</h1>
+<h2>CHAPTER 2</h2>
+<ul>
+<li>Identification with Vijnanamayakosha -&gt; we think we are the doer, can think, discriminate, judge. Doing includes other actions such as hearing, seeing where senses and mind are instruments.</li>
+<li>Subtle body - lingam = mark/sign/badge/evidence. If present, it is a sign that we are alive. Subtle body is also called upadhi (upa - near, adhadati - imparts). The idea is that something external appears to limit us, from the standpoint of an observer, but doesn't really affect as at all.</li>
+<li>Lifeforce behind BMI is called jiva. Jiva carries the mind from body to body (like a bird).</li>
+<li><strong>Free will and belief in separate entity go hand in hand. Everything always happens spontaneously. The "now" is the only possibility.</strong></li>
+<li><strong>karma - creative urge by which reality takes new forms.</strong></li>
+</ul>
+<h2>CHAPTER 3</h2>
+<ul>
+<li><strong>Meaning - we impose upon changing world in order to make it more acceptable, not part of the universe itself.</strong></li>
+<li><strong>The body is created and the body dies. There is no "who" to die.</strong></li>
+<li>Our actions should follow the guidelines of karma yoga, <strong>responding to the need rather because we want a result</strong>.</li>
+<li><strong>When we keep an extraneous goal then we simultaneously affirm our presumptions that I am limited and lacking person and the world outside is permanent and capable of giving me that which I lack.</strong></li>
+<li><strong>Beauty is not about how a person, place or a thing looks; it is about how the one who is looking feels!</strong></li>
+<li>Dharma means "what which we have to wear/follow/practice". Dharma is not something to be preached. </li>
+<li>Speak the truth, practice dharma (satyaM vada, dharmaM chara).</li>
+<li><strong>All desires are selfish, even the ones that might appear unselfish.</strong></li>
+<li><strong>There is only one moment. Here and now. This. This moment is inescapable, for there is no one to escape and nothing to escape from.</strong></li>
+<li>Ananda is an aspect of brahman/me and thus never experienced.</li>
+<li><strong>It is not what I want that is the problem, it is that I want.</strong></li>
+<li>Human mind cannot choose anything small when something greater than that is within its knowledge.</li>
+<li>The search for happiness (anandamaya) drives the intellect to discriminate.</li>
+<li>The bliss of the anandamayakosha is not the final aim. However, it is the last and most subtle sheath covering the Atman.</li>
+</ul>
+<h2>CHAPTER 4</h2>
+<ul>
+<li>Beliefs and opinions distort the vision of reality. They are more dangerous than plain ignorance if we believe in them strongly.</li>
+<li><strong>The greatest of all delusions is the conviction that knowledge is not a delusion.</strong></li>
+<li><strong>To judge beliefs as right or wrong is ignorance: view them rather as useful or not, appropriate or not.</strong></li>
+<li><strong>An opinion is always one view of many possible views. Therefore dualistic and necessarily false</strong>.</li>
+<li>It is enough to know what you are not. You need not know what you are.</li>
+<li>Removal of ignorance is not achieved through action. </li>
+<li>Knowledge that is introduced in Advaita is not an end in itself. It is also mithya. After it removes ignorance both are discarded.</li>
+<li>avidya: belief that there exists a reality that is not Brahman or cosmic consciousness.</li>
+<li><strong>I am (real part) shopkeeper (unreal part). In the mind of the ordinary person these two get mixed up and a single jiva is created</strong>.</li>
+<li>upadhi: limits like a jar limits total space.</li>
+<li>jiva = Atman + upadhi of avidya</li>
+<li>One does not use any means of knowledge to prove one's existence - all means of knowledge are valid only because you as a conscious entity can validate or invalidate them.</li>
+<li>Verbal testimony can overrule what we see with our eyes, e.g. sun wandering around the earth.</li>
+<li><strong>Real: that which exists in all three periods of time.</strong></li>
+<li><strong>A brahman that is sense apprehended is a contradiction</strong>.</li>
+<li><strong>It is absurd to conceive the subject as an object, for in its absence there is no subject to know the subject as an object.</strong></li>
+</ul>
+<h2>CHAPTER 5</h2>
+<ul>
+<li>Infinite Being cannot be realized (conceived) by the means of the finite (mind).</li>
+<li>The ego of seeking will resolve itself at the proper time. The stick that stirs the funeral pure is itself consumed by the fire...</li>
+<li>Renunciation does not imply apparent divesting of costumes, family ties, homes etc., but <strong>renunciation of desires, affection and attachment</strong>.</li>
+<li>The mind became impure by indulging in action - willful egocentric actions - the vasanas have been accumulated. It is natural that only by actions the mind can be purified.</li>
+<li><strong>Not thinking about things of the senses, not dwelling upon memories of particular experiences or imagining possible future gratifications.</strong></li>
+<li>As long as we have more desires than one, or other desires than the desire for realization of Atman, it will be difficult to control the mind, for it will then be in a scattered state.</li>
+<li>The baren land of the mind has to be tilled by karma yoga and watered (to gain onepointedness) through bhakti (upasana) yoga.</li>
+<li>The mind remains still and open to whatever happens, thus also able to learn from experience.</li>
+<li><strong>Silence is the appropriate response only when an answer might be misleading.</strong></li>
+<li>Being in the present means simply being. The mind is still, without thoughts and expectations.</li>
+<li>To witness a wild flower on a hillside - simply to witness it without any mental interpretation at all.</li>
+<li><strong>In the Now, nothing is broken and nothing needs to be fixed. You are whole and pure. The now is forever new, innocent and enhances with a fresh sense of adventure.</strong></li>
+<li>Free of resistance, the current of Life runs through you.</li>
+<li>All rivers lead to the ocean, but if you keep changing rivers it might take you a very long time to get there.</li>
+<li>Wooden table - tabley wood -&gt; end will be nirguna chaitanyam. A true substantive cannot be an attribute.</li>
+<li>From early childhood, we learn to name each object, thereby irrevocably separating it out from its surroundings and making it exceedingly difficult to return to a virgin perception without the mind leaping in and claiming it.</li>
+<li>Advaita vedanta, without a good living spiritual teacher can become a perfect self contained defence mechanism.</li>
+<li><strong>There is no grace without effort.</strong></li>
+<li>When the aham vRRitti disappears, there is no longer any identification of any sort - no feeling that "I am  a doer, thinker etc." or a person. All is seen as Self.  This is self-realization.</li>
+<li>Language differentiates the underlying unity by applying names to forms. Naming also implies a "namer".</li>
+</ul>
+<h2>CHAPTER 6</h2>
+<ul>
+<li>The Self cannot be described, being prior to mind. The reality is unmanifested.</li>
+<li>You, as the "I" - principle, stand as the permanent background connecting changes that come and go. That "I" - principle is distinct and separate from the changing body, senses and mind.</li>
+<li>Realization os not of the mind but from the mind.</li>
+<li>God never appears in the heart of him who thinks himself to be the doer.</li>
+<li><strong>Atman would have to be considered an "effect" if it could be brought about as a result of meditation or other practice.</strong> (activity could unlock him)</li>
+<li><strong>Last illusion is that you are a jnani, different from and superior to common man</strong>.</li>
+<li>vaishvAnara - relating to or belonging to all men.</li>
+<li>In order to experience anything, body and mind need difference and action.</li>
+<li>What is night for all beings is day for the sage while the rest of the world is awake, it is night for the sage.</li>
+<li><strong>satyam jnanam anantam are not characteristics of the Atman, they are words revealing the nature of Atman by implication</strong>.</li>
+<li>Iswhara - jiva. Sun and glow worm: both emit light, in different degree. Apparent dissimilarity results from their respective upAdhis. Isvara's upadhi is maya, whilst the jiva is limited by the five sheaths.</li>
+<li>aham = a (alfa) ha (omega).</li>
+</ul>
+<h2>CHAPTER 7</h2>
+<ul>
+<li><strong>There is only ever brahman and we impose the apparent separateness through the naming of the continually changing forms</strong>.</li>
+<li><strong>anirvachanIya - that which cannot be categorically stated as either real or unreal</strong>.</li>
+<li>Language - duality. Therefore talking about non-dual reality is not possible.</li>
+<li><strong>If everything be equally non-existent everywhere before creation, why should curd be produced from milk alone and not from clay (vivarta vada). Therefore effect preexists in the cause. The theory is only relevant in the phenomanal world -&gt; ajati vada = there has never been any creation at all</strong>.</li>
+<li>Jiva is the product of avidya and at the same time jiva is the locus of avidya (interdependence). Chicken-egg problem. Ignorance is beginningless, relationship between jiva nad avidya is unexplainable. anirvachanIya.</li>
+<li>BG: all this world is pervaded by Me in my unmanifested form (aspect); all beings exist in Me, but I do not dwell in them.</li>
+<li><strong>Metaphor of the wind: it appears to be real when in motion and to cease to exist when the movement stops</strong>.</li>
+<li>When the whirlpool in the ocean dies, nothing is really dead.</li>
+<li>Electricity empowers all varieties of electrical equipment but is unaffected by any of them. Unmoved mover.</li>
+<li>God has not created the universe like a poet creates a poem, the relationship is just like a <strong>dancer and dance:</strong> they remain one.</li>
+<li>If you believe in the reality of world, you are obliged to invent God.</li>
+<li>Each of us has his own vasanas that we bring into this life and these form our individual upadhi of ignorance, which in turn dictates how we react to situations in life. They are held in our karana sharira. <strong>The world is the total of all these "individual worlds", the sum (samasthi) of all the individual vasanas.</strong> Thus it is that Ishvara can be considered to create the world according to these samasthi vasanas in order that all the individuals have the optimum opportunity to "work out" their prarabdha samskara and thereby realize their true nature.</li>
+<li>Ishvara is Brahman, simply being looked at from the point of view of the world.</li>
+<li><strong>The universe is real perceived as the Self, and unreal if perceived apart from the Self</strong>.</li>
+<li>Ishvara is the product of Maya and he cannot be the origin of His origin. Maya therefore has no antecedent cause.</li>
+<li><strong>Just as the jiva continues to exist in "latent form", as it were in sleep, so Ishvara exists in latent form in pralaya</strong>.</li>
+<li>Lila is yet another idea aimed at providing an "explanation" for seekers at an interim level of understanding.</li>
+<li>Does a rose exists at all? Which sense is able to detect the rose itself, as opposed to one or two of its properties. (elimination of attributes)</li>
+<li>Teaching of Advaita effectively returns us to where we started from, but with a radically different vantage point.</li>
+<li>What we can know is necessarily limited. Since reality is unlimited, it cannot be known or experienced.</li>
+<li>The world is "created" according to the sum of individual's vasanas. Ishvara keeps a record of all the "fruit" that is due.</li>
+<li><strong>"I" am also another named attribute of brahman and not a solipsistic entity.</strong></li>
+</ul>
+<h2>CHAPTER 8</h2>
+<ul>
+<li>Whilst direct path teachings still draw much of their wisdom from the scriptures, neo-advaita does not perceive any value in them.</li>
+<li>It is only through the mind that the truth can be realized (Brihadaranyaka Upanishad).</li>
+<li>Until knowledge comes along to dispel the ignorance, our experience of a real, separate world cannot be argued against since all our senses, society and science tell us it is so.</li>
+<li>Ice, water and vapor are in reality the product of one element.</li>
+<li>If neo advaita teacher truly believes what he says, he gives lie to it as soon as he speaks, for this assumes another to whom the words are addressed.</li>
+<li>It is not knowledge that is being acquired in the traditional teaching process but ignorance that is being removed.</li>
+<li>Avarana does not hide the jiva in entirety; he knows that he is; only he does not know who he is. He sees the world but not that it is only Brahman. It is light in darkness. </li>
+<li><strong>In a cinema show the room is first darkened, artificial light is introduced; only in this light the pictures are projected. For differentiation a reflected light is thus necessary.</strong></li>
+<li>He is a suicide who has somehow achieved human birth and even manhood and full knowledge of the scriptures but dos not strive for self-liberation, for he destroys himself by clinging to the unreal (vivekachudamani 20.).</li>
+<li>Qualifications of a guru: a) mastery over the entire scriptural literature b) complete personal experience of the Absolute Reality c) ability to convey the knowledge to another.</li>
+<li>In the initial stages you must have an external guru. That guru initiates you with the inner guru.</li>
+<li><strong>Existence can never become more existent. Awareness can never become more aware. The absence of a separate "I" can never become more absent. It is all about seeing clearly what is present.</strong></li>
+<li>A proper teacher is one who directs his disciples to the scriptures as the authority and not to himself since this is a subjective science.</li>
+<li>There is a state beyond effort and effortlessness. However, until it is realized, effort is necessary.</li>
+<li>Path and movements cannot transport you into Reality.</li>
+<li>Whatever I seek or think I want, however long the shopping list may be, all of my desires are only a reflection of my longing to come home. And <strong>home is oneness, home is my original nature.</strong> It is right here, simply in what is. There is nowhere else I have to go, and nothing else I have to become.</li>
+<li>There is a need for a realized man to adhere to social conventions for the sake of others.</li>
+<li>Enlightenment and behaviour are not linked. All of the great sages have pointed to the fact that Enlightenment is transcendent. It is not personal.</li>
+<li>Whilst Brahman reveals all other objects, no object reveals Brahman.</li>
+<li>Rightly do the wise, the discriminating ones, speak of the Self associated with body, senses and mind as the experiencer, the one undergoing transmigration. For the Self alone is not an experiencer It only appears to become an experiencer through association with such apparent conditioning adjuncts (upadhi) as the intellect (buddhi), etc.</li>
+<li>Once the scriptures have served their purpose, they are discarded as unreal, along with every "thing" else. They only have validity in the apparently dualistic world of ignorance and knowledge, guru and seeker.</li>
+<li>If anything can have value, such as poem, a walk in the woods, or a smile of a loved one, then why not scripture?</li>
+<li>Lucknow Syndrome: "the desire to visit the bathroom was observed". There is only now...</li>
+<li>In making the claim "This is it" neo-advaitins are effectively stating that "this" (i.e. the world) is satya, truth, whereas in fact it is mithya, neither real nor unreal.</li>
+<li>True transcendence implies a knowledge in detail of the entire process of manifestation.</li>
+<li>Traditional is gradual; practice and interim beliefs are later rescinded.
+I do not hesitate to recommend that a serious "seeker" should follow a traditional path, even to the extend of learning some Sanskrit.</li>
+</ul>
+<h2>CODA</h2>
+<p>adah - that. The unmanifested.<br />
+idam - this. The manifest universe.  </p>
+<ul>
+<li><strong>neti-neti does not deny the reality of existence, it "denies all the empirical characterization of reality."</strong></li>
+<li>Even after the subtraction of the full from the full, the remainder still remains the full! (power of infinity)</li>
+<li><strong>The mountain is me. Thus the river is me, the star is me, everything is me. I am the fullness that pervades all of them. They are not parts of me nor in me</strong>, because as fullness I can't have parts or contents. <strong>They are all verily me! When I am 'looking' at them, I am 'face to face' with infinity - the reality that I am!</strong></li>
+<li>The ultimate point of view is <strong>there is nothing to understand, so when we try to understand, we are only indulging in acrobatics of the mind... Whatever you have understood, you are not.</strong> Why are you getting lost in concepts? <strong>You are not what you know, you are the knower.</strong></li>
+</ul>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

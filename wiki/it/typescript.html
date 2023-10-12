@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>typescript</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Contents</h1>
+<ul>
+<li><a href="#Theory.html">Theory</a></li>
+<li><a href="#Installation.html">Installation</a><ul>
+<li><a href="#Installation#Usage.html">Usage</a></li>
+</ul>
+</li>
+<li><a href="#Code.html">Code</a><ul>
+<li><a href="#Code#Types.html">Types</a></li>
+<li><a href="#Code#Functions.html">Functions</a></li>
+<li><a href="#Code#Interfaces.html">Interfaces</a></li>
+<li><a href="#Code#Classes.html">Classes</a></li>
+</ul>
+</li>
+</ul>
+<h1>Theory</h1>
+<ul>
+<li>Superset of JavaScript by M$; compiles to JS</li>
+<li>Designed for creation of large apps</li>
+<li>Static Type Checking (completely optional). Types:<ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>Array</li>
+<li>Any</li>
+<li>Void</li>
+<li>Null (undefined)</li>
+<li>Tuple</li>
+<li>Enum</li>
+<li>Generics</li>
+</ul>
+</li>
+<li>Class Base Objects<ul>
+<li>No prototypes required</li>
+<li>Access modifiers</li>
+<li>Encapsulation</li>
+<li>Inheritance</li>
+</ul>
+</li>
+<li>Modularity</li>
+</ul>
+<h1>Installation</h1>
+<p>{% highlight bash %}
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install -g typescript
+{% endhighlight %}</p>
+<h2>Usage</h2>
+<p>{% highlight bash %}
+$ tsc types.tsc
+$ tsc types.tsc -w                # watch mode
+{% endhighlight %}</p>
+<h1>Code</h1>
+<h2>Types</h2>
+<p>{% highlight typescript %}
+let myString: string;
+let myNum: number;
+let myBool: boolean;
+let myVar: any;</p>
+<p>let myVoid: void = null;
+let myUndefined: undefined = null;</p>
+<p>/<em>
+let strArray: string[];
+let numArr: number[] = [1, 2, 3];
+</em>/</p>
+<p>let strArray: Array<string>;
+let numArr: Array<number> = [1, 2, 3];</p>
+<p>let strNumTuple: [string, number];</p>
+<p>myString = "Hello" + "World".slice(0);
+myNum = -22;
+myNum = 0o31;
+myBool = true;
+myVar = "Omega";</p>
+<p>strArray = ["Hello", 'World'];
+strNumTuple = ["Hello", 4];</p>
+<p>console.log(strNumTuple);
+{% endhighlight %}</p>
+<h2>Functions</h2>
+<p>{% highlight typescript %}
+function getSum(num1: number, num2: number): number {
+    return num1 + num2;
+}</p>
+<p>console.log(getSum(1, 4));</p>
+<p>let mySum = function(num1: any, num2: any): number {
+    if (typeof num1 == 'string') {
+        num1 = parseInt(num1);
+    }
+    if (typeof num2 == 'string') {
+        num2 = parseInt(num2);
+    }
+    return num1 + num2;
+}</p>
+<p>console.log(mySum('3', '5'));</p>
+<p>// optional parameter with ?
+function getName(firstName: string, lastName?: string): string {
+    if (lastName == undefined) {
+        return firstName;
+    }
+    return firstName + ' ' + lastName;
+}</p>
+<p>console.log(getName("John", 'Doe'))
+console.log(getName("John"))
+{% endhighlight %}</p>
+<h2>Interfaces</h2>
+<p>{% highlight typescript %}
+interface Todo {
+    title: string;
+    text: string;
+}</p>
+<p>function showTodo(todo: Todo) {
+    console.log(todo.title + ' ' + todo.text)
+}</p>
+<p>let myTodo = {title: 'Trash', 'text': 'Take out trash'};
+showTodo(myTodo)
+{% endhighlight %}</p>
+<h2>Classes</h2>
+<p>{% highlight typescript %}
+interface UserInterface {
+    name: string;
+    email: string;
+    age: number;</p>
+<div class="codehilite"><pre><span></span><code><span class="n">register</span><span class="p">();</span><span class="w"></span>
+<span class="n">payInvoice</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+
+<p>}</p>
+<p>class User implements UserInterface {
+    public name: string;
+    public email: string;
+    age: number;</p>
+<div class="codehilite"><pre><span></span><code><span class="n">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;User Created: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">register</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; is now registered&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">payInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; paid invoice&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>}</p>
+<p>class Member extends User {
+    id: number;</p>
+<div class="codehilite"><pre><span></span><code><span class="n">constructor</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">payInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">super</span><span class="o">.</span><span class="n">payInvoice</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>}</p>
+<p>let john = new User('John Doe', 'john@doe.com', 33)
+john.register()</p>
+<p>let mike = new Member(42, 'Mike X', 'mikex@gmail.com', 11)
+mike.payInvoice()
+{</p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

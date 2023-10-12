@@ -1,0 +1,1 @@
+But then, what about this marvellous experience of standing alone, discarding all help, breasting the storms of life, of working without any sense of recompense, without any sense of putrid duty? Working a whole life, joyful, free — not goaded on to work like slaves by false human love or ambition? This the monk alone can have.

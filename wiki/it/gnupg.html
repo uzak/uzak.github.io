@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>gnupg</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>GPG</h1>
+<p><a href="https://www.devdungeon.com/content/gpg-tutorial">tutorial</a></p>
+<div class="codehilite"><pre><span></span><code>gpg --edit-key 6A349802CE04AC5938B8EBAAA695F6D49054E917
+passwd
+save
+
+gpg --output revocation-certificate.asc --gen-revoke 6A349802CE04AC5938B8EBAAA695F6D49054E917
+</code></pre></div>
+
+<h2>key management</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span> <span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">keys</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">keys</span>
+
+<span class="n">gpg</span> <span class="o">--</span><span class="n">gen</span><span class="o">-</span><span class="n">key</span>                           <span class="c1"># make a new key</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">export</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">keys</span> <span class="o">--</span><span class="n">armor</span> <span class="mi">6</span><span class="n">A349802CE04AC5938B8EBAAA695F6D49054E917</span> <span class="o">&gt;</span> <span class="o">./</span><span class="n">my</span><span class="o">-</span><span class="n">priv</span><span class="o">-</span><span class="n">gpg</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">.</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">priv</span><span class="o">-</span><span class="n">gpg</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">edit</span><span class="o">-</span><span class="n">key</span> <span class="o">&lt;</span><span class="n">KEY_ID</span><span class="o">&gt;</span>
+<span class="n">gpg</span><span class="o">&gt;</span> <span class="n">trust</span>
+
+<span class="n">gpg</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">hkp</span><span class="p">:</span><span class="o">//</span><span class="n">pgp</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">edu</span> <span class="o">--</span><span class="n">send</span><span class="o">-</span><span class="n">keys</span> <span class="mi">6</span><span class="n">A349802CE04AC5938B8EBAAA695F6D49054E917</span>
+</code></pre></div>
+
+<h2>encryption &amp; decryption</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span> <span class="o">--</span><span class="n">armor</span> <span class="o">--</span><span class="n">symmetric</span> <span class="n">message</span><span class="o">.</span><span class="n">txt</span>     <span class="c1"># symmetric, armor (=ASCII output)</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">version</span>                           <span class="c1"># get cypher algos</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">sign</span> <span class="o">--</span><span class="n">symmetric</span> <span class="n">message</span><span class="o">.</span><span class="n">txt</span>      <span class="c1"># encrypt + sign</span>
+
+<span class="c1"># asymmetric. first find and import key, then encrypt</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">pgp</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">edu</span> <span class="o">--</span><span class="n">search</span><span class="o">-</span><span class="n">keys</span> <span class="n">uzak</span><span class="nd">@mailbox</span><span class="o">.</span><span class="n">org</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">armor</span> <span class="o">--</span><span class="n">encrypt</span> <span class="o">--</span><span class="n">recipient</span> <span class="n">uzak</span><span class="nd">@mailbox</span><span class="o">.</span><span class="n">org</span> <span class="n">message</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">gpg</span> <span class="o">-</span><span class="n">d</span> <span class="n">message</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">asc</span>                  <span class="c1"># decrypt</span>
+</code></pre></div>
+
+<h2>sign</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">clearsign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">plaintext</span><span class="w"></span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="nf">sign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="n">generates</span><span class="w"> </span><span class="nc">binary</span><span class="w"> </span><span class="k">output</span><span class="w"></span>
+
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">verify</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">            </span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">decrypt</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">verifies</span><span class="w"> </span><span class="n">signature</span><span class="w"></span>
+
+<span class="err">#</span><span class="w"> </span><span class="k">asymmetric</span><span class="w"> </span><span class="n">encrypt</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nf">sign</span><span class="w"></span>
+<span class="n">gpg</span><span class="w"> </span><span class="c1">--sign --encrypt --recipient uzak@mailbox.org message.txt</span>
+</code></pre></div>
+
+<h3>detached signatures</h3>
+<div class="codehilite"><pre><span></span><code>gpg --detach-sign message.txt
+gpg --verify message.txt.sig
+gpg --verify message.txt.sig message.txt    # explicit message filename
+</code></pre></div>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

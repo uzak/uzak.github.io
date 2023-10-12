@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>windows</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Admin CMD</h1>
+<ul>
+<li>Press Windows+R to open the “Run” box. Type “cmd” into the box and then press Ctrl+Shift+Enter to run the command as an administrator</li>
+<li>right click on start menu</li>
+</ul>
+<h1>Change keyboard shortcut</h1>
+<ul>
+<li>left alt + shift</li>
+<li>windows key + space</li>
+</ul>
+<h1>Choco</h1>
+<p>run as root: ctrl-r / cmd / shift+ctrl+enter</p>
+<p>install: @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"</p>
+<p>choco search keypass</p>
+<p>choco install -y heidisql
+choco install -y balsamiqmockups3
+choco install -y PyCharm-community
+choco install -y intellijidea-community
+choco install -y vscode
+choco install -y git
+choco install -y insomnia-rest-api-client
+choco install -y docker
+choco install -y virtualbox
+choco install -y altap-salamander
+choco install -y irfanview 
+choco install -y gimp
+choco install -y python3
+choco install -y libreoffice
+choco install -y jdk11 gradle
+choco install -y notepadplusplus vim
+choco install -y firefox googlechrome
+choco install -y choco-cleaner lenovo-thinkvantage-system-update
+choco install -y yarn nodejs</p>
+<p>choco uninstall -y keepassx</p>
+<p>choco list --local-only</p>
+<p>choco update -y all</p>
+<h1>cleanup old files</h1>
+<p>\ProgramData\chocolatey\lib\choco-cleaner\tools\Choco-Cleaner-manual.bat</p>
+<p>Thinkpad:
+    * Lenovo Think Vantage
+        * use <code>system update</code>
+    * git-scm for windows 10</p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

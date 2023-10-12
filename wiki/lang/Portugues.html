@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Portugues</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Contents</h1>
+<ul>
+<li><a href="#Misc.html">Misc</a></li>
+<li><a href="#Memrise.html">Memrise</a><ul>
+<li><a href="#Memrise#Modulo 1.html">Modulo 1</a></li>
+<li><a href="#Memrise#Modulo 2.html">Modulo 2</a></li>
+<li><a href="#Memrise#Modulo 3.html">Modulo 3</a></li>
+<li><a href="#Memrise#Modulo 4 - past.html">Modulo 4 - past</a></li>
+<li><a href="#Memrise#Modulo 5.html">Modulo 5</a></li>
+<li><a href="#Memrise#Learn Portuguese Conjugation.html">Learn Portuguese Conjugation</a></li>
+</ul>
+</li>
+<li><a href="#Mar Morto.html">Mar Morto</a></li>
+</ul>
+<h1>Misc</h1>
+<p><a href="https://conjugator.reverso.net/conjugation-portuguese.html">Conjugator</a></p>
+<div class="codehilite"><pre><span></span><code><span class="n">jeito</span><span class="w">                       </span><span class="n">die</span><span class="w"> </span><span class="n">Art</span><span class="p">,</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Art</span><span class="w"> </span><span class="n">und</span><span class="w"> </span><span class="n">Weise</span><span class="p">,</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="n">Anschein</span><span class="w"></span>
+<span class="n">de</span><span class="w"> </span><span class="n">jeito</span><span class="w"> </span><span class="n">nenhum</span><span class="w">             </span><span class="n">keinesfalls</span><span class="w"></span>
+<span class="n">costume</span><span class="w">                     </span><span class="n">die</span><span class="w"> </span><span class="n">Sitte</span><span class="p">,</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Gewohnheit</span><span class="w"></span>
+<span class="n">doida</span><span class="w">                       </span><span class="n">Narrin</span><span class="w"></span>
+<span class="n">noiva</span><span class="w">                       </span><span class="n">Verlobte</span><span class="w"></span>
+<span class="n">fiz</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w">                </span><span class="n">I</span><span class="w"> </span><span class="n">did</span><span class="w"></span>
+<span class="n">fez</span><span class="w"> </span><span class="p">(</span><span class="n">Eli</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w">              </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="n">he</span><span class="w"> </span><span class="n">did</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">fui</span><span class="w">  </span><span class="p">(</span><span class="n">eU</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">fUi</span><span class="p">)</span><span class="w"></span>
+<span class="n">ele</span><span class="w"> </span><span class="n">foi</span><span class="w"> </span><span class="p">(</span><span class="n">eli</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">foI</span><span class="p">)</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">tive</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="n">ele</span><span class="w"> </span><span class="n">teve</span><span class="w"></span>
+<span class="n">demorar</span><span class="w">                     </span><span class="n">herumtrödeln</span><span class="p">,</span><span class="w"> </span><span class="n">sich</span><span class="w"> </span><span class="n">verspäten</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">assobio</span><span class="w"> </span><span class="p">(</span><span class="n">assobiar</span><span class="p">)</span><span class="w">        </span><span class="n">der</span><span class="w"> </span><span class="n">Pfiff</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">pátio</span><span class="w">                     </span><span class="n">courtyard</span><span class="p">,</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="n">Hof</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">outdoor</span><span class="w">                   </span><span class="n">Billboard</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">couro</span><span class="w">                     </span><span class="n">das</span><span class="w"> </span><span class="n">Leder</span><span class="w"></span>
+<span class="n">faz</span><span class="w"> </span><span class="n">tempo</span><span class="w">                   </span><span class="n">it</span><span class="s">&#39;s been a while</span>
+<span class="s">se                          man</span>
+<span class="s">riso                        laughter</span>
+<span class="s">esgotar                     erschöpfen, ausreizen, aufzehren</span>
+<span class="s">lamber                      lecken</span>
+<span class="s">o moinho                    Mühle</span>
+<span class="s">ouça me bem</span>
+
+<span class="s">brasa                       die Glut</span>
+<span class="s">brasa (pt)                  attraktive Person</span>
+<span class="s">manda brasa! (Br.)          Schliess los</span>
+<span class="s">enfrentar                   sich etwas stellen, gegenübertreten</span>
+<span class="s">aceder                      abrufen, auf etwas zugreifen</span>
+<span class="s">empréstimo                  die Ausleihe/Ausleihung, Darlehen</span>
+<span class="s">prestação                   Leistung, Rate, Erbringung</span>
+<span class="s">alargamento                 Ausweitung, Ausdehnung</span>
+
+<span class="s">a saideira                  der Absacker</span>
+<span class="s">sexta-feira e dia da saideir</span>
+<span class="s">ouvindo</span>
+<span class="s">a folga                     die Rast, die Ruhe, der Spielraum (tech)</span>
+<span class="s">dia de folga                freier Tag</span>
+<span class="s">a maioria                   die Mehrheit</span>
+<span class="s">a maioridade                Erwachsenenalter </span>
+<span class="s">ai vou para Portugal</span>
+<span class="s">aposentar                   pensionieren</span>
+<span class="s">curtir                      mögen, geniessen</span>
+<span class="s">o selo                      die Briefmarke, der Siegel, der Stempel</span>
+<span class="s">ainda que mal ...           although I hardly ...</span>
+<span class="s">a cachoeira                 waterfall</span>
+<span class="s">senão                       sonst</span>
+<span class="s">desamar (se)                (sich) entlieben</span>
+<span class="s">sepultar                    beerdigen, begraben</span>
+<span class="s">a secura                    dryness</span>
+<span class="s">vem                         komme!</span>
+<span class="s">se Deus quiser</span>
+<span class="s">gargalhada                  das Gelächter </span>
+<span class="s">gargalhar                   aus vollem Hals lachen</span>
+<span class="s">contanto                    sofern; vorausgesetzt, dass</span>
+<span class="s">de boas                     cool</span>
+<span class="s">Não faço a minima ideia</span>
+<span class="s">daí                         dann, daher, voraus (räumlich)</span>
+<span class="s">daí para frente             von da an</span>
+<span class="s">foi mal                     my bad</span>
+<span class="s">leva anos                   takes ages</span>
+<span class="s">uma muita                   a fine</span>
+<span class="s">o filo                      der Stamm</span>
+<span class="s">eu/você soube               I knew (pretérito perfeito)</span>
+<span class="s">malhar (br)                 intensiv trainieren</span>
+<span class="s">lascar                      absplittern, zersplittern</span>
+<span class="s">o dobro                     das Doppelte</span>
+<span class="s">o passo                     der Schritt</span>
+<span class="s">Pois é!                     Stimmt!; na ja</span>
+<span class="s">Pois é, azar!               Tja, Pech gehabt!</span>
+</code></pre></div>
+
+<h1>Memrise</h1>
+<h2>Modulo 1</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">eu</span> <span class="n">sinto</span> <span class="n">muito</span>              <span class="n">I</span><span class="s">&#39;</span><span class="err">m (very) sorry</span>
+<span class="n">errado</span>                      <span class="n">wrong</span>
+<span class="n">macarrão</span>                    <span class="n">pasta</span><span class="p">,</span> <span class="n">macarroni</span>      
+<span class="n">nojento</span>                     <span class="n">disgusting</span>
+<span class="n">incrível</span>                    <span class="n">incredible</span><span class="p">;</span> <span class="n">amazing</span>
+<span class="n">nojento</span>                     <span class="n">eklig</span><span class="p">,</span> <span class="n">unappetitlich</span>
+<span class="n">um</span> <span class="n">cardápio</span>                 <span class="n">menu</span>
+<span class="n">pedir</span>                       <span class="n">to</span> <span class="nf">ask </span><span class="p">(</span><span class="n">for</span> <span class="n">something</span><span class="p">),</span> <span class="n">to</span> <span class="n">order</span>
+<span class="n">feio</span>                        <span class="n">ugly</span>
+<span class="n">agradável</span>                   <span class="n">nice</span>
+<span class="n">baixo</span>                       <span class="n">short</span><span class="p">,</span> <span class="n">low</span>
+<span class="nf">pensar </span><span class="p">(</span><span class="n">thoughts</span><span class="p">)</span> <span class="o">&lt;-&gt;</span> <span class="n">achar</span> <span class="n">pinion</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Modulo 2</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">você</span><span class="w"> </span><span class="n">entende</span><span class="w">                </span><span class="n">do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">understand</span><span class="vm">?</span><span class="w"></span>
+<span class="n">tampouco</span><span class="w">                    </span><span class="n">neither</span><span class="w"></span>
+<span class="n">prazer</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="n">conhecê</span><span class="o">-</span><span class="n">lo</span><span class="w">        </span><span class="n">pleasure</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">meet</span><span class="w"> </span><span class="n">you</span><span class="w"></span>
+<span class="n">fico</span><span class="w"> </span><span class="n">feliz</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="n">ajudar</span><span class="w">        </span><span class="n">happy</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">help</span><span class="w"></span>
+<span class="n">tudo</span><span class="w">                        </span><span class="n">everything</span><span class="p">,</span><span class="w"> </span><span class="ow">all</span><span class="w"></span>
+<span class="n">todo</span><span class="w">                        </span><span class="n">ganz</span><span class="p">,</span><span class="w"> </span><span class="n">jeder</span><span class="p">,</span><span class="w"> </span><span class="n">gesamt</span><span class="p">,</span><span class="w"> </span><span class="ow">all</span><span class="w"></span>
+<span class="n">ruim</span><span class="w">                        </span><span class="n">bad</span><span class="w"></span>
+<span class="n">bom</span><span class="w">                         </span><span class="n">good</span><span class="w"></span>
+<span class="n">bem</span><span class="w">                         </span><span class="n">well</span><span class="p">,</span><span class="w"> </span><span class="n">alright</span><span class="p">,</span><span class="w"> </span><span class="n">fine</span><span class="w"></span>
+<span class="n">poucos</span><span class="w"> </span><span class="p">(</span><span class="n">poucas</span><span class="p">)</span><span class="w">             </span><span class="n">few</span><span class="w"></span>
+<span class="n">é</span><span class="w"> </span><span class="n">claro</span><span class="w">                     </span><span class="k">of</span><span class="w"> </span><span class="n">course</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">falo</span><span class="w"> </span><span class="n">um</span><span class="w"> </span><span class="n">pocou</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">portuguê</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">xícara</span><span class="w">                  </span><span class="n">a</span><span class="w"> </span><span class="n">cup</span><span class="w"></span>
+<span class="n">algum</span><span class="w">                       </span><span class="ow">some</span><span class="w"></span>
+<span class="n">qualquer</span><span class="w"> </span><span class="p">(</span><span class="n">quaisquer</span><span class="p">)</span><span class="w">        </span><span class="ow">any</span><span class="w"></span>
+<span class="n">algo</span><span class="w">                        </span><span class="n">something</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">caixa</span><span class="w"> </span><span class="n">eletrônico</span><span class="w">         </span><span class="n">ATM</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">banca</span><span class="w">                   </span><span class="n">a</span><span class="w"> </span><span class="n">kiosk</span><span class="p">,</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="n">Stand</span><span class="p">,</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Trafik</span><span class="w"></span>
+<span class="n">ir</span><span class="w"> </span><span class="n">às</span><span class="w"> </span><span class="n">compras</span><span class="w">               </span><span class="k">to</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">shopping</span><span class="w"></span>
+<span class="n">este</span><span class="w"> </span><span class="p">(</span><span class="n">esta</span><span class="p">;</span><span class="w"> </span><span class="n">isto</span><span class="p">)</span><span class="w">           </span><span class="n">this</span><span class="w"> </span><span class="p">(</span><span class="k">close</span><span class="p">)</span><span class="w"></span>
+<span class="n">esse</span><span class="w"> </span><span class="p">(</span><span class="n">essa</span><span class="p">;</span><span class="w"> </span><span class="n">isso</span><span class="p">)</span><span class="w">           </span><span class="n">that</span><span class="w"> </span><span class="p">(</span><span class="n">relatively</span><span class="w"> </span><span class="k">close</span><span class="p">)</span><span class="w"></span>
+<span class="n">aquele</span><span class="w"> </span><span class="p">(</span><span class="n">aquela</span><span class="p">;</span><span class="w"> </span><span class="n">aquilo</span><span class="p">)</span><span class="w">     </span><span class="n">that</span><span class="w"></span>
+<span class="n">de</span><span class="w"> </span><span class="n">fato</span><span class="w">                     </span><span class="n">nämlich</span><span class="p">,</span><span class="w"> </span><span class="n">tatsächlich</span><span class="p">,</span><span class="w"> </span><span class="n">wahrhaftig</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">é</span><span class="w"> </span><span class="n">aquilo</span><span class="vm">?</span><span class="w">             </span><span class="n">what</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">that</span><span class="vm">?</span><span class="w"></span>
+<span class="n">viva</span><span class="err">!</span><span class="w">                       </span><span class="n">Juchhu</span><span class="err">!</span><span class="w"> </span>
+<span class="n">eu</span><span class="w"> </span><span class="n">não</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="n">importo</span><span class="w">           </span><span class="n">I</span><span class="w"> </span><span class="n">don</span><span class="s1">&#39;t mind</span>
+<span class="s1">sandálias                   slippers</span>
+<span class="s1">cueca                       Herrenunterhose</span>
+<span class="s1">calcinha                    underwear (women&#39;</span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+<span class="n">tênis</span><span class="w"> </span><span class="n">esportivo</span><span class="w">             </span><span class="n">trainers</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">camiseta</span><span class="w">                </span><span class="n">T</span><span class="o">-</span><span class="n">shirt</span><span class="w"></span>
+<span class="n">roxo</span><span class="w">                        </span><span class="n">purple</span><span class="w"></span>
+<span class="n">rosa</span><span class="w">                        </span><span class="n">pink</span><span class="w"></span>
+<span class="n">marrom</span><span class="w">                      </span><span class="n">brown</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">garoto</span><span class="p">,</span><span class="w"> </span><span class="n">uma</span><span class="w"> </span><span class="n">garota</span><span class="w">       </span><span class="n">boy</span><span class="p">,</span><span class="w"> </span><span class="n">girl</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">avô</span><span class="p">;</span><span class="w"> </span><span class="n">uma</span><span class="w"> </span><span class="n">avó</span><span class="p">;</span><span class="w"> </span><span class="n">avós</span><span class="w">       </span><span class="n">grandpa</span><span class="p">,</span><span class="w"> </span><span class="n">grandma</span><span class="p">,</span><span class="w"> </span><span class="n">grandparents</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">bolsa</span><span class="w">                   </span><span class="n">bag</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">carteira</span><span class="w">                </span><span class="n">wallet</span><span class="w"></span>
+<span class="n">apimentado</span><span class="w">                  </span><span class="n">spicy</span><span class="w"></span>
+<span class="n">viciado</span><span class="w"> </span><span class="n">EM</span><span class="w">                  </span><span class="n">addicted</span><span class="w"></span>
+<span class="n">leal</span><span class="w">                        </span><span class="n">loyal</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">cobra</span><span class="w">                   </span><span class="n">snake</span><span class="w"></span>
+<span class="n">corajoso</span><span class="w">                    </span><span class="n">brave</span><span class="w"></span>
+<span class="n">tão</span><span class="w">                         </span><span class="n">so</span><span class="p">;</span><span class="w"> </span><span class="n">such</span><span class="w"></span>
+<span class="n">porque</span><span class="w">                      </span><span class="n">because</span><span class="w"></span>
+<span class="n">por</span><span class="w"> </span><span class="n">que</span><span class="w">                     </span><span class="n">why</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">encontro</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="nc">date</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">reunião</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">meeting</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">compromisso</span><span class="w">              </span><span class="n">appointment</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">preciso</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="n">ajuda</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">cor</span><span class="w"></span>
+<span class="n">ele</span><span class="w"> </span><span class="n">é</span><span class="w"> </span><span class="n">alérgico</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">nozes</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">estou</span><span class="w"> </span><span class="n">irritado</span><span class="w"> </span><span class="n">porque</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">com</span><span class="w"> </span><span class="n">fome</span><span class="w"></span>
+<span class="n">quieto</span><span class="w">                      </span><span class="n">ruhig</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">reunião</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">meeting</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">encontro</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">romantic</span><span class="w"> </span><span class="n">meeting</span><span class="p">)</span><span class="w"></span>
+<span class="n">da</span><span class="w"> </span><span class="n">tarde</span><span class="w">                    </span><span class="n">P</span><span class="p">.</span><span class="n">M</span><span class="p">.</span><span class="w"></span>
+<span class="n">em</span><span class="w"> </span><span class="n">ponto</span><span class="w">                    </span><span class="n">genau</span><span class="w"> </span><span class="p">(</span><span class="n">Uhrzeit</span><span class="p">),</span><span class="w"> </span><span class="n">o</span><span class="err">&#39;</span><span class="n">clock</span><span class="w"></span>
+</code></pre></div>
+
+<h2>Modulo 3</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">um</span><span class="w"> </span><span class="n">livro</span><span class="o">-</span><span class="n">guia</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">mapa</span><span class="w"></span>
+<span class="n">por</span><span class="w"> </span><span class="n">ali</span><span class="w">                     </span><span class="n">over</span><span class="w"> </span><span class="n">there</span><span class="w"></span>
+<span class="n">confuso</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">espécie</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">species</span><span class="p">;</span><span class="w"> </span><span class="n">kind</span><span class="w"></span>
+<span class="n">dinheiro</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="n">espécie</span><span class="w">         </span><span class="n">cash</span><span class="w"></span>
+<span class="n">gorjetas</span><span class="w">                    </span><span class="n">tips</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">gorjeta</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Trinkgeld</span><span class="p">)</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">jantar</span><span class="w">                   </span><span class="n">dinner</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">manhã</span><span class="w"></span>
+<span class="n">aceitar</span><span class="w"></span>
+<span class="n">você</span><span class="w"> </span><span class="n">gostaria</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">mais</span><span class="w"> </span><span class="n">cervej</span><span class="w"></span>
+<span class="n">você</span><span class="w"> </span><span class="n">aceita</span><span class="w"> </span><span class="n">cartão</span><span class="w"></span>
+<span class="n">menor</span><span class="w">                       </span><span class="n">smaller</span><span class="p">;</span><span class="w"> </span><span class="n">minor</span><span class="w"></span>
+<span class="n">maior</span><span class="w">                       </span><span class="n">bigger</span><span class="p">;</span><span class="w"> </span><span class="n">major</span><span class="w"></span>
+<span class="n">este</span><span class="w"> </span><span class="n">aqui</span><span class="w">                   </span><span class="n">this</span><span class="w"> </span><span class="n">here</span><span class="w"></span>
+<span class="n">aquele</span><span class="w"> </span><span class="n">ali</span><span class="w">                  </span><span class="n">that</span><span class="w"> </span><span class="n">one</span><span class="w"></span>
+<span class="n">veja</span><span class="w"> </span><span class="n">aquilo</span><span class="w">                 </span><span class="n">look</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">that</span><span class="w"></span>
+<span class="n">lhe</span><span class="w">                         </span><span class="n">to</span><span class="w"> </span><span class="n">him</span><span class="o">/</span><span class="n">her</span><span class="o">/</span><span class="n">you</span><span class="w"> </span><span class="p">(</span><span class="n">dative</span><span class="p">)</span><span class="w"></span>
+<span class="n">lo</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">             </span><span class="n">him</span><span class="o">/</span><span class="n">her</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">esquina</span><span class="w">                 </span><span class="n">corner</span><span class="w"></span>
+<span class="n">fazer</span><span class="w"> </span><span class="n">uma</span><span class="w"> </span><span class="n">pergunta</span><span class="w">          </span><span class="n">to</span><span class="w"> </span><span class="n">ask</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">question</span><span class="w"></span>
+<span class="n">reto</span><span class="w">                        </span><span class="n">straight</span><span class="w"></span>
+<span class="n">lento</span><span class="w"></span>
+<span class="n">posso</span><span class="w"> </span><span class="n">lhe</span><span class="w"> </span><span class="n">fazer</span><span class="w"> </span><span class="n">uma</span><span class="w"> </span><span class="n">pergunta</span><span class="w"></span>
+<span class="n">Suécia</span><span class="w"></span>
+<span class="n">Noruega</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">dedo</span><span class="w">                     </span><span class="n">finger</span><span class="p">,</span><span class="w"> </span><span class="n">toe</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">rosto</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">face</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">pescoço</span><span class="w">                  </span><span class="n">a</span><span class="w"> </span><span class="n">neck</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">tornozelo</span><span class="w">                </span><span class="n">an</span><span class="w"> </span><span class="n">ankle</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">ombro</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">shoulder</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">costela</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">rib</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">resfriado</span><span class="w">                </span><span class="n">a</span><span class="w"> </span><span class="n">cold</span><span class="w"> </span><span class="p">(</span><span class="n">illness</span><span class="p">)</span><span class="w"></span>
+<span class="n">papel</span><span class="w"> </span><span class="n">higiênico</span><span class="w">             </span><span class="n">toilet</span><span class="w"> </span><span class="n">paper</span><span class="w"></span>
+<span class="n">droga</span><span class="o">!</span><span class="w"></span>
+<span class="n">sangrar</span><span class="w">                     </span><span class="n">bleed</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">há</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">errado</span><span class="err">?</span><span class="w"></span>
+<span class="n">estimo</span><span class="w"> </span><span class="n">melhoras</span><span class="o">!</span><span class="w">            </span><span class="n">get</span><span class="w"> </span><span class="n">well</span><span class="w"> </span><span class="n">soon</span><span class="w"></span>
+<span class="n">nem</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="n">um</span><span class="w"> </span><span class="n">milhão</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">anos</span><span class="o">!</span><span class="w"></span>
+<span class="n">de</span><span class="w"> </span><span class="n">certa</span><span class="w"> </span><span class="n">forma</span><span class="w"> </span><span class="o">...</span><span class="w">          </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">way</span><span class="w"></span>
+<span class="n">preste</span><span class="w"> </span><span class="n">atenção</span><span class="o">!</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="n">propósito</span><span class="w"> </span><span class="o">...</span><span class="w">             </span><span class="n">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">way</span><span class="w"></span>
+<span class="n">abaixo</span><span class="w">                      </span><span class="n">below</span><span class="p">;</span><span class="w"> </span><span class="n">beneath</span><span class="w"></span>
+<span class="n">acima</span><span class="w">                       </span><span class="n">open</span><span class="p">,</span><span class="w"> </span><span class="err">ü</span><span class="n">ber</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">escada</span><span class="w">                  </span><span class="n">ladder</span><span class="p">;</span><span class="w"> </span><span class="n">stair</span><span class="w"> </span><span class="n">case</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">quarto</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">hóspedes</span><span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="n">guest</span><span class="w"> </span><span class="n">room</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">convidado</span><span class="w">                </span><span class="n">a</span><span class="w"> </span><span class="n">guest</span><span class="w"></span>
+<span class="n">escada</span><span class="w"> </span><span class="n">acima</span><span class="o">/</span><span class="n">abaixo</span><span class="w">         </span><span class="n">upstairs</span><span class="o">/</span><span class="n">downstairs</span><span class="w"></span>
+<span class="n">au</span><span class="w"> </span><span class="n">lado</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">...</span><span class="w"></span>
+<span class="n">brincos</span><span class="w">                     </span><span class="n">earrings</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">colar</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">necklace</span><span class="w"> </span><span class="p">(</span><span class="n">náhrdelník</span><span class="p">)</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">bracelete</span><span class="w">                </span><span class="n">náramok</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">grama</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">brinquedo</span><span class="w">                </span><span class="n">a</span><span class="w"> </span><span class="n">toy</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">quilo</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">tonelada</span><span class="w"></span>
+<span class="n">vírgula</span><span class="w">                     </span><span class="n">comma</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">decimal</span><span class="p">)</span><span class="w"> </span><span class="n">point</span><span class="w"></span>
+<span class="n">pesar</span><span class="w">                       </span><span class="n">to</span><span class="w"> </span><span class="n">weight</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">estou</span><span class="w"> </span><span class="n">com</span><span class="w"> </span><span class="n">três</span><span class="w"> </span><span class="n">quilos</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">ms</span><span class="w"></span>
+<span class="n">isso</span><span class="w"> </span><span class="n">pesa</span><span class="w"> </span><span class="n">uma</span><span class="w"> </span><span class="n">tonelada</span><span class="o">!</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">academia</span><span class="w">                </span><span class="n">gym</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">ponte</span><span class="w"></span>
+<span class="n">ausente</span><span class="w">                     </span><span class="n">away</span><span class="w"></span>
+<span class="n">bem</span><span class="w"> </span><span class="n">aqui</span><span class="w">                    </span><span class="n">right</span><span class="w"> </span><span class="n">here</span><span class="w"></span>
+<span class="n">ensino</span><span class="w"> </span><span class="n">médio</span><span class="w">                </span><span class="n">high</span><span class="w"> </span><span class="n">school</span><span class="w"> </span><span class="p">(</span><span class="n">college</span><span class="p">)</span><span class="w"></span>
+<span class="n">jardim</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">infância</span><span class="w">          </span><span class="n">a</span><span class="w"> </span><span class="n">kindergarden</span><span class="w"></span>
+<span class="n">reprovar</span><span class="w"> </span><span class="p">(</span><span class="n">em</span><span class="p">)</span><span class="w">               </span><span class="n">to</span><span class="w"> </span><span class="n">fail</span><span class="w"> </span><span class="p">(</span><span class="n">an</span><span class="w"> </span><span class="n">exam</span><span class="p">)</span><span class="w"></span>
+<span class="n">aprovado</span><span class="w">                    </span><span class="n">passed</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">exam</span><span class="w"></span>
+<span class="n">supor</span><span class="w">                       </span><span class="n">to</span><span class="w"> </span><span class="n">suppose</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">assim</span><span class="w"> </span><span class="n">suponho</span><span class="w">            </span><span class="n">I</span><span class="w"> </span><span class="n">suppose</span><span class="w"> </span><span class="n">so</span><span class="w"> </span>
+<span class="n">tanto</span><span class="w"> </span><span class="n">faz</span><span class="w">                   </span><span class="n">whatever</span><span class="w"></span>
+<span class="n">não</span><span class="w"> </span><span class="n">esquente</span><span class="w"> </span><span class="n">com</span><span class="w"> </span><span class="n">isso</span><span class="w">       </span><span class="n">don</span><span class="s1">&#39;t sweat it</span>
+<span class="n">uma</span><span class="w"> </span><span class="n">festa</span><span class="w">                   </span><span class="n">holiday</span><span class="w"> </span><span class="p">(</span><span class="n">national</span><span class="p">);</span><span class="w"> </span><span class="n">party</span><span class="w"></span>
+<span class="n">boas</span><span class="w"> </span><span class="n">festas</span><span class="o">!</span><span class="w"></span>
+<span class="n">seja</span><span class="w"> </span><span class="n">cuidadoso</span><span class="w">              </span><span class="n">be</span><span class="w"> </span><span class="n">careful</span><span class="w"></span>
+<span class="n">dar</span><span class="w"> </span><span class="n">uma</span><span class="w"> </span><span class="n">volta</span><span class="w">               </span><span class="n">take</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">walk</span><span class="w"></span>
+<span class="n">emprestar</span><span class="w">                   </span><span class="n">to</span><span class="w"> </span><span class="n">lend</span><span class="w"></span>
+<span class="n">dever</span><span class="w">                       </span><span class="n">to</span><span class="w"> </span><span class="n">owe</span><span class="w"></span>
+<span class="n">tomar</span><span class="w"> </span><span class="n">emprestado</span><span class="w">            </span><span class="n">to</span><span class="w"> </span><span class="n">borrow</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">teto</span><span class="w">                     </span><span class="n">ceiling</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">telhado</span><span class="w">                  </span><span class="n">roof</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">lápis</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">pencil</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">cadeado</span><span class="w">                  </span><span class="n">a</span><span class="w"> </span><span class="n">lock</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">lâmpada</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">travesseiro</span><span class="w">              </span><span class="n">a</span><span class="w"> </span><span class="n">pillow</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">chave</span><span class="w"></span>
+<span class="n">debaixo</span><span class="w"> </span><span class="n">de</span><span class="w">                  </span><span class="n">under</span><span class="w"> </span><span class="n">something</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">edredom</span><span class="w">                  </span><span class="n">a</span><span class="w"> </span><span class="n">duvet</span><span class="p">,</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Bettdecke</span><span class="p">,</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="n">Bettbezug</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">cobertor</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">blanket</span><span class="w"></span>
+<span class="n">atrás</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">...</span><span class="w">                </span><span class="n">behind</span><span class="w"> </span><span class="p">(</span><span class="n">something</span><span class="p">)</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">barco</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">ship</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">boat</span><span class="w"></span>
+<span class="n">dirigir</span><span class="w">                     </span><span class="n">to</span><span class="w"> </span><span class="n">drive</span><span class="w"></span>
+<span class="n">dentro</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">horário</span><span class="w">           </span><span class="n">on</span><span class="w"> </span><span class="n">time</span><span class="w"></span>
+<span class="n">o</span><span class="w"> </span><span class="n">voo</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">febre</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">estante</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">livros</span><span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="n">bookcase</span><span class="w"> </span><span class="p">(</span><span class="n">shelf</span><span class="p">)</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">serei</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="n">seremos</span><span class="w"></span>
+<span class="n">eles</span><span class="w"> </span><span class="n">serão</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">estarei</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="n">estaremos</span><span class="w"></span>
+<span class="n">eles</span><span class="w"> </span><span class="n">estarão</span><span class="w"></span>
+<span class="n">haverá</span><span class="w">                      </span><span class="n">there</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"></span>
+<span class="err">é</span><span class="w"> </span><span class="n">mesmo</span><span class="err">?</span><span class="w">                    </span><span class="n">really</span><span class="err">?</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">partida</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">game</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="p">(</span><span class="n">sports</span><span class="p">),</span><span class="w"> </span><span class="n">partička</span><span class="w"></span>
+<span class="n">ao</span><span class="w"> </span><span class="n">invés</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">...</span><span class="w">             </span><span class="n">instead</span><span class="w"> </span><span class="n">of</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">peça</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">part</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">piece</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="n">theatre</span><span class="p">)</span><span class="w"> </span><span class="n">play</span><span class="w"></span>
+<span class="n">cuidado</span><span class="w"> </span><span class="n">com</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">vão</span><span class="w">           </span><span class="n">mind</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">gap</span><span class="w"></span>
+<span class="n">desacompanhado</span><span class="w">              </span><span class="n">unattended</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">dissertação</span><span class="w">             </span><span class="n">an</span><span class="w"> </span><span class="n">essay</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">dissertation</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">carta</span><span class="w">                   </span><span class="n">a</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="p">(</span><span class="n">mail</span><span class="p">)</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">encomenda</span><span class="w">               </span><span class="n">a</span><span class="w"> </span><span class="n">parcel</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">mancha</span><span class="w">                  </span><span class="n">a</span><span class="w"> </span><span class="n">stain</span><span class="w"></span>
+<span class="n">qualquer</span><span class="w"> </span><span class="n">um</span><span class="w">                 </span><span class="n">anyone</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">jornada</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">journey</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">casa</span><span class="w"> </span><span class="n">noturna</span><span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="n">club</span><span class="w"></span>
+<span class="n">que</span><span class="w"> </span><span class="n">dia</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="n">semana</span><span class="w"> </span><span class="err">é</span><span class="w"> </span><span class="n">hoje</span><span class="err">?</span><span class="w"></span>
+<span class="n">adorar</span><span class="w"> </span><span class="p">(</span><span class="n">coias</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-&gt;</span><span class="w"> </span><span class="n">amar</span><span class="w"> </span><span class="p">(</span><span class="n">pessoa</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<h2>Modulo 4 - past</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">emocionante</span><span class="w">                 </span><span class="n">exciting</span><span class="w"></span>
+<span class="n">ficar</span><span class="w"> </span><span class="n">bêbado</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="n">falaremos</span><span class="w"> </span><span class="n">mais</span><span class="w"> </span><span class="n">tarde</span><span class="w"></span>
+<span class="n">divertido</span><span class="w">                   </span><span class="n">fun</span><span class="p">;</span><span class="w"> </span><span class="n">entertaining</span><span class="w"></span>
+<span class="n">chato</span><span class="w">                       </span><span class="n">boring</span><span class="w"></span>
+<span class="n">eu</span><span class="o">/</span><span class="n">você</span><span class="o">/</span><span class="n">ele</span><span class="w"> </span><span class="n">estava</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="n">estávamos</span><span class="w"></span>
+<span class="n">vocês</span><span class="o">/</span><span class="n">eles</span><span class="w"> </span><span class="n">estavam</span><span class="w"></span>
+<span class="n">eu</span><span class="o">/</span><span class="n">você</span><span class="o">/</span><span class="n">ele</span><span class="w"> </span><span class="n">era</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="err">é</span><span class="n">ramos</span><span class="w"></span>
+<span class="n">vocês</span><span class="o">/</span><span class="n">eles</span><span class="w"> </span><span class="n">eram</span><span class="w"></span>
+<span class="n">dormir</span><span class="w"> </span><span class="n">até</span><span class="w"> </span><span class="n">tarde</span><span class="w"></span>
+<span class="n">pelo</span><span class="w"> </span><span class="p">(</span><span class="n">pela</span><span class="p">)</span><span class="w">                 </span><span class="n">through</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="p">);</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="p">)</span><span class="w"></span>
+<span class="n">eu</span><span class="w"> </span><span class="n">pude</span><span class="w">                     </span><span class="n">I</span><span class="w"> </span><span class="n">could</span><span class="w"> </span><span class="p">(</span><span class="n">past</span><span class="p">)</span><span class="w"></span>
+<span class="n">você</span><span class="w"> </span><span class="n">pôde</span><span class="w">                   </span><span class="n">you</span><span class="w"> </span><span class="n">could</span><span class="w"> </span><span class="p">(</span><span class="n">singular</span><span class="p">;</span><span class="w"> </span><span class="n">past</span><span class="p">)</span><span class="w"></span>
+<span class="n">havia</span><span class="w">                       </span><span class="n">there</span><span class="w"> </span><span class="n">was</span><span class="p">,</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">were</span><span class="w"></span>
+<span class="n">por</span><span class="w"> </span><span class="n">dois</span><span class="w"> </span><span class="n">meses</span><span class="w">              </span><span class="k">for</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">months</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="n">já</span><span class="w"> </span><span class="n">fizemos</span><span class="w"> </span><span class="n">aquela</span><span class="w"> </span><span class="n">pergunta</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">ele</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">conversa</span><span class="w"></span>
+<span class="n">punição</span><span class="w">                     </span><span class="n">punishment</span><span class="w"></span>
+<span class="n">uma</span><span class="w"> </span><span class="n">discussão</span><span class="w">               </span><span class="n">argument</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">discussion</span><span class="w"></span>
+<span class="n">deixar</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="n">irritado</span><span class="w">         </span><span class="n">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="n">angry</span><span class="p">;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">annoyed</span><span class="w"></span>
+<span class="n">constrangedor</span><span class="w">               </span><span class="n">embarrassing</span><span class="w"></span>
+<span class="n">constrangido</span><span class="w">                </span><span class="n">embarrassed</span><span class="w"></span>
+<span class="n">nós</span><span class="w"> </span><span class="n">deveríamos</span><span class="w"> </span><span class="n">contar</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">eles</span><span class="w"> </span><span class="n">sobre</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">discussão</span><span class="err">?</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="n">argument</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">ponto</span><span class="w">                    </span><span class="n">a</span><span class="w"> </span><span class="n">point</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">score</span><span class="w"></span>
+<span class="n">qual</span><span class="w"> </span><span class="err">é</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">ponto</span><span class="err">?</span><span class="w"></span>
+<span class="n">aquilo</span><span class="w"> </span><span class="n">não</span><span class="w"> </span><span class="n">fazia</span><span class="w"> </span><span class="n">sentido</span><span class="w">    </span><span class="n">that</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">sense</span><span class="w"></span>
+<span class="n">você</span><span class="w"> </span><span class="n">está</span><span class="w"> </span><span class="n">certo</span><span class="w"> </span><span class="n">disto</span><span class="err">?</span><span class="w"></span>
+<span class="n">você</span><span class="w"> </span><span class="n">perdeu</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">cabeça</span><span class="err">?</span><span class="w"></span>
+<span class="n">estar</span><span class="w"> </span><span class="n">ansioso</span><span class="w"> </span><span class="n">por</span><span class="w">           </span><span class="n">to</span><span class="w"> </span><span class="n">look</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="n">estamos</span><span class="w"> </span><span class="n">ansiosos</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">conhecê</span><span class="o">-</span><span class="n">lo</span><span class="w"></span>
+<span class="n">tal</span><span class="w"> </span><span class="n">como</span><span class="w">                    </span><span class="n">such</span><span class="w"> </span><span class="k">as</span><span class="w"></span>
+<span class="n">fique</span><span class="w"> </span><span class="n">quieto</span><span class="w"></span>
+<span class="n">não</span><span class="w"> </span><span class="n">seja</span><span class="w"> </span><span class="n">bobo</span><span class="o">!</span><span class="w"></span>
+<span class="n">velejar</span><span class="w"></span>
+<span class="n">velejamento</span><span class="w">                 </span><span class="n">sailing</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">sport</span><span class="p">)</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">livro</span><span class="w"> </span><span class="n">policial</span><span class="w">           </span><span class="n">a</span><span class="w"> </span><span class="n">crime</span><span class="w"> </span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">detektívka</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">suspense</span><span class="w">                 </span><span class="n">a</span><span class="w"> </span><span class="n">thriller</span><span class="w"></span>
+<span class="n">jardinagem</span><span class="w">                  </span><span class="n">gardening</span><span class="w"></span>
+<span class="n">tocar</span><span class="w">                       </span><span class="n">to</span><span class="w"> </span><span class="n">play</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">instrument</span><span class="p">;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">touch</span><span class="w"></span>
+<span class="n">um</span><span class="w"> </span><span class="n">tipo</span><span class="w"> </span><span class="n">de</span><span class="w">                  </span><span class="n">a</span><span class="w"> </span><span class="n">kind</span><span class="w"> </span><span class="n">of</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">of</span><span class="w"></span>
+</code></pre></div>
+
+<h2>Modulo 5</h2>
+<div class="codehilite"><pre><span></span><code>assustador                  erschreckend, beängstigend
+</code></pre></div>
+
+<h2>Learn Portuguese Conjugation</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">dão</span><span class="w">                         </span><span class="n">they</span><span class="w"> </span><span class="n">give</span><span class="w"></span>
+<span class="n">hão</span><span class="w">                         </span><span class="n">they</span><span class="o">/</span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span><span class="w"> </span><span class="n">exist</span><span class="p">)</span><span class="w"></span>
+<span class="n">foram</span><span class="w">                       </span><span class="n">there</span><span class="w"> </span><span class="n">were</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">were</span><span class="w"> </span><span class="p">(</span><span class="n">past</span><span class="w"> </span><span class="n">simple</span><span class="p">)</span><span class="w"></span>
+<span class="n">veio</span><span class="w">                        </span><span class="n">he</span><span class="w"> </span><span class="n">came</span><span class="w"></span>
+<span class="n">pôs</span><span class="w">                         </span><span class="n">he</span><span class="w"> </span><span class="n">put</span><span class="w"></span>
+<span class="n">vem</span><span class="w">                         </span><span class="n">he</span><span class="w"> </span><span class="n">comes</span><span class="w"></span>
+<span class="n">vêm</span><span class="w">                         </span><span class="n">they</span><span class="w"> </span><span class="n">come</span><span class="w"></span>
+<span class="n">pusemos</span><span class="w">                     </span><span class="n">we</span><span class="w"> </span><span class="n">put</span><span class="w"> </span><span class="p">(</span><span class="n">past</span><span class="w"> </span><span class="n">simple</span><span class="p">)</span><span class="w"></span>
+<span class="n">viram</span><span class="w">                       </span><span class="n">they</span><span class="w"> </span><span class="n">saw</span><span class="w"></span>
+<span class="n">havendo</span><span class="w">                     </span><span class="n">exist</span><span class="w"> </span><span class="p">(</span><span class="n">gerund</span><span class="p">)</span><span class="w"></span>
+<span class="n">havido</span><span class="w">                      </span><span class="n">exist</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">p</span><span class="p">)</span><span class="w"></span>
+<span class="n">viemos</span><span class="w">                      </span><span class="n">we</span><span class="w"> </span><span class="n">came</span><span class="w"></span>
+<span class="n">põem</span><span class="w">                        </span><span class="n">they</span><span class="w"> </span><span class="n">put</span><span class="w"></span>
+<span class="n">pomos</span><span class="w">                       </span><span class="n">we</span><span class="w"> </span><span class="n">put</span><span class="w"> </span><span class="p">(</span><span class="n">present</span><span class="p">)</span><span class="w"></span>
+<span class="n">pusemos</span><span class="w">                     </span><span class="n">we</span><span class="w"> </span><span class="n">put</span><span class="w"> </span><span class="p">(</span><span class="n">past</span><span class="p">)</span><span class="w"></span>
+<span class="n">eram</span><span class="w">                        </span><span class="n">they</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="w"></span>
+<span class="n">haviam</span><span class="w">                      </span><span class="n">they</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="p">(</span><span class="n">exist</span><span class="p">)</span><span class="w"></span>
+<span class="n">vá</span><span class="w">                          </span><span class="k">go</span><span class="err">!</span><span class="w"> </span><span class="p">(</span><span class="n">singular</span><span class="w"> </span><span class="n">imperativ</span><span class="p">)</span><span class="w"></span>
+<span class="n">estávamos</span><span class="w">                   </span><span class="n">we</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="w"></span>
+<span class="n">partiram</span><span class="w">                    </span><span class="n">they</span><span class="w"> </span><span class="nf">left</span><span class="w"></span>
+<span class="n">houvemos</span><span class="w">                    </span><span class="n">we</span><span class="w"> </span><span class="n">had</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span><span class="w"> </span><span class="n">exist</span><span class="p">)</span><span class="w"></span>
+<span class="n">foram</span><span class="w">                       </span><span class="n">they</span><span class="w"> </span><span class="n">went</span><span class="w"></span>
+<span class="n">tivemos</span><span class="w">                     </span><span class="n">we</span><span class="w"> </span><span class="n">had</span><span class="w"></span>
+<span class="n">puseram</span><span class="w">                     </span><span class="n">they</span><span class="w"> </span><span class="n">put</span><span class="w"> </span><span class="p">(</span><span class="n">past</span><span class="p">)</span><span class="w"></span>
+<span class="n">estive</span><span class="w">                      </span><span class="n">i</span><span class="w"> </span><span class="n">was</span><span class="w"></span>
+<span class="n">fomos</span><span class="w">                       </span><span class="n">we</span><span class="w"> </span><span class="n">went</span><span class="w"></span>
+<span class="n">dissemos</span><span class="w">                    </span><span class="n">we</span><span class="w"> </span><span class="n">said</span><span class="w"></span>
+<span class="n">tinha</span><span class="w">                       </span><span class="n">I</span><span class="o">/</span><span class="n">he</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">have</span><span class="w"></span>
+<span class="n">cantem</span><span class="err">!</span><span class="w"></span>
+<span class="n">estive</span><span class="w"> </span><span class="n">vs</span><span class="p">.</span><span class="w"> </span><span class="n">estava</span><span class="w"></span>
+<span class="n">estejamos</span><span class="w"></span>
+</code></pre></div>
+
+<h1>Mar Morto</h1>
+<div class="codehilite"><pre><span></span><code><span class="nv">de</span><span class="w"> </span><span class="nv">repente</span><span class="w">                  </span><span class="nv">pl</span>ö<span class="nv">tzlich</span><span class="w"></span>
+<span class="nv">atirar</span><span class="w">                      </span><span class="nv">werfen</span><span class="w"></span>
+<span class="nv">reparar</span><span class="w">                     </span><span class="nv">merken</span>,<span class="w"> </span><span class="nv">reparieren</span><span class="w"></span>
+<span class="nv">criar</span><span class="w">                       </span><span class="nv">schaffen</span>,<span class="w"> </span><span class="nv">einrichten</span>,<span class="w"> </span><span class="nv">erziehen</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">testa</span><span class="w">                     </span><span class="nv">Stirn</span><span class="w"></span>
+<span class="nv">arribar</span><span class="w">                     </span><span class="nv">ankommen</span><span class="w"> </span><span class="ss">(</span><span class="o">~</span><span class="w"> </span><span class="nv">chegar</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">wegziehen</span><span class="w"> </span><span class="ss">(</span><span class="nv">V</span>ö<span class="nv">gel</span><span class="ss">)</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">rombo</span><span class="w">                     </span><span class="nv">Durchbruch</span><span class="w"></span>
+<span class="nv">brabo</span><span class="w">                       </span><span class="nv">wild</span>,<span class="w"> </span><span class="nv">w</span>ü<span class="nv">tend</span><span class="w"></span>
+<span class="nv">enfeitar</span><span class="w"> </span><span class="ss">(</span><span class="nv">se</span><span class="ss">)</span><span class="w">               </span><span class="nv">verzieren</span>,<span class="w"> </span><span class="nv">herausputzen</span><span class="w"></span>
+<span class="nv">mulherengo</span><span class="w">                  </span><span class="nv">Frauenheld</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">bicho</span><span class="w">                     </span><span class="nv">das</span><span class="w"> </span><span class="nv">Vieh</span><span class="w"></span>
+<span class="nv">ingratid</span>ã<span class="nv">o</span><span class="w">                  </span><span class="nv">Undank</span><span class="ss">(</span><span class="nv">barkeit</span><span class="ss">)</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">coxa</span><span class="w">                      </span><span class="nv">Oberschenkel</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">castigo</span><span class="w">                   </span><span class="nv">Strafe</span><span class="w"></span>
+<span class="nv">pelo</span><span class="w"> </span><span class="nv">mundo</span><span class="w"> </span><span class="nv">afora</span><span class="w">            </span><span class="nv">in</span><span class="w"> </span><span class="nv">die</span><span class="w"> </span><span class="nv">Welt</span><span class="w"> </span><span class="nv">hinaus</span><span class="w"></span>
+<span class="nv">e</span><span class="w"> </span><span class="nv">por</span><span class="w"> </span><span class="nv">ai</span><span class="w"> </span><span class="nv">afora</span><span class="w">              </span><span class="nv">und</span><span class="w"> </span><span class="nv">so</span><span class="w"> </span><span class="nv">weiter</span><span class="w"></span>
+<span class="nv">brigar</span><span class="w">                      </span><span class="nv">streiten</span>,<span class="w"> </span><span class="nv">raufen</span>,<span class="w"> </span><span class="nv">rangeln</span><span class="w"></span>
+<span class="nv">salvo</span>,<span class="w"> </span><span class="nv">salva</span><span class="w">                </span><span class="nv">heil</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span>â<span class="nv">ncora</span><span class="w">                    </span><span class="nv">Anker</span><span class="w"></span>
+<span class="nv">estender</span><span class="w">                    </span><span class="nv">ausdehnen</span><span class="w"> </span><span class="ss">(</span><span class="nv">extend</span><span class="ss">)</span><span class="w"></span>
+<span class="nv">afogar</span><span class="w">                      </span><span class="nv">ertrinken</span><span class="w"></span>
+<span class="nv">arrancar</span><span class="w">                    </span><span class="nv">abrei</span>ß<span class="nv">en</span>,<span class="w"> </span><span class="nv">rupfen</span>,<span class="w"> </span><span class="nv">fetzen</span>,<span class="w"> </span><span class="nv">herunterrei</span>ß<span class="nv">en</span><span class="w"></span>
+<span class="nv">apesar</span><span class="w"> </span><span class="nv">de</span><span class="w">                   </span><span class="nv">trotz</span><span class="w"></span>
+<span class="nv">perante</span><span class="w">                     </span><span class="nv">angesichts</span>,<span class="w"> </span><span class="nv">gegen</span>ü<span class="nv">ber</span>,<span class="w"> </span><span class="nv">vor</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">maresia</span><span class="w">                   </span><span class="nv">Seeluft</span><span class="w"></span>
+<span class="nv">embalar</span><span class="w">                     </span><span class="nv">einpacken</span>,<span class="w"> </span><span class="nv">verpacken</span>,<span class="w"> </span><span class="nv">schaukeln</span>,<span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">den</span><span class="w"> </span><span class="nv">Schlaf</span><span class="w"> </span><span class="nv">singen</span><span class="o">/</span><span class="nv">wiegen</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">indireta</span><span class="w">                  </span><span class="nv">Andeutung</span>,<span class="w"> </span><span class="nv">Anspielung</span>,<span class="w"> </span><span class="nv">Wink</span><span class="w"></span>
+<span class="nv">amea</span>ç<span class="nv">ar</span><span class="w">                     </span><span class="nv">bedrohen</span>,<span class="w"> </span><span class="nv">drohen</span>,<span class="w"> </span><span class="nv">einsch</span>ü<span class="nv">chtern</span><span class="w"></span>
+<span class="nv">temer</span><span class="w">                       </span><span class="nv">bef</span>ü<span class="nv">rchten</span><span class="w"></span>
+<span class="nv">diante</span><span class="w">                      </span><span class="nv">vorne</span>,<span class="nv">voran</span>,<span class="w"> </span><span class="nv">von</span><span class="w"> </span><span class="nv">da</span><span class="w"> </span><span class="nv">an</span><span class="w"></span>
+<span class="nv">cumprir</span><span class="w">                     </span><span class="nv">befolgen</span>,<span class="w"> </span><span class="nv">erf</span>ü<span class="nv">llen</span><span class="w"></span>
+<span class="nv">aleijar</span><span class="w"> </span><span class="ss">(</span><span class="nv">se</span><span class="ss">)</span><span class="w">                </span><span class="nv">verkr</span>ü<span class="nv">ppeln</span>,<span class="w"> </span><span class="nv">verletzen</span><span class="w"></span>
+<span class="nv">morna</span><span class="w">                       </span><span class="nv">lauwarm</span><span class="w"></span>
+<span class="nv">apertar</span><span class="w">                     </span><span class="nv">dr</span>ü<span class="nv">cken</span>,<span class="w"> </span><span class="nv">festziehen</span>,<span class="w"> </span><span class="nv">enger</span><span class="w"> </span><span class="nv">machen</span>,<span class="w"> </span><span class="nv">anlegen</span><span class="w"></span>
+<span class="nv">de</span><span class="w"> </span><span class="nv">vez</span><span class="w"> </span><span class="nv">em</span><span class="w"> </span><span class="nv">quando</span><span class="w">            </span><span class="nv">once</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="k">while</span>,<span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">occasion</span>,<span class="w"> </span><span class="nv">sometimes</span><span class="w"></span>
+<span class="nv">deter</span><span class="w">                       </span><span class="nv">festnehmen</span>,<span class="w"> </span><span class="nv">abfangen</span>,<span class="w"> </span><span class="nv">halten</span>,<span class="w"> </span><span class="nv">hemmen</span><span class="w"></span>
+<span class="nv">cercar</span><span class="w">                      </span><span class="nv">einz</span>ä<span class="nv">unen</span>,<span class="w"> </span><span class="nv">umgeben</span>,<span class="w"> </span><span class="nv">einkesseln</span><span class="w"></span>
+<span class="nv">consagrar</span><span class="w">                   </span><span class="nv">weihen</span>,<span class="w"> </span><span class="nv">widmen</span>,<span class="w"> </span><span class="nv">anerkennen</span><span class="w"></span>
+<span class="nv">abarrotada</span><span class="w">                  </span>ü<span class="nv">bervoll</span>,<span class="w"> </span>ü<span class="nv">berf</span>ü<span class="nv">llt</span><span class="w"></span>
+<span class="nv">tinto</span>,<span class="w"> </span><span class="nv">tinta</span><span class="w">                </span><span class="nv">gef</span>ä<span class="nv">rbt</span><span class="w"></span>
+<span class="nv">deslumbrar</span><span class="w">                  </span><span class="nv">blenden</span><span class="w"></span>
+<span class="nv">mocidade</span><span class="w">                    </span><span class="nv">Jugendzeit</span><span class="w"></span>
+<span class="nv">ternura</span><span class="w">                     </span><span class="nv">Zartheit</span><span class="w"></span>
+<span class="nv">acarinhar</span><span class="w"> </span><span class="ss">(</span><span class="nv">se</span><span class="ss">)</span><span class="w">              </span><span class="nv">streicheln</span><span class="w"> </span><span class="ss">(</span><span class="nv">kuscheln</span><span class="ss">)</span><span class="w"></span>
+<span class="nv">al</span>é<span class="nv">m</span><span class="w">                        </span><span class="nv">Jenseits</span>,<span class="w"> </span><span class="nv">dr</span>ü<span class="nv">ben</span><span class="w"></span>
+<span class="nv">despeda</span>ç<span class="nv">ar</span><span class="w">                  </span><span class="nv">auseinandereissen</span>,<span class="w"> </span><span class="nv">zerbrechen</span><span class="w"></span>
+<span class="nv">adiante</span><span class="w">                     </span><span class="nv">voraus</span>,<span class="w"> </span><span class="nv">vorw</span>ä<span class="nv">rts</span>,<span class="w"> </span><span class="nv">voran</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">casco</span><span class="w">                     </span><span class="nv">der</span><span class="w"> </span><span class="nv">Rumpf</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">sereia</span><span class="w">                    </span><span class="nv">die</span><span class="w"> </span><span class="nv">Meerjungfrau</span>,<span class="w"> </span><span class="nv">die</span><span class="w"> </span><span class="nv">Nixe</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">f</span>ú<span class="nv">ria</span><span class="w">                     </span><span class="nv">Tobsucht</span>,<span class="w"> </span><span class="nv">Wutanfall</span>,<span class="w"> </span><span class="nv">J</span>ä<span class="nv">hzorn</span>,<span class="w"> </span><span class="nv">Rage</span><span class="w"></span>
+<span class="nv">penar</span><span class="w">                       </span><span class="nv">leiden</span><span class="w"></span>
+<span class="nv">at</span>é<span class="w"> </span><span class="ss">(</span><span class="nv">mesmo</span><span class="ss">)</span><span class="w">                 </span><span class="nv">sogar</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">c</span>â<span class="nv">ntico</span><span class="w">                   </span><span class="nv">Loblied</span><span class="w"></span>
+<span class="nv">destro</span>ç<span class="nv">ar</span><span class="w">                   </span><span class="nv">destroy</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">c</span>ó<span class="nv">lera</span><span class="w">                    </span><span class="nv">Zorn</span>,<span class="w"> </span><span class="nv">Cholera</span><span class="w"></span>
+<span class="nv">vendar</span><span class="w">                      </span><span class="nv">verbinden</span><span class="w"></span>
+<span class="nv">por</span><span class="w"> </span><span class="nv">acaso</span><span class="w">                   </span><span class="nv">zuf</span>ä<span class="nv">llig</span><span class="w"></span>
+<span class="nv">possuir</span><span class="w">                     </span><span class="nv">besitzen</span><span class="w"></span>
+<span class="nv">desencadear</span><span class="w">                 </span><span class="nv">ausl</span>ö<span class="nv">sen</span>,<span class="w"> </span><span class="nv">entfesseln</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">seio</span><span class="w">                      </span><span class="nv">der</span><span class="w"> </span><span class="nv">Busen</span>,<span class="w"> </span><span class="nv">der</span><span class="w"> </span><span class="nv">Scho</span>ß<span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">ventre</span><span class="w">                    </span><span class="nv">Bauch</span><span class="w"></span>
+<span class="nv">romper</span><span class="w">                      </span><span class="nv">brechen</span><span class="w"></span>
+<span class="nv">alvo</span>,<span class="w"> </span><span class="nv">alva</span><span class="w">                  </span><span class="nv">hell</span>,<span class="w"> </span><span class="nv">weiss</span><span class="w"></span>
+<span class="nv">alcan</span>ç<span class="nv">ar</span><span class="w">                    </span><span class="nv">erreichen</span>,<span class="w"> </span><span class="nv">bekommen</span>,<span class="w"> </span><span class="nv">einholen</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">s</span>ú<span class="nv">dito</span><span class="w">                    </span><span class="nv">der</span><span class="w"> </span><span class="nv">Untertan</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">boda</span><span class="w">                      </span><span class="nv">Hochzeitsfest</span><span class="w"></span>
+<span class="nv">almofada</span><span class="w">                    </span><span class="nv">Kissen</span><span class="w"></span>
+<span class="nv">solu</span>ç<span class="nv">ar</span><span class="w">                     </span><span class="nv">schluchzen</span><span class="w"></span>
+<span class="nv">afundar</span><span class="w">                     </span><span class="nv">versenken</span>,<span class="w"> </span><span class="nv">untertauchen</span><span class="w"></span>
+<span class="nv">relinchar</span><span class="w">                   </span><span class="nv">wiehern</span><span class="w"></span>
+<span class="nv">enxergar</span><span class="w">                    </span><span class="nv">erblicken</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">voluto</span><span class="w">                    </span><span class="nv">Gestalt</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">peste</span><span class="w">                     </span><span class="nv">Pest</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">trov</span>ã<span class="nv">o</span><span class="w">                    </span><span class="nv">Donner</span>,<span class="w"> </span><span class="nv">Donnerschlag</span><span class="w"></span>
+<span class="nv">selvagem</span><span class="w">                    </span><span class="nv">wild</span>,<span class="w"> </span><span class="nv">roh</span>,<span class="w"> </span><span class="nv">unzivilisiert</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">face</span><span class="w">                      </span><span class="nv">Gesicht</span><span class="w"></span>
+<span class="nv">berrante</span><span class="w">                    </span><span class="nv">grell</span><span class="w"> </span><span class="ss">(</span><span class="nv">Farbe</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">knallig</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">c</span>ó<span class="nv">cega</span><span class="w">                    </span><span class="nv">der</span><span class="w"> </span><span class="nv">Kitzel</span><span class="w"></span>
+<span class="nv">ter</span><span class="w"> </span><span class="nv">c</span>ó<span class="nv">cegas</span><span class="w">                 </span><span class="nv">kitzelig</span><span class="w"> </span><span class="ss">(</span><span class="nv">sein</span><span class="ss">)</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">recolhida</span><span class="w">                 </span><span class="nv">R</span>ü<span class="nv">ckzug</span><span class="w"></span>
+<span class="nv">o</span><span class="w"> </span><span class="nv">holofote</span><span class="w">                  </span><span class="nv">public</span><span class="w"> </span><span class="nv">eye</span>,<span class="w"> </span><span class="nv">spotlight</span>,<span class="w"> </span><span class="nv">Scheinwerfei</span><span class="w"></span>
+<span class="nv">fitar</span><span class="w">                       </span><span class="nv">starren</span><span class="w"></span>
+<span class="nv">cobrar</span><span class="w">                      </span><span class="nv">erheben</span>,<span class="w"> </span><span class="nv">kassieren</span><span class="w"></span>
+<span class="nv">esconder</span><span class="w">                    </span><span class="nv">verstecken</span>,<span class="w"> </span><span class="nv">wegstecken</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">maldi</span>çã<span class="nv">o</span><span class="w">                  </span><span class="nv">Fluch</span><span class="w"></span>
+<span class="nv">amarga</span><span class="w">                      </span><span class="nv">bitter</span><span class="w"></span>
+<span class="nv">espantar</span><span class="w">                    </span><span class="nv">erstaunen</span><span class="w"></span>
+<span class="nv">soltar</span><span class="w">                      </span><span class="nv">freilassen</span><span class="w"></span>
+<span class="nv">miudinha</span><span class="w">                    </span><span class="nv">winzig</span><span class="w"></span>
+<span class="nv">mi</span>ú<span class="nv">da</span><span class="w">                       </span><span class="nv">klein</span>,<span class="w"> </span><span class="nv">geizig</span>,<span class="w"> </span><span class="nv">sorgf</span>ä<span class="nv">ltig</span><span class="w"></span>
+<span class="nv">largar</span><span class="w">                      </span><span class="nv">loslassen</span><span class="w"></span>
+<span class="nv">arrastar</span><span class="w">                    </span><span class="nv">schleppen</span>,<span class="w"> </span><span class="nv">ziehen</span>,<span class="w"> </span><span class="nv">mitreissen</span><span class="w"></span>
+<span class="nv">arriar</span><span class="w">                      </span><span class="nv">herunterlassen</span><span class="w"></span>
+<span class="nv">assustar</span><span class="w">                    </span><span class="nv">erschrecken</span><span class="w"></span>
+<span class="nv">despedir</span><span class="w"> </span><span class="ss">(</span><span class="nv">se</span><span class="ss">)</span><span class="w">               </span><span class="ss">(</span><span class="nv">sich</span><span class="ss">)</span><span class="w"> </span><span class="nv">verabschieden</span><span class="w"></span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">m</span>á<span class="nv">goa</span><span class="w">                     </span><span class="nv">Erbitterung</span>,<span class="w"> </span><span class="nv">Kummer</span>,<span class="w"> </span><span class="nv">Herzleid</span>,<span class="w"> </span><span class="nv">Harm</span><span class="w"></span>
+<span class="nv">enrabichado</span><span class="w">                 </span><span class="nv">ruffled</span>,<span class="w"> </span><span class="nv">angeschlagen</span><span class="w"></span>
+</code></pre></div>
+
+<!-- 
+    vim:spell spelllang=pt,de,en,sk
+-->
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

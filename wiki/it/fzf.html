@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>fzf</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>FZF - fuzzy finder</h1>
+<ul>
+<li><a href="https://github.com/junegunn/fzf">project page @ github</a></li>
+<li><a href="https://www.youtube.com/watch?v=qgG5Jhi_Els">vim universe. fzf @ youtube</a></li>
+<li><a href="https://www.freecodecamp.org/news/fzf-a-command-line-fuzzy-finder-missing-demo-a7de312403ff/">'missing demo' by samoskhin</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Fzf">fzf @ archlinux</a></li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>interactive search </li>
+<li>
+<p>instant feedback.</p>
+<p>fzf -m                  # select multiple items with TAB
+fzf -e                  # exact matching</p>
+</li>
+</ul>
+<p>or <code>'string</code> in interactive search</p>
+<p>fzf: <code>^a var .sh$ !private</code> </p>
+<div class="codehilite"><pre><span></span><code><span class="nv">fzf</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">xargs</span><span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">l</span><span class="w">       </span>#<span class="w"> </span><span class="nv">piping</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">fzf</span><span class="w"></span>
+
+<span class="nv">vim</span><span class="w"> </span><span class="o">-</span><span class="nv">o</span><span class="w"> </span>$<span class="ss">(</span><span class="nv">fzf</span><span class="ss">)</span><span class="w"></span>
+
+<span class="nv">vim</span><span class="w"> </span><span class="o">~/</span><span class="nv">repos</span><span class="cm">/**&lt;TAB&gt;     [#](#) opens fzf for file selection</span>
+<span class="cm">cd /**&lt;TAB&gt;</span>
+<span class="cm">ssh **&lt;TAB&gt;</span>
+
+<span class="cm">kill &lt;TAB&gt;              # opens fzf for kill command</span>
+
+<span class="cm">&lt;alt-c&gt;                 # triggers fzf in change dir mode</span>
+</code></pre></div>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>docker</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>Docker</h1>
+<div class="codehilite"><pre><span></span><code>docker logs mycontainer_or_id --since 60m
+</code></pre></div>
+
+<p>Docker nemá by defualt nastavený žádný logrotate dockeru! To znamená, že po nějaké době dojde na serveru místo. Je třeba na obou serverech nastavit nějaké omezení, na UMAX serveru jsme měli 100m a 5 logů z5. Myslím že si můžeme dovolit nastavit 1g a 5 logů z5 je nutné to ale udělat a to úpravou/vytvořením souboru:
+/etc/docker/daemon.json a doplnit následující obsah:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">{</span>
+<span class="x">    &quot;log-driver&quot;: &quot;json-file&quot;,</span>
+<span class="x">    &quot;log-opts&quot;: {</span>
+<span class="x">        &quot;max-size&quot;: &quot;1g&quot;,</span>
+<span class="x">        &quot;max-file&quot;: &quot;5&quot;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">sudo systemctl restart docker</span>
+
+<span class="x">docker inspect --format=&#39;</span><span class="cp">{{</span><span class="nv">.LogPath</span><span class="cp">}}</span><span class="x">&#39; api  # log file</span>
+
+<span class="x">docker tag 64af79210286 registry.gitlab.com/$TEAM/$PRJ:master-20210119</span>
+<span class="x">docker push !$</span>
+
+<span class="x">docker update --restart=no my-container</span>
+<span class="x">docker update --restart=unless-stopped my-container</span>
+</code></pre></div>
+
+<p>set restart policy to no to all running dockers and stop them:</p>
+<div class="codehilite"><pre><span></span><code>docker update `docker ps -q` --restart no
+docker kill `docker ps -q`
+</code></pre></div>
+
+<p>update an image by editing a running container made from it</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">docker</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="o">-</span><span class="nv">it</span><span class="w"> </span><span class="nv">container</span><span class="o">-</span><span class="nv">name</span><span class="w"> </span><span class="nv">bash</span>
+<span class="nv">docker</span><span class="w"> </span><span class="nv">commit</span><span class="w"> </span><span class="nv">container</span><span class="o">-</span><span class="nv">ID</span><span class="w"> </span><span class="nv">image</span><span class="o">-</span><span class="nv">name</span>
+
+<span class="nv">docker</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="o">-</span><span class="nv">ti</span><span class="w"> </span><span class="nv">influxdb</span><span class="w"> </span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">bash</span>
+</code></pre></div>
+
+<p>recreate and start a new container:</p>
+<div class="codehilite"><pre><span></span><code>docker-compose stop api
+docker-compose create api
+docker-compose start api
+</code></pre></div>
+
+<p>backup image</p>
+<div class="codehilite"><pre><span></span><code>docker inspect 663a995010d6
+docker save ad706aa6e03b43d746b9c7f548a77ce5f86e847bced7f96dd578521838a2bc5c &gt; web.docker
+</code></pre></div>
+
+<p>reload environment variables</p>
+<div class="codehilite"><pre><span></span><code>docker-compose up -d
+</code></pre></div>
+
+<h2>Basics</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">usermod</span><span class="w"> </span><span class="o">-</span><span class="n">aG</span><span class="w"> </span><span class="n">docker</span><span class="w"> </span><span class="o">$</span><span class="n">USER</span>
+
+<span class="n">docker</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">prune</span><span class="w"> </span><span class="o">-</span><span class="n">a</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="o">$</span><span class="p">(</span><span class="n">docker</span><span class="w"> </span><span class="n">ps</span><span class="w"> </span><span class="o">-</span><span class="n">lq</span><span class="p">)</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">image</span><span class="w"> </span><span class="c1"># after changes in an image</span>
+
+<span class="n">docker</span><span class="w"> </span><span class="n">save</span><span class="w"> </span><span class="n">ppc</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ppc</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">docker</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ppc</span><span class="o">.</span><span class="n">tar</span>
+
+<span class="n">docker</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">ui</span><span class="w"> </span><span class="o">.</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">8081</span><span class="p">:</span><span class="mi">80</span><span class="w"> </span><span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">ui</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span><span class="w"> </span><span class="o">./</span><span class="n">project</span><span class="o">.</span><span class="n">env</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">5001</span><span class="p">:</span><span class="mi">5000</span><span class="w"> </span><span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">api</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">uwsgi</span><span class="w"> </span><span class="o">--</span><span class="n">ini</span><span class="w"> </span><span class="n">config</span><span class="o">/</span><span class="n">project</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span><span class="w"> </span><span class="o">./</span><span class="n">project</span><span class="o">.</span><span class="n">env</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">5000</span><span class="p">:</span><span class="mi">5000</span><span class="w"> </span><span class="n">ecorp</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">api</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">pipenv</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">project</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">docker</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">--</span><span class="n">username</span><span class="o">=</span><span class="n">uzak</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">TAG</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="o">-</span><span class="n">it</span><span class="w"> </span><span class="n">fc3dbfe13b19</span><span class="w"> </span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span>
+</code></pre></div>
+
+<p>http://docker-curriculum.com/</p>
+<div class="codehilite"><pre><span></span><code>docker run hello-world
+docker pull busybox
+docker images
+docker run busybox ls /etc
+docker ps -a
+docker run -it busybox sh
+docker rm $(docker ps -a -q -f status=exited)
+docker rmi 
+docker run prakhar1989/static-site
+docker run -d -P --name static-site prakhar1989/static-site
+docker port static-site
+docker run -p 8888:80 prakhar1989/static-site
+docker stop 082865c5dc79
+docker container rm 082865c5dc79
+docker container ls
+</code></pre></div>
+
+<h2>Images</h2>
+<div class="codehilite"><pre><span></span><code>docker images
+docker pull ubuntu:12.04
+docker search
+</code></pre></div>
+
+<h2>Dockerfile example</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="nl">ubuntu</span><span class="p">:</span><span class="mf">14.04</span>
+<span class="n">MAINTAINER</span><span class="w"> </span><span class="n">MU</span><span class="w"> </span><span class="o">&lt;</span><span class="n">uzak</span><span class="o">+</span><span class="n">git</span><span class="nv">@mailbox</span><span class="p">.</span><span class="n">org</span><span class="o">&gt;</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="o">-</span><span class="n">yqq</span><span class="w"> </span><span class="k">update</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="o">-</span><span class="n">yqq</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">nodejs</span><span class="w"> </span><span class="n">npm</span>
+<span class="n">RUN</span><span class="w"> </span><span class="k">ln</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">nodejs</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">node</span>
+<span class="k">ADD</span><span class="w"> </span><span class="n">flask</span><span class="o">-</span><span class="n">app</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">app</span>
+<span class="n">WORKDIR</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">app</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">npm</span><span class="w"> </span><span class="n">install</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">npm</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">build</span>
+<span class="n">RUN</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">EXPOSE</span><span class="w"> </span><span class="mi">5000</span>
+<span class="n">CMD</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;python&quot;, &quot;./app.py&quot;</span><span class="o">]</span>
+
+<span class="n">docker</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">uzak</span><span class="o">/</span><span class="n">catnip</span><span class="w"> </span><span class="p">.</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">8888</span><span class="err">:</span><span class="mi">5000</span><span class="w"> </span><span class="n">uzak</span><span class="o">/</span><span class="n">catnip</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">login</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">uzak</span><span class="o">/</span><span class="n">catnip</span>
+</code></pre></div>
+
+<h2>Multicontainer setup</h2>
+<div class="codehilite"><pre><span></span><code>docker search elasticsearch
+docker network ls
+docker network inspect bridge
+docker run -it --rm prakhar1989/foodtrucks-web bash
+docker network create foodtrucks
+docker ps
+docker stop 5d04018ed570
+docker run -dp 9200:9200 --net foodtrucks --name es elasticsearch
+docker run -it --rm --net foodtrucks  prakhar1989/foodtrucks-web bash
+docker run -d --net foodtrucks -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
+</code></pre></div>
+
+<h2>docker-compose</h2>
+<div class="codehilite"><pre><span></span><code>version: &quot;2&quot;
+services:
+    es:
+        image: elasticsearch
+    web:
+        image: prakhar1989/foodtrucks-web
+        command: python app.py
+        ports:
+            - &quot;5000:5000&quot;
+        volumes:
+            - .:/code
+
+docker stop $(docker ps -q)
+docker-compose up
+docker-compose up -d
+docker-compose restart
+</code></pre></div>
+
+<h2>Troubleshooting</h2>
+<ul>
+<li>
+<p>Permission denied on host directory: https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker</p>
+</li>
+<li>
+<p>CentOS doesn't allow access from containers to the host by default: <a href="https://forums.docker.com/t/no-route-to-host-network-request-from-container-to-host-ip-port-published-from-other-container/39063/5">solution</a></p>
+<p>docker rm $(docker ps -a -f status=exited -q) # remove exited containers
+docker rmi $(docker images -qa)            # remove all images</p>
+</li>
+</ul>
+<h2>Links</h2>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-18-04">Setup a private docker registry</a></p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

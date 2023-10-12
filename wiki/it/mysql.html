@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>mysql</title>
+
+    %pygments%
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">अहो अहं</a> |
+                <a href="../../wikis.html">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <div class="codehilite"><pre><span></span><code><span class="nv">mysql</span><span class="w"> </span><span class="o">-</span><span class="nv">u</span><span class="w"> </span><span class="k">connect</span><span class="w"> </span><span class="o">-</span><span class="nv">P</span><span class="w"> </span><span class="mi">3306</span><span class="w"> </span><span class="o">--</span><span class="nv">protocol</span><span class="w"> </span><span class="nv">tcp</span><span class="w"> </span><span class="o">-</span><span class="nv">h</span><span class="w"> </span><span class="nv">localhost</span><span class="w"> </span><span class="k">connect</span><span class="w"> </span><span class="o">-</span><span class="nv">p</span><span class="w"></span>
+
+<span class="k">show</span><span class="w"> </span><span class="nv">index</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">print_file</span><span class="c1">;</span><span class="w"></span>
+
+<span class="nv">rename</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="nv">event</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">event_bak_20210311</span><span class="c1">;</span><span class="w"></span>
+<span class="nv">create</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="nv">event</span><span class="w"> </span><span class="nv">like</span><span class="w"> </span><span class="nv">event_bak_20210311</span><span class="c1">;</span><span class="w"></span>
+
+
+<span class="nv">CREATE</span><span class="w"> </span><span class="nv">USER</span><span class="w"> </span><span class="s1">&#39;connect&#39;</span><span class="w"> </span><span class="nv">IDENTIFIED</span><span class="w"> </span><span class="nv">BY</span><span class="w"> </span><span class="s1">&#39;XXX&#39;</span><span class="c1">; #XXX</span><span class="w"></span>
+<span class="nv">CREATE</span><span class="w"> </span><span class="nv">SCHEMA</span><span class="w"> </span><span class="k">connect</span><span class="c1">;</span><span class="w"></span>
+<span class="nv">GRANT</span><span class="w"> </span><span class="nv">ALL</span><span class="w"> </span><span class="nv">PRIVILEGES</span><span class="w"> </span><span class="nv">ON</span><span class="w"> </span><span class="k">connect</span>.<span class="o">*</span><span class="w"> </span><span class="nv">TO</span><span class="w"> </span><span class="s1">&#39;connect&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="c1">;</span><span class="w"></span>
+
+<span class="nv">SELECT</span><span class="w"> </span><span class="nv">user</span>,<span class="w"> </span><span class="nv">host</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">mysql</span>.<span class="nv">user</span><span class="c1">;</span><span class="w"></span>
+</code></pre></div>
+
+<h2>Install</h2>
+<div class="codehilite"><pre><span></span><code>docker run percona/percona-xtradb-cluster:5.7
+</code></pre></div>
+
+<p>Export table to SQL:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">FROM</span><span class="w"> </span><span class="n">event</span><span class="w"></span>
+<span class="n">INTO</span><span class="w"> </span><span class="n">OUTFILE</span><span class="w"> </span><span class="s1">&#39;/var/lib/mysql-files/events.csv&#39;</span><span class="w"></span>
+<span class="n">FIELDS</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="n">BY</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"></span>
+<span class="n">ENCLOSED</span><span class="w"> </span><span class="n">BY</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<span class="n">LINES</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="n">BY</span><span class="w"> </span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+
+<p>Show size of tables/indexes:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">show</span><span class="w"> </span><span class="nc">table</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">[</span><span class="n">dbname</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>Optimize table:
+    optimize table event;</p>
+<p>Migrate table to MyISAM</p>
+<p>ALTER TABLE events ENGINE=MYISAM;</p>
+<p>SHOW CREATE TABLE event;
+select * into outfile '/var/lib/mysql-files/event.txt' from event;
+LOAD DATA INFILE '/var/lib/mysql-files/event.txt' INTO TABLE event2;</p>
+<h1>Optimization</h1>
+<p>SHOW TABLE STATUS WHERE Name = 'event'\G</p>
+<h2>Slow Query Log</h2>
+<p>https://www.techawaken.com/enable-mysql-slow-query-log/</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mkdir</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mysql</span><span class="w"></span>
+<span class="n">touch</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">slow_query</span><span class="o">.</span><span class="n">log</span><span class="w"></span>
+<span class="n">chown</span><span class="w"> </span><span class="n">mysql</span><span class="o">.</span><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mysql</span><span class="w"></span>
+
+<span class="n">SET</span><span class="w"> </span><span class="n">GLOBAL</span><span class="w"> </span><span class="n">slow_query_log_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/var/log/mysql/slow_query.log&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">SET</span><span class="w"> </span><span class="n">GLOBAL</span><span class="w"> </span><span class="n">long_query_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">second</span><span class="w"></span>
+<span class="n">SET</span><span class="w"> </span><span class="n">GLOBAL</span><span class="w"> </span><span class="n">log_queries_not_using_indexes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">SET</span><span class="w"> </span><span class="n">GLOBAL</span><span class="w"> </span><span class="n">log_slow_admin_statements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">SET</span><span class="w"> </span><span class="n">GLOBAL</span><span class="w"> </span><span class="n">slow_query_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ON&#39;</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="n">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="n">LIKE</span><span class="w"> </span><span class="s1">&#39;slow_query_log&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+
+<h1>Misc Errors</h1>
+<h2>1290</h2>
+<p>https://stackoverflow.com/questions/31951468/error-code-1290-the-mysql-server-is-running-with-the-secure-file-priv-option</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SHOW</span><span class="w"> </span><span class="nv">VARIABLES</span><span class="w"> </span><span class="nv">LIKE</span><span class="w"> </span><span class="s2">&quot;secure_file_priv&quot;</span><span class="c1">;</span><span class="w"></span>
+</code></pre></div>
+
+<h1>Replication</h1>
+<p>Percona XtraDB Cluster currently supports replication only for tables that use a transactional storage engine (XtraDB or InnoDB). To ensure data consistency, the following statements should not be allowed for tables that use a non-transactional storage engine (MyISAM, MEMORY, CSV, etc.):</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Data</span><span class="w"> </span><span class="nv">manipulation</span><span class="w"> </span><span class="nv">statements</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">perform</span><span class="w"> </span><span class="nv">writing</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="ss">(</span><span class="k">for</span><span class="w"> </span><span class="nv">example</span>,<span class="w"> </span><span class="nv">INSERT</span>,<span class="w"> </span><span class="nv">UPDATE</span>,<span class="w"> </span><span class="nv">DELETE</span>,<span class="w"> </span><span class="nv">etc</span>.<span class="ss">)</span><span class="w"></span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">following</span><span class="w"> </span><span class="nv">administrative</span><span class="w"> </span><span class="nv">statements</span>:<span class="w"> </span><span class="nv">CHECK</span>,<span class="w"> </span><span class="nv">OPTIMIZE</span>,<span class="w"> </span><span class="nv">REPAIR</span>,<span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">ANALYZE</span><span class="w"></span>
+<span class="nv">TRUNCATE</span><span class="w"> </span><span class="nv">TABLE</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">ALTER</span><span class="w"> </span><span class="nv">TABLE</span><span class="w"></span>
+</code></pre></div>
+
+<p>mac address - varchar(17)</p>
+<p>mysql slow log:
+    https://www.techawaken.com/enable-mysql-slow-query-log/</p>
+<p>dump percona cluster: </p>
+<div class="codehilite"><pre><span></span><code><span class="nv">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="nv">h</span><span class="w"> </span><span class="nv">HOST</span><span class="w"> </span><span class="o">-</span><span class="nv">u</span><span class="w"> </span><span class="nv">USER</span><span class="w"> </span><span class="o">-</span><span class="nv">p</span><span class="w"> </span><span class="nv">SCHEMA</span><span class="w"> </span><span class="o">--</span><span class="nv">skip_add_locks</span><span class="w"> </span><span class="o">--</span><span class="nv">skip</span><span class="o">-</span><span class="nv">lock</span><span class="o">-</span><span class="nv">tables</span><span class="w">  </span><span class="o">--</span><span class="nv">column</span><span class="o">-</span><span class="nv">statistics</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">connect</span>.<span class="nv">dump</span><span class="w"></span>
+</code></pre></div>
+
+<p>mysql delete all schemas (dbs) matching a name:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">SELECT</span><span class="w"> </span><span class="nv">CONCAT</span><span class="ss">(</span><span class="w"> </span><span class="s1">&#39;drop schema if exists &#39;</span>,<span class="w"> </span><span class="nv">schema_name</span><span class="w"> </span>,<span class="w"> </span><span class="s1">&#39;;&#39;</span><span class="w"> </span><span class="ss">)</span><span class="w"> </span>
+<span class="w">    </span><span class="nv">AS</span><span class="w"> </span><span class="nv">statement</span><span class="w"> </span><span class="nv">FROM</span><span class="w"> </span><span class="nv">information_schema</span>.<span class="nv">schemata</span><span class="w"> </span>
+<span class="w">    </span><span class="nv">WHERE</span><span class="w"> </span><span class="nv">schema_name</span><span class="w"> </span><span class="nv">LIKE</span><span class="w"> </span><span class="s1">&#39;connect_%_%&#39;</span><span class="c1">;</span><span class="w"></span>
+</code></pre></div>
+
+<p>mysql reset AUTO_INCREMENT</p>
+<div class="codehilite"><pre><span></span><code>ALTER TABLE tablename AUTO_INCREMENT = 1
+</code></pre></div>
+
+<p>mysql show what's happening (locks etc):</p>
+<div class="codehilite"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="nv">FULL</span><span class="w"> </span><span class="nv">PROCESSLIST</span><span class="c1">;</span><span class="w"></span>
+</code></pre></div>
+
+<p>mysql set charset
+    ALTER TABLE mytable CONVERT TO CHARACTER SET utf8;</p>
+<p>mysql show queries:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">set</span><span class="w"> </span><span class="n">global</span><span class="w"> </span><span class="n">general_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;on&#39;</span><span class="p">;</span><span class="w">      </span><span class="o">--</span><span class="w"> </span><span class="n">global</span><span class="w"></span>
+<span class="n">set</span><span class="w"> </span><span class="n">sql_log_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;off&#39;</span><span class="p">;</span><span class="w">            </span><span class="o">--</span><span class="n">local</span><span class="w"></span>
+<span class="n">show</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="s1">&#39;general_log%&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+
+<p>mysql show processes:</p>
+<div class="codehilite"><pre><span></span><code>mysqladmin -h HOST -u USER -pPASSWORD -i 1 -v  processlist
+</code></pre></div>
+
+<p>mysql rename column:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">printer</span><span class="w"> </span><span class="k">change</span><span class="w"> </span><span class="n n-Quoted">`apendix`</span><span class="w"> </span><span class="n n-Quoted">`appendix`</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+
+<p>mysql dump db:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">SHOW</span><span class="w"> </span><span class="n">CREATE</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">event</span><span class="p">;</span><span class="w"></span>
+<span class="n">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">outfile</span><span class="w"> </span><span class="s1">&#39;/var/lib/mysql-files/event.txt&#39;</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">event</span><span class="p">;</span><span class="w"></span>
+<span class="n">LOAD</span><span class="w"> </span><span class="n">DATA</span><span class="w"> </span><span class="n">INFILE</span><span class="w"> </span><span class="s1">&#39;/var/lib/mysql-files/event.txt&#39;</span><span class="w"> </span><span class="n">INTO</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">event2</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>
