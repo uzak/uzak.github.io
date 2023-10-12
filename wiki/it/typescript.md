@@ -1,13 +1,13 @@
 # Contents
 
-- [Theory](#Theory)
-- [Installation](#Installation)
-    - [Usage](#Installation#Usage)
-- [Code](#Code)
-    - [Types](#Code#Types)
-    - [Functions](#Code#Functions)
-    - [Interfaces](#Code#Interfaces)
-    - [Classes](#Code#Classes)
+- [Theory](#theory)
+- [Installation](#installation)
+    - [Usage](#usage)
+- [Code](#code)
+    - [Types](#types)
+    - [Functions](#functions)
+    - [Interfaces](#interfaces)
+    - [Classes](#classes)
 
 # Theory
 * Superset of JavaScript by M$; compiles to JS
@@ -31,21 +31,21 @@
 * Modularity
 
 # Installation
-{% highlight bash %}
+```bash
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install -g typescript
-{% endhighlight %}
+```
 
 ## Usage
-{% highlight bash %}
+```bash
 $ tsc types.tsc
 $ tsc types.tsc -w                # watch mode
-{% endhighlight %}
+```
 
 # Code
 ## Types
-{% highlight typescript %}
+```typescript
 let myString: string;
 let myNum: number;
 let myBool: boolean;
@@ -74,10 +74,10 @@ strArray = ["Hello", 'World'];
 strNumTuple = ["Hello", 4];
 
 console.log(strNumTuple);
-{% endhighlight %}
+```
 
 ## Functions
-{% highlight typescript %}
+```typescript
 function getSum(num1: number, num2: number): number {
     return num1 + num2;
 }
@@ -106,10 +106,10 @@ function getName(firstName: string, lastName?: string): string {
 
 console.log(getName("John", 'Doe'))
 console.log(getName("John"))
-{% endhighlight %}
+```
 
 ## Interfaces
-{% highlight typescript %}
+```typescript
 interface Todo {
     title: string;
     text: string;
@@ -121,10 +121,10 @@ function showTodo(todo: Todo) {
 
 let myTodo = {title: 'Trash', 'text': 'Take out trash'};
 showTodo(myTodo)
-{% endhighlight %}
+```
 
 ## Classes
-{% highlight typescript %}
+```typescript
 interface UserInterface {
     name: string;
     email: string;
@@ -174,4 +174,4 @@ john.register()
 
 let mike = new Member(42, 'Mike X', 'mikex@gmail.com', 11)
 mike.payInvoice()
-{
+```

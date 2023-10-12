@@ -88,16 +88,16 @@
                         <div class="c-article__main" id="contents">
                             <h1>Contents</h1>
 <ul>
-<li><a href="#Theory.html">Theory</a></li>
-<li><a href="#Installation.html">Installation</a><ul>
-<li><a href="#Installation#Usage.html">Usage</a></li>
+<li><a href="#theory.html">Theory</a></li>
+<li><a href="#installation.html">Installation</a><ul>
+<li><a href="#usage.html">Usage</a></li>
 </ul>
 </li>
-<li><a href="#Code.html">Code</a><ul>
-<li><a href="#Code#Types.html">Types</a></li>
-<li><a href="#Code#Functions.html">Functions</a></li>
-<li><a href="#Code#Interfaces.html">Interfaces</a></li>
-<li><a href="#Code#Classes.html">Classes</a></li>
+<li><a href="#code.html">Code</a><ul>
+<li><a href="#types.html">Types</a></li>
+<li><a href="#functions.html">Functions</a></li>
+<li><a href="#interfaces.html">Interfaces</a></li>
+<li><a href="#classes.html">Classes</a></li>
 </ul>
 </li>
 </ul>
@@ -128,130 +128,144 @@
 <li>Modularity</li>
 </ul>
 <h1>Installation</h1>
-<p>{% highlight bash %}
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm install -g typescript
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-sL<span class="w"> </span>https://deb.nodesource.com/setup_13.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+sudo<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>typescript
+</code></pre></div>
+
 <h2>Usage</h2>
-<p>{% highlight bash %}
-$ tsc types.tsc
-$ tsc types.tsc -w                # watch mode
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>tsc<span class="w"> </span>types.tsc
+$<span class="w"> </span>tsc<span class="w"> </span>types.tsc<span class="w"> </span>-w<span class="w">                </span><span class="c1"># watch mode</span>
+</code></pre></div>
+
 <h1>Code</h1>
 <h2>Types</h2>
-<p>{% highlight typescript %}
-let myString: string;
-let myNum: number;
-let myBool: boolean;
-let myVar: any;</p>
-<p>let myVoid: void = null;
-let myUndefined: undefined = null;</p>
-<p>/<em>
-let strArray: string[];
-let numArr: number[] = [1, 2, 3];
-</em>/</p>
-<p>let strArray: Array<string>;
-let numArr: Array<number> = [1, 2, 3];</p>
-<p>let strNumTuple: [string, number];</p>
-<p>myString = "Hello" + "World".slice(0);
-myNum = -22;
-myNum = 0o31;
-myBool = true;
-myVar = "Omega";</p>
-<p>strArray = ["Hello", 'World'];
-strNumTuple = ["Hello", 4];</p>
-<p>console.log(strNumTuple);
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">myString</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">myNum</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">myBool</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">myVar</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">;</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">myVoid</span><span class="o">:</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">myUndefined</span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">let strArray: string[];</span>
+<span class="cm">let numArr: number[] = [1, 2, 3];</span>
+<span class="cm">*/</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">strArray</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">numArr</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">strNumTuple</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">];</span>
+
+<span class="nx">myString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;World&quot;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">myNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">22</span><span class="p">;</span>
+<span class="nx">myNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0o31</span><span class="p">;</span>
+<span class="nx">myBool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="nx">myVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Omega&quot;</span><span class="p">;</span>
+
+<span class="nx">strArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;World&#39;</span><span class="p">];</span>
+<span class="nx">strNumTuple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">strNumTuple</span><span class="p">);</span>
+</code></pre></div>
+
 <h2>Functions</h2>
-<p>{% highlight typescript %}
-function getSum(num1: number, num2: number): number {
-    return num1 + num2;
-}</p>
-<p>console.log(getSum(1, 4));</p>
-<p>let mySum = function(num1: any, num2: any): number {
-    if (typeof num1 == 'string') {
-        num1 = parseInt(num1);
-    }
-    if (typeof num2 == 'string') {
-        num2 = parseInt(num2);
-    }
-    return num1 + num2;
-}</p>
-<p>console.log(mySum('3', '5'));</p>
-<p>// optional parameter with ?
-function getName(firstName: string, lastName?: string): string {
-    if (lastName == undefined) {
-        return firstName;
-    }
-    return firstName + ' ' + lastName;
-}</p>
-<p>console.log(getName("John", 'Doe'))
-console.log(getName("John"))
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getSum</span><span class="p">(</span><span class="nx">num1</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">num2</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getSum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">mySum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span><span class="w"> </span><span class="nx">num2</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">num1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">num2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mySum</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5&#39;</span><span class="p">));</span>
+
+<span class="c1">// optional parameter with ?</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getName</span><span class="p">(</span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">lastName?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lastName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">firstName</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">firstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">lastName</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Doe&#39;</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">))</span>
+</code></pre></div>
+
 <h2>Interfaces</h2>
-<p>{% highlight typescript %}
-interface Todo {
-    title: string;
-    text: string;
-}</p>
-<p>function showTodo(todo: Todo) {
-    console.log(todo.title + ' ' + todo.text)
-}</p>
-<p>let myTodo = {title: 'Trash', 'text': 'Take out trash'};
-showTodo(myTodo)
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Todo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showTodo</span><span class="p">(</span><span class="nx">todo</span><span class="o">:</span><span class="w"> </span><span class="kt">Todo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">todo</span><span class="p">.</span><span class="nx">title</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">todo</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">myTodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trash&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;text&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Take out trash&#39;</span><span class="p">};</span>
+<span class="nx">showTodo</span><span class="p">(</span><span class="nx">myTodo</span><span class="p">)</span>
+</code></pre></div>
+
 <h2>Classes</h2>
-<p>{% highlight typescript %}
-interface UserInterface {
-    name: string;
-    email: string;
-    age: number;</p>
-<div class="codehilite"><pre><span></span><code><span class="n">register</span><span class="p">();</span><span class="w"></span>
-<span class="n">payInvoice</span><span class="p">();</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">UserInterface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">register</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">payInvoice</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">UserInterface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">email</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="p">;</span>
+
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User Created: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">register</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; is now registered&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">payInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; paid invoice&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">Member</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">payInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="nx">payInvoice</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="s1">&#39;John Doe&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;john@doe.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">33</span><span class="p">)</span>
+<span class="nx">john</span><span class="p">.</span><span class="nx">register</span><span class="p">()</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">mike</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Member</span><span class="p">(</span><span class="mf">42</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mike X&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mikex@gmail.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">11</span><span class="p">)</span>
+<span class="nx">mike</span><span class="p">.</span><span class="nx">payInvoice</span><span class="p">()</span>
 </code></pre></div>
-
-<p>}</p>
-<p>class User implements UserInterface {
-    public name: string;
-    public email: string;
-    age: number;</p>
-<div class="codehilite"><pre><span></span><code><span class="n">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;User Created: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="n">register</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; is now registered&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="n">payInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; paid invoice&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<p>}</p>
-<p>class Member extends User {
-    id: number;</p>
-<div class="codehilite"><pre><span></span><code><span class="n">constructor</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">this</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="n">payInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">super</span><span class="o">.</span><span class="n">payInvoice</span><span class="p">()</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<p>}</p>
-<p>let john = new User('John Doe', 'john@doe.com', 33)
-john.register()</p>
-<p>let mike = new Member(42, 'Mike X', 'mikex@gmail.com', 11)
-mike.payInvoice()
-{</p>
                         </div>
                     </article>
 
