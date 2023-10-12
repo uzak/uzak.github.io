@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>gnupg</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -121,13 +119,13 @@ gpg --output revocation-certificate.asc --gen-revoke 6A349802CE04AC5938B8EBAAA69
 </code></pre></div>
 
 <h2>sign</h2>
-<div class="codehilite"><pre><span></span><code><span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">clearsign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">plaintext</span><span class="w"></span>
-<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="nf">sign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="n">generates</span><span class="w"> </span><span class="nc">binary</span><span class="w"> </span><span class="k">output</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">clearsign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">plaintext</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="nf">sign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="n">generates</span><span class="w"> </span><span class="nc">binary</span><span class="w"> </span><span class="k">output</span>
 
 <span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">verify</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">            </span>
-<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">decrypt</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">verifies</span><span class="w"> </span><span class="n">signature</span><span class="w"></span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">decrypt</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">verifies</span><span class="w"> </span><span class="n">signature</span>
 
-<span class="err">#</span><span class="w"> </span><span class="k">asymmetric</span><span class="w"> </span><span class="n">encrypt</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nf">sign</span><span class="w"></span>
+<span class="err">#</span><span class="w"> </span><span class="k">asymmetric</span><span class="w"> </span><span class="n">encrypt</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nf">sign</span>
 <span class="n">gpg</span><span class="w"> </span><span class="c1">--sign --encrypt --recipient uzak@mailbox.org message.txt</span>
 </code></pre></div>
 

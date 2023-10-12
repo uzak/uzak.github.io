@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>jq</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -92,7 +90,7 @@
 </code></pre></div>
 
 <p>https://blog.appoptics.com/jq-json/</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">for</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">iX</span><span class="o">/*</span><span class="nt">json</span><span class="o">;</span><span class="w"> </span><span class="nt">do</span><span class="w"> </span><span class="nt">echo</span><span class="w"> </span><span class="o">$</span><span class="nt">a</span><span class="o">:</span><span class="w"> </span><span class="err">`</span><span class="nt">cat</span><span class="w"> </span><span class="o">$</span><span class="nt">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">jq</span><span class="w"> </span><span class="p">.</span><span class="nc">x</span><span class="o">,</span><span class="p">.</span><span class="nc">z</span><span class="o">,</span><span class="p">.</span><span class="nc">M63</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">tr</span><span class="w">  </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="err">`</span><span class="o">;</span><span class="w"> </span><span class="nt">done</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">for</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">iX</span><span class="o">/*</span><span class="nt">json</span><span class="o">;</span><span class="w"> </span><span class="nt">do</span><span class="w"> </span><span class="nt">echo</span><span class="w"> </span><span class="o">$</span><span class="nt">a</span><span class="o">:</span><span class="w"> </span><span class="err">`</span><span class="nt">cat</span><span class="w"> </span><span class="o">$</span><span class="nt">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">jq</span><span class="w"> </span><span class="p">.</span><span class="nc">x</span><span class="o">,</span><span class="p">.</span><span class="nc">z</span><span class="o">,</span><span class="p">.</span><span class="nc">M63</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">tr</span><span class="w">  </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="err">`</span><span class="o">;</span><span class="w"> </span><span class="nt">done</span>
 </code></pre></div>
                         </div>
                     </article>

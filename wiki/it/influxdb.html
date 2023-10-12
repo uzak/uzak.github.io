@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>influxdb</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -87,13 +85,13 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>InfluxDB</h1>
-<div class="codehilite"><pre><span></span><code><span class="n">influx</span><span class="w"> </span><span class="o">-</span><span class="n">host</span><span class="w"> </span><span class="o">$</span><span class="n">HOST</span><span class="w"> </span><span class="o">-</span><span class="n">precision</span><span class="w"> </span><span class="n">rfc3339</span><span class="w">   </span><span class="c1"># timestamps in human readable form</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">influx</span><span class="w"> </span><span class="o">-</span><span class="n">host</span><span class="w"> </span><span class="o">$</span><span class="n">HOST</span><span class="w"> </span><span class="o">-</span><span class="n">precision</span><span class="w"> </span><span class="n">rfc3339</span><span class="w">   </span><span class="c1"># timestamps in human readable form</span>
 
-<span class="n">show</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">printer_telemetry</span><span class="w"></span>
+<span class="n">show</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">printer_telemetry</span>
 
 
 
-<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">p8086</span><span class="p">:</span><span class="mi">8086</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">influxtest</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">influxdb</span><span class="w"> </span><span class="n">influxdb</span><span class="w"></span>
+<span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">p8086</span><span class="p">:</span><span class="mi">8086</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">influxtest</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">influxdb</span><span class="w"> </span><span class="n">influxdb</span>
 </code></pre></div>
 
 <h2>Protocol</h2>
@@ -101,13 +99,13 @@
 <span class="c">|    </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">--------------</span><span class="c">  |</span>
 <span class="c">|             |             |             |</span>
 <span class="c">|             |             |             |</span>
-<span class="nb">+-----------+--------+-+---------+-+---------+</span><span class="c"></span>
+<span class="nb">+-----------+--------+-+---------+-+---------+</span>
 <span class="c">|measurement|</span><span class="nt">,</span><span class="k">[</span><span class="c">tag_set|</span><span class="k">]</span><span class="c">(tag_set|) |field_set| |timestamp|</span>
-<span class="nb">+-----------+--------+-+---------+-+---------+</span><span class="c"></span>
+<span class="nb">+-----------+--------+-+---------+-+---------+</span>
 
 
-<span class="nv">&lt;</span><span class="c">field_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">field_value</span><span class="nv">&gt;</span><span class="nt">,</span><span class="nv">&lt;</span><span class="c">field_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">field_value</span><span class="nv">&gt;</span><span class="c"></span>
-<span class="nv">&lt;</span><span class="c">tag_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">tag_value</span><span class="nv">&gt;</span><span class="nt">,</span><span class="nv">&lt;</span><span class="c">tag_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">tag_value</span><span class="nv">&gt;</span><span class="c"></span>
+<span class="nv">&lt;</span><span class="c">field_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">field_value</span><span class="nv">&gt;</span><span class="nt">,</span><span class="nv">&lt;</span><span class="c">field_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">field_value</span><span class="nv">&gt;</span>
+<span class="nv">&lt;</span><span class="c">tag_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">tag_value</span><span class="nv">&gt;</span><span class="nt">,</span><span class="nv">&lt;</span><span class="c">tag_key</span><span class="nv">&gt;</span><span class="c">=</span><span class="nv">&lt;</span><span class="c">tag_value</span><span class="nv">&gt;</span>
 </code></pre></div>
 
 <p>The timestamp for your data point in nanosecond-precision Unix time. The timestamp is optional in line protocol. If you do not specify a timestamp for your data point InfluxDB uses the server’s local nanosecond timestamp in UTC.  </p>
@@ -120,50 +118,50 @@
 <li>boolean: t, T, true, True, TRUE, f, F, false, False, FALSE</li>
 </ul>
 <h2>Examples:</h2>
-<div class="codehilite"><pre><span></span><code><span class="k">show</span><span class="w"> </span><span class="nv">databases</span><span class="w"></span>
-<span class="nv">create</span><span class="w"> </span><span class="nv">database</span><span class="w"> </span><span class="nv">test</span><span class="w"></span>
-<span class="nv">use</span><span class="w"> </span><span class="nv">test</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>show databases
+create database test
+use test
 
 
-<span class="nv">INSERT</span><span class="w"> </span><span class="nv">weather</span>,<span class="nv">location</span><span class="o">=</span><span class="nv">us</span><span class="o">-</span><span class="nv">midwest</span><span class="w"> </span><span class="nv">temperature</span><span class="o">=</span><span class="mi">82</span><span class="w"> </span><span class="mi">1465839830100400200</span><span class="w"></span>
+INSERT weather,location=us-midwest temperature=82 1465839830100400200
 
-<span class="nv">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">FROM</span><span class="w"> </span><span class="s2">&quot;weather&quot;</span><span class="w"></span>
+SELECT <span class="gs">* FROM &quot;weather&quot;</span>
 
-<span class="o">&gt;</span><span class="w"> </span><span class="nv">insert</span><span class="w"> </span><span class="nv">weather</span>,<span class="nv">location</span><span class="o">=</span><span class="nv">us</span><span class="o">-</span><span class="nv">midwest</span><span class="w"> </span><span class="nv">temperature</span><span class="o">=</span><span class="mi">22</span><span class="w"> </span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nv">insert</span><span class="w"> </span><span class="nv">weather</span>,<span class="nv">location</span><span class="o">=</span><span class="nv">us</span><span class="o">-</span><span class="nv">midwest</span><span class="w"> </span><span class="nv">temperature</span><span class="o">=</span><span class="mi">21</span>,<span class="nv">humidity</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nv">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">weather</span><span class="c1">;</span><span class="w"></span>
-<span class="nv">delete</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">weather</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="mi">1587024650460040896</span><span class="c1">;</span><span class="w"></span>
-<span class="nv">drop</span><span class="w"> </span><span class="nv">database</span><span class="w"> </span><span class="nv">test</span><span class="w"></span>
+<span class="gs">&gt; insert weather,location=us-midwest temperature=22 </span>
+<span class="gs">&gt; insert weather,location=us-midwest temperature=21,humidity=1</span>
+<span class="gs">&gt; select *</span> from weather;
+delete from weather where time=1587024650460040896;
+drop database test
 
-<span class="nv">format</span><span class="w"> </span><span class="nv">json</span><span class="w"></span>
-<span class="nv">format</span><span class="w"> </span><span class="nv">csv</span><span class="w"></span>
-<span class="nv">format</span><span class="w"> </span><span class="nv">column</span><span class="w"></span>
+format json
+format csv
+format column
 
 
-<span class="k">show</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="nv">keys</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;...&#39;</span><span class="w"></span>
+show tag keys where key = &#39;...&#39;
 
-<span class="k">show</span><span class="w"> </span><span class="nv">measurements</span><span class="w"></span>
-<span class="nv">drop</span><span class="w"> </span><span class="nv">measurement</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">name</span><span class="o">&gt;</span><span class="w"></span>
+show measurements
+drop measurement &lt;name&gt;
 </code></pre></div>
 
 <p>Note tags are always strings and strings are quoted with apostrophes (')!</p>
 <h2>Live Examples</h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="s2">&quot;printer_MINI_telemetry&quot;</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">printer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;69&#39;</span><span class="w"> </span><span class="nv">limit</span><span class="w"> </span><span class="mi">10</span><span class="c1">;</span><span class="w"></span>
-<span class="nv">select</span><span class="w"> </span><span class="s2">&quot;temp_bed&quot;</span>,<span class="s2">&quot;printer_id&quot;</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="s2">&quot;printer_MINI_telemetry&quot;</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">printer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;69&#39;</span><span class="w"> </span><span class="nv">limit</span><span class="w"> </span><span class="mi">10</span><span class="c1">;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>select * from &quot;printer_MINI_telemetry&quot; where printer_id = &#39;69&#39; limit 10;
+select &quot;temp_bed&quot;,&quot;printer_id&quot; from &quot;printer_MINI_telemetry&quot; where printer_id = &#39;69&#39; limit 10;
 
-<span class="k">show</span><span class="w"> </span><span class="nv">series</span><span class="w"></span>
-<span class="k">show</span><span class="w"> </span><span class="nv">measurements</span><span class="w"></span>
+show series
+show measurements
 </code></pre></div>
 
 <h2>Auth</h2>
 <p><a href="https://gist.github.com/Paraphraser/9f3aa21fddd5d4e8141a7ab03ffb4dd7">source</a></p>
-<div class="codehilite"><pre><span></span><code><span class="nv">CREATE</span><span class="w"> </span><span class="nv">DATABASE</span><span class="w"> </span><span class="s2">&quot;mydatabase1&quot;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>CREATE DATABASE &quot;mydatabase1&quot;
 
-<span class="nv">CREATE</span><span class="w"> </span><span class="nv">USER</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="nv">WITH</span><span class="w"> </span><span class="nv">PASSWORD</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="w"> </span><span class="nv">WITH</span><span class="w"> </span><span class="nv">ALL</span><span class="w"> </span><span class="nv">PRIVILEGES</span><span class="c1">;</span><span class="w"></span>
-#<span class="w"> </span><span class="nv">NOTE</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">there</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">least</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">WITH</span><span class="w"> </span><span class="nv">ALL</span><span class="w"> </span><span class="nv">PRIVILEGES</span><span class="w"></span>
-#<span class="w">  </span><span class="nv">it</span><span class="w"> </span><span class="nv">seems</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">influx</span><span class="w"> </span><span class="nv">won</span><span class="err">&#39;t authenticate any other user. Thus</span>
-<span class="err">#  at least one admin is required.</span>
-<span class="err">GRANT ALL ON &quot;connect_uzak&quot; TO &quot;admin&quot;</span><span class="w"></span>
+CREATE USER &quot;admin&quot; WITH PASSWORD &#39;admin&#39; WITH ALL PRIVILEGES;
+<span class="gh">#</span> NOTE if there is not at least one user WITH ALL PRIVILEGES
+<span class="gh">#</span>  it seems that influx won&#39;t authenticate any other user. Thus
+<span class="gh">#</span>  at least one admin is required.
+GRANT ALL ON &quot;connect_uzak&quot; TO &quot;admin&quot;
 </code></pre></div>
 
 <p>extend docker-compose influx env:</p>
@@ -176,24 +174,24 @@ docker-compose up -d influxdb
 </code></pre></div>
 
 <p>experiment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">databases</span><span class="o">;</span><span class="w"></span>
-<span class="o">...</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nt">auth</span><span class="w"></span>
-<span class="nt">username</span><span class="o">:</span><span class="w"> </span><span class="nt">non-existing</span><span class="w"></span>
-<span class="nt">password</span><span class="o">:</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nt">use</span><span class="w"> </span><span class="nt">connect_uzak</span><span class="o">;</span><span class="w"></span>
-<span class="nt">WARN</span><span class="o">:</span><span class="w"> </span><span class="nt">authorization</span><span class="w"> </span><span class="nt">failed</span><span class="w"></span>
-<span class="nt">Using</span><span class="w"> </span><span class="nt">database</span><span class="w"> </span><span class="nt">connect_uzak</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">measurements</span><span class="o">;</span><span class="w"></span>
-<span class="nt">ERR</span><span class="o">:</span><span class="w"> </span><span class="nt">authorization</span><span class="w"> </span><span class="nt">failed</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nt">auth</span><span class="w"></span>
-<span class="nt">username</span><span class="o">:</span><span class="w"> </span><span class="nt">admin</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">databases</span><span class="o">;</span>
+<span class="o">...</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nt">auth</span>
+<span class="nt">username</span><span class="o">:</span><span class="w"> </span><span class="nt">non-existing</span>
+<span class="nt">password</span><span class="o">:</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nt">use</span><span class="w"> </span><span class="nt">connect_uzak</span><span class="o">;</span>
+<span class="nt">WARN</span><span class="o">:</span><span class="w"> </span><span class="nt">authorization</span><span class="w"> </span><span class="nt">failed</span>
+<span class="nt">Using</span><span class="w"> </span><span class="nt">database</span><span class="w"> </span><span class="nt">connect_uzak</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">measurements</span><span class="o">;</span>
+<span class="nt">ERR</span><span class="o">:</span><span class="w"> </span><span class="nt">authorization</span><span class="w"> </span><span class="nt">failed</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nt">auth</span>
+<span class="nt">username</span><span class="o">:</span><span class="w"> </span><span class="nt">admin</span>
 <span class="nt">password</span><span class="o">:</span><span class="w"> </span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">users</span><span class="o">;</span><span class="w"></span>
-<span class="nt">user</span><span class="w">  </span><span class="nt">admin</span><span class="w"></span>
-<span class="nt">----</span><span class="w">  </span><span class="nt">-----</span><span class="w"></span>
-<span class="nt">admin</span><span class="w"> </span><span class="nt">true</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">grants</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="s2">&quot;connect&quot;</span><span class="o">;</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">users</span><span class="o">;</span>
+<span class="nt">user</span><span class="w">  </span><span class="nt">admin</span>
+<span class="nt">----</span><span class="w">  </span><span class="nt">-----</span>
+<span class="nt">admin</span><span class="w"> </span><span class="nt">true</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">grants</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="s2">&quot;connect&quot;</span><span class="o">;</span>
 </code></pre></div>
 
 <h2>Links</h2>

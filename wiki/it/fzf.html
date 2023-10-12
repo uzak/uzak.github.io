@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>fzf</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -104,17 +102,17 @@ fzf -e                  # exact matching</p>
 </ul>
 <p>or <code>'string</code> in interactive search</p>
 <p>fzf: <code>^a var .sh$ !private</code> </p>
-<div class="codehilite"><pre><span></span><code><span class="nv">fzf</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">xargs</span><span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">l</span><span class="w">       </span>#<span class="w"> </span><span class="nv">piping</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">fzf</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>fzf | xargs ls -l       # piping from fzf
 
-<span class="nv">vim</span><span class="w"> </span><span class="o">-</span><span class="nv">o</span><span class="w"> </span>$<span class="ss">(</span><span class="nv">fzf</span><span class="ss">)</span><span class="w"></span>
+vim -o $(fzf)
 
-<span class="nv">vim</span><span class="w"> </span><span class="o">~/</span><span class="nv">repos</span><span class="cm">/**&lt;TAB&gt;     [#](#) opens fzf for file selection</span>
-<span class="cm">cd /**&lt;TAB&gt;</span>
-<span class="cm">ssh **&lt;TAB&gt;</span>
+vim ~/repos/**&lt;TAB&gt;     [#](#) opens fzf for file selection
+cd /**&lt;TAB&gt;
+ssh **&lt;TAB&gt;
 
-<span class="cm">kill &lt;TAB&gt;              # opens fzf for kill command</span>
+kill &lt;TAB&gt;              # opens fzf for kill command
 
-<span class="cm">&lt;alt-c&gt;                 # triggers fzf in change dir mode</span>
+&lt;alt-c&gt;                 # triggers fzf in change dir mode
 </code></pre></div>
                         </div>
                     </article>

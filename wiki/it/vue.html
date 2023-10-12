@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>vue</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -89,13 +87,13 @@
                             <h1>VUE.js</h1>
 <h1>Install</h1>
 <p>https://cli.vuejs.org/guide/installation.html</p>
-<div class="codehilite"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">sS</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">yarnpkg</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">pubkey</span><span class="o">.</span><span class="n">gpg</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">-</span><span class="w"></span>
-<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">yarn</span><span class="o">.</span><span class="n">list</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">yarn</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">sS</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">yarnpkg</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">pubkey</span><span class="o">.</span><span class="n">gpg</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">-</span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">tee</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">yarn</span><span class="o">.</span><span class="n">list</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">yarn</span>
 
-<span class="n">yarn</span><span class="w"> </span><span class="n">global</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="err">@</span><span class="n">vue</span><span class="o">/</span><span class="n">cli</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$(yarn global bin):$PATH&quot;</span><span class="w"></span>
-<span class="n">vue</span><span class="w"> </span><span class="o">--</span><span class="n">version</span><span class="w"></span>
+<span class="n">yarn</span><span class="w"> </span><span class="n">global</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="err">@</span><span class="n">vue</span><span class="o">/</span><span class="n">cli</span>
+<span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$(yarn global bin):$PATH&quot;</span>
+<span class="n">vue</span><span class="w"> </span><span class="o">--</span><span class="n">version</span>
 </code></pre></div>
 
 <h1>Create a project</h1>
@@ -109,11 +107,11 @@ yarn serve
 </code></pre></div>
 
 <h1>Add typescript</h1>
-<div class="codehilite"><pre><span></span><code>vue add typescript
+<div class="codehilite"><pre><span></span><code><span class="nx">vue</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">typescript</span>
 </code></pre></div>
 
 <p>add <code>tsconfig.json</code>. Vue files:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;script</span> <span class="na">lang=</span><span class="s">&quot;ts&quot;</span><span class="nt">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;script</span><span class="w"> </span><span class="na">lang=</span><span class="s">&quot;ts&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
                         </div>

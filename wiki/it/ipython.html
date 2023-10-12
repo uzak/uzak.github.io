@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>ipython</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -88,28 +86,28 @@
                         <div class="c-article__main" id="contents">
                             <h1>IPython</h1>
 <p>https://ipython.readthedocs.io/en/stable/index.html</p>
-<div class="codehilite"><pre><span></span><code><span class="o">?</span><span class="w"></span>
-<span class="nf">%quickref</span><span class="w"></span>
-<span class="n">object</span><span class="o">?</span><span class="w"></span>
-<span class="n">object</span><span class="o">??</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">?</span>
+<span class="nf">%quickref</span>
+<span class="n">object</span><span class="o">?</span>
+<span class="n">object</span><span class="o">??</span>
 
-<span class="nf">%history</span><span class="w"></span>
-<span class="nf">%timeit</span><span class="w"> </span><span class="p">[</span><span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">500</span><span class="p">)]</span><span class="w"></span>
-<span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span><span class="w">                       </span><span class="err">#</span><span class="w"> </span><span class="n">autocompletion</span><span class="w"></span>
-<span class="n">files</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">ls</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">variable</span><span class="w"></span>
+<span class="nf">%history</span>
+<span class="nf">%timeit</span><span class="w"> </span><span class="p">[</span><span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">500</span><span class="p">)]</span>
+<span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span><span class="w">                       </span><span class="err">#</span><span class="w"> </span><span class="n">autocompletion</span>
+<span class="n">files</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">ls</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">variable</span>
 
-<span class="nf">%who</span><span class="w">                        </span><span class="err">#</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">vars</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">scope</span><span class="w"></span>
-<span class="nf">%whos</span><span class="w">                       </span><span class="err">#</span><span class="w"> </span><span class="n">detto</span><span class="p">,</span><span class="w"> </span><span class="n">detailed</span><span class="p">.</span><span class="w"></span>
+<span class="nf">%who</span><span class="w">                        </span><span class="err">#</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">vars</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">scope</span>
+<span class="nf">%whos</span><span class="w">                       </span><span class="err">#</span><span class="w"> </span><span class="n">detto</span><span class="p">,</span><span class="w"> </span><span class="n">detailed</span><span class="p">.</span>
 
-<span class="nf">%pdef</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="w"></span>
-<span class="nf">%pdos</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="w"></span>
+<span class="nf">%pdef</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span>
+<span class="nf">%pdos</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span>
 
-<span class="n">_</span><span class="w">                           </span><span class="err">#</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">(</span><span class="n">just</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">python</span><span class="p">)</span><span class="w"></span>
-<span class="n">_i</span><span class="w">                          </span><span class="err">#</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="n">_</span><span class="w">                           </span><span class="err">#</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">(</span><span class="n">just</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">python</span><span class="p">)</span>
+<span class="n">_i</span><span class="w">                          </span><span class="err">#</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">input</span>
 
-<span class="nf">%doctest_mode</span><span class="w"></span>
+<span class="nf">%doctest_mode</span>
 
-<span class="o">*</span><span class="n">l</span><span class="o">?</span><span class="w">                         </span><span class="err">#</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">ending</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="err">`</span><span class="n">l</span><span class="err">`</span><span class="w"></span>
+<span class="o">*</span><span class="n">l</span><span class="o">?</span><span class="w">                         </span><span class="err">#</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">ending</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="err">`</span><span class="n">l</span><span class="err">`</span>
 </code></pre></div>
                         </div>
                     </article>

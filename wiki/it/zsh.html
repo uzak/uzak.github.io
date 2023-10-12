@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>zsh</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -87,7 +85,7 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <h1>Zsh</h1>
-<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">want</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">arbitrary</span><span class="w"> </span><span class="nv">argument</span>,<span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="o">!!</span>:<span class="mi">1</span>,<span class="w"> </span><span class="o">!!</span>:<span class="mi">2</span>,<span class="w"> </span><span class="nv">etc</span>.<span class="w"> </span><span class="ss">(</span><span class="o">!!</span>:<span class="mi">0</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="nv">itself</span>.<span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">want</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">arbitrary</span><span class="w"> </span><span class="nv">argument</span>,<span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="o">!!</span>:<span class="mi">1</span>,<span class="w"> </span><span class="o">!!</span>:<span class="mi">2</span>,<span class="w"> </span><span class="nv">etc</span>.<span class="w"> </span><span class="ss">(</span><span class="o">!!</span>:<span class="mi">0</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="nv">itself</span>.
 </code></pre></div>
 
 <p>http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents</p>
@@ -116,19 +114,19 @@ autojump -s             # stats
 </code></pre></div>
 
 <h3>common-aliases</h3>
-<div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">long</span><span class="w"> </span><span class="nv">listing</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">creation</span><span class="w"> </span><span class="nv">time</span><span class="w"></span>
-<span class="nv">lt</span><span class="w">          </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">ltFh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> long listing by creation time
+lt          # ls -ltFh
 
-<span class="nv">l</span><span class="w">           </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">lFh</span><span class="w"> </span><span class="ss">(</span><span class="nv">long</span>,<span class="w"> </span><span class="nv">classify</span><span class="w"> </span><span class="nv">files</span>,<span class="w"> </span><span class="nv">human</span><span class="w"> </span><span class="nv">readable</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">la</span><span class="w">          </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">lAFH</span><span class="w"> </span><span class="ss">(</span><span class="nv">allmost</span><span class="o">-</span><span class="nv">all</span><span class="w"> </span>[<span class="nv">not</span><span class="w"> </span>`.`<span class="w"> </span><span class="nv">and</span><span class="w"> </span>`..`],<span class="w"> </span><span class="nv">follow</span><span class="o">-</span><span class="nv">symlinks</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">lr</span><span class="w">          </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">tRFh</span><span class="w"> </span><span class="ss">(</span><span class="nv">by</span><span class="w"> </span><span class="nv">mod</span>.<span class="w"> </span><span class="nv">time</span>,<span class="w"> </span><span class="nv">recursive</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">ll</span><span class="w">          </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">l</span><span class="w"></span>
-<span class="nv">ldot</span><span class="w">        </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="nv">ld</span><span class="w"> </span>.<span class="o">*</span><span class="w"></span>
-<span class="nv">lS</span><span class="w">          </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="nv">FSsh</span><span class="w"> </span><span class="ss">(</span><span class="nv">one</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">pre</span><span class="w"> </span><span class="nv">line</span>,<span class="w"> </span><span class="nv">sort</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">filesize</span>,<span class="w"> </span><span class="nv">size</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">lart</span><span class="w">        </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="nv">Fcart</span><span class="w"> </span><span class="ss">(</span><span class="nv">sort</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">ctime</span><span class="ss">)</span><span class="w"> </span>
-<span class="nv">lrt</span><span class="w">         </span>#<span class="w"> </span><span class="nv">ls</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="nv">Fart</span><span class="w"> </span>
-<span class="nv">h</span><span class="w">           </span>#<span class="w"> </span><span class="nv">history</span><span class="w"></span>
-<span class="nv">p</span><span class="w">           </span>#<span class="w"> </span><span class="nv">processes</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">user</span><span class="w"></span>
+l           # ls -lFh (long, classify files, human readable)
+la          # ls -lAFH (allmost-all [not <span class="sb">`.`</span> and <span class="sb">`..`</span>], follow-symlinks)
+lr          # ls -tRFh (by mod. time, recursive)
+ll          # ls -l
+ldot        # ls -ld .*
+lS          # ls -1FSsh (one line pre line, sort by filesize, size)
+lart        # ls -1Fcart (sort by ctime) 
+lrt         # ls -1Fart 
+h           # history
+p           # processes for current user
 </code></pre></div>
 
 <p>end of command aliases:</p>
@@ -150,14 +148,14 @@ P           #  2&gt;&amp;1 | pygmentize -l pytb
 </code></pre></div>
 
 <h3>jsontools</h3>
-<div class="codehilite"><pre><span></span><code><span class="nv">pp_json</span><span class="w">         </span>#<span class="w"> </span><span class="nv">pretty</span><span class="w"> </span><span class="nv">print</span><span class="w"> </span><span class="nv">json</span><span class="w"></span>
-<span class="nv">is_json</span><span class="w">         </span>#<span class="w"> </span><span class="nv">returns</span><span class="w"> </span><span class="nv">true</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">valid</span><span class="w"> </span><span class="nv">json</span><span class="c1">; false otherwise</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>pp_json         # pretty print json
+is_json         # returns true if valid json; false otherwise
 </code></pre></div>
 
 <h3>pass</h3>
 <p><a href="https://github.com/ohmyzsh/ohmyzsh/issues/7864">autocompletion doesn't work</a>:</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">rm</span><span class="w"> </span><span class="o">~/</span>.<span class="nv">zcompdump</span><span class="o">*</span><span class="w"> </span>
-<span class="k">exec</span><span class="w"> </span><span class="nv">zsh</span><span class="w">                    </span>#<span class="w"> </span><span class="nv">restart</span><span class="w"> </span><span class="nv">zsh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>rm ~/.zcompdump* 
+exec zsh                    # restart zsh
 </code></pre></div>
 
 <h3>websearch</h3>

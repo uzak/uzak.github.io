@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>minio</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -119,16 +117,16 @@ minio-mc-nsg admin info myminio/
 </code></pre></div>
 
 <p>python connect:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Minio</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;localhost:9000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">access_key</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">secret_key</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;my-region&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">secure</span><span class="o">=</span><span class="n">False</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-<span class="c1"># upload to folder in a bucket</span><span class="w"></span>
-<span class="n">client</span><span class="o">.</span><span class="n">fput_object</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;upload&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;printer1/yes-from-python.gcode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/home/m/square-vase-cup-and-bracelet-generator-v1_0.15mm_PETG_MK3S_3h5m.gcode&quot;</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Minio</span><span class="p">(</span>
+<span class="w">    </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;localhost:9000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">access_key</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">secret_key</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;my-region&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">secure</span><span class="o">=</span><span class="n">False</span>
+<span class="p">)</span>
+<span class="c1"># upload to folder in a bucket</span>
+<span class="n">client</span><span class="o">.</span><span class="n">fput_object</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;upload&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;printer1/yes-from-python.gcode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/home/m/square-vase-cup-and-bracelet-generator-v1_0.15mm_PETG_MK3S_3h5m.gcode&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>https://docs.min.io/docs/aws-cli-with-minio.html</p>

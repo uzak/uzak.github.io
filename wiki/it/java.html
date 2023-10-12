@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>java</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -150,26 +148,26 @@
 </ul>
 <p>public class JavaHungrySingleton
 {</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">private</span><span class="w"> </span><span class="nv">static</span><span class="w">  </span><span class="nv">volatile</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="w">  </span><span class="nv">uniqueInstance</span><span class="c1">;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">private</span><span class="w"> </span><span class="nv">static</span><span class="w">  </span><span class="nv">volatile</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="w">  </span><span class="nv">uniqueInstance</span><span class="c1">;</span>
 
-<span class="nv">private</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="ss">()</span>{}<span class="w"></span>
+<span class="nv">private</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="ss">()</span>{}
 
-<span class="nv">public</span><span class="w"> </span><span class="nv">static</span><span class="w">   </span><span class="nv">JavaHungrySingleton</span><span class="w">  </span><span class="nv">getInstance</span><span class="ss">()</span><span class="w"></span>
-{<span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="o">==</span><span class="nv">null</span><span class="w"> </span><span class="ss">)</span><span class="w"></span>
-<span class="w">    </span>{<span class="w"></span>
-<span class="w">        </span><span class="nv">synchronized</span><span class="ss">(</span><span class="nv">JavaHungrySingleton</span>.<span class="nv">class</span><span class="ss">)</span><span class="w"></span>
-<span class="w">        </span>{<span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="o">==</span><span class="nv">null</span><span class="w"> </span><span class="ss">)</span><span class="w"></span>
-<span class="w">            </span>{<span class="w"></span>
-<span class="w">                </span><span class="nv">uniqueInstance</span><span class="o">=</span><span class="nv">new</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="ss">()</span><span class="c1">;</span><span class="w"></span>
-<span class="w">            </span>}<span class="w"></span>
-<span class="w">        </span>}<span class="w"></span>
-<span class="w">    </span>}<span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="c1">;</span><span class="w"></span>
-}<span class="w"></span>
+<span class="nv">public</span><span class="w"> </span><span class="nv">static</span><span class="w">   </span><span class="nv">JavaHungrySingleton</span><span class="w">  </span><span class="nv">getInstance</span><span class="ss">()</span>
+{
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="o">==</span><span class="nv">null</span><span class="w"> </span><span class="ss">)</span>
+<span class="w">    </span>{
+<span class="w">        </span><span class="nv">synchronized</span><span class="ss">(</span><span class="nv">JavaHungrySingleton</span>.<span class="nv">class</span><span class="ss">)</span>
+<span class="w">        </span>{
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="o">==</span><span class="nv">null</span><span class="w"> </span><span class="ss">)</span>
+<span class="w">            </span>{
+<span class="w">                </span><span class="nv">uniqueInstance</span><span class="o">=</span><span class="nv">new</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="ss">()</span><span class="c1">;</span>
+<span class="w">            </span>}
+<span class="w">        </span>}
+<span class="w">    </span>}
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="c1">;</span>
+}
 
-<span class="o">//</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">useful</span><span class="w"> </span><span class="nv">methods</span><span class="w"> </span><span class="nv">here</span><span class="w"></span>
+<span class="o">//</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">useful</span><span class="w"> </span><span class="nv">methods</span><span class="w"> </span><span class="nv">here</span>
 </code></pre></div>
 
 <p>}</p>

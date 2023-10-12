@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>git</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -97,8 +95,8 @@ git rebase upstream/master
 </code></pre></div>
 
 <p>corrupt lose object</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">find</span><span class="w"> </span>.<span class="nv">git</span><span class="o">/</span><span class="nv">objects</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="nv">size</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="k">exec</span><span class="w"> </span><span class="nv">rm</span><span class="w"> </span><span class="o">-</span><span class="nv">f</span><span class="w"> </span>{}<span class="w"> </span>\<span class="c1">;</span><span class="w"></span>
-<span class="nv">git</span><span class="w"> </span><span class="nv">fetch</span><span class="w"> </span><span class="nv">origin</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">find</span><span class="w"> </span>.<span class="nv">git</span><span class="o">/</span><span class="nv">objects</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="nv">size</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="k">exec</span><span class="w"> </span><span class="nv">rm</span><span class="w"> </span><span class="o">-</span><span class="nv">f</span><span class="w"> </span>{}<span class="w"> </span>\<span class="c1">;</span>
+<span class="nv">git</span><span class="w"> </span><span class="nv">fetch</span><span class="w"> </span><span class="nv">origin</span>
 </code></pre></div>
 
 <h1>Basic</h1>
@@ -107,7 +105,7 @@ git branch -m newname                   # rename current branch
 
 git reset --hard master                 # resets the branch to master
 
-# reset to remote version
+<span class="gh">#</span> reset to remote version
 git fetch origin
 git reset --hard origin/main
 
@@ -134,11 +132,11 @@ gitk printer.py
 git submodule init
 git submodule update
 
-# patch directly (w/o use of git)
+<span class="gh">#</span> patch directly (w/o use of git)
 diff -u OriginalFile UpdatedFile &gt; PatchFile
 patch OriginalFile &lt; PatchFile
 
-# 3 way diff and patch
+<span class="gh">#</span> 3 way diff and patch
 git diff -R 2742e63a7f759828b049ae5d3384b17beb39f48e openapi.yaml | git apply -3
 </code></pre></div>
 
@@ -176,7 +174,7 @@ git commit
 </code></pre></div>
 
 <h2>Change remote URL</h2>
-<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="k">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">uzak</span><span class="o">/</span><span class="n">PoorWSGI</span><span class="p">.</span><span class="n">git</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="k">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">uzak</span><span class="o">/</span><span class="n">PoorWSGI</span><span class="p">.</span><span class="n">git</span>
 </code></pre></div>
 
 <h2>Merge from a remote into local branch</h2>
@@ -198,48 +196,48 @@ git push origin v1          # tags are not pushed by default
 </code></pre></div>
 
 <h1>Školenie GIT 2020-05-08</h1>
-<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">--</span><span class="n">staged</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tig</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">difftool</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">na</span><span class="w"> </span><span class="n">zmeny</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">--</span><span class="n">staged</span>
+<span class="n">git</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tig</span>
+<span class="n">git</span><span class="w"> </span><span class="n">difftool</span>
+<span class="n">git</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">na</span><span class="w"> </span><span class="n">zmeny</span>
 
 <span class="n">git</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span>
-<span class="w">    </span><span class="n">napisat</span><span class="w"> </span><span class="p">(</span><span class="n">more</span><span class="p">)</span><span class="w"> </span><span class="n">na</span><span class="w"> </span><span class="n">koniec</span><span class="w"> </span><span class="n">prvej</span><span class="w"> </span><span class="n">ak</span><span class="w"> </span><span class="n">viacriadkovy</span><span class="w"> </span><span class="n">comment</span><span class="w"></span>
-<span class="w">    </span><span class="n">pouzivat</span><span class="w"> </span><span class="n">imperativ</span><span class="w"> </span><span class="p">(</span><span class="n">add</span><span class="w"> </span><span class="n">gitignore</span><span class="w"> </span><span class="n">je</span><span class="w"> </span><span class="n">kratsie</span><span class="w"> </span><span class="n">ako</span><span class="w"> </span><span class="n">added</span><span class="w"> </span><span class="n">gitignore</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">napisat</span><span class="w"> </span><span class="p">(</span><span class="n">more</span><span class="p">)</span><span class="w"> </span><span class="n">na</span><span class="w"> </span><span class="n">koniec</span><span class="w"> </span><span class="n">prvej</span><span class="w"> </span><span class="n">ak</span><span class="w"> </span><span class="n">viacriadkovy</span><span class="w"> </span><span class="n">comment</span>
+<span class="w">    </span><span class="n">pouzivat</span><span class="w"> </span><span class="n">imperativ</span><span class="w"> </span><span class="p">(</span><span class="n">add</span><span class="w"> </span><span class="n">gitignore</span><span class="w"> </span><span class="n">je</span><span class="w"> </span><span class="n">kratsie</span><span class="w"> </span><span class="n">ako</span><span class="w"> </span><span class="n">added</span><span class="w"> </span><span class="n">gitignore</span><span class="p">)</span>
 
-<span class="n">git</span><span class="w"> </span><span class="o">--</span><span class="n">am</span><span class="w"> </span><span class="p">(</span><span class="n">amend</span><span class="p">)</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="nb">log</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="nb">log</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span><span class="w"> </span><span class="o">--</span><span class="n">graph</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="nb">log</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="k">remote</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="o">--</span><span class="n">all</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="o">--</span><span class="n">all</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">reflog</span><span class="w">          </span><span class="c1"># ak si nieco totalne rozbijem</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="o">--</span><span class="n">hard</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">show</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w">       </span><span class="c1"># patch - show also changes</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">    </span><span class="c1"># pomenovat stashe</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">clear</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="o">--</span><span class="n">am</span><span class="w"> </span><span class="p">(</span><span class="n">amend</span><span class="p">)</span>
+<span class="n">git</span><span class="w"> </span><span class="nb">log</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span>
+<span class="n">git</span><span class="w"> </span><span class="nb">log</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span><span class="w"> </span><span class="o">--</span><span class="n">graph</span>
+<span class="n">git</span><span class="w"> </span><span class="nb">log</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span>
+<span class="n">git</span><span class="w"> </span><span class="k">remote</span><span class="w"> </span><span class="o">-</span><span class="n">v</span>
+<span class="n">git</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="o">--</span><span class="n">all</span>
+<span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="o">--</span><span class="n">all</span>
+<span class="n">git</span><span class="w"> </span><span class="n">reflog</span><span class="w">          </span><span class="c1"># ak si nieco totalne rozbijem</span>
+<span class="n">git</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="o">--</span><span class="n">hard</span>
+<span class="n">git</span><span class="w"> </span><span class="n">stash</span>
+<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">show</span>
+<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w">       </span><span class="c1"># patch - show also changes</span>
+<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">list</span>
+<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">    </span><span class="c1"># pomenovat stashe</span>
+<span class="n">git</span><span class="w"> </span><span class="n">stash</span><span class="w"> </span><span class="n">clear</span>
 <span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span>
-<span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="o">--</span><span class="n">all</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">3</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="p">:</span><span class="n">foo</span><span class="w"> </span><span class="p">:</span><span class="n">bar</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="k">master</span><span class="p">:</span><span class="n">nm</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="p">:</span><span class="n">nm</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="o">--</span><span class="n">all</span>
+<span class="n">git</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">3</span>
+<span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="p">:</span><span class="n">foo</span><span class="w"> </span><span class="p">:</span><span class="n">bar</span>
+<span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="k">master</span><span class="p">:</span><span class="n">nm</span>
+<span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="p">:</span><span class="n">nm</span>
 
-<span class="n">git</span><span class="w"> </span><span class="n">fetch</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="o">--</span><span class="n">prune</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">fetch</span>
+<span class="n">git</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="o">--</span><span class="n">prune</span>
 
-<span class="n">git</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">1</span><span class="w"> </span><span class="o">--</span><span class="n">hard</span><span class="w"> </span><span class="c1"># zmaze aj zmeny</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">1</span><span class="w"> </span><span class="o">--</span><span class="n">hard</span><span class="w"> </span><span class="c1"># zmaze aj zmeny</span>
 
-<span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">5</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">5</span>
 
-<span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="n">experimental</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="k">master</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="k">master</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span><span class="w"> </span><span class="n">experimental</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="n">experimental</span>
+<span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="k">master</span>
+<span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="k">master</span>
+<span class="n">git</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span><span class="w"> </span><span class="n">experimental</span>
 </code></pre></div>
 
 <p>nedovolovat pushnut PR s merge-commitami</p>
@@ -254,9 +252,9 @@ git push origin v1          # tags are not pushed by default
 <li>Every developer has his own repository. This prevents fighting for commit rights.</li>
 </ul>
 <h2>Man Pages</h2>
-<div class="codehilite"><pre><span></span><code>$ git <span class="nb">help</span> status
-$ git status --help
-$ man git-status
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span><span class="nb">help</span><span class="w"> </span>status
+$<span class="w"> </span>git<span class="w"> </span>status<span class="w"> </span>--help
+$<span class="w"> </span>man<span class="w"> </span>git-status
 </code></pre></div>
 
 <h2>Vocabulary</h2>
@@ -274,18 +272,18 @@ $ man git-status
 <li>Hunk - loosely related LOC</li>
 </ul>
 <h2>First Steps</h2>
-<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="ss">&quot;MU&quot;</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">email</span><span class="w"> </span><span class="ss">&quot;uzak+git@mailbox.org&quot;</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="n">color</span><span class="p">.</span><span class="n">ui</span><span class="w"> </span><span class="n">auto</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="ss">&quot;MU&quot;</span>
+<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">email</span><span class="w"> </span><span class="ss">&quot;uzak+git@mailbox.org&quot;</span>
+<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="k">global</span><span class="w"> </span><span class="n">color</span><span class="p">.</span><span class="n">ui</span><span class="w"> </span><span class="n">auto</span>
 
-<span class="n">git</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="n">example</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">status</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="k">add</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="k">commit</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">HEAD</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">master</span><span class="w"></span>
-<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">rev</span><span class="o">-</span><span class="n">SHA</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="n">example</span>
+<span class="n">git</span><span class="w"> </span><span class="n">status</span>
+<span class="n">git</span><span class="w"> </span><span class="k">add</span>
+<span class="n">git</span><span class="w"> </span><span class="k">commit</span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">HEAD</span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">master</span>
+<span class="n">git</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">rev</span><span class="o">-</span><span class="n">SHA</span>
 </code></pre></div>
 
 <p>non-global settings can be configurated for a project using <code>git config</code> without --global.</p>
@@ -345,11 +343,11 @@ git log -i --grep XXX --author Linus
 <li>data types: blog (file), tree (dir), commit, tag</li>
 </ul>
 <p>Plumbing-commands (in contrast to porcelain commands used so far):</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">git</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="o">--</span><span class="nv">oneline</span><span class="w"></span>
-<span class="nv">git</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="o">--</span><span class="nv">format</span><span class="o">=</span><span class="nv">raw</span><span class="w"></span>
-<span class="nv">git</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">rev</span><span class="o">-</span><span class="nv">SHA</span><span class="w"></span>
-<span class="nv">git</span><span class="w"> </span><span class="nv">ls</span><span class="o">-</span><span class="nv">tree</span><span class="w"> </span><span class="o">--</span><span class="nv">abbrev</span><span class="o">=</span><span class="mi">7</span><span class="w"> </span><span class="nv">rev</span><span class="o">-</span><span class="nv">SHA</span><span class="w"></span>
-<span class="nv">git</span><span class="w"> </span><span class="nv">hash</span><span class="o">-</span><span class="nv">object</span><span class="w"> </span><span class="nv">FILE</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">git</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="o">--</span><span class="nv">oneline</span>
+<span class="nv">git</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="o">--</span><span class="nv">format</span><span class="o">=</span><span class="nv">raw</span>
+<span class="nv">git</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">rev</span><span class="o">-</span><span class="nv">SHA</span>
+<span class="nv">git</span><span class="w"> </span><span class="nv">ls</span><span class="o">-</span><span class="nv">tree</span><span class="w"> </span><span class="o">--</span><span class="nv">abbrev</span><span class="o">=</span><span class="mi">7</span><span class="w"> </span><span class="nv">rev</span><span class="o">-</span><span class="nv">SHA</span>
+<span class="nv">git</span><span class="w"> </span><span class="nv">hash</span><span class="o">-</span><span class="nv">object</span><span class="w"> </span><span class="nv">FILE</span>
 </code></pre></div>
 
 <h1>Bibliography</h1>

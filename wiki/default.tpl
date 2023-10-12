@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>%title%</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="%root_path%../../index.html">अहो अहं</a> |
-                <a href="%root_path%../../wikis.html">wikis</a> |
+                <a style="color: red;" href="%root_path%../../index.html">&lt;--</a> |
+                <a href="%root_path%../../wikis/">wikis</a> |
                 <a href="%root_path%index.html">index</a>
                 <hr>
             </p>

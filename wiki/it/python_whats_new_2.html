@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>python_whats_new_2</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -156,7 +154,7 @@
 <li>memoryview object provides a view of another object's memory content that machtes the bytes type's interface.</li>
 <li>unittest was heavily updated. Added discovery. The following command will search the test/ subdirectory for any importable test files named test*.py:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>python -m unittest discover -s <span class="nb">test</span>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>discover<span class="w"> </span>-s<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
 
 <h1>2.6</h1>
@@ -167,17 +165,17 @@
 <li>print is now a function.</li>
 <li>PEP 3101: Advanced String Formatting: classes now might implement __format()__. Usage: </li>
 </ul>
-<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; &quot;User ID: {uid}, login: {login}&quot;.format(uid=0, login=&quot;root&quot;)
-&#39;User ID: 0, login: root&#39;
-&gt;&gt;&gt; &#39;{0:g}&#39;.format(3.75)
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>&quot;User<span class="w"> </span>ID:<span class="w"> </span>{uid},<span class="w"> </span>login:<span class="w"> </span>{login}&quot;.format(uid=0,<span class="w"> </span>login=&quot;root&quot;)
+&#39;User<span class="w"> </span>ID:<span class="w"> </span>0,<span class="w"> </span>login:<span class="w"> </span>root&#39;
+&gt;&gt;&gt;<span class="w"> </span>&#39;{0:g}&#39;.format(3.75)
 &#39;3.75&#39;
-&gt;&gt;&gt; &#39;{0:e}&#39;.format(3.75)
+&gt;&gt;&gt;<span class="w"> </span>&#39;{0:e}&#39;.format(3.75)
 &#39;3.750000e+00&#39;
-&gt;&gt;&gt; # Field 0: left justify, pad to 15 characters
-&gt;&gt;&gt; # Field 1: right justify, pad to 6 characters
-&gt;&gt;&gt; fmt = &#39;{0:15} <span class="cp">${</span><span class="mi">1</span><span class="p">:</span><span class="o">&gt;</span><span class="mi">6</span><span class="cp">}</span>&#39;
-&gt;&gt;&gt; fmt.format(&#39;Registration&#39;, 35)
-&#39;Registration    $    35&#39;
+&gt;&gt;&gt;<span class="w"> </span>#<span class="w"> </span>Field<span class="w"> </span>0:<span class="w"> </span>left<span class="w"> </span>justify,<span class="w"> </span>pad<span class="w"> </span>to<span class="w"> </span>15<span class="w"> </span>characters
+&gt;&gt;&gt;<span class="w"> </span>#<span class="w"> </span>Field<span class="w"> </span>1:<span class="w"> </span>right<span class="w"> </span>justify,<span class="w"> </span>pad<span class="w"> </span>to<span class="w"> </span>6<span class="w"> </span>characters
+&gt;&gt;&gt;<span class="w"> </span>fmt<span class="w"> </span>=<span class="w"> </span>&#39;{0:15}<span class="w"> </span><span class="cp">${</span><span class="mi">1</span><span class="p">:</span><span class="o">&gt;</span><span class="mi">6</span><span class="cp">}</span>&#39;
+&gt;&gt;&gt;<span class="w"> </span>fmt.format(&#39;Registration&#39;,<span class="w"> </span>35)
+&#39;Registration<span class="w">    </span>$<span class="w">    </span>35&#39;
 </code></pre></div>
 
 <ul>
@@ -278,16 +276,16 @@ except TypeError as exc:
 <li>PEP 357: <code>__index__()</code> method: allow any object to be used for slicing</li>
 <li>PEP 341: Unified try/except/finally.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nv">try</span><span class="w"></span>
-<span class="w">    </span><span class="nv">block</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span>...<span class="w"></span>
-<span class="nv">except</span><span class="w"> </span><span class="nv">Exception1</span>:<span class="w"></span>
-<span class="w">    </span><span class="nv">handler</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span>...<span class="w"></span>
-<span class="nv">except</span><span class="w"> </span><span class="nv">Exception2</span>:<span class="w"></span>
-<span class="w">    </span><span class="nv">handler</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span>...<span class="w"></span>
-<span class="k">else</span>:<span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="o">-</span><span class="nv">block</span><span class="w"> </span>#<span class="w"> </span><span class="nv">executed</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">there</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">exception</span><span class="w"></span>
-<span class="nv">finally</span>:<span class="w"></span>
-<span class="w">    </span><span class="nv">final</span><span class="o">-</span><span class="nv">block</span><span class="w"> </span>#<span class="w"> </span><span class="nv">runs</span><span class="w"> </span><span class="nv">always</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">try</span>
+<span class="w">    </span><span class="nv">block</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span>...
+<span class="nv">except</span><span class="w"> </span><span class="nv">Exception1</span>:
+<span class="w">    </span><span class="nv">handler</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span>...
+<span class="nv">except</span><span class="w"> </span><span class="nv">Exception2</span>:
+<span class="w">    </span><span class="nv">handler</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span>...
+<span class="k">else</span>:
+<span class="w">    </span><span class="k">else</span><span class="o">-</span><span class="nv">block</span><span class="w"> </span>#<span class="w"> </span><span class="nv">executed</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">there</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">exception</span>
+<span class="nv">finally</span>:
+<span class="w">    </span><span class="nv">final</span><span class="o">-</span><span class="nv">block</span><span class="w"> </span>#<span class="w"> </span><span class="nv">runs</span><span class="w"> </span><span class="nv">always</span>
 </code></pre></div>
 
 <ul>
@@ -305,36 +303,36 @@ except TypeError as exc:
 <span class="w">        </span><span class="k">else</span>:<span class="w">                                                                   </span>
 <span class="w">            </span><span class="nv">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w">                                                              </span>
 <span class="w">        </span><span class="nv">print</span><span class="ss">(</span><span class="s2">&quot;end (%s) (%s)&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="ss">(</span><span class="nv">val</span>,<span class="w"> </span><span class="nv">i</span><span class="ss">))</span><span class="w">  </span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">counter</span><span class="ss">(</span><span class="mi">10</span><span class="ss">)</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">before</span><span class="w"></span>
-<span class="mi">0</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">after</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">1</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">before</span><span class="w"></span>
-<span class="mi">1</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">after</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">2</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">before</span><span class="w"></span>
-<span class="mi">2</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">it</span>.<span class="k">send</span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">after</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">before</span><span class="w"></span>
-<span class="mi">8</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">after</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">9</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">before</span><span class="w"></span>
-<span class="mi">9</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">after</span><span class="w"></span>
-<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">10</span><span class="ss">)</span><span class="w"></span>
-<span class="nv">Traceback</span><span class="w"> </span><span class="ss">(</span><span class="nv">most</span><span class="w"> </span><span class="nv">recent</span><span class="w"> </span><span class="k">call</span><span class="w"> </span><span class="nl">last</span><span class="ss">)</span>:<span class="w"></span>
-<span class="w">  </span><span class="nv">File</span><span class="w"> </span><span class="s2">&quot;&lt;stdin&gt;&quot;</span>,<span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="mi">1</span>,<span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">module</span><span class="o">&gt;</span><span class="w"></span>
-<span class="nv">StopIteration</span><span class="w"></span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">counter</span><span class="ss">(</span><span class="mi">10</span><span class="ss">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span>
+<span class="nv">before</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span>
+<span class="nv">after</span>
+<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">1</span><span class="ss">)</span>
+<span class="nv">before</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span>
+<span class="nv">after</span>
+<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">2</span><span class="ss">)</span>
+<span class="nv">before</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">it</span>.<span class="k">send</span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span>
+<span class="nv">after</span>
+<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span>
+<span class="nv">before</span>
+<span class="mi">8</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span>
+<span class="nv">after</span>
+<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">9</span><span class="ss">)</span>
+<span class="nv">before</span>
+<span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">next</span><span class="ss">(</span><span class="nv">it</span><span class="ss">)</span>
+<span class="nv">after</span>
+<span class="k">end</span><span class="w"> </span><span class="ss">(</span><span class="nv">None</span><span class="ss">)</span><span class="w"> </span><span class="ss">(</span><span class="mi">10</span><span class="ss">)</span>
+<span class="nv">Traceback</span><span class="w"> </span><span class="ss">(</span><span class="nv">most</span><span class="w"> </span><span class="nv">recent</span><span class="w"> </span><span class="k">call</span><span class="w"> </span><span class="nl">last</span><span class="ss">)</span>:
+<span class="w">  </span><span class="nv">File</span><span class="w"> </span><span class="s2">&quot;&lt;stdin&gt;&quot;</span>,<span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="mi">1</span>,<span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">module</span><span class="o">&gt;</span>
+<span class="nv">StopIteration</span>
 </code></pre></div>
 
 <ul>
@@ -348,13 +346,13 @@ except TypeError as exc:
 </code></pre></div>
 
 <p>Usual usage:</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">try</span>:<span class="w"></span>
-<span class="w">    </span>...<span class="w"></span>
-<span class="nv">except</span><span class="w"> </span><span class="ss">(</span><span class="nv">KeyboardInterrupt</span>,<span class="w"> </span><span class="nv">SystemExit</span><span class="ss">)</span>:<span class="w"></span>
-<span class="w">    </span><span class="nv">raise</span><span class="w"></span>
-<span class="nv">except</span>:<span class="w"> </span>#<span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span>`<span class="nv">except</span><span class="w"> </span><span class="nv">Exception</span>`<span class="w"></span>
-<span class="w">    </span>#<span class="w"> </span><span class="nv">Log</span><span class="w"> </span><span class="nv">error</span>...<span class="w"></span>
-<span class="w">    </span>#<span class="w"> </span><span class="k">Continue</span><span class="w"> </span><span class="nv">running</span><span class="w"> </span><span class="nv">program</span>...<span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">try</span>:
+<span class="w">    </span>...
+<span class="nv">except</span><span class="w"> </span><span class="ss">(</span><span class="nv">KeyboardInterrupt</span>,<span class="w"> </span><span class="nv">SystemExit</span><span class="ss">)</span>:
+<span class="w">    </span><span class="nv">raise</span>
+<span class="nv">except</span>:<span class="w"> </span>#<span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span>`<span class="nv">except</span><span class="w"> </span><span class="nv">Exception</span>`
+<span class="w">    </span>#<span class="w"> </span><span class="nv">Log</span><span class="w"> </span><span class="nv">error</span>...
+<span class="w">    </span>#<span class="w"> </span><span class="k">Continue</span><span class="w"> </span><span class="nv">running</span><span class="w"> </span><span class="nv">program</span>...
 </code></pre></div>
 
 <ul>
@@ -402,21 +400,21 @@ CacheInfo(hits=4805, misses=980, maxsize=300, currsize=300)
 <li>reduce()</li>
 <li>partial()</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">two_plus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">add</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">two_plus</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<span class="mi">5</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">two_plus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">add</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">two_plus</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">5</span>
 </code></pre></div>
 
 <ul>
 <li>@wraps (alternative to functools.update_wrapper()) - copy name, module, docstrings to the wrapper function for easier understanding of tracebacks</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">my_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span><span class="w"></span>
-<span class="w">        </span><span class="nb">print</span><span class="w"> </span><span class="s1">&#39;Calling decorated function&#39;</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwds</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">wrapper</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">my_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="w">    </span><span class="err">@</span><span class="n">functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<span class="w">        </span><span class="nb">print</span><span class="w"> </span><span class="s1">&#39;Calling decorated function&#39;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">wrapper</span>
 </code></pre></div>
 
 <h2>Absolute/Relative imports</h2>
@@ -434,9 +432,9 @@ CacheInfo(hits=4805, misses=980, maxsize=300, currsize=300)
 
 <h2>PEP 343: The 'with' statement</h2>
 <p>Use where otherwise you'd use <code>try...finally</code> to make sure that cleanup code is executed.</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">with</span><span class="w"> </span><span class="nv">open</span><span class="ss">(</span><span class="s1">&#39;/etc/passwd&#39;</span>,<span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="ss">)</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">f</span>:<span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">f</span>:<span class="w"></span>
-<span class="w">        </span><span class="nv">print</span><span class="w"> </span><span class="nv">line</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">with</span><span class="w"> </span><span class="nv">open</span><span class="ss">(</span><span class="s1">&#39;/etc/passwd&#39;</span>,<span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="ss">)</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">f</span>:
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">f</span>:
+<span class="w">        </span><span class="nv">print</span><span class="w"> </span><span class="nv">line</span>
 </code></pre></div>
 
 <p>A context manager <code>type(f)</code> must implement <a href="https://docs.python.org/3/reference/datamodel.html#object.__enter__">__enter__()</a> and <a href="https://docs.python.org/3/reference/datamodel.html#object.__exit__">__exit__()</a> methods.</p>
@@ -552,11 +550,11 @@ Decimal(&#39;1.1&#39;)
 <li>os.path.lexists(path) returns true if the file specified by path exists, whether or not it’s a symbolic link.</li>
 </ul>
 <h2>PEP 318: Decorators for Functions and Methods</h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">@A</span><span class="w"></span>
-<span class="nv">@B</span><span class="w"></span>
-<span class="nv">@C</span><span class="w"></span>
-<span class="n">def</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">()</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">@A</span>
+<span class="nv">@B</span>
+<span class="nv">@C</span>
+<span class="n">def</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">()</span><span class="err">:</span>
+<span class="w">    </span><span class="p">...</span>
 </code></pre></div>
 
 <p>equals to:</p>
@@ -565,27 +563,27 @@ f = A(B(C(f)))
 </code></pre></div>
 
 <p>example:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">require_type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="err">:</span><span class="w">                                                            </span>
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">decorated</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="err">:</span><span class="w">                                                        </span>
-<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">handler</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="err">:</span><span class="w">                                               </span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">args</span><span class="p">:</span><span class="w">                                                      </span>
-<span class="w">                </span><span class="n">assert</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w">                                         </span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="w">                                            </span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">handler</span><span class="w">                                                          </span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">decorated</span><span class="w">                                                            </span>
+<div class="codehilite"><pre><span></span><code><span class="nx">def</span><span class="w"> </span><span class="nx">require_type</span><span class="p">(</span><span class="nx">t</span><span class="p">):</span><span class="w">                                                            </span>
+<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">decorated</span><span class="p">(</span><span class="nx">func</span><span class="p">):</span><span class="w">                                                        </span>
+<span class="w">        </span><span class="nx">def</span><span class="w"> </span><span class="nx">handler</span><span class="p">(</span><span class="o">*</span><span class="nx">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="nx">kw</span><span class="p">):</span><span class="w">                                               </span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">args</span><span class="p">:</span><span class="w">                                                      </span>
+<span class="w">                </span><span class="nx">assert</span><span class="w"> </span><span class="nx">isinstance</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">t</span><span class="p">)</span><span class="w">                                         </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">func</span><span class="p">(</span><span class="o">*</span><span class="nx">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="nx">kw</span><span class="p">)</span><span class="w">                                            </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">handler</span><span class="w">                                                          </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">decorated</span><span class="w">                                                            </span>
 
 
-<span class="nv">@require_type</span><span class="p">(</span><span class="nc">int</span><span class="p">)</span><span class="w">                                                              </span>
-<span class="n">def</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span><span class="err">:</span><span class="w">                                                                     </span>
-<span class="w">    </span><span class="k">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span><span class="w">                                                                  </span>
+<span class="err">@</span><span class="nx">require_type</span><span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="w">                                                              </span>
+<span class="nx">def</span><span class="w"> </span><span class="nx">f</span><span class="p">(</span><span class="nx">arg</span><span class="p">):</span><span class="w">                                                                     </span>
+<span class="w">    </span><span class="nx">print</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span><span class="w">                                                                  </span>
 
-<span class="n">f</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w">                                                                           </span>
-<span class="n">f</span><span class="p">(</span><span class="ss">&quot;asdf&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nx">f</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w">                                                                           </span>
+<span class="nx">f</span><span class="p">(</span><span class="s">&quot;asdf&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>PEP 289: Generator Expressions</h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">links</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>[<span class="nv">link</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">link</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">get_all_links</span><span class="ss">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">link</span>.<span class="nv">followed</span>]<span class="w"> </span>#<span class="w"> </span><span class="nv">list</span><span class="w"></span>
-<span class="nv">links</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="nv">link</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">link</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">get_all_links</span><span class="ss">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">link</span>.<span class="nv">followed</span><span class="ss">)</span><span class="w"> </span>#<span class="w"> </span><span class="nv">generator</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code>links = [link for link in get_all_links() if not link.followed] # list
+links = (link for link in get_all_links() if not link.followed) # generator
 </code></pre></div>
 
 <h1>2.3</h1>
@@ -722,10 +720,10 @@ b&#39;\xb5ubim \xbba&#39;
 </code></pre></div>
 
 <h2>List Comprehension</h2>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">seq1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;abc&#39;</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">seq2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="mi">1</span>,<span class="mi">2</span>,<span class="mi">3</span><span class="ss">)</span><span class="w"></span>
-<span class="o">&gt;&gt;&gt;</span><span class="w"> </span>[<span class="w"> </span><span class="ss">(</span><span class="nv">a</span>,<span class="w"> </span><span class="nv">b</span><span class="ss">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">seq1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">seq2</span>]<span class="w"></span>
-[<span class="ss">(</span><span class="s1">&#39;a&#39;</span>,<span class="w"> </span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;a&#39;</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;a&#39;</span>,<span class="w"> </span><span class="mi">3</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;b&#39;</span>,<span class="w"> </span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;b&#39;</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;b&#39;</span>,<span class="w"> </span><span class="mi">3</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;c&#39;</span>,<span class="w"> </span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;c&#39;</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;c&#39;</span>,<span class="w"> </span><span class="mi">3</span><span class="ss">)</span>]<span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">seq1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;abc&#39;</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="nv">seq2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="mi">1</span>,<span class="mi">2</span>,<span class="mi">3</span><span class="ss">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span>[<span class="w"> </span><span class="ss">(</span><span class="nv">a</span>,<span class="w"> </span><span class="nv">b</span><span class="ss">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">seq1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">seq2</span>]
+[<span class="ss">(</span><span class="s1">&#39;a&#39;</span>,<span class="w"> </span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;a&#39;</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;a&#39;</span>,<span class="w"> </span><span class="mi">3</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;b&#39;</span>,<span class="w"> </span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;b&#39;</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;b&#39;</span>,<span class="w"> </span><span class="mi">3</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;c&#39;</span>,<span class="w"> </span><span class="mi">1</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;c&#39;</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>,<span class="w"> </span><span class="ss">(</span><span class="s1">&#39;c&#39;</span>,<span class="w"> </span><span class="mi">3</span><span class="ss">)</span>]
 </code></pre></div>
                         </div>
                     </article>

@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>spring</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -87,42 +85,42 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <p>for REST api doc:</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">@SpringBootApplication</span><span class="w"></span>
-<span class="nv">@EnableSwagger2</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nv">@SpringBootApplication</span>
+<span class="nv">@EnableSwagger2</span>
 </code></pre></div>
 
 <p>Structure:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">config</span><span class="o">/</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Configuration</span><span class="w"> </span><span class="n">SwaggerConfiguration</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">config</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Configuration</span><span class="w"> </span><span class="n">SwaggerConfiguration</span>
 <span class="w">    </span><span class="err">@</span><span class="n">Autowired</span><span class="w"> </span>
-<span class="w">        </span><span class="n">TypeResolver</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Bean</span><span class="w"></span>
-<span class="w">        </span><span class="n">Docket</span><span class="w"></span>
+<span class="w">        </span><span class="n">TypeResolver</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Bean</span>
+<span class="w">        </span><span class="n">Docket</span>
 
-<span class="n">controller</span><span class="o">/</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">RestController</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">CrossOrigin</span><span class="p">(</span><span class="s2">&quot;http://localhost:80001&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Autowired</span><span class="w"> </span><span class="n">PostRepository</span><span class="w"></span>
+<span class="n">controller</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">RestController</span>
+<span class="w">    </span><span class="err">@</span><span class="n">CrossOrigin</span><span class="p">(</span><span class="s2">&quot;http://localhost:80001&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Autowired</span><span class="w"> </span><span class="n">PostRepository</span>
 
-<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span><span class="w"> </span><span class="n">consumes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="o">.</span><span class="n">Application_JSON_VALUE</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="o">.</span><span class="n">Application_JSON_VALUE</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">ResponseStatsu</span><span class="p">(</span><span class="n">HttpStatus</span><span class="o">.</span><span class="n">CREATED</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">Post</span><span class="w"> </span><span class="n">save</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">postRepository</span><span class="o">.</span><span class="n">saveAndFlush</span><span class="p">(</span><span class="n">post</span><span class="p">)}</span><span class="w"></span>
+<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span><span class="w"> </span><span class="n">consumes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="o">.</span><span class="n">Application_JSON_VALUE</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="o">.</span><span class="n">Application_JSON_VALUE</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">ResponseStatsu</span><span class="p">(</span><span class="n">HttpStatus</span><span class="o">.</span><span class="n">CREATED</span><span class="p">)</span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">Post</span><span class="w"> </span><span class="n">save</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">postRepository</span><span class="o">.</span><span class="n">saveAndFlush</span><span class="p">(</span><span class="n">post</span><span class="p">)}</span>
 
-<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Post</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">postRepository</span><span class="o">.</span><span class="n">findAll</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Post</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">postRepository</span><span class="o">.</span><span class="n">findAll</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 
-<span class="n">model</span><span class="o">/</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Entity</span><span class="w"> </span><span class="p">(</span><span class="n">javax</span><span class="o">.</span><span class="n">persistence</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Data</span><span class="w"> </span><span class="p">(</span><span class="n">lombok</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Builder</span><span class="w"> </span><span class="p">(</span><span class="n">Lombok</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">NoArgsConstructor</span><span class="w"> </span><span class="err">@</span><span class="n">AllArgsConstructor</span><span class="w"> </span><span class="p">(</span><span class="n">lombok</span><span class="p">)</span><span class="w"></span>
+<span class="n">model</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Entity</span><span class="w"> </span><span class="p">(</span><span class="n">javax</span><span class="o">.</span><span class="n">persistence</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Data</span><span class="w"> </span><span class="p">(</span><span class="n">lombok</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Builder</span><span class="w"> </span><span class="p">(</span><span class="n">Lombok</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">NoArgsConstructor</span><span class="w"> </span><span class="err">@</span><span class="n">AllArgsConstructor</span><span class="w"> </span><span class="p">(</span><span class="n">lombok</span><span class="p">)</span>
 
-<span class="w">    </span><span class="err">@</span><span class="n">Id</span><span class="w"> </span><span class="err">@</span><span class="n">GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="o">.</span><span class="n">AUTO</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="err">@</span><span class="n">Id</span><span class="w"> </span><span class="err">@</span><span class="n">GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="o">.</span><span class="n">AUTO</span><span class="p">)</span>
 
-<span class="n">repository</span><span class="o">/</span><span class="w"></span>
-<span class="w">    </span><span class="err">@</span><span class="n">Repository</span><span class="w"></span>
-<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">PostRepository</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">JpaRespository</span><span class="o">&lt;</span><span class="n">Post</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">repository</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Repository</span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">PostRepository</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">JpaRespository</span><span class="o">&lt;</span><span class="n">Post</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span>
 </code></pre></div>
                         </div>
                     </article>

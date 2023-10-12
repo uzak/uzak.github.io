@@ -11,8 +11,6 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>logrotate</title>
 
-    %pygments%
-
     <script>
 
         window.onload = function () {
@@ -73,8 +71,8 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="../../index.html">अहो अहं</a> |
-                <a href="../../wikis.html">wikis</a> |
+                <a style="color: red;" href="../../index.html">&lt;--</a> |
+                <a href="../../wikis/">wikis</a> |
                 <a href="index.html">index</a>
                 <hr>
             </p>
@@ -87,11 +85,11 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <p>https://www.tecmint.com/install-logrotate-to-manage-log-rotation-in-linux/</p>
-<div class="codehilite"><pre><span></span><code><span class="k">logrotate</span><span class="w"> </span><span class="o">-</span><span class="nv">d</span><span class="w"> </span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="k">logrotate</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">syslog</span><span class="w">    </span>#<span class="w"> </span><span class="nv">test</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">logrotate</span><span class="w"> </span><span class="o">-</span><span class="nv">d</span><span class="w"> </span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="k">logrotate</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">syslog</span><span class="w">    </span>#<span class="w"> </span><span class="nv">test</span>
 </code></pre></div>
 
 <p>Installed through <code>/etc/cron.daily/logrotate</code>. Comment out systemd timer check. Make sure <code>/etc/logrotate.conf</code> has enabled:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">include</span><span class="w"> </span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="k">logrotate</span>.<span class="nv">d</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">include</span><span class="w"> </span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="k">logrotate</span>.<span class="nv">d</span>
 </code></pre></div>
                         </div>
                     </article>
