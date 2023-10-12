@@ -2,7 +2,28 @@
 * [Huspenina](https://www.zenyvmeste.sk/recept--prava-domaca-huspenina)
 * [Ovocne knedliky](https://www.vareni.cz/recepty/ovocne-knedliky-z-krupicove-kase/)
 * Buchty
-* 
+* [Spenatova omacka](https://www.klasicke-recepty.cz/spenatova-omacka/)
+* [Viedensky gulas](https://www.klasicke-recepty.cz/vidensky-gulas/)
+* [Pecena kacica](https://www.klasicke-recepty.cz/pecena-kachna/)
+* [Hlivova polievka - falosna drzkova](https://www.klasicke-recepty.cz/polevka-z-hlivy/) 
+* [Dukatove buchticky](https://www.klasicke-recepty.cz/buchticky-s-kremem/)
+* [Tradicne ceske kysnute kolace](https://www.klasicke-recepty.cz/kynute-kolace/)
+* [Pomalu pecena krkovicka](https://www.klasicke-recepty.cz/krkovice-pecena-v-troube/)
+* [Bravcove na hribikoch](https://www.klasicke-recepty.cz/veprove-na-zampionech/)
+* [Cerstve fazulky na smotane](https://www.klasicke-recepty.cz/fazolky-na-smetane/)
+* [Segedin](https://www.klasicke-recepty.cz/segedinsky-gulas/)
+* [Erdaepfelgulash](https://www.ichkoche.at/erdaepfelgulasch-auf-wiener-art-rezept-3135)
+* [Kaiserschmarn](https://www.gutekueche.at/wiener-kaiserschmarrn-rezept-847)
+* [Eiersalat](https://www.gutekueche.at/klassischer-eiersalat-rezept-24947)
+* [Fiakergulasch](https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/fiakergulasch)
+* [Linzer Torte](https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/linzer-torte)
+* [Esterhazy-Rostbraten](https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/esterhazy-rostbraten)
+* [Tafelspitz](https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/tafelspitz)
+* [Kuerbissuppe](https://www.oesterreich-spezialitaeten.at/rezepte/kuerbissuppe.html)
+* [Somlauer Nockerl](https://frischgekocht.billa.at/rezept/somlauer-nockerl-trifle-BI-29864)
+* [Paprikahendl](https://frischgekocht.billa.at/rezept/erdaepfel-paprikahendl-BI-29332)
+* [Salzburger Nockerl](https://frischgekocht.billa.at/rezept/salzburger-nockerl-mit-himbeer-zimt-sauce-BI-5769)
+* [Kaeferbohnensalat mit Radieschen](https://frischgekocht.billa.at/rezept/kaeferbohnensalat-mit-radieschen-BI-24788)
 
 # Raňajky
 
