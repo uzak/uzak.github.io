@@ -6,13 +6,13 @@ Ak to nedokážeš pochopiť, si v skvelej kondícii. Iba keď chápeš, si v br
 
 **Ak sa budeme zaoberať vysvetľovaním, hodí nás to presne tam, kde nechceme byť - do našeho nadhľadu na svet.**
 
-**The hardest thing in the world is for a warrior to let others be.**
+The hardest thing in the world is for a warrior to let others be.
 
 You say you need help. Help for what? You have everything needed for the extravagant journey that is your life.
 
 Think about it: **what weakens us is feeling offended by the deeds and misdeeds of our fellow men. Our self-importance requires that we spend most of our lives offended by someone.**
 
-**The average man is hooked to his fellow men, while the warrior is hooked only to infinity.**
+The average man is hooked to his fellow men, while the warrior is hooked only to infinity.
 
 To seek the perfection of the warrior's spirit is the only task worthy of our temporariness, our manhood.
 
@@ -22,7 +22,7 @@ The art of a warrior is to balance the terror of being a man with the wonder of 
 
 The basic difference between an ordinary man and a warrior is that a warrior takes everything as a challenge while an ordinary man takes everything as a blessing or a curse.
 
-**Nobody knows who I am or what I do. Not even I.**
+Nobody knows who I am or what I do. Not even I.
 
 A warrior has to get rid of the tendency to define himself.
 
