@@ -71,7 +71,7 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="%root_path%../../index.html">&lt;--</a> |
+                <a style="color: red;" href="%root_path%../../index.html">⌂</a> |
                 <a href="%root_path%../../wikis/">wikis</a> |
                 <a href="%root_path%index.html">index</a>
                 <hr>
