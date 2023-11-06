@@ -15,6 +15,7 @@
 * [zemiaková polievka s párkom](https://dobruchut.azet.sk/recept/18326/zemiakova-polievka-s-parkom)
 * [cesnakova](https://varecha.pravda.sk/recepty/lahka-cesnakova-polievka/37956-recept.html)
 
+* [Zapecene sampiony](https://www.youtube.com/watch?v=zadDtkGI_t4)
 
 # Klasika
 * [Eiersalat](https://www.gutekueche.at/klassischer-eiersalat-rezept-24947)
