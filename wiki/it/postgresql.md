@@ -12,3 +12,8 @@ brew install postgres
     brew services restart postgresql
     Or, if you don't want/need a background service you can just run:
     /opt/homebrew/opt/postgresql/bin/postgres -D /opt/homebrew/var/postgres
+    
+    
+## Get logfile 
+show data_directory;
+SELECT  pg_current_logfile();
