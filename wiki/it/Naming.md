@@ -98,3 +98,14 @@ Determine the out the meaning:
 don't make the context part of the name:
     for hhme in hhm.email_addresses  VS.
     for email in hhm.email_addresses
+    
+    
+## Task2: Naming
+
+Inheritance was all about finding similarities and pushing them up. Naming, on the contrary, is about finding differences. Given two objects, I want their names (handles) to identify the corresponding object without doubt.
+
+Names `lisi` and `lizi` won't provide too much difference. Neither will `animal1`, `animal2`, `animal3` nor `zoo_chucky_animal`, `zoo_chicky_animal` and `zoo_checky_animal`.
+
+So be creative, our goal is now to find names that unmistakenly identify the one or the other. The names should be as different as possible to prevent mistakes. And the name should be related to the objects, otherwise you won't be able to make the association easily.
+
+Now name the animals from above.
