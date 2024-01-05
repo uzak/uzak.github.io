@@ -1,6 +1,6 @@
 Bez vedomia smrti je všetko je všetko obyčajne a triviálne.
 
-Bojovník by nikdy nechcel byt inde ako tu a teraz.
+**Bojovník by nikdy nechcel byt inde ako tu a teraz.**
 
 Ak to nedokážeš pochopiť, si v skvelej kondícii. Iba keď chápeš, si v brynde.
 
@@ -8,7 +8,7 @@ Ak to nedokážeš pochopiť, si v skvelej kondícii. Iba keď chápeš, si v br
 
 The hardest thing in the world is for a warrior to let others be.
 
-You say you need help. Help for what? You have everything needed for the extravagant journey that is your life.
+You say you need help. Help for what? **You have everything needed for the extravagant journey that is your life.**
 
 Think about it: **what weakens us is feeling offended by the deeds and misdeeds of our fellow men. Our self-importance requires that we spend most of our lives offended by someone.**
 

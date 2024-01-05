@@ -1,5 +1,6 @@
 [100 rabbits recipes](http://grimgrains.com/site/home.html)
 
+* [borsch](https://www.youtube.com/watch?v=-RjawJ8LImM)
 * [Hlivova polievka - falosna drzkova](https://www.klasicke-recepty.cz/polevka-z-hlivy/) 
   
 * [Kaeferbohnensalat mit Radieschen](https://frischgekocht.billa.at/rezept/kaeferbohnensalat-mit-radieschen-BI-24788)
