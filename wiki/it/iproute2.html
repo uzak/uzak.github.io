@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>index</title>
+    <title>iproute2</title>
 
     <script>
 
@@ -84,92 +84,20 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>OS</h1>
-<ul>
-<li><a href="unix.html">UNIX</a><ul>
-<li><a href="ubuntu_install.html">ubuntu install</a><ul>
-<li><a href="thinkpad_fw_update.html">thinkpad_fw_update</a></li>
-</ul>
-</li>
-<li><a href="raspi_install.html">raspi install</a></li>
-<li><a href="mac_install.html">mac_install</a></li>
-</ul>
-</li>
-<li><a href="windows.html">Windows</a></li>
-<li><a href="android.html">Android</a></li>
-</ul>
-<h1>Tools</h1>
-<ul>
-<li><a href="vim.html">vim</a></li>
-<li><a href="git.html">git</a></li>
-<li><a href="zsh.html">zsh</a></li>
-<li><a href="fzf.html">fzf</a></li>
-<li><a href="jq.html">jq</a></li>
-<li><a href="q.html">q</a></li>
-<li><a href="awk.html">awk</a></li>
-<li><a href="sphinx.html">sphinx</a></li>
-<li><a href="emacs.html">emacs</a></li>
-<li><a href="spacemacs.html">spacemacs</a></li>
-<li><a href="find.html">find</a></li>
-<li><a href="ab.html">ab</a></li>
-<li><a href="sar.html">sar</a> / sysstat</li>
-<li><a href="tmux.html">tmux</a></li>
-<li><a href="ipython.html">ipython</a> (project jupyter)</li>
-<li><a href="rclone.html">rclone</a></li>
-<li><a href="minicom.html">minicom</a></li>
-<li><a href="logrotate.html">logrotate</a></li>
-<li><a href="tcpdump.html">tcpdump</a></li>
-<li><a href="gnupg.html">gpg</a></li>
-<li><a href="pycharm.html">pycharm</a></li>
-<li><a href="nmap.html">nmap</a></li>
-<li><a href="reveal-md.html">reveal md</a></li>
-<li><a href="virtualbox.html">virtualbox</a></li>
-<li><a href="iproute2.html">network-debugging</a></li>
-</ul>
-<h1>Dev</h1>
-<ul>
-<li><a href="python.html">python</a></li>
-<li><a href="js.html">js</a></li>
-<li><a href="typescript.html">typescript</a></li>
-<li><a href="vue.html">vue</a></li>
-<li><a href="mysql.html">mysql</a></li>
-<li><a href="postgresql.html">postgresql</a></li>
-<li><a href="influxdb.html">influxdb</a></li>
-<li><a href="couchbase.html">couchbase</a></li>
-<li><a href="java.html">java</a></li>
-<li><a href="spring.html">spring</a></li>
-<li><a href="minio.html">minio</a></li>
-<li><a href="react.html">react</a></li>
-<li><a href="celery.html">celery</a></li>
-<li><a href="graphql.html">graphql</a></li>
-</ul>
-<h1>Concepts</h1>
-<ul>
-<li><a href="Security.html">Security</a></li>
-<li><a href="Encryption.html">Encryption</a></li>
-<li><a href="Multiprocessing.html">Multiprocessing</a></li>
-<li><a href="PRD.html">PRD</a></li>
-<li><a href="Regexp.html">Regexp</a></li>
-<li><a href="Licenses.html">Licenses</a></li>
-<li><a href="Naming.html">Naming</a></li>
-<li><a href="SOLID.html">SOLID</a></li>
-<li><a href="OOP.html">OOP</a></li>
-<li><a href="SWE.html">SWE</a></li>
-<li><a href="Refactoring.html">Refactoring</a></li>
-<li><a href="Debugging.html">Debugging</a></li>
-</ul>
-<h1>DevOps</h1>
-<ul>
-<li><a href="docker.html">docker</a></li>
-<li><a href="k8s.html">k8s</a></li>
-<li><a href="nginx.html">nginx</a></li>
-<li><a href="aws.html">aws</a></li>
-<li><a href="snmp.html">snmp</a></li>
-</ul>
-<h1>Teaching</h1>
-<ul>
-<li><a href="general_teaching.html">general</a></li>
-</ul>
+                            <p>route
+nstat
+netstat -s          # stats</p>
+<p>ip route            # just as route
+ip -s -h a show     # address: statistics (-s) in human readable format (-h)
+ip -s -h n show     # arp: stats</p>
+<p>ss
+ss -s               # stats (-s)
+ss -t               # tcp only. UDP (-u), UNIX (-u)
+ss dst 10.0.0.77    # established connections to ...
+ss -l               # listening sockets
+ss -tnlp            # show processes that are bound to listening sockets</p>
+<p>apt install iputils-tracepath
+tracepath 10.0.0.77</p>
                         </div>
                     </article>
 
