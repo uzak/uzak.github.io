@@ -84,20 +84,26 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <p>route
+                            <div class="codehilite"><pre><span></span><code>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>net-tools<span class="w"> </span>iproute2<span class="w"> </span>host<span class="w"> </span>iputils-tracepath<span class="w"> </span>traceroute
+
+route
 nstat
-netstat -s          # stats</p>
-<p>ip route            # just as route
-ip -s -h a show     # address: statistics (-s) in human readable format (-h)
-ip -s -h n show     # arp: stats</p>
-<p>ss
-ss -s               # stats (-s)
-ss -t               # tcp only. UDP (-u), UNIX (-u)
-ss dst 10.0.0.77    # established connections to ...
-ss -l               # listening sockets
-ss -tnlp            # show processes that are bound to listening sockets</p>
-<p>apt install iputils-tracepath
-tracepath 10.0.0.77</p>
+netstat<span class="w"> </span>-s<span class="w">          </span><span class="c1"># stats</span>
+
+ip<span class="w"> </span>route<span class="w">            </span><span class="c1"># just as route</span>
+ip<span class="w"> </span>-s<span class="w"> </span>-h<span class="w"> </span>a<span class="w"> </span>show<span class="w">     </span><span class="c1"># address: statistics (-s) in human readable format (-h)</span>
+ip<span class="w"> </span>-s<span class="w"> </span>-h<span class="w"> </span>n<span class="w"> </span>show<span class="w">     </span><span class="c1"># arp: stats</span>
+
+ss
+ss<span class="w"> </span>-s<span class="w">               </span><span class="c1"># stats (-s)</span>
+ss<span class="w"> </span>-t<span class="w">               </span><span class="c1"># tcp only. UDP (-u), UNIX (-u)</span>
+ss<span class="w"> </span>dst<span class="w"> </span><span class="m">10</span>.0.0.77<span class="w">    </span><span class="c1"># established connections to ...</span>
+ss<span class="w"> </span>-l<span class="w">               </span><span class="c1"># listening sockets</span>
+ss<span class="w"> </span>-tnlp<span class="w">            </span><span class="c1"># show processes that are bound to listening sockets</span>
+
+traceroute<span class="w"> </span><span class="m">10</span>.0.0.77
+tracepath<span class="w"> </span><span class="m">10</span>.0.0.77
+</code></pre></div>
                         </div>
                     </article>
 

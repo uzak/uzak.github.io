@@ -1,3 +1,6 @@
+```shell
+apt install -y net-tools iproute2 host iputils-tracepath traceroute
+
 route
 nstat
 netstat -s          # stats
@@ -13,5 +16,6 @@ ss dst 10.0.0.77    # established connections to ...
 ss -l               # listening sockets
 ss -tnlp            # show processes that are bound to listening sockets
 
-apt install iputils-tracepath
+traceroute 10.0.0.77
 tracepath 10.0.0.77
+```
