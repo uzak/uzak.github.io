@@ -86,22 +86,20 @@
                         <div class="c-article__main" id="contents">
                             <h1>Contents</h1>
 <ul>
-<li><a href="#Install.html">Install</a></li>
-<li><a href="#Sudo.html">Sudo</a></li>
-<li><a href="#Environment.html">Environment</a></li>
-<li><a href="#Basic tools.html">Basic tools</a></li>
-<li><a href="#zsh.html">zsh</a></li>
+<li><a href="#install.html">Install</a></li>
+<li><a href="#sudo.html">Sudo</a></li>
+<li><a href="#environment.html">Environment</a></li>
+<li><a href="#basic-tools.html">Basic tools</a></li>
+<li><a href="#zsh-and-dotfiles.html">zsh and dotfiles</a></li>
 <li><a href="#firefox.html">firefox</a></li>
-<li><a href="#Slack.html">Slack</a></li>
-<li><a href="#Snap.html">Snap</a></li>
-<li><a href="#Docker.html">Docker</a></li>
-<li><a href="#vimpc.html">vimpc</a></li>
-<li><a href="#Jekyll/blog.html">Jekyll/blog</a></li>
-<li><a href="#Misc.html">Misc</a><ul>
-<li><a href="#Misc#Mute beeping.html">Mute beeping</a></li>
-<li><a href="#Misc#Dispable touchpad.html">Dispable touchpad</a></li>
-<li><a href="#Misc#Battery.html">Battery</a><ul>
-<li><a href="#Misc#Battery#Marble mouse.html">Marble mouse</a></li>
+<li><a href="#slack.html">Slack</a></li>
+<li><a href="#snap.html">Snap</a></li>
+<li><a href="#docker.html">Docker</a></li>
+<li><a href="#misc.html">Misc</a><ul>
+<li><a href="#mute-beeping.html">Mute beeping</a></li>
+<li><a href="#disable-touchpad.html">Disable touchpad</a></li>
+<li><a href="#battery.html">Battery</a><ul>
+<li><a href="#marble-mouse.html">Marble mouse</a></li>
 </ul>
 </li>
 </ul>
@@ -124,54 +122,71 @@ sudo sh -c &quot;echo \&quot;$USER ALL=NOPASSWD: ALL\&quot; &gt;&gt; /etc/sudoer
 </code></pre></div>
 
 <h1>Environment</h1>
-<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/environment
+<div class="codehilite"><pre><span></span><code>$ cat /etc/environment
 
 <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games&quot;</span>
 
 <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
 <span class="nv">EDITOR</span><span class="o">=</span>vi
 
-$<span class="w"> </span>sudo<span class="w"> </span>paperconfig<span class="w"> </span>-p<span class="w"> </span>a4
+$ sudo paperconfig -p a4
 </code></pre></div>
 
 <h1>Basic tools</h1>
-<div class="codehilite"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">zsh</span><span class="w"> </span><span class="n">catimg</span><span class="w"> </span><span class="n">autojump</span><span class="w">        </span><span class="c1"># zsh + tools for plugins</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">vim</span><span class="w"> </span><span class="n">neovim</span><span class="w"> </span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">tig</span><span class="w"> </span><span class="n">universal</span><span class="o">-</span><span class="n">ctags</span><span class="w"> </span><span class="n">cloc</span><span class="w"> </span><span class="n">bat</span><span class="w"> </span><span class="n">ack</span><span class="w"> </span><span class="n">fzf</span><span class="w"> </span><span class="n">ripgrep</span><span class="w"> </span><span class="n">cscope</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">tmux</span><span class="w"> </span><span class="n">mc</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="n">curl</span><span class="w"> </span><span class="n">net</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">jq</span><span class="w"> </span><span class="n">fd</span><span class="o">-</span><span class="n">find</span><span class="w"> </span><span class="n">tldr</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">iotop</span><span class="w"> </span><span class="n">iftop</span><span class="w"> </span><span class="n">htop</span><span class="w"> </span><span class="n">bmon</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">gimp</span><span class="w"> </span><span class="n">geeqie</span><span class="w"> </span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">gnome</span><span class="o">-</span><span class="n">mpv</span><span class="w"> </span><span class="n">mpv</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">gnome</span><span class="o">-</span><span class="n">tweaks</span><span class="w"> </span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">extension</span><span class="o">-</span><span class="n">suspend</span><span class="o">-</span><span class="n">button</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">python3</span><span class="o">-</span><span class="n">pip</span><span class="w"> </span><span class="n">pipenv</span><span class="w"> </span><span class="n">python3</span><span class="o">-</span><span class="n">sphinx</span><span class="w"> </span><span class="n">ipython3</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="k">pass</span><span class="w"> </span><span class="n">gnupg</span><span class="w"> </span><span class="n">upass</span><span class="w"> </span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">newsboat</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">aria2</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">neofetch</span><span class="w"> </span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">influxdb</span><span class="o">-</span><span class="n">client</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">nodejs</span><span class="w"> </span><span class="n">node</span><span class="o">-</span><span class="n">typescript</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">colordiff</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">csvtool</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">lm</span><span class="o">-</span><span class="n">sensors</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">plantuml</span><span class="w"> </span><span class="n">asciio</span><span class="w">         </span><span class="c1"># drawio</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">mythes</span><span class="o">-</span><span class="n">sk</span><span class="w"> </span><span class="n">libreoffice</span><span class="o">-</span><span class="n">l10n</span><span class="o">-</span><span class="n">sk</span><span class="w"> </span><span class="n">hyphen</span><span class="o">-</span><span class="n">sk</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">texlive</span><span class="o">-</span><span class="n">fonts</span><span class="o">-</span><span class="n">recommended</span><span class="w"> </span><span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">recommended</span><span class="w"> </span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">pandoc</span><span class="w"> </span><span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">base</span><span class="w"> </span><span class="n">texlive</span><span class="o">-</span><span class="n">xetex</span>
+<div class="codehilite"><pre><span></span><code>sudo apt update
+sudo apt dist-upgrade
+sudo apt install -y zsh catimg autojump        <span class="c1"># zsh + tools for plugins</span>
+sudo apt install -y vim neovim 
+sudo apt install -y git tig universal-ctags cloc bat ack fzf ripgrep cscope <span class="c1"># git-delta</span>
+sudo apt install -y tmux mc tree curl net-tools jq fd-find tldr iproute2
+sudo apt install -y iotop iftop htop bmon
+sudo apt install -y gimp geeqie 
+sudo apt install -y gnome-mpv mpv
+sudo apt install -y gnome-tweaks
+sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
+sudo apt install -y pass gnupg upass 
+sudo apt install -y newsboat
+sudo apt install -y aria2 youtube-dl
+sudo apt install -y neofetch 
+sudo apt install -y influxdb-client
+sudo apt install -y nodejs node-typescript
+sudo apt install -y colordiff
+sudo apt install -y csvtool
+sudo apt install -y lm-sensors
+sudo apt install -y plantuml asciio         <span class="c1"># drawio</span>
+sudo apt install -y mythes-sk libreoffice-l10n-sk hyphen-sk
+sudo apt install -y texlive-fonts-recommended texlive-latex-recommended 
+sudo apt install -y pandoc texlive-latex-base texlive-xetex
 <span class="c1"># sudo apt install -y neomutt w3m isync msmtp urlscan ripmime mime-support </span>
 <span class="c1"># sudo apt install -y postix mailutils       # local mail cfg</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">fonts</span><span class="o">-</span><span class="n">firacode</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">fonts</span><span class="o">-</span><span class="n">ancient</span><span class="o">-</span><span class="n">scripts</span><span class="w"> </span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">httpie</span><span class="w"> </span><span class="n">exa</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">traceroute</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">pwgen</span>
+sudo apt install -y fonts-firacode
+sudo apt install -y fonts-ancient-scripts 
+sudo apt install -y httpie exa
+sudo apt install -y traceroute
+sudo apt install -y pwgen
+sudo apt install -y hugo
+sudo apt install -y autoconf
+sudo apt install -y mpd mpc
+sudo apt install -y yarnpkg npm
+sudo apt install -y awscli
 
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">autoremove</span>
+sudo apt install ttf-mscorefonts-installer
+ln -s ~/Dropbox/backup/fonts ~/.fonts
+
+
+<span class="c1"># fingerprint magic</span>
+sudo add-apt-repository ppa:uunicorn/open-fprintd   
+<span class="c1"># s/lunar/kinetic:</span>
+<span class="c1"># sudo vi /etc/apt/sources.list.d/uunicorn-ubuntu-open-fprintd-lunar.list</span>
+sudo apt install open-fprintd fprintd-clients python3-validity
+
+sudo apt autoremove
 </code></pre></div>
 
-<h1>zsh</h1>
-<div class="codehilite"><pre><span></span><code><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s2">&quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</span>
+<h1>zsh and dotfiles</h1>
+<div class="codehilite"><pre><span></span><code><span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</span>
+<span class="o">~/</span><span class="n">repos</span><span class="o">/</span><span class="n">dotfiles</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
+<span class="c1"># import gpg key</span>
 </code></pre></div>
 
 <h1>firefox</h1>
@@ -185,54 +200,19 @@ $<span class="w"> </span>sudo<span class="w"> </span>paperconfig<span class="w">
 
 <h1>Snap</h1>
 <div class="codehilite"><pre><span></span><code>sudo snap install insomnia 
-sudo snap install --classic chromium
-sudo snap install --classic skype
-sudo snap install --classic code
-sudo snap install --classic kotlin
-sudo snap install --classic pycharm-community
-sudo snap install --classic intellij-idea-community
+sudo snap install slack
+sudo snap install dbeaver-ce
+sudo snap install chromium
+sudo snap install --classic codium
+sudo snap install --classic aws-cli
+sudo snap install --classic webstorm
+sudo snap install --classic pycharm-professional
 sudo snap install asciiquarium
 </code></pre></div>
 
 <h1>Docker</h1>
-<p>https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</p>
-<div class="codehilite"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span><span class="w"> </span><span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="w"> </span><span class="n">curl</span><span class="w"> </span><span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span>
-<span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">fsSL</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gpg</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">-</span>
-<span class="n">sudo</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span><span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">docker</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">usermod</span><span class="w"> </span><span class="o">-</span><span class="n">aG</span><span class="w"> </span><span class="n">docker</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">USER</span><span class="p">}</span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span>
-</code></pre></div>
-
-<h1>vimpc</h1>
-<div class="codehilite"><pre><span></span><code>cd ~/repos
-git clone https://github.com/boysetsfrog/vimpc
-sudo apt install -y libcurl4-gnutls-dev libpcre++-dev 
-sudo apt install -y build-essential autoconf \
-    libmpdclient2 libmpdclient-dev libpcre3 libpcre3-dev \
-    libncursesw5 libncursesw5-dev libncurses5-dev \
-    libtagc0 libtagc0-dev
-cd vimpc
-./autogen.sh
-./configure
-make -j 8
-sudo make install clean
-
-sudo apt install -y mpd mpc
-sudo service mpd stop
-sudo update-rc.d mpd disable
-</code></pre></div>
-
-<h1>Jekyll/blog</h1>
-<div class="codehilite"><pre><span></span><code>sudo apt -y install ruby-dev ruby-bundler
-cd ~/repos/blog
-bundler install
-bundle exec jekyll serve
-
-gem install vimwiki_markdown        # for vimwiki
+<div class="codehilite"><pre><span></span><code>sudo apt install docker.io docker-compose
+sudo usermod -a -G docker $USER
 </code></pre></div>
 
 <h1>Misc</h1>
@@ -242,7 +222,7 @@ dconf-editor
 </code></pre></div>
 
 <p>Then go to <code>org/gnome/desktop/sound</code> and disable <code>event-sounds</code>.</p>
-<h2>Dispable touchpad</h2>
+<h2>Disable touchpad</h2>
 <p>https://askubuntu.com/questions/1085390/how-do-i-disable-the-touchpad-while-typing-ubuntu-18-04</p>
 <div class="codehilite"><pre><span></span><code>sudo apt remove xserver-xorg-input-synaptics
 sudo apt install xserver-xorg-input-libinput

@@ -1,21 +1,19 @@
 # Contents
 
-- [Install](#Install)
-- [Sudo](#Sudo)
-- [Environment](#Environment)
-- [Basic tools](#Basic tools)
-- [zsh](#zsh)
+- [Install](#install)
+- [Sudo](#sudo)
+- [Environment](#environment)
+- [Basic tools](#basic-tools)
+- [zsh and dotfiles](#zsh-and-dotfiles)
 - [firefox](#firefox)
-- [Slack](#Slack)
-- [Snap](#Snap)
-- [Docker](#Docker)
-- [vimpc](#vimpc)
-- [Jekyll/blog](#Jekyll/blog)
-- [Misc](#Misc)
-    - [Mute beeping](#Misc#Mute beeping)
-    - [Dispable touchpad](#Misc#Dispable touchpad)
-    - [Battery](#Misc#Battery)
-        - [Marble mouse](#Misc#Battery#Marble mouse)
+- [Slack](#slack)
+- [Snap](#snap)
+- [Docker](#docker)
+- [Misc](#misc)
+    - [Mute beeping](#mute-beeping)
+    - [Disable touchpad](#disable-touchpad)
+    - [Battery](#battery)
+        - [Marble mouse](#marble-mouse)
 
 # Install
 
@@ -44,44 +42,63 @@
 
 # Basic tools
 
-    sudo apt update
-    sudo apt dist-upgrade
-    sudo apt install -y zsh catimg autojump        # zsh + tools for plugins
-    sudo apt install -y vim neovim 
-    sudo apt install -y git tig universal-ctags cloc bat ack fzf ripgrep cscope
-    sudo apt install -y tmux mc tree curl net-tools jq fd-find tldr
-    sudo apt install -y iotop iftop htop bmon
-    sudo apt install -y gimp geeqie 
-    sudo apt install -y gnome-mpv mpv
-    sudo apt install -y gnome-tweaks gnome-shell-extension-suspend-button
-    sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
-    sudo apt install -y pass gnupg upass 
-    sudo apt install -y newsboat
-    sudo apt install -y aria2
-    sudo apt install -y neofetch 
-    sudo apt install -y influxdb-client
-    sudo apt install -y nodejs node-typescript
-    sudo apt install -y colordiff
-    sudo apt install -y csvtool
-    sudo apt install -y lm-sensors
-    sudo apt install -y plantuml asciio         # drawio
-    sudo apt install -y mythes-sk libreoffice-l10n-sk hyphen-sk
-    sudo apt install -y texlive-fonts-recommended texlive-latex-recommended 
-    sudo apt install -y pandoc texlive-latex-base texlive-xetex
-    # sudo apt install -y neomutt w3m isync msmtp urlscan ripmime mime-support 
-    # sudo apt install -y postix mailutils       # local mail cfg
-    sudo apt install -y fonts-firacode
-    sudo apt install -y fonts-ancient-scripts 
-    sudo apt install -y httpie exa
-    sudo apt install -y traceroute
-    sudo apt install -y pwgen
-    
-    sudo apt autoremove
 
-# zsh
+```sh
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install -y zsh catimg autojump        # zsh + tools for plugins
+sudo apt install -y vim neovim 
+sudo apt install -y git tig universal-ctags cloc bat ack fzf ripgrep cscope # git-delta
+sudo apt install -y tmux mc tree curl net-tools jq fd-find tldr iproute2
+sudo apt install -y iotop iftop htop bmon
+sudo apt install -y gimp geeqie 
+sudo apt install -y gnome-mpv mpv
+sudo apt install -y gnome-tweaks
+sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
+sudo apt install -y pass gnupg upass 
+sudo apt install -y newsboat
+sudo apt install -y aria2 youtube-dl
+sudo apt install -y neofetch 
+sudo apt install -y influxdb-client
+sudo apt install -y nodejs node-typescript
+sudo apt install -y colordiff
+sudo apt install -y csvtool
+sudo apt install -y lm-sensors
+sudo apt install -y plantuml asciio         # drawio
+sudo apt install -y mythes-sk libreoffice-l10n-sk hyphen-sk
+sudo apt install -y texlive-fonts-recommended texlive-latex-recommended 
+sudo apt install -y pandoc texlive-latex-base texlive-xetex
+# sudo apt install -y neomutt w3m isync msmtp urlscan ripmime mime-support 
+# sudo apt install -y postix mailutils       # local mail cfg
+sudo apt install -y fonts-firacode
+sudo apt install -y fonts-ancient-scripts 
+sudo apt install -y httpie exa
+sudo apt install -y traceroute
+sudo apt install -y pwgen
+sudo apt install -y hugo
+sudo apt install -y autoconf
+sudo apt install -y mpd mpc
+sudo apt install -y yarnpkg npm
+sudo apt install -y awscli
+
+sudo apt install ttf-mscorefonts-installer
+ln -s ~/Dropbox/backup/fonts ~/.fonts
+
+
+# fingerprint magic
+sudo add-apt-repository ppa:uunicorn/open-fprintd   
+# s/lunar/kinetic:
+# sudo vi /etc/apt/sources.list.d/uunicorn-ubuntu-open-fprintd-lunar.list
+sudo apt install open-fprintd fprintd-clients python3-validity
+
+sudo apt autoremove
+```
+
+# zsh and dotfiles
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
+    ~/repos/dotfiles/install.sh
+    # import gpg key
     
 # firefox
 
@@ -96,57 +113,20 @@ Install manually and not from snap. Snap is slower and has problem opening links
 # Snap
 
     sudo snap install insomnia 
-    sudo snap install --classic chromium
-    sudo snap install --classic skype
-    sudo snap install --classic code
-    sudo snap install --classic kotlin
-    sudo snap install --classic pycharm-community
-    sudo snap install --classic intellij-idea-community
+    sudo snap install slack
+    sudo snap install dbeaver-ce
+    sudo snap install chromium
+    sudo snap install --classic codium
+    sudo snap install --classic aws-cli
+    sudo snap install --classic webstorm
+    sudo snap install --classic pycharm-professional
     sudo snap install asciiquarium
 
-
 # Docker
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
-
-    sudo apt update
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo -E add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-    sudo apt update
-    sudo apt install docker-ce
-    sudo systemctl status docker
-    sudo usermod -aG docker ${USER}
-    sudo apt install docker-compose
-
-# vimpc
-
-    cd ~/repos
-    git clone https://github.com/boysetsfrog/vimpc
-    sudo apt install -y libcurl4-gnutls-dev libpcre++-dev 
-    sudo apt install -y build-essential autoconf \
-        libmpdclient2 libmpdclient-dev libpcre3 libpcre3-dev \
-        libncursesw5 libncursesw5-dev libncurses5-dev \
-        libtagc0 libtagc0-dev
-    cd vimpc
-    ./autogen.sh
-    ./configure
-    make -j 8
-    sudo make install clean
     
-    sudo apt install -y mpd mpc
-    sudo service mpd stop
-    sudo update-rc.d mpd disable
+    sudo apt install docker.io docker-compose
+    sudo usermod -a -G docker $USER
 
-    
-# Jekyll/blog
-
-    sudo apt -y install ruby-dev ruby-bundler
-    cd ~/repos/blog
-    bundler install
-    bundle exec jekyll serve
-    
-    gem install vimwiki_markdown        # for vimwiki
-    
 # Misc
 
 ## Mute beeping
@@ -157,7 +137,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 Then go to `org/gnome/desktop/sound` and disable `event-sounds`.
 
 
-## Dispable touchpad
+## Disable touchpad
 https://askubuntu.com/questions/1085390/how-do-i-disable-the-touchpad-while-typing-ubuntu-18-04
 
     sudo apt remove xserver-xorg-input-synaptics

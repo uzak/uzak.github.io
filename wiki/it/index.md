@@ -1,8 +1,11 @@
 # OS
 
 * [UNIX](unix)
-    * [ubuntu install](ubuntu_install)
+    * [t480s](ubuntu_install)
         * [thinkpad_fw_update](thinkpad_fw_update)
+    * t14
+        * [ubuntu](t14s_ubuntu)
+        * [win](t14s_win)
     * [raspi install](raspi_install)
     * [mac_install](mac_install)
 * [Windows](windows)
