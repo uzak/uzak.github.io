@@ -23,8 +23,11 @@
 * Dropbox service: https://github.com/joeroback/dropbox
 
 * WSL
+    * generate locale
 * sudo apt install wslu
 * Encrypt disk
 * GPG agent / Password manager (qtpass)
 *   https://github.com/palortoff/pass-extension-wclip#readme
 * https://www.xda-developers.com/how-back-up-restore-wsl/
+* set hostname
+

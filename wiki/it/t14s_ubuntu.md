@@ -49,7 +49,7 @@ sudo apt install -y tmux mc tree curl net-tools fd-find tldr iproute2
 sudo apt install -y iotop iftop htop bmon
 sudo apt install -y net-tools iproute2 host iputils-tracepath traceroute
 sudo apt install -y gimp geeqie
-sudo apt install -y mpv
+sudo apt install -y mpv celluloid
 sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
 sudo apt install -y pass gnupg upass pwgen
 sudo apt install -y aria2 yt-dlp
@@ -57,7 +57,7 @@ sudo apt install -y neofetch
 sudo apt install -y nodejs node-typescript yarnpkg npm
 sudo apt install -y colordiff
 sudo apt install -y plantuml 
-sudo apt install -y libreoffice libreoffice-gnome
+sudo apt install -y libreoffice libreoffice-gnome libreoffice-calc libreoffice-writer libreoffice-gtk3
 sudo apt install -y mythes-sk libreoffice-l10n-sk hyphen-sk
 sudo apt install -y texlive-fonts-recommended texlive-latex-recommended 
 sudo apt install -y pandoc texlive-latex-base texlive-xetex
@@ -66,7 +66,8 @@ sudo apt install -y fonts-ancient-scripts
 sudo apt install -y hugo
 sudo apt install -y autoconf make
 sudo apt install -y gnome-tweak-tool
-
+sudo apt install -y lm-sensors powertop
+sudo apt install -y tlp     # or power-profiles-daemon
 
 sudo apt autoremove
 ```
@@ -135,38 +136,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
     wget http://de.archive.ubuntu.com/ubuntu/pool/universe/n/newsboat/newsboat_2.32-3_amd64.deb
     sudo dpkg -i newsboat_2.32-3_amd64.deb
     
-### Work
-
-* Slack
-* Mail
-* Google Chrome profile
-
-
-#### Deadsnakes
-    sudo add-apt-repository ppa:deadsnakes/ppa
-    sudo apt update
-    sudo apt install python3.10 python3.10-venv python3.10-dev
-    mkdir ~/.virtualenvs
-    python3.10 -m venv ~/.virtualenvs/thor3.10
-    ln -s ~/.virtualenvs/thor3.10 ~/.virtualenvs/thor
-
-    
-### Repos
-    https://prontohousing.atlassian.net/wiki/spaces/ENG/pages/1036582997/Setting+Up+Your+Development+Environment
-    sudo apt install postgresql-16 redis
-    mkdir ~/development
-    cd ~/development
-    for repo in pronto-thor pronto-loki sam_events_system sam-inbound-email sam_sms sam_forms housing_connect sam-questionnaire-file-upload sam_printers devops daily-maintenance; do 
-        git clone git@github.com:prontohousing/${repo}.git;
-    done
-    
-### Thor
-    sudo apt install libheif-dev python3-psycopg2 libpq-dev libffi-dev
-    cd ~/development/pronto-thor
-    thor
-    # copy/create project_env.sh
-    pip install -r requirements/production.txt
-    pip install -r requirements/development.txt
     
 ## VimPC
 
@@ -184,10 +153,3 @@ cd vimpc
 make -j 8
 sudo make install clean
 ```
-
-### TODO 
-
-WhatsApp
-Telegram
-Insomnia
-PostMan??

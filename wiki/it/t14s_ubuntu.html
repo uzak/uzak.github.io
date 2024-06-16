@@ -95,19 +95,31 @@
 </li>
 </ul>
 <h2>Basic system</h2>
-<div class="codehilite"><pre><span></span><code>$ sudo sh -c <span class="s2">&quot;echo \&quot;</span><span class="nv">$USER</span><span class="s2"> ALL=NOPASSWD: ALL\&quot; &gt;&gt; /etc/sudoers&quot;</span>
-$ cat &gt;&gt; /etc/environment &lt; EOF
+<div class="codehilite"><pre><span></span><code><span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;echo </span><span class="se">\&quot;</span><span class="s2">$USER ALL=NOPASSWD: ALL</span><span class="se">\&quot;</span><span class="s2"> &gt;&gt; /etc/sudoers&quot;</span>
 
-<span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
-<span class="nv">EDITOR</span><span class="o">=</span>vi
-EOF
-$ sudo paperconfig -p a4
-$ sudo apt install python3-gpg
-$ xdg-settings <span class="nb">set</span> default-web-browser firefox_firefox.desktop
+<span class="o">$</span> <span class="n">cat</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">environment</span>
+
+<span class="n">LC_ALL</span><span class="o">=</span><span class="n">en_US</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">EDITOR</span><span class="o">=</span><span class="n">vi</span>
+
+<span class="n">sudo</span> <span class="n">paperconfig</span> <span class="o">-</span><span class="n">p</span> <span class="n">a4</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">gpg</span>
+
+<span class="n">xdg</span><span class="o">-</span><span class="n">settings</span> <span class="n">set</span> <span class="n">default</span><span class="o">-</span><span class="n">web</span><span class="o">-</span><span class="n">browser</span> <span class="n">firefox_firefox</span><span class="o">.</span><span class="n">desktop</span>
+<span class="n">gsettings</span> <span class="n">set</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">preferences</span> <span class="n">resize</span><span class="o">-</span><span class="n">with</span><span class="o">-</span><span class="n">right</span><span class="o">-</span><span class="n">button</span> <span class="bp">true</span>
+<span class="n">gsettings</span> <span class="n">set</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">interface</span> <span class="n">text</span><span class="o">-</span><span class="n">scaling</span><span class="o">-</span><span class="n">factor</span> <span class="mf">1.25</span>
+
+<span class="c1"># fix mic</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;snd-pci-ps</span><span class="se">\n</span><span class="s2">snd-soc-ps-mach&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="nb">load</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">sound</span><span class="o">.</span><span class="n">conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span>
+<span class="c1"># audible -&gt; visual bell </span>
+<span class="n">gsettings</span> <span class="n">set</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">preferences</span> <span class="n">audible</span><span class="o">-</span><span class="n">bell</span> <span class="bp">false</span>
+<span class="n">gsettings</span> <span class="n">set</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">preferences</span> <span class="n">visual</span><span class="o">-</span><span class="n">bell</span> <span class="bp">false</span>
+
+<span class="c1"># turn off power button led</span>
+<span class="n">echo</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">thinkpad_acpi</span><span class="o">/</span><span class="n">leds</span><span class="o">/</span><span class="n">tpacpi</span><span class="p">::</span><span class="n">power</span><span class="o">/</span><span class="n">brightness</span>
 </code></pre></div>
 
 <ul>
-<li>Traditional scrolling on touchpad</li>
 <li>Add fingerprint to the user</li>
 <li>Dropbox</li>
 </ul>
@@ -115,36 +127,33 @@ $ xdg-settings <span class="nb">set</span> default-web-browser firefox_firefox.d
 <div class="codehilite"><pre><span></span><code>sudo apt update
 sudo apt dist-upgrade
 
-sudo apt install kde-plasma-desktop plasma-workspace-wayland
-
 sudo apt install -y zsh catimg autojump        <span class="c1"># zsh + tools for plugins</span>
 sudo apt install -y vim neovim 
 sudo apt install -y git tig universal-ctags cloc bat ack fzf ripgrep cscope  make
 sudo apt install -y jq csvtool
 sudo apt install -y tmux mc tree curl net-tools fd-find tldr iproute2
 sudo apt install -y iotop iftop htop bmon
-sudo apt install -y gimp geeqie 
-sudo apt install -y mpv
+sudo apt install -y net-tools iproute2 host iputils-tracepath traceroute
+sudo apt install -y gimp geeqie
+sudo apt install -y mpv celluloid
 sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
-sudo apt install -y pass gnupg upass 
+sudo apt install -y pass gnupg upass pwgen
 sudo apt install -y aria2 yt-dlp
 sudo apt install -y neofetch 
 sudo apt install -y nodejs node-typescript yarnpkg npm
 sudo apt install -y colordiff
 sudo apt install -y plantuml 
+sudo apt install -y libreoffice libreoffice-gnome libreoffice-calc libreoffice-writer libreoffice-gtk3
 sudo apt install -y mythes-sk libreoffice-l10n-sk hyphen-sk
 sudo apt install -y texlive-fonts-recommended texlive-latex-recommended 
 sudo apt install -y pandoc texlive-latex-base texlive-xetex
 sudo apt install -y fonts-firacode fonts-ibm-plex
 sudo apt install -y fonts-ancient-scripts 
-sudo apt install -y httpie exa
-sudo apt install -y traceroute
-sudo apt install -y pwgen
 sudo apt install -y hugo
-sudo apt install -y autoconf
-sudo apt install -y mpd mpc
-sudo apt install -y libreoffice libreoffice-gnome libreoffice-plasma
-
+sudo apt install -y autoconf make
+sudo apt install -y gnome-tweak-tool
+sudo apt install -y lm-sensors powertop
+sudo apt install -y tlp     <span class="c1"># or power-profiles-daemon</span>
 
 sudo apt autoremove
 </code></pre></div>
@@ -157,19 +166,9 @@ sudo apt autoremove
 <span class="o">~/</span><span class="n">repos</span><span class="o">/</span><span class="n">dotfiles</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
-<h2>VimPC</h2>
-<p>cd ~/repos
-git clone https://github.com/boysetsfrog/vimpc
-sudo apt install -y libcurl4-gnutls-dev libpcre3-dev 
-sudo apt install -y build-essential autoconf \
-    libmpdclient2 libmpdclient-dev libpcre3 libpcre3-dev \
-    libncursesw6 libncurses-dev \
-    libtag1v5 libtag1-dev
-cd vimpc
-./autogen.sh
-./configure
-make -j 8
-sudo make install clean</p>
+<ul>
+<li>Activate Firefox Sync</li>
+</ul>
 <h1>Snap</h1>
 <div class="codehilite"><pre><span></span><code>sudo snap install insomnia 
 sudo snap install slack
@@ -225,38 +224,22 @@ sudo snap install asciiquarium
 <div class="codehilite"><pre><span></span><code><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libstfl0</span> 
 <span class="n">cd</span> <span class="o">~/</span><span class="n">Downloads</span>
 <span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">de</span><span class="o">.</span><span class="n">archive</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">pool</span><span class="o">/</span><span class="n">universe</span><span class="o">/</span><span class="n">n</span><span class="o">/</span><span class="n">newsboat</span><span class="o">/</span><span class="n">newsboat_2</span><span class="o">.</span><span class="mi">32</span><span class="o">-</span><span class="mi">3</span><span class="n">_amd64</span><span class="o">.</span><span class="n">deb</span>
-<span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">newsboat</span><span class="o">*</span><span class="n">deb</span>
+<span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">newsboat_2</span><span class="o">.</span><span class="mi">32</span><span class="o">-</span><span class="mi">3</span><span class="n">_amd64</span><span class="o">.</span><span class="n">deb</span>
+</code></pre></div>
 
-
-<span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">deadsnakes</span><span class="o">/</span><span class="n">ppa</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">.</span><span class="mi">10</span> <span class="n">python3</span><span class="o">.</span><span class="mi">10</span><span class="o">-</span><span class="n">venv</span> <span class="n">python3</span><span class="o">.</span><span class="mi">10</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">virtualenvs</span>
-<span class="n">python3</span><span class="o">.</span><span class="mi">10</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/.</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">thor3</span><span class="o">.</span><span class="mi">10</span>
-
-<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">prontohousing</span><span class="o">.</span><span class="n">atlassian</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">wiki</span><span class="o">/</span><span class="n">spaces</span><span class="o">/</span><span class="n">ENG</span><span class="o">/</span><span class="n">pages</span><span class="o">/</span><span class="mi">1036582997</span><span class="o">/</span><span class="n">Setting</span><span class="o">+</span><span class="n">Up</span><span class="o">+</span><span class="n">Your</span><span class="o">+</span><span class="n">Development</span><span class="o">+</span><span class="n">Environment</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="mi">16</span> <span class="n">redis</span>
-<span class="n">mkdir</span> <span class="o">~/</span><span class="n">development</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">development</span>
-<span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">pronto</span><span class="o">-</span><span class="n">thor</span> <span class="n">pronto</span><span class="o">-</span><span class="n">loki</span> <span class="n">sam_events_system</span> <span class="n">sam</span><span class="o">-</span><span class="n">inbound</span><span class="o">-</span><span class="n">email</span> <span class="n">sam_sms</span> <span class="n">sam_forms</span> <span class="n">housing_connect</span> <span class="n">sam</span><span class="o">-</span><span class="n">questionnaire</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">upload</span> <span class="n">sam_printers</span> <span class="n">devops</span> <span class="n">daily</span><span class="o">-</span><span class="n">maintenance</span><span class="p">;</span> <span class="n">do</span> 
-    <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">prontohousing</span><span class="o">/$</span><span class="p">{</span><span class="n">repo</span><span class="p">}</span><span class="o">.</span><span class="n">git</span><span class="p">;</span>
-<span class="n">done</span>
-
-<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">~/.</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">thor3</span><span class="o">.</span><span class="mi">10</span> <span class="o">~/.</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">thor</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libheif</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="o">-</span><span class="n">psycopg2</span> <span class="n">libpq</span><span class="o">-</span><span class="n">dev</span> <span class="n">libffi</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">development</span><span class="o">/</span><span class="n">pronto</span><span class="o">-</span><span class="n">thor</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">production</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">development</span><span class="o">.</span><span class="n">txt</span>
-
-<span class="n">WhatsApp</span>
-<span class="n">Telegram</span>
-<span class="n">Insomnia</span>
-<span class="n">PostMan</span>
-
-<span class="n">gsettings</span> <span class="n">set</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">preferences</span> <span class="n">resize</span><span class="o">-</span><span class="n">with</span><span class="o">-</span><span class="n">right</span><span class="o">-</span><span class="n">button</span> <span class="bp">true</span>
-<span class="n">echo</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">thinkpad_acpi</span><span class="o">/</span><span class="n">leds</span><span class="o">/</span><span class="n">tpacpi</span><span class="p">::</span><span class="n">power</span><span class="o">/</span><span class="n">brightness</span>
-<span class="c1"># fix mic</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;snd-pci-ps</span><span class="se">\n</span><span class="s2">snd-soc-ps-mach&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="nb">load</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">sound</span><span class="o">.</span><span class="n">conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span>
+<h2>VimPC</h2>
+<div class="codehilite"><pre><span></span><code>cd ~/repos
+git clone https://github.com/boysetsfrog/vimpc
+sudo apt install -y libcurl4-gnutls-dev libpcre3-dev 
+sudo apt install -y build-essential autoconf \
+    libmpdclient2 libmpdclient-dev libpcre3 libpcre3-dev \
+    libncursesw6 libncurses-dev \
+    libtag1v5 libtag1-dev
+cd vimpc
+./autogen.sh
+./configure
+make -j 8
+sudo make install clean
 </code></pre></div>
                         </div>
                     </article>
