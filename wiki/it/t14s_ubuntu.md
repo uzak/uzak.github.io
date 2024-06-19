@@ -48,7 +48,7 @@ sudo apt install -y jq csvtool
 sudo apt install -y tmux mc tree curl net-tools fd-find tldr iproute2
 sudo apt install -y iotop iftop htop bmon
 sudo apt install -y net-tools iproute2 host iputils-tracepath traceroute
-sudo apt install -y gimp geeqie
+sudo apt install -y gimp geeqie flameshot
 sudo apt install -y mpv celluloid
 sudo apt install -y python3 python3-pip pipenv python3-sphinx ipython3
 sudo apt install -y pass gnupg upass pwgen
@@ -67,7 +67,8 @@ sudo apt install -y hugo
 sudo apt install -y autoconf make
 sudo apt install -y gnome-tweak-tool
 sudo apt install -y lm-sensors powertop
-sudo apt install -y tlp     # or power-profiles-daemon
+sudo apt install -y power-profiles-daemon
+sudo apt install -y audacious
 
 sudo apt autoremove
 ```
@@ -76,7 +77,7 @@ sudo apt autoremove
 * Import gpg key
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-~/repos/dotfiles/install.sh
+~/Dropbox/repos/dotfiles/install.sh
 ```
 * Activate Firefox Sync
     
@@ -88,9 +89,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
     sudo snap install dbeaver-ce
     sudo snap install chromium
     sudo snap install thunderbird
-    sudo snap install --classic codium
     sudo snap install --classic aws-cli
     sudo snap install --classic webstorm
+    sudo snap install --classic codium
+    sudo snap install --classic terraform
     sudo snap install --classic pycharm-professional
     sudo snap install asciiquarium
     
@@ -136,6 +138,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
     wget http://de.archive.ubuntu.com/ubuntu/pool/universe/n/newsboat/newsboat_2.32-3_amd64.deb
     sudo dpkg -i newsboat_2.32-3_amd64.deb
     
+[flameshot](https://dev.to/shkuvandikov/set-flameshot-as-default-screenshot-app-on-ubuntu-2jh6)
+    
     
 ## VimPC
 
@@ -152,4 +156,25 @@ cd vimpc
 ./configure
 make -j 8
 sudo make install clean
+```
+
+## Terraformer
+```
+export PROVIDER=all
+curl -LO "https://github.com/GoogleCloudPlatform/terraformer/releases/download/$(curl -s https://api.github.com/repos/GoogleCloudPlatform/terraformer/releases/latest | grep tag_name | cut -d '"' -f 4)/terraformer-${PROVIDER}-linux-amd64"
+chmod +x terraformer-${PROVIDER}-linux-amd64
+sudo mv terraformer-${PROVIDER}-linux-amd64 /usr/local/bin/terraformer
+```
+
+## Virtualbox
+```
+sudo apt-get install virtualbox virtualbox-guest-additions-iso
+```
+
+## Python
+```
+sudo apt install python3.12-venv
+python3.12 -m venv venv
+source venv/vbin/activate
+pip install ply
 ```
