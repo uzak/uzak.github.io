@@ -31,6 +31,12 @@
     # turn off power button led
     echo 0 | sudo tee /sys/devices/platform/thinkpad_acpi/leds/tpacpi::power/brightness
     
+    # disable gnome animations
+    gsettings set org.gnome.desktop.interface enable-animations false
+    
+    # no ubuntu pro ads
+    sudo pro config set apt_news=false
+    
 * Add fingerprint to the user
 * Dropbox
 
@@ -94,6 +100,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
     sudo snap install --classic codium
     sudo snap install --classic terraform
     sudo snap install --classic pycharm-professional
+    sudo snap install telegram-desktop
     sudo snap install asciiquarium
     
 * codium
@@ -171,10 +178,18 @@ sudo mv terraformer-${PROVIDER}-linux-amd64 /usr/local/bin/terraformer
 sudo apt-get install virtualbox virtualbox-guest-additions-iso
 ```
 
+
+
 ## Python
 ```
 sudo apt install python3.12-venv
 python3.12 -m venv venv
-source venv/vbin/activate
+source venv/bin/activate
 pip install ply
+
+sudo apt install python3-pathvalidate
 ```
+
+## Sops
+
+https://github.com/getsops/sops/releases
