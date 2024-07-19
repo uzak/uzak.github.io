@@ -193,3 +193,14 @@ sudo apt install python3-pathvalidate
 ## Sops
 
 https://github.com/getsops/sops/releases
+
+
+## Misc
+
+```
+echo vm.swappiness=10 >> /sys/sysctl.conf
+
+
+echo 40 | sudo tee /sys/devices/platform/smapi/BAT0/start_charge_thresh
+echo 80 | sudo tee /sys/devices/platform/smapi/BAT0/stop_charge_thresh
+```
