@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Raspi_install</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <p>Add public key to:</p>
+<p><code>.ssh/authorized_keys</code></p>
+<p>enable ssh in <code>/etc/ssh/sshd_config</code></p>
+<pre><code>sudo systemctl restart ssh
+</code></pre>
+<p>latest kernel</p>
+<pre><code>sudo rpi-update
+</code></pre>
+<h1>
+<a id="packages" class="anchor" href="#packages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Packages</h1>
+<pre><code>sudo apt install zsh autojump
+sudo apt install tig ack fzf
+sudo apt install tmux mc jq fd-find tldr
+sudo apt install newsboat
+sudo apt install neofetch
+sudo apt install docker.io
+</code></pre>
+<h1>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h1>
+<pre><code>sudo cfdisk /dev/sda
+sudo fdisk -l /dev/sda
+sudo mkfs.ext4 -L DATA /dev/sda3
+sudo mkdir -m 1777 /data
+sudo mount -L DATA /data
+
+➜  ~ grep DATA /etc/fstab 
+LABEL=DATA	/data	ext4	defaults,noatime	0	1
+</code></pre>
+<p>Install MTA</p>
+<pre><code>sudo apt install postfix bsd-mailx
+</code></pre>
+<h2>
+<a id="samba" class="anchor" href="#samba" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Samba</h2>
+<pre><code>sudo apt-get install samba samba-common-bin
+
+/etc/samba/smb.conf
+[data] 
+Comment = Pi DATA shared folder 
+Path = /data 
+Browseable = yes 
+Writeable = yes 
+only guest = no 
+create mask = 0600
+directory mask = 0700
+Public = no 
+Guest ok = no
+
+[homes]
+browseable = yes
+read only = yes
+
+sudo smbpasswd -a m
+sudo service smbd restart
+</code></pre>
+<p>On client</p>
+<pre><code>sudo apt install smbclient cifs-utils
+smbclient -L //pi
+
+sudo mkdir /mnt/pi
+vi ~/.smbpass
+    username=XXX
+    password=XXX
+
+sudo mount -t cifs -o credentials=/home/m/.smbpass //192.168.0.129/data /mnt/pi
+
+vi /etc/fstab
+    //pi/data	/mnt/pi	cifs	rw,user,credentials=/home/m/.smbpass
+</code></pre>
+<h2>
+<a id="rclone-and-dropbox" class="anchor" href="#rclone-and-dropbox" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Rclone and Dropbox</h2>
+<p>Just download: <a href="https://jarrodstech.net/how-to-raspberry-pi-dropbox-sync/">source</a></p>
+<pre><code>sudo apt-get install rclone
+rcone config
+    n
+    dropbox
+    8
+    ENTER
+    ENTER
+    n
+    y
+    open link and enter credentials
+    y
+    q
+crontab -e
+    */15 * * * * rclone --bwlimit 1M sync dropbox: /home/m/Dropbox
+</code></pre>
+<p>Two way sync: <a href="https://www.ralphminderhoud.com/blog/rclone-two-way-dropbox-sync/">source</a>
+Alternative: <a href="https://github.com/cjnaz/rclonesync-V2">https://github.com/cjnaz/rclonesync-V2</a>. First get latest rclone:</p>
+<pre><code>git clone https://github.com/cjnaz/rclonesync-V2
+sudo apt install unzip
+wget https://downloads.rclone.org/rclone-current-linux-arm.zip
+unzip -j -d rclone-temp rclone-current-linux-arm.zip
+sudo cp rclone-temp/rclone /usr/local/bin
+</code></pre>
+<h2>
+<a id="mp3" class="anchor" href="#mp3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mp3</h2>
+<p>on client:</p>
+<pre><code>rclone config   # add sftp endpoint for sftp-pi
+...
+rclone -v copy ~/Music sftp-pi:Music
+</code></pre>
+<h2>
+<a id="blog" class="anchor" href="#blog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Blog</h2>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

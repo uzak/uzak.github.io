@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Git</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="git" class="anchor" href="#git" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git</h1>
+<p>git log --pretty=format:"%an (%ae): %s"</p>
+<p>gd HEAD '@{2020-12-01}' -- env.sample</p>
+<p>sync fork</p>
+<pre><code>git remote -v
+git remote add upstream https://github.com/wlwg/aws-sns-message-validator
+git fetch upstream 
+git rebase upstream/master
+</code></pre>
+<p>corrupt lose object</p>
+<pre><code>find .git/objects/ -size 0 -exec rm -f {} \;
+git fetch origin
+</code></pre>
+<h1>
+<a id="basic" class="anchor" href="#basic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic</h1>
+<pre><code>git branch -m oldname newname           # rename a branch
+git branch -m newname                   # rename current branch
+
+git reset --hard master                 # resets the branch to master
+
+# reset to remote version
+git fetch origin
+git reset --hard origin/main
+
+git branch -d branch_name               # delete local branch
+
+git branch -a                           # list all branches (also remote)
+
+git diff HEAD 'HEAD@{1 week ago}' -- some/file/path/file.ext
+
+git merge --abort                       # abort merge
+
+git reset HEAD~                         # undo commit
+
+git rev-list --count HEAD               # revision number
+
+git commit --date=format:relative:4.hours.ago
+
+git format-patch HEAD~1
+git am *.patch
+
+git log -p -- printer.py                # history of a file
+gitk printer.py
+
+git submodule init
+git submodule update
+
+# patch directly (w/o use of git)
+diff -u OriginalFile UpdatedFile &gt; PatchFile
+patch OriginalFile &lt; PatchFile
+
+# 3 way diff and patch
+git diff -R 2742e63a7f759828b049ae5d3384b17beb39f48e openapi.yaml | git apply -3 
+</code></pre>
+<p>change remote:</p>
+<pre><code>git branch gen_printer_name -u origin/gen_printer_name
+</code></pre>
+<p><a href="https://stackoverflow.com/a/16666418">Git: merge vs. rebase</a></p>
+<p>Merge one file from another branch:</p>
+<pre><code>git checkout --patch another_branch file.txt
+</code></pre>
+<p>Stash last two commits into one:</p>
+<pre><code>git rebase -i HEAD~2
+</code></pre>
+<p>Get a version from the commits:</p>
+<pre><code>git describe --tags --always --dirty
+</code></pre>
+<p>Remove a remote branch:</p>
+<pre><code>git push &lt;remote-name&gt; --delete &lt;branch-name&gt;
+</code></pre>
+<p>Delete a commit on remote:</p>
+<pre><code>git stash
+git reset --hard &lt;last_working_commit_id&gt;
+git push --force
+</code></pre>
+<p>Squash all commits from a branch and merge into master</p>
+<pre><code>git checkout master
+git merge --squash &lt;branch&gt;
+git commit
+</code></pre>
+<h2>
+<a id="change-remote-url" class="anchor" href="#change-remote-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Change remote URL</h2>
+<pre><code>git remote set-url origin git@github.com:uzak/PoorWSGI.git
+</code></pre>
+<h2>
+<a id="merge-from-a-remote-into-local-branch" class="anchor" href="#merge-from-a-remote-into-local-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Merge from a remote into local branch</h2>
+<pre><code>git remote -v
+git remote add other $URL
+git fetch other
+git checkout -b other other/master
+gco master
+git merge other --allow-unrelated-histories --no-ff
+</code></pre>
+<h2>
+<a id="tag" class="anchor" href="#tag" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tag</h2>
+<pre><code>git tag -a v1 df50154807f5d009e3526208f266d9f57e5b3e2e
+git push origin v1          # tags are not pushed by default
+</code></pre>
+<h2>
+<a id="stash" class="anchor" href="#stash" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stash</h2>
+<pre><code>git stash list
+</code></pre>
+<h1>
+<a id="Školenie-git-2020-05-08" class="anchor" href="#%C5%A0kolenie-git-2020-05-08" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Školenie GIT 2020-05-08</h1>
+<pre><code>git diff --staged
+git diff | tig
+git difftool
+git reset na zmeny
+
+git commit 
+    napisat (more) na koniec prvej ak viacriadkovy comment
+    pouzivat imperativ (add gitignore je kratsie ako added gitignore)
+    
+git --am (amend)
+git log --oneline
+git log --oneline --graph
+git log --oneline
+git remote -v
+git fetch --all
+git branch --all
+git reflog          # ak si nieco totalne rozbijem
+git reset --hard
+git stash
+git stash show
+git stash show -p       # patch - show also changes
+git stash list
+git stash push -m ""    # pomenovat stashe
+git stash clear
+git branch 
+git branch --all
+git branch HEAD~3
+git push origin :foo :bar
+git push origin master:nm
+git push origin :nm
+
+git fetch
+git fetch --prune
+
+git reset HEAD~1 --hard # zmaze aj zmeny
+
+git rebase -i HEAD~5
+
+git checkout experimental
+git rebase master
+git checkout master
+git merge --ff-only experimental
+</code></pre>
+<p>nedovolovat pushnut PR s merge-commitami</p>
+<p><a href="https://www.metaltoad.com/blog/beginners-guide-git-bisect-process-elimination">https://www.metaltoad.com/blog/beginners-guide-git-bisect-process-elimination</a></p>
+<p><a href="https://editorconfig.org/">https://editorconfig.org/</a></p>
+<h1>
+<a id="git-book" class="anchor" href="#git-book" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Book</h1>
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+<ul>
+<li>Since 2005, by Linus Torvarlds</li>
+<li>Version Control System (VCS)</li>
+<li>Design goals: performance and data integrity</li>
+<li>Every developer has his own repository. This prevents fighting for commit rights.</li>
+</ul>
+<h2>
+<a id="man-pages" class="anchor" href="#man-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Man Pages</h2>
+<pre><code>$ git help status
+$ git status --help
+$ man git-status
+</code></pre>
+<h2>
+<a id="vocabulary" class="anchor" href="#vocabulary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vocabulary</h2>
+<ul>
+<li>Version Control System (VCS) = Software Configuration Management (SCM) = Revision Control System.</li>
+<li>Repository</li>
+<li>Working Tree = Working Directory</li>
+<li>Commit</li>
+<li>HEAD - latest commit in the current branch</li>
+<li>Index - changeset. Working Tree &lt;- Index -&gt; repository.</li>
+<li>Clone</li>
+<li>Branch</li>
+<li>Tag</li>
+<li>master - name of the default branch. Analog to "trunk"</li>
+<li>Hunk - loosely related LOC</li>
+</ul>
+<h2>
+<a id="first-steps" class="anchor" href="#first-steps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First Steps</h2>
+<pre><code>git config --global user.name "MU"
+git config --global user.email "uzak+git@mailbox.org"
+git config --global color.ui auto
+
+git init example
+git status
+git add
+git commit
+git show
+git show HEAD
+git show master
+git show rev-SHA
+</code></pre>
+<p>non-global settings can be configurated for a project using <code>git config</code> without --global.</p>
+<h1>
+<a id="basics" class="anchor" href="#basics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basics</h1>
+<pre><code>git diff          # diff between Working Dir and Index
+git diff --staged # diff between Index and Repository
+git diff --color-words
+</code></pre>
+<p>Interactively ask which changes (hunks) to be added to Index:</p>
+<pre><code>git add -p
+</code></pre>
+<p>Reset Index:</p>
+<pre><code>git reset HEAD
+git reset -p # selectively reset hunks from Index
+</code></pre>
+<p>Ammend a commit</p>
+<pre><code>git commit --amend
+</code></pre>
+<p>Commit messages:</p>
+<ul>
+<li>First line max 50 characters. Summary</li>
+<li>More detailed description after a newline after the first line. Max recommended length up to 76 characters.</li>
+<li>write <strong>what</strong> and <strong>why</strong> was changed. What is obvious from the change.</li>
+</ul>
+<p>Examine the history of a file:</p>
+<pre><code>git log --follow -- FILE
+</code></pre>
+<p>Log:</p>
+<pre><code>git grep
+git log -4
+git log -l rev-SHA
+git log --oneline
+git log --after='2005-01-01'
+git log --since='yesterday'
+git log -- *.h
+git log -i --grep XXX --author Linus
+</code></pre>
+<p>Search within the changes (Pixeaxe)</p>
+<pre><code>git log -p -S&lt;STRING&gt;
+</code></pre>
+<p>Commit range</p>
+<pre><code>git diff rev1..revN
+</code></pre>
+<h2>
+<a id="object-model" class="anchor" href="#object-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Object model</h2>
+<ul>
+<li>uses SHA1 as algorithm</li>
+<li>Stored in ".git/objects"</li>
+<li>Loose objects and Packfiles</li>
+<li>data types: blog (file), tree (dir), commit, tag</li>
+</ul>
+<p>Plumbing-commands (in contrast to porcelain commands used so far):</p>
+<pre><code>git log --oneline
+git show --format=raw
+git show rev-SHA
+git ls-tree --abbrev=7 rev-SHA
+git hash-object FILE
+</code></pre>
+<h1>
+<a id="bibliography" class="anchor" href="#bibliography" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bibliography</h1>
+<ul>
+<li>
+</ul>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

@@ -75,7 +75,8 @@ sudo apt install -y gnome-tweak-tool
 sudo apt install -y lm-sensors powertop
 sudo apt install -y power-profiles-daemon
 sudo apt install -y audacious
-sudo apt install -y discount    # for customwiki2html.sh
+
+gem install vimwiki_markdown
 
 sudo apt autoremove
 ```

@@ -11,6 +11,8 @@
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
     <title>%title%</title>
 
+    %pygments%
+
     <script>
 
         window.onload = function () {

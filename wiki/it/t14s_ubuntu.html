@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>T14s_ubuntu</title>
+
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h1>
+<ul>
+<li>normal installation</li>
+<li>use disk encryption</li>
+<li>disk layout
+<ul>
+<li>1GB /boot/efi</li>
+<li>/ encrypted</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="basic-system" class="anchor" href="#basic-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic system</h2>
+<pre><code>sudo sh -c "echo \"$USER ALL=NOPASSWD: ALL\" &gt;&gt; /etc/sudoers"
+
+$ cat &gt; /etc/environment
+
+LC_ALL=en_US.UTF-8
+EDITOR=vi
+
+sudo paperconfig -p a4
+sudo apt install python3-gpg
+
+xdg-settings set default-web-browser firefox_firefox.desktop
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+
+# fix mic
+echo -e "snd-pci-ps\nsnd-soc-ps-mach" | sudo tee /etc/modules-load.d/sound.conf &gt; /dev/null
+# audible -&gt; visual bell 
+gsettings set org.gnome.desktop.wm.preferences audible-bell false
+gsettings set org.gnome.desktop.wm.preferences visual-bell false
+
+# turn off power button led
+echo 0 | sudo tee /sys/devices/platform/thinkpad_acpi/leds/tpacpi::power/brightness
+
+# disable gnome animations
+gsettings set org.gnome.desktop.interface enable-animations false
+
+# no ubuntu pro ads
+sudo pro config set apt_news=false
+</code></pre>
+<ul>
+<li>Add fingerprint to the user</li>
+<li>Dropbox</li>
+</ul>
+<h2>
+<a id="basic-tools" class="anchor" href="#basic-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic tools</h2>
+<pre lang="sh" class="highlight highlight-sh"><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt dist-upgrade
+
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> zsh catimg autojump        <span class="c"># zsh + tools for plugins</span>
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> vim neovim 
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> git tig universal-ctags cloc bat ack fzf ripgrep cscope  make
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> jq csvtool
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> tmux mc tree curl net-tools fd-find tldr iproute2
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> iotop iftop htop bmon
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> net-tools iproute2 host iputils-tracepath traceroute
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> gimp geeqie flameshot
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> mpv celluloid
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> python3 python3-pip pipenv python3-sphinx ipython3
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> pass gnupg upass pwgen
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> aria2 yt-dlp
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> neofetch 
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> nodejs node-typescript yarnpkg npm
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> colordiff
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> plantuml 
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> libreoffice libreoffice-gnome libreoffice-calc libreoffice-writer libreoffice-gtk3
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> mythes-sk libreoffice-l10n-sk hyphen-sk
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> texlive-fonts-recommended texlive-latex-recommended 
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> pandoc texlive-latex-base texlive-xetex
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> fonts-firacode fonts-ibm-plex
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> fonts-ancient-scripts 
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> hugo
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> autoconf make
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> gnome-tweak-tool
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> lm-sensors powertop
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> power-profiles-daemon
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> audacious
+
+gem <span class="nb">install </span>vimwiki_markdown
+
+<span class="nb">sudo </span>apt autoremove
+</pre>
+<ul>
+<li>Install chrome</li>
+<li>Import gpg key</li>
+</ul>
+<pre><code>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+~/Dropbox/repos/dotfiles/install.sh
+</code></pre>
+<ul>
+<li>Activate Firefox Sync</li>
+</ul>
+<h1>
+<a id="snap" class="anchor" href="#snap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Snap</h1>
+<pre><code>sudo snap install insomnia 
+sudo snap install slack
+sudo snap install dbeaver-ce
+sudo snap install chromium
+sudo snap install thunderbird
+sudo snap install --classic aws-cli
+sudo snap install --classic webstorm
+sudo snap install --classic codium
+sudo snap install --classic terraform
+sudo snap install --classic pycharm-professional
+sudo snap install telegram-desktop
+sudo snap install asciiquarium
+</code></pre>
+<ul>
+<li>codium
+Install Vim lugin</li>
+<li>Add pycharm license</li>
+<li>Plugins PyCharm
+<ul>
+<li>IdeaVim</li>
+<li>.ignore</li>
+<li>EnvFile</li>
+<li>Github Copilot</li>
+<li>Makefile</li>
+<li>Terraform and HCL</li>
+</ul>
+</li>
+<li>Plugins WebStorm
+<ul>
+<li>IdeaVim</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="docker" class="anchor" href="#docker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker</h2>
+<pre><code># Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+$(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker ${USER}
+sudo apt install docker-compose
+</code></pre>
+<h2>
+<a id="misc" class="anchor" href="#misc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Misc</h2>
+<pre><code>sudo apt install libstfl0 
+cd ~/Downloads
+wget http://de.archive.ubuntu.com/ubuntu/pool/universe/n/newsboat/newsboat_2.32-3_amd64.deb
+sudo dpkg -i newsboat_2.32-3_amd64.deb
+</code></pre>
+<p><a href="https://dev.to/shkuvandikov/set-flameshot-as-default-screenshot-app-on-ubuntu-2jh6">flameshot</a></p>
+<h2>
+<a id="vimpc" class="anchor" href="#vimpc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VimPC</h2>
+<pre><code>cd ~/repos
+git clone https://github.com/boysetsfrog/vimpc
+sudo apt install -y libcurl4-gnutls-dev libpcre3-dev 
+sudo apt install -y build-essential autoconf \
+    libmpdclient2 libmpdclient-dev libpcre3 libpcre3-dev \
+    libncursesw6 libncurses-dev \
+    libtag1v5 libtag1-dev
+cd vimpc
+./autogen.sh
+./configure
+make -j 8
+sudo make install clean
+</code></pre>
+<h2>
+<a id="terraformer" class="anchor" href="#terraformer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Terraformer</h2>
+<pre><code>export PROVIDER=all
+curl -LO "https://github.com/GoogleCloudPlatform/terraformer/releases/download/$(curl -s https://api.github.com/repos/GoogleCloudPlatform/terraformer/releases/latest | grep tag_name | cut -d '"' -f 4)/terraformer-${PROVIDER}-linux-amd64"
+chmod +x terraformer-${PROVIDER}-linux-amd64
+sudo mv terraformer-${PROVIDER}-linux-amd64 /usr/local/bin/terraformer
+</code></pre>
+<h2>
+<a id="virtualbox" class="anchor" href="#virtualbox" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Virtualbox</h2>
+<pre><code>sudo apt-get install virtualbox virtualbox-guest-additions-iso
+</code></pre>
+<h2>
+<a id="python" class="anchor" href="#python" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python</h2>
+<pre><code>sudo apt install python3.12-venv
+python3.12 -m venv venv
+source venv/bin/activate
+pip install ply
+
+sudo apt install python3-pathvalidate
+</code></pre>
+<h2>
+<a id="sops" class="anchor" href="#sops" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sops</h2>
+<p><a href="https://github.com/getsops/sops/releases">https://github.com/getsops/sops/releases</a></p>
+<h2>
+<a id="misc-2" class="anchor" href="#misc-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Misc</h2>
+<pre><code>echo vm.swappiness=10 &gt;&gt; /sys/sysctl.conf
+
+
+echo 40 | sudo tee /sys/devices/platform/smapi/BAT0/start_charge_thresh
+echo 80 | sudo tee /sys/devices/platform/smapi/BAT0/stop_charge_thresh
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>
