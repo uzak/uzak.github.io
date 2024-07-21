@@ -268,21 +268,16 @@ sudo make install clean
 python3.12 -m venv venv
 source venv/bin/activate
 pip install ply
+pip install awslogs
+
+cd ~/repos/blog
+make install_wiki_deps
 
 sudo apt install python3-pathvalidate
 </code></pre></div>
 
 <h2 id="sops">Sops</h2>
 <p>https://github.com/getsops/sops/releases</p>
-<h2 id="python-local-venv">python local venv</h2>
-<div class="codehilite"><pre><span></span><code>pip install ply
-pip install pathvalidate
-pip install awslogs
-
-cd ~/repos/blog
-make install_wiki_deps
-</code></pre></div>
-
 <h2 id="misc_1">Misc</h2>
 <div class="codehilite"><pre><span></span><code>echo vm.swappiness=10 &gt;&gt; /sys/sysctl.conf
 
