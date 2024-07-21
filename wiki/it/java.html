@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Java</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>java</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -213,7 +94,7 @@
 <li>Default constructor</li>
 <li>Constructor cannot be made final</li>
 <li>Static block is executed at the time of classloading</li>
-<li>overloading - same name, different parameters; overriding</li>
+<li>overloading - same name, different parameters; overriding </li>
 <li>A thread can enter the waiting state by invoking its sleep() method, by blocking on IO, by unsuccessfully attempting to acquire an object's lock, or by invoking an object's wait() method. It can also enter the waiting state by invoking its (deprecated) suspend() method.</li>
 <li>After a thread is started, via its start() method of the Thread class, the JVM invokes the thread's run() method when the thread is initially executed.</li>
 <li>Exception's subclasses have to be caught first.</li>
@@ -258,45 +139,47 @@
 <li>Downcasting: It is the casting from a general to a more specific type, i.e. casting down the hierarchy.</li>
 <li>A protected method may only be accessed by classes or interfaces of the same package or by subclasses of the class in which it is declared.</li>
 <li>When a class is defined within a scope of another class, then it becomes inner class. If the access modifier of the inner class is static, then it becomes nested class.</li>
-<li>If the array is an array of primitive types, then all the elements of the array will be initialized to the default value corresponding to that primitive type.</li>
-</ul>
-<ul>
-<li>Which two method you need to implement for key Object in HashMap (equals, hashCode)</li>
+<li>
+<p>If the array is an array of primitive types, then all the elements of the array will be initialized to the default value corresponding to that primitive type.</p>
+</li>
+<li>
+<p>Which two method you need to implement for key Object in HashMap (equals, hashCode)</p>
+</li>
 </ul>
 <p>public class JavaHungrySingleton
 {</p>
-<pre><code>private static  volatile JavaHungrySingleton  uniqueInstance;
+<div class="codehilite"><pre><span></span><code><span class="nv">private</span><span class="w"> </span><span class="nv">static</span><span class="w">  </span><span class="nv">volatile</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="w">  </span><span class="nv">uniqueInstance</span><span class="c1">;</span>
 
-private JavaHungrySingleton(){}
+<span class="nv">private</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="ss">()</span>{}
 
-public static   JavaHungrySingleton  getInstance()
+<span class="nv">public</span><span class="w"> </span><span class="nv">static</span><span class="w">   </span><span class="nv">JavaHungrySingleton</span><span class="w">  </span><span class="nv">getInstance</span><span class="ss">()</span>
 {
-    if (uniqueInstance ==null )
-    {
-        synchronized(JavaHungrySingleton.class)
-        {
-            if (uniqueInstance ==null )
-            {
-                uniqueInstance=new JavaHungrySingleton();
-            }
-        }
-    }
-    return uniqueInstance ;
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="o">==</span><span class="nv">null</span><span class="w"> </span><span class="ss">)</span>
+<span class="w">    </span>{
+<span class="w">        </span><span class="nv">synchronized</span><span class="ss">(</span><span class="nv">JavaHungrySingleton</span>.<span class="nv">class</span><span class="ss">)</span>
+<span class="w">        </span>{
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="o">==</span><span class="nv">null</span><span class="w"> </span><span class="ss">)</span>
+<span class="w">            </span>{
+<span class="w">                </span><span class="nv">uniqueInstance</span><span class="o">=</span><span class="nv">new</span><span class="w"> </span><span class="nv">JavaHungrySingleton</span><span class="ss">()</span><span class="c1">;</span>
+<span class="w">            </span>}
+<span class="w">        </span>}
+<span class="w">    </span>}
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">uniqueInstance</span><span class="w"> </span><span class="c1">;</span>
 }
 
-// other useful methods here
-</code></pre>
+<span class="o">//</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">useful</span><span class="w"> </span><span class="nv">methods</span><span class="w"> </span><span class="nv">here</span>
+</code></pre></div>
+
 <p>}</p>
 <ul>
 <li>What will be the problem if you don't override hashcode() method ?
 You will not be able to recover your object from hash Map if that is used as key in HashMap.</li>
 <li>Is it better to synchronize critical section of getInstance() method or whole getInstance() method ?
 Answer is critical section because if we lock whole method than every time some one call this method will have to wait even though we are not creating any object)</li>
-<li>you can not override private or static method in Java, if you create similar method with same return type and same method arguments that's called method hiding.</li>
-<li>you can very well throw super class of RuntimeException in overridden method but you can not do same if its checked Exception.</li>
-<li>if you acquire resources in a particular order and release resources in reverse order you can prevent deadlock.</li>
+<li>you can not override private or static method in Java, if you create similar method with same return type and same method arguments that's called method hiding. </li>
+<li>you can very well throw super class of RuntimeException in overridden method but you can not do same if its checked Exception. </li>
+<li>if you acquire resources in a particular order and release resources in reverse order you can prevent deadlock. </li>
 </ul>
-
                         </div>
                     </article>
 

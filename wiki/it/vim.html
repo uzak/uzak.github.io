@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Vim</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>vim</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -203,42 +84,39 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>
-<a id="vim" class="anchor" href="#vim" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vim</h1>
+                            <h1 id="vim">Vim</h1>
 <p>Some commands:</p>
-<pre><code>ZQ                                      # force quit in cmd mode
-da[                                     # delete around bracket
-gn                                      # select until next match
-&lt;c-y&gt; copy character from line above
-gU&lt;motion                               # uppercase &lt;motion&gt;
-gu&lt;motion                               # lowercase &lt;motion&gt;
+<div class="codehilite"><pre><span></span><code><span class="n">ZQ</span><span class="w">                                      </span><span class="c1"># force quit in cmd mode</span>
+<span class="n">da</span><span class="p">[</span><span class="w">                                     </span><span class="c1"># delete around bracket</span>
+<span class="n">gn</span><span class="w">                                      </span><span class="c1"># select until next match</span>
+<span class="o">&lt;</span><span class="n">c</span><span class="o">-</span><span class="n">y</span><span class="o">&gt;</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">character</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">above</span>
+<span class="n">gU</span><span class="o">&lt;</span><span class="n">motion</span><span class="w">                               </span><span class="c1"># uppercase &lt;motion&gt;</span>
+<span class="n">gu</span><span class="o">&lt;</span><span class="n">motion</span><span class="w">                               </span><span class="c1"># lowercase &lt;motion&gt;</span>
 
-:ls                                     # list buffers
-:vert sb N                              # open buffer N in a vertical split
-:sb N                                   # open buffer N in a horizontal split
-:tab sb[bufferId]                       # open existing buf. in new tab
+<span class="p">:</span><span class="n">ls</span><span class="w">                                     </span><span class="c1"># list buffers</span>
+<span class="p">:</span><span class="n">vert</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="n">N</span><span class="w">                              </span><span class="c1"># open buffer N in a vertical split</span>
+<span class="p">:</span><span class="n">sb</span><span class="w"> </span><span class="n">N</span><span class="w">                                   </span><span class="c1"># open buffer N in a horizontal split</span>
+<span class="p">:</span><span class="n">tab</span><span class="w"> </span><span class="n">sb</span><span class="p">[</span><span class="n">bufferId</span><span class="p">]</span><span class="w">                       </span><span class="c1"># open existing buf. in new tab</span>
 
-:verbose set modeline? modelines?       # show variables' values
-V=                                      # visual select + reformat (=)
+<span class="p">:</span><span class="n">verbose</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">modeline</span><span class="err">?</span><span class="w"> </span><span class="n">modelines</span><span class="err">?</span><span class="w">       </span><span class="c1"># show variables&#39; values</span>
+<span class="n">V</span><span class="o">=</span><span class="w">                                      </span><span class="c1"># visual select + reformat (=)</span>
 
-]p      # paste under the current indentation level
-gf      # goto file in cursor
-[m      # previous method 
-]m      # next method 
-:e      # reload file
-K       # show help for a command
-</code></pre>
-<h2>
-<a id="modelines" class="anchor" href="#modelines" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modelines</h2>
-<pre><code>vim: spell spelllang=en,de
-</code></pre>
-<h2>
-<a id="plugins" class="anchor" href="#plugins" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plugins</h2>
-<h3>
-<a id="fzf" class="anchor" href="#fzf" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="fzf.html">fzf</a>
-</h3>
-<p><a href="https://github.com/junegunn/fzf">https://github.com/junegunn/fzf</a></p>
-<pre><code>&lt;ctrl-v&gt; opens in a vertical split
+<span class="p">]</span><span class="n">p</span><span class="w">      </span><span class="c1"># paste under the current indentation level</span>
+<span class="n">gf</span><span class="w">      </span><span class="c1"># goto file in cursor</span>
+<span class="p">[</span><span class="n">m</span><span class="w">      </span><span class="c1"># previous method </span>
+<span class="p">]</span><span class="n">m</span><span class="w">      </span><span class="c1"># next method </span>
+<span class="p">:</span><span class="n">e</span><span class="w">      </span><span class="c1"># reload file</span>
+<span class="n">K</span><span class="w">       </span><span class="c1"># show help for a command</span>
+</code></pre></div>
+
+<h2 id="modelines">Modelines</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">vim</span><span class="o">:</span><span class="w"> </span><span class="n">spell</span><span class="w"> </span><span class="n">spelllang</span><span class="o">=</span><span class="n">en</span><span class="o">,</span><span class="n">de</span>
+</code></pre></div>
+
+<h2 id="plugins">Plugins</h2>
+<h3 id="fzf"><a href="fzf.html">fzf</a></h3>
+<p>https://github.com/junegunn/fzf</p>
+<div class="codehilite"><pre><span></span><code>&lt;ctrl-v&gt; opens in a vertical split
 &lt;ctrl-t&gt; opens in a tab
 :Files!                                 # opens dialog in fullscreen
 :Helptags
@@ -249,140 +127,136 @@ K       # show help for a command
 :BTag
 :Tags
 :History
-</code></pre>
-<h2>
-<a id="goto-commands" class="anchor" href="#goto-commands" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Goto commands</h2>
-<pre><code>gx          open URL under cursor in a browser
+</code></pre></div>
+
+<h2 id="goto-commands">Goto commands</h2>
+<div class="codehilite"><pre><span></span><code>gx          open URL under cursor in a browser
 gf          open file under cursor
 &lt;c-w&gt;f      open file under cursor in new window
 &lt;c-w&gt;gf     open file under cursor in new tab
 gd          goto local definition
-</code></pre>
-<h2>
-<a id="maps" class="anchor" href="#maps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Maps</h2>
-<pre><code>:nmap       (display) normal mode maps
+</code></pre></div>
+
+<h2 id="maps">Maps</h2>
+<div class="codehilite"><pre><span></span><code>:nmap       (display) normal mode maps
 :imap       (display) insert mode maps
 :vmap       (display) visual and select mode maps
 :xmap       (display) visual mode maps
 :cmap       (display) command-line mode maps
 :omap       (display) operator pending mode apps
-</code></pre>
-<h2>
-<a id="cursor-movement" class="anchor" href="#cursor-movement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cursor movement</h2>
-<pre><code>H       # move to the top of screen
+</code></pre></div>
+
+<h2 id="cursor-movement">Cursor movement</h2>
+<div class="codehilite"><pre><span></span><code>H       # move to the top of screen
 M       # move to the top of screen
 L       # move to the bottom of screen
-</code></pre>
-<h3>
-<a id="words" class="anchor" href="#words" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Words</h3>
-<pre><code>w       
-W       # start of a word (by whitespace)
-b       # start of a word backwards
-B       # start of a word backwards (by whitespace)
-e       
-E       # the end of a word (by whitespace)
-ge      # previous end of a word
-gE      # previous end of word (by whitespace)
-+ down to first non-blank charater of line
-</code></pre>
-<h3>
-<a id="line" class="anchor" href="#line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Line</h3>
-<pre><code>0       # start of line
-^       # first non-black character of a line
-$       # 
-g_      # last non-black character of a line
-gg      
-G
-5G      # line 5
-:n
-</code></pre>
-<h3>
-<a id="character" class="anchor" href="#character" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Character</h3>
-<pre><code>fx      # next occurrence of 'x'
-tx      # before next occurrence of 'x'
-Fx      # previous occurrence of 'x'
-Tx      # after previous occurrence of 'x'
-;       # repeat last t/f command
-</code></pre>
-<h3>
-<a id="paragraph" class="anchor" href="#paragraph" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Paragraph</h3>
-<pre><code>}       # next paragraph (function, block)
-{       # previous paragraph (function, block)
-%       # next bracket (or closing bracket)
-</code></pre>
-<h3>
-<a id="window--scrolling" class="anchor" href="#window--scrolling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Window / Scrolling</h3>
-<pre><code>zz      # center cursor
-zg      # go back
-zt      # top this line
-C-b     # page up (back)
-C-f     # page down (forward)
-C-d     # 1/2 page down
-C-u     # 1/2 page up
-C-e     # move screen one line down
-C-y     # move screen one line up
-</code></pre>
-<h2>
-<a id="visual-mode" class="anchor" href="#visual-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Visual Mode</h2>
-<pre><code>v
-V       # linewise mode
-o       # move to the other end of marked area
-C-v     # blockwise mode
-O       # move to the other corner of block
-</code></pre>
-<h2>
-<a id="insert--append" class="anchor" href="#insert--append" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Insert / append</h2>
-<pre><code>i
-I
-a
-A
-o
-O       # append a new line above the current line
-ea      # insert at the end of the word
-</code></pre>
-<h2>
-<a id="editing" class="anchor" href="#editing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Editing</h2>
-<pre><code>r
-J
-gJ      # join lines without a space in between
-gwip    # reflow paragrah
-cc      # replace entire line
-C
-D       # delete until the end line
-s       # delete character and substitute text
-ciw     # change entire word
-cw
-u
-C-r
-</code></pre>
-<h2>
-<a id="search-and-replace" class="anchor" href="#search-and-replace" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Search and replace</h2>
-<pre><code>/pat
-?pat            # search backwards
-[count]n        # count-th match forwards 
-[count]N        # count-th match backwards
-:%s/old/new/g
-:%s/old/new/gc  # replace with confirmations
-:noh            # remove highlighting of matches
-*
-#              
-</code></pre>
-<h2>
-<a id="search-in-multiple-files" class="anchor" href="#search-in-multiple-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Search in multiple files</h2>
-<pre><code>:vimgrep /foo/ **/*         # search for pattern in multiple files
+</code></pre></div>
+
+<h3 id="words">Words</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">w</span><span class="w">       </span>
+<span class="nv">W</span><span class="w">       </span>#<span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">word</span><span class="w"> </span><span class="ss">(</span><span class="nv">by</span><span class="w"> </span><span class="nv">whitespace</span><span class="ss">)</span>
+<span class="nv">b</span><span class="w">       </span>#<span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">word</span><span class="w"> </span><span class="nv">backwards</span>
+<span class="nv">B</span><span class="w">       </span>#<span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">word</span><span class="w"> </span><span class="nv">backwards</span><span class="w"> </span><span class="ss">(</span><span class="nv">by</span><span class="w"> </span><span class="nv">whitespace</span><span class="ss">)</span>
+<span class="nv">e</span><span class="w">       </span>
+<span class="nv">E</span><span class="w">       </span>#<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">word</span><span class="w"> </span><span class="ss">(</span><span class="nv">by</span><span class="w"> </span><span class="nv">whitespace</span><span class="ss">)</span>
+<span class="nv">ge</span><span class="w">      </span>#<span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">word</span>
+<span class="nv">gE</span><span class="w">      </span>#<span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">word</span><span class="w"> </span><span class="ss">(</span><span class="nv">by</span><span class="w"> </span><span class="nv">whitespace</span><span class="ss">)</span>
+<span class="o">+</span><span class="w"> </span><span class="nv">down</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">first</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">blank</span><span class="w"> </span><span class="nv">charater</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">line</span>
+</code></pre></div>
+
+<h3 id="line">Line</h3>
+<div class="codehilite"><pre><span></span><code><span class="mf">0</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">line</span>
+<span class="o">^</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">black</span><span class="w"> </span><span class="n">character</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">line</span>
+<span class="err">$</span><span class="w">       </span><span class="err">#</span><span class="w"> </span>
+<span class="n">g_</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">black</span><span class="w"> </span><span class="n">character</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">line</span>
+<span class="n">gg</span><span class="w">      </span>
+<span class="n">G</span>
+<span class="mf">5</span><span class="n">G</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mf">5</span>
+<span class="p">:</span><span class="n">n</span>
+</code></pre></div>
+
+<h3 id="character">Character</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">fx</span><span class="w">      </span>#<span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="s1">&#39;x&#39;</span>
+<span class="nv">tx</span><span class="w">      </span>#<span class="w"> </span><span class="nv">before</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="s1">&#39;x&#39;</span>
+<span class="nv">Fx</span><span class="w">      </span>#<span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="s1">&#39;x&#39;</span>
+<span class="nv">Tx</span><span class="w">      </span>#<span class="w"> </span><span class="nv">after</span><span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="s1">&#39;x&#39;</span>
+<span class="c1">;       # repeat last t/f command</span>
+</code></pre></div>
+
+<h3 id="paragraph">Paragraph</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">}</span><span class="w">       </span>#<span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">paragraph</span><span class="w"> </span><span class="p">(</span><span class="k">function</span><span class="p">,</span><span class="w"> </span><span class="n">block</span><span class="p">)</span>
+<span class="p">{</span><span class="w">       </span>#<span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">paragraph</span><span class="w"> </span><span class="p">(</span><span class="k">function</span><span class="p">,</span><span class="w"> </span><span class="n">block</span><span class="p">)</span>
+<span class="c">%       # next bracket (or closing bracket)</span>
+</code></pre></div>
+
+<h3 id="window-scrolling">Window / Scrolling</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">zz</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">center</span><span class="w"> </span><span class="nc">cursor</span>
+<span class="n">zg</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">back</span>
+<span class="n">zt</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="k">top</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">line</span>
+<span class="n">C</span><span class="o">-</span><span class="n">b</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="p">(</span><span class="n">back</span><span class="p">)</span>
+<span class="n">C</span><span class="o">-</span><span class="n">f</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">down</span><span class="w"> </span><span class="p">(</span><span class="n">forward</span><span class="p">)</span>
+<span class="n">C</span><span class="o">-</span><span class="n">d</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">down</span>
+<span class="n">C</span><span class="o">-</span><span class="n">u</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">up</span>
+<span class="n">C</span><span class="o">-</span><span class="n">e</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">down</span>
+<span class="n">C</span><span class="o">-</span><span class="n">y</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">up</span>
+</code></pre></div>
+
+<h2 id="visual-mode">Visual Mode</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">v</span>
+<span class="nv">V</span><span class="w">       </span>#<span class="w"> </span><span class="nv">linewise</span><span class="w"> </span><span class="nv">mode</span>
+<span class="nv">o</span><span class="w">       </span>#<span class="w"> </span><span class="nv">move</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">marked</span><span class="w"> </span><span class="nv">area</span>
+<span class="nv">C</span><span class="o">-</span><span class="nv">v</span><span class="w">     </span>#<span class="w"> </span><span class="nv">blockwise</span><span class="w"> </span><span class="nv">mode</span>
+<span class="nv">O</span><span class="w">       </span>#<span class="w"> </span><span class="nv">move</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">corner</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">block</span>
+</code></pre></div>
+
+<h2 id="insert-append">Insert / append</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">i</span>
+<span class="nv">I</span>
+<span class="nv">a</span>
+<span class="nv">A</span>
+<span class="nv">o</span>
+<span class="nv">O</span><span class="w">       </span>#<span class="w"> </span><span class="nv">append</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">above</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">line</span>
+<span class="nv">ea</span><span class="w">      </span>#<span class="w"> </span><span class="nv">insert</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">word</span>
+</code></pre></div>
+
+<h2 id="editing">Editing</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">r</span>
+<span class="nv">J</span>
+<span class="nv">gJ</span><span class="w">      </span>#<span class="w"> </span><span class="nv">join</span><span class="w"> </span><span class="nv">lines</span><span class="w"> </span><span class="nv">without</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">space</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">between</span>
+<span class="nv">gwip</span><span class="w">    </span>#<span class="w"> </span><span class="nv">reflow</span><span class="w"> </span><span class="nv">paragrah</span>
+<span class="nv">cc</span><span class="w">      </span>#<span class="w"> </span><span class="nv">replace</span><span class="w"> </span><span class="nv">entire</span><span class="w"> </span><span class="nv">line</span>
+<span class="nv">C</span>
+<span class="nv">D</span><span class="w">       </span>#<span class="w"> </span><span class="nv">delete</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">line</span>
+<span class="nv">s</span><span class="w">       </span>#<span class="w"> </span><span class="nv">delete</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">substitute</span><span class="w"> </span><span class="nv">text</span>
+<span class="nv">ciw</span><span class="w">     </span>#<span class="w"> </span><span class="nv">change</span><span class="w"> </span><span class="nv">entire</span><span class="w"> </span><span class="nv">word</span>
+<span class="nv">cw</span>
+<span class="nv">u</span>
+<span class="nv">C</span><span class="o">-</span><span class="nv">r</span>
+</code></pre></div>
+
+<h2 id="search-and-replace">Search and replace</h2>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">pat</span>
+<span class="vm">?</span><span class="n">pat</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="n">backwards</span>
+<span class="o">[</span><span class="n">count</span><span class="o">]</span><span class="n">n</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nf">count</span><span class="o">-</span><span class="n">th</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">forwards</span><span class="w"> </span>
+<span class="o">[</span><span class="n">count</span><span class="o">]</span><span class="n">N</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nf">count</span><span class="o">-</span><span class="n">th</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">backwards</span>
+<span class="err">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span><span class="k">old</span><span class="o">/</span><span class="k">new</span><span class="o">/</span><span class="n">g</span>
+<span class="err">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span><span class="k">old</span><span class="o">/</span><span class="k">new</span><span class="o">/</span><span class="n">gc</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nf">replace</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">confirmations</span>
+<span class="err">:</span><span class="n">noh</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">highlighting</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">matches</span>
+<span class="o">*</span>
+<span class="err">#</span>
+</code></pre></div>
+
+<h2 id="search-in-multiple-files">Search in multiple files</h2>
+<div class="codehilite"><pre><span></span><code>:vimgrep /foo/ **/*         # search for pattern in multiple files
 :cn                         # jump to next match
 :cp                         # jump to previous match
-:copen                      # open a window w. matches 
-</code></pre>
-<h2>
-<a id="working-with-multiple-files" class="anchor" href="#working-with-multiple-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Working with multiple files</h2>
+:copen                      # open a window w. matches
+</code></pre></div>
+
+<h2 id="working-with-multiple-files">Working with multiple files</h2>
 <ul>
-<li>
-<p>Buffers are file proxies.</p>
-</li>
-<li>
-<p>Windows are buffer viewports.</p>
-</li>
+<li>Buffers are file proxies.</li>
+<li>Windows are buffer viewports.</li>
 <li>
 <p>Tabs are not tabs - tabs are window containers.</p>
 <p>:e file         # edit a file in a new buffer
@@ -394,93 +268,92 @@ C-r
 :20vs .         # open a netrw file browser in a vertical split of 20 chars</p>
 </li>
 </ul>
-<h3>
-<a id="buffers" class="anchor" href="#buffers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Buffers</h3>
-<pre><code>ctrl-^          # switch buffers
-ctrl-6          # switch buffers
+<h3 id="buffers">Buffers</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">ctrl</span><span class="o">-^</span><span class="w">          </span>#<span class="w"> </span><span class="nv">switch</span><span class="w"> </span><span class="nv">buffers</span>
+<span class="nv">ctrl</span><span class="o">-</span><span class="mi">6</span><span class="w">          </span>#<span class="w"> </span><span class="nv">switch</span><span class="w"> </span><span class="nv">buffers</span>
 
-:bn             # next buffer
-:b {filename}   # goto buffer
-:bd             # delete current buffer
-:buffers
-:bufdo {cmd}    # execute {cmd} for all buffers
-:bo 15sp +te    # open a buffer object as a 15 lines split with a terminal (nvim)
-</code></pre>
-<h3>
-<a id="windows" class="anchor" href="#windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h3>
-<pre><code>ctrl-w r        # rotate windows
+<span class="nl">:bn</span><span class="w">             </span>#<span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">buffer</span>
+<span class="nl">:b</span><span class="w"> </span>{<span class="nv">filename</span>}<span class="w">   </span>#<span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">buffer</span>
+<span class="nl">:bd</span><span class="w">             </span>#<span class="w"> </span><span class="nv">delete</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">buffer</span>
+<span class="nl">:buffers</span>
+<span class="nl">:bufdo</span><span class="w"> </span>{<span class="nv">cmd</span>}<span class="w">    </span>#<span class="w"> </span><span class="nv">execute</span><span class="w"> </span>{<span class="nv">cmd</span>}<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">buffers</span>
+<span class="nl">:bo</span><span class="w"> </span><span class="mi">15</span><span class="nv">sp</span><span class="w"> </span><span class="o">+</span><span class="nv">te</span><span class="w">    </span>#<span class="w"> </span><span class="nv">open</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">buffer</span><span class="w"> </span><span class="nv">object</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="nv">lines</span><span class="w"> </span><span class="nv">split</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">terminal</span><span class="w"> </span><span class="ss">(</span><span class="nv">nvim</span><span class="ss">)</span>
+</code></pre></div>
+
+<h3 id="windows">Windows</h3>
+<div class="codehilite"><pre><span></span><code>ctrl-w r        # rotate windows
 ctrl-w q        # close window
 :sf             # split window and :find {FILE}
 :vert           # make split be vertical
-</code></pre>
-<h3>
-<a id="tabs" class="anchor" href="#tabs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tabs</h3>
-<pre><code>:tabnew
-gt / :tabn[ext] # next tab
-gT / :tabp[rev] # prev tab
-ctrl-pagedown   # next tab
-ctrl-pageup     # prev tab
-1gt             # move to tab 1
-:tabmove 5      # move current tab to 5th pos (indexed from 0)
-:tabc[lose]     # close tab
-:tabo[nly]      # close all tabs except current one
-:tabfirst       # first tab
-:tablast        # last tab
-:tabs
-</code></pre>
-<h2>
-<a id="registers" class="anchor" href="#registers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registers</h2>
-<pre><code>:reg    # show registers
-"xy     # yank into register x
-"xp     # paste register x
-</code></pre>
-<h2>
-<a id="marks" class="anchor" href="#marks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Marks</h2>
+</code></pre></div>
+
+<h3 id="tabs">Tabs</h3>
+<div class="codehilite"><pre><span></span><code><span class="err">:</span><span class="n">tabnew</span>
+<span class="n">gt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">:</span><span class="n">tabn</span><span class="o">[</span><span class="n">ext</span><span class="o">]</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="n">tab</span>
+<span class="n">gT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">:</span><span class="n">tabp</span><span class="o">[</span><span class="n">rev</span><span class="o">]</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">prev</span><span class="w"> </span><span class="n">tab</span>
+<span class="n">ctrl</span><span class="o">-</span><span class="n">pagedown</span><span class="w">   </span><span class="err">#</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="n">tab</span>
+<span class="n">ctrl</span><span class="o">-</span><span class="n">pageup</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">prev</span><span class="w"> </span><span class="n">tab</span>
+<span class="mi">1</span><span class="n">gt</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">tab</span><span class="w"> </span><span class="mi">1</span>
+<span class="err">:</span><span class="n">tabmove</span><span class="w"> </span><span class="mi">5</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">tab</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">5</span><span class="n">th</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="p">(</span><span class="n">indexed</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="err">:</span><span class="n">tabc</span><span class="o">[</span><span class="n">lose</span><span class="o">]</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">close</span><span class="w"> </span><span class="n">tab</span>
+<span class="err">:</span><span class="n">tabo</span><span class="o">[</span><span class="n">nly</span><span class="o">]</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="k">close</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">tabs</span><span class="w"> </span><span class="ow">except</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">one</span>
+<span class="err">:</span><span class="n">tabfirst</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="n">tab</span>
+<span class="err">:</span><span class="n">tablast</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">last</span><span class="w"> </span><span class="n">tab</span>
+<span class="err">:</span><span class="n">tabs</span>
+</code></pre></div>
+
+<h2 id="registers">Registers</h2>
+<div class="codehilite"><pre><span></span><code><span class="o">:</span><span class="kt">reg</span><span class="w">    </span><span class="p">#</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">registers</span>
+<span class="s">&quot;xy     # yank into register x</span>
+<span class="s">&quot;xp     # paste register x</span>
+</code></pre></div>
+
+<h2 id="marks">Marks</h2>
 <p>Bookmarks:</p>
-<pre><code>:marks      # list marks
-ma          # set current position for mark A (valid ``a-zA-Z``)
-`a          # jump to position of mark A
-y`a         # yank until mark A
-`'          # jump to last change/position?
-</code></pre>
-<h2>
-<a id="tags" class="anchor" href="#tags" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tags</h2>
-<pre><code>ctrl-]
+<div class="codehilite"><pre><span></span><code><span class="nl">:marks</span><span class="w">      </span>#<span class="w"> </span><span class="nv">list</span><span class="w"> </span><span class="nv">marks</span>
+<span class="nv">ma</span><span class="w">          </span>#<span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">position</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">mark</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="ss">(</span><span class="nv">valid</span><span class="w"> </span>``<span class="nv">a</span><span class="o">-</span><span class="nv">zA</span><span class="o">-</span><span class="nv">Z</span>``<span class="ss">)</span>
+`<span class="nv">a</span><span class="w">          </span>#<span class="w"> </span><span class="nv">jump</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">position</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">mark</span><span class="w"> </span><span class="nv">A</span>
+<span class="nv">y</span>`<span class="nv">a</span><span class="w">         </span>#<span class="w"> </span><span class="nv">yank</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="nv">mark</span><span class="w"> </span><span class="nv">A</span>
+`<span class="err">&#39;          # jump to last change/position?</span>
+</code></pre></div>
+
+<h2 id="tags">Tags</h2>
+<div class="codehilite"><pre><span></span><code>ctrl-]
 g-ctrl-]
 ctrl-t
-</code></pre>
-<h2>
-<a id="jumplist--changelist" class="anchor" href="#jumplist--changelist" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jumplist / Changelist</h2>
-<pre><code>:jumps
+</code></pre></div>
+
+<h2 id="jumplist-changelist">Jumplist / Changelist</h2>
+<div class="codehilite"><pre><span></span><code>:jumps
 ctrl-o / ctrl-i     # cycle through :jumps
 :changes
 g; / g,             # cycle trough :changes
-</code></pre>
-<h2>
-<a id="args" class="anchor" href="#args" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Args</h2>
-<pre><code>:args               # files passed to  vim as arguments
-:arga               # add {filename} to arglist
-:argl               # make a local arg copy
-:n                  # goto next file
+</code></pre></div>
 
-:sa                 # split all
-:vert sa
-:args ...
-:windo difft        # do for all windows diffthis
-:vim {pat} {file}   # vimgrep for pattern in file (% - cur file)
-:cn                 # quick-fix next
-##                  # everything in my argument list
-</code></pre>
-<h2>
-<a id="folds" class="anchor" href="#folds" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Folds</h2>
-<pre><code>zM      # close all folds  
+<h2 id="args">Args</h2>
+<div class="codehilite"><pre><span></span><code><span class="nl">:args</span><span class="w">               </span>#<span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="nv">passed</span><span class="w"> </span><span class="nv">to</span><span class="w">  </span><span class="nv">vim</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">arguments</span>
+<span class="nl">:arga</span><span class="w">               </span>#<span class="w"> </span><span class="nv">add</span><span class="w"> </span>{<span class="nv">filename</span>}<span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">arglist</span>
+<span class="nl">:argl</span><span class="w">               </span>#<span class="w"> </span><span class="nv">make</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">local</span><span class="w"> </span><span class="nv">arg</span><span class="w"> </span><span class="nv">copy</span>
+<span class="nl">:n</span><span class="w">                  </span>#<span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">next</span><span class="w"> </span><span class="nv">file</span>
+
+<span class="nl">:sa</span><span class="w">                 </span>#<span class="w"> </span><span class="nv">split</span><span class="w"> </span><span class="nv">all</span>
+<span class="nl">:vert</span><span class="w"> </span><span class="nv">sa</span>
+<span class="nl">:args</span><span class="w"> </span>...
+<span class="nl">:windo</span><span class="w"> </span><span class="nv">difft</span><span class="w">        </span>#<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">windows</span><span class="w"> </span><span class="nv">diffthis</span>
+<span class="nl">:vim</span><span class="w"> </span>{<span class="nv">pat</span>}<span class="w"> </span>{<span class="nv">file</span>}<span class="w">   </span>#<span class="w"> </span><span class="nv">vimgrep</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">pattern</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="ss">(</span><span class="o">%</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">cur</span><span class="w"> </span><span class="nv">file</span><span class="ss">)</span>
+<span class="nl">:cn</span><span class="w">                 </span>#<span class="w"> </span><span class="nv">quick</span><span class="o">-</span><span class="nv">fix</span><span class="w"> </span><span class="k">next</span>
+##<span class="w">                  </span>#<span class="w"> </span><span class="nv">everything</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">my</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">list</span>
+</code></pre></div>
+
+<h2 id="folds">Folds</h2>
+<div class="codehilite"><pre><span></span><code>zM      # close all folds  
 zR      # open all folds  
-za      # toggle open/close fold  
-</code></pre>
-<h2>
-<a id="operators" class="anchor" href="#operators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Operators</h2>
+za      # toggle open/close fold
+</code></pre></div>
+
+<h2 id="operators">Operators</h2>
 <p>d (operator) w (motion)</p>
-<pre><code>d
+<div class="codehilite"><pre><span></span><code>d
 y
 c
 &gt;
@@ -490,56 +363,57 @@ gU      # uppercase
 gu      # lowercase
 =       # indent
 !       # filter through external program
-</code></pre>
-<h2>
-<a id="text-objects" class="anchor" href="#text-objects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Text objects</h2>
+</code></pre></div>
+
+<h2 id="text-objects">Text objects</h2>
 <p>v (operator) i/a/t// (inside/outside/till given char/till given phrase) p (text object)</p>
-<pre><code>p           paragraph
+<div class="codehilite"><pre><span></span><code>p           paragraph
 w           word
 s           sentence
 [ ( { &lt;     a [], (), {}, &lt;&gt; block
-' " `       a quoted string
+&#39; &quot; `       a quoted string
 b           a block (bracket) [(
 B           a block (bracket) [{
 t           a XML tag block
-</code></pre>
+</code></pre></div>
+
 <p>Examples:</p>
-<pre><code>vip         # select paragraph
-yit         # yank the content of a tag
-ciw         # change word
-da'         # delete everything between previous and next '
-y/foo       # yank everything until the next `foo`
-</code></pre>
-<h2>
-<a id="spell-checking" class="anchor" href="#spell-checking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spell checking</h2>
-<pre><code>:set spell spelllang=en_us
+<div class="codehilite"><pre><span></span><code><span class="n">vip</span><span class="w">         </span><span class="c1"># select paragraph</span>
+<span class="n">yit</span><span class="w">         </span><span class="c1"># yank the content of a tag</span>
+<span class="n">ciw</span><span class="w">         </span><span class="c1"># change word</span>
+<span class="n">da</span><span class="s1">&#39;         # delete everything between previous and next &#39;</span>
+<span class="n">y</span><span class="o">/</span><span class="n">foo</span><span class="w">       </span><span class="c1"># yank everything until the next `foo`</span>
+</code></pre></div>
+
+<h2 id="spell-checking">Spell checking</h2>
+<div class="codehilite"><pre><span></span><code>:set spell spelllang=en_us
 ]s                              # next misspelled word
 [s                              # previous misspelled word
 z=
 zg                              # add word to the spell list (good)
 zw                              # mark word as bad
 :help spell
-</code></pre>
-<h2>
-<a id="text-alignment" class="anchor" href="#text-alignment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Text alignment</h2>
-<pre><code>:center [width]
-:right [width]
-:left
-</code></pre>
-<h2>
-<a id="misc" class="anchor" href="#misc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Misc</h2>
-<p>Start with a different <a href="vimrd">vimrd</a>:</p>
-<pre><code>vim -u other.vimrc
-</code></pre>
-<p>Start vim with a command:</p>
-<pre><code>vim -c VimwikiIndex
-</code></pre>
-<h2>
-<a id="macros" class="anchor" href="#macros" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Macros</h2>
-<pre><code>q&lt;letter&gt;&lt;commands&gt;q        # to enter a macro
-&lt;number&gt;@&lt;letter&gt;           # execute the macro, number is optional
-</code></pre>
+</code></pre></div>
 
+<h2 id="text-alignment">Text alignment</h2>
+<div class="codehilite"><pre><span></span><code><span class="err">:</span><span class="n">center</span><span class="w"> </span><span class="o">[</span><span class="n">width</span><span class="o">]</span>
+<span class="err">:</span><span class="nf">right</span><span class="w"> </span><span class="o">[</span><span class="n">width</span><span class="o">]</span>
+<span class="err">:</span><span class="nf">left</span>
+</code></pre></div>
+
+<h2 id="misc">Misc</h2>
+<p>Start with a different <a href="vimrd.html">vimrd</a>:</p>
+<div class="codehilite"><pre><span></span><code>vim -u other.vimrc
+</code></pre></div>
+
+<p>Start vim with a command:</p>
+<div class="codehilite"><pre><span></span><code>vim -c VimwikiIndex
+</code></pre></div>
+
+<h2 id="macros">Macros</h2>
+<div class="codehilite"><pre><span></span><code>q&lt;letter&gt;&lt;commands&gt;q        # to enter a macro
+&lt;number&gt;@&lt;letter&gt;           # execute the macro, number is optional
+</code></pre></div>
                         </div>
                     </article>
 

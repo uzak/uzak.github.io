@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Testing</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>testing</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -203,16 +84,15 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>
-<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Testing</h1>
+                            <h1 id="testing">Testing</h1>
 <ul>
-<li><a href="https://uzak.github.io/2019/12/python__testing">https://uzak.github.io/2019/12/python__testing</a></li>
+<li>https://uzak.github.io/2019/12/python__testing</li>
 </ul>
-<h2>
-<a id="pytest" class="anchor" href="#pytest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>pytest</h2>
-<pre><code>pytest --log-cli-level=10       # to show program's debug output
-</code></pre>
-<p><a href="https://salmonmode.github.io/2019/03/29/building-good-tests.html">https://salmonmode.github.io/2019/03/29/building-good-tests.html</a></p>
+<h2 id="pytest">pytest</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">pytest</span><span class="w"> </span><span class="o">--</span><span class="nv">log</span><span class="o">-</span><span class="nv">cli</span><span class="o">-</span><span class="nv">level</span><span class="o">=</span><span class="mi">10</span><span class="w">       </span>#<span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">program</span><span class="err">&#39;s debug output</span>
+</code></pre></div>
+
+<p>https://salmonmode.github.io/2019/03/29/building-good-tests.html</p>
 <ul>
 <li>A fixture should do or provide only a single thing.</li>
 <li>Do not test the setups (fixtures). Test the end result.</li>
@@ -229,11 +109,9 @@
 <li>Use classes/namedtupes to pass data arround.</li>
 <li>Code should read like a short story by C.S.Lewis - succinct and idiomatic.</li>
 </ul>
-<h3>
-<a id="conftestpy" class="anchor" href="#conftestpy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>conftest.py</h3>
+<h3 id="conftestpy">conftest.py</h3>
 <p>one time initialization for a test run. Define:</p>
 <p><code>pytest_configure</code> and <code>pytest_unconfigure</code></p>
-
                         </div>
                     </article>
 

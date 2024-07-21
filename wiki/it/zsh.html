@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Zsh</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>zsh</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -203,15 +84,13 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>
-<a id="zsh" class="anchor" href="#zsh" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Zsh</h1>
-<pre><code>if you want an arbitrary argument, you can use !!:1, !!:2, etc. (!!:0 is the previous command itself.
-</code></pre>
-<p><a href="http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents">http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents</a></p>
+                            <h1 id="zsh">Zsh</h1>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">want</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">arbitrary</span><span class="w"> </span><span class="nv">argument</span>,<span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="o">!!</span>:<span class="mi">1</span>,<span class="w"> </span><span class="o">!!</span>:<span class="mi">2</span>,<span class="w"> </span><span class="nv">etc</span>.<span class="w"> </span><span class="ss">(</span><span class="o">!!</span>:<span class="mi">0</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="nv">itself</span>.
+</code></pre></div>
+
+<p>http://zsh.sourceforge.net/Doc/Release/zsh_toc.html#SEC_Contents</p>
 <ul>
-<li>
-<p><code>n=${f##*dv}</code> - strip everything until dv (prefix) and assign to n</p>
-</li>
+<li><code>n=${f##*dv}</code> - strip everything until dv (prefix) and assign to n </li>
 <li>
 <p><code>${n%%.*}</code> - strip everything until . (suffix) and assign to n</p>
 <p>~ a=abcd123.png ; echo ${a##*bc};
@@ -223,24 +102,23 @@ abcd123.</p>
 <p><code>C-x C-e</code> calls $EDITOR</p>
 </li>
 </ul>
-<h2>
-<a id="plugins" class="anchor" href="#plugins" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plugins</h2>
+<h2 id="plugins">Plugins</h2>
 <p>all <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">documentation</a></p>
-<pre><code>cd /u/lo/li&lt;TAB&gt;        # autcompletes /usr/local/lib
-</code></pre>
-<h3>
-<a id="autojump" class="anchor" href="#autojump" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>autojump</h3>
-<pre><code>j foo                   # jump to a directory that contains foo
+<div class="codehilite"><pre><span></span><code>cd /u/lo/li&lt;TAB&gt;        # autcompletes /usr/local/lib
+</code></pre></div>
+
+<h3 id="autojump">autojump</h3>
+<div class="codehilite"><pre><span></span><code>j foo                   # jump to a directory that contains foo
 jo foo                  # open a file explorer 
 autojump -s             # stats
-</code></pre>
-<h3>
-<a id="common-aliases" class="anchor" href="#common-aliases" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>common-aliases</h3>
-<pre><code># long listing by creation time
-lt          # ls -ltFh  
+</code></pre></div>
+
+<h3 id="common-aliases">common-aliases</h3>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> long listing by creation time
+lt          # ls -ltFh
 
 l           # ls -lFh (long, classify files, human readable)
-la          # ls -lAFH (allmost-all [not `.` and `..`], follow-symlinks)
+la          # ls -lAFH (allmost-all [not <span class="sb">`.`</span> and <span class="sb">`..`</span>], follow-symlinks)
 lr          # ls -tRFh (by mod. time, recursive)
 ll          # ls -l
 ldot        # ls -ld .*
@@ -249,9 +127,10 @@ lart        # ls -1Fcart (sort by ctime)
 lrt         # ls -1Fart 
 h           # history
 p           # processes for current user
-</code></pre>
+</code></pre></div>
+
 <p>end of command aliases:</p>
-<pre><code>L           # | less
+<div class="codehilite"><pre><span></span><code>L           # | less
 LL          #  2&gt;&amp;1 | less
 G           # | grep
 NE          #  2&gt; /dev/null
@@ -262,28 +141,27 @@ T           # | tail
 M           # | most
 CA          #  2&gt;&amp;1 | cat -A
 P           #  2&gt;&amp;1 | pygmentize -l pytb
-</code></pre>
-<h3>
-<a id="copyfile" class="anchor" href="#copyfile" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>copyfile</h3>
-<pre><code>copies content of a file into clipboard
-</code></pre>
-<h3>
-<a id="jsontools" class="anchor" href="#jsontools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jsontools</h3>
-<pre><code>pp_json         # pretty print json
-is_json         # returns true if valid json; false otherwise
-</code></pre>
-<h3>
-<a id="pass" class="anchor" href="#pass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>pass</h3>
-<p><a href="https://github.com/ohmyzsh/ohmyzsh/issues/7864">autocompletion doesn't work</a>:</p>
-<pre><code>rm ~/.zcompdump* 
-exec zsh                    # restart zsh
-</code></pre>
-<h3>
-<a id="websearch" class="anchor" href="#websearch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>websearch</h3>
-<pre><code>google query
-duckduckgo query
-</code></pre>
+</code></pre></div>
 
+<h3 id="copyfile">copyfile</h3>
+<div class="codehilite"><pre><span></span><code>copies content of a file into clipboard
+</code></pre></div>
+
+<h3 id="jsontools">jsontools</h3>
+<div class="codehilite"><pre><span></span><code>pp_json         # pretty print json
+is_json         # returns true if valid json; false otherwise
+</code></pre></div>
+
+<h3 id="pass">pass</h3>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh/issues/7864">autocompletion doesn't work</a>:</p>
+<div class="codehilite"><pre><span></span><code>rm ~/.zcompdump* 
+exec zsh                    # restart zsh
+</code></pre></div>
+
+<h3 id="websearch">websearch</h3>
+<div class="codehilite"><pre><span></span><code>google query
+duckduckgo query
+</code></pre></div>
                         </div>
                     </article>
 

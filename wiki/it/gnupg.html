@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Gnupg</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>gnupg</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -203,58 +84,56 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>
-<a id="gpg" class="anchor" href="#gpg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GPG</h1>
+                            <h1 id="gpg">GPG</h1>
 <p><a href="https://www.devdungeon.com/content/gpg-tutorial">tutorial</a></p>
-<pre><code>gpg --edit-key 6A349802CE04AC5938B8EBAAA695F6D49054E917
+<div class="codehilite"><pre><span></span><code>gpg --edit-key 6A349802CE04AC5938B8EBAAA695F6D49054E917
 passwd
 save
 
 gpg --output revocation-certificate.asc --gen-revoke 6A349802CE04AC5938B8EBAAA695F6D49054E917
-</code></pre>
-<h2>
-<a id="key-management" class="anchor" href="#key-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>key management</h2>
-<pre><code>gpg --list-keys
-gpg --list-secret-keys
+</code></pre></div>
 
-gpg --gen-key                           # make a new key
-gpg --export-secret-keys --armor 6A349802CE04AC5938B8EBAAA695F6D49054E917 &gt; ./my-priv-gpg-key.asc
-gpg --import ./my-priv-gpg-key.asc
-gpg --edit-key &lt;KEY_ID&gt;
-gpg&gt; trust
+<h2 id="key-management">key management</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">keys</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">keys</span>
 
-gpg --keyserver hkp://pgp.mit.edu --send-keys 6A349802CE04AC5938B8EBAAA695F6D49054E917
-</code></pre>
-<h2>
-<a id="encryption--decryption" class="anchor" href="#encryption--decryption" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>encryption &amp; decryption</h2>
-<pre><code>gpg --armor --symmetric message.txt     # symmetric, armor (=ASCII output)
-gpg --version                           # get cypher algos
-gpg --sign --symmetric message.txt      # encrypt + sign
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">gen</span><span class="o">-</span><span class="n">key</span><span class="w">                           </span><span class="c1"># make a new key</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">export</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">keys</span><span class="w"> </span><span class="o">--</span><span class="n">armor</span><span class="w"> </span><span class="mi">6</span><span class="n">A349802CE04AC5938B8EBAAA695F6D49054E917</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">./</span><span class="n">my</span><span class="o">-</span><span class="n">priv</span><span class="o">-</span><span class="n">gpg</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="kn">import</span><span class="w"> </span><span class="nn">.</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">priv</span><span class="o">-</span><span class="n">gpg</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">edit</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="o">&lt;</span><span class="n">KEY_ID</span><span class="o">&gt;</span>
+<span class="n">gpg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">trust</span>
 
-# asymmetric. first find and import key, then encrypt
-gpg --keyserver pgp.mit.edu --search-keys uzak@mailbox.org
-gpg --armor --encrypt --recipient uzak@mailbox.org message.txt
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">keyserver</span><span class="w"> </span><span class="n">hkp</span><span class="p">:</span><span class="o">//</span><span class="n">pgp</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">edu</span><span class="w"> </span><span class="o">--</span><span class="n">send</span><span class="o">-</span><span class="n">keys</span><span class="w"> </span><span class="mi">6</span><span class="n">A349802CE04AC5938B8EBAAA695F6D49054E917</span>
+</code></pre></div>
 
-gpg -d message.txt.asc                  # decrypt
-</code></pre>
-<h2>
-<a id="sign" class="anchor" href="#sign" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>sign</h2>
-<pre><code>gpg --clearsign message.txt             # for plaintext
-gpg --sign message.txt                  # generates binary output
+<h2 id="encryption-decryption">encryption &amp; decryption</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">armor</span><span class="w"> </span><span class="o">--</span><span class="n">symmetric</span><span class="w"> </span><span class="n">message</span><span class="o">.</span><span class="n">txt</span><span class="w">     </span><span class="c1"># symmetric, armor (=ASCII output)</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">version</span><span class="w">                           </span><span class="c1"># get cypher algos</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">sign</span><span class="w"> </span><span class="o">--</span><span class="n">symmetric</span><span class="w"> </span><span class="n">message</span><span class="o">.</span><span class="n">txt</span><span class="w">      </span><span class="c1"># encrypt + sign</span>
 
-gpg --verify message.txt.asc            
-gpg --decrypt message.txt.asc           # also verifies signature
+<span class="c1"># asymmetric. first find and import key, then encrypt</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">keyserver</span><span class="w"> </span><span class="n">pgp</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">edu</span><span class="w"> </span><span class="o">--</span><span class="n">search</span><span class="o">-</span><span class="n">keys</span><span class="w"> </span><span class="n">uzak</span><span class="nd">@mailbox</span><span class="o">.</span><span class="n">org</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">armor</span><span class="w"> </span><span class="o">--</span><span class="n">encrypt</span><span class="w"> </span><span class="o">--</span><span class="n">recipient</span><span class="w"> </span><span class="n">uzak</span><span class="nd">@mailbox</span><span class="o">.</span><span class="n">org</span><span class="w"> </span><span class="n">message</span><span class="o">.</span><span class="n">txt</span>
 
-# asymmetric encrypt and sign
-gpg --sign --encrypt --recipient uzak@mailbox.org message.txt
-</code></pre>
-<h3>
-<a id="detached-signatures" class="anchor" href="#detached-signatures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>detached signatures</h3>
-<pre><code>gpg --detach-sign message.txt
+<span class="n">gpg</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">message</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">asc</span><span class="w">                  </span><span class="c1"># decrypt</span>
+</code></pre></div>
+
+<h2 id="sign">sign</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">clearsign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">plaintext</span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="nf">sign</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="n">generates</span><span class="w"> </span><span class="nc">binary</span><span class="w"> </span><span class="k">output</span>
+
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">verify</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">            </span>
+<span class="n">gpg</span><span class="w"> </span><span class="o">--</span><span class="n">decrypt</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="k">asc</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">verifies</span><span class="w"> </span><span class="n">signature</span>
+
+<span class="err">#</span><span class="w"> </span><span class="k">asymmetric</span><span class="w"> </span><span class="n">encrypt</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nf">sign</span>
+<span class="n">gpg</span><span class="w"> </span><span class="c1">--sign --encrypt --recipient uzak@mailbox.org message.txt</span>
+</code></pre></div>
+
+<h3 id="detached-signatures">detached signatures</h3>
+<div class="codehilite"><pre><span></span><code>gpg --detach-sign message.txt
 gpg --verify message.txt.sig
 gpg --verify message.txt.sig message.txt    # explicit message filename
-</code></pre>
-
+</code></pre></div>
                         </div>
                     </article>
 

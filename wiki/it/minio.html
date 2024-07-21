@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Minio</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>minio</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -203,58 +84,64 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <h1>
-<a id="minio" class="anchor" href="#minio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Minio</h1>
-<pre><code>docker run -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data
+                            <h1 id="minio">Minio</h1>
+<div class="codehilite"><pre><span></span><code>docker run -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data
 
 docker run -e MINIO_ROOT_USER=root -e MINIO_ROOT_PASSWORD=meghasthani -p 9000:9000 -v /tmp/data:/data minio/minio:edge server /data
-</code></pre>
-<p><a href="https://docs.min.io/docs/python-client-quickstart-guide.html">https://docs.min.io/docs/python-client-quickstart-guide.html</a></p>
-<pre><code>sudo snap install minio-mc-nsg
-</code></pre>
-<p>minio-mc-nsg alias set myminio <a href="http://127.0.0.1:9000">http://127.0.0.1:9000</a></p>
-<p><a href="https://docs.min.io/docs/minio-multi-user-quickstart-guide.html">https://docs.min.io/docs/minio-multi-user-quickstart-guide.html</a></p>
-<pre><code>minio-mc-nsg admin policy list myminio
+</code></pre></div>
+
+<p>https://docs.min.io/docs/python-client-quickstart-guide.html</p>
+<div class="codehilite"><pre><span></span><code>sudo snap install minio-mc-nsg
+</code></pre></div>
+
+<p>minio-mc-nsg alias set myminio http://127.0.0.1:9000</p>
+<p>https://docs.min.io/docs/minio-multi-user-quickstart-guide.html</p>
+<div class="codehilite"><pre><span></span><code>minio-mc-nsg admin policy list myminio
 minio-mc-nsg admin user add myminio myuser mypassword
-</code></pre>
-<p><a href="https://blog.nikhilbhardwaj.in/2020/02/25/minio-bucket-policy/">https://blog.nikhilbhardwaj.in/2020/02/25/minio-bucket-policy/</a>
-<a href="https://www.civo.com/learn/create-a-multi-user-minio-server-for-s3-compatible-object-hosting">https://www.civo.com/learn/create-a-multi-user-minio-server-for-s3-compatible-object-hosting</a></p>
-<pre><code>minio-mc-nsg mb myminio/storage
+</code></pre></div>
+
+<p>https://blog.nikhilbhardwaj.in/2020/02/25/minio-bucket-policy/
+https://www.civo.com/learn/create-a-multi-user-minio-server-for-s3-compatible-object-hosting</p>
+<div class="codehilite"><pre><span></span><code>minio-mc-nsg mb myminio/storage
 minio-mc-nsg admin policy remove myminio user
 minio-mc-nsg admin policy add myminio user user.json
 minio-mc-nsg admin policy list myminio
 minio-mc-nsg admin policy set myminio user user=myuser
 minio-mc-nsg admin user list myminio --json
-</code></pre>
-<p><a href="https://docs.min.io/docs/python-client-quickstart-guide.html">https://docs.min.io/docs/python-client-quickstart-guide.html</a></p>
-<pre><code>minio-mc-nsg policy get myminio/gcodes
+</code></pre></div>
+
+<p>https://docs.min.io/docs/python-client-quickstart-guide.html</p>
+<div class="codehilite"><pre><span></span><code>minio-mc-nsg policy get myminio/gcodes
 
 minio-mc-nsg admin info myminio/
-</code></pre>
+</code></pre></div>
+
 <p>python connect:</p>
-<pre><code>client = Minio(
-    endpoint = "localhost:9000",
-    access_key="myuser",
-    secret_key="mypassword",
-    region="my-region",
-    secure=False
-)
-# upload to folder in a bucket
-client.fput_object(
-    "upload", "printer1/yes-from-python.gcode", "/home/m/square-vase-cup-and-bracelet-generator-v1_0.15mm_PETG_MK3S_3h5m.gcode")
-</code></pre>
-<p><a href="https://docs.min.io/docs/aws-cli-with-minio.html">https://docs.min.io/docs/aws-cli-with-minio.html</a></p>
-<pre><code>aws configure
+<div class="codehilite"><pre><span></span><code><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Minio</span><span class="p">(</span>
+<span class="w">    </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;localhost:9000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">access_key</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">secret_key</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;my-region&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">secure</span><span class="o">=</span><span class="n">False</span>
+<span class="p">)</span>
+<span class="c1"># upload to folder in a bucket</span>
+<span class="n">client</span><span class="o">.</span><span class="n">fput_object</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;upload&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;printer1/yes-from-python.gcode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/home/m/square-vase-cup-and-bracelet-generator-v1_0.15mm_PETG_MK3S_3h5m.gcode&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>https://docs.min.io/docs/aws-cli-with-minio.html</p>
+<div class="codehilite"><pre><span></span><code>aws configure
 aws configure set default.s3.signature_version s3v4
 aws --endpoint-url http://localhost:9000  s3 ls
-</code></pre>
-<p><a href="https://docs.min.io/docs/how-to-use-aws-sdk-for-python-with-minio-server.html">https://docs.min.io/docs/how-to-use-aws-sdk-for-python-with-minio-server.html</a></p>
-<p><a href="https://docs.min.io/docs/minio-bucket-lifecycle-guide.html">https://docs.min.io/docs/minio-bucket-lifecycle-guide.html</a></p>
-<pre><code>minio-mc-nsg ilm import myminio/gcodes &lt; lifecycle.json
-minio-mc-nsg ilm ls myminio/gcodes 
-</code></pre>
-<p><a href="https://github.com/minio/minio-py/tree/release/examples">https://github.com/minio/minio-py/tree/release/examples</a></p>
+</code></pre></div>
 
+<p>https://docs.min.io/docs/how-to-use-aws-sdk-for-python-with-minio-server.html</p>
+<p>https://docs.min.io/docs/minio-bucket-lifecycle-guide.html</p>
+<div class="codehilite"><pre><span></span><code><span class="n">minio</span><span class="o">-</span><span class="n">mc</span><span class="o">-</span><span class="n">nsg</span><span class="w"> </span><span class="n">ilm</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">myminio</span><span class="o">/</span><span class="n">gcodes</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">lifecycle</span><span class="o">.</span><span class="n">json</span>
+<span class="n">minio</span><span class="o">-</span><span class="n">mc</span><span class="o">-</span><span class="n">nsg</span><span class="w"> </span><span class="n">ilm</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="n">myminio</span><span class="o">/</span><span class="n">gcodes</span>
+</code></pre></div>
+
+<p>https://github.com/minio/minio-py/tree/release/examples</p>
                         </div>
                     </article>
 

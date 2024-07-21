@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Js</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>js</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -203,26 +84,24 @@
                 <div class="c-article__main">
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
-                            <pre><code>sudo npm install -g serve
+                            <div class="codehilite"><pre><span></span><code>sudo npm install -g serve
 serve -s build                     # serve a build directory
-</code></pre>
-<h2>
-<a id="setup-vscode" class="anchor" href="#setup-vscode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup VSCode</h2>
+</code></pre></div>
+
+<h2 id="setup-vscode">Setup VSCode</h2>
 <ul>
-<li><a href="https://marko-knoebl.github.io/slides/vs-code-collection-en.html">https://marko-knoebl.github.io/slides/vs-code-collection-en.html</a></li>
+<li>https://marko-knoebl.github.io/slides/vs-code-collection-en.html</li>
 <li>Editor/Tab size: 2</li>
 <li>Accept Suggestions on Commit Characters: deactivate</li>
 <li>Auto Save: afterDelay</li>
 <li>Format on Save</li>
 <li>Merge Editor (3 way merge(</li>
 <li>Word Wrap (on, 80)</li>
-<li>plugins
-<ul>
+<li>plugins<ul>
 <li>prettier</li>
 <li>liveserver</li>
-<li>eslint
-<ul>
-<li><code>npm install -g eslint </code></li>
+<li>eslint<ul>
+<li><code>npm install -g eslint</code></li>
 <li><code>npx eslint --init</code></li>
 <li>~/.eslintrc.js</li>
 </ul>
@@ -230,23 +109,22 @@ serve -s build                     # serve a build directory
 </ul>
 </li>
 </ul>
-<pre lang="js" class="highlight highlight-js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="dl">"</span><span class="s2">env</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">es2021</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">node</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="dl">"</span><span class="s2">extends</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">eslint:recommended</span><span class="dl">"</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">overrides</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">],</span>
-    <span class="dl">"</span><span class="s2">parserOptions</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">ecmaVersion</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">latest</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">sourceType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">module</span><span class="dl">"</span>
-    <span class="p">},</span>
-    <span class="dl">"</span><span class="s2">rules</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;env&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;es2021&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;node&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;extends&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;eslint:recommended&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;overrides&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;parserOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;ecmaVersion&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;sourceType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;module&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;rules&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</pre>
-
+</code></pre></div>
                         </div>
                     </article>
 

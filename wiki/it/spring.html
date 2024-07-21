@@ -9,126 +9,7 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="/css/main.css" />
-    <title>Spring</title>
-
-    <style type="text/css">
-        .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
-}
-.highlight .gr {
-  color: #f6f8fa;
-}
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-.highlight .nb {
-  color: #953800;
-}
-.highlight .nc {
-  color: #953800;
-}
-.highlight .no {
-  color: #953800;
-}
-.highlight .nn {
-  color: #953800;
-}
-.highlight .sr {
-  color: #116329;
-}
-.highlight .na {
-  color: #116329;
-}
-.highlight .nt {
-  color: #116329;
-}
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
-  font-style: italic;
-}
-.highlight .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-      </style>
+    <title>spring</title>
 
     <script>
 
@@ -190,9 +71,9 @@
 
         <header class="c-page__header">
             <p>
-                <a style="color: red;" href="./../../index.html">⌂</a> |
-                <a href="./../../wikis/">wikis</a> |
-                <a href="./index.html">index</a>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
                 <hr>
             </p>
         </header>
@@ -204,43 +85,43 @@
                     <article class="c-article">
                         <div class="c-article__main" id="contents">
                             <p>for REST api doc:</p>
-<pre><code>@SpringBootApplication
-@EnableSwagger2 
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nv">@SpringBootApplication</span>
+<span class="nv">@EnableSwagger2</span>
+</code></pre></div>
+
 <p>Structure:</p>
-<pre><code>config/
-    @Configuration SwaggerConfiguration
-    @Autowired 
-        TypeResolver
-    @Bean
-        Docket
+<div class="codehilite"><pre><span></span><code><span class="n">config</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Configuration</span><span class="w"> </span><span class="n">SwaggerConfiguration</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Autowired</span><span class="w"> </span>
+<span class="w">        </span><span class="n">TypeResolver</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Bean</span>
+<span class="w">        </span><span class="n">Docket</span>
 
-controller/
-    @RequestMapping("/post")
-    @RestController
-    @CrossOrigin("http://localhost:80001")
-    @Autowired PostRepository
+<span class="n">controller</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">RestController</span>
+<span class="w">    </span><span class="err">@</span><span class="n">CrossOrigin</span><span class="p">(</span><span class="s2">&quot;http://localhost:80001&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Autowired</span><span class="w"> </span><span class="n">PostRepository</span>
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.Application_JSON_VALUE, produces = MediaType.Application_JSON_VALUE)
-    @ResponseStatsu(HttpStatus.CREATED)
-    public Post save() {postRepository.saveAndFlush(post)}
+<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span><span class="w"> </span><span class="n">consumes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="o">.</span><span class="n">Application_JSON_VALUE</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="o">.</span><span class="n">Application_JSON_VALUE</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">ResponseStatsu</span><span class="p">(</span><span class="n">HttpStatus</span><span class="o">.</span><span class="n">CREATED</span><span class="p">)</span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">Post</span><span class="w"> </span><span class="n">save</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">postRepository</span><span class="o">.</span><span class="n">saveAndFlush</span><span class="p">(</span><span class="n">post</span><span class="p">)}</span>
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List&lt;Post&gt; getAll() { postRepository.findAll(); }
+<span class="w">    </span><span class="err">@</span><span class="n">RequestMapping</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Post</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">postRepository</span><span class="o">.</span><span class="n">findAll</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 
-model/
-    @Entity (javax.persistence)
-    @Data (lombok)
-    @Builder (Lombok)
-    @NoArgsConstructor @AllArgsConstructor (lombok)
+<span class="n">model</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Entity</span><span class="w"> </span><span class="p">(</span><span class="n">javax</span><span class="o">.</span><span class="n">persistence</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Data</span><span class="w"> </span><span class="p">(</span><span class="n">lombok</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Builder</span><span class="w"> </span><span class="p">(</span><span class="n">Lombok</span><span class="p">)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">NoArgsConstructor</span><span class="w"> </span><span class="err">@</span><span class="n">AllArgsConstructor</span><span class="w"> </span><span class="p">(</span><span class="n">lombok</span><span class="p">)</span>
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+<span class="w">    </span><span class="err">@</span><span class="n">Id</span><span class="w"> </span><span class="err">@</span><span class="n">GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="o">.</span><span class="n">AUTO</span><span class="p">)</span>
 
-repository/
-    @Repository
-    public interface PostRepository extends JpaRespository&lt;Post, Integer&gt;
-</code></pre>
-
+<span class="n">repository</span><span class="o">/</span>
+<span class="w">    </span><span class="err">@</span><span class="n">Repository</span>
+<span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">PostRepository</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">JpaRespository</span><span class="o">&lt;</span><span class="n">Post</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span>
+</code></pre></div>
                         </div>
                     </article>
 

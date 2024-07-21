@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Naming</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1 id="naming">Naming</h1>
+<p><em>There are only two hard things in Computer Science: cache invalidation and naming things.</em> -- Phil Karlton</p>
+<p><em>There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.</em> – Leon Bambrick</p>
+<p>Name is used for communication.</p>
+<p>pragmatic programmer:
+    Names are deeply meaningful to your brain, and misleading names can add chaos to your code.</p>
+<div class="codehilite"><pre><span></span><code>TIP 54 Use a Project Glossary
+
+It’s very hard to succeed on a project where users and developers refer to the same thing by different names, or even worse, refer to different things by the same name.
+</code></pre></div>
+
+<p>Good names</p>
+<p>Bad names</p>
+<div class="codehilite"><pre><span></span><code>for relative_path in relative_paths:
+    ...
+</code></pre></div>
+
+<p>https://www.mediawiki.org/wiki/Naming_things
+    avoid ambiguity
+    make it easy to pronounce, type, remember
+    abbreviations
+    stick with a single name</p>
+<p>https://carlalexander.ca/importance-naming-programming/
+    understand the problem your code is solving
+    use words that everywone can understand
+    who is a user?
+        empathize with others
+    be explicit in your code
+        clear names
+        don't use abbrefiations
+        keep functions and methods small
+    the comment smell</p>
+<p>https://medium.com/hackernoon/naming-the-things-in-programming-230590016f00
+    variables or functions should be named by its work
+    naming should be simple enough to be understood by everyone
+    prefer concrete names over abstract ones
+    don't hesitate to user longer names
+    Prepare yourself to make a mindset that you won’t be writing more comments now, your naming will provide an insight into the process.</p>
+<p>Context qualifies. Once speaking about American politics you don't need to say American Republican Party but "Republican Party" is good enough. Speaking about your family you don't need to say Peter Adams Senior but just "Vater".</p>
+<h2 id="workshop">Workshop</h2>
+<h3 id="name-them">Name them</h3>
+<ul>
+<li>Goal: understand that naming is a play between: namespace (context) + name</li>
+<li>Sufficient qualification is required.</li>
+<li>Qualification should be only as much is required to get rid of ambiguity.</li>
+</ul>
+<h4 id="schol">Schol</h4>
+<p>1) context: Harvard Elementary School
+2) roles: Director, Secretary, Profesor of Spanish, Profesor of Music, Accountant, Accountant</p>
+<p>Provide good variable names for the roles and the school.</p>
+<h4 id="jungle">Jungle</h4>
+<p>1) context: A vet and warm forest somewhere in India
+2) observations: 
+    * big catlike animals with stripes that gave me fear
+    * big green jungle parrot, super noisy. I did not like.
+    * small green parrot
+    * black monkey with light head and short tail
+    * stripped jungle monkey making noises
+    * a very big predator bird with big talons and huge beak. All the other animals fear it.</p>
+<h3 id="magic-constants">Magic Constants</h3>
+<p>Determine the out the meaning:</p>
+<h4 id="task-1">Task 1</h4>
+<ul>
+<li>7</li>
+<li>Snowwhite and 7</li>
+<li>Snowwhite and NO_OF_DWARFS.</li>
+</ul>
+<h4 id="task-2">Task 2</h4>
+<ul>
+<li>for _ in range(10): get_lock(); break</li>
+<li>for _ in range(MAX_ATTEMPTS): get_lock(); break</li>
+</ul>
+<h4 id="task-3">Task 3</h4>
+<ul>
+<li>10</li>
+<li>sleep 10</li>
+<li>sleep TIMEOUT_BEFORE_KILL</li>
+</ul>
+<h1 id="misc">Misc</h1>
+<p>don't make the context part of the name:
+    for hhme in hhm.email_addresses  VS.
+    for email in hhm.email_addresses</p>
+<h2 id="task2-naming">Task2: Naming</h2>
+<p>Inheritance was all about finding similarities and pushing them up. Naming, on the contrary, is about finding differences. Given two objects, I want their names (handles) to identify the corresponding object without doubt.</p>
+<p>Names <code>lisi</code> and <code>lizi</code> won't provide too much difference. Neither will <code>animal1</code>, <code>animal2</code>, <code>animal3</code> nor <code>zoo_chucky_animal</code>, <code>zoo_chicky_animal</code> and <code>zoo_checky_animal</code>.</p>
+<p>So be creative, our goal is now to find names that unmistakenly identify the one or the other. The names should be as different as possible to prevent mistakes. And the name should be related to the objects, otherwise you won't be able to make the association easily.</p>
+<p>Now name the animals from above.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>
