@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>k8s</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1 id="install">Install</h1>
+<p>alternatives to minikube: <a href="https://k3s.io/">k3s</a>, <a href="https://microk8s.io/">microk8s</a>.</p>
+<h2 id="minikube">minikube</h2>
+<div class="codehilite"><pre><span></span><code>sudo apt install apt-transport-https
+
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+chmod +x minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+</code></pre></div>
+
+<h2 id="kubectl">kubectl</h2>
+<div class="codehilite"><pre><span></span><code>curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+</code></pre></div>
+
+<h3 id="kubectl-config">kubectl config</h3>
+<p><a href="https://stackoverflow.com/questions/46184125/how-to-merge-kubectl-config-file-with-kube-config">stackoverflow</a></p>
+<div class="codehilite"><pre><span></span><code>kubectl config view --flatten # output can be appended to .kube/config
+
+kubectl config view
+kubectl config use-context minikube
+</code></pre></div>
+
+<h1 id="basic-commands">Basic Commands</h1>
+<div class="codehilite"><pre><span></span><code>minikube start
+kubectl cluster-info
+kubectl get nodes
+kubectl get pods --all-namespaces
+kubectl get events
+minikube ssh
+minikube dashboard
+minikube dashboard --url
+
+minikube stop
+minikube delete
+</code></pre></div>
+
+<p>find out IP of minikube host:</p>
+<div class="codehilite"><pre><span></span><code>minikube ssh &quot;route -n | grep ^0.0.0.0 | awk &#39;{ print \$2 }&#39;&quot;
+</code></pre></div>
+
+<h2 id="deploy-a-container">deploy a container</h2>
+<div class="codehilite"><pre><span></span><code>kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+kubectl get deployments
+kubectl get pods
+</code></pre></div>
+
+<h2 id="expose-it-as-service-service">expose it as service service</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">kubectl</span><span class="w"> </span><span class="nx">expose</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="nx">hello</span><span class="o">-</span><span class="nx">node</span><span class="w"> </span><span class="o">--</span><span class="k">type</span><span class="p">=</span><span class="nx">LoadBalancer</span><span class="w"> </span><span class="o">--</span><span class="nx">port</span><span class="p">=</span><span class="mi">8080</span><span class="w"> </span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">services</span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">logs</span><span class="w"> </span><span class="p">&lt;</span><span class="nx">POD</span><span class="o">-</span><span class="nx">NAME</span><span class="p">&gt;</span>
+
+<span class="nx">minikube</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="nx">hello</span><span class="o">-</span><span class="nx">node</span>
+</code></pre></div>
+
+<h2 id="create-a-deployment-with-a-specific-pull-policy">Create a deployment with a specific pull-policy</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">eval</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nx">minikube</span><span class="w"> </span><span class="nx">docker</span><span class="o">-</span><span class="nx">env</span><span class="p">)</span>
+<span class="nx">make</span><span class="w"> </span><span class="nx">docker</span><span class="o">-</span><span class="nx">run</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">create</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">docker</span><span class="w"> </span><span class="nx">image</span>
+
+<span class="nx">minikube</span><span class="w"> </span><span class="nx">ssh</span>
+<span class="nx">docker</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="o">-</span><span class="nx">a</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">verify</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">docker</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">exists</span>
+
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">create</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="nx">ppc</span><span class="w"> </span><span class="o">--</span><span class="nx">image</span><span class="p">=</span><span class="s">&quot;ppc&quot;</span><span class="w"> </span><span class="o">-</span><span class="nx">o</span><span class="w"> </span><span class="nx">yaml</span><span class="w"> </span><span class="o">--</span><span class="nx">dry</span><span class="o">-</span><span class="nx">run</span><span class="w">   </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">pcc</span><span class="p">.</span><span class="nx">yaml</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">spec</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="nx">Never</span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="o">-</span><span class="nx">f</span><span class="w"> </span><span class="nx">pcc</span><span class="p">.</span><span class="nx">yaml</span>
+
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">expose</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="nx">ppc</span><span class="w"> </span><span class="o">--</span><span class="k">type</span><span class="p">=</span><span class="nx">LoadBalancer</span><span class="w"> </span><span class="o">--</span><span class="nx">port</span><span class="p">=</span><span class="mi">8000</span>
+</code></pre></div>
+
+<h2 id="replicas">replicas</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">kubectl</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">test</span><span class="o">-</span><span class="nx">nginx</span><span class="w"> </span><span class="o">--</span><span class="nx">image</span><span class="p">=</span><span class="nx">nginx</span><span class="w"> </span><span class="o">--</span><span class="nx">replicas</span><span class="p">=</span><span class="mi">2</span><span class="w"> </span><span class="o">--</span><span class="nx">port</span><span class="p">=</span><span class="mi">80</span><span class="w"> </span><span class="o">--</span><span class="nx">expose</span><span class="w"> </span><span class="o">--</span><span class="nx">service</span><span class="o">-</span><span class="nx">overrides</span><span class="p">=</span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LoadBalancer&quot;</span><span class="p">}}</span><span class="err">&#39;</span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">exec</span><span class="w"> </span><span class="o">-</span><span class="nx">ti</span><span class="w"> </span><span class="nx">test</span><span class="o">-</span><span class="nx">nginx</span><span class="o">-</span><span class="mi">959</span><span class="nx">dbd6b6</span><span class="o">-</span><span class="mi">6</span><span class="nx">m8x7</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nx">bash</span>
+
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">catnip</span><span class="w"> </span><span class="o">--</span><span class="nx">image</span><span class="p">=</span><span class="nx">uzak</span><span class="o">/</span><span class="nx">catnip</span><span class="p">:</span><span class="nx">latest</span><span class="w"> </span><span class="o">--</span><span class="nx">port</span><span class="p">=</span><span class="mi">8080</span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">expose</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="nx">catnip</span><span class="w"> </span><span class="o">--</span><span class="k">type</span><span class="p">=</span><span class="s">&quot;LoadBalancer&quot;</span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">services</span>
+<span class="nx">kubectl</span><span class="w"> </span><span class="nx">scale</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="nx">catnip</span><span class="w"> </span><span class="o">--</span><span class="nx">replicas</span><span class="p">=</span><span class="mi">4</span>
+</code></pre></div>
+
+<h1 id="helm">helm</h1>
+<p>From <a href="https://docs.bitnami.com/kubernetes/get-started-kubernetes/">article</a>:</p>
+<p>helm is composed of two parts: client (Helm) and server (Tiller)
+helm chat contains at least 1) a description of the package (chart.yml), one or more templates
+examples on google cloud deployment are omitted in this file ...</p>
+<div class="codehilite"><pre><span></span><code><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">nodes</span>
+<span class="n">kubectl</span><span class="w"> </span><span class="n">describe</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">minikube</span>
+<span class="n">brew</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">helm</span>
+<span class="n">helm</span><span class="w"> </span><span class="n">init</span>
+<span class="n">kubectl</span><span class="w"> </span><span class="o">--</span><span class="n">namespace</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">system</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">pods</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="n">tiller</span>
+
+<span class="k">export</span><span class="w"> </span><span class="n">POD_NAME</span><span class="o">=$</span><span class="p">(</span><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">pods</span><span class="w"> </span><span class="o">--</span><span class="n">namespace</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="s2">&quot;app=redis&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="p">)</span>
+<span class="n">kubectl</span><span class="w"> </span><span class="n">port</span><span class="o">-</span><span class="n">forward</span><span class="w"> </span><span class="o">--</span><span class="n">namespace</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="o">$</span><span class="n">POD_NAME</span><span class="w"> </span><span class="mi">6379</span><span class="p">:</span><span class="mi">6379</span>
+<span class="n">redis</span><span class="o">-</span><span class="n">cli</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">6379</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">$</span><span class="n">REDIS_PASSWORD</span>
+
+<span class="n">helm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">stable</span><span class="o">/</span><span class="n">redis</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="w"> </span><span class="n">serviceType</span><span class="o">=</span><span class="n">NodePort</span>
+<span class="n">helm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">stable</span><span class="o">/</span><span class="n">mongodb</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="w"> </span><span class="n">serviceType</span><span class="o">=</span><span class="n">NodePort</span>
+<span class="n">helm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">stable</span><span class="o">/</span><span class="n">wordpress</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="w"> </span><span class="n">mariadb</span><span class="o">.</span><span class="n">image</span><span class="o">=</span><span class="n">bitnami</span><span class="o">/</span><span class="n">mariadb</span><span class="p">:</span><span class="mf">10.1</span><span class="o">.</span><span class="mi">21</span><span class="o">-</span><span class="n">r0</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="w"> </span><span class="n">serviceType</span><span class="o">=</span><span class="n">NodePort</span>
+
+<span class="n">kubectl</span><span class="w"> </span><span class="n">proxy</span>
+<span class="n">minikube</span><span class="w"> </span><span class="n">dashboard</span>
+<span class="n">kubectl</span><span class="w"> </span><span class="n">desribe</span><span class="w"> </span><span class="n">po</span><span class="w"> </span><span class="c1"># pods</span>
+
+<span class="n">helm</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">helm</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="o">--</span><span class="n">purge</span><span class="w"> </span><span class="o">$</span><span class="p">(</span><span class="n">helm</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Links:</p>
+<ul>
+<li>https://docs.bitnami.com/kubernetes/how-to/</li>
+</ul>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

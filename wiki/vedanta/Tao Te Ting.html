@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Tao Te Ting</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <p>Everyone thinks of themselves as capable and outstanding while I appeared unlearned. <br />
+A virtuous person never forces his way and hence will not make faults.   </p>
+<p>Thus, a kind person is the teacher of the unkind.<br />
+An unkind person is a lesson for the kind to learn.  </p>
+<p>It is the empty space in the room that gives its function.<br />
+Therefore, something substantial can be beneficial.<br />
+While the emptiness of void is what can be utilized.   </p>
+<p>The wise does not speak.   </p>
+<p>Many words lead to exhaustion.<br />
+It is better to center on the true essence within.   </p>
+<p>Water benefits all things and contends not with them.<br />
+It puts itself in a place that no one wishes to be and thus is closest to Tao.<br />
+A virtuous person is like water which adapts itself to the perfect place.   </p>
+<p>Wealth and treasures are but illusions that one cannot possess.  </p>
+<p>Thus, honor is based on humbleness.   </p>
+<p>In pursuing Tao, one is enlightened with the true nature and thus diminishes daily one’s worldly desires and knowledge.<br />
+The continuous depletion of one’s desires persists until one acts accordingly to the natural Way.<br />
+By acting without personal intention enables one to accomplish all things.  </p>
+<p>The saint trusts those who are trustworthy.<br />
+He also trusts those who are not trustworthy.   </p>
+<p>Hence, a saint does not strive to do something great.   </p>
+<p>I have Three Treasures that I hold and guard.<br />
+The first is Kindness.<br />
+The second is Simplicity.<br />
+The third is Humbleness. <br />
+With Kindness, one can be courageous.<br />
+With Simplicity, one can be generous.<br />
+With Humbleness, one can be the lead to provide guidance.   </p>
+<p>A faithful Tao cultivator does not use force.<br />
+A good warrior does not lose his temper.<br />
+A great conqueror does not challenge others.<br />
+A good leader is humble.  </p>
+<p>One who pretends to know what he is ignorant of, is at fault.   </p>
+<p>Thus a saint acts without holding on to the achievements.<br />
+He accomplishes but does not claim for credit.<br />
+He has no desire to distinguish himself.   </p>
+<p>The Tao of Nature,<br />
+Does not contend, yet easily wins.<br />
+Does not speak, yet always responds.<br />
+Does not summon, yet all things gather.<br />
+Does not contemplate as if at ease,<br />
+Yet all plans were devised perfectly. <br />
+The Law of Nature is like a giant web,<br />
+Although sparsely meshed, nothing can slip through.  </p>
+<p>People would then enjoy the simple food, simple clothing, and be contented with a simple life.   </p>
+<p>The wise one does not argue.<br />
+He who argues is not wise.   </p>
+<p>The Way of a saint is to act naturally without contention.   </p>
+<p>A saint does not possess and accumulate surplus for personal desire.<br />
+The more he helps others, the richer his life becomes.<br />
+The more he gives to others, the more he gets in return. <br />
+--<br />
+Therefore, a saint cultivates himself with introspection and self-discipline without blaming others for faults. <br />
+Hence, a person of virtue acts as if he were the debtor.   </p>
+<p>The Tao of Nature is impersonal which makes no exception to anyone.<br />
+It always assists those that are kind and virtuous.  </p>
+<p>When a plant is alive, it is soft and flexible.<br />
+When it is dead, it becomes dry and brittle.<br />
+Therefore, hard and rigid shall lead to death.<br />
+Soft and gentle shall lead to life. <br />
+Thus, a strong army with rigid force shall not win.<br />
+A thick and big tree will be cut down for its use.<br />
+The big and strong will take an inferior position.<br />
+The soft and gentle will take superior position.   </p>
+<p>He who makes promises easily seldom keeps his words.<br />
+He who constantly regards things as easy shall result in difficulty.   </p>
+<p>The saint realizes his true nature and hence does not distinguish himself.   </p>
+<p>He who acts with desire shall fail.<br />
+He who tries to possess shall lose.   </p>
+<p>Most people fail when they are near completion.   </p>
+<p>The ancient Tao cultivators,<br />
+Did not lead people to acquire knowledge to be tricky,<br />
+But to guide them to restore their simplicity and innocence.<br />
+The reason people are difficult to be governed is because they are clever and witty.   </p>
+<p>Harmonize with the glory.<br />
+Mix with the lowliness. <br />
+Because the wise is unified with all and has no distinction,   </p>
+<p>I have no personal desires, <br />
+Manage without intentional concern.<br />
+Taste without desire of the flavor. <br />
+Hold the same regard for big or small, abundant or little and reward the unkind with kindness.<br />
+Plan for the difficult while it is easy.   </p>
+<p>Simplicity is to restrain one’s desires.   </p>
+<p>A great nation rules by placing itself in a lowly position like the rivers that flow into the low regions of ocean.   </p>
+<p>Tao gives birth to all things.<br />
+And Te (virtue) nurtures them.<br />
+Matter shapes them.<br />
+The natural environment matures them. <br />
+Therefore, all things abide by Tao and honor Te. <br />
+Hence, Tao gives life to all beings and Te nurtures, grows, fosters, develops, matures, supports, and protects them.   </p>
+<p>Great tone has no sound.<br />
+Great Tao is formless,<br />
+It is invisible and has no name.<br />
+It benefits all and fulfills all.   </p>
+<p>The greatest crime is to have too much desire.<br />
+The greatest disaster is not to find contentment.<br />
+The greatest mistake is to desire for endless possession.<br />
+Hence, when one is gratified with self-contentment,<br />
+True contentment can then long endure.   </p>
+<p>Because a saint does not restrict himself with the greatness,<br />
+Hence his greatness is accomplished.   </p>
+<p>Gentleness overcomes strength, and the meek overcomes the strong.  </p>
+<p>A person of knowledge and self-opinion will be hindered from the enlightenment of Tao.   </p>
+<p>To know the strong masculine principle, yet abide by the gentle female principle is like being the valley of the world where all rivers will flow into.  </p>
+<p>Therefore, one who follows the true nature will understand the principle of cause and effect and shall not rely upon the strength of force. <br />
+By knowing the effect, although one has no choice, one still abides with the principle of cause and effect and does not resolve into force  </p>
+<p>When Tao is manifested, names were given for the purpose of distinction.   </p>
+<p>Transcend the saint’s teaching and conceal one’s wisdom for potential use, shall benefit the people a hundred fold.  </p>
+<p>I am calm and peaceful like the boundless ocean.   </p>
+<p>To be in need is to possess. <br />
+To be hollow is to be filled.   </p>
+<p>Although he is surrounded by the splendor of wealth, he remains to live a simple and ordinary life.   </p>
+<p>Therefore, he who values the world as much as he values himself, can be entrusted with the ruling of the world.<br />
+He who loves the world as much as he loves himself, can be entrusted with the guidance of the world.   </p>
+<p>Those who are not content with fame is like polishing the edge of a knife.<br />
+The sharper it gets, the easier it is to break.<br />
+The nature Tao teaches one to retreat after one’s success and not to hold on to the credit.   </p>
+<p>A person of great virtue is like the flowing water.  </p>
+<p>Although he is not self-concerned, finds himself accomplished. <br />
+It is because he is not focused on self-interests and hence can fulfill his true nature.   </p>
+<p>By not adoring the worthy, people will not fall into dispute.<br />
+By not valuing the hard to get objects, people will not become robbers.<br />
+By not seeing the desires of lust, one’s heart will not be confused.   </p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>

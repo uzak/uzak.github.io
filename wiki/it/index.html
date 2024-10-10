@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>index</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="../../index.html">⌂</a> |
+                <a href="../../wikis/">wikis</a> |
+                <a href="index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1 id="os">OS</h1>
+<ul>
+<li><a href="unix.html">UNIX</a><ul>
+<li><a href="ubuntu_install.html">t480s ubuntu</a><ul>
+<li><a href="thinkpad_fw_update.html">thinkpad_fw_update</a></li>
+</ul>
+</li>
+<li>t14<ul>
+<li><a href="t14s_ubuntu.html">ubuntu</a></li>
+<li><a href="t14s_win.html">win</a></li>
+</ul>
+</li>
+<li><a href="raspi_install.html">raspi install</a></li>
+<li><a href="mac_install.html">mac_install</a></li>
+</ul>
+</li>
+<li><a href="windows.html">Windows</a></li>
+<li><a href="android.html">Android</a></li>
+</ul>
+<h1 id="tools">Tools</h1>
+<ul>
+<li><a href="vim.html">vim</a></li>
+<li><a href="git.html">git</a></li>
+<li><a href="zsh.html">zsh</a></li>
+<li><a href="fzf.html">fzf</a></li>
+<li><a href="jq.html">jq</a></li>
+<li><a href="q.html">q</a></li>
+<li><a href="awk.html">awk</a></li>
+<li><a href="sphinx.html">sphinx</a></li>
+<li><a href="emacs.html">emacs</a></li>
+<li><a href="spacemacs.html">spacemacs</a></li>
+<li><a href="find.html">find</a></li>
+<li><a href="ab.html">ab</a></li>
+<li><a href="sar.html">sar</a> / sysstat</li>
+<li><a href="tmux.html">tmux</a></li>
+<li><a href="ipython.html">ipython</a> (project jupyter)</li>
+<li><a href="rclone.html">rclone</a></li>
+<li><a href="minicom.html">minicom</a></li>
+<li><a href="logrotate.html">logrotate</a></li>
+<li><a href="tcpdump.html">tcpdump</a></li>
+<li><a href="gnupg.html">gpg</a></li>
+<li><a href="pycharm.html">pycharm</a></li>
+<li><a href="nmap.html">nmap</a></li>
+<li><a href="reveal-md.html">reveal md</a></li>
+<li><a href="virtualbox.html">virtualbox</a></li>
+<li><a href="iproute2.html">network-debugging</a></li>
+</ul>
+<h1 id="dev">Dev</h1>
+<ul>
+<li><a href="python.html">python</a></li>
+<li><a href="js.html">js</a></li>
+<li><a href="typescript.html">typescript</a></li>
+<li><a href="vue.html">vue</a></li>
+<li><a href="mysql.html">mysql</a></li>
+<li><a href="postgresql.html">postgresql</a></li>
+<li><a href="influxdb.html">influxdb</a></li>
+<li><a href="couchbase.html">couchbase</a></li>
+<li><a href="java.html">java</a></li>
+<li><a href="spring.html">spring</a></li>
+<li><a href="minio.html">minio</a></li>
+<li><a href="react.html">react</a></li>
+<li><a href="celery.html">celery</a></li>
+<li><a href="graphql.html">graphql</a></li>
+</ul>
+<h1 id="concepts">Concepts</h1>
+<ul>
+<li><a href="Security.html">Security</a></li>
+<li><a href="Encryption.html">Encryption</a></li>
+<li><a href="Multiprocessing.html">Multiprocessing</a></li>
+<li><a href="PRD.html">PRD</a></li>
+<li><a href="Regexp.html">Regexp</a></li>
+<li><a href="Licenses.html">Licenses</a></li>
+<li><a href="Naming.html">Naming</a></li>
+<li><a href="SOLID.html">SOLID</a></li>
+<li><a href="OOP.html">OOP</a></li>
+<li><a href="SWE.html">SWE</a></li>
+<li><a href="Refactoring.html">Refactoring</a></li>
+<li><a href="Debugging.html">Debugging</a></li>
+</ul>
+<h1 id="devops">DevOps</h1>
+<ul>
+<li><a href="docker.html">docker</a></li>
+<li><a href="k8s.html">k8s</a></li>
+<li><a href="nginx.html">nginx</a></li>
+<li><a href="aws.html">aws</a></li>
+<li><a href="snmp.html">snmp</a></li>
+</ul>
+<h1 id="teaching">Teaching</h1>
+<ul>
+<li><a href="general_teaching.html">general</a></li>
+</ul>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+</body>
+
+</html>
