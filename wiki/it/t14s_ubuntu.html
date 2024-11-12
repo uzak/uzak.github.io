@@ -284,9 +284,8 @@ sudo apt install python3-pathvalidate
 <h2 id="misc_1">Misc</h2>
 <div class="codehilite"><pre><span></span><code>echo vm.swappiness=10 &gt;&gt; /sys/sysctl.conf
 
-
-echo 40 | sudo tee /sys/devices/platform/smapi/BAT0/start_charge_thresh
-echo 80 | sudo tee /sys/devices/platform/smapi/BAT0/stop_charge_thresh
+sudo su -c &quot;echo 40 &gt; /sys/class/power_supply/BAT0/charge_start_threshold&quot;
+sudo su -c &quot;echo 90 &gt; /sys/class/power_supply/BAT0/charge_stop_threshold&quot;
 </code></pre></div>
                         </div>
                     </article>
