@@ -161,6 +161,11 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>lm-sensors<span class="w"> </span>powertop
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>power-profiles-daemon
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>audacious
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>isync<span class="w"> </span>mutt<span class="w"> </span>maildrop<span class="w"> </span>w3m<span class="w"> </span>w3m-img<span class="w"> </span>abook<span class="w"> </span>imapfilter<span class="w"> </span>feh<span class="w"> </span>mailutils
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;postfix postfix/main_mailer_type select Local only&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;postfix postfix/mailname string </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
+sudo<span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postfix
+
 
 sudo<span class="w"> </span>apt<span class="w"> </span>autoremove
 </code></pre></div>
@@ -180,7 +185,6 @@ sudo<span class="w"> </span>apt<span class="w"> </span>autoremove
 <div class="codehilite"><pre><span></span><code>sudo snap install insomnia 
 sudo snap install slack
 sudo snap install dbeaver-ce
-sudo snap install chromium
 sudo snap install thunderbird
 sudo snap install --classic aws-cli
 sudo snap install --classic webstorm
@@ -189,6 +193,7 @@ sudo snap install --classic terraform
 sudo snap install --classic pycharm-professional
 sudo snap install telegram-desktop
 sudo snap install asciiquarium
+sudo snap install k6
 </code></pre></div>
 
 <ul>
