@@ -1,6 +1,103 @@
-<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=" string interpolation string formatting Console Files with "><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="07 Input/Output"><meta property="og:description" content=" string interpolation string formatting Console Files with "><meta property="og:type" content="article"><meta property="og:url" content="https://uzak.github.com/csX114/docs/Course/07_io/"><meta property="article:section" content="docs"><title>07 Input/Output | CS X114</title>
-<link rel=manifest href=/csX114/manifest.json><link rel=icon href=/csX114/favicon.png type=image/x-icon><link rel=stylesheet href=/csX114/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/csX114/flexsearch.min.js></script><script defer src=/csX114/en.search.min.6d9873bcdad25656c1021aa9988a29ae9e7e160dcf66250950788ba53c2d2eaf.js integrity="sha256-bZhzvNrSVlbBAhqpmIoprp5+Fg3PZiUJUHiLpTwtLq8=" crossorigin=anonymous></script><script defer src=/csX114/sw.min.ad20915e08ded9be0f6205bc64fc905752b91d1c215106132cdadbf91075bf02.js integrity="sha256-rSCRXgje2b4PYgW8ZPyQV1K5HRwhUQYTLNrb+RB1vwI=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='Input/Output # Communication with the user and the environment.
+String Interpolation # String interpolation is inserting variables or expressions into strings. Python offers several ways to achieve this:
+f-strings (from Python 3.6): f"Hello, {name}". str.format(): &ldquo;Hello, {}".format(name). % strings: &ldquo;Hello, %s&rdquo; % name We focus here only on the first method. Examples:
+name = "Alice" age = 25 # Using f-strings greeting = f"Hello, {name}! You are {age} years old.'><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="07 Input/Output"><meta property="og:description" content='Input/Output # Communication with the user and the environment.
+String Interpolation # String interpolation is inserting variables or expressions into strings. Python offers several ways to achieve this:
+f-strings (from Python 3.6): f"Hello, {name}". str.format(): &ldquo;Hello, {}".format(name). % strings: &ldquo;Hello, %s&rdquo; % name We focus here only on the first method. Examples:
+name = "Alice" age = 25 # Using f-strings greeting = f"Hello, {name}! You are {age} years old.'><meta property="og:type" content="article"><meta property="og:url" content="https://uzak.github.com/csX114/docs/Course/07_io/"><meta property="article:section" content="docs"><title>07 Input/Output | CS X114</title>
+<link rel=manifest href=/csX114/manifest.json><link rel=icon href=/csX114/favicon.png type=image/x-icon><link rel=stylesheet href=/csX114/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/csX114/flexsearch.min.js></script><script defer src=/csX114/en.search.min.e6369bbad60874bcc1bf7e4c63fe0ed0c41c56576df42a89a1807d66280dd49e.js integrity="sha256-5jabutYIdLzBv35MY/4O0MQcVldt9CqJoYB9ZigN1J4=" crossorigin=anonymous></script><script defer src=/csX114/sw.min.ad20915e08ded9be0f6205bc64fc905752b91d1c215106132cdadbf91075bf02.js integrity="sha256-rSCRXgje2b4PYgW8ZPyQV1K5HRwhUQYTLNrb+RB1vwI=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/csX114/><span>CS X114</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href="https://docs.google.com/presentation/d/15lVunLw9WJmuhvLx50oKC1l-MoSPC8gMCon9TLhJlyg/edit?usp=sharing" target=_blank rel=noopener>Intro CS 1114</a></li><li><a href="https://docs.google.com/presentation/d/1tPCgBvOoXO-w3HWNoaZ1k4cIjm2KlbrHgcuFt2bM7zw/edit?usp=sharing" target=_blank rel=noopener>Intro CS 2114</a></li></ul><ul><li><a href=/csX114/docs/Course/01_computers_and_programming/>01 Introduction into Computers and Programming</a><ul></ul></li><li><a href=/csX114/docs/Course/02_python_and_data/>02 Python and Data</a></li><li><a href=/csX114/docs/Course/03_control_structures_and_loops/>03 Control Strutures and Loops</a></li><li><a href=/csX114/docs/Course/04_algorithm/>04 Algorithms</a></li><li><a href=/csX114/docs/Course/05_functions/>05 Functions</a></li><li><a href=/csX114/docs/Course/06_structures/>06 Structures</a></li><li><a href=/csX114/docs/Course/07_io/ class=active>07 Input/Output</a></li><li><a href=/csX114/docs/Course/08_errors_and_exceptions/>08 Errors and Exceptions</a></li><li><a href=/csX114/docs/Course/09_modules/>09 Modules</a></li><li><a href=/csX114/docs/Course/10_projects/>10 Projects</a></li><li><a href=/csX114/docs/Course/11_fp/>11 Fuctional Programming</a></li><li><a href=/csX114/docs/Course/12_oop/>12 Object Oriented Programming</a></li><li><a href=/csX114/docs/Course/13_road_map/>13 Road Map</a></li><li><a href=/csX114/docs/Course/14_presentation/>14 Project Presentation</a></li><li><a href=/csX114/docs/Course/resources/>Resources</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/csX114/svg/menu.svg class=book-icon alt=Menu>
 </label><strong>07 Input/Output</strong>
-<label for=toc-control><img src=/csX114/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class=markdown><ul><li>string interpolation</li><li>string formatting</li><li>Console</li><li>Files<ul><li>with</li></ul></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/content/docs/Course/07_io.md target=_blank rel=noopener><img src=/csX114/svg/edit.svg class=book-icon alt=Edit>
-<span>Edit this page</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>
+<label for=toc-control><img src=/csX114/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#inputoutput>Input/Output</a><ul><li><a href=#string-interpolation>String Interpolation</a></li><li><a href=#string-formatting>String Formatting</a></li><li><a href=#console>Console</a></li><li><a href=#files>Files</a></li><li><a href=#command-line-arguments-sysargv>Command Line Arguments (<code>sys.argv</code>)</a></li><li><a href=#homework-graded>Homework (graded)</a><ul><li><a href=#1>1</a></li><li><a href=#2>2</a></li></ul></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=inputoutput>Input/Output
+<a class=anchor href=#inputoutput>#</a></h1><p>Communication with the user and the environment.</p><h2 id=string-interpolation>String Interpolation
+<a class=anchor href=#string-interpolation>#</a></h2><p>String interpolation is inserting variables or expressions into strings. Python offers several ways to achieve this:</p><ul><li><strong>f-strings</strong> (from Python 3.6): f"Hello, {name}".</li><li><strong>str.format()</strong>: &ldquo;Hello, {}".format(name).</li><li><strong>% strings</strong>: &ldquo;Hello, %s&rdquo; % name</li></ul><p>We focus here only on the first method. Examples:</p><pre tabindex=0><code>name = &#34;Alice&#34;
+age = 25
+
+# Using f-strings
+greeting = f&#34;Hello, {name}! You are {age} years old.&#34;
+print(greeting)
+
+# Evaluating expressions in f-strings
+calculation = f&#34;2 + 2 = {2 + 2}&#34;
+print(calculation)
+</code></pre><h2 id=string-formatting>String Formatting
+<a class=anchor href=#string-formatting>#</a></h2><p>Formatting strings allows control over how data appears.
+Use placeholders for alignment, padding, or precision:</p><ul><li><code>{}</code>: Default placeholder.</li><li><code>{:.2f}</code>: Floating-point with 2 decimal places.</li><li><code>{:&lt;10}</code>: Left-align in 10-character width.</li></ul><p>Example:</p><pre tabindex=0><code># Numeric formatting
+price = 19.99
+formatted_price = f&#34;Price: ${price:.2f}&#34;  # Two decimal places
+print(formatted_price)
+
+# Alignment
+data = &#34;Python&#34;
+print(f&#34;&#39;{data:&lt;10}&#39;&#34;)  # Left-align
+print(f&#34;&#39;{data:&gt;10}&#39;&#34;)  # Right-align
+print(f&#34;&#39;{data:^10}&#39;&#34;)  # Center-align
+</code></pre><h2 id=console>Console
+<a class=anchor href=#console>#</a></h2><p>You can interact with the user via the console (in text based UIs):</p><pre tabindex=0><code># Printing output
+print(&#34;Welcome to the console class!&#34;)
+
+# Getting user input
+name = input(&#34;Enter your name: &#34;)
+print(f&#34;Hello, {name}!&#34;)
+</code></pre><p>Advanced stuff:</p><pre tabindex=0><code># Print without a newline
+print(&#34;Loading&#34;, end=&#34;&#34;)
+for _ in range(3):
+    print(&#34;.&#34;, end=&#34;&#34;)
+print(&#34; Done!&#34;)
+
+# Formatting console output
+value = 42
+print(f&#34;The answer is: {value:010}&#34;)  # Padded with zeroes
+</code></pre><h2 id=files>Files
+<a class=anchor href=#files>#</a></h2><p>Files allow reading and writing persistent data (on storage). Python uses the open() function with modes:</p><ul><li><code>'r'</code>: Read.</li><li><code>'w'</code>: Write (overwrites existing content).</li><li><code>'a'</code>: Append.</li></ul><p>Boy scout rule - always leave the place in the same or better state as you encountered it. Thus always close the files after you finished working with them. If you use the <code>with</code> keyword to work with them, Python will do that for you automatically, even if an exception occurs while working with it.</p><p>Examples:</p><pre tabindex=0><code># Writing to a file
+with open(&#34;example.txt&#34;, &#34;w&#34;) as file:
+    file.write(&#34;Hello, file!&#34;)
+
+# Reading from a file
+with open(&#34;example.txt&#34;, &#34;r&#34;) as file:
+    content = file.read()
+    print(&#34;File content:&#34;, content)
+
+# Appending to a file
+with open(&#34;example.txt&#34;, &#34;a&#34;) as file:
+    file.write(&#34;\nThis is appended text.&#34;)
+
+# Reading line by line
+with open(&#34;example.txt&#34;, &#34;r&#34;) as file:
+    for line in file:
+        print(line.strip())
+</code></pre><h2 id=command-line-arguments-sysargv>Command Line Arguments (<code>sys.argv</code>)
+<a class=anchor href=#command-line-arguments-sysargv>#</a></h2><p>The <code>sys.argv</code> list allows you to access command-line arguments passed to a Python script.</p><p><code>sys.argv[0]</code> is the name of the script, and subsequent elements are the arguments.</p><p>Example:</p><pre tabindex=0><code>import sys
+
+# Example: Accessing command-line arguments
+if len(sys.argv) &gt; 1:
+    print(&#34;Arguments passed:&#34;, sys.argv[1:])
+else:
+    print(&#34;No arguments passed.&#34;)
+
+# Example: Simple command-line calculator
+if len(sys.argv) == 4:
+    num1 = float(sys.argv[1])
+    operator = sys.argv[2]
+    num2 = float(sys.argv[3])
+
+    if operator == &#39;+&#39;:
+        print(f&#34;Result: {num1 + num2}&#34;)
+    elif operator == &#39;-&#39;:
+        print(f&#34;Result: {num1 - num2}&#34;)
+    elif operator == &#39;*&#39;:
+        print(f&#34;Result: {num1 * num2}&#34;)
+    elif operator == &#39;/&#39;:
+        print(f&#34;Result: {num1 / num2}&#34;)
+    else:
+        print(&#34;Unsupported operator!&#34;)
+else:
+    print(&#34;Usage: python script.py &lt;num1&gt; &lt;operator&gt; &lt;num2&gt;&#34;)
+</code></pre><h2 id=homework-graded>Homework (graded)
+<a class=anchor href=#homework-graded>#</a></h2><h3 id=1>1
+<a class=anchor href=#1>#</a></h3><p>Create a formatted report with the names and scores of students using string formatting.</p><h3 id=2>2
+<a class=anchor href=#2>#</a></h3><p>Write a script to:
+* Ask the user for their name and age.
+* Save this data to a file.
+* Read and display the content of the file.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/content/docs/Course/07_io.md target=_blank rel=noopener><img src=/csX114/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#inputoutput>Input/Output</a><ul><li><a href=#string-interpolation>String Interpolation</a></li><li><a href=#string-formatting>String Formatting</a></li><li><a href=#console>Console</a></li><li><a href=#files>Files</a></li><li><a href=#command-line-arguments-sysargv>Command Line Arguments (<code>sys.argv</code>)</a></li><li><a href=#homework-graded>Homework (graded)</a><ul><li><a href=#1>1</a></li><li><a href=#2>2</a></li></ul></li></ul></li></ul></nav></div></aside></main></body></html>
