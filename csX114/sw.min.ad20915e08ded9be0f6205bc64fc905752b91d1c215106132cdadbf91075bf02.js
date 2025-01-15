@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/csX114/sw.js",{scope:"/"})
