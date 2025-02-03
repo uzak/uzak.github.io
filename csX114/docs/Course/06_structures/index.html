@@ -5,7 +5,7 @@ Cannot be changed after creation. Just like strings. Use parentheses () to defin
 Structures in Python are called collections and create complex data types out of primitive ones or other structures.
 Tuple # Immutable, ordered collections of items.
 Cannot be changed after creation. Just like strings. Use parentheses () to define."><meta property="og:type" content="article"><meta property="og:url" content="https://uzak.github.com/csX114/docs/Course/06_structures/"><meta property="article:section" content="docs"><title>06 Structures | CS X114</title>
-<link rel=manifest href=/csX114/manifest.json><link rel=icon href=/csX114/favicon.png type=image/x-icon><link rel=stylesheet href=/csX114/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/csX114/flexsearch.min.js></script><script defer src=/csX114/en.search.min.735878caba63f85df12345e01e61731968ff09a84d3febe3506aaadb70b26000.js integrity="sha256-c1h4yrpj+F3xI0XgHmFzGWj/CahNP+vjUGqq23CyYAA=" crossorigin=anonymous></script><script defer src=/csX114/sw.min.ad20915e08ded9be0f6205bc64fc905752b91d1c215106132cdadbf91075bf02.js integrity="sha256-rSCRXgje2b4PYgW8ZPyQV1K5HRwhUQYTLNrb+RB1vwI=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<link rel=manifest href=/csX114/manifest.json><link rel=icon href=/csX114/favicon.png type=image/x-icon><link rel=stylesheet href=/csX114/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin=anonymous><script defer src=/csX114/flexsearch.min.js></script><script defer src=/csX114/en.search.min.a434d98efd04a04973c037909f88f1eaa2f71425d68c69a7d9af5bac9a0f4481.js integrity="sha256-pDTZjv0EoElzwDeQn4jx6qL3FCXWjGmn2a9brJoPRIE=" crossorigin=anonymous></script><script defer src=/csX114/sw.min.ad20915e08ded9be0f6205bc64fc905752b91d1c215106132cdadbf91075bf02.js integrity="sha256-rSCRXgje2b4PYgW8ZPyQV1K5HRwhUQYTLNrb+RB1vwI=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/csX114/><span>CS X114</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href="https://docs.google.com/presentation/d/15lVunLw9WJmuhvLx50oKC1l-MoSPC8gMCon9TLhJlyg/edit?usp=sharing" target=_blank rel=noopener>Intro CS 1114</a></li><li><a href="https://docs.google.com/presentation/d/1tPCgBvOoXO-w3HWNoaZ1k4cIjm2KlbrHgcuFt2bM7zw/edit?usp=sharing" target=_blank rel=noopener>Intro CS 2114</a></li></ul><ul><li><a href=/csX114/docs/Course/01_computers_and_programming/>01 Introduction into Computers and Programming</a><ul></ul></li><li><a href=/csX114/docs/Course/02_python_and_data/>02 Python and Data</a></li><li><a href=/csX114/docs/Course/03_control_structures_and_loops/>03 Control Strutures and Loops</a></li><li><a href=/csX114/docs/Course/04_algorithm/>04 Algorithms</a></li><li><a href=/csX114/docs/Course/05_functions/>05 Functions</a></li><li><a href=/csX114/docs/Course/06_structures/ class=active>06 Structures</a></li><li><a href=/csX114/docs/Course/07_io/>07 Input/Output</a></li><li><a href=/csX114/docs/Course/08_errors_and_exceptions/>08 Errors and Exceptions</a></li><li><a href=/csX114/docs/Course/09_modules/>09 Modules</a></li><li><a href=/csX114/docs/Course/10_projects/>10 Projects</a></li><li><a href=/csX114/docs/Course/11_fp/>11 Fuctional Programming</a></li><li><a href=/csX114/docs/Course/12_oop/>12 Object Oriented Programming</a></li><li><a href=/csX114/docs/Course/13_road_map/>13 Recap & Road Map</a></li><li><a href=/csX114/docs/Course/14_presentation/>14 Project Presentation</a></li><li><a href=/csX114/docs/Course/codewars/>Codewars</a></li><li><a href=/csX114/docs/Course/resources/>Resources</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/csX114/svg/menu.svg class=book-icon alt=Menu>
 </label><strong>06 Structures</strong>
 <label for=toc-control><img src=/csX114/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#structures>Structures</a><ul><li><a href=#tuple>Tuple</a></li><li><a href=#lists>Lists</a></li><li><a href=#sets>Sets</a></li><li><a href=#dictionaries>Dictionaries</a></li><li><a href=#summary>Summary</a></li><li><a href=#homework-graded>Homework (graded)</a><ul><li><a href=#books>Books</a></li><li><a href=#cities>Cities</a></li><li><a href=#distance-in-3d-space>Distance in 3D space</a></li></ul></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=structures>Structures
@@ -19,6 +19,16 @@ x, y = point
 print(f&#34;Point coordinates: X={x}, Y={y}&#34;)
 </code></pre><p>The parentheses can be omitted. Python will know based on the coma that it deals with a tuple:</p><pre tabindex=0><code>point = 3, 5
 print(&#34;X:&#34;, point[0], &#34;Y:&#34;, point[1])
+</code></pre><p>Just like strings, tuples support slicing, <code>len()</code> fuction, and the <code>in</code> operator:</p><pre tabindex=0><code>&gt;&gt;&gt; len((1, 2, 3))
+3
+&gt;&gt;&gt; 5 in (6, 2, 5)
+True
+&gt;&gt;&gt; (1, 2, 3, 4, 5)[-1]
+5
+&gt;&gt;&gt; (1, 2, 3, 4, 5)[2:]
+(3, 4, 5)
+&gt;&gt;&gt; (1, 2, 3, 4, 5)[1:3]
+(2, 3)
 </code></pre><h2 id=lists>Lists
 <a class=anchor href=#lists>#</a></h2><p>Mutable, ordered collections of items.</p><ul><li>Can grow or shrink dynamically.</li><li>Use square brackets <code>[]</code> to define.</li></ul><pre tabindex=0><code># Example: Managing a to-do list
 tasks = [&#34;Read book&#34;, &#34;Write code&#34;, &#34;Go jogging&#34;]
@@ -28,8 +38,15 @@ print(tasks)
 
 # Access by index
 print(&#34;First task:&#34;, tasks[0])
+</code></pre><p>Similar to tuples and strings, lists also support the <code>in</code> operator, <code>len()</code> function and slicing. With lists you also get the possibility to replace indexed elements:</p><pre tabindex=0><code>&gt;&gt;&gt; l = [1, 2, 3, 4, 5]
+&gt;&gt;&gt; l[0] = &#34;one&#34;
+&gt;&gt;&gt; l[1:3]
+[2, 3]
+&gt;&gt;&gt; l[1:3] = [&#34;two&#34;, &#34;three&#34;]
+&gt;&gt;&gt; l
+[&#39;one&#39;, &#39;two&#39;, &#39;three&#39;, 4, 5]
 </code></pre><h2 id=sets>Sets
-<a class=anchor href=#sets>#</a></h2><p>Unordered collections of unique items.</p><ul><li>Doesn&rsquo;t allow for duplicates.</li><li>Use curly braces {} to define or set() constructor.</li></ul><pre tabindex=0><code># Example: Removing duplicates from a list
+<a class=anchor href=#sets>#</a></h2><p>Unordered collections of unique items.</p><ul><li>Don&rsquo;t allow for duplicates.</li><li>Use curly braces (<code>{}</code>) or <code>set()</code> constructor to define.</li></ul><pre tabindex=0><code># Example: Removing duplicates from a list
 numbers = [1, 2, 3, 1, 2, 4]
 unique_numbers = set(numbers)
 print(&#34;Unique numbers:&#34;, unique_numbers)
@@ -39,8 +56,23 @@ set_a = {1, 2, 3}
 set_b = {3, 4, 5}
 print(&#34;Union:&#34;, set_a | set_b)       # Combine both sets
 print(&#34;Intersection:&#34;, set_a &amp; set_b)  # Common elements
+</code></pre><p>Other useful operations on sets include <code>in</code> operator, <code>len()</code> function, <code>add()</code> and <code>remove()</code> methods:</p><pre tabindex=0><code>&gt;&gt;&gt; s = set((1, 2, 3))  # create from a tuple
+&gt;&gt;&gt; s
+{1, 2, 3}
+&gt;&gt;&gt; s.add(4)
+&gt;&gt;&gt; s
+{1, 2, 3, 4}
+&gt;&gt;&gt; s.remove(1)
+&gt;&gt;&gt; s
+{2, 3, 4}
+&gt;&gt;&gt; 1 in s
+False
+&gt;&gt;&gt; 2 in s
+True
+&gt;&gt;&gt; len(s)
+3
 </code></pre><h2 id=dictionaries>Dictionaries
-<a class=anchor href=#dictionaries>#</a></h2><p>Mutable, unordered collections of key-value pairs.</p><ul><li>Keys are unique and immutable.</li><li>Use curly braces {} with key-value pairs to define.</li></ul><pre tabindex=0><code># Example: Storing user information
+<a class=anchor href=#dictionaries>#</a></h2><p>Mutable, unordered collections of key-value pairs.</p><ul><li>Keys are unique and immutable.</li><li>Use curly braces (<code>{}</code>) with key-value pairs to define.</li></ul><pre tabindex=0><code># Example: Storing user information
 user = {
     &#34;name&#34;: &#34;Alice&#34;,
     &#34;age&#34;: 25,
@@ -56,6 +88,10 @@ print(user)
 # Iterating over keys and values
 for key, value in user.items():
     print(f&#34;{key}: {value}&#34;)
+
+# Removing a key
+del user[&#39;location&#39;]
+print(user)
 </code></pre><h2 id=summary>Summary
 <a class=anchor href=#summary>#</a></h2><table><thead><tr><th><strong>Structure</strong></th><th><strong>Mutable</strong></th><th><strong>Ordered</strong></th><th><strong>Unique Items</strong></th><th><strong>Common Use</strong></th></tr></thead><tbody><tr><td>Tuple</td><td>No</td><td>Yes</td><td>No</td><td>Fixed data</td></tr><tr><td>List</td><td>Yes</td><td>Yes</td><td>No</td><td>Dynamic data</td></tr><tr><td>Set</td><td>Yes</td><td>No</td><td>Yes</td><td>Unique items</td></tr><tr><td>Dict</td><td>Yes</td><td>No</td><td>Keys are unique</td><td>Key-value pairs</td></tr></tbody></table><h2 id=homework-graded>Homework (graded)
 <a class=anchor href=#homework-graded>#</a></h2><h3 id=books>Books
