@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Unix</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="unix" class="anchor" href="#unix" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>UNIX</h1>
+<p>use <code>tldr</code> to get basic info on cmds</p>
+<h2>
+<a id="user-mgmt" class="anchor" href="#user-mgmt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User Mgmt</h2>
+<p>gen a pw</p>
+<pre><code>tr -dc A-Za-z0-9_ &lt; /dev/urandom | head -c 16 | xargs
+</code></pre>
+<p>add user:</p>
+<pre><code>adduser USERNAME
+
+useradd -m USERNAME     # add and create $HOME
+</code></pre>
+<p>add user to unix group:</p>
+<pre><code>sudo usermod -a -G dialout m
+sudo usermod -a -G sudo m
+</code></pre>
+<p>remove an user from a group:</p>
+<pre><code>sudo deluser $USER group
+</code></pre>
+<p>disable user</p>
+<pre><code>usermod -L pi
+</code></pre>
+<p>enforce password change after login</p>
+<pre><code>passwd -e $USER
+</code></pre>
+<h3>
+<a id="sudo" class="anchor" href="#sudo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>sudo</h3>
+<p>allow user to do stuff:</p>
+<pre><code>michal_rudolf ALL=(ALL) NOPASSWD: /usr/sbin/tcpdump
+</code></pre>
+<h2>
+<a id="package-mgmt" class="anchor" href="#package-mgmt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Package Mgmt</h2>
+<h3>
+<a id="deb" class="anchor" href="#deb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DEB</h3>
+<p>apt-get for cygwin: <a href="http://dev.lab427.net/apt-cyg.html">http://dev.lab427.net/apt-cyg.html</a></p>
+<pre><code>dpkg -S `which mysqldump`           # show to which pkg belongs given file
+dpkg -x ipp-linux_1.68.165-1_amd64.deb ipp
+</code></pre>
+<p>Upgrade to new release</p>
+<p>check <code>/etc/update-manager/release-upgrades</code> for <code>Prompt=normal</code></p>
+<pre><code>sudo apt update
+sudo apt dist-upgrade
+sudo do-release-upgrade -d            # -d: development release
+sudo apt --fix-broken-install         # after dpkg if it fails
+sudo apt --install-suggests PACKAGE
+</code></pre>
+<p>use <code>sudo apt autoremove</code> instead of <code>sudo apt uninstall</code> to get rid also of unused dependencies.</p>
+<pre><code>sudo apt autoclean
+sudo apt clean
+
+sudo apt install debfoster
+sudo debfoster
+</code></pre>
+<h3>
+<a id="rpm" class="anchor" href="#rpm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RPM</h3>
+<pre><code>yum provides /usr/bin/ab
+
+sudo yum install /usr/bin/ab
+
+yum search all &lt;search terms&gt;
+</code></pre>
+<h2>
+<a id="networking" class="anchor" href="#networking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Networking</h2>
+<p>fuser</p>
+<pre><code>fuser 5000/tcp              # what process is listening on a port?
+sudo fuser 5000/tcp -k      
+</code></pre>
+<p>show network settings:</p>
+<pre><code>nmcli device show
+</code></pre>
+<p>show configured dns:</p>
+<pre><code>nmcli dev show | grep IP4.DNS
+</code></pre>
+<p>[<a href="tcpdump.html">tcpdump</a>]</p>
+<h2>
+<a id="service-mgmt" class="anchor" href="#service-mgmt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Mgmt</h2>
+<h3>
+<a id="systemctl" class="anchor" href="#systemctl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>systemctl</h3>
+<pre><code>sudo systemctl list-units --type=service --state=enabled,disabled --state=running
+
+sudo systemctl disable --now SERVICE
+
+systemctl                               # list units
+sudo systemctl stop redis-server        # stop an unit
+systemctl status redis-server   
+sudo systemctl disable redis-server 
+
+sudo update-rc.d mpd disable
+
+ps -fu                                  # (f)ull, (u)userlist
+loginctl list-users
+loginctl enable-linger m
+
+systemctl --user 
+systemctl --user start mpd
+systemctl --user daemon-reload          # on config change
+
+systemctl restart rsyslog
+</code></pre>
+<h2>
+<a id="misc" class="anchor" href="#misc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Misc</h2>
+<p>LVM resize</p>
+<pre><code>lsblk
+cfdisk /dev/sda         # extend, write and quit
+pvresize /dev/sda3
+lvresize -t -v -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+resize2fs /dev/ubuntu-vg/ubuntu-lv
+</code></pre>
+<p><a href="https://www.ascinc.com/blog/linux/how-to-build-a-simple-router-with-ubuntu-server-18-04-1-lts-bionic-beaver/">home router</a>:</p>
+<pre><code>sudo ufw enable
+#sudo ufw loggin on
+
+sudo $EDITOR /etc/netplan/*yaml
+sudo netplan generate
+sudo netplan apply
+sudo apt-get install isc-dhcp-server
+sudo vi /etc/dhcp/dhcpd.conf 
+sudo systemctl restart isc-dhcp-server
+sudo systemctl enable isc-dhcp-server
+sudo systemctl status isc-dhcp-server    
+sudo vi /etc/ufw/sysctl.conf        # enable net/ipv4/ip_forward=1
+# create /etc/rc.local with firewall rules -&gt; systemctl?
+    # flush it initially?
+</code></pre>
+<p>epub to pdf convert:</p>
+<pre><code>https://askubuntu.com/questions/299747/converting-epub-files-to-pdf-format
+</code></pre>
+<p>youtube-dl 403:</p>
+<pre><code>youtube-dl --rm-cache-dir
+</code></pre>
+<p>ffmepg</p>
+<pre><code># Cut off first 10 seconds:
+ffmepg -ss 00:00:10 -i input.file output.file
+
+# Reduce size of mp4
+ffmpeg -i input.file -vcodec libx265 -crf 30 output.file
+</code></pre>
+<p>xz</p>
+<pre><code>xz -9 -T2 -v some.tar
+</code></pre>
+<h2>
+<a id="ubuntu" class="anchor" href="#ubuntu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ubuntu</h2>
+<p><a href="vpn.html">vpn</a></p>
+<p>bootable usb:</p>
+<pre><code>https://github.com/jsamr/bootiso
+</code></pre>
+<p>fractional scaling:</p>
+<pre><code># wayland
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']" 
+
+# xorg
+gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+</code></pre>
+<p>android remote:</p>
+<pre><code> https://www.fossmint.com/scrcpy-mirror-control-android-from-ubuntu/
+</code></pre>
+<p>reconfigure gdm</p>
+<pre><code>sudo dpkg-reconfigure gdm3
+</code></pre>
+<p>boot logo ubuntu:</p>
+<pre><code>sudo update-alternatives --config default.plymouth
+sudo update-initramfs -u
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>

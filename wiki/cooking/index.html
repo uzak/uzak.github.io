@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Index</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <p><a href="http://grimgrains.com/site/home.html">100 rabbits recipes</a></p>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=-RjawJ8LImM">borsch</a></p>
+</li>
+<li>
+<p><a href="https://www.klasicke-recepty.cz/polevka-z-hlivy/">Hlivova polievka - falosna drzkova</a></p>
+</li>
+<li>
+<p><a href="https://frischgekocht.billa.at/rezept/kaeferbohnensalat-mit-radieschen-BI-24788">Kaeferbohnensalat mit Radieschen</a></p>
+</li>
+<li>
+<p>tofu praženica.</p>
+</li>
+<li>
+<p>banánové lievance (rasta style)</p>
+</li>
+<li>
+<p><a href="https://www.vareni.cz/recepty/cocka-na-kyselo/">šošovica</a></p>
+</li>
+<li>
+<p><a href="https://varecha.pravda.sk/recepty/spenatovy-privarok-/78378-recept.html">špenát</a></p>
+</li>
+<li>
+<p><a href="granad%C3%ADr">granadír</a></p>
+</li>
+<li>
+<p><a href="cacio-e-pepe.html">cacio e pepe</a></p>
+</li>
+<li>
+<p><a href="https://dobruchut.aktuality.sk/recept/5873/fotorecept-hlivovy-perkelt-paprikas/">hlivový perkelt</a></p>
+</li>
+<li>
+<p><a href="https://www.spainonafork.com/delicious-bean-stew-from-northern-spain-alubias-de-cantabria-recipe/">Alubias de Cantabria</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=jo8mcYpAs2A">pecena tekvica</a></p>
+</li>
+<li>
+<p><a href="https://dobruchut.aktuality.sk/recept/73738/porkova-polievka/">poorova polievka</a></p>
+</li>
+<li>
+<p><a href="hrstkova.html">Hrstkova</a></p>
+</li>
+<li>
+<p><a href="http://www.chefkoch.de/rezepte/2014871326371490/Mash-Atala.html">maš atala</a></p>
+</li>
+<li>
+<p><a href="https://dobruchut.azet.sk/recept/18326/zemiakova-polievka-s-parkom">zemiaková polievka s párkom</a></p>
+</li>
+<li>
+<p><a href="https://varecha.pravda.sk/recepty/lahka-cesnakova-polievka/37956-recept.html">cesnakova</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=zadDtkGI_t4">Zapecene sampiony</a></p>
+</li>
+</ul>
+<h1>
+<a id="klasika" class="anchor" href="#klasika" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Klasika</h1>
+<ul>
+<li><a href="https://www.gutekueche.at/klassischer-eiersalat-rezept-24947">Eiersalat</a></li>
+<li><a href="https://www.zenyvmeste.sk/recept--prava-domaca-huspenina">Huspenina</a></li>
+<li><a href="https://www.vareni.cz/recepty/ovocne-knedliky-z-krupicove-kase/">Ovocne knedliky</a></li>
+<li>Buchty</li>
+<li><a href="https://dobruchut.aktuality.sk/recept/66231/horcicova-omacka/">Horcicova omacka</a></li>
+<li><a href="https://www.klasicke-recepty.cz/spenatova-omacka/">Spenatova omacka</a></li>
+<li><a href="https://www.klasicke-recepty.cz/vidensky-gulas/">Viedensky gulas</a></li>
+<li><a href="https://www.klasicke-recepty.cz/pecena-kachna/">Pecena kacica</a></li>
+<li><a href="https://www.klasicke-recepty.cz/buchticky-s-kremem/">Dukatove buchticky</a></li>
+<li><a href="vepro-knedlo-zelo.html">Vepro-Knedlo-Zelo</a></li>
+<li><a href="https://www.klasicke-recepty.cz/kynute-kolace/">Tradicne ceske kysnute kolace</a></li>
+<li><a href="https://www.klasicke-recepty.cz/krkovice-pecena-v-troube/">Pomalu pecena krkovicka</a></li>
+<li><a href="https://www.klasicke-recepty.cz/veprove-na-zampionech/">Bravcove na hribikoch</a></li>
+<li><a href="https://www.klasicke-recepty.cz/fazolky-na-smetane/">Cerstve fazulky na smotane</a></li>
+<li><a href="https://www.klasicke-recepty.cz/segedinsky-gulas/">Segedin</a></li>
+<li><a href="https://www.ichkoche.at/erdaepfelgulasch-auf-wiener-art-rezept-3135">Erdaepfelgulash</a></li>
+<li><a href="https://www.gutekueche.at/wiener-kaiserschmarrn-rezept-847">Kaiserschmarrn</a></li>
+<li><a href="https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/fiakergulasch">Fiakergulasch</a></li>
+<li><a href="https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/linzer-torte">Linzer Torte</a></li>
+<li><a href="https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/esterhazy-rostbraten">Esterhazy-Rostbraten</a></li>
+<li><a href="https://www.austria.info/de/aktivitaeten/essen-und-trinken/oesterreichische-kueche/rezepte-aus-oesterreich/tafelspitz">Tafelspitz</a></li>
+<li><a href="https://www.oesterreich-spezialitaeten.at/rezepte/kuerbissuppe.html">Kuerbissuppe</a></li>
+<li><a href="https://frischgekocht.billa.at/rezept/somlauer-nockerl-trifle-BI-29864">Somlauer Nockerl</a></li>
+<li><a href="https://frischgekocht.billa.at/rezept/erdaepfel-paprikahendl-BI-29332">Paprikahendl</a></li>
+<li><a href="https://frischgekocht.billa.at/rezept/salzburger-nockerl-mit-himbeer-zimt-sauce-BI-5769">Salzburger Nockerl</a></li>
+</ul>
+<h1>
+<a id="raňajky" class="anchor" href="#ra%C5%88ajky" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Raňajky</h1>
+<ul>
+<li><a href="planeat.html#vajickova-natierka">vajičková nátierka</a></li>
+<li><a href="planeat.html#varena-krupica-s-orechmi">varená krupica s orechmi</a></li>
+<li><a href="planeat.html#ovsene-vlocky-so-struhanymi-jablkom-a-figami">ovsené vločky so strúhanými jablkom a figami</a></li>
+<li><a href="planeat.html#ovsena-kasa-s-ovocim">ovsená kaša s ovocím</a></li>
+<li>pečivo s arašídovým maslom a džemom</li>
+<li>údený losos, chlieb a zelenina</li>
+<li><a href="planeat.html#vajickova-omeleta">vajíčková omeleta</a></li>
+<li>kaša (ovos, pohánka, pšeno)</li>
+<li><a href="baba-ganoush.html">baba ganoush</a></li>
+<li>poha</li>
+<li>humus</li>
+<li>cízrnové placky</li>
+<li>bryndzová pomazánka</li>
+<li>toast / zapekačka</li>
+<li>hrianky s cesnakom a rajčinami + olivovým olejom</li>
+<li>chleba vo vajci</li>
+<li><a href="afghani-eggs.html">Afghani eggs</a></li>
+<li>quinoa kaša</li>
+</ul>
+<h1>
+<a id="desiata" class="anchor" href="#desiata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desiata</h1>
+<ul>
+<li><a href="planeat.html#smoothie-spenat-zazvor-pomaranc-mrkva">Smoothie - špenát, zázvor, pomaranč, mrkva</a></li>
+<li><a href="planeat.html#hruskovy-dezert">Hruškový dezert</a></li>
+<li>Extrudovaný chlebíček + acidko</li>
+</ul>
+<h1>
+<a id="obed" class="anchor" href="#obed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Obed</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Yk1QHbuLfkk">tofuburger</a></li>
+<li><a href="https://nanicmama.sme.sk/slane/drapaky">drapáky</a></li>
+<li><a href="https://nanicmama.sme.sk/hlavne-jedla/pecene-zemiaky-s-bryndzovou-pomazankou">pecene zemiaky s bryndzovou pomazánkou</a></li>
+<li><a href="https://nanicmama.sme.sk/hlavne-jedla/krupna-baba">krúpna baba</a></li>
+<li><a href="https://nanicmama.sme.sk/ine-recepty/lokse">lokše</a></li>
+<li>halušky</li>
+<li>francúzske zemiaky</li>
+<li>pečená zelenina</li>
+<li>curry</li>
+<li><a href="https://www.thebuddhistchef.com/recipe/chili-sin-carne/">chilli</a></li>
+<li>tempeh s horčicou</li>
+<li>cestoviny s pestom</li>
+<li>lečo</li>
+<li><a href="https://dobruchut.aktuality.sk/recept/10464/fotorecept-tradicne-zemiakove-placky/">zemiakové placky</a></li>
+<li>marhuľové guľky s tvarohom</li>
+<li>slivkové gule</li>
+<li><a href="https://recepty.aktuality.sk/recept/6988/makove-sulance/">makové šúlance</a></li>
+<li><a href="vegan-flaky-fish-and-chips.html">vegan flaky fish and chips</a></li>
+<li><a href="fliacky.html">fliačky</a></li>
+<li><a href="roasted-tomato-puttanesca.html">Roasted Tomato Puttanesca</a></li>
+<li><a href="duseny-lilek-na-masle-s-cesnekem.html">Duseny lilek na masle s cesnekem</a></li>
+<li><a href="https://www.allrecipes.com/recipe/52232/aloo-matar/">aloo matar</a></li>
+<li>aloo gobi</li>
+<li><a href="https://www.spainonafork.com/spanish-poor-mans-potatoes-one-of-spains-most-iconic-dishes/">Poor man's potatoes</a></li>
+<li><a href="https://www.spainonafork.com/one-pan-creamy-mushroom-rice-with-green-onions/">One-Pan Creamy Mushroom Rice with Green Onions</a></li>
+<li><a href="https://www.vegrecipesofindia.com/restaurant-style-dal-tadka/">Tadka Dal</a></li>
+<li><a href="https://dobruchut.aktuality.sk/recept/11617/fotorecept-kelovy-privarok/">Kelový prívarok</a></li>
+<li>Cizrnové placky a karfiolový mozoček</li>
+<li><a href="https://pinchofyum.com/basic-awesome-vegetarian-lasagna">Vegetarian lasagna</a></li>
+<li><a href="https://www.savorylotus.com/pumpkin-curry/">Pumpkin curry</a></li>
+<li><a href="https://www.youtube.com/watch?v=9CdauxBjLFU">Pepper Stir Fried Udon</a></li>
+<li>Roesti</li>
+<li><a href="https://nanicmama.sme.sk/zdrave-recepty/karfiol-peceny-v-rure">Karfiol peceny v rure</a></li>
+</ul>
+<h2>
+<a id="polievky" class="anchor" href="#polievky" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Polievky</h2>
+<ul>
+<li><a href="https://varecha.pravda.sk/recepty/kelova-polievka-/45151-recept.html">Kelová</a></li>
+<li><a href="https://www.gutekueche.at/reissuppe-rezept-2636">ryžová polievka</a></li>
+<li>polievka s haluškami</li>
+<li>hubová polievka</li>
+<li>cibuľová polievka</li>
+<li>[tekvicová polievka](tekvicová polievka)</li>
+<li>hrachová polievka</li>
+<li><a href="luskova-polievka-na-kyslo.html">luskova polievka na kyslo</a></li>
+</ul>
+<h2>
+<a id="Šalát" class="anchor" href="#%C5%A0al%C3%A1t" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Šalát</h2>
+<ul>
+<li>kyslá kapusta a jablko</li>
+<li>mrkva a jablko</li>
+<li><a href="https://www.youtube.com/watch?v=Eh-9mVCo6lY">House Favorite Brussels Sprouts</a></li>
+<li><a href="planeat.html#bananovo-jablkovy-salat">banánovo-jablkový šalát</a></li>
+</ul>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Mysql</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <pre><code>mysql -u connect -P 3306 --protocol tcp -h localhost connect -p
+
+show index from print_file;
+
+rename table event to event_bak_20210311;
+create table event like event_bak_20210311;
+
+
+CREATE USER 'connect' IDENTIFIED BY 'XXX'; #XXX
+CREATE SCHEMA connect;
+GRANT ALL PRIVILEGES ON connect.* TO 'connect'@'%';
+
+SELECT user, host from mysql.user;
+</code></pre>
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+<pre><code>docker run percona/percona-xtradb-cluster:5.7
+</code></pre>
+<p>Export table to SQL:</p>
+<pre><code>SELECT * FROM event
+INTO OUTFILE '/var/lib/mysql-files/events.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+</code></pre>
+<p>Show size of tables/indexes:</p>
+<pre><code>show table status from [dbname]
+</code></pre>
+<p>Optimize table:
+optimize table event;</p>
+<p>Migrate table to MyISAM</p>
+<p>ALTER TABLE events ENGINE=MYISAM;</p>
+<p>SHOW CREATE TABLE event;
+select * into outfile '/var/lib/mysql-files/event.txt' from event;
+LOAD DATA INFILE '/var/lib/mysql-files/event.txt' INTO TABLE event2;</p>
+<h1>
+<a id="optimization" class="anchor" href="#optimization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Optimization</h1>
+<p>SHOW TABLE STATUS WHERE Name = 'event'\G</p>
+<h2>
+<a id="slow-query-log" class="anchor" href="#slow-query-log" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slow Query Log</h2>
+<p><a href="https://www.techawaken.com/enable-mysql-slow-query-log/">https://www.techawaken.com/enable-mysql-slow-query-log/</a></p>
+<pre><code>mkdir /var/log/mysql
+touch /var/log/mysql/slow_query.log
+chown mysql.mysql -R /var/log/mysql
+
+SET GLOBAL slow_query_log_file = '/var/log/mysql/slow_query.log';
+SET GLOBAL long_query_time = 1;  -- 1 second
+SET GLOBAL log_queries_not_using_indexes = 1;
+SET GLOBAL log_slow_admin_statements = 1;
+SET GLOBAL slow_query_log = 'ON';
+
+
+SHOW VARIABLES LIKE 'slow_query_log';
+</code></pre>
+<h1>
+<a id="misc-errors" class="anchor" href="#misc-errors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Misc Errors</h1>
+<h2>
+<a id="1290" class="anchor" href="#1290" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1290</h2>
+<p><a href="https://stackoverflow.com/questions/31951468/error-code-1290-the-mysql-server-is-running-with-the-secure-file-priv-option">https://stackoverflow.com/questions/31951468/error-code-1290-the-mysql-server-is-running-with-the-secure-file-priv-option</a></p>
+<pre><code>mysql&gt; SHOW VARIABLES LIKE "secure_file_priv";
+</code></pre>
+<h1>
+<a id="replication" class="anchor" href="#replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Replication</h1>
+<p>Percona XtraDB Cluster currently supports replication only for tables that use a transactional storage engine (XtraDB or InnoDB). To ensure data consistency, the following statements should not be allowed for tables that use a non-transactional storage engine (MyISAM, MEMORY, CSV, etc.):</p>
+<pre><code>Data manipulation statements that perform writing to table (for example, INSERT, UPDATE, DELETE, etc.)
+The following administrative statements: CHECK, OPTIMIZE, REPAIR, and ANALYZE
+TRUNCATE TABLE and ALTER TABLE
+</code></pre>
+<p>mac address - varchar(17)</p>
+<p>mysql slow log:
+<a href="https://www.techawaken.com/enable-mysql-slow-query-log/">https://www.techawaken.com/enable-mysql-slow-query-log/</a></p>
+<p>dump percona cluster:</p>
+<pre><code>mysqldump -h HOST -u USER -p SCHEMA --skip_add_locks --skip-lock-tables  --column-statistics=0 &gt; connect.dump
+</code></pre>
+<p>mysql delete all schemas (dbs) matching a name:</p>
+<pre><code>SELECT CONCAT( 'drop schema if exists ', schema_name , ';' ) 
+    AS statement FROM information_schema.schemata 
+    WHERE schema_name LIKE 'connect_%_%';
+</code></pre>
+<p>mysql reset AUTO_INCREMENT</p>
+<pre><code>ALTER TABLE tablename AUTO_INCREMENT = 1
+</code></pre>
+<p>mysql show what's happening (locks etc):</p>
+<pre><code>SHOW FULL PROCESSLIST;
+</code></pre>
+<p>mysql set charset
+ALTER TABLE mytable CONVERT TO CHARACTER SET utf8;</p>
+<p>mysql show queries:</p>
+<pre><code>set global general_log = 'on';      -- global
+set sql_log_off = 'off';            --local
+show variables like 'general_log%';
+</code></pre>
+<p>mysql show processes:</p>
+<pre><code>mysqladmin -h HOST -u USER -pPASSWORD -i 1 -v  processlist
+</code></pre>
+<p>mysql rename column:</p>
+<pre><code>alter table printer change `apendix` `appendix` bool;
+</code></pre>
+<p>mysql dump db:</p>
+<pre><code>SHOW CREATE TABLE event;
+select * into outfile '/var/lib/mysql-files/event.txt' from event;
+LOAD DATA INFILE '/var/lib/mysql-files/event.txt' INTO TABLE event2;
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>

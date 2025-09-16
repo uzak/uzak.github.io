@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Planeat</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="ranajky" class="anchor" href="#ranajky" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ranajky</h1>
+<h2>
+<a id="vajíčková-natierka" class="anchor" href="#vaj%C3%AD%C4%8Dkov%C3%A1-natierka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>vajíčková natierka</h2>
+<pre><code>2ks vajce na tvrdo
+12.5g masla
+27g kremžská horčica
+3x krajec chlieb celozrnný
+1ks rajčina
+</code></pre>
+<h2>
+<a id="ovsené-vločky-so-strúhanými-jablkom-a-figami" class="anchor" href="#ovsen%C3%A9-vlo%C4%8Dky-so-str%C3%BAhan%C3%BDmi-jablkom-a-figami" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ovsené vločky so strúhanými jablkom a figami</h2>
+<pre><code>100g ovsené vločky
+1 jablko
+30g sušené figy
+15ks kešu
+1čl ľanové semená
+</code></pre>
+<p>Mleté ovsené vločky zalejte v miske vriacou vodou, zamiešajte. Keď vychladnú primiešajte nastrúhané jablko. Nakoniec pridajte niekoľko hrozienok na osladenie, prípadne fíg nakrájaných nadrobno. Do vzniknutej kaše pridajte olej, prípadne orechy, primiešajte škoricu a fenikel. Posypte pomletými semienkami, ak uvádza recept.</p>
+<h2>
+<a id="ovsená-kaša-s-ovocím" class="anchor" href="#ovsen%C3%A1-ka%C5%A1a-s-ovoc%C3%ADm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ovsená kaša s ovocím</h2>
+<pre><code>1 koliesko ananas
+pol kiwi
+15g hrozienka
+2čl sezamové semienka
+120g ovsené vločky
+250ml ryžové mlieko
+</code></pre>
+<p>Ananás nakrájajte na kúsky, rovnako aj kiwi. Ovsené vločky namočte do rastlinného mlieka alebo jogurtu a pomiešajte. Pridajte hrozienka (alebo iné sušené ovocie nakrájané na kúsky) a posypte rozmixovanými semienkami.</p>
+<h2>
+<a id="vajíčková-omeleta" class="anchor" href="#vaj%C3%AD%C4%8Dkov%C3%A1-omeleta" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>vajíčková omeleta</h2>
+<pre><code>2ks vajce
+50ml ryžové mlieko
+1/2 čl olivový olej
+300ml špenát (40g)
+soľ
+čierne korenie
+chilli
+
+200g uhorka
+100g paprika
+</code></pre>
+<h2>
+<a id="banánovo-jablkový-šalát" class="anchor" href="#ban%C3%A1novo-jablkov%C3%BD-%C5%A1al%C3%A1t" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>banánovo-jablkový šalát</h2>
+<pre><code>1 banán
+2 jablká
+2čl sezamových semienok
+2čl slnečnicových semienok
+15g hrozienok
+1čl škorica
+8PL ovsené vločky
+</code></pre>
+<p>Banán a jablko pokrájajte, posypte semienkami, škoricou, goji (hrozienkami, figami). Primiešajte povarenú prílohu. Na záver môžete pokvapkať citrónovou šťavou.</p>
+<h2>
+<a id="varená-krupica-s-orechmi" class="anchor" href="#varen%C3%A1-krupica-s-orechmi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>varená krupica s orechmi</h2>
+<pre><code>90g ryžová krupica
+4dl mandľové mlieko
+10ks mandle
+7ks kešu
+15g vegánsky proteín
+1pl javorový syrup
+</code></pre>
+<p>Mlieko zohrejte a postupne doň vmiešajte krupicu. Nechajte chvíľu povariť. V prípade, ak by bola kaša príliš hustá, pridajte trochu vody. Odstavte z plameňa, premiešajte s drvenými orechami a medom/sirupom (ak ho máte v recepte uvedený). Vmiešajte tvaroh alebo proteín, podľa toho čo je uvedené v recepte. Na záver môžete dochutiť štipkou škorice.</p>
+<h1>
+<a id="desiata" class="anchor" href="#desiata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desiata</h1>
+<h2>
+<a id="smoothie---špenát-zázvor-pomaranč-mrkva" class="anchor" href="#smoothie---%C5%A1pen%C3%A1t-z%C3%A1zvor-pomaran%C4%8D-mrkva" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Smoothie - špenát, zázvor, pomaranč, mrkva</h2>
+<pre><code>300 ml (miska) špenátu, 20g
+2 pomaranče
+3 mrkvi
+štipka kurkuma
+štipka zázvor 
+</code></pre>
+<p>Ingrediencie spolu s trochou vody (ak je smoothie príliš husté) rozmixujte a vypite.</p>
+<h2>
+<a id="hruškový-dezert" class="anchor" href="#hru%C5%A1kov%C3%BD-dezert" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hruškový dezert</h2>
+<pre><code>2 malé hrušky
+50g figy
+7ks mandle
+4ks kešu
+malý jogurt
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>
