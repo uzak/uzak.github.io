@@ -299,6 +299,9 @@ sudo apt install python3-pathvalidate
 
 sudo su -c "echo 40 &gt; /sys/class/power_supply/BAT0/charge_start_threshold"
 sudo su -c "echo 90 &gt; /sys/class/power_supply/BAT0/charge_stop_threshold"
+
+sudo ln -s /etc/apparmor.d/mbsync /etc/apparmor.d/disable/
+sudo apparmor_parser -R /etc/apparmor.d/mbsync
 </code></pre>
 <h2>
 <a id="latex" class="anchor" href="#latex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Latex</h2>
