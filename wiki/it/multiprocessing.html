@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Multiprocessing</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h1>
+<a id="multiprocessing" class="anchor" href="#multiprocessing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiprocessing</h1>
+<p>fork:</p>
+<pre><code>import os
+newpid = os.fork()
+if newpid == 0:
+    child()
+else:
+    parent()
+print(os.getpid())
+</code></pre>
+<p><a href="https://serverfault.com/a/598005">https://serverfault.com/a/598005</a></p>
+<p><a href="https://docs.python.org/3/library/multiprocessing.html">https://docs.python.org/3/library/multiprocessing.html</a></p>
+<ul>
+<li><a href="https://pybay.com/site_media/slides/raymond2017-keynote/process.html#scripting-style">Raymond 2017</a></li>
+<li><a href="https://chriskiehl.com/article/parallelism-in-one-line">Parallelism in one line (multiprocessing.Pool.map)</a></li>
+<li>
+<a href="https://timber.io/blog/multiprocessing-vs-multithreading-in-python-what-you-need-to-know/">https://timber.io/blog/multiprocessing-vs-multithreading-in-python-what-you-need-to-know/</a>
+<ul>
+<li>Lot of I/O or Network usage. <strong>Multithreading</strong> is your best bet because of its low overhead</li>
+<li>GUI: <strong>Multithreading</strong> so your UI thread doesn't get locked up</li>
+<li>If your code is CPU bound. Use <strong>multiprocessing</strong> (if your machine has multiple cores)</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="threading" class="anchor" href="#threading" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Threading</h2>
+<p><a href="https://docs.python.org/3/library/threading.html">https://docs.python.org/3/library/threading.html</a></p>
+<ul>
+<li>
+<strong>Daemon thread</strong> - entire program exists only when daemon threads are left.</li>
+<li>
+<code>join()</code> waits until the thread terminates</li>
+<li>
+<strong>Lock</strong>
+<ul>
+<li>locked/unlocked (default state)</li>
+<li>
+<code>acquire()</code>: set locked=True and return if unlocked; otherwise block</li>
+<li>
+<code>release()</code>: set locked=False</li>
+</ul>
+</li>
+<li>
+<strong>Rlock</strong> Reentrant lock. May be acquired several times by the same thread. It introduces the concept of "owning thread" and "recursion level". Only after final <code>release()</code> the lock is released.</li>
+<li>
+<strong>Condition</strong> - for consumer/producer
+<ul>
+<li><code>wait()</code></li>
+<li>
+<code>notify()</code>, <code>notify_all()</code>
+</li>
+</ul>
+</li>
+<li>
+<strong>Semaphore</strong> - one of the oldest sync primitives, introduced by Dijkstra. Guards resources with limited capacity. E.g. connection pool.
+<ul>
+<li>
+<code>P()</code> -&gt;  <code>acquire()</code>: counter--; block if counter == 0</li>
+<li>
+<code>V()</code> -&gt; <code>release()</code>: counter++</li>
+</ul>
+</li>
+<li>
+<strong>Event</strong> simple mechanism. <code>set()</code>/<code>clear()</code>, <code>wait()</code>
+</li>
+<li>
+<strong>Timer</strong> - call action after a certain time</li>
+<li>
+<strong>Barrier</strong> - block until a given threshold has been reached. Then release all threads simultaneously.</li>
+</ul>
+<p>A Lock, Condition and a Semaphores (all w. <code>acquire()</code> and <code>release()</code>) can be used in the <code>with</code> statement.</p>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>

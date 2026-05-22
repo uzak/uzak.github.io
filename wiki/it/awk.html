@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Awk</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <p>SRC <a href="https://www.youtube.com/watch?v=43BNFcOdBlY">YT AWK: hack the planet</a>
+SRC <a href="https://blog.jpalardy.com/posts/awk-tutorial-part-1/">Awk Tutorial</a></p>
+<h1>
+<a id="structure" class="anchor" href="#structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Structure</h1>
+<pre><code>pattern { action }
+</code></pre>
+<ul>
+<li>Either pattern or action can be omitted. Defaults used then for action: <code>{ print $1 }</code> and for pattern: <code>/regex/</code>.</li>
+</ul>
+<h1>
+<a id="patterns" class="anchor" href="#patterns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Patterns</h1>
+<pre><code>BEGIN
+END
+pattern1, pattern2      # awk range pattern
+expression
+regexp 
+compound pattern &amp;&amp; (AND), || (OR), ! (NOT)
+</code></pre>
+<h1>
+<a id="operators" class="anchor" href="#operators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Operators</h1>
+<pre><code>&lt;, &lt;=, ==, !=, &gt;=, &gt;
+/regexp/          # (entire line match - "$0 ~")
+expr ~  /regexp/  # matched by regexpr  
+expr !~ /regexp/  # not matched by regexpr
+++, --
+</code></pre>
+<h1>
+<a id="functions" class="anchor" href="#functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Functions</h1>
+<ul>
+<li>Math (lib)</li>
+<li>String (lib)</li>
+<li>You can define your own.</li>
+</ul>
+<h1>
+<a id="variables" class="anchor" href="#variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Variables</h1>
+<pre><code>NF  # number of fields
+NR  # number of records
+ARGC
+ARGV
+FILENAMe    # current input file
+FNR         # record number in current file
+FS          # input field separator, default " "
+OFS         # output FS, default " "
+ORS         # output record separator, default "\n"
+OFMT        # output format for numbers, default "%.6g"
+RLENGTH     # length of the string by match fct
+RS          # input record separator, default "\n"
+RSTART      # start of string matched by match fct
+SUBSEP      # subscript seprator
+</code></pre>
+<h1>
+<a id="actions" class="anchor" href="#actions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Actions</h1>
+<ul>
+<li>
+<p>Parenthesis in function calls are optional.</p>
+</li>
+<li>
+<p>Default argument is always $0.</p>
+<p>print
+printf(fmt, expression-list)
+if (expr) statement
+if (expr)  stmt else stmt
+while (expr) stmt
+for (expr; expr; expr) stmt
+for (var in array) stmt
+break
+continue
+next
+exit expr</p>
+</li>
+</ul>
+<h1>
+<a id="types" class="anchor" href="#types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Types</h1>
+<ul>
+<li>Strings
+<ul>
+<li>automatic concat: "hello" "world" -&gt; "helloworld"</li>
+</ul>
+</li>
+<li>Numbers</li>
+<li>types will be automatically coerced when needed.</li>
+</ul>
+<h1>
+<a id="arrays" class="anchor" href="#arrays" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arrays</h1>
+<ul>
+<li>one dimensional</li>
+<li>for string or numbers</li>
+<li>all arrays are associative</li>
+</ul>
+<h1>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h1>
+<ul>
+<li>Curly brackets indicate awk it is an action not a pattern:</li>
+</ul>
+<pre><code>awk '{ print $2 }'
+awk '$3 == 10'
+</code></pre>
+<p>Misc:</p>
+<pre><code>awk -F, '{ print $1 }'
+
+BEGIN { print "Hello World!" }
+
+awk 'BEGIN { FS=":" } NR&gt;=2 &amp;&amp; NR&lt;=4 { print $1 } ' /etc/passwd
+
+awk '{ print NR, $0 }'      # add line numbers to input
+
+awk '{ print $1 "makes" $3 "per hour" }' | uniq -f2     # unique wages
+
+awk '{ printf("%s makes $%.2 per hour\n", $1, $3) }'
+
+awk '{ gsub(/USA/, "United States"); print }'
+
+{
+    w += NF
+    c += length + 1
+}
+END { print NR, w, c}
+
+awk '{ FS=":"; print $(NF-1) }'     # second to last field
+
+awk '{$1=$1}1' file.txt  # MAGIC: remove leading whitespace (2 actions)
+
+# multiple blocks (expr+action) are possible
+cat netflix.tsv | awk '/^2016-03-24/ {print} $4 == 96.43 {print}'
+# next skips to next line in case both block would match.
+cat netflix.tsv | awk '/^2016-03-24/ {print; next} $4 == 97.07 {print}'
+
+# arrays
+cat netflix.csv | awk -F'[,-]' '{volume[$1] += $8} END { for(year in volume) print year, volume[year]}'
+</code></pre>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>

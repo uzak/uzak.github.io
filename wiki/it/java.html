@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Java</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <ul>
+<li>Interface - abstract</li>
+<li>interface Runnable, extend Thread class</li>
+<li>this() - call other constructor</li>
+<li>Set interface - no duplicat elements. Inherited from collection.</li>
+<li>TreeSet interface - sorted set</li>
+<li>Object based programming languages follow all the features of OOPs except Inheritance. JavaScript is an example of object based programming languages.</li>
+<li>Default constructor</li>
+<li>Constructor cannot be made final</li>
+<li>Static block is executed at the time of classloading</li>
+<li>overloading - same name, different parameters; overriding</li>
+<li>A thread can enter the waiting state by invoking its sleep() method, by blocking on IO, by unsuccessfully attempting to acquire an object's lock, or by invoking an object's wait() method. It can also enter the waiting state by invoking its (deprecated) suspend() method.</li>
+<li>After a thread is started, via its start() method of the Thread class, the JVM invokes the thread's run() method when the thread is initially executed.</li>
+<li>Exception's subclasses have to be caught first.</li>
+<li>When a task invokes its yield() method, it returns to the ready state. When a task invokes its sleep() method, it returns to the waiting state.</li>
+<li>The Vector class provides the capability to implement a growable array of objects. Vector proves to be very useful if you don't know the size of the array in advance</li>
+<li>The Reader/Writer class hierarchy is character-oriented, and the InputStream/OutputStream class hierarchy is byte-oriented.</li>
+<li>The Class class is used to obtain information about an object's design and java.lang.Class class instance represent classes, interfaces in a running Java application.</li>
+<li>Serialization is the process of writing the state of an object to a byte stream. Deserialization is the process of restoring these objects.</li>
+<li>Constructors must have the same name as the class and can not return a value. They are only called once while regular methods could be called many times.</li>
+<li>The code sleep(2000); puts thread aside for exactly two seconds. The code wait(2000), causes a wait of up to two second. A thread could stop waiting earlier if it receives the notify() or notifyAll() call. The method wait() is defined in the class Object and the method sleep() is defined in the class Thread.</li>
+<li>A transient variable is a variable that may not be serialized during Serialization and which is initialized by its default value during de-serialization,</li>
+<li>Synchronization is the capability to control the access of multiple threads to shared resources. synchronized keyword in java provides locking which ensures mutual exclusive access of shared resource and prevent data race.</li>
+<li>The = operator is right associative.</li>
+<li>The Java runtime system generates RuntimeException and Error exceptions.</li>
+<li>The garbage collector invokes an object's finalize() method when it detects that the object has become unreachable.</li>
+<li>A dead thread cannot be restarted.</li>
+<li>An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implement default behavior and all methods are implicitly abstract. An interface has all public members and no implementation.</li>
+<li>a top level class can not be private or protected. It can have either "public" or no modifier.</li>
+<li>It is not necessary that each try block must be followed by a catch block. It should be followed by either a catch block or a finally block.</li>
+<li>A thread is in the ready state as initial state after it has been created and started.</li>
+<li>Runtime polymorphism or dynamic method dispatch is a process in which a call to an overridden method is resolved at runtime rather than at compile-time. In this process, an overridden method is called through the reference variable of a superclass.</li>
+<li>Dynamic binding means that the code associated with a given procedure call is not known until the time of the call at run-time.</li>
+<li>constructor cannot be inherited</li>
+<li>ArrayList can grow dynamically and provides more powerful insertion and search mechanisms than arrays</li>
+<li>Deletion in linked list is fast because it involves only updating the next pointer in the node before the deleted node and updating the previous pointer in the node after the deleted node.</li>
+<li>If you need to frequently add and remove elements from the middle of the list and only access the list elements sequentially, then LinkedList should be used. If you need to support random access, without inserting or removing elements from any place other than the end, then ArrayList should be used.</li>
+<li>Private constructor is used if you do not want other classes to instantiate the object and to prevent subclassing</li>
+<li>A thread is a execution in a program. The life cycle of a thread include − Newborn, Runnable, Running, Blocked, Dead state</li>
+<li>The &gt;&gt; operator carries the sign bit when shifting right. The &gt;&gt;&gt; zero-fills bits that have been shifted out.</li>
+<li>Braek statements can be used as labels</li>
+<li>Thread.suspend - It is used to pause or temporarily stop the execution of the thread.</li>
+<li>Sockets provide the communication mechanism between two computers using TCP. A client program creates a socket on its end of the communication and attempts to connect that socket to a server.</li>
+<li>java.net.ServerSocket class is used by server applications to obtain a port and listen for client requests</li>
+<li>java.net.Socket class represents the socket that both the client and server use to communicate with each other.</li>
+<li>If a class is declared within a class and specify the static modifier, the compiler treats the class just like any other top-level class. Nested top-level class is an Inner class.</li>
+<li>Externalizable is an interface which contains two methods readExternal and writeExternal. These methods give you a control over the serialization mechanism.</li>
+<li>setDaemon method is used to create a daemon thread.</li>
+<li>All tasks must implement the run() method</li>
+<li>The GregorianCalendar provides support for traditional Western calendars</li>
+<li>A static method should not refer to instance variables without creating an instance and cannot use "this" operator to refer the instance.</li>
+<li>An object's lock is a mechanism that is used by multiple threads to obtain synchronized access to the object. A thread may execute a synchronized method of an object only after it has acquired the object's lock.</li>
+<li>Downcasting: It is the casting from a general to a more specific type, i.e. casting down the hierarchy.</li>
+<li>A protected method may only be accessed by classes or interfaces of the same package or by subclasses of the class in which it is declared.</li>
+<li>When a class is defined within a scope of another class, then it becomes inner class. If the access modifier of the inner class is static, then it becomes nested class.</li>
+<li>If the array is an array of primitive types, then all the elements of the array will be initialized to the default value corresponding to that primitive type.</li>
+</ul>
+<ul>
+<li>Which two method you need to implement for key Object in HashMap (equals, hashCode)</li>
+</ul>
+<p>public class JavaHungrySingleton
+{</p>
+<pre><code>private static  volatile JavaHungrySingleton  uniqueInstance;
+
+private JavaHungrySingleton(){}
+
+public static   JavaHungrySingleton  getInstance()
+{
+    if (uniqueInstance ==null )
+    {
+        synchronized(JavaHungrySingleton.class)
+        {
+            if (uniqueInstance ==null )
+            {
+                uniqueInstance=new JavaHungrySingleton();
+            }
+        }
+    }
+    return uniqueInstance ;
+}
+
+// other useful methods here
+</code></pre>
+<p>}</p>
+<ul>
+<li>What will be the problem if you don't override hashcode() method ?
+You will not be able to recover your object from hash Map if that is used as key in HashMap.</li>
+<li>Is it better to synchronize critical section of getInstance() method or whole getInstance() method ?
+Answer is critical section because if we lock whole method than every time some one call this method will have to wait even though we are not creating any object)</li>
+<li>you can not override private or static method in Java, if you create similar method with same return type and same method arguments that's called method hiding.</li>
+<li>you can very well throw super class of RuntimeException in overridden method but you can not do same if its checked Exception.</li>
+<li>if you acquire resources in a particular order and release resources in reverse order you can prevent deadlock.</li>
+</ul>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <title>Values</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // remove vim-wiki generated TOC if it exists
+            let h1 = document.evaluate("//h1[text()='Contents']", document).iterateNext();
+            if (h1 != null && h1.nextElementSibling.tagName === 'UL') {
+                let parent = h1.parentElement;
+                parent.removeChild(h1.nextElementSibling);
+                parent.removeChild(h1);
+
+                // now generate new TOC
+                // function from: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+                var toc = "";
+                var level = 0;
+                var maxLevel = 6;
+
+                document.getElementById("contents").innerHTML =
+                    document.getElementById("contents").innerHTML.replace(
+                        /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                        function (str, openLevel, titleText, closeLevel) {
+                            if (openLevel != closeLevel) {
+                                c.log(openLevel)
+                                return str + ' - ' + openLevel;
+                            }
+
+                            if (openLevel > level) {
+                                toc += (new Array(openLevel - level + 1)).join("<ul>");
+                            } else if (openLevel < level) {
+                                toc += (new Array(level - openLevel + 1)).join("</ul>");
+                            }
+
+                            level = parseInt(openLevel);
+
+                            var anchor = titleText.replace(/ /g, "_");
+                            toc += "<li><a href=\"#" + anchor + "\">" + titleText
+                                + "</a></li>";
+
+                            return "<h" + openLevel + "><a style=\"color: black;\" name=\"" + anchor + "\">"
+                                + titleText + "</a></h" + closeLevel + ">";
+                        }
+                    );
+
+                if (level) {
+                    toc += (new Array(level + 1)).join("</ul>");
+                }
+
+                document.getElementById("contents").innerHTML = "<h1>Contents</h1>" + toc + document.getElementById("contents").innerHTML;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+    <main class="u-container">
+
+        <header class="c-page__header">
+            <p>
+                <a style="color: red;" href="./../../index.html">⌂</a> |
+                <a href="./../../wikis/">wikis</a> |
+                <a href="./index.html">index</a>
+                <hr>
+            </p>
+        </header>
+
+
+        <div class="c-page">
+            <article class="c-article">
+                <div class="c-article__main">
+                    <article class="c-article">
+                        <div class="c-article__main" id="contents">
+                            <h2>
+<a id="upasana-yoga-sr-2013" class="anchor" href="#upasana-yoga-sr-2013" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Upasana Yoga SR 2013</h2>
+<p>Ashta gunas for refining developed through nitya ishwara upasana:</p>
+<ol>
+<li>dayA - compassion. consideration for other people. sensitivity of mind (Ivana)</li>
+<li>kSAnti - patience (portugalci)</li>
+<li>anasUya - not having jealousy seeing the prosperity, progress of others (Swami)</li>
+<li>shoucham - purity at thought, word, deed level. (Swami)</li>
+<li>ayasahinata - always enjoying a disposition which is calm and quiet physically, mentally and verbally (Swami)</li>
+<li>akarpanyam - freedom from self pity (Swami)</li>
+<li>aspruha - freedom from greed and attachement (Swami)</li>
+<li>mangalam - magnetic personality
+kritika - spravit srandu otocenu na mna. ako funny guru</li>
+</ol>
+<h2>
+<a id="bg-chapter-13-06" class="anchor" href="#bg-chapter-13-06" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BG Chapter 13, 06</h2>
+<p>sadhana chathustaya sampathi - discrimination, dispassion, discipline, desire</p>
+<ol>
+<li>amanitvam - humility, not seeking recognition. by glorification
+discriminative power is lost. no humility -&gt; no bhakti -&gt; no jnanam</li>
+<li>adambhitvam - to be without pride. no pomp (conceit at the level of kayika)</li>
+<li>ahimsa - kayika, vacika, manasa</li>
+<li>ksanti - titiksa - acceptance of all choiceless situations of life
+ksama - capacity to wait for the future to unfold</li>
+<li>arjavam - uprightness and straightforwardness. alighment of threefold
+personality: kayika, vachika, manasa.</li>
+<li>acaryapasana - worship or reverence towards to teacher. sraddhah - learning to
+accept knowledge given by the veda as unique knowledge which is not
+available for any other sense organs to verify</li>
+<li>saucam - purity external and internal (words, thoughts)</li>
+<li>sthairyam - steadfastness on the path of righteusness. willpower.
+preservance. commitment.</li>
+<li>atma-vinigraha - control over the body and the senses. self-mastery.</li>
+<li>vairagya indriyartha / indriyarthesu vairagyam - renounciation of sense
+objects. mastery of the sense organs</li>
+<li>ahankarah - relinquishing of false ego and identification with the physical
+body as the self. freedom from conceit at verbal level
+(mental = amanitvam, actions = adambitvam)</li>
+<li>dukha-dosa-anudarsanam - do not be body-oriented. do not consider your life
+as something connected only to physical existence.</li>
+<li>asakti - mental detachment. avoidance of mental slavery with regard to any
+external objects, situation or person.</li>
+<li>anabhisvanga - avoiding over attachment. remaining even minded to what life
+gives.</li>
+<li>sama-citta - avoid both happiness and distress by temporary external
+circumstances. this gives the essense of karma yoga.</li>
+<li>avyabhicarini bhakti - devlotion to supreme Lord and realising of atma in
+all living beings.  Even when the worldy transactions are going, and even
+when the worldy transactions are fullfilled, this devotee remembers with
+undivided attention: that my goal is something else.</li>
+<li>viveka-desa-avitam - resorting to a secluded place, now and then.</li>
+<li>aratir jana-samsadt - indifference to mundane topics and associations. do
+not get addicted to people's company.</li>
+<li>tattvajnanarthadarsanam - I should know what will I get out of this
+knowledge. regulary remind yourselves that Jnanam gives inner freedom.</li>
+<li>adhyatma-jnana nityatvam - systematic and consistent study of vedantic
+scritpts for a lenght of time under the guidance of competent acarya</li>
+</ol>
+<h2>
+<a id="bg-chapter-16-01" class="anchor" href="#bg-chapter-16-01" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BG Chapter 16, 01</h2>
+<p>daivi sampata:</p>
+<ul>
+<li>abhayam - courage, self-confidence. faith in myself that I can follow and
+accomplish. spiritual courage.</li>
+<li>satvasamsuddhih - purity of mind. for the mind certain types of thinking,
+thoughts like jealousy, hatred, fear are toxic. enjoying the virtues
+enumerated here</li>
+<li>jnanayogavyasthitih - have a value for spiritual knowledge and know that
+knowledge never happens naturally. sravana, manana, nidhidhyasanam. commited
+pursuit.</li>
+<li>danam - charity. remedy for mental problem called lobhah, which is caused by
+the sense of insecurity:
+<ol>
+<li>wanting more and more tempts to adharma.</li>
+<li>danam takes care of the social order as it reduced the gap between poor
+and rich</li>
+<li>danam serves as a test for my detachment</li>
+<li>danam is important prayascitha karma</li>
+<li>makes the death peaceful as the person will give even his body happilly</li>
+</ol>
+</li>
+<li>damah - sense control. voluntarily directing the sense organs.</li>
+<li>yajnah - worship of the Lord. ceremonial and conversion of all our activities
+into a form of worship. karma yoga.</li>
+<li>svadhyayah - scriptural study. as a remedy against materialism.</li>
+<li>arjavam - integrity. harmonious personality. thoughts-words-deeds inline, or:
+<ul>
+<li>body</li>
+<li>prana</li>
+<li>emotional (mind)</li>
+<li>rational (intellect)
+amanitvam, adambitvam, ahimsa, santi arjavam (see Chapter 13)</li>
+</ul>
+</li>
+<li>ahimsa. in thoughts, words, deeds. but misplaced ahimsa is a problem too.</li>
+<li>satyam. trughfullness. if hurtful truth is to be said - sugarcoating.</li>
+<li>akrodhah - anger management. anger is an internal emotion, a form of pain.
+there is many expressions (and consequences). anger management is
+understanding the anger as an internal signal</li>
+<li>tyagah - renunciation. Detachment. readiness to lose anything. mentally
+droping the ownership notion.</li>
+<li>santih - freedom from violent emotional disturbances. (#13). inner relaxation
+only when the mind has santih. intellect will work. samah.</li>
+<li>tapah - going through a painful experience voluntarily in controlled way
+to toughen the mind and body. increase titiksa. 2nd benefit is that we can
+avoid impulsive reactions. 3th benefit is being able to learn from pain.</li>
+<li>apaisunam - not publicising defects of other people. cover up your virtues.</li>
+<li>daya bhutesu - compassion towards all living beings.</li>
+<li>aloluptvam - not yielding to the temptations of sense objects. specific
+sence control (damah general).</li>
+<li>mardavam - gentleness in handling people, things. not being rude.</li>
+<li>hrih - modesty and a healthy sense of shame</li>
+<li>acapalam - capalam means restleness expressed at the body level</li>
+<li>tejah - not being a victim of exploitation, goodness. do not cheat and do
+not get cheated, but apply non-violent methods first.</li>
+<li>ksamah - enjoying a mind where anger does not rise at all. reduce your
+expectations and convert the rest to non-binding preferences.</li>
+<li>dhrtih - preservance, fortitude. capacity to continue the sadhana in spite
+of obstacles.</li>
+<li>saucam - cleaningness and orderliness. of the surrounding, dress, body and
+mind.</li>
+<li>adrohah - ahimsa at mental level, not desiring to hurt others.</li>
+<li>natimanita - freedom from superiority complex, pride. humility, humbleness.
+(#26)</li>
+</ul>
+<h2>
+<a id="bg-16-4-page-2788" class="anchor" href="#bg-16-4-page-2788" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BG 16, 4 (Page 2788)</h2>
+<p>asuri sampat</p>
+<ol>
+<li>dambha – pomp and show, exhibitionism of wealth (external pride)</li>
+<li>darpa – arrogance. disrespect great people, disrespect elderly people</li>
+<li>abhimanah - superiority complex. looking at oneself as one who deserve
+namaskara, honour, reverence... (internal pride)</li>
+<li>krodha – anger.</li>
+<li>parusyam –  rudeness, harshness, impoliteness; mannerlessness.</li>
+<li>ajnanam - ignorance of dharma sastra, of ethics, morals.</li>
+</ol>
+
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+    </main>
+    <style type="text/css">
+        .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .gr {
+  color: #f6f8fa;
+}
+.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.highlight .nb {
+  color: #953800;
+}
+.highlight .nc {
+  color: #953800;
+}
+.highlight .no {
+  color: #953800;
+}
+.highlight .nn {
+  color: #953800;
+}
+.highlight .sr {
+  color: #116329;
+}
+.highlight .na {
+  color: #116329;
+}
+.highlight .nt {
+  color: #116329;
+}
+.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .kc {
+  color: #0550ae;
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #0550ae;
+}
+.highlight .sb {
+  color: #0550ae;
+}
+.highlight .bp {
+  color: #0550ae;
+}
+.highlight .ne {
+  color: #0550ae;
+}
+.highlight .nl {
+  color: #0550ae;
+}
+.highlight .py {
+  color: #0550ae;
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: #0550ae;
+}
+.highlight .o, .highlight .ow {
+  color: #0550ae;
+}
+.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: #0a3069;
+}
+.highlight .nd {
+  color: #8250df;
+}
+.highlight .nf, .highlight .fm {
+  color: #8250df;
+}
+.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781;
+}
+.highlight .gl {
+  color: #6e7781;
+}
+.highlight .gt {
+  color: #6e7781;
+}
+.highlight .ni {
+  color: #24292f;
+}
+.highlight .si {
+  color: #24292f;
+}
+.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+      </style>
+</body>
+
+</html>
